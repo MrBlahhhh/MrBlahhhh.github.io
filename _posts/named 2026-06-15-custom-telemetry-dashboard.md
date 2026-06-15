@@ -1,6 +1,7 @@
-layout: default
+layout: post
 title: "Engineering a Custom Pip-Boy Telemetry Dashboard"
-date: 2026-06-15
+date: 2026-06-15 10:00:00 -0400
+categories: blogging car tech
 ---
 
 # Designing the Dashboard Interface
