@@ -7,7 +7,7 @@ categories: blogging car tech
 
 # Designing the Dashboard Interface
 
-For this stage of the build, the goal was to replace the factory cluster with a custom digital dashboard display to monitor live telemetry, specifically oil pressure and engine codes, during track events.
+For this stage of the build, the goal was to replace the factory cluster with a custom digital dashboard display to monitor live telemetry, specifically oil pressure and engine codes, during track e testvents.
 
 ## Hardware Selection
 The core of the system is driven by an ESP32-S3 microcontroller communicating over the CAN bus, outputting to a Waveshare LCD screen.
