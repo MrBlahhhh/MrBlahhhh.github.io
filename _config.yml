@@ -1,4 +1,4 @@
-remote_theme: mmistakes/minimal-mistakes@4.24.0
-plugins:
+remote_theme: mmistakes/minimal-mistakes@4.24
+minimal_mistakes_skin: "contrast" # Options: contrast, dark, teal, solarizedplugins:
   - jekyll-remote-theme
   - jekyll-include-cache
