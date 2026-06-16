@@ -1,9 +1,9 @@
-# 1. Force the system to use Minimal Mistakes
-theme: minimal-mistakes-jekyll
-remote_theme: mmistakes/minimal-mistakes@4.24.0
-minimal_mistakes_skin: "teal"
+# Remove or comment out this line:
+# theme: "minimal-mistakes-jekyll"
 
-# 2. Add the required plugin environment
+# Add these lines instead:
+remote_theme: "mmistakes/minimal-mistakes@4.24.0"
+
 plugins:
   - jekyll-remote-theme
   - jekyll-include-cache
