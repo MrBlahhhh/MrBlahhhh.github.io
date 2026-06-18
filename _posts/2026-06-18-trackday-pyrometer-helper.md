@@ -101,7 +101,7 @@ TPMS decoding lives in the app, not the pyrometer firmware. Scan finds nearby se
 | K-type **tire pyrometer probe** | Yellow +, red − on the terminal block |
 | **Active buzzer** | GPIO33 → (+), (−) → GND (`BUZZER_ACTIVE 1` in firmware) |
 | **18650** Li-ion cell | Fits the printed handle; screw-on cap with contact spring at the base |
-| **Rocker power switch** | Panel mount in the head |
+| **Rocker power switch** | Panel mount in the head — [Amazon B07S2QJKTX](https://www.amazon.com/dp/B07S2QJKTX) |
 | **USB** charge/data port | CH343P USB-UART on the Waveshare board |
 | **3D-printed enclosure** | [`tiretester.stl`](/cad/pyrotc/tiretester.stl) (body), [`cover.stl`](/cad/pyrotc/cover.stl) (faceplate), [`cap.stl`](/cad/pyrotc/cap.stl) (battery cap) |
 
