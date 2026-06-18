@@ -6,10 +6,10 @@ tags: [bmw, tag-one, tag-two]
 cover: /assets/images/SLUG/hero.jpg
 lightbox: true
 article_header:
-  type: overlay
+  type: cover
   align: center
   theme: dark
-  background_image:
+  image:
     src: /assets/images/SLUG/hero.jpg
 ---
 

@@ -6,10 +6,10 @@ tags: [bmw, driveshaft, cv-joint, maintenance, "11553453300"]
 cover: /assets/images/driveshaft-cv/cv-joint-repack.jpg
 lightbox: true
 article_header:
-  type: overlay
+  type: cover
   align: center
   theme: dark
-  background_image:
+  image:
     src: /assets/images/driveshaft-cv/cv-joint-repack.jpg
 ---
 

@@ -52,14 +52,14 @@ tags: [bmw, keyword-one, keyword-two]
 cover: /assets/images/SLUG/hero.jpg
 lightbox: true
 article_header:
-  type: overlay
+  type: cover
   align: center
   theme: dark
-  background_image:
+  image:
     src: /assets/images/SLUG/hero.jpg
 ---
 
-One-paragraph intro that shows on the home page.
+Short one-line intro for the home page only.
 
 <!--more-->
 
