@@ -5,34 +5,26 @@ categories: car tech
 tags: [android, esp32, pyrometer, proform, tpms, ble, track-day]
 cover: /assets/images/trackday-pyrometer-helper/tiretemp-home.jpg
 lightbox: true
-excerpt: "What started as a project to read my ProForm scales via Bluetooth escalated to replacing my broken pyrometer and adding TPMS sensors for hot and cold pressures."
+excerpt: "TrackDayPyrometerHelper — my first Android app, built around a custom BLE pyrometer, with TPMS for hot and cold pressures and ProForm corner scales over Bluetooth."
 ---
 
 <!--more-->
 
-What started as a project to read my ProForm scales via Bluetooth escalated to replacing my broken pyrometer and adding TPMS sensors for hot and cold pressures. **TrackDayPyrometerHelper** is my first Android app — corner weights, tire temps, and pressures in one place for the LS3 135i. The Android source is private for now; I'm aiming for the Play Store next month. The ESP32 pyrometer firmware is public: [MrBlahhhh/PyroTC](https://github.com/MrBlahhhh/PyroTC).
+**TrackDayPyrometerHelper** is my first Android app. The main focus is tire temps — a custom BLE pyrometer to replace my broken gun, synced into the app for OUT/MID/IN sessions on all four corners. It grew from there into TPMS for hot and cold pressures, and ProForm corner scales over Bluetooth. Everything lives in one place for the LS3 135i.
 
-## ProForm corner scales
+The Android source is private for now; I'm aiming for the Play Store next month. The ESP32 pyrometer firmware is public: [MrBlahhhh/PyroTC](https://github.com/MrBlahhhh/PyroTC).
 
-I wanted live weights from my **ProForm wireless scale pads** on my phone instead of juggling the factory display. Reverse-engineering the BLE protocol got the four pads waking, mapping to FL/FR/RL/RR, and streaming live weights.
+## Tire temps
 
-![ProForm scales wake and map screen](/assets/images/trackday-pyrometer-helper/livescales-setup.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
-*Wake each pad over BLE, map to a corner, calibrate, then zero with the car off the pads.*
+![Tire temp sessions list](/assets/images/trackday-pyrometer-helper/tiretemp-home.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+*Sessions are timestamped and tagged by compound — slick, R-Comp, RE-71RS, etc.*
 
-![Live corner weights from four scale pads](/assets/images/trackday-pyrometer-helper/livescales.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
-*Live mode streams all four corners. Manual entry works when you only have corner numbers from somewhere else.*
+![Tire temp entry with pyrometer and PSI sync](/assets/images/trackday-pyrometer-helper/tiretemp-reading.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+*OUT / MID / IN per corner, plus sync from the pyrometer and from TPMS for cold and hot PSI.*
 
-The scales screen handles the painful parts: waking sleepy pads by MAC, per-corner calibration, and **ZERO ALL** with the car off the pads.
+The **TIRES** tab records **OUT**, **MID**, and **IN** for all four corners. Static camber per corner feeds setup notes. Aim for the lowest hot pressure that doesn't roll the outer shoulder — outer-edge heat or graining is the rollover signal. Take temps right after coming in; they fade fast.
 
-## Corner balance
-
-![Cross weight with manual corner entry](/assets/images/trackday-pyrometer-helper/crossweight.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
-*Manual entry still gives you cross weight, diagonal totals, and whether to adjust perches.*
-
-![Cross weight recommendation with perch guidance](/assets/images/trackday-pyrometer-helper/crossweight-bottom.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
-*Example: 44.83% cross on 2,904 lb — move 150 lb onto the RF+LR diagonal to hit 50%.*
-
-The **BALANCE** tab shows FL/FR/RL/RR weights, total, front/rear and left/right split, and cross weight against a target (I run **50.00%**). When cross is off, the app tells you how much weight to move onto the RF+LR diagonal and whether to raise RF/LR or lower LF/RR. Optional perch-turn calibration converts pounds into turns.
+**SYNC FROM PYROMETER** pulls live readings from PyroTC over BLE — tap record on the gun, hit sync in the app, and cells fill.
 
 ## PyroTC — custom BLE pyrometer
 
@@ -67,18 +59,6 @@ pio run -t upload
 pio device monitor -b 115200
 {% endhighlight %}
 
-## Tire temps
-
-![Tire temp sessions list](/assets/images/trackday-pyrometer-helper/tiretemp-home.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
-*Sessions are timestamped and tagged by compound — slick, R-Comp, RE-71RS, etc.*
-
-![Tire temp entry with pyrometer and PSI sync](/assets/images/trackday-pyrometer-helper/tiretemp-reading.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
-*OUT / MID / IN per corner, plus sync from the pyrometer and from TPMS for cold and hot PSI.*
-
-The **TIRES** tab records **OUT**, **MID**, and **IN** for all four corners. Static camber per corner feeds setup notes. Aim for the lowest hot pressure that doesn't roll the outer shoulder — outer-edge heat or graining is the rollover signal. Take temps right after coming in; they fade fast.
-
-**SYNC FROM PYROMETER** pulls live readings from PyroTC. **SYNC COLD PSI** and **SYNC HOT PSI** fill pressures from mapped TPMS sensors. Ambient temperature comes from a one-shot Open-Meteo lookup so the app can flag cold tires.
-
 ## TPMS sensors
 
 ![TPMS sensor mapping by color tag](/assets/images/trackday-pyrometer-helper/tpms-sensors.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
@@ -86,11 +66,31 @@ The **TIRES** tab records **OUT**, **MID**, and **IN** for all four corners. Sta
 
 TPMS decoding lives in the app, not the pyrometer firmware. Scan finds nearby sensors (they only broadcast while rolling or just stopped), you tag each one with a color on the valve stem, then assign colors to LF/RF/LR/RR. Saved **sets** cover different wheel/tire combos.
 
+**SYNC COLD PSI** and **SYNC HOT PSI** on the tire temp screen fill pressures from mapped sensors. Ambient temperature comes from a one-shot Open-Meteo lookup so the app can flag cold tires.
+
+## ProForm corner scales
+
+What started as a side project — I wanted live weights from my **ProForm wireless scale pads** on my phone instead of juggling the factory display. Reverse-engineering the BLE protocol got the four pads waking, mapping to FL/FR/RL/RR, and streaming live weights.
+
+![ProForm scales wake and map screen](/assets/images/trackday-pyrometer-helper/livescales-setup.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+*Wake each pad over BLE, map to a corner, calibrate, then zero with the car off the pads.*
+
+![Live corner weights from four scale pads](/assets/images/trackday-pyrometer-helper/livescales.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+*Live mode streams all four corners. Manual entry works when you only have corner numbers from somewhere else.*
+
+The scales screen handles the painful parts: waking sleepy pads by MAC, per-corner calibration, and **ZERO ALL** with the car off the pads.
+
+### Corner balance
+
+![Cross weight with manual corner entry](/assets/images/trackday-pyrometer-helper/crossweight.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+*Manual entry still gives you cross weight, diagonal totals, and whether to adjust perches.*
+
+![Cross weight recommendation with perch guidance](/assets/images/trackday-pyrometer-helper/crossweight-bottom.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+*Example: 44.83% cross on 2,904 lb — move 150 lb onto the RF+LR diagonal to hit 50%.*
+
+The **BALANCE** tab shows FL/FR/RL/RR weights, total, front/rear and left/right split, and cross weight against a target (I run **50.00%**). When cross is off, the app tells you how much weight to move onto the RF+LR diagonal and whether to raise RF/LR or lower LF/RR. Optional perch-turn calibration converts pounds into turns.
+
 ## Parts list
-
-### ProForm corner scales (existing hardware)
-
-- **ProForm wireless corner weight scale pads** (4) — BLE, wake-on-connect
 
 ### PyroTC pyrometer
 
@@ -110,6 +110,10 @@ Optional: 3.7 V LiPo on the board's MX1.25 connector instead of the 18650 grip p
 ### TPMS
 
 - **BLE TPMS sensors** (Tesla-style 401 MHz valve-stem units) — one per corner, color-tagged on the stem
+
+### ProForm corner scales (existing hardware)
+
+- **ProForm wireless corner weight scale pads** (4) — BLE, wake-on-connect
 
 ### Phone
 
