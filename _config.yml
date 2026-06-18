@@ -16,12 +16,12 @@ timezone: America/New_York
 author:
   type: person
   name: mrblahhhh
-  url: https://github.com/mrblahhhh
-  avatar: https://github.com/mrblahhhh.png
+  url: https://github.com/MrBlahhhh
+  avatar: https://github.com/MrBlahhhh.png
   bio: Track builds, CAN bus hacks, and custom fabrication.
-  github: mrblahhhh
+  github: MrBlahhhh
 
-repository: mrblahhhh/mrblahhhh.github.io
+repository: MrBlahhhh/MrBlahhhh.github.io
 repository_tree: main
 
 paths:
