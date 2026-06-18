@@ -5,7 +5,9 @@ Personal site and hardware build logs, powered by [Jekyll](https://jekyllrb.com/
 ## Local development
 
 ```bash
-bundle install --path vendor/bundle
+gem install bundler
+bundle init
+bundle add github-pages jekyll-remote-theme
 bundle exec jekyll serve
 ```
 

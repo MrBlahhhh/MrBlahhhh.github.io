@@ -1,4 +1,4 @@
-theme: jekyll-text-theme
+remote_theme: kitian616/jekyll-TeXt-theme@2.2.6
 
 text_skin: dark
 highlight_theme: tomorrow-night
@@ -60,10 +60,7 @@ highlighter: rouge
 permalink: date
 
 exclude:
-  - Gemfile
-  - Gemfile.lock
   - README.md
-  - vendor
 
 defaults:
   - scope:
@@ -80,6 +77,7 @@ defaults:
       pageview: false
 
 plugins:
+  - jekyll-remote-theme
   - jekyll-feed
   - jekyll-paginate
   - jekyll-sitemap
