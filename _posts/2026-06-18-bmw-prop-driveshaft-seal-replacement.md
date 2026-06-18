@@ -1,5 +1,5 @@
 ---
-title: "BMW Driveshaft Rear CV Seal Replacement"
+title: "BMW prop/driveshaft seal replacement"
 date: 2026-06-18 10:00:00 -0400
 categories: car
 tags: [bmw, driveshaft, cv-joint, maintenance, 11553453300]
