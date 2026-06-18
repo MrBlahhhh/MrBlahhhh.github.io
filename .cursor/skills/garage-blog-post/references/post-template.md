@@ -5,12 +5,6 @@ categories: car
 tags: [bmw, tag-one, tag-two]
 cover: /assets/images/SLUG/hero.jpg
 lightbox: true
-article_header:
-  type: cover
-  align: center
-  theme: dark
-  image:
-    src: /assets/images/SLUG/hero.jpg
 ---
 
 One-paragraph summary for the home page. Keep it short and direct.
