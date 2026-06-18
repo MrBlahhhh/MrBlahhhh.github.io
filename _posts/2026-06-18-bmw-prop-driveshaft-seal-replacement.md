@@ -17,12 +17,12 @@ The rear CV seal on a BMW prop shaft is normally not serviceable. I found a repl
 
 <!--more-->
 
-![Worn rear CV seal removed from the shaft](/assets/images/driveshaft-cv/damaged-seal.jpg){:.border.rounded}
-*The factory seal is press-clamped into the lip. All of the old material has to come out.*
-
 ## The seal
 
-Shem Group sells the seal under part number **11553453300**. It includes a ring for the inner lip. I remove that ring and use **safety wire** instead — with the ring in place it's too hard to get the seal on fast enough once the adhesive is applied.
+Shem Group sells the seal under part number **11553453300**. I ordered a few from Ukraine. It includes a ring for the inner lip — I remove that ring and use **safety wire** instead, because with the ring in place it's too hard to get the seal on fast enough once the adhesive is applied.
+
+![New rear CV seal, part 11553453300](/assets/images/driveshaft-cv/new-seal.jpg){:.border.rounded}
+*Replacement seal from Shem Group before install.*
 
 ## Removing the old seal
 
