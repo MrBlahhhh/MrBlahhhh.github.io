@@ -17,13 +17,6 @@ The rear CV seal on a BMW prop shaft is normally not serviceable. I found a repl
 
 <!--more-->
 
-## The seal
-
-Shem Group sells the seal under part number **11553453300**. I ordered a few from Ukraine. It includes a ring for the inner lip — I remove that ring and use **safety wire** instead, because with the ring in place it's too hard to get the seal on fast enough once the adhesive is applied.
-
-![New rear CV seal, part 11553453300](/assets/images/driveshaft-cv/new-seal.jpg){:.border.rounded}
-*Replacement seal from Shem Group before install.*
-
 ## Removing the old seal
 
 The old seal is press-clamped onto the shaft. I pick every bit of the old rubber out of the lip before installing the new one. Clean the lip thoroughly, then clean it again.
@@ -39,15 +32,26 @@ I repack the CV joint with a syringe before installing the seal:
 
 Don't overdo the grease — if it gets on the glue surface the seal won't bond.
 
-![Grease syringe for repacking the CV joint](/assets/images/driveshaft-cv/grease-syringe.jpg){:.border.rounded}
+![Grease syringe for repacking the CV joint](/assets/images/driveshaft-cv/grease-syringe.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+*Grease loaded in a syringe for repacking.*
 
-![CV joint repacked — grease on each ball](/assets/images/driveshaft-cv/cv-joint-repack.jpg){:.border.rounded}
+![CV joint repacked with grease on each ball](/assets/images/driveshaft-cv/cv-joint-repack.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+*Grease inside the joint and a dab on each ball.*
+
+## The new seal
+
+![New rear CV seal, part 11553453300](/assets/images/driveshaft-cv/new-seal.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+*Replacement seal from Shem Group, part 11553453300.*
+
+Shem Group sells the seal under part number **11553453300**. It includes a ring for the inner lip — I remove that ring and use **safety wire** instead, because with the ring in place it's too hard to get the seal on fast enough once the adhesive is applied.
 
 ## Installing the seal
 
-I use **3M Black Super Weatherstrip and Gasket Adhesive (08008)**. It dries fast — have everything ready before you open the tube.
+![3M 08008 weatherstrip adhesive](/assets/images/driveshaft-cv/3m-adhesive.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+*3M Black Super Weatherstrip and Gasket Adhesive (08008).*
+{:.text-center}
 
-![3M 08008 weatherstrip adhesive](/assets/images/driveshaft-cv/3m-adhesive.jpg){:.border.rounded}
+I use **3M Black Super Weatherstrip and Gasket Adhesive (08008)**. It dries fast — have everything ready before you open the tube.
 
 **Order of operations:**
 
