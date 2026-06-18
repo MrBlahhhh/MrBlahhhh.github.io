@@ -16,6 +16,8 @@ The Android source is private for now; I'm aiming for the Play Store next month.
 
 ## Tire temps
 
+While a basic tire pressure gauge just tells you how much air is inside, a pyrometer — a highly accurate temperature probe — shows you the physical stress the tire is actually experiencing. By measuring the heat at three distinct points across the tire's surface (the inside edge, the middle, and the outside edge), a driver can see exactly how the car is planting its weight onto the pavement. Those three temperature readings act like a diagnostic report, revealing flaws in how the car's suspension is adjusted that even an experienced driver might not feel from behind the wheel.
+
 ![Tire temp sessions list](/assets/images/trackday-pyrometer-helper/tiretemp-home.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
 *Sessions are timestamped and tagged by compound — slick, R-Comp, RE-71RS, etc.*
 
