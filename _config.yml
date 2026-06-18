@@ -1,9 +1,86 @@
-# Remove or comment out this line:
-# theme: "minimal-mistakes-jekyll"
+theme: jekyll-text-theme
 
-# Add these lines instead:
-remote_theme: "mmistakes/minimal-mistakes@4.24.0"
+text_skin: dark
+highlight_theme: tomorrow-night
+
+url: https://mrblahhhh.github.io
+baseurl:
+
+title: Garage & Code
+description: >
+  Automotive tuning, embedded telemetry, and custom fabrication.
+
+lang: en
+timezone: America/New_York
+
+author:
+  type: person
+  name: mrblahhhh
+  url: https://github.com/MrBlahhhh
+  avatar: https://github.com/MrBlahhhh.png
+  bio: Track builds, CAN bus hacks, and custom fabrication.
+  github: MrBlahhhh
+
+repository: MrBlahhhh/MrBlahhhh.github.io
+repository_tree: main
+
+paths:
+  root: /
+  home: /
+  archive: /archive.html
+  rss: /feed.xml
+
+excerpt_separator: <!--more-->
+
+license: CC-BY-4.0
+
+toc:
+  selectors: h2,h3
+
+paginate: 8
+paginate_path: /page:num
+
+sharing:
+  provider: false
+
+comments:
+  provider: false
+
+pageview:
+  provider: false
+
+search:
+  provider: default
+
+analytics:
+  provider: false
+
+markdown: kramdown
+highlighter: rouge
+permalink: date
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: article
+      sharing: true
+      license: true
+      aside:
+        toc: true
+        show_edit_on_github: true
+        show_subscribe: true
+      pageview: false
 
 plugins:
-  - jekyll-remote-theme
-  - jekyll-include-cache
+  - jekyll-feed
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jemoji
