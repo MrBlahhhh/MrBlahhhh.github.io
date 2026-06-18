@@ -5,9 +5,8 @@ categories: car
 tags: [bmw, tag-one, tag-two]
 cover: /assets/images/SLUG/hero.jpg
 lightbox: true
+excerpt: "One-line summary for the home page."
 ---
-
-One-paragraph summary for the home page. Keep it short and direct.
 
 <!--more-->
 
