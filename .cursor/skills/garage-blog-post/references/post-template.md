@@ -5,12 +5,14 @@ categories: car
 tags: [bmw, tag-one, tag-two]
 cover: /assets/images/SLUG/hero.jpg
 lightbox: true
-excerpt: "One-line summary for the home page."
+excerpt: "One-line summary for the home page only."
 ---
 
 <!--more-->
 
 ## Section one
+
+Brief intro for this section.
 
 ![Description of photo](/assets/images/SLUG/photo-one.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
 *Caption for photo one.*
