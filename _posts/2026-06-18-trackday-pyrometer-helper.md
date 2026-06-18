@@ -5,12 +5,6 @@ categories: car tech
 tags: [android, esp32, pyrometer, proform, tpms, ble, track-day]
 cover: /assets/images/trackday-pyrometer-helper/tiretemp-home.jpg
 lightbox: true
-article_header:
-  type: cover
-  align: center
-  theme: dark
-  image:
-    src: /assets/images/trackday-pyrometer-helper/tiretemp-home.jpg
 ---
 
 ProForm scales over Bluetooth → custom pyrometer → TPMS → my first Android app.

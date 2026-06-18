@@ -51,12 +51,6 @@ categories: car
 tags: [bmw, keyword-one, keyword-two]
 cover: /assets/images/SLUG/hero.jpg
 lightbox: true
-article_header:
-  type: cover
-  align: center
-  theme: dark
-  image:
-    src: /assets/images/SLUG/hero.jpg
 ---
 
 Short one-line intro for the home page only.
@@ -99,7 +93,11 @@ Full-width images look bad on TeXt. Always use:
 
 ### Hero / header
 
-Set `cover` and `article_header.background_image.src` to the best wide or action shot. Enable `lightbox: true` for click-to-enlarge.
+Do **not** set `article_header` — overlay dumps excerpt text on the image; cover shows a giant image before the title. Leave it out so TeXt renders the normal title, date, and tags header.
+
+Set `cover` for homepage/archive thumbnails only. Enable `lightbox: true` for click-to-enlarge on inline images.
+
+Keep text before `<!--more-->` to one short line. Jekyll includes that excerpt at the top of the full article body too, so long intros duplicate below the header.
 
 ## Writing style
 
