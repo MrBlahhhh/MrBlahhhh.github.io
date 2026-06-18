@@ -51,9 +51,8 @@ categories: car
 tags: [bmw, keyword-one, keyword-two]
 cover: /assets/images/SLUG/hero.jpg
 lightbox: true
+excerpt: "One-line summary for the home page."
 ---
-
-Short one-line intro for the home page only.
 
 <!--more-->
 
