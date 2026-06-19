@@ -34,7 +34,7 @@ Create new posts for **https://mrblahhhh.github.io** — a Jekyll site using the
 - [ ] Filename: `_posts/YYYY-MM-DD-short-slug.md`
 - [ ] Date at **midnight** or early morning (`00:00:00 -0400`) so Jekyll does not treat it as a future post
 - [ ] Homepage excerpt in front matter (`excerpt:`) — **not** as body text before `<!--more-->`
-- [ ] **No** `article_header` block
+- [ ] `article_header` uses `overlay` with `background_image: false` (title band, no hero photo)
 - [ ] Article body starts with `<!--more-->`, then `##` heading, then content
 - [ ] Quote **numeric tags** in YAML: `"11553453300"` not `11553453300`
 - [ ] Sections: heading → intro text → images → more detail (see layout rules below)
@@ -54,6 +54,10 @@ tags: [bmw, keyword-one, keyword-two]
 cover: /assets/images/SLUG/hero.jpg
 lightbox: true
 excerpt: "One-line summary for the home page only."
+article_header:
+  type: overlay
+  theme: dark
+  background_image: false
 ---
 
 <!--more-->
@@ -70,7 +74,16 @@ More detail after the photo.
 
 ## Article page layout (critical)
 
-TeXt renders a **normal title / date / tags header** when `article_header` is omitted. Do not add `article_header`.
+TeXt needs an `article_header` block to show the title, date, and tags on the article page. Use **overlay with no background image** — omitting `article_header` hides the title, and a background image makes a giant hero.
+
+```yaml
+article_header:
+  type: overlay
+  theme: dark
+  background_image: false
+```
+
+`cover:` stays in front matter for homepage/archive thumbnails only. `background_image: false` prevents TeXt from using `cover` as the article hero.
 
 ### Excerpt
 
@@ -93,14 +106,14 @@ Within each section:
 
 Do **not** put images before the section heading. Do **not** put the first image before the first `##` heading in the body.
 
-### `article_header` — do not use
+### `article_header` — safe vs broken
 
-| Type | Problem |
+| Config | Result |
 |------|---------|
-| `overlay` | Dumps excerpt text on top of the background image — unreadable on UI screenshots |
-| `cover` | Giant full-width image before the title |
-
-Set `cover:` in front matter for homepage/archive thumbnails only. It does not affect the article page header.
+| `overlay` + `background_image: false` | Title, date, tags band — **use this** |
+| `overlay` + `background_image.src` or omitted (with `cover:` set) | Giant hero; excerpt text overlaid on photo |
+| `cover` type | Giant full-width image before the title |
+| omitted entirely | Title hidden on article page |
 
 ## Images
 
@@ -165,8 +178,9 @@ Extract ID from `https://www.youtube.com/watch?v=VIDEO_ID` or `https://www.youtu
 | `404` downloading theme zip | Missing `v` on tag | Use `@v2.2.6` not `@2.2.6` |
 | Post missing after deploy | Future-dated post | Set date to `00:00:00 -0400` or earlier |
 | `comparison of Array with Array failed` in `tags.html` | Unquoted numeric tag | Quote it: `"11553453300"` |
-| Text stacked on / under images | `article_header: overlay` or body text before `<!--more-->` | Remove `article_header`; use `excerpt:` in front matter |
-| Giant image before title | `article_header: cover` | Remove `article_header` entirely |
+| Text stacked on / under images | `overlay` with background image, or body text before `<!--more-->` | Use `background_image: false`; put excerpt in front matter |
+| Giant image before title | `cover` type, or `overlay` using `cover` as background | Use `overlay` with `background_image: false` |
+| No visible title | `article_header` omitted | Add `overlay` header with `background_image: false` |
 
 ## Categories and tags
 

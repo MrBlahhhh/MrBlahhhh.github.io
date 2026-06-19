@@ -6,6 +6,10 @@ tags: [bmw, tag-one, tag-two]
 cover: /assets/images/SLUG/hero.jpg
 lightbox: true
 excerpt: "One-line summary for the home page only."
+article_header:
+  type: overlay
+  theme: dark
+  background_image: false
 ---
 
 <!--more-->
