@@ -5,7 +5,7 @@ categories: car tech
 tags: [esp32, can-bus, haltech, bmw, 135i, e82, pip-boy, telemetry]
 cover: /assets/images/pipboy-check-engine-display/pipboy-installed.jpg
 lightbox: true
-excerpt: "A Pip-Boy-style dash display for the gutted 135i — taps Haltech CAN through a RaceCapture ESP32-CAN-X2 and wirelessly shows warnings like high oil temp and low oil pressure."
+excerpt: "A Pip-Boy-style secondary display for the 135i — the factory BMW cluster stays, but Haltech warnings like high oil temp and low oil pressure don't show there; this vent-mounted screen reads them off CAN via a RaceCapture ESP32-CAN-X2."
 article_header:
   type: overlay
   theme: dark
@@ -14,13 +14,13 @@ article_header:
 
 <!--more-->
 
-The [135i track build](/car/2025/10/15/135i-l92-track-build.html) runs a **Haltech Rebel LS** with most of the factory dash gone. I still needed a way to see critical warnings at a glance — high oil temp, low oil pressure, and other Haltech fault states — without adding a full race dash. This is a small **Pip-Boy-style display** mounted in the driver-side vent, fed from the Haltech CAN bus over WiFi.
+The [135i track build](/car/2025/10/15/135i-l92-track-build.html) runs a **Haltech Rebel LS** with the factory BMW dash still in place — speed, temps, and the usual cluster stuff all work fine. What it does **not** show are Haltech-side warnings: high oil temp, low oil pressure, and other fault states the ECU knows about but never forwards to the BMW cluster.
 
-Firmware stays private. This writeup covers the hardware, mounts, and where to get the STLs.
+This is a small **Pip-Boy-style display** mounted in the driver-side vent as a **second readout**, fed from the Haltech CAN bus over WiFi. Same car, two dashes — factory cluster for driving, Pip-Boy for the stuff Haltech won't put on the BMW screen.
 
 ## How it works
 
-A **RaceCapture ESP32-CAN-X2** ([Autosport Labs](https://wiki.autosportlabs.com/ESP32-CAN-X2)) sits on the Haltech CAN network, reads the channels I care about, and sends updates wirelessly to the display module. The screen is a separate **Waveshare ESP32-S3-Touch-LCD-1.28** — round 240×240 IPS, touch, WiFi/BLE, and battery charge circuit built in — running a Pip-Boy boot sequence and alert UI on **LVGL** (with **TFT_eSPI** and **CST816S** touch, built in **PlatformIO**).
+A **RaceCapture ESP32-CAN-X2** ([Autosport Labs](https://wiki.autosportlabs.com/ESP32-CAN-X2)) sits on the Haltech CAN network, reads the channels I care about, and sends updates wirelessly to the display module. The screen is a separate **Waveshare ESP32-S3-Touch-AMOLED-2.41** — 2.41″ square AMOLED at **600×450**, capacitive touch, WiFi/BLE — running a Pip-Boy boot sequence and alert UI.
 
 On track, if oil pressure or oil temp crosses a limit, the display flashes the warning immediately.
 
@@ -31,14 +31,14 @@ Boot sequence and normal operation — Pip-Boy aesthetic, real Haltech data behi
 ## Display hardware
 
 ![Pip-Boy display mounted in the driver-side vent](/assets/images/pipboy-check-engine-display/pipboy-installed.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
-*Waveshare 1.28″ round LCD in the vent gauge pod — USB power routed through the mount.*
+*Waveshare 2.41″ AMOLED in the vent gauge pod — USB power routed through the mount.*
 
-The dev board is a [Waveshare ESP32-S3-Touch-LCD-1.28](https://www.waveshare.com/product/esp32-s3-touch-lcd-1.28.htm): GC9A01 display over SPI, CST816S touch on I2C, QMI8658 IMU on board. First-time USB programming needs the **CH340 driver** ([Windows](https://www.wch.cn/downloads/CH341SER_EXE.html) / [macOS](https://www.wch.cn/downloads/CH34XSER_MAC_ZIP.html)) and the usual ESP32-S3 download mode — hold **BOOT**, tap **RESET**, release **BOOT**.
+The dev board is a [Waveshare ESP32-S3-Touch-AMOLED-2.41](https://www.waveshare.com/esp32-s3-touch-amoled-2.41.htm): RM690B0 AMOLED over QSPI, FT6336 capacitive touch on I2C, QMI8658 IMU and RTC on board. USB-C for power and programming.
 
 ## Dash mount
 
 ![Fusion 360 — vent gauge pod bracket](/assets/images/pipboy-check-engine-display/pipboy-cad.png){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
-*Bracket modeled around the Waveshare module — replaces the vent louver section and keeps airflow slots.*
+*Bracket modeled around the 2.41″ AMOLED module — replaces the vent louver section and keeps airflow slots.*
 
 ![Gauge pod bracket — printed part](/assets/images/pipboy-check-engine-display/gauge-pod-bracket.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
 *Square gauge pod bracket — snap-fit geometry for the E82 driver-side vent.*
@@ -56,13 +56,13 @@ Two 3D-printed parts, both PETG or ASA minimum for in-car heat:
 | **E82 vent gauge square gauge pod bracket** (LCD mount) | [Cults3D — free STL](https://cults3d.com/en/3d-model/tool/e82-vent-gauge-square-gauge-pod-bracket) | Free |
 | **E82 driver left-side vent RAM mount** | [Cults3D — RAM ball adapter](https://cults3d.com/en/3d-model/various/e82-drivers-left-side-vent-ram-mount) | Paid |
 
-The free bracket is sized for the Waveshare 1.28″ module. The RAM mount is a vent insert with a standard RAM ball — useful on its own or combined with the pod above it.
+The free bracket is sized for the Waveshare 2.41″ AMOLED module. The RAM mount is a vent insert with a standard RAM ball — useful on its own or combined with the pod above it.
 
 ## Parts list
 
 | Item | Notes |
 |------|-------|
-| [Waveshare ESP32-S3-Touch-LCD-1.28](https://www.waveshare.com/product/esp32-s3-touch-lcd-1.28.htm) | Display + ESP32-S3 in one module |
+| [Waveshare ESP32-S3-Touch-AMOLED-2.41](https://www.waveshare.com/esp32-s3-touch-amoled-2.41.htm) | 2.41″ AMOLED 600×450, touch, ESP32-S3 |
 | **RaceCapture ESP32-CAN-X2** | [Autosport Labs ESP32-CAN-X2](https://wiki.autosportlabs.com/ESP32-CAN-X2) — dual CAN, automotive power, WiFi/BLE |
 | **Haltech Rebel LS** | Already in the 135i — CAN source for oil pressure, oil temp, fault flags |
 | **E82 vent gauge pod bracket** | [Free STL on Cults3D](https://cults3d.com/en/3d-model/tool/e82-vent-gauge-square-gauge-pod-bracket) — print PETG/ASA |
