@@ -198,8 +198,19 @@ Extract ID from `https://www.youtube.com/watch?v=VIDEO_ID` or `https://www.youtu
 
 ## When user provides photos
 
-1. Upload to `assets/images/<slug>/` keeping original filenames
-2. Match filenames exactly in the post markdown
-3. Order photos to match the author's narrative
+Two workflows — use whichever the author prefers:
+
+### A. Author picks filenames (default for new posts)
+
+1. Agent creates `assets/images/<slug>/` and references those paths in the post
+2. Author uploads with the exact filenames already in the markdown
+
+### B. Author drops files with any names (rename on commit)
+
+1. Author drops all photos into `assets/images/<slug>/` — phone exports (`IMG_1234.jpg`), screenshots, etc. are fine
+2. Agent inspects each image, renames to the filenames referenced in the post, commits, and pushes
+3. Do **not** ask the author to rename manually unless matching is ambiguous
+
+If the author uses numbered drops (`01.jpg`, `02.jpg`, …), follow the **image order listed in the post markdown** (top to bottom).
 
 The agent should produce a **new** `_posts/` file, image folder, and PR — not edit existing posts.
