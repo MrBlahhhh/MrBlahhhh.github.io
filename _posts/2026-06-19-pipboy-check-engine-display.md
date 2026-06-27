@@ -5,7 +5,7 @@ categories: car tech
 tags: [esp32, can-bus, haltech, bmw, 135i, e82, pip-boy, telemetry]
 cover: /assets/images/pipboy-check-engine-display/pipboy-installed.jpg
 lightbox: true
-excerpt: "A Pip-Boy-style secondary display for the 135i — the factory BMW cluster stays, but Haltech warnings like high oil temp and low oil pressure don't show there; this vent-mounted screen reads them off CAN via a RaceCapture ESP32-CAN-X2."
+excerpt: "Pip-Boy display for Haltech CAN warnings"
 article_header:
   type: overlay
   theme: dark

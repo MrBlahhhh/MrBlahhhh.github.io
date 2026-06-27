@@ -5,7 +5,7 @@ categories: car tech
 tags: [android, tpms, ble, rv, trailer, tire-pressure]
 cover: /assets/images/tpms-monitor-app/monitor-jcw-live.jpg
 lightbox: true
-excerpt: "Cheap BLE valve-stem TPMS sensors work well, but the bundled Android apps are rough — so I wrote TPMS Monitor: live pressure and temp, RV plus trailer layouts, background scanning, and PSI-drop alerts."
+excerpt: "BLE TPMS monitor for cars, RVs, and trailers"
 article_header:
   type: overlay
   theme: dark
