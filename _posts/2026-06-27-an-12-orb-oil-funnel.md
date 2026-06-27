@@ -5,7 +5,7 @@ categories: car tech
 tags: [3d-printing, fusion-360, an-12, orb, ls3, oil-change, cults3d]
 cover: /assets/images/an-12-orb-oil-funnel/installed.jpg
 lightbox: true
-excerpt: "No AN-12 ORB funnel for the LS BTR valve cover — quick Fusion 360 mock-up, two printed parts that snap together and spin independently so you can thread the base without twisting the whole funnel."
+excerpt: "Two-piece AN-12 ORB funnel for the LS BTR valve cover"
 article_header:
   type: overlay
   theme: dark
