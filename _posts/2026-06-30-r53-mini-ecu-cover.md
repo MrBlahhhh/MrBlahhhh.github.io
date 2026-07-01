@@ -24,12 +24,12 @@ I sell plug-and-play unlocked **R53 ECUs** with VIN changed and **S**, **JCW**, 
 
 First time using my **Pop 4** scanner, and first time in **blue laser** mode.
 
-![Pop 4 blue laser scan of OEM ECU cover](/assets/images/r53-ecu-cover/scan-mesh.png){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+![Pop 4 blue laser scan of OEM ECU cover](/assets/images/r53-ecu-cover/Screenshot%202026-06-30%20212118.png){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
 *First scan with the Pop 4 — blue laser mode. Not a closed mesh, but enough to trace the cover.*
 
 Didn't get a fully solid mesh — holes along the bottom edge and incomplete clip geometry — but it was good enough to sketch the replacement around in **Fusion 360**.
 
-![Fusion 360 — mesh scan reference for ECU cover](/assets/images/r53-ecu-cover/scan-cad.png){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+![Fusion 360 — mesh scan reference for ECU cover](/assets/images/r53-ecu-cover/Screenshot%202026-06-30%20211726.png){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
 *Imported mesh in Fusion — `r53_ecu_cover` and `r53_ecu_cover_Edited` bodies, solid `ecu-cover` sketched on top.*
 
 Printed in **ASA** and put the STL on Cults3D.
