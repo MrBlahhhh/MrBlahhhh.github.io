@@ -16,7 +16,7 @@ article_header:
 
 I broke another ECU cover retainer clip while testing an ECU for a customer — another **JCW VIN change and immobilizer delete**. Same story every time: pull the cover, hear the snap, clip's gone.
 
-I sell unlocked **R53 ECUs** with VIN changed and **S**, **JCW**, or **GP1** software on [Facebook Marketplace](https://www.facebook.com/share/1JFpRKxSGq/) and **NAM** — not printed covers. The STL is on Cults3D if you want to print your own.
+I sell plug-and-play unlocked **R53 ECUs** with VIN changed and **S**, **JCW**, or **GP1** software on [Facebook Marketplace](https://www.facebook.com/share/1JFpRKxSGq/) and **NAM** — not printed covers. The STL is on Cults3D if you want to print your own.
 
 **2001–2007 R53 Minis** and **R52 Cooper S** models share a plastic ECU cover over the fuse box in the engine bay. The OEM clips are brittle — they snap off when you remove the cover for the first time, or the next time, or the time after that. Once the clips are gone the cover rattles and the wiring underneath is exposed.
 
