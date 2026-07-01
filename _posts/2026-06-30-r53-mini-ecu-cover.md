@@ -59,5 +59,3 @@ Print **standing up** so the clip layers run the full length of each tab — muc
 | **Price** | **$5** on Cults3D |
 
 > **Download:** [R53 mini ECU cover on Cults3D](https://cults3d.com/en/3d-model/tool/r53-mini-ecu-cover) — $5.
-
-If your clips are already broken, measure the fuse box opening before you print — tolerances are tight enough that a worn housing may need a quick sand on the clip tabs.
