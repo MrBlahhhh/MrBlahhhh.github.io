@@ -1,6 +1,6 @@
 ---
 title: "R53 Mini ECU Cover — Printable Replacement"
-date: 2026-07-01 00:00:00 -0400
+date: 2026-06-30 00:00:00 -0400
 categories: car tech
 tags: [3d-printing, fusion-360, mini, r53, r52, ecu, cults3d]
 cover: /assets/images/r53-ecu-cover/installed.jpg
