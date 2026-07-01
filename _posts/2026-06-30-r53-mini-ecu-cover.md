@@ -20,7 +20,11 @@ I sell plug-and-play unlocked **R53 ECUs** with VIN changed and **S**, **JCW**, 
 
 **2001–2007 R53 Minis** and **R52 Cooper S** models share a plastic ECU cover over the fuse box in the engine bay. The OEM clips are brittle — they snap off when you remove the cover for the first time, or the next time, or the time after that. Once the clips are gone the cover rattles and the wiring underneath is exposed.
 
-I modeled a replacement in **Fusion 360**, printed it in **ASA**, and put the STL on Cults3D.
+## Scanning the OEM cover
+
+First time using my **Pop 4** scanner, and first time in **blue laser** mode. Didn't get a fully solid mesh — holes along the bottom edge and incomplete clip geometry — but it was good enough to sketch the replacement around in **Fusion 360**.
+
+Printed in **ASA** and put the STL on Cults3D.
 
 ## The part
 
