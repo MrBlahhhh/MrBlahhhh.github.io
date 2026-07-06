@@ -22,11 +22,11 @@ Create new posts for **https://mrblahhhh.github.io** — a Jekyll site using the
 
 ## Workflow
 
-1. Create branch: `cursor/<short-description>-e418`
+1. Work on **`main`** — commit and push directly; do **not** create feature branches or PRs unless explicitly asked
 2. Add post: `_posts/YYYY-MM-DD-slug.md`
 3. Add images: `assets/images/<slug>/` — use the author's original filenames
-4. Open PR to `main` — GitHub Actions deploys automatically
-5. Confirm Actions build is green before merging
+4. `git push origin main` — GitHub Actions deploys automatically
+5. Confirm Actions build is green after push
 
 ## New post checklist
 
@@ -39,7 +39,7 @@ Create new posts for **https://mrblahhhh.github.io** — a Jekyll site using the
 - [ ] Quote **numeric tags** in YAML: `"11553453300"` not `11553453300`
 - [ ] Sections: heading → intro text → images → more detail (see layout rules below)
 - [ ] Images constrained to ~420px wide
-- [ ] PR created and build passes
+- [ ] Committed and pushed to `main`; Actions build passes
 
 ## Post template
 
@@ -203,4 +203,4 @@ Extract ID from `https://www.youtube.com/watch?v=VIDEO_ID` or `https://www.youtu
 2. Match filenames exactly in the post markdown
 3. Order photos to match the author's narrative
 
-The agent should produce a **new** `_posts/` file, image folder, and PR — not edit existing posts.
+The agent should produce a **new** `_posts/` file and image folder on `main` — not edit existing posts.
