@@ -41,10 +41,8 @@ The surprise was pace: within about **one second** of the very worn NT01s, despi
 Pulled the Gladiators off the wheels after Saturday to see what three HPDE sessions at NCCAR in **105°F** heat did to a fresh set.
 
 ![Gladiator X Comp HP tread after three sessions](/assets/images/nccar-gladiator-tires/971e07f3-5e82-4b33-abc2-845dd135dc47.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
-*Tread face — grained and scrubbed from track use, but grooves still intact.*
 
 ![Gladiator tread shoulder wear](/assets/images/nccar-gladiator-tires/7d8a1319-bb27-43fc-8ac2-0bb071aedef8.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
-*Shoulder and outer tread block — rounded from cornering, no chunking or tearing.*
 
 ![Gladiator tread close-up](/assets/images/nccar-gladiator-tires/7ec1acc5-a6ce-4c7a-9d87-f839d495a87c.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
 *Rubber pickup in the grooves — typical NCCAR marbles, nothing delaminating.*
