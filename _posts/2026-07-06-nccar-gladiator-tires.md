@@ -2,7 +2,7 @@
 title: "HOD NCCAR — Gladiator X Comp HP Tire Test"
 date: 2026-07-06 00:00:00 -0400
 categories: car
-tags: [nccar, hod, track-day, gladiator, tires, nitto-nt01, ls3, 135i, n54]
+tags: [nccar, hod, track-day, gladiator, tires, nitto-nt01, ls3, 135i, n54, garmin-catalyst]
 cover: /assets/images/nccar-gladiator-tires/youtube-thumb.jpg
 lightbox: true
 excerpt: "July 4th HOD at NCCAR — Gladiator X Comp HP vs worn NT01 in 105°F heat"
@@ -33,7 +33,7 @@ Three sessions on the Gladiators before the alternator died. Grip was obviously 
 
 The surprise was pace: within about **one second** of the very worn NT01s, despite lower overall grip.
 
-![RaceChrono — Gladiator session, July 4](/assets/images/nccar-gladiator-tires/racechrono-gladiator.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+![Garmin Catalyst — Gladiator session, July 4](/assets/images/nccar-gladiator-tires/garmin-catalyst-gladiator.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
 *July 4 — optimal **1:36.82**, average **1:38.06**. Max speed **142.9 mph** on the straight.*
 
 ## Sunday — NT01 baseline
@@ -42,7 +42,7 @@ Swapped back to the **4-year-old Nitto NT01s** for three more sessions. Same alt
 
 Only about **one second faster** than the Gladiators. For a $569 set of drifter tires vs. dead R-comps, that is not a bad trade for a hot weekend where survival mattered more than peak grip.
 
-![RaceChrono — NT01 session, July 5](/assets/images/nccar-gladiator-tires/racechrono-nt01.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+![Garmin Catalyst — NT01 session, July 5](/assets/images/nccar-gladiator-tires/garmin-catalyst-nt01.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
 *July 5 — optimal **1:35.48**, average **1:37.04**. Max speed **142.6 mph**.*
 
 | Session | Tire | Optimal lap | Avg lap |
