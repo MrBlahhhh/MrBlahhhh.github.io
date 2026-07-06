@@ -144,6 +144,7 @@ Use the author's original filenames when provided. `.jpg` preferred.
 
 Match existing posts:
 
+- **First person** — write as the site owner: *I*, *I'm*, *my*. Never use "author" in posts or PR text.
 - **Concise and technical** — specs, part numbers, steps
 - **No fluff** — skip sales pitch language and cost commentary unless asked
 - **Workflow order** — sections and photos follow the order work was actually done
