@@ -2,7 +2,7 @@
 title: "HOD NCCAR — Gladiator X Comp HP Tire Test"
 date: 2026-07-06 00:00:00 -0400
 categories: car
-tags: [nccar, hod, track-day, gladiator, tires, nitto-nt01, ls3, 135i, jcw]
+tags: [nccar, hod, track-day, gladiator, tires, nitto-nt01, ls3, 135i, n54]
 cover: /assets/images/nccar-gladiator-tires/youtube-thumb.jpg
 lightbox: true
 excerpt: "July 4th HOD at NCCAR — Gladiator X Comp HP vs worn NT01 in 105°F heat"
@@ -14,7 +14,7 @@ article_header:
 
 <!--more-->
 
-**Hooked On Driving** ran a Fourth of July weekend at **NCCAR** (North Carolina Center for Automotive Research). Jackie drove my silver **JCW**; I ran the red [LS3 135i](/car/2025/10/15/135i-l92-track-build.html). NCCAR is rough on tires even on a good day — combined with **~105°F** ambient and a scorching track surface, chasing lap times was not the plan. I wanted to shake down a new set of **Gladiator X Comp HP** drifter tires and see whether a cheap steer/grip compound could survive a hot HPDE weekend without the usual street-tire weirdness.
+**Hooked On Driving** ran a Fourth of July weekend at **NCCAR** (North Carolina Center for Automotive Research). Jackie drove my silver **N54 135i**; I ran the red [LS3 135i](/car/2025/10/15/135i-l92-track-build.html). NCCAR is rough on tires even on a good day — combined with **~105°F** ambient and a scorching track surface, chasing lap times was not the plan. I wanted to shake down a new set of **Gladiator X Comp HP** drifter tires and see whether a cheap steer/grip compound could survive a hot HPDE weekend without the usual street-tire weirdness.
 
 ## Gladiator X Comp HP
 
@@ -54,7 +54,7 @@ Only about **one second faster** than the Gladiators. For a $569 set of drifter 
 ## In the paddock
 
 ![Jackie and me, helmets on, ready to grid](/assets/images/nccar-gladiator-tires/hod-selfie.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
-*105°F in the paddock — Jackie in the JCW, me in the 135i.*
+*105°F in the paddock — Jackie in the silver N54 135i, me in the red LS3.*
 
 ## On track
 
