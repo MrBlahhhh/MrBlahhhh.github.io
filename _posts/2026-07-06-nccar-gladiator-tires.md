@@ -36,6 +36,21 @@ The surprise was pace: within about **one second** of the very worn NT01s, despi
 ![Garmin Catalyst — Gladiator session, July 4](/assets/images/nccar-gladiator-tires/garmin-catalyst-gladiator.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
 *July 4 — optimal **1:36.82**, average **1:38.06**. Max speed **142.9 mph** on the straight.*
 
+## Wear after three sessions
+
+Pulled the Gladiators off the wheels after Saturday to see what three HPDE sessions at NCCAR in **105°F** heat did to a fresh set.
+
+![Gladiator X Comp HP tread after three sessions](/assets/images/nccar-gladiator-tires/971e07f3-5e82-4b33-abc2-845dd135dc47.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+*Tread face — grained and scrubbed from track use, but grooves still intact.*
+
+![Gladiator tread shoulder wear](/assets/images/nccar-gladiator-tires/7d8a1319-bb27-43fc-8ac2-0bb071aedef8.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+*Shoulder and outer tread block — rounded from cornering, no chunking or tearing.*
+
+![Gladiator tread close-up](/assets/images/nccar-gladiator-tires/7ec1acc5-a6ce-4c7a-9d87-f839d495a87c.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+*Rubber pickup in the grooves — typical NCCAR marbles, nothing delaminating.*
+
+Overall wear looked normal for a rough track in extreme heat. No belts showing, no chunks missing, no sidewall damage. For a $569 drifter tire that ran within a second of dead NT01s, that is acceptable.
+
 ## Sunday — NT01 baseline
 
 Swapped back to the **4-year-old Nitto NT01s** for three more sessions. Same alternator problem ended the day early again — it died on Sunday too.
