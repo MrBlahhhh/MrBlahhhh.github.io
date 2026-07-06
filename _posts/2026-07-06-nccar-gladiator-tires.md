@@ -3,7 +3,7 @@ title: "HOD NCCAR — Gladiator X Comp HP Tire Test"
 date: 2026-07-06 00:00:00 -0400
 categories: car
 tags: [nccar, hod, track-day, gladiator, tires, nitto-nt01, ls3, 135i, n54, garmin-catalyst]
-cover: /assets/images/nccar-gladiator-tires/youtube-thumb.jpg
+cover: /assets/images/nccar-gladiator-tires/hod-selfie.jpg
 lightbox: true
 excerpt: "July 4th HOD at NCCAR — Gladiator X Comp HP vs worn NT01 in 105°F heat"
 article_header:
