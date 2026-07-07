@@ -47,7 +47,7 @@ Pulled the Gladiators off the wheels after Saturday to see what three HPDE sessi
 ![Gladiator tread close-up](/assets/images/nccar-gladiator-tires/7ec1acc5-a6ce-4c7a-9d87-f839d495a87c.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
 *Rubber pickup in the grooves — typical NCCAR marbles, nothing delaminating.*
 
-Overall wear looked normal for a rough track in extreme heat. No belts showing, no chunks missing, no sidewall damage. For a $569 drifter tire that ran within a second of dead NT01s, that is acceptable.
+Overall wear looked normal for a rough track in extreme heat. No belts showing, no chunks missing, no sidewall damage. Complete set of tires for $569 that ran within a second of old NT01s, that is acceptable.
 
 ## Sunday — NT01 baseline
 
