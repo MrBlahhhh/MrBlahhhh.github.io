@@ -48,6 +48,9 @@ The ESP32 cannot drive a 125 kHz tank coil directly, so the driver is a separate
 | **IRLZ44N** logic-level MOSFET | Low-side switch — GPIO → 100 Ω → gate |
 | **9 V** supply | Enough headroom for the burst; isolated from the 3.3 V ESP32 rail |
 
+![Hardware mockup — ESP32-S3 breadboard LF coil driver](/assets/images/tpms-lf-wake-protocol/426148cc-7d4b-4cd4-bfab-56883f680a6c.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+*Breadboard bring-up — ESP32-S3 dev board, EL-50448 coil, tank cap and MOSFET driver; pyrometer enclosure shell on the left for fit check.*
+
 GPIO4 (`LF_COIL_PIN`, set in `platformio.ini` build flags) drives the MOSFET through **LEDC PWM** at the bit-slot rate. The buzzer stays on plain `digitalWrite` — no pin clash.
 
 ## Firmware on PyroTC
