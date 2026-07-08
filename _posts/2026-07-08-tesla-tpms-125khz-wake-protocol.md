@@ -18,15 +18,15 @@ article_header:
 
 The cheap **Tesla-style BLE TPMS sensors** I run on the 135i (and decode in [TrackDayPyrometerHelper](/car/tech/2026/06/18/trackday-pyrometer-helper.html) and [TPMS Monitor](/car/tech/2026/06/21/tpms-monitor-app.html)) are great once they are awake — pressure, temperature, and battery over 401 MHz BLE. The problem is **getting them to wake up on demand**.
 
-Motion and a few PSI of pressure change will eventually rouse a sleeping sensor, but that is slow and unreliable when you want a reading in the paddock with the car on stands. Factory tools like the **ATEQ VT30** (what Tesla service uses for Continental sensors) fire a **125 kHz low-frequency burst** at the valve stem. The sensor hears it, wakes, and starts broadcasting.
+Motion and a few PSI of pressure change will eventually wake a sleeping sensor, but that is slow and unreliable when you want a reading in the paddock when your trying to get hot tire temps. Factory tools like the **ATEQ VT30** (what Tesla service uses for Continental sensors) fire a **125 kHz low-frequency burst** at the valve stem. The sensor hears it, wakes, and starts broadcasting.
 
-I wanted that same trick on my handheld **PyroTC** pyrometer — tap a button, wake the nearest sensor, read pressure in the app. That meant reverse-engineering the LF telegram and building a coil driver small enough to fit inside the enclosure I already designed.
+I wanted that same trick on my handheld **PyroTC** pyrometer — tap a button, wake the nearest sensor, passivly read the pressure from my pyrometer android app, then store when I have all tire temps done. That meant reverse-engineering the LF telegram and building a coil driver small enough to fit inside the enclosure I already designed.
 
 ## Capturing the wake telegram
 
-The starting point was an **Autel TPMS tool** scope capture — the same kind of 125 kHz burst an EL-50448-style relearn wand sends, but from the Continental/Tesla side of the ecosystem. I ran the raw scope trace through `decode_scope_to_replay.py` to pull out the bit timings.
+The starting point was an **Autel TPMS tool** scope capture — the same kind of 125 kHz burst an EL-50448-style relearn wand sends, I used a 2008 bmw continental signal which happens to work on the tesla sensors. I ran the raw scope trace through `decode_scope_to_replay.py` to pull out the bit timings.
 
-The result is a fixed **OOK replay table**: **184 uniform half-bit slots at 128 µs each** (~23.6 ms total telegram). Each slot is either on or off — no variable Manchester edges to chase at runtime. The table lives in auto-generated `cont_wake_data.h`; regenerate upstream and re-copy `lf_wake.h`, `lf_wake.cpp`, and `cont_wake_data.h` if the capture changes. Do not hand-edit the data header.
+The result is a fixed **OOK replay table**: **184 uniform half-bit slots at 128 µs each** (~23.6 ms total telegram). Each slot is either on or off — no variable Manchester edges. The table lives in auto-generated `cont_wake_data.h`; regenerate upstream and re-copy `lf_wake.h`, `lf_wake.cpp`, and `cont_wake_data.h` if the capture changes. Do not hand-edit the data header.
 
 ## What 125 kHz looks like on the bench
 
@@ -52,11 +52,11 @@ GPIO4 (`LF_COIL_PIN`, set in `platformio.ini` build flags) drives the MOSFET thr
 
 ## Firmware on PyroTC
 
-The LF wake driver is **vendored into [PyroTC](https://github.com/MrBlahhhh/PyroTC)** (`lf_wake.h`, `lf_wake.cpp`, `cont_wake_data.h`). On the **RECORD** screen a cyan **WAKE** button sits centre of the bottom rim between **CLEAR** and **BACK**. Tap it and the gun fires a **10 second burst** (`startWakeBurst`) — long enough to tickle every sensor on the car if you walk it around.
+The LF wake driver is **built into [PyroTC](https://github.com/MrBlahhhh/PyroTC)** (`lf_wake.h`, `lf_wake.cpp`, `cont_wake_data.h`). On the **RECORD** screen a cyan **WAKE** button sits centre of the bottom rim between **CLEAR** and **BACK**. Tap it and the gun fires a **10 second burst** (`startWakeBurst`) — sensors mostly work with 5sec but some were stubborn. 
 
 Timing is **exclusive**: while `wakeActive`, `loop()` runs only `serviceLfWake()` and returns early. No MAX6675 read, no LCD repaint, no BLE — a thermocouple conversion takes ~220 ms and would jitter the 128 µs bit grid. The gap loop calls `delay(1)` to keep the task watchdog fed. The burst auto-ends after 10 s; there is no mid-burst cancel.
 
-The wake path is **one-way** — no new BLE characteristics. The existing PRESS/SENS/MAP slots (`…0004` / `…0005` / `…0006`) stay free. Pressure still comes back through the phone app scanning 401 MHz BLE after the sensor wakes.
+The wake path is **one-way** — no new BLE characteristics. The existing PRESS/SENS/MAP slots (`…0004` / `…0005` / `…0006`) stay free. Pressure still comes back through the phone app scanning BLE after the sensor wakes.
 
 {% highlight cpp %}
 // LF_COIL_PIN = 4  (platformio.ini build_flags)
@@ -73,7 +73,7 @@ pio device monitor -b 115200
 
 ## Fitting it all in the housing
 
-The pyrometer enclosure was already tight — round Waveshare head, 18650 grip, MAX6675 breakout, rocker switch. Adding a **125 kHz coil**, a **9 V boost module** (XL6009E1 step-up), and the MOSFET driver meant revisiting the Fusion 360 assembly from scratch.
+The pyrometer enclosure was already tight — round Waveshare head, 18650 grip, MAX6675 breakout, rocker switch. Adding a **125 kHz coil**, a **9 V boost module** (XL6009E1 step-up), and the MOSFET driver meant revisiting the Fusion 360 assembly.  Someday i will learn to put all the filet's at the end, so many broken filets when I stretched the initial body sketch...
 
 ![Fusion 360 — handheld tire tester with LF coil and 9 V boost](/assets/images/tpms-lf-wake-protocol/housing-cad-fusion.png){:.border.rounded style="max-width:640px;display:block;margin:1.25rem auto;"}
 *`handheld-tire-tester-125khz` — ESP32-S3 round LCD up top, coil and DC-DC in the head, battery shields on the right, USB-C extension on the side.*
@@ -88,4 +88,4 @@ Original STLs for the pre-LF enclosure are in [`/cad/pyrotc/`](/cad/pyrotc/) (`t
 - Decide whether the 10 s burst duration is right for paddock use or if a shorter pulse train is enough.
 - If TPMS **data** ever flows back through PyroTC over BLE, that needs new GATT characteristics coordinated with `PyroSync.kt` in the Android app — same rule as the temperature contract.
 
-For now, the hard part is done: I have the telegram, the replay firmware, and a housing layout that might actually close. The rest is mechanical patience.
+For now, the hard part is done: I have the signal decoded, the replay firmware, and a housing layout that might actually close. The rest is mechanical patience.
