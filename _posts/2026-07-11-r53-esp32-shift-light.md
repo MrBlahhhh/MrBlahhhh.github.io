@@ -2,7 +2,7 @@
 title: "ESP32 CAN Bus Shift Light for the R53"
 date: 2026-07-11 08:00:00 -0400
 categories: car tech
-tags: [esp32, can-bus, ws2812b, fastled, mini, r53, shift-light, 3d-printing]
+tags: [esp32, can-bus, ws2812b, fastled, mini, r53, shift-light, 3d-printing, cults3d]
 cover: /assets/images/r53-shift-light/shift-light-installed.jpg
 lightbox: true
 excerpt: "CAN bus RPM to an 8-LED WS2812B bar — a shift light for the price of a track-day lunch"
@@ -78,6 +78,10 @@ With it defined, the code ignores the CAN input and sweeps RPM from 1,000 to 8,0
 *3D-printed housing clipped to the column shroud, directly below the tach pod.*
 
 That spot earns its keep: dead-center in the forward sightline, moves with the column so the wheel rim never blocks it, and the housing shrouds the LEDs enough to kill windshield reflections. The flashing red bar and the tach needle end up in the same glance — not that I read the needle anymore.
+
+The housing is up on Cults3D if you want to print your own:
+
+> **Download:** [R53 shift light housing on Cults3D](https://cults3d.com/en/3d-model/various/r53-shift-light-housing)
 
 ## What's next
 
