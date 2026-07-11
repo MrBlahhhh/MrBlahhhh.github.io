@@ -9,7 +9,10 @@ excerpt: "One-line summary for the home page only."
 article_header:
   type: overlay
   theme: dark
-  background_image: false
+  background_color: "#1f1f1f"
+  background_image:
+    gradient: "linear-gradient(rgba(0, 0, 0, .45), rgba(0, 0, 0, .65))"
+    src: /assets/images/SLUG/hero.jpg
 ---
 
 <!--more-->
@@ -18,14 +21,14 @@ article_header:
 
 Brief intro for this section.
 
-![Description of photo](/assets/images/SLUG/photo-one.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+![Description of photo](/assets/images/SLUG/photo-one.jpg){:.img-md}
 *Caption for photo one.*
 
 Explanation text for this step.
 
 ## Section two
 
-![Description of photo](/assets/images/SLUG/photo-two.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+![Description of photo](/assets/images/SLUG/photo-two.jpg){:.img-md}
 *Caption for photo two.*
 
 More detail. Use numbered lists for procedures:

@@ -1,0 +1,11 @@
+<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" fill="none">
+  <circle cx="256" cy="256" r="216" stroke="#ff9800" stroke-width="36"/>
+  <!-- gauge ticks -->
+  <line x1="256" y1="88" x2="256" y2="132" stroke="#ff9800" stroke-width="24" stroke-linecap="round"/>
+  <line x1="118" y1="176" x2="156" y2="198" stroke="#ff9800" stroke-width="24" stroke-linecap="round"/>
+  <line x1="394" y1="176" x2="356" y2="198" stroke="#ff9800" stroke-width="24" stroke-linecap="round"/>
+  <line x1="118" y1="336" x2="156" y2="314" stroke="#ff9800" stroke-width="24" stroke-linecap="round"/>
+  <!-- needle pointing high -->
+  <line x1="256" y1="256" x2="360" y2="152" stroke="#ff9800" stroke-width="30" stroke-linecap="round"/>
+  <circle cx="256" cy="256" r="34" fill="#ff9800"/>
+</svg>

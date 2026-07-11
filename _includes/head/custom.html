@@ -1,0 +1,30 @@
+<style>
+  /* --- image helpers: use {:.img-sm} / {:.img-md} / {:.img-lg} in markdown --- */
+  .article__content .img-sm { max-width: 320px; display: block; margin: 1.25rem auto; }
+  .article__content .img-md { max-width: 420px; display: block; margin: 1.25rem auto; }
+  .article__content .img-lg { max-width: 640px; display: block; margin: 1.25rem auto; }
+
+  /* soften every in-post photo */
+  .article__content img {
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, .35);
+  }
+
+  /* home grid cards: subtle lift on hover */
+  .card {
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, .45);
+  }
+  .card__image img { border-radius: 0; box-shadow: none; }
+
+  /* keep card titles readable, not shouty */
+  h2.card__header, .card__header {
+    font-size: 1.05rem;
+    line-height: 1.35;
+  }
+</style>

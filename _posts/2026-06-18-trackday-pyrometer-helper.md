@@ -6,6 +6,13 @@ tags: [android, esp32, pyrometer, proform, tpms, ble, track-day]
 cover: /assets/images/trackday-pyrometer-helper/tiretemp-home.jpg
 lightbox: true
 excerpt: "Track-day app with pyrometer, TPMS, and corner scales"
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#1f1f1f"
+  background_image:
+    gradient: "linear-gradient(rgba(0, 0, 0, .45), rgba(0, 0, 0, .65))"
+    src: /assets/images/trackday-pyrometer-helper/tiretemp-home.jpg
 ---
 
 <!--more-->

@@ -9,7 +9,10 @@ excerpt: "Printable ECU cover for R53 Mini and R52 Cooper S"
 article_header:
   type: overlay
   theme: dark
-  background_image: false
+  background_color: "#1f1f1f"
+  background_image:
+    gradient: "linear-gradient(rgba(0, 0, 0, .45), rgba(0, 0, 0, .65))"
+    src: /assets/images/r53-ecu-cover/installed.jpg
 ---
 
 <!--more-->

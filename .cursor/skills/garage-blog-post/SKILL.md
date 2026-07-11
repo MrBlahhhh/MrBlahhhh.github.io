@@ -16,6 +16,8 @@ Create new posts for **https://mrblahhhh.github.io** — a Jekyll site using the
 | Theme | `remote_theme: kitian616/jekyll-TeXt-theme@v2.2.6` |
 | Timezone | `America/New_York` |
 | Post layout | `article` (set via `_config.yml` defaults) |
+| Homepage | cover-image card grid (`index.html`, `articles` layout) — every post **must** have a `cover:` or its card has no photo |
+| Site CSS/helpers | `_includes/head/custom.html` (image classes, card styles) |
 | URL pattern | `/{category}/YYYY/MM/DD/{slug}.html` |
 
 **Do not** use `theme: jekyll-text-theme` gem — GitHub Pages build does not include it. Always use `remote_theme` with the **`v` prefix** on the tag (`@v2.2.6`, not `@2.2.6`).
@@ -34,11 +36,12 @@ Create new posts for **https://mrblahhhh.github.io** — a Jekyll site using the
 - [ ] Filename: `_posts/YYYY-MM-DD-short-slug.md`
 - [ ] Date at **midnight** or early morning (`00:00:00 -0400`) so Jekyll does not treat it as a future post
 - [ ] Homepage excerpt in front matter (`excerpt:`) — **not** as body text before `<!--more-->`
-- [ ] `article_header` uses `overlay` with `background_image: false` (title band, no hero photo)
+- [ ] `article_header` uses `overlay` with a **gradient + the cover photo** as `background_image` (hero with readable title — see layout rules below)
+- [ ] `cover:` set — it is used **twice**: homepage grid card thumbnail *and* article hero background
 - [ ] Article body starts with `<!--more-->`, then `##` heading, then content
 - [ ] Quote **numeric tags** in YAML: `"11553453300"` not `11553453300`
 - [ ] Sections: heading → intro text → images → more detail (see layout rules below)
-- [ ] Images constrained to ~420px wide
+- [ ] Images sized with the site's helper classes: `{:.img-md}` default, `{:.img-lg}` for wide shots
 - [ ] Committed and pushed to `main`; Actions build passes
 
 ## Post template
@@ -57,7 +60,10 @@ excerpt: "One-line summary for the home page only."
 article_header:
   type: overlay
   theme: dark
-  background_image: false
+  background_color: "#1f1f1f"
+  background_image:
+    gradient: "linear-gradient(rgba(0, 0, 0, .45), rgba(0, 0, 0, .65))"
+    src: /assets/images/SLUG/hero.jpg
 ---
 
 <!--more-->
@@ -66,24 +72,34 @@ article_header:
 
 Intro paragraph for this section.
 
-![Alt text](/assets/images/SLUG/photo.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+![Alt text](/assets/images/SLUG/photo.jpg){:.img-md}
 *Caption in italics below the image.*
 
 More detail after the photo.
 ```
 
+`background_image.src` should be the **same image as `cover:`** — pick the best photo of the project; it becomes both the homepage card and the article hero.
+
 ## Article page layout (critical)
 
-TeXt needs an `article_header` block to show the title, date, and tags on the article page. Use **overlay with no background image** — omitting `article_header` hides the title, and a background image makes a giant hero.
+TeXt needs an `article_header` block to show the title, date, and tags on the article page. The site standard (since 2026-07) is an **overlay hero using the cover photo behind a dark gradient** — the gradient keeps the title/date/tags readable over any photo.
 
 ```yaml
 article_header:
   type: overlay
   theme: dark
-  background_image: false
+  background_color: "#1f1f1f"
+  background_image:
+    gradient: "linear-gradient(rgba(0, 0, 0, .45), rgba(0, 0, 0, .65))"
+    src: /assets/images/SLUG/hero.jpg
 ```
 
-`cover:` stays in front matter for homepage/archive thumbnails only. `background_image: false` prevents TeXt from using `cover` as the article hero.
+Rules:
+
+- `src` = the same file as `cover:`. Keep the gradient — a bare `src` without it makes the title unreadable on bright photos.
+- Do **not** use `background_image: false` anymore (that was the old flat title band).
+- Do **not** use `type: cover` (puts a giant image *above* the title instead of behind it).
+- Omitting `article_header` entirely hides the title on the article page.
 
 ### Excerpt
 
@@ -110,8 +126,9 @@ Do **not** put images before the section heading. Do **not** put the first image
 
 | Config | Result |
 |------|---------|
-| `overlay` + `background_image: false` | Title, date, tags band — **use this** |
-| `overlay` + `background_image.src` or omitted (with `cover:` set) | Giant hero; excerpt text overlaid on photo |
+| `overlay` + `background_image.gradient` + `background_image.src` | Photo hero with readable title — **use this** |
+| `overlay` + `background_image: false` | Flat title band, no photo — old style, don't use for new posts |
+| `overlay` + `src` without `gradient` | Title can be unreadable over bright photos |
 | `cover` type | Giant full-width image before the title |
 | omitted entirely | Title hidden on article page |
 
@@ -130,13 +147,17 @@ Use the author's original filenames when provided. `.jpg` preferred.
 
 ### Sizing (required)
 
+Use the site's helper classes (defined in `_includes/head/custom.html` — they also give every article image rounded corners and a drop shadow automatically):
+
 ```markdown
-![Alt](/assets/images/SLUG/photo.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+![Alt](/assets/images/SLUG/photo.jpg){:.img-md}
 *Caption.*
 ```
 
-- `max-width:420px` — default for repair/detail shots
-- `max-width:640px` — wide shots if needed
+- `{:.img-md}` (420px) — default for repair/detail shots
+- `{:.img-lg}` (640px) — wide shots, engine bays, CAD overviews
+- `{:.img-sm}` (320px) — small detail crops
+- Do **not** hand-write inline `style="max-width:..."` attributes — that was the old pattern; the classes replace it
 - Image on its own line, caption on the next line in italics, then body text
 - Do **not** use `{:.text-center}` block attributes after captions — they can break layout in TeXt
 
@@ -179,9 +200,10 @@ Extract ID from `https://www.youtube.com/watch?v=VIDEO_ID` or `https://www.youtu
 | `404` downloading theme zip | Missing `v` on tag | Use `@v2.2.6` not `@2.2.6` |
 | Post missing after deploy | Future-dated post | Set date to `00:00:00 -0400` or earlier |
 | `comparison of Array with Array failed` in `tags.html` | Unquoted numeric tag | Quote it: `"11553453300"` |
-| Text stacked on / under images | `overlay` with background image, or body text before `<!--more-->` | Use `background_image: false`; put excerpt in front matter |
-| Giant image before title | `cover` type, or `overlay` using `cover` as background | Use `overlay` with `background_image: false` |
-| No visible title | `article_header` omitted | Add `overlay` header with `background_image: false` |
+| Text stacked on / under images | Body text before `<!--more-->` | Put excerpt in front matter only |
+| Title unreadable on hero photo | `background_image.src` without `gradient` | Add the standard `linear-gradient(rgba(0, 0, 0, .45), rgba(0, 0, 0, .65))` |
+| Giant image before title | `cover` type header | Use `overlay` with gradient + `src` |
+| No visible title | `article_header` omitted | Add the standard overlay header block |
 
 ## Categories and tags
 
@@ -194,7 +216,9 @@ Extract ID from `https://www.youtube.com/watch?v=VIDEO_ID` or `https://www.youtu
 | Post | Use as reference for |
 |------|---------------------|
 | `_posts/2026-06-18-trackday-pyrometer-helper.md` | App/hardware writeup, photo order, parts list |
-| `_posts/2026-06-18-bmw-prop-driveshaft-seal-replacement.md` | Repair procedure, image sizing |
+| `_posts/2026-06-18-bmw-prop-driveshaft-seal-replacement.md` | Repair procedure |
+
+Note: older posts still size images with inline `style=` attributes; that works but new posts should use the `{:.img-md}` / `{:.img-lg}` classes instead.
 | `_posts/2025-10-15-135i-l92-track-build.md` | Long build writeup, multiple photos |
 
 ## When user provides photos

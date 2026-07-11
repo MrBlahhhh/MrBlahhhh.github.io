@@ -6,6 +6,13 @@ tags: [bmw, driveshaft, cv-joint, maintenance, "11553453300"]
 cover: /assets/images/driveshaft-cv/cv-joint-repack.jpg
 lightbox: true
 excerpt: "BMW prop shaft rear CV seal replacement"
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#1f1f1f"
+  background_image:
+    gradient: "linear-gradient(rgba(0, 0, 0, .45), rgba(0, 0, 0, .65))"
+    src: /assets/images/driveshaft-cv/cv-joint-repack.jpg
 ---
 
 The rear CV seal on a BMW prop shaft is normally not serviceable. I found a replacement seal — BMW part **11553453300** — and ordered a few from [Shem Group](https://shem-group.com) in Ukraine.
