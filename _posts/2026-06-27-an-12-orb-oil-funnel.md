@@ -25,21 +25,21 @@ I mocked up a two-piece funnel in **Fusion 360**, printed it in ASA, and it work
 
 The funnel splits into a **basin** (`oilfillfunnel.stl`) and a **threaded base** (`oilfillbase.stl`). They lock together with a small interference lip — enough to stay assembled, not enough to spin on their own. You can hold the funnel still while you thread the base into the port, or spin the base independently once it is seated.
 
-![Fusion 360 — AN-12 ORB oil funnel CAD](/assets/images/an-12-orb-oil-funnel/funnel-cad.png){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+![Fusion 360 — AN-12 ORB oil funnel CAD](/assets/images/an-12-orb-oil-funnel/funnel-cad.png){:.img-md}
 *Wide basin, offset neck, and a separate AN-12 ORB base — modeled around the LS BTR valve cover fill location.*
 
 ## Snap-fit joint
 
 The retention geometry is a simple groove-and-lip with chamfered lead-ins. Press the two halves together until they snap; the lip rides in the groove with a small clearance gap so the parts rotate freely but cannot pull apart vertically.
 
-![Cross-section — swivel joint between funnel and base](/assets/images/an-12-orb-oil-funnel/joint-section.png){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+![Cross-section — swivel joint between funnel and base](/assets/images/an-12-orb-oil-funnel/joint-section.png){:.img-md}
 *Section view of the interference lip — captive joint with enough clearance for independent rotation.*
 
 ## In the engine bay
 
 Printed in black ASA and installed on the red valve cover — the offset neck keeps the wide opening level even though the port is angled. No more balancing a cut bottle or a generic funnel that does not seal to ORB threads.
 
-![AN-12 ORB oil funnel installed on the LS BTR valve cover](/assets/images/an-12-orb-oil-funnel/installed.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+![AN-12 ORB oil funnel installed on the LS BTR valve cover](/assets/images/an-12-orb-oil-funnel/installed.jpg){:.img-md}
 *Two-piece funnel on the fill port — basin stays put while the base threads in.*
 
 ## Download the STLs

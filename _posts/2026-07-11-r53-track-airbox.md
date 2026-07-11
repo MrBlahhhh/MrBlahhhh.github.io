@@ -33,32 +33,32 @@ I designed a replacement snorkel that **enlarges the tube, removes the silencer*
 
 The black airbox was one of my first working designs — printed in **ASA**, JCW-style blue dry filter, rear port that glued on separately. It worked, but the shape was a compromise and the snorkel connection was still a fight.
 
-![Early black airbox — held over the engine bay](/assets/images/r53-airbox/early-black-held.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+![Early black airbox — held over the engine bay](/assets/images/r53-airbox/early-black-held.jpg){:.img-md}
 *First-generation black ASA box with a JCW-style cone filter — MINI rocker cover visible behind.*
 
-![Early black airbox — filter side](/assets/images/r53-airbox/early-black-filter.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+![Early black airbox — filter side](/assets/images/r53-airbox/early-black-filter.jpg){:.img-md}
 *Same era — circular outlet port and a side mounting tab. Lots of room left on the table.*
 
-![Early black airbox installed with red intake tube](/assets/images/r53-airbox/early-black-installed.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+![Early black airbox installed with red intake tube](/assets/images/r53-airbox/early-black-installed.jpg){:.img-md}
 *Installed in the bay with an early red intake tube routed to the airbox.*
 
 ## Current airbox — v4
 
 The current design is **`jcw_airbox_v4`** in Fusion 360, printed in **red ASA-CF**. It takes a **3.5" ID cone filter** — I run an [Injen X-1021-BB](https://injen.com/i-30497685-injen-technology-supernano-web-dry-air-filter) (3.50" flange, 6" base, ~6.875" media height). Any filter with a 3.5" ID flange, ~5" base, and ~4" top works.
 
-![Fusion 360 — jcw_airbox_v4](/assets/images/r53-airbox/airbox-cad-v4.png){:.border.rounded style="max-width:640px;display:block;margin:1.25rem auto;"}
+![Fusion 360 — jcw_airbox_v4](/assets/images/r53-airbox/airbox-cad-v4.png){:.img-lg}
 *v4 in CAD — open rear, snap tabs on the lower factory airbox section, no rear noise port.*
 
-![Red airbox shell](/assets/images/r53-airbox/airbox-shell-red.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+![Red airbox shell](/assets/images/r53-airbox/airbox-shell-red.jpg){:.img-md}
 *Printed shell — outlet tube and mounting tabs modeled in.*
 
-![Red airbox with JCW-style filter installed](/assets/images/r53-airbox/airbox-with-filter.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+![Red airbox with JCW-style filter installed](/assets/images/r53-airbox/airbox-with-filter.jpg){:.img-md}
 *Filter clamped in — same JCW-style dry cone the box was designed around.*
 
-![Airbox interior — filter flange and mounting tabs](/assets/images/r53-airbox/airbox-interior.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+![Airbox interior — filter flange and mounting tabs](/assets/images/r53-airbox/airbox-interior.jpg){:.img-md}
 *Interior bowl and filter flange — no factory silencing baffles.*
 
-![Filter diameter check — 3.5 inch ID](/assets/images/r53-airbox/filter-diameter.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+![Filter diameter check — 3.5 inch ID](/assets/images/r53-airbox/filter-diameter.jpg){:.img-md}
 *3.5" ID flange opening — tape measure sanity check before committing filament.*
 
 v3 tapered the rear to clear cars with the plastic partition around the master cylinder and added rear tabs that hook the lower factory airbox section. **v4** opens the rear completely and keeps those snap tabs — fits both partitioned and non-partitioned cars.
@@ -67,22 +67,22 @@ v3 tapered the rear to clear cars with the plastic partition around the master c
 
 The snorkel is a separate print in **red ASA-CF** — three-piece tube plus a shroud cap that snaps into the core-support opening and connects to the **airbox**, not the throttle body. Same goals as the airbox side: bigger tract, no resonator, stays connected.
 
-![Fusion 360 — r53-grill-air-snout](/assets/images/r53-airbox/snorkel-cad.png){:.border.rounded style="max-width:640px;display:block;margin:1.25rem auto;"}
+![Fusion 360 — r53-grill-air-snout](/assets/images/r53-airbox/snorkel-cad.png){:.img-lg}
 *Snorkel shroud in CAD — wide mouth, no factory NVH box.*
 
-![Fusion 360 — cold air intake tube sections](/assets/images/r53-airbox/intake-tube-cad.png){:.border.rounded style="max-width:640px;display:block;margin:1.25rem auto;"}
+![Fusion 360 — cold air intake tube sections](/assets/images/r53-airbox/intake-tube-cad.png){:.img-lg}
 *Tube split into printable sections — airbox side, middle, and shroud-side joints.*
 
-![Snorkel front — snapped into core support](/assets/images/r53-airbox/snorkel-core-support.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+![Snorkel front — snapped into core support](/assets/images/r53-airbox/snorkel-core-support.jpg){:.img-md}
 *Front shroud seated in the radiator core-support cutout — no more popped clips.*
 
-![Snorkel front mount — top view](/assets/images/r53-airbox/snorkel-front-mount.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+![Snorkel front mount — top view](/assets/images/r53-airbox/snorkel-front-mount.jpg){:.img-md}
 *Wide oval inlet behind the shroud gasket — room to open the hole further.*
 
-![Snorkel snap-on at airbox](/assets/images/r53-airbox/snorkel-airbox-snap.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+![Snorkel snap-on at airbox](/assets/images/r53-airbox/snorkel-airbox-snap.jpg){:.img-md}
 *Front shroud flange at the airbox mouth — positive retention instead of hoping the OEM tabs hold.*
 
-![Snorkel tube connected to rubber boot](/assets/images/r53-airbox/snorkel-tube-connected.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+![Snorkel tube connected to rubber boot](/assets/images/r53-airbox/snorkel-tube-connected.jpg){:.img-md}
 *Red tube mated to the factory rubber accordion boot at the airbox.*
 
 Can be run with the **OEM shroud cap** if you want to keep the factory look at the grille opening.
@@ -91,10 +91,10 @@ Can be run with the **OEM shroud cap** if you want to keep the factory look at t
 
 Both cars run the red v4 airbox and matching snorkel now. The whole air intake from the core support to throttle body tube is larger and straighter than stock — you hear it immediately.
 
-![Installed — full engine bay overview](/assets/images/r53-airbox/installed-engine-bay.jpg){:.border.rounded style="max-width:640px;display:block;margin:1.25rem auto;"}
+![Installed — full engine bay overview](/assets/images/r53-airbox/installed-engine-bay.jpg){:.img-lg}
 *Red airbox, red snorkel, JCW intercooler cover — the whole intake path in one shot.*
 
-![Snorkel routing through the engine bay](/assets/images/r53-airbox/snorkel-installed-routing.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+![Snorkel routing through the engine bay](/assets/images/r53-airbox/snorkel-installed-routing.jpg){:.img-md}
 *Tube routed from the core support back to the airbox — no resonator box in the way.*
 
 On track at **VIR North** last year — you can hear the extra intake and supercharger noise through the helmet mic.

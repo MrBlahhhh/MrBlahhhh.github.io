@@ -10,6 +10,10 @@
     box-shadow: 0 2px 12px rgba(0, 0, 0, .35);
   }
 
+  /* make the whole card clickable (theme only links the title) */
+  .card { position: relative; }
+  .card header a::after { content: ""; position: absolute; inset: 0; }
+
   /* home grid cards: subtle lift on hover */
   .card {
     border-radius: 10px;

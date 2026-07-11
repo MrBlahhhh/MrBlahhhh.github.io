@@ -34,24 +34,23 @@ I repack the CV joint with a syringe before installing the seal:
 
 Don't overdo the grease — if it gets on the glue surface the seal won't bond.
 
-![Grease syringe for repacking the CV joint](/assets/images/driveshaft-cv/grease-syringe.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+![Grease syringe for repacking the CV joint](/assets/images/driveshaft-cv/grease-syringe.jpg){:.img-md}
 *Grease loaded in a syringe for repacking.*
 
-![CV joint repacked with grease on each ball](/assets/images/driveshaft-cv/cv-joint-repack.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+![CV joint repacked with grease on each ball](/assets/images/driveshaft-cv/cv-joint-repack.jpg){:.img-md}
 *Grease inside the joint and a dab on each ball.*
 
 ## The new seal
 
-![New rear CV seal, part 11553453300](/assets/images/driveshaft-cv/new-seal.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+![New rear CV seal, part 11553453300](/assets/images/driveshaft-cv/new-seal.jpg){:.img-md}
 *Replacement seal from Shem Group, part 11553453300.*
 
 Shem Group sells the seal under part number **11553453300**. It includes a ring for the inner lip — I remove that ring and use **safety wire** instead, because with the ring in place it's too hard to get the seal on fast enough once the adhesive is applied.
 
 ## Installing the seal
 
-![3M 08008 weatherstrip adhesive](/assets/images/driveshaft-cv/3m-adhesive.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+![3M 08008 weatherstrip adhesive](/assets/images/driveshaft-cv/3m-adhesive.jpg){:.img-md}
 *3M Black Super Weatherstrip and Gasket Adhesive (08008).*
-{:.text-center}
 
 I use **3M Black Super Weatherstrip and Gasket Adhesive (08008)**. It dries fast — have everything ready before you open the tube.
 

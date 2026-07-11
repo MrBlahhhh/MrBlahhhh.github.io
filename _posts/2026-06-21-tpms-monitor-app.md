@@ -27,7 +27,7 @@ The hardware is fine. The **bundled Android apps are not** — clunky UIs, quest
 
 Pick a vehicle from the garage and the main screen shows every bound corner — pressure, temperature, battery, and how fresh the reading is.
 
-![TPMS Monitor live view — JCW, four corners](/assets/images/tpms-monitor-app/monitor-jcw-live.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+![TPMS Monitor live view — JCW, four corners](/assets/images/tpms-monitor-app/monitor-jcw-live.jpg){:.img-md}
 *JCW profile — 33.9 / 34.7 / 34.5 / 34.0 psi, all live. Color dots match the paint marks on each valve stem.*
 
 Each tire card goes green when pressure is in range, and the header shows how many sensors are bound vs. expected for the current layout.
@@ -40,7 +40,7 @@ Pairing is a three-step flow so you are not guessing which MAC address is which 
 2. **Pick the wheel position** — FL, FR, RL, RR, or the RV/trailer slots below.
 3. **Tap the sensor** — hold the phone near the marked sensor while it is broadcasting. Wake it with motion or roughly 4 psi of pressure change if it is asleep.
 
-![Scan and bind — color tag, wheel position, nearby sensor list](/assets/images/tpms-monitor-app/scan-and-bind.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+![Scan and bind — color tag, wheel position, nearby sensor list](/assets/images/tpms-monitor-app/scan-and-bind.jpg){:.img-md}
 *Only unbound sensors show up. Bound ones stay out of the list so you can pair one tire at a time without confusion.*
 
 **Broad scan** is there when the filtered list is empty — useful if a sensor is broadcasting under a name the narrow filter missed.
@@ -49,7 +49,7 @@ Pairing is a three-step flow so you are not guessing which MAC address is which 
 
 Bindings are saved **per tow vehicle and per trailer**, not as one giant list. Swap the F-150 for the RV on Monday and the same carhauler trailer keeps its four sensor assignments.
 
-![Garage — tow vehicle and trailer picker](/assets/images/tpms-monitor-app/garage.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+![Garage — tow vehicle and trailer picker](/assets/images/tpms-monitor-app/garage.jpg){:.img-md}
 *JCW (car, 4 sensors), wini (RV, 6 sensors), f150 (truck, 4 sensors) — plus trailers from none up to a 4-wheel carhauler or 2-wheel ATV hauler.*
 
 Each profile stores its own layout type and sensor map. Add, rename, or delete vehicles and trailers from here.
@@ -58,26 +58,26 @@ Each profile stores its own layout type and sensor map. Add, rename, or delete v
 
 The RV profile is a **6-wheel motorhome** — front axle plus dually rear (FL, FR, RL, RR, inner left, inner right) — with a **4-wheel trailer** hung off the back. Ten positions total on one screen.
 
-![TPMS Monitor — wini RV plus carhauler trailer, 10 positions](/assets/images/tpms-monitor-app/monitor-rv-carhauler.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+![TPMS Monitor — wini RV plus carhauler trailer, 10 positions](/assets/images/tpms-monitor-app/monitor-rv-carhauler.jpg){:.img-md}
 *RV-FL through RV-IR up top, T-FL through T-RR on the trailer. Positions show “Unassigned” until each sensor is bound.*
 
 ## Truck plus small trailer
 
 Not every haul is ten wheels. The F-150 plus ATV trailer profile is **four truck corners and two trailer tires** — same app, different layout template.
 
-![TPMS Monitor — F-150 plus ATV trailer, six positions](/assets/images/tpms-monitor-app/monitor-f150-atvtrailer.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+![TPMS Monitor — F-150 plus ATV trailer, six positions](/assets/images/tpms-monitor-app/monitor-f150-atvtrailer.jpg){:.img-md}
 *TK-FL/FR/RL/RR for the truck, T-FL/FR for the trailer.*
 
 ## Background monitoring and alerts
 
 The part that makes this worth running daily: a **foreground service** keeps scanning while you drive. A persistent notification shows summary status — all tires OK, or which corner dropped.
 
-![Background notification — all tires OK](/assets/images/tpms-monitor-app/notification-ok.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+![Background notification — all tires OK](/assets/images/tpms-monitor-app/notification-ok.jpg){:.img-md}
 *Silent ongoing notification — no sound unless something is wrong.*
 
 Expand it for per-corner PSI and temperature without opening the app.
 
-![Expanded notification — FL/FR/RL/RR PSI and temp](/assets/images/tpms-monitor-app/notification-detail.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+![Expanded notification — FL/FR/RL/RR PSI and temp](/assets/images/tpms-monitor-app/notification-detail.jpg){:.img-md}
 *34 / 35 / 35 / 34 psi at a glance from the shade.*
 
 When pressure falls below your threshold, the notification escalates — you get a **PSI drop alert** even if the app is not in the foreground. That is the whole point of TPMS on a tow rig.

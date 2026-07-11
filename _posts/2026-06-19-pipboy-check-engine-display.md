@@ -33,23 +33,23 @@ Boot sequence and normal operation — Pip-Boy aesthetic, real Haltech data behi
 
 ## Display hardware
 
-![Pip-Boy display mounted in the driver-side vent](/assets/images/pipboy-check-engine-display/pipboy-installed.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+![Pip-Boy display mounted in the driver-side vent](/assets/images/pipboy-check-engine-display/pipboy-installed.jpg){:.img-md}
 *Waveshare 2.41″ AMOLED in the vent gauge pod — USB power routed through the mount.*
 
 The dev board is a [Waveshare ESP32-S3-Touch-AMOLED-2.41](https://www.waveshare.com/esp32-s3-touch-amoled-2.41.htm): RM690B0 AMOLED over QSPI, FT6336 capacitive touch on I2C, QMI8658 IMU and RTC on board. USB-C for power and programming.
 
 ## Dash mount
 
-![Fusion 360 — vent gauge pod bracket](/assets/images/pipboy-check-engine-display/pipboy-cad.png){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+![Fusion 360 — vent gauge pod bracket](/assets/images/pipboy-check-engine-display/pipboy-cad.png){:.img-md}
 *Bracket modeled around the 2.41″ AMOLED module — replaces the vent louver section and keeps airflow slots.*
 
-![Gauge pod bracket — printed part](/assets/images/pipboy-check-engine-display/gauge-pod-bracket.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+![Gauge pod bracket — printed part](/assets/images/pipboy-check-engine-display/gauge-pod-bracket.jpg){:.img-md}
 *Square gauge pod bracket — snap-fit geometry for the E82 driver-side vent.*
 
-![RAM mount adapter for the vent opening](/assets/images/pipboy-check-engine-display/ram-mount-adapter.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+![RAM mount adapter for the vent opening](/assets/images/pipboy-check-engine-display/ram-mount-adapter.jpg){:.img-md}
 *Separate RAM-ball adapter if you want an adjustable arm instead of the fixed pod.*
 
-![Vent mount with gauge pod and RAM base installed](/assets/images/pipboy-check-engine-display/vent-gauge-installed.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+![Vent mount with gauge pod and RAM base installed](/assets/images/pipboy-check-engine-display/vent-gauge-installed.jpg){:.img-md}
 *Both mounts fit the E82/128i/135i driver-side top vent. RAM ball for phone or secondary gauge; pod bracket for the Pip-Boy screen.*
 
 Two 3D-printed parts, both PETG or ASA minimum for in-car heat:

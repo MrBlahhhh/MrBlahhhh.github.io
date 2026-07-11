@@ -35,7 +35,7 @@ The result is a fixed **OOK replay table**: **184 uniform half-bit slots at 128 
 
 On a **Hantek DSO2C10** at 20 µs/div and 500 mV/div, the carrier is a clean **125 kHz** sine burst — about 2.5 cycles per division. Amplitude peaks around **2 Vpp** at the coil, gated on and off by the OOK envelope.
 
-![Hantek scope — 125 kHz TPMS LF wake burst](/assets/images/tpms-lf-wake-protocol/scope-125khz-burst.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+![Hantek scope — 125 kHz TPMS LF wake burst](/assets/images/tpms-lf-wake-protocol/scope-125khz-burst.jpg){:.img-md}
 *~160 µs burst envelope on a 125 kHz carrier — this is what the replay table modulates.*
 
 The scope shot is the sanity check that the decoded timings actually produce the right carrier frequency before you point it at a tire.
@@ -51,7 +51,7 @@ The ESP32 cannot drive a 125 kHz tank coil directly, so the driver is a separate
 | **IRLZ44N** logic-level MOSFET | Low-side switch — GPIO → 100 Ω → gate |
 | **9 V** supply | Enough headroom for the burst; isolated from the 3.3 V ESP32 rail |
 
-![Hardware mockup — ESP32-S3 breadboard LF coil driver](/assets/images/tpms-lf-wake-protocol/426148cc-7d4b-4cd4-bfab-56883f680a6c.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+![Hardware mockup — ESP32-S3 breadboard LF coil driver](/assets/images/tpms-lf-wake-protocol/426148cc-7d4b-4cd4-bfab-56883f680a6c.jpg){:.img-md}
 *Breadboard bring-up — ESP32-S3 dev board, EL-50448 coil, tank cap and MOSFET driver; pyrometer enclosure shell on the left for fit check.*
 
 GPIO4 (`LF_COIL_PIN`, set in `platformio.ini` build flags) drives the MOSFET through **LEDC PWM** at the bit-slot rate. The buzzer stays on plain `digitalWrite` — no pin clash.
@@ -81,7 +81,7 @@ pio device monitor -b 115200
 
 The pyrometer enclosure was already tight — round Waveshare head, 18650 grip, MAX6675 breakout, rocker switch. Adding a **125 kHz coil**, a **9 V boost module** (XL6009E1 step-up), and the MOSFET driver meant revisiting the Fusion 360 assembly.  Someday i will learn to put all the filet's at the end, so many broken filets when I stretched the initial body sketch...
 
-![Fusion 360 — handheld tire tester with LF coil and 9 V boost](/assets/images/tpms-lf-wake-protocol/housing-cad-fusion.png){:.border.rounded style="max-width:640px;display:block;margin:1.25rem auto;"}
+![Fusion 360 — handheld tire tester with LF coil and 9 V boost](/assets/images/tpms-lf-wake-protocol/housing-cad-fusion.png){:.img-lg}
 *`handheld-tire-tester-125khz` — ESP32-S3 round LCD up top, coil and DC-DC in the head, battery shields on the right, USB-C extension on the side.*
 
 The coil sits forward in the head so you can hold the gun near the valve stem like a factory relearn tool. The XL6009E1 boost board feeds the 9 V tank; the ESP32 and MAX6675 stay on the existing Li-ion rail. Everything still has to clear the round faceplate cutout and the screw-on battery cap at the bottom of the grip.

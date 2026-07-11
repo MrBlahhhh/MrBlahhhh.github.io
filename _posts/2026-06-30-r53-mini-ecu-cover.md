@@ -27,12 +27,12 @@ I sell plug-and-play unlocked **R53 ECUs** with VIN changed and **S**, **JCW**, 
 
 First time using my **Pop 4** scanner, and first time in **blue laser** mode.
 
-![Pop 4 blue laser scan of OEM ECU cover](/assets/images/r53-ecu-cover/Screenshot%202026-06-30%20212118.png){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+![Pop 4 blue laser scan of OEM ECU cover](/assets/images/r53-ecu-cover/Screenshot%202026-06-30%20212118.png){:.img-md}
 *First scan with the Pop 4 — blue laser mode. Not a closed mesh, but enough to trace the cover.*
 
 Didn't get a fully solid mesh — holes along the bottom edge and incomplete clip geometry — but it was good enough to sketch the replacement around in **Fusion 360**.
 
-![Fusion 360 — mesh scan reference for ECU cover](/assets/images/r53-ecu-cover/Screenshot%202026-06-30%20211726.png){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+![Fusion 360 — mesh scan reference for ECU cover](/assets/images/r53-ecu-cover/Screenshot%202026-06-30%20211726.png){:.img-md}
 *Imported mesh in Fusion — `r53_ecu_cover` and `r53_ecu_cover_Edited` bodies, solid `ecu-cover` sketched on top.*
 
 Printed in **ASA** and put the STL on Cults3D.
@@ -41,20 +41,20 @@ Printed in **ASA** and put the STL on Cults3D.
 
 One piece — `ecu-cover.stl` — with integrated snap clips on the sides and a clip on the bottom edge that hooks the fuse box housing. Same overall shape as the factory cover so it drops in without modifying the car.
 
-![Printed ECU cover — clip side](/assets/images/r53-ecu-cover/part-clips.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+![Printed ECU cover — clip side](/assets/images/r53-ecu-cover/part-clips.jpg){:.img-md}
 *Clip geometry on the long edge — modeled to match the OEM latch points.*
 
-![Printed ECU cover — top view](/assets/images/r53-ecu-cover/part-top.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+![Printed ECU cover — top view](/assets/images/r53-ecu-cover/part-top.jpg){:.img-md}
 *Top surface and bottom-edge clip — same footprint as the factory cover.*
 
 ## Installed
 
 Snaps into the existing fuse box and ECU harness routing. No zip ties, no tape, no hoping the old broken clips still sort of work.
 
-![ECU cover installed in the engine bay](/assets/images/r53-ecu-cover/installed.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+![ECU cover installed in the engine bay](/assets/images/r53-ecu-cover/installed.jpg){:.img-md}
 *Replacement cover clipped in — red intake plumbing and fuse box unchanged.*
 
-![ECU cover installed — close-up](/assets/images/r53-ecu-cover/installed-close.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
+![ECU cover installed — close-up](/assets/images/r53-ecu-cover/installed-close.jpg){:.img-md}
 *Bottom-edge clip engaged on the fuse box lip.*
 
 ## How to print it
