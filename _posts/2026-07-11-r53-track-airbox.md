@@ -28,20 +28,20 @@ I designed a replacement snorkel that **enlarges the tube, removes the silencer*
 
 ## Early black prototype
 
-The black airbox was one of my first working designs — printed in PETG, JCW-style blue dry filter, rear port that glued on separately. It worked, but the shape was a compromise and the snorkel connection was still a fight.
+The black airbox was one of my first working designs — printed in **ASA**, JCW-style blue dry filter, rear port that glued on separately. It worked, but the shape was a compromise and the snorkel connection was still a fight.
 
 ![Early black airbox — held over the engine bay](/assets/images/r53-airbox/early-black-held.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
-*First-generation black PETG box with a JCW-style cone filter — MINI rocker cover visible behind.*
+*First-generation black ASA box with a JCW-style cone filter — MINI rocker cover visible behind.*
 
 ![Early black airbox — filter side](/assets/images/r53-airbox/early-black-filter.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
 *Same era — circular outlet port and a side mounting tab. Lots of room left on the table.*
 
 ![Early black airbox installed with red intake tube](/assets/images/r53-airbox/early-black-installed.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
-*Installed in the bay with an early red intake tube routed to the throttle body.*
+*Installed in the bay with an early red intake tube routed to the airbox.*
 
 ## Current airbox — v4
 
-The current design is **`jcw_airbox_v4`** in Fusion 360. It takes a **3.5" ID cone filter** — I run an [Injen X-1021-BB](https://injen.com/i-30497685-injen-technology-supernano-web-dry-air-filter) (3.50" flange, 6" base, ~6.875" media height). Any filter with a 3.5" ID flange, ~5" base, and ~4" top works.
+The current design is **`jcw_airbox_v4`** in Fusion 360, printed in **red ASA-CF**. It takes a **3.5" ID cone filter** — I run an [Injen X-1021-BB](https://injen.com/i-30497685-injen-technology-supernano-web-dry-air-filter) (3.50" flange, 6" base, ~6.875" media height). Any filter with a 3.5" ID flange, ~5" base, and ~4" top works.
 
 ![Fusion 360 — jcw_airbox_v4](/assets/images/r53-airbox/airbox-cad-v4.png){:.border.rounded style="max-width:640px;display:block;margin:1.25rem auto;"}
 *v4 in CAD — open rear, snap tabs on the lower factory airbox section, no rear noise port.*
@@ -62,7 +62,7 @@ v3 tapered the rear to clear cars with the plastic partition around the master c
 
 ## Cold-air snorkel
 
-The snorkel is a separate print — three-piece tube plus a shroud cap that snaps into the core-support opening. Same goals as the airbox side: bigger tract, no resonator, stays connected.
+The snorkel is a separate print in **red ASA-CF** — three-piece tube plus a shroud cap that snaps into the core-support opening and connects to the **airbox**, not the throttle body. Same goals as the airbox side: bigger tract, no resonator, stays connected.
 
 ![Fusion 360 — r53-grill-air-snout](/assets/images/r53-airbox/snorkel-cad.png){:.border.rounded style="max-width:640px;display:block;margin:1.25rem auto;"}
 *Snorkel shroud in CAD — wide mouth, no factory NVH box.*
@@ -86,7 +86,7 @@ Can be run with the **OEM shroud cap** if you want to keep the factory look at t
 
 ## Installed
 
-Both cars run the red v4 airbox and matching snorkel now. The whole path from the core support to the supercharger inlet is larger and straighter than stock — you hear it immediately.
+Both cars run the red v4 airbox and matching snorkel now. The whole air intake from the core support to throttle body tube is larger and straighter than stock — you hear it immediately.
 
 ![Installed — full engine bay overview](/assets/images/r53-airbox/installed-engine-bay.jpg){:.border.rounded style="max-width:640px;display:block;margin:1.25rem auto;"}
 *Red airbox, red snorkel, JCW intercooler cover — the whole intake path in one shot.*
@@ -98,7 +98,7 @@ Both cars run the red v4 airbox and matching snorkel now. The whole path from th
 
 | Setting | Notes |
 |---------|-------|
-| **Material** | PETG minimum — I recommend **ASA** or **ABS** for under-hood heat |
+| **Material** | PETG minimum — I used **ASA** for the black prototype and **ASA-CF** for the red parts |
 | **Airbox** | Add manual supports around the filter lip on v3/v4 |
 | **Snorkel** | Print with supports — four STLs (shroud, cold-air side, airbox side, cap) |
 | **Filter** | 3.5" ID dry cone — Injen X-1021-BB or equivalent |
