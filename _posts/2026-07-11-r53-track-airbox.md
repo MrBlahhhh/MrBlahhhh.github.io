@@ -94,6 +94,10 @@ Both cars run the red v4 airbox and matching snorkel now. The whole air intake f
 ![Snorkel routing through the engine bay](/assets/images/r53-airbox/snorkel-installed-routing.jpg){:.border.rounded style="max-width:420px;display:block;margin:1.25rem auto;"}
 *Tube routed from the core support back to the airbox — no resonator box in the way.*
 
+On track at **VIR North** last year — you can hear the extra intake and supercharger noise through the helmet mic.
+
+<div>{%- include extensions/youtube.html id='XqJysvKZr80' -%}</div>
+
 ## How to print it
 
 | Setting | Notes |
