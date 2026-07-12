@@ -21,7 +21,7 @@ Almost ten years ago I started designing a custom airbox for my **R53 track Mini
 
 I run **JCW-style dry cone filters** (3.5" ID flange) instead of the factory paper element. The box is shaped like a JCW unit without the rear noise port. More air, less restriction, and a lot more supercharger whine than stock.
 
-i detailed my logs and tune changes years ago on NAM, when i upgraded to a 64mm throtlebody and modofied rhe tune to ise the factory overboost code that was never enabled.
+I detailed my logs and tune changes years ago on NAM, when I upgraded to a 64mm throttle body and modified the tune to use the factory overboost code that was never enabled.
 
 ## The factory snorkel problem
 
