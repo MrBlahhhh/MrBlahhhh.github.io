@@ -2,10 +2,10 @@
 title: "R53 Airbox & Cold-Air Snorkel — Now Sold Printed"
 date: 2026-07-12 00:00:00 -0400
 categories: car tech
-tags: [3d-printing, mini, r53, r52, airbox, intake, snorkel, abs-gf, asa-gf, petg-cf, paht-cf, cults3d]
+tags: [3d-printing, mini, r53, r52, airbox, intake, snorkel, petg-gf, abs-gf, asa-gf, asa-cf, paht-cf, cults3d]
 cover: /assets/images/r53-airbox/airbox-with-filter.jpg
 lightbox: true
-excerpt: "Printed R53 airbox and cold-air snorkel — $180 / $150, or $299 for the full intake kit"
+excerpt: "Printed R53 airbox and cold-air snorkel — priced by material from $140, intake kits 10% off"
 article_header:
   type: overlay
   theme: dark
@@ -23,15 +23,16 @@ Everything is printed to order on a **Bambu Lab H2S** with an actively heated ch
 
 ## Pricing
 
-| Part | Price |
-|------|-------|
-| **Airbox** (v4) | **$180** |
-| **Cold-air snorkel** (front section, 3-piece + shroud) | **$150** |
-| **Full intake kit** (airbox + snorkel) | **$299** |
+Prices reflect the material — the engineering blends cost more to print, and PAHT-CF is the premium option:
 
-Shipping billed at actual cost. The kit saves $31 over buying the parts separately.
+| Part | PETG-GF | ABS-GF / ASA-GF / ASA-CF | PAHT-CF |
+|------|---------|--------------------------|---------|
+| **Airbox** (v4) | not offered | **$170** | **$180** |
+| **Cold-air snorkel** (front section, 3-piece + shroud) | **$140** | **$150** | **$160** |
 
-**One price per part, any material, any color.** The material cost difference between blends is small enough that tiered pricing would just be SKU clutter — pick the material that fits your car and the color you want, same price.
+**Full intake kit: 10% off** your two parts combined — from **$279** (ABS-GF airbox + PETG-GF snorkel) to **$306** (PAHT-CF throughout), depending on materials.
+
+Shipping billed at actual cost. Color choice is free on any GF blend.
 
 ![Red airbox with JCW-style filter installed](/assets/images/r53-airbox/airbox-with-filter.jpg){:.img-md}
 *Airbox as shipped — filter not included; it takes any 3.5" ID dry cone.*
@@ -41,14 +42,15 @@ Shipping billed at actual cost. The kit saves $31 over buying the parts separate
 | Material | Color options | Airbox | Snorkel |
 |----------|---------------|--------|---------|
 | **PAHT-CF** | black only | Best choice — max thermal headroom | Overkill, but works |
+| **ASA-CF** | black only | Good — best UV resistance | Works, best if the mouth is UV-exposed |
 | **ABS-GF** | color choices | Good — ~105 °C, adequate in-bay | Works |
-| **ASA-GF** | color choices | Good — ~100 °C, best UV resistance | Works, best if the mouth is UV-exposed |
-| **PETG-CF** | color choices | **Not offered** — heat-soak risk | Best fit — ambient air only, so its lower temp rating never matters |
+| **ASA-GF** | color choices | Good — ~100 °C, UV-resistant | Works |
+| **PETG-GF** | color choices | **Not offered** — heat-soak risk | Best fit — ambient air only, so its lower temp rating never matters |
 
 Two things drive the choice:
 
-- **PAHT-CF is black only.** Every other blend comes in color choices — if you want a color-matched part, pick ABS-GF or ASA-GF (or PETG-CF on the snorkel).
-- **The airbox lives in the engine bay; the snorkel does not.** The snorkel sits in the bumper pulling ambient air ahead of the engine and never heat-soaks, so PETG-CF is fine there. The airbox sees real heat — an R53 bay with the intercooler over the blower will pass 80 °C on a hot lap and beat that on heat-soak after shutdown, which is why I will not print the airbox in PETG: fiber fill stiffens a part, but it does not raise the temperature the base plastic softens at. **Heat-soak note:** on ABS-GF and ASA-GF airboxes, expect the part to see its limits on brutally hot days; PAHT-CF is the no-questions material.
+- **Carbon-fiber blends are black; glass-filled blends take color.** Want a color-matched part? That's ABS-GF or ASA-GF (or PETG-GF on the snorkel). Want maximum heat resistance in black? PAHT-CF.
+- **The airbox lives in the engine bay; the snorkel does not.** The snorkel sits in the bumper pulling ambient air ahead of the engine and never heat-soaks, so PETG-GF is fine there. The airbox sees real heat — an R53 bay with the intercooler over the blower will pass 80 °C on a hot lap and beat that on heat-soak after shutdown, which is why I will not print the airbox in PETG: fiber fill stiffens a part, but it does not raise the temperature the base plastic softens at. **Heat-soak note:** on any non-PAHT airbox, expect the part to see its limits on brutally hot days; PAHT-CF is the no-questions material.
 
 ## Fitment
 
