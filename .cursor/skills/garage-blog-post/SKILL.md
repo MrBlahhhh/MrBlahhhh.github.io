@@ -157,6 +157,7 @@ Use the site's helper classes (defined in `_includes/head/custom.html` — they 
 - `{:.img-md}` (420px) — default for repair/detail shots
 - `{:.img-lg}` (640px) — wide shots, engine bays, CAD overviews
 - `{:.img-sm}` (320px) — small detail crops
+- **Tall portrait phone screenshots: pre-scale the file to ~300px wide before committing** (a 1080×2410 capture at `img-md` renders ~940px tall — too big). Do **not** add new site-wide CSS classes to fix image sizing; resize the files.
 - Do **not** hand-write inline `style="max-width:..."` attributes — that was the old pattern; the classes replace it
 - Image on its own line, caption on the next line in italics, then body text
 - Do **not** use `{:.text-center}` block attributes after captions — they can break layout in TeXt
