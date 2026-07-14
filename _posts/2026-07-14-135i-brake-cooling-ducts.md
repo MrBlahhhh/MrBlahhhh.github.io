@@ -21,9 +21,17 @@ To be clear up front: I've never actually had the brakes *fade* on me. The probl
 
 The E82 isn't completely bare from the factory — there *are* brake cooling passages molded into the front bumper. But they're almost entirely passive. They let some air into the wheel well without ever really aiming it where it needs to go, so it washes around instead of hitting the caliper. And the rear gets **nothing at all** — no factory cooling back there, which is exactly why the rears were the ones I kept cooking.
 
-So I modeled ducts that actually route air onto the calipers, front and rear. I also didn't want to pay hundreds of dollars for a molded kit that ends in a rubber hose I'd still have to route myself.
+So I modeled my own, and I didn't want to pay hundreds of dollars for a molded kit that ends in a rubber hose I'd still have to route myself. Two parts, both printed: a **front duct that mounts to the control arm** and feeds air straight at the caliper from inside the wheel, and a **rear duct** that does the same off the rear subframe. Both exit ports point right at the caliper — that's where the heat builds and where it does its damage.
 
-So I modeled my own. Two parts, both printed: a **front duct that mounts to the control arm** and feeds air straight at the caliper from inside the wheel, and a **rear duct** that does the same off the rear subframe. Both exit ports point right at the caliper — that's where the heat builds and where it does its damage.
+## Designing it — from a 3D scan
+
+I didn't want to guess at clearances under a moving car, so both ducts were modeled against a **3D scan of the actual suspension** — the tan mesh in the renders below is scanned geometry of my own car's hub, arms, and floor. Building the duct around the scan means the part clears the real hardware through suspension travel instead of fitting a drawing.
+
+![Front duct modeled against the 3D-scanned suspension](/assets/images/135i-brake-ducts/cad-scan-front.jpg){:.img-lg}
+*Front duct (gray) modeled in place against the 3D scan (tan) — the oval inlet and outlet drawn to clear the real arm and upright.*
+
+![Rear duct modeled against the 3D-scanned rear end](/assets/images/135i-brake-ducts/cad-scan-rear.jpg){:.img-lg}
+*Rear duct routed through the scanned rear subframe and floor — every bend checked against real geometry before anything got printed.*
 
 ## The front duct
 
@@ -62,6 +70,18 @@ The rear took a lot of influence from the **Ford Mustang GTD** — the way that 
 
 ![Rear duct installed off the rear subframe](/assets/images/135i-brake-ducts/rear-duct-installed.jpg){:.img-md}
 *From further back — the whole path threaded in among the subframe links, clearing the arms and the halfshaft boot.*
+
+## Sheet-metal air deflectors
+
+A duct only helps if the air it delivers actually stays on the rotor instead of washing off into the wheel well. So alongside the printed ducts I designed a set of **brake air deflectors** — flat aluminum shields that mount at the hub and keep the ducted air channeled across the rotor face. These aren't printed: I had them **laser-cut by [SendCutSend](https://sendcutsend.com/)** from aluminum, then bent the flanges and finished them.
+
+![Bare aluminum brake air deflector, freshly cut](/assets/images/135i-brake-ducts/deflector-raw.jpg){:.img-md}
+*As cut by SendCutSend — the big radius clears the hub, the tab bends to form the air dam, and the holes locate it on the factory hardware.*
+
+![Powder-coated red brake air deflector](/assets/images/135i-brake-ducts/deflector-red.jpg){:.img-md}
+*Same deflector finished in red — bent and coated, ready to bolt on.*
+
+Metal makes sense here where a printed part doesn't: the deflector sits right up against the rotor in the hottest air, and it's a simple flat-plus-flange shape that a laser cuts cleanly and cheaply. Sending a DXF to SendCutSend and bending the tab is faster than printing it and gives a part that shrugs off the heat next to the rotor.
 
 ## Printing
 
