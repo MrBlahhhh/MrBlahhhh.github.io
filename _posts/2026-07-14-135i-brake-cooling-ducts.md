@@ -117,6 +117,15 @@ I print them in dark colors that hide brake dust; the white ones in the install 
 - Rear duct fits the **E82** rear subframe.
 - Both mount with straps / zip ties and the modeled-in saddles — **no drilling into anything structural**.
 - Takes standard **3" brake duct hose** if you want to run air to the mouth from a bumper inlet, or run them as-is scooping from inside the wheel well.
+- **Wheel clearance:** fits under **17×10** and **18×10** wheels.
+
+## How it's worked out
+
+Short version: it works, maybe too well. The cooling is significant enough that it has **noticeably extended pad and rotor life** — the whole reason I built it.
+
+The one trade-off is that with this much air on the brakes, they can **squeak a lot on tracks without heavy braking zones** — somewhere like NCCAR, where the brakes never really get up to temperature, the pads stay cold enough to talk back. On a track with real braking zones that goes away.
+
+And the failure that started all this: I'd had the **ceramic caliper piston tips fail, front and rear**, from heat. With this cooling in place, that won't happen again.
 
 ## The fine print
 
