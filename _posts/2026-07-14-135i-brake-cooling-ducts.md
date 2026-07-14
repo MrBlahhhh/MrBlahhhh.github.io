@@ -93,7 +93,7 @@ These aren't printed: I had them **laser-cut by [Send-Cut-Send](https://sendcuts
 ![Powder-coated red brake air deflector](/assets/images/135i-brake-ducts/deflector-red.jpg){:.img-md}
 *Same deflector finished in red — bent and coated, ready to bolt on.*
 
-Metal makes sense here where a printed part doesn't: the deflector sits right up against the rotor in the hottest air, and it's a simple flat-plus-flange shape that a laser cuts cleanly and cheaply. Sending a DXF to Send-Cut-Send and bending the tab is faster than printing it and gives a part that shrugs off the heat next to the rotor.
+Metal makes sense here where a printed part doesn't: the deflector sits right up against the rotor in the hottest air, and it's a simple flat-plus-flange shape. It's not faster than printing — but it's convenient, and it's a metal part that shrugs off the heat next to the rotor in a way plastic never will. I send a DXF to Send-Cut-Send, they laser-cut it, and I bend the tab.
 
 ### 3D-printed front bumper overlays
 
