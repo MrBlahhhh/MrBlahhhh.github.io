@@ -19,28 +19,28 @@ article_header:
 
 The [L92 135i](/car/2025/10/15/135i-l92-track-build.html) has never had a brake cooling problem it could complain about quietly. On a hot day at VIR the front pads would start to give up their bite two-thirds of the way through a session, and the fluid would follow shortly after. The E82 leaves the factory with almost nothing pointed at the rotors — a little air spills off the bumper and that's it — so the fix was always going to be ducting. I just didn't want to pay hundreds of dollars for a molded kit that ends in a rubber hose I'd still have to route myself.
 
-So I modeled my own. Two parts, both printed: a **front duct that mounts to the control arm** and feeds air straight at the rotor from inside the wheel, and a **rear duct** that does the same off the rear subframe.
+So I modeled my own. Two parts, both printed: a **front duct that mounts to the control arm** and feeds air straight at the caliper from inside the wheel, and a **rear duct** that does the same off the rear subframe. Both exit ports point right at the caliper — that's where the heat lives and where the fluid boils.
 
 ## The front duct
 
-The front piece bolts to the lower control arm and puts a scoop out in the airstream ahead of the wheel. Air comes in the mouth, the body necks down, and it dumps at the inboard face of the rotor — right where you want it, feeding the vanes instead of just washing over the caliper.
+The front piece bolts to the lower control arm and puts a scoop out in the airstream ahead of the wheel. Air comes in the mouth, the body necks down, and it dumps straight at the caliper — right where you want it, pulling heat off the pads and the caliper body instead of just spilling past.
 
-The shape borrows from a couple of European brands that have been doing control-arm-mounted brake ducts for years — that's a proven place to pick up air and a proven way to keep the outlet tracking the rotor. I adapted the idea to the E82's front geometry rather than copying any one part.
+The shape borrows from a couple of European brands that have been doing control-arm-mounted brake ducts for years — that's a proven place to pick up air and a proven way to keep the outlet tracking the caliper. I adapted the idea to the E82's front geometry rather than copying any one part.
 
 ![Front duct mounted to the control arm, scoop facing forward](/assets/images/135i-brake-ducts/front-duct-scoop.jpg){:.img-md}
 *Front duct clamped to the control arm — the mouth sits out in clean air ahead of the wheel.*
 
-Mounting it to the control arm instead of the strut or the backing plate means the duct **moves with the suspension and the rotor**, so the outlet stays aimed at the same spot through the whole range of travel. It rides on the arm with a strap and the modeled-in saddle, so there's no drilling into anything structural.
+Mounting it to the control arm instead of the strut or the backing plate means the duct **moves with the suspension**, so the outlet stays aimed at the caliper through the whole range of travel. It rides on the arm with a strap and the modeled-in saddle, so there's no drilling into anything structural.
 
-![Front duct outlet at the rotor face, wheel installed](/assets/images/135i-brake-ducts/front-duct-caliper.jpg){:.img-md}
-*Outlet tucked in behind the wheel, aimed at the inboard rotor face and caliper.*
+![Front duct outlet at the caliper, wheel installed](/assets/images/135i-brake-ducts/front-duct-caliper.jpg){:.img-md}
+*Outlet tucked in behind the wheel, aimed straight at the caliper.*
 
 ![Front duct viewed from under the car](/assets/images/135i-brake-ducts/front-duct-installed.jpg){:.img-md}
-*From underneath — the neck-down from scoop mouth to outlet is what accelerates the air onto the rotor.*
+*From underneath — the neck-down from scoop mouth to outlet is what accelerates the air onto the caliper.*
 
 ## The rear duct
 
-The rear brakes cook too, especially with any real rear brake bias, and there's even less factory airflow back there. The rear duct picks up air through a finned inlet mouth and routes it to the rear rotor off the subframe, tucked in among the rear links so it clears everything through travel.
+The rear brakes cook too, especially with any real rear brake bias, and there's even less factory airflow back there. The rear duct picks up air through a finned inlet mouth and routes it to the rear caliper off the subframe, tucked in among the rear links so it clears everything through travel.
 
 The rear took a lot of influence from the **Ford Mustang GTD** — the way that car uses a wide finned inlet under the body to feed the rear brakes is exactly the problem I was solving, so the mouth and the sweep of the duct are a nod to it, scaled and reshaped to fit under the 135i.
 
@@ -48,13 +48,13 @@ The rear took a lot of influence from the **Ford Mustang GTD** — the way that 
 *The finned inlet mouth sits below the floor pan, scooping air ahead of the rear tire.*
 
 ![Rear duct mounted at the subframe, side profile](/assets/images/135i-brake-ducts/rear-duct-mounted.jpg){:.img-md}
-*The body picks up on the subframe hardware and sweeps around to aim at the rotor — no brackets to fabricate.*
+*The body picks up on the subframe hardware and sweeps around to aim at the caliper — no brackets to fabricate.*
 
 ![Rear duct body detail around the mounting bolt](/assets/images/135i-brake-ducts/rear-duct-detail.jpg){:.img-md}
 *Modeled-in relief lets it clear the mounting bolt and links cleanly.*
 
-![Rear duct outlet aimed at the rear rotor](/assets/images/135i-brake-ducts/rear-duct-outlet.jpg){:.img-md}
-*Outlet nozzle pointed at the inboard face of the rear rotor.*
+![Rear duct outlet aimed at the rear caliper](/assets/images/135i-brake-ducts/rear-duct-outlet.jpg){:.img-md}
+*Outlet nozzle pointed straight at the rear caliper.*
 
 ![Rear duct installed off the rear subframe](/assets/images/135i-brake-ducts/rear-duct-installed.jpg){:.img-md}
 *From further back — the whole path threaded in among the subframe links, clearing the arms and the halfshaft boot.*
