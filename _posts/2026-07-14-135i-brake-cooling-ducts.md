@@ -38,10 +38,22 @@ Mounting it to the control arm instead of the strut or the backing plate means t
 
 ## The rear duct
 
-The rear brakes cook too, especially with any real rear brake bias, and there's even less factory airflow back there. The rear duct picks up air and routes it to the rear rotor off the subframe, tucked in among the rear links so it clears everything through travel.
+The rear brakes cook too, especially with any real rear brake bias, and there's even less factory airflow back there. The rear duct picks up air through a finned inlet mouth and routes it to the rear rotor off the subframe, tucked in among the rear links so it clears everything through travel.
+
+![Rear duct finned inlet mouth under the floor](/assets/images/135i-brake-ducts/rear-duct-mouth.jpg){:.img-md}
+*The finned inlet mouth sits below the floor pan, scooping air ahead of the rear tire.*
+
+![Rear duct mounted at the subframe, side profile](/assets/images/135i-brake-ducts/rear-duct-mounted.jpg){:.img-md}
+*The body picks up on the subframe hardware and sweeps around to aim at the rotor — no brackets to fabricate.*
+
+![Rear duct body detail around the mounting bolt](/assets/images/135i-brake-ducts/rear-duct-detail.jpg){:.img-md}
+*Modeled-in relief lets it clear the mounting bolt and links cleanly.*
+
+![Rear duct outlet aimed at the rear rotor](/assets/images/135i-brake-ducts/rear-duct-outlet.jpg){:.img-md}
+*Outlet nozzle pointed at the inboard face of the rear rotor.*
 
 ![Rear duct installed off the rear subframe](/assets/images/135i-brake-ducts/rear-duct-installed.jpg){:.img-md}
-*Rear duct threaded in among the rear subframe links — clears the arms and the halfshaft boot.*
+*From further back — the whole path threaded in among the subframe links, clearing the arms and the halfshaft boot.*
 
 ## Printing
 
