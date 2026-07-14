@@ -85,15 +85,17 @@ A duct only helps if the air it delivers actually stays on the rotor instead of 
 ![Deflector positioned inside the wheel](/assets/images/135i-brake-ducts/cad-deflector-inwheel.jpg){:.img-lg}
 *Same part seen from inside the wheel — it shrouds the inboard face so ducted air can't just spill out.*
 
-These aren't printed: I had them **laser-cut by [Send-Cut-Send](https://sendcutsend.com/)** from aluminum, then bent the flanges and finished them.
+The final deflector is metal. It comes from **[Send-Cut-Send](https://sendcutsend.com/)** as a **flat aluminum part**, and I **bend it to shape myself**.
 
-![Bare aluminum brake air deflector, freshly cut](/assets/images/135i-brake-ducts/deflector-raw.jpg){:.img-md}
-*As cut by Send-Cut-Send — the big radius clears the hub, the tab bends to form the air dam, and the holes locate it on the factory hardware.*
+![Bent aluminum brake air deflector](/assets/images/135i-brake-ducts/deflector-raw.jpg){:.img-md}
+*The Send-Cut-Send flat aluminum blank, bent by hand — the big radius clears the hub, the tab forms the air dam, and the holes locate it on the factory hardware.*
 
-![Powder-coated red brake air deflector](/assets/images/135i-brake-ducts/deflector-red.jpg){:.img-md}
-*Same deflector finished in red — bent and coated, ready to bolt on.*
+Before bending any metal, I **3D-printed the deflector in red** — partly to **check fitment** on the car, and partly to use as a **bend helper**: a former I could bend the flat aluminum blank around to hit the right angles. The red part never sees the car for real; it's a mockup and a jig.
 
-Metal makes sense here where a printed part doesn't: the deflector sits right up against the rotor in the hottest air, and it's a simple flat-plus-flange shape. It's not faster than printing — but it's convenient, and it's a metal part that shrugs off the heat next to the rotor in a way plastic never will. I send a DXF to Send-Cut-Send, they laser-cut it, and I bend the tab.
+![3D-printed red deflector used for fitment and as a bend helper](/assets/images/135i-brake-ducts/deflector-red.jpg){:.img-md}
+*The red one is 3D-printed — a fitment mockup and bending former, not the final part.*
+
+Metal makes sense for the part that actually stays on the car, where plastic doesn't: the deflector sits right up against the rotor in the hottest air. A flat laser-cut blank I bend myself isn't faster than printing, but it's convenient, and it's a metal part that shrugs off the heat next to the rotor in a way plastic never will.
 
 ### 3D-printed front bumper overlays
 
