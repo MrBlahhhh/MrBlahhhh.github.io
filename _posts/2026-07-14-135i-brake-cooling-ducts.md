@@ -17,9 +17,13 @@ article_header:
 
 <!--more-->
 
-The [L92 135i](/car/2025/10/15/135i-l92-track-build.html) has never had a brake cooling problem it could complain about quietly. On a hot day at VIR the front pads would start to give up their bite two-thirds of the way through a session, and the fluid would follow shortly after. The E82 leaves the factory with almost nothing pointed at the rotors — a little air spills off the bumper and that's it — so the fix was always going to be ducting. I just didn't want to pay hundreds of dollars for a molded kit that ends in a rubber hose I'd still have to route myself.
+To be clear up front: I've never actually had the brakes *fade* on me. The problem has always been heat cooking the hardware. I've overheated the rears plenty of times, and eventually the **ceramic piston tips in the calipers disintegrated from the heat — front and rear**. That's the real reason for ducting: not chasing pedal feel, but keeping caliper temperatures low enough that the parts inside them survive.
 
-So I modeled my own. Two parts, both printed: a **front duct that mounts to the control arm** and feeds air straight at the caliper from inside the wheel, and a **rear duct** that does the same off the rear subframe. Both exit ports point right at the caliper — that's where the heat lives and where the fluid boils.
+The E82 isn't completely bare from the factory — there *are* brake cooling passages molded into the front bumper. But they're almost entirely passive. They let some air into the wheel well without ever really aiming it where it needs to go, so it washes around instead of hitting the caliper. And the rear gets **nothing at all** — no factory cooling back there, which is exactly why the rears were the ones I kept cooking.
+
+So I modeled ducts that actually route air onto the calipers, front and rear. I also didn't want to pay hundreds of dollars for a molded kit that ends in a rubber hose I'd still have to route myself.
+
+So I modeled my own. Two parts, both printed: a **front duct that mounts to the control arm** and feeds air straight at the caliper from inside the wheel, and a **rear duct** that does the same off the rear subframe. Both exit ports point right at the caliper — that's where the heat builds and where it does its damage.
 
 ## The front duct
 
@@ -40,7 +44,7 @@ Mounting it to the control arm instead of the strut or the backing plate means t
 
 ## The rear duct
 
-The rear brakes cook too, especially with any real rear brake bias, and there's even less factory airflow back there. The rear duct picks up air through a finned inlet mouth and routes it to the rear caliper off the subframe, tucked in among the rear links so it clears everything through travel.
+The rears are the ones I actually cooked, and the factory gives them nothing to work with — no cooling passages at all back there. The rear duct picks up air through a finned inlet mouth and routes it to the rear caliper off the subframe, tucked in among the rear links so it clears everything through travel.
 
 The rear took a lot of influence from the **Ford Mustang GTD** — the way that car uses a wide finned inlet under the body to feed the rear brakes is exactly the problem I was solving, so the mouth and the sweep of the duct are a nod to it, scaled and reshaped to fit under the 135i.
 
