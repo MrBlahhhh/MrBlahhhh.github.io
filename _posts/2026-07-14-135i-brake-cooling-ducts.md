@@ -25,6 +25,8 @@ So I modeled my own. Two parts, both printed: a **front duct that mounts to the 
 
 The front piece bolts to the lower control arm and puts a scoop out in the airstream ahead of the wheel. Air comes in the mouth, the body necks down, and it dumps at the inboard face of the rotor — right where you want it, feeding the vanes instead of just washing over the caliper.
 
+The shape borrows from a couple of European brands that have been doing control-arm-mounted brake ducts for years — that's a proven place to pick up air and a proven way to keep the outlet tracking the rotor. I adapted the idea to the E82's front geometry rather than copying any one part.
+
 ![Front duct mounted to the control arm, scoop facing forward](/assets/images/135i-brake-ducts/front-duct-scoop.jpg){:.img-md}
 *Front duct clamped to the control arm — the mouth sits out in clean air ahead of the wheel.*
 
@@ -39,6 +41,8 @@ Mounting it to the control arm instead of the strut or the backing plate means t
 ## The rear duct
 
 The rear brakes cook too, especially with any real rear brake bias, and there's even less factory airflow back there. The rear duct picks up air through a finned inlet mouth and routes it to the rear rotor off the subframe, tucked in among the rear links so it clears everything through travel.
+
+The rear took a lot of influence from the **Ford Mustang GTD** — the way that car uses a wide finned inlet under the body to feed the rear brakes is exactly the problem I was solving, so the mouth and the sweep of the duct are a nod to it, scaled and reshaped to fit under the 135i.
 
 ![Rear duct finned inlet mouth under the floor](/assets/images/135i-brake-ducts/rear-duct-mouth.jpg){:.img-md}
 *The finned inlet mouth sits below the floor pan, scooping air ahead of the rear tire.*
