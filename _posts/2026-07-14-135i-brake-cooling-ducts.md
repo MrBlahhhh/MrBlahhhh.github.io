@@ -50,6 +50,9 @@ Mounting it to the control arm instead of the strut or the backing plate means t
 ![Front duct viewed from under the car](/assets/images/135i-brake-ducts/front-duct-installed.jpg){:.img-md}
 *From underneath — the neck-down from scoop mouth to outlet is what accelerates the air onto the caliper.*
 
+![Front arm duct from further under the car](/assets/images/135i-brake-ducts/front-duct-underside.jpg){:.img-md}
+*From further back — the front arm duct tucked up on the control arm, clear of the arms and boots through the range of travel.*
+
 ## The rear duct
 
 The rears are the ones I actually cooked, and the factory gives them nothing to work with — no cooling passages at all back there. The rear duct picks up air through a finned inlet mouth and routes it to the rear caliper off the subframe, tucked in among the rear links so it clears everything through travel.
@@ -67,9 +70,6 @@ The rear took a lot of influence from the **Ford Mustang GTD** — the way that 
 
 ![Rear duct outlet aimed at the rear caliper](/assets/images/135i-brake-ducts/rear-duct-outlet.jpg){:.img-md}
 *Outlet nozzle pointed straight at the rear caliper.*
-
-![Rear duct installed off the rear subframe](/assets/images/135i-brake-ducts/rear-duct-installed.jpg){:.img-md}
-*From further back — the whole path threaded in among the subframe links, clearing the arms and the halfshaft boot.*
 
 ## Sheet-metal air deflectors
 
