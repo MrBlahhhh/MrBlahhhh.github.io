@@ -5,7 +5,7 @@ categories: car tech
 tags: [3d-printing, bmw, 135i, e82, e88, e90, brake-cooling, brake-ducts, track, cults3d]
 cover: /assets/images/135i-brake-ducts/front-duct-installed.jpg
 lightbox: true
-excerpt: "3D-printed front control-arm and rear brake cooling ducts for the E82 135i — design, install, and where to buy them"
+excerpt: "3D-printed front and rear brake cooling ducts for the E82 135i, plus aluminum deflectors and bumper overlays — design, install, results, and where to buy"
 article_header:
   type: overlay
   theme: dark
@@ -21,7 +21,7 @@ To be clear up front: I've never actually had the brakes *fade* on me. The probl
 
 The E82 isn't completely bare from the factory — there *are* brake cooling passages molded into the front bumper. But they're almost entirely passive. They let some air into the wheel well without ever really aiming it where it needs to go, so it washes around instead of hitting the caliper. And the rear gets **nothing at all** — no factory cooling back there, which is exactly why the rears were the ones I kept cooking.
 
-So I modeled my own, and I didn't want to pay hundreds of dollars for a molded kit that ends in a rubber hose I'd still have to route myself. Two parts, both printed: a **front duct that mounts to the control arm** and feeds air straight at the caliper from inside the wheel, and a **rear duct** that does the same off the rear subframe. Both exit ports point right at the caliper — that's where the heat builds and where it does its damage.
+I didn't want to pay hundreds of dollars for a molded kit that ends in a rubber hose I'd still have to route myself, so I modeled my own. Two parts, both printed: a **front duct that mounts to the control arm** and feeds air straight at the caliper from inside the wheel, and a **rear duct** that does the same off the rear subframe. Both exit ports point right at the caliper — that's where the heat builds and where it does its damage.
 
 ## Designing it — from a 3D scan
 
@@ -97,14 +97,20 @@ Metal makes sense here where a printed part doesn't: the deflector sits right up
 
 ### 3D-printed front bumper overlays
 
-At the front of the air path are **3D-printed front bumper overlays** — they mount into the bumper and form the inlet mouth that catches air and feeds the duct behind it. I run **two ports** in the overlay, and right now I only use one: the second is **blocked off with a yellow plug** that I've left in for future use, so I can open up a second feed later without re-cutting the bumper.
+At the front of the air path are **3D-printed front bumper overlays** — they mount into the bumper and form the inlet mouth that catches air and feeds the duct behind it. This is the part that fixes the passive factory passages from the top of the post: instead of dumping air into the wheel well, the overlay gives it a defined mouth pointed at the duct. I run **two ports** in the overlay, and right now I only use one: the second is **blocked off with a yellow plug** that I've left in for future use, so I can open up a second feed later without re-cutting the bumper.
 
 ![Front bumper overlay with the yellow blanking plug fitted](/assets/images/135i-brake-ducts/bumper-overlay-plug.jpg){:.img-md}
 *The printed bumper overlay — the yellow plug blanks off the second port until I have a use for it.*
 
+![Front end assembled with the bumper cover and splitter on](/assets/images/135i-brake-ducts/bumper-overlay-installed.jpg){:.img-lg}
+*Installed on the car — bumper cover and splitter in place, with the yellow blanking plug visible in the lower opening.*
+
+![Front undertray and splitter from underneath on the lift](/assets/images/135i-brake-ducts/bumper-overlay-underside.jpg){:.img-lg}
+*From underneath — the front undertray and splitter that work with the overlays to manage air into the front end.*
+
 ## Printing
 
-Both parts print on a **Bambu Lab H2S**. They live in the airstream under the car — road grime, heat off the rotors, and UV if the car sits — so I run them in a heat- and UV-tolerant blend rather than plain PLA. The front duct is the more involved print of the two thanks to the scoop geometry and the neck-down transition.
+Both ducts — and the bumper overlays — print on a **Bambu Lab H2S**. They live in the airstream under the car — road grime, heat off the rotors, and UV if the car sits — so I run them in a heat- and UV-tolerant blend rather than plain PLA. The front duct is the more involved print thanks to the scoop geometry and the neck-down transition.
 
 ![Both ducts fresh off the printer](/assets/images/135i-brake-ducts/printed-parts.jpg){:.img-lg}
 *Off the plate — the finished front duct up top, a rear duct with its supports still attached below.*
