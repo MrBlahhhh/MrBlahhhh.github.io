@@ -148,11 +148,25 @@ And the failure that started all this: I'd had the **ceramic caliper piston tips
 
 ## Where to buy
 
-I sell both as STLs on Cults3D:
+Two ways to get them: I'll print you a finished set, or you can print your own from the STLs.
+
+### Printed parts
+
+Printed to order on a **Bambu Lab H2S**, priced per pair (both sides of the axle):
+
+| Part | ASA | PAHT-CF |
+|------|-----|---------|
+| **Front pair** (both sides) | **$100** | **$120** |
+| **Rear pair** (both sides) | **$150** | **$175** |
+| **Full car** (front + rear) | **$250** | **$295** |
+
+**ASA** is the standard UV-stable choice; **PAHT-CF** is the black, maximum-heat-resistance option. Shipping billed at actual cost. DM me on Instagram — [**@mattryan6729**](https://www.instagram.com/mattryan6729/) — with the pair(s) and material you want and I'll quote shipping to your zip.
+
+### Print it yourself
+
+STLs on Cults3D:
 
 | Part | STL |
 |------|-----|
 | **Front control-arm brake cooling duct** | [View on Cults3D](https://cults3d.com/en/3d-model/various/e82-bmw-front-control-arm-brake-cooling-duct) |
 | **Rear brake ducts** | [View on Cults3D](https://cults3d.com/en/3d-model/various/e82-rear-brake-ducts) |
-
-Don't have a printer and want a finished set? DM me on Instagram — [**@mattryan6729**](https://www.instagram.com/mattryan6729/) — with front, rear, or both and I'll quote printed parts plus shipping to your zip.
