@@ -73,15 +73,15 @@ The rear took a lot of influence from the **Ford Mustang GTD** — the way that 
 
 ## Sheet-metal air deflectors
 
-A duct only helps if the air it delivers actually stays on the rotor instead of washing off into the wheel well. So alongside the printed ducts I designed a set of **brake air deflectors** — flat aluminum shields that mount at the hub and keep the ducted air channeled across the rotor face. These aren't printed: I had them **laser-cut by [SendCutSend](https://sendcutsend.com/)** from aluminum, then bent the flanges and finished them.
+A duct only helps if the air it delivers actually stays on the rotor instead of washing off into the wheel well. So alongside the printed ducts I designed a set of **brake air deflectors** — flat aluminum shields that mount at the hub and keep the ducted air channeled across the rotor face. These aren't printed: I had them **laser-cut by [Send-Cut-Send](https://sendcutsend.com/)** from aluminum, then bent the flanges and finished them.
 
 ![Bare aluminum brake air deflector, freshly cut](/assets/images/135i-brake-ducts/deflector-raw.jpg){:.img-md}
-*As cut by SendCutSend — the big radius clears the hub, the tab bends to form the air dam, and the holes locate it on the factory hardware.*
+*As cut by Send-Cut-Send — the big radius clears the hub, the tab bends to form the air dam, and the holes locate it on the factory hardware.*
 
 ![Powder-coated red brake air deflector](/assets/images/135i-brake-ducts/deflector-red.jpg){:.img-md}
 *Same deflector finished in red — bent and coated, ready to bolt on.*
 
-Metal makes sense here where a printed part doesn't: the deflector sits right up against the rotor in the hottest air, and it's a simple flat-plus-flange shape that a laser cuts cleanly and cheaply. Sending a DXF to SendCutSend and bending the tab is faster than printing it and gives a part that shrugs off the heat next to the rotor.
+Metal makes sense here where a printed part doesn't: the deflector sits right up against the rotor in the hottest air, and it's a simple flat-plus-flange shape that a laser cuts cleanly and cheaply. Sending a DXF to Send-Cut-Send and bending the tab is faster than printing it and gives a part that shrugs off the heat next to the rotor.
 
 ## Printing
 
