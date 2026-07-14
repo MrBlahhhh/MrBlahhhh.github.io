@@ -104,6 +104,9 @@ At the front of the air path are **3D-printed front bumper overlays** — they m
 ![Front bumper overlay with the yellow blanking plug fitted](/assets/images/135i-brake-ducts/bumper-overlay-plug.jpg){:.img-md}
 *The printed bumper overlay — the yellow plug blanks off the second port until I have a use for it.*
 
+![Bumper overlay installed in the car with the yellow plug in the oval port](/assets/images/135i-brake-ducts/bumper-overlay-installed-plug.jpg){:.img-lg}
+*Installed in the bumper — the oval inlet port sits blanked with the yellow plug, ready to open up when I have a use for it.*
+
 ![Front end assembled with the bumper cover and splitter on](/assets/images/135i-brake-ducts/bumper-overlay-installed.jpg){:.img-lg}
 *Installed on the car — bumper cover and splitter in place, with the yellow blanking plug visible in the lower opening.*
 
@@ -134,6 +137,9 @@ Short version: it works, maybe too well. The cooling is significant enough that 
 The one trade-off is that with this much air on the brakes, they can **squeak a lot on tracks without heavy braking zones** — somewhere like NCCAR, where the brakes never really get up to temperature, the pads stay cold enough to talk back. On a track with real braking zones that goes away.
 
 And the failure that started all this: I'd had the **ceramic caliper piston tips fail, front and rear**, from heat. With this cooling in place, that won't happen again.
+
+![The 135i track car, #78, at a wet track weekend](/assets/images/135i-brake-ducts/track-78.jpg){:.img-lg}
+*The car it all serves — #78 out at a wet weekend, front splitter and bumper overlays doing their job.*
 
 ## The fine print
 
