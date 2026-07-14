@@ -150,9 +150,9 @@ And the failure that started all this: I'd had the **ceramic caliper piston tips
 
 I sell both as STLs on Cults3D:
 
-| Part | Cults3D |
-|------|---------|
-| **Front control-arm brake cooling duct** | [E82 BMW front control-arm brake cooling duct](https://cults3d.com/en/3d-model/various/e82-bmw-front-control-arm-brake-cooling-duct) |
-| **Rear brake ducts** | [E82 rear brake ducts](https://cults3d.com/en/3d-model/various/e82-rear-brake-ducts) |
+| Part | STL |
+|------|-----|
+| **Front control-arm brake cooling duct** | [View on Cults3D](https://cults3d.com/en/3d-model/various/e82-bmw-front-control-arm-brake-cooling-duct) |
+| **Rear brake ducts** | [View on Cults3D](https://cults3d.com/en/3d-model/various/e82-rear-brake-ducts) |
 
 Don't have a printer and want a finished set? DM me on Instagram — [**@mattryan6729**](https://www.instagram.com/mattryan6729/) — with front, rear, or both and I'll quote printed parts plus shipping to your zip.
