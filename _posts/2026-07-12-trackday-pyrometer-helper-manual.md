@@ -25,10 +25,10 @@ This is the manual I wish I'd written earlier. It's ordered the way you'd actual
 
 ## What you need
 
-Only the phone and the pyrometer are required; the rest you add as you go.
+Only the phone is required — everything else is optional, added as you need it.
 
 - **An Android phone with Bluetooth LE.** That's the whole app.
-- **A PyroTC handheld pyrometer** — my [3D-printed K-type gun](/car/tech/2026/06/18/trackday-pyrometer-helper.html). This is what measures tire temps.
+- **A PyroTC handheld pyrometer** *(optional)* — my [3D-printed K-type gun](/car/tech/2026/06/18/trackday-pyrometer-helper.html). It's what measures tire temps; skip it and you only lose the pyrometer sessions, while pressures, the background monitor, corner balance, and checklists all still work.
 - **BLE TPMS sensors, one per corner** — cheap **Zeepin / TPMSII** or **DJTPMS** valve-stem units (you can mix brands). These give hot/cold pressures and the background monitor.
 - **Posca PC-3M paint markers** — the color system that ties sensors to corners is built around a 14-marker kit. Optional, but it's how rotations stay painless.
 - **ProForm wireless corner-scale pads (×4)** — only if you want live corner balancing. Manual weight entry works without them.
@@ -65,6 +65,8 @@ The header has four buttons: **TPMS** (sensor setup), **MON** (background monito
 ![Tire temp entry with pyrometer sync](/assets/images/trackday-pyrometer-helper/tiretemp-reading.jpg){:.img-md}
 *The gun owns all twelve readings and streams them to the app over BLE.*
 
+The pyrometer is **optional** — it only drives the tire-temp sessions, and the rest of the app runs fine without it. If you do use one, here's how it works.
+
 The [PyroTC gun](/car/tech/2026/06/18/trackday-pyrometer-helper.html) is standalone — it holds all twelve readings (four corners × OUT / MID / IN) and only hands them to the phone when you sync. It reads in **°F**, and the battery glyph up top turns green with a bolt when it's charging.
 
 - **SELECT screen** — four corner tiles (LF / RF / LR / RR), each showing how many of its three readings are filled (`0/3` … `3/3`; amber while partial, green when full). Tap a corner to open it.
@@ -72,7 +74,7 @@ The [PyroTC gun](/car/tech/2026/06/18/trackday-pyrometer-helper.html) is standal
   - **RECORD** captures the live temp into the next empty slot (O → M → I) with one short beep. **Two quick beeps** mean no valid reading (probe fault) or the tire's already full.
   - **Tap a filled slot** to clear just that one reading; **CLEAR** wipes all three for the tire.
   - **BACK** returns to SELECT.
-  - **WAKE** fires a 10-second 125 kHz coil burst — hold the gun's coil at the valve stem to wake a Continental/Tesla-style LF sensor. The aftermarket Zeepin/DJTPMS sensors this app uses instead wake by rolling the car, so most users never touch this button.
+  - **WAKE** *(optional)* fires a 10-second 125 kHz coil burst — hold the gun's coil at the valve stem to wake a Continental/Tesla-style LF sensor. It's a niche extra: the aftermarket Zeepin/DJTPMS sensors this app uses instead wake by rolling the car, so most users never touch this button.
 
 Take temps the instant the car comes in — they fade fast. Record OUT → MID → IN on each corner, then hit **SYNC FROM PYROMETER** in the app and all twelve cells fill over BLE.
 
