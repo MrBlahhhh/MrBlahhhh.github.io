@@ -30,6 +30,17 @@ This is the manual I wish I'd written earlier. It's ordered the way you'd actual
 
 The header has four buttons: **TPMS** (sensor setup), **MON** (background monitor), **⇣** (CSV export of everything), and **⚙** (settings). The **CAR** dropdown switches between car profiles — each car keeps its own weights, camber, targets, and sessions. The **TIRES / BALANCE** tabs switch between pyrometer work and corner-weighting.
 
+## Before anything: Bluetooth & permissions
+
+Every device the app talks to — the PyroTC gun, the TPMS sensors, and the ProForm scale pads — is **Bluetooth Low Energy**. There's nothing to pair in Android's system Bluetooth settings and nothing to "connect" there; the app finds and talks to each device directly. On first launch Android asks for a few things, and the app can't see any hardware until you grant them:
+
+- **Nearby devices** (Android 12+) — required to scan for and connect to BLE. On older Android this shows up as a **Location** permission instead; either way, allow it or SCAN comes back empty.
+- **Location services on** — some phones won't return BLE scan results with location switched off, even after the permission is granted. If SCAN finds nothing with the sensors clearly awake, this is the usual culprit.
+- **Notifications** (Android 13+) — the background monitor runs as a foreground service with a persistent notification; deny this and MON can't post to the status bar.
+- **Battery optimization** — set the app to Unrestricted (Settings → Apps → this app → Battery) so Android doesn't kill the monitor during a long day in the paddock.
+
+Turn Bluetooth on, hand over those permissions once, and you never touch this again. If a device later refuses to show up, come back here before assuming the hardware died.
+
 ## First-time setup: TPMS colors
 
 Everything pressure-related hangs off one idea: **paint each valve stem a color** (I use Posca PC-3M paint markers — the app's color list matches my 14-marker kit) and teach the app two things:
@@ -104,12 +115,21 @@ The **BALANCE** tab computes cross weight (RF+LR as a percentage of total) from 
 
 Scale in race trim: driver weight in the seat, fuel set, ride heights where you want them.
 
-## Settings, checklists, backup
+## Packing checklists
+
+A checklist in the app is a **reusable template, not a to-do you burn once**. Build it — or start from a preset (**Day Drive**, **Tow**, **Camp**) — then check items off as you load the trailer. The checkmarks are just state sitting on top of the list; the list itself stays put.
+
+- **UNCHECK ALL** clears every checkmark in one tap so the same list is ready for the next event. You never rebuild it, you reset it — and like everything destructive, it confirms first.
+- Edit freely: add, rename, or remove items, and the changes stick for next time.
+- **SHARE** sends the list as plain text to Keep (or anything that accepts shared text) if you'd rather tick it off outside the app.
+- Lists ride along in the JSON backup, so they survive a phone swap.
+
+## Settings & backup
 
 ![Settings](/assets/images/pyrometer-helper-manual/settings.png){:.img-md}
 *App-wide items on top; per-car tire interpretation targets below.*
 
 - **Theme** — Daylight (default, built for direct sun), Dark, or follow the system.
-- **Packing checklists** — reusable lists (Day Drive / Tow / Camp presets); check items off as you pack, UNCHECK ALL resets for the next event, SHARE sends plain text to Keep.
+- **Exports** — the **⇣** button in the header dumps everything (sessions, cold/hot pressures, temps) to CSV, and the monitor's LOGGED RUNS list exports each run on its own. Both are separate from the JSON backup below.
 - **Backup** — one JSON file with every car, sensor, tire, and checklist. Export before phone swaps; restore replaces everything. Monitor logs aren't included — export those runs to CSV if you want to keep them.
 - **Tire targets** — the camber-gradient and pressure-band thresholds the recommendations use, per car. Defaults follow the SuperMiata radial guide.
