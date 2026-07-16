@@ -141,6 +141,9 @@ And the failure that started all this: I'd had the **ceramic caliper piston tips
 ![The 135i track car, #78, at a wet track weekend](/assets/images/135i-brake-ducts/track-78.jpg){:.img-lg}
 *The car it all serves — #78 out at a wet weekend, front splitter and bumper overlays doing their job.*
 
+<div>{%- include extensions/youtube.html id='Nnp8NiAkXNw' -%}</div>
+*#78 on track — the ducting earning its keep.*
+
 ## The fine print
 
 - **Track use only.**
