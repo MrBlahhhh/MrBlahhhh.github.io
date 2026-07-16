@@ -124,7 +124,9 @@ Tap **＋ NEW** on the TIRES tab. The new session inherits everything from the l
 5. **SYNC FROM PYROMETER** — record OUT/MID/IN on the PyroTC gun, hit sync, all twelve cells fill over BLE. Take temps immediately — they fade fast.
 6. **SYNC HOT PSI** — hot pressures land per corner, and a heat cycle is logged on each tire that reported.
 
-Set a **HOT TARGET** per tire model once and the app derives the rest: the bleed amount ("bleed 1.5 → 32 psi") and a predicted **COLD START** pressure computed from your own measured cold→hot rise — ambient-aware, so a cold morning's +6 psi doesn't pollute a hot afternoon's prediction. Until there's history it assumes ~3 psi and refines as you log.
+The tire selector near the bottom of the card picks the **set**, not a corner — one name ("sm7.5") for the whole session. ＋NEW fills it from whatever set is mounted; if it's blank, tap the set chip. You never pick #1/#2/#3/#4 here — the per-corner identity already shows in each reading block's header.
+
+Set a **HOT TARGET** for that set once and the app derives the rest: the bleed amount ("bleed 1.5 → 32 psi") and a predicted **COLD START** pressure computed from your own measured cold→hot rise — ambient-aware, so a cold morning's +6 psi doesn't pollute a hot afternoon's prediction. Until there's history it assumes ~3 psi and refines as you log. There's no cold target to type — COLD START is the derived number.
 
 The collapsible **RECOMMENDATIONS** section reads the temp spread per tire: inside-vs-outside (the camber gradient) drives camber advice, center-vs-edges drives pressure advice. **STATIC CAMBER** per corner lives at the bottom of the card; flag a corner **MAXED** when you're out of adjustment and the advice stops telling you to add more. **DELETE SESSION** (confirmed) is there too.
 
@@ -148,18 +150,38 @@ The notification shows per-corner psi/°F and last-seen age. It's a monitor and 
 
 The **BALANCE** tab computes cross weight (RF+LR as a percentage of total, targeting **50%**) from four corner weights — typed in under **MANUAL**, or streamed live under **LIVE SCALES** from ProForm wireless pads over BLE.
 
-- **SCALES ›** opens pad setup:
-  - **MAP PADS** — **▶ AUTO-STEP** walks you FL → FR → RR → RL and binds whichever pad jumps when you step on it; or assign manually. **⚡ WAKE** wakes sleepy pads that have powered down.
-  - **CALIBRATE** each pad once against a known weight (it stores counts-per-lb).
-  - **◉ ZERO ALL** with the car off the pads before you roll it on. **RESET ALL CALS** starts the calibration over.
-- In LIVE mode, **⇣ CAPTURE** freezes the current weights into the car profile and drops back to MANUAL so the numbers hold while you turn perches.
 - The recommendation card tells you exactly how much weight to move onto or off the RF+LR diagonal, which corners to raise or lower, and — once you calibrate lb-per-turn — a **TURN ESTIMATE**. It reads **● DIALED IN** when cross is within a quarter percent of 50.
+
+### Scale pads over Bluetooth
+
+**SCALES ›** opens pad setup. The pads sleep to save battery, so they show **asleep** until you wake them — the live **LOG** at the bottom shows the wake handshake and each pad's MAC, so you can see exactly what's connecting (or not).
+
+![Scales setup screen](/assets/images/pyrometer-helper-manual/scales-setup.png){:.img-md}
+*The SCALES screen — four pad cells, ◉ ZERO ALL / ⚡ WAKE, and a live BLE log. "asleep" means a pad is heard but not yet woken.*
+
+**MAP PADS** — **▶ AUTO-STEP** walks you FL → FR → RR → RL and binds whichever pad's raw count jumps when you step on it; or tap a corner on a pad to assign it manually. The map persists until you change it.
+
+![Map pads](/assets/images/pyrometer-helper-manual/scales-map.png){:.img-md}
+*Each corner bound to a pad by MAC. AUTO-STEP does this by having you stand on one wheel at a time.*
+
+**CALIBRATE** each pad once against a known weight: **TARE** it empty, set the weight on, type the pounds, **SET**. It stores counts-per-lb *per pad* (they differ), and **RESET ALL CALS** starts over.
+
+![Calibrate pads](/assets/images/pyrometer-helper-manual/scales-cal.png){:.img-md}
+*One point per pad sets the slope — my four load cells read 1039–1096 counts/lb.*
+
+**◉ ZERO ALL** with the car off the pads, then roll it on. Back on the BALANCE tab, **LIVE SCALES** streams the pads in real time with a **n/4 live** counter; **⇣ CAPTURE** freezes the reading into the car and drops back to MANUAL so the numbers hold while you turn perches.
+
+![Live scales](/assets/images/pyrometer-helper-manual/live-scales.png){:.img-md}
+*LIVE SCALES mode — ◉ ZERO, ⇣ CAPTURE, ⚡ WAKE, and the live count. Blank corners just need map + calibrate + zero first.*
 
 Weigh in race trim: driver weight in the seat, fuel set, ride heights where you want them.
 
 ## Packing checklists
 
 Reach them from **Settings → Packing checklists**. A checklist in the app is a **reusable template, not a to-do you burn once**. Build one — or start from a preset (**Day Drive**, **Tow**, **Camp**) — then check items off as you load the trailer. The checkmarks are just state sitting on top of the list; the list itself stays put.
+
+![Packing checklist](/assets/images/pyrometer-helper-manual/checklist.png){:.img-md}
+*Tabs across the top switch lists; tap a row to check it, ✕ to remove it. The Day Drive preset ships ready to use.*
 
 - **↺ UNCHECK ALL** clears every checkmark in one tap so the same list is ready for the next event. You never rebuild it, you reset it.
 - Add, rename (✎), or remove items and whole lists; the changes stick for next time. Deleting a list (only when you have more than one) confirms first.
