@@ -5,7 +5,7 @@ categories: car tech
 tags: [android, app, play-store, pyrometer, tpms, corner-balance, ble, track-day]
 cover: /assets/images/pyrometer-helper-manual/hero.png
 lightbox: true
-excerpt: "My Android track-day app — pyrometer, TPMS, and corner-balance scales in one place — is out on the Play Store. On-device, no accounts, and I'm giving the TPMS and ProForm scale BLE code away for free."
+excerpt: "My Android track-day app — pyrometer, TPMS, and corner-balance scales in one place — is out on the Play Store. On-device, no accounts, and I've got free Play install codes for anyone who wants to try the TPMS or ProForm scale integration."
 article_header:
   type: overlay
   theme: dark
@@ -42,14 +42,14 @@ If you run track days on Android, please try it and tell me what's confusing, wh
 
 **UI and feature suggestions → [matt@geekopolis.com](mailto:matt@geekopolis.com).**
 
-## Free code: TPMS + ProForm scale BLE integration
+## Want to try the TPMS or scale integration? Free install codes
 
-Two of the hardest parts to build were the **Bluetooth integrations**, and I'm happy to give them away:
+The two features people ask about most are the **Bluetooth integrations**:
 
-- **TPMS integration** — decoders for **Zeepin / TPMSII** and **DJTPMS** BLE sensors: pressure, temperature, battery, protocol auto-detected per sensor.
-- **ProForm wireless scale integration** — the reverse-engineered BLE wake / map / calibrate / live-stream protocol for the corner-weight pads.
+- **TPMS** — reads cheap **Zeepin / TPMSII** and **DJTPMS** BLE sensors directly (pressure, temperature, battery), protocol auto-detected per sensor.
+- **ProForm wireless scales** — streams the corner-weight pads live over BLE for cross-weight in real time.
 
-If you're building your own app or just tinkering and want either one, reach out — **I'll share the code for free and help you get it installed.** The pyrometer hardware is open too: the [PyroTC firmware](https://github.com/MrBlahhhh/PyroTC) is already public.
+If you want to try either one, **I'll send you a free Google Play code to install the app** — no charge. Just reach out and tell me what you're running.
 
 Easiest ways to reach me: [matt@geekopolis.com](mailto:matt@geekopolis.com), or DM [**@mattryan6729**](https://www.instagram.com/mattryan6729/) on Instagram.
 
