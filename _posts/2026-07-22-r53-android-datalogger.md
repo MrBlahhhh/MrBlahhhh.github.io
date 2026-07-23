@@ -28,7 +28,7 @@ Plug the car into the phone, hit connect, and it streams live engine data fast e
 
 A wideband joins over Bluetooth and its air-fuel ratio gets merged into the same log, time-aligned with everything else — so I can see exactly what AFR the car was running at 6,000 RPM in third, instead of lining up two separate logs by hand afterwards.
 
-Everything records to plain CSV files, shareable straight from the phone or opened in datazap.me for real analysis.
+Everything records to plain CSV files, shareable straight from the phone or opened in datazap.me for real analysis. And every value has been cross-checked against the professional BMW diagnostic tools on a running engine, so the numbers can actually be trusted.
 
 ## Autolog — it records my pulls for me
 
@@ -47,14 +47,14 @@ Every pull saves as its own file. No scrubbing, no clipping, no forgetting. Driv
 
 ## A live graph that actually helps
 
-The built-in graph plots the last ~45 seconds of everything at once, each channel auto-scaled and colour-coded, with toggles to focus on what matters — spark and knock during a pull, boost and throttle when chasing a leak.
+The built-in graph plots the last ~45 seconds of everything at once, each channel colour-coded against fixed, meaningful ranges — the RPM trace reads to 7,500 with a dashed redline marker at 7,400, drawn thick on top where your eye needs it. Toggles let me focus on what matters: spark and knock during a pull, boost and throttle when chasing a leak.
 
 ![Live graph with headline values and channel toggles](/assets/images/r53-android-logger/live-graph.jpg){:.img-md}
 *The last 45 seconds of every channel, with the headline numbers up top.*
 
 ## It reads fault codes too
 
-Since it's already talking to the car, it doubles as a diagnostics tool: reads stored and pending fault codes, translates them to plain English with R53-specific notes where it counts (lean code? check boost and vacuum leaks first; that P0116? classic R53 thermostat), and clears them with a tap once the fix is in.
+Since it's already talking to the car, it doubles as a diagnostics tool: reads stored and pending fault codes, translates them to plain English with R53-specific notes where it counts (lean code? check boost and vacuum leaks first; that P0116? classic R53 thermostat), and clears them with a tap once the fix is in. If I try to clear codes with the engine running, it tells me why the car refused in plain English instead of just failing.
 
 ## Why build it myself
 
