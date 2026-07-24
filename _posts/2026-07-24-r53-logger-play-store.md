@@ -2,10 +2,10 @@
 title: "Mini R53 Logger — Heading to the Play Store"
 date: 2026-07-24 00:00:00 -0400
 categories: car tech
-tags: [mini, r53, android, datalogger, play-store, boost, tuning, ecu-flash]
+tags: [mini, r53, android, datalogger, play-store, boost, tuning, ecu-flash, immobilizer, for-sale]
 cover: /assets/images/r53-logger-play-store/main-screen.jpg
 lightbox: true
-excerpt: "My R53 Android logger is finished — live data, autolog, diagnostics, ECU flash with at-flash options (pops, injectors, redline, pedal) — heading to the Play Store. Want a try? Email me."
+excerpt: "R53 logger heading to Play Store — flash/tune is facelift silver-cover ECUs only. I sell those with VIN swap & immobilizer delete for $275. Want the app or an ECU? Email me."
 article_header:
   type: overlay
   theme: dark
@@ -36,8 +36,8 @@ Same idea as the [earlier writeup](/car/tech/2026/07/22/r53-android-datalogger.h
 - **Live graph** with channel toggles, fixed ranges, and a redline marker on the RPM trace
 - **Diagnostics** — read and clear fault codes with R53-specific notes
 - **Channels & poll rate** — turn off blocks you don't care about so the ones you do watch update faster
-- **ECU backup / flash** — read a full 512 KB backup, share it, and (carefully) write a tuner BIN back
-- **Flash options** — before a quick write, optionally layer on pops, injector size, redline, and throttle-pedal map
+- **ECU backup / flash** — read a full 512 KB backup, share it, and (carefully) write a tuner BIN back — **facelift silver-cover ECUs only**
+- **Flash options** — before a quick write, optionally layer on pops, injector size, redline, and throttle-pedal map (same silver-cover limit)
 
 Everything records to plain CSV and shares straight into datazap.me. Numbers were cross-checked against professional BMW diagnostic tools on a running engine.
 
@@ -49,10 +49,26 @@ Everything records to plain CSV and shares straight into datazap.me. Numbers wer
 
 ## ECU backup and flash
 
+**Important:** flash and the at-flash tune options only work on **facelift R53 ECUs with the silver back cover**. Pre-facelift / black-cover boxes are out of scope for write — logging, graphing, and diagnostics still do what they do on the car you're connected to; the write path is the silver-cover family only.
+
 Backup is read-only and safe. Write is dangerous — key on / engine off, keep the car on a battery charger, and keep a desktop OBD recovery path ready. The app checks the tune before writing. Pick a 512 KB BIN, then either a **quick write** (calibration region, ~60 KB) or a **full write** (512 KB).
 
 ![ECU flash screen with Flash options](/assets/images/r53-logger-play-store/flash-with-options.jpg){:.img-md}
-*Backup, pick a tune, set flash options, then Quick or Full write.*
+*Backup, pick a tune, set flash options, then Quick or Full write — silver-cover facelift ECUs only.*
+
+## Facelift ECU for sale — $275
+
+Don't have a silver-cover facelift box? I sell them ready to drop in:
+
+- **VIN swap** to your car
+- **Immobilizer delete** so it runs without wrestling the factory EWS pairing
+- **$275** for the prepared ECU
+
+Shipping billed at actual cost. Email me your year/model and VIN and I'll confirm fitment and quote shipping.
+
+**→ [matt@geekopolis.com](mailto:matt@geekopolis.com)** — subject something like "R53 facelift ECU".
+
+Track / off-road use only; no warranty against engine or ECU damage — you're buying a prepared control unit for a 20-year-old supercharged car.
 
 ## Flash options (at write time)
 
@@ -77,7 +93,7 @@ I'm putting it on the Play Store. If you want a crack at it — early install, f
 
 **→ [matt@geekopolis.com](mailto:matt@geekopolis.com)**
 
-Tell me you're an R53 owner (or tuner) and what you want to use it for — logging, codes, backup, or the lot. I'll reply with how to get the app.
+Tell me you're an R53 owner (or tuner) and what you want — the app, a facelift ECU, or both. I'll reply with how to get the app and/or quote the ECU.
 
 Instagram works too if you prefer: [**@mattryan6729**](https://www.instagram.com/mattryan6729/).
 
