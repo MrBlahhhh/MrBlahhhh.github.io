@@ -36,7 +36,7 @@ Same idea as the [earlier writeup](/car/tech/2026/07/22/r53-android-datalogger.h
 - **Live graph** with channel toggles, fixed ranges, and a redline marker on the RPM trace
 - **Diagnostics** — read and clear fault codes with R53-specific notes
 - **Channels & poll rate** — turn off blocks you don't care about so the ones you do watch update faster
-- **ECU backup / flash** — read a full 512 KB backup, share it, and (carefully) write a tuner BIN back — **facelift silver-cover ECUs only**
+- **ECU backup / flash** — read a full 512 KB backup, send it to your tuner, and (carefully) write a tuner BIN back — **facelift silver-cover ECUs only**
 - **Flash options** — before a quick write, optionally layer on pops, injector size, redline, and throttle-pedal map (same silver-cover limit)
 
 Everything records to plain CSV and shares straight into datazap.me. Numbers were cross-checked against professional BMW diagnostic tools on a running engine.
@@ -85,7 +85,7 @@ New: before a quick write, you can tweak the loaded tune **in memory** — no se
 The summary line on the flash screen shows what's armed (`Pops off · Injectors unchanged · …`). The app auto-checks (and can auto-fix) the tune whenever options change the image, and again before write.
 
 ![ECU flash after a completed backup](/assets/images/r53-logger-play-store/ecu-flash-done.jpg){:.img-md}
-*Backup complete — file saved on the phone, ready to share or keep as your recovery copy.*
+*Backup complete — file saved on the phone, ready to send to your tuner or keep as your recovery copy.*
 
 ## Want to try it?
 
