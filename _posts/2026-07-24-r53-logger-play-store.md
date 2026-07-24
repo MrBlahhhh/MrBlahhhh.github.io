@@ -37,7 +37,7 @@ Same idea as the [earlier writeup](/car/tech/2026/07/22/r53-android-datalogger.h
 - **Diagnostics** — read and clear fault codes with R53-specific notes
 - **Channels & poll rate** — turn off blocks you don't care about so the ones you do watch update faster
 - **ECU backup / flash** — read a full 512 KB backup, send it to your tuner, and (carefully) write a tuner BIN back — **facelift silver-cover ECUs only**
-- **Flash options** — before a quick write, optionally layer on pops, injector size, redline, and throttle-pedal map (same silver-cover limit)
+- **Flash options** — before a quick write, optionally layer on pops, injector size, redline, throttle-pedal map, warm idle (manual), and an earlier cooling-fan kick-on (same silver-cover limit)
 
 Everything records to plain CSV and shares straight into datazap.me. Numbers were cross-checked against professional BMW diagnostic tools on a running engine.
 
@@ -72,17 +72,19 @@ Track / off-road use only; no warranty against engine or ECU damage — you're b
 
 ## Flash options (at write time)
 
-New: before a quick write, you can tweak the loaded tune **in memory** — no separate desktop editor required for the common bits. Toggle what you want; Save turns chili-red when something changed.
+Before a quick write, you can tweak the loaded tune **in memory** — no separate desktop editor required for the common bits. Toggle what you want; Save turns chili-red when something changed.
 
 ![Flash options — pops, injectors, redline, pedal](/assets/images/r53-logger-play-store/flash-options.jpg){:.img-md}
-*Four switches: enable pops, set injector size, set redline, remap the throttle pedal.*
+*Flash options screen — earlier screenshot shows pops / injectors / redline / pedal; warm idle and cooling fan are on the same list now.*
 
 - **Enable pops (decel crackle)** — with an aggressiveness slider from stock to max
 - **Set injector size** — for when you've upsized injectors (stock S / JCW sizes and common bigger ones)
 - **Set redline** — raises the hard rev limit; soft cut stays alone
 - **Remap throttle pedal** — stock, straight (linear), or track feel
+- **Set warm idle RPM (manual transmission)** — for manuals only. Matches warm idle across normal idle, A/C on, and coasting back to idle so it doesn't sag with the AC or when you roll to a stop. Stock puts those three schedules back to factory; raised presets for mild / street / race-cam / big-cam setups. Cold-start idle is left alone. Automatic cars: leave this off.
+- **Cooling-fan kick-on temperature** — low and medium speeds only (high stays factory). Shown in **°F**. **Stock** puts both back to factory; **Earlier** starts the fan a few degrees sooner for heat-soak / track use without yanking it on before the engine is warm.
 
-The summary line on the flash screen shows what's armed (`Pops off · Injectors unchanged · …`). The app auto-checks (and can auto-fix) the tune whenever options change the image, and again before write.
+The summary line on the flash screen shows what's armed (`Pops off · Injectors unchanged · Idle unchanged · Fan unchanged · …`). The app auto-checks (and can auto-fix) the tune whenever options change the image, and again before write.
 
 ![ECU flash after a completed backup](/assets/images/r53-logger-play-store/ecu-flash-done.jpg){:.img-md}
 *Backup complete — file saved on the phone, ready to send to your tuner or keep as your recovery copy.*
