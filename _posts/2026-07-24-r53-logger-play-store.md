@@ -5,7 +5,7 @@ categories: car tech
 tags: [mini, r53, android, datalogger, play-store, boost, tuning, ecu-flash, immobilizer, for-sale]
 cover: /assets/images/r53-logger-play-store/main-screen.jpg
 lightbox: true
-excerpt: "R53 logger heading to Play Store — flash/tune is facelift silver-cover ECUs only. I sell those with VIN swap & immobilizer delete for $275. Want the app or an ECU? Email me."
+excerpt: "R53 logger heading to Play Store — flash options now cover pedal, idle (cold+warm), and fan 200/220 °F. Facelift silver-cover write only; prepared ECUs $275."
 article_header:
   type: overlay
   theme: dark
@@ -34,10 +34,12 @@ Same idea as the [earlier writeup](/car/tech/2026/07/22/r53-android-datalogger.h
 - **Wideband AFR** over Bluetooth, merged into the same time-aligned CSV
 - **Autolog** — arms on WOT, keeps the pull through gear changes, saves each run as its own file
 - **Live graph** with channel toggles, fixed ranges, and a redline marker on the RPM trace
-- **Diagnostics** — read and clear fault codes with R53-specific notes
+- **Diagnostics** — read and clear fault codes with R53-specific notes (chassis modules stay on BMW hex titles — no fake SAE crosswalk)
 - **Channels & poll rate** — turn off blocks you don't care about so the ones you do watch update faster
 - **ECU backup / flash** — read a full 512 KB backup, send it to your tuner, and (carefully) write a tuner BIN back — **facelift silver-cover ECUs only**
-- **Flash options** — before a quick write, optionally layer on pops, injector size, redline, throttle-pedal map, warm idle (manual), and an earlier cooling-fan kick-on (same silver-cover limit)
+- **Flash options** — before a quick write, optionally layer on pops, injector size, redline, throttle-pedal map, idle RPM (manual, cold + warm), and cooling-fan kick-on including an even-earlier 200 / 220 °F preset (same silver-cover limit)
+
+There's a separate companion app for **module coding** (BC1, EMS, airbag, …) — see [R53 Coding](/car/tech/2026/07/26/r53-coding.html).
 
 Everything records to plain CSV and shares straight into datazap.me. Numbers were cross-checked against professional BMW diagnostic tools on a running engine.
 
@@ -51,10 +53,16 @@ Everything records to plain CSV and shares straight into datazap.me. Numbers wer
 
 **Important:** flash and the at-flash tune options only work on **facelift R53 ECUs with the silver back cover**. Pre-facelift / black-cover boxes are out of scope for write — logging, graphing, and diagnostics still do what they do on the car you're connected to; the write path is the silver-cover family only.
 
-Backup is read-only and safe. Write is dangerous — key on / engine off, keep the car on a battery charger, and keep a desktop OBD recovery path ready. The app checks the tune before writing. Pick a 512 KB BIN, then either a **quick write** (calibration region, ~60 KB) or a **full write** (512 KB).
+Backup is read-only and safe. Write is dangerous — key on / engine off, keep the car on a battery charger, and keep a desktop OBD recovery path ready. The app checks the tune before writing (and can auto-fix checksum / layout issues). Pick a 512 KB BIN, or load factory **US S / JCW / GP1** as a base, then either a **quick write** (calibration region, ~60 KB) or a **full write** (512 KB).
+
+![ECU flash — backup, factory software, flash options](/assets/images/r53-logger-play-store/flash-screen-factory.jpg){:.img-md}
+*Flash screen — Read backup, pick a BIN, load US S / JCW / GP1, then Flash options before Quick or Full write.*
+
+![Tune check dialog before write](/assets/images/r53-logger-play-store/flash-tune-check.jpg){:.img-md}
+*If the BIN wouldn't be safe to write, you get a clear choice: Keep as-is or Fix tune and continue.*
 
 ![ECU flash screen with Flash options](/assets/images/r53-logger-play-store/flash-with-options.jpg){:.img-md}
-*Backup, pick a tune, set flash options, then Quick or Full write — silver-cover facelift ECUs only.*
+*Earlier flash layout — same path: backup, options, write. Silver-cover facelift ECUs only.*
 
 ## Facelift ECU for sale — $275
 
@@ -74,15 +82,18 @@ Track / off-road use only; no warranty against engine or ECU damage — you're b
 
 Before a quick write, you can tweak the loaded tune **in memory** — no separate desktop editor required for the common bits. Toggle what you want; Save turns chili-red when something changed.
 
+![Flash options — Track pedal and fan presets](/assets/images/r53-logger-play-store/flash-options-pedal-fan.jpg){:.img-md}
+*Pedal map (Stock / Straight / Track) and cooling fan — Stock, Earlier 216/230 °F, or Even earlier 200/220 °F.*
+
 ![Flash options — pops, injectors, redline, pedal](/assets/images/r53-logger-play-store/flash-options.jpg){:.img-md}
-*Flash options screen — earlier screenshot shows pops / injectors / redline / pedal; warm idle and cooling fan are on the same list now.*
+*Same options list — pops, injectors, redline, pedal, idle, and fan all live here.*
 
 - **Enable pops (decel crackle)** — with an aggressiveness slider from stock to max
 - **Set injector size** — for when you've upsized injectors (stock S / JCW sizes and common bigger ones)
 - **Set redline** — raises the hard rev limit; soft cut stays alone
 - **Remap throttle pedal** — stock, straight (linear), or track feel
-- **Set warm idle RPM (manual transmission)** — for manuals only. Matches warm idle across normal idle, A/C on, and coasting back to idle so it doesn't sag with the AC or when you roll to a stop. Stock puts those three schedules back to factory; raised presets for mild / street / race-cam / big-cam setups. Cold-start idle is left alone. Automatic cars: leave this off.
-- **Cooling-fan kick-on temperature** — low and medium speeds only (high stays factory). Shown in **°F**. **Stock** puts both back to factory; **Earlier** starts the fan a few degrees sooner for heat-soak / track use without yanking it on before the engine is warm.
+- **Set idle RPM (manual transmission)** — manuals only. Writes the same target across **cold/startup and warm** idle on normal idle, A/C on, and coasting back to idle so it stays consistent. Stock restores factory cold (1250) plus the warm schedules; raised presets for mild / street / race-cam / big-cam. Automatic cars: leave this off.
+- **Cooling-fan kick-on temperature** — low and medium speeds only (high stays factory). Shown in **°F**. **Stock** 221 / 233 °F; **Earlier** 216 / 230 °F; **Even earlier** 200 / 220 °F for heat-soak / track use.
 
 The summary line on the flash screen shows what's armed (`Pops off · Injectors unchanged · Idle unchanged · Fan unchanged · …`). The app auto-checks (and can auto-fix) the tune whenever options change the image, and again before write.
 
