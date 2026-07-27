@@ -1,11 +1,11 @@
 ---
-title: "Android Data Logger for the R53"
+title: "R53 Logger - Flasher — Android app for the Mini"
 date: 2026-07-22 00:00:00 -0400
 categories: car tech
-tags: [mini, r53, android, datalogger, obd, wideband, boost, tuning]
+tags: [mini, r53, android, datalogger, flasher, obd, wideband, boost, tuning, ecu-flash]
 cover: /assets/images/r53-android-logger/main-screen.jpg
 lightbox: true
-excerpt: "A homebrew Android app that logs the R53's engine data live, merges in wideband AFR, auto-records every WOT pull, and reads fault codes"
+excerpt: "R53 Logger - Flasher: live engine logging, wideband AFR, autolog WOT pulls, fault codes — and ECU backup / flash on facelift silver-cover boxes"
 article_header:
   type: overlay
   theme: dark
@@ -17,7 +17,7 @@ article_header:
 
 <!--more-->
 
-The R53's factory diagnostics are twenty years old, and the generic OBD apps poll so slowly they're useless for anything beyond checking why the CEL is on. The good logging tools cost real money or live on a laptop. I wanted something I could plug in at a red light and actually *see* what the supercharged W11 was doing — so I built my own Android app for it.
+The R53's factory diagnostics are twenty years old, and the generic OBD apps poll so slowly they're useless for anything beyond checking why the CEL is on. The good logging tools cost real money or live on a laptop. I wanted something I could plug in at a red light and actually *see* what the supercharged W11 was doing — and, on the same cable, back up and carefully flash a facelift ECU. So I built **R53 Logger - Flasher**.
 
 ![Main screen with live engine data](/assets/images/r53-android-logger/main-screen.jpg){:.img-md}
 *Live readout at idle: RPM, boost, throttle, temps, per-cylinder spark, knock, injector duty, and more.*
@@ -56,6 +56,10 @@ The built-in graph plots the last ~45 seconds of everything at once, each channe
 
 Since it's already talking to the car, it doubles as a diagnostics tool: reads stored and pending fault codes, translates them to plain English with R53-specific notes where it counts (lean code? check boost and vacuum leaks first; that P0116? classic R53 thermostat), and clears them with a tap once the fix is in. If I try to clear codes with the engine running, it tells me why the car refused in plain English instead of just failing.
 
+## ECU backup, flash, and flash-time options
+
+Same K+DCAN cable, same app: read a full 512 KB ECU backup and (carefully) write a tune back — **facelift silver-cover ECUs only**. Before a quick write I can layer common changes onto the loaded BIN on the phone: **pops**, **injector size**, **redline**, **throttle pedal map**, idle, and fan kick-on. Details, screenshots, and how to get the app are in the [Play Store writeup for R53 Logger - Flasher](/car/tech/2026/07/24/r53-logger-play-store.html).
+
 ## Why build it myself
 
-Nothing out there did the whole job. The generic apps are too slow to tune with, the Mini-specific tools are desktop relics, and none of them merge wideband AFR with engine data or auto-record pulls. Now there's a little purple app on my phone that does all of it, built exactly for this car — and every drive is a chance to learn something new about what the old supercharged four is up to.
+Nothing out there did the whole job. The generic apps are too slow to tune with, the Mini-specific tools are desktop relics, and none of them merge wideband AFR with engine data, auto-record pulls, *and* flash a facelift box from the phone. Now **R53 Logger - Flasher** does both — and every drive is a chance to learn something new about what the old supercharged four is up to.
