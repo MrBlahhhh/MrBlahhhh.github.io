@@ -5,7 +5,7 @@ categories: car tech
 tags: [mini, r53, android, datalogger, flasher, play-store, boost, tuning, ecu-flash, immobilizer, for-sale]
 cover: /assets/images/r53-logger-play-store/main-screen.jpg
 lightbox: true
-excerpt: "R53 Logger - Flasher heading to Play Store — live logging plus ECU flash options (pedal, idle, fan, pops…). Facelift silver-cover write only; prepared ECUs $275."
+excerpt: "R53 Logger - Flasher on Play closed testing — live logging plus ECU flash options (pedal, idle, fan, pops…). Join r53-logger-testers; facelift silver-cover write only; prepared ECUs $275."
 article_header:
   type: overlay
   theme: dark
@@ -100,14 +100,23 @@ The summary line on the flash screen shows what's armed (`Pops off · Injectors 
 ![ECU flash after a completed backup](/assets/images/r53-logger-play-store/ecu-flash-done.jpg){:.img-md}
 *Backup complete — file saved on the phone, ready to send to your tuner or keep as your recovery copy.*
 
-## Want to try it?
+## Want to try it? (Play closed testing)
 
-I'm putting **R53 Logger - Flasher** on the Play Store. If you want a crack at it — early install, feedback, or once the listing is up — **email me**:
+R53 Logger - Flasher uses **Google Play closed testing**, same pattern as R53 Coding.
 
-**→ [matt@geekopolis.com](mailto:matt@geekopolis.com)**
+### 1. Ask to join the tester group
 
-Tell me you're an R53 owner (or tuner) and what you want — the logger/flasher app, a facelift ECU, or both. I'll reply with how to get the app and/or quote the ECU.
+**→ [r53-logger-testers](https://groups.google.com/g/r53-logger-testers)**  
+(`r53-logger-testers@googlegroups.com`)
 
-Instagram works too if you prefer: [**@mattryan6729**](https://www.instagram.com/mattryan6729/).
+Join is **approval-required**. Include the Google account on your phone and whether you want the app, a facelift ECU, or both.
 
-If you give it a weekend on the car, tell me what breaks and what's missing — that's how this thing got finished.
+### 2. Opt in on Play (same Google account)
+
+After you're approved, open the **closed testing join link** I send (also posted for members), tap **Become a tester**, then install from Play — don't sideload if you want purchases / unlock to work.
+
+### 3. Still email / Instagram
+
+Questions, ECU quotes, or stuck on signup: **[matt@geekopolis.com](mailto:matt@geekopolis.com)** or [**@mattryan6729**](https://www.instagram.com/mattryan6729/).
+
+If you give it a weekend on the car, tell me what breaks and what's missing.
