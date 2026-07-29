@@ -134,8 +134,7 @@ The app handles tire temps, TPMS pressures, corner balance (ProForm wireless sca
 ## I want your feedback
 
 If you run track days on Android, please try it and tell me what's confusing, what breaks, or what's missing. Bug reports and "this workflow is dumb" notes are exactly what I'm after — this thing got good by getting used and complained about.
-
-If you want to try the **TPMS or ProForm scale integration**, I'll send you a free Google Play install code — no charge. Just reach out.
+h out.
 
 **→ [matt@geekopolis.com](mailto:matt@geekopolis.com)** or DM [**@mattryan6729**](https://www.instagram.com/mattryan6729/) on Instagram.
 
