@@ -115,4 +115,4 @@ The engine-running capture unlocks everything: operating-point binning, the hot-
 
 Deliberately deferred: cloud sync, multi-vehicle support, live on-track alerting, and machine learning models. Each has to earn its place by proving the deterministic layer isn't enough.
 
-The code is open source — Android app in Kotlin, Python analysis scripts, and a lot of protocol documentation. If you're reverse-engineering an aftermarket ECU's telemetry, the protocol-analysis docs cover the full approach.
+The full project covers the Android app in Kotlin, Python analysis scripts, and the protocol documentation. If you're reverse-engineering an aftermarket ECU's telemetry, the protocol-analysis work covers the full approach.
