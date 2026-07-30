@@ -47,7 +47,7 @@ The whole pipeline is just four layers:
 
 ### The app
 
-The phone joins the ECU's Wi-Fi (it broadcasts its own access point), polls it on UDP port 54000, and writes every sample to a custom binary format. The format is self-describing — it carries the channel map inside it, so a session recorded today will still be readable years from now regardless of what app version wrote it.
+The phone joins the ECU's Wi-Fi (it broadcasts its own access point), polls it over a reverse-engineered UDP telemetry protocol, and writes every sample to a custom binary format. The format is self-describing — it carries the channel map inside it, so a session recorded today will still be readable years from now regardless of what app version wrote it.
 
 ![Connect screen — ECU SSID, IP, and port settings](/assets/images/haltech-rebel-logger/connect-screen.jpg){:.img-md}
 *Connect screen. The ECU runs its own Wi-Fi access point — just tell the app the SSID and IP, and it handles the rest. The red error is a keepalive handshake failure, which happens when the phone's Wi-Fi radio decides to roam mid-session. Still working through that.*
@@ -86,7 +86,7 @@ Every number carries units and a sample count: "Injector 3 current p50 = 0.71 A 
 
 ## The hardest part: the channel map
 
-The ECU broadcasts data in a fixed memory window of 2,048 4-byte slots. Of those, about 1,087 are actual channels. The trouble is, slot 2 might be RPM in one firmware version and something else in another. The mapping from slot index to channel identity was worked out by correlating raw bytes against Haltech's own PC software (NSP) CSV exports during known state changes.
+The ECU broadcasts data in a fixed set of memory-mapped slots. Only a subset are actually mapped to ECU channels, and the slot a channel lives in can shift between firmware versions. The mapping from slot to channel identity was worked out by correlating raw bytes against Haltech's own PC software (NSP) CSV exports during known state changes.
 
 Every mapping carries a confidence level:
 
@@ -101,7 +101,7 @@ We never act on a channel we're not sure about. The injector and ignition channe
 
 ## What I'd do differently
 
-**Verify bytes off the wire, not in a simulation.** I spent a week debugging a protocol issue that didn't exist in my Python model. The actual app was sending a 20-byte request while my "proven" reference was actually 24 bytes. The fix: capture the phone's actual UDP traffic with tshark and compare against that — never against a filtered CSV extract.
+**Verify bytes off the wire, not in a simulation.** I spent a week debugging a protocol issue that didn't exist in my Python model. The actual app was sending a wrong-sized request while my "proven" reference was actually a different size. The fix: capture the phone's actual UDP traffic with tshark and compare against that — never against a filtered CSV extract.
 
 **Never compare session averages.** Operating-point binning is the only way to get comparable numbers across sessions.
 
