@@ -23,6 +23,10 @@ My Haltech Rebel LS is a fully programmable ECU on a supercharged LS V8. It moni
 
 The obvious thing: log it all and watch for trouble. The problem is **volume**: at 5-10 Hz across 1,000 channels, a 20-minute track session generates 35-60 MB of raw data. Tens of millions of data points per session. How do you find the signal in that noise?
 
+There's also a hard constraint I didn't fully appreciate at first. The published research on injector diagnostics describes fault signatures that need **100 kS/s** (10 µs resolution) — needle displacement reducing peak current by 35%, coil charging delay increasing by 0.2 ms. We poll at 5-10 Hz. That means we cannot reconstruct injector current waveforms, misfire profiles from crank acceleration, or any per-combustion-event signal.
+
+But the ECU *already does* that internally and exposes the results as derived scalars: `Injector N Current`, `Injection Stage 1 Dead Time`, `Flow Rate`, misfire counters, knock levels. Our strategy is to log the ECU's conclusions rather than try to reproduce its measurements. The achieved sample rate is recorded in every session's metadata, and no detector runs if the rate cannot support it.
+
 This is the story of how I reverse-engineered the protocol, built an Android app to pull it all down, and wrote a Python analysis pipeline that looks for two different kinds of failures — without drowning in data.
 
 ![Channel map browser — each slot's identity is tagged with the correlation source](/assets/images/haltech-rebel-logger/sessions-channel-map.jpg){:.img-md}
@@ -49,6 +53,12 @@ The whole pipeline is just four layers:
 
 The phone joins the ECU's Wi-Fi (it broadcasts its own access point), polls it over a reverse-engineered UDP telemetry protocol, and writes every sample to a custom binary format. The format is self-describing — it carries the channel map inside it, so a session recorded today will still be readable years from now regardless of what app version wrote it.
 
+The format makes three deliberate design decisions:
+
+- **Append-only:** Frames are written as they arrive. A crash or dead battery loses only the tail, not the whole file.
+- **Channel identity, not slot index:** Each entry stores the stable channel ID from the Haltech channel CSV, never the slot number. The slot layout can shift with ECU firmware or configuration changes — the channel ID cannot.
+- **Columnar sidecar:** At session end, the raw row-major frames are transcoded to a columnar format (delta + varint + zstd per channel) for efficient cross-session reads. This is the difference between scanning 36 MB of raw data and reading 2 MB of compressed data.
+
 ![Connect screen — ECU SSID, IP, and port settings](/assets/images/haltech-rebel-logger/connect-screen.jpg){:.img-md}
 *Connect screen. The ECU runs its own Wi-Fi access point — just tell the app the SSID and IP, and it handles the rest. The red error is a keepalive handshake failure, which happens when the phone's Wi-Fi radio decides to roam mid-session. Still working through that.*
 
@@ -60,11 +70,13 @@ The core technique is beautifully simple: **compare each cylinder against the ot
 
 If cylinder 3's injector current is 8% below the average of cylinders 1, 2, 4, 5, 6, 7, and 8, that's a signal — regardless of how hard you're driving or what the fuel temperature is. No history needed, no calibration, no absolute thresholds.
 
-This is the same principle used in aero-engine diagnostics, where they compare symmetric halves of a jet engine to each other. I just apply it to cylinders instead of compressor stages.
+This is the same principle as **bilateral asymmetry monitoring** used in aero-engine diagnostics — comparing symmetric halves of a jet engine to each other — applied at the cylinder level.
 
-The math uses a median-based z-score (robust to one bad cylinder skewing the reference), and a cylinder is only flagged if it stays anomalous for several consecutive samples — not just a single noise spike.
+The math uses a **MAD z-score** (median absolute deviation), which is deliberately chosen over the standard z-score (mean and standard deviation). The reason: one failing injector pulls the mean toward it, hiding the failure. The median and MAD are resistant to a single outlier skewing the reference. A cylinder is only flagged if it stays anomalous for several consecutive samples — not just a single noise spike.
 
 Dual-element sensors (throttle pedal A/B, throttle position A/B) get their own cross-check: the two channels should track each other linearly. A drop in correlation means the sensor is failing right now, before any DTC sets.
+
+The system also monitors at the bank level: if the two wideband O2 sensor readings diverge but the fuel trims do not follow, the *sensor* is suspect — not the mixture. This is a cross-check no single channel can provide.
 
 ### Slow-drift detection
 
@@ -76,11 +88,23 @@ The fix is **operating-point binning**: every sample gets classified into a cell
 
 That series is comparable. A raw session-mean would hide it entirely.
 
+**Data quality first.** Before computing bin statistics, each bin's samples are filtered for plausibility. A single torn read can poison a bin's mean. The filter uses IQR (interquartile range) trimming: values outside Q1 - 1.5×IQR or Q3 + 1.5×IQR are excluded. Heavy trimming in a bin is itself a signal worth surfacing — it tells you the sensor is noisy.
+
+**Trend fitting.** For each (channel × operating-point cell) with data across multiple sessions, a linear trend is fitted. A slope is flagged when two conditions hold: the fitted drift over the observed span exceeds the channel's own natural variance, and the projection crosses a defined limit within a foreseeable number of sessions. Output is phrased as a finding with confidence bounds:
+
+> "Oil pressure p50 in the 4,000 RPM / 75% load cell declined 6% over 11 sessions; at this rate, it crosses the 40 psi advisory limit at session 24."
+
+Alongside the linear trend, a **change-point detector** looks for the session at which behavior began to shift. "The pump started degrading around session 14" is more useful than "there is a downward slope across all 20 sessions," and is the established approach for remaining-useful-life estimation under variable operating conditions.
+
 There's also a **hot-idle fingerprint**: at the end of every session (fully warm, stable idle), I record oil pressure, manifold vacuum, fuel trims, and knock background level. One small, deliberately-revisited operating point is worth more for month-over-month comparison than the entire rest of the session. Rod bearing clearance growth shows up at hot idle first.
+
+**The maintenance log.** A trend across a window that contains an unrecorded injector swap is not a trend. Every session record carries metadata for oil grade, parts replaced, compression test results, and oil analysis references. This is the cheapest thing to get right and the most expensive to reconstruct later.
 
 ### The LLM summary
 
-The LLM never sees raw data. Deterministic Python does all the arithmetic, and hands the model a compact, unit-labeled report. The model's job is to correlate across subsystems — "cylinder 3 injector current is low *and* bank 1 fuel trim is positive *and* knock trim is retarding cylinder 3" — and produce a ranked list of what to inspect.
+The LLM never sees raw data. Feeding raw numeric series to an LLM as text is counterproductive — the tokenizer splits `1024` into either `10` + `24` or `102` + `4` depending on training data, numeric precision suffers, and large contexts degrade model performance. This is a well-documented pattern in the literature (IJCAI 2024 survey on LLMs for time series).
+
+Deterministic Python does all the arithmetic — extraction, z-score computation, binning, regression, event detection. The LLM sees only a compact, unit-labeled report. The model's job is to correlate across subsystems — "cylinder 3 injector current is low *and* bank 1 fuel trim is positive *and* knock trim is retarding cylinder 3" — and produce a ranked list of what to inspect.
 
 Every number carries units and a sample count: "Injector 3 current p50 = 0.71 A (n=3100)" — never a bare number. Findings are ranked, cite their source sessions and channels, and the output is always a **"what to check"** list, not a verdict. The human makes the final call.
 
@@ -105,9 +129,11 @@ We never act on a channel we're not sure about. The injector and ignition channe
 
 **Never compare session averages.** Operating-point binning is the only way to get comparable numbers across sessions.
 
-**LLMs are synthesis tools, not data analysts.** They're terrible at reading raw numbers — the tokenizer splits `1024` into either `10` + `24` or `102` + `4` depending on training data. Give them features, not samples.
+**LLMs are synthesis tools, not data analysts.** They're terrible at reading raw numbers. Give them features, not samples.
 
 **Every channel needs a confidence level.** The first time I "confirmed" RPM, MAP, and TPS from a single engine-off capture, all three were wrong — they were raw analogue input millivolts, not the actual sensor readings. You need correlation against a known-good reference.
+
+**Tune thresholds against real failures.** All detection thresholds are currently provisional, calibrated against synthetic test data. The conscious decision is to run with deliberately conservative thresholds and tune them against real flagged events as they occur. There is no substitute for real failure data.
 
 ## What's next
 
@@ -116,3 +142,16 @@ The engine-running capture unlocks everything: operating-point binning, the hot-
 Deliberately deferred: cloud sync, multi-vehicle support, live on-track alerting, and machine learning models. Each has to earn its place by proving the deterministic layer isn't enough.
 
 The full project covers the Android app in Kotlin, Python analysis scripts, and the protocol documentation. If you're reverse-engineering an aftermarket ECU's telemetry, the protocol-analysis work covers the full approach.
+
+---
+
+## References
+
+1. *Using the Injection System as a Sensor to Analyze the State of the Electronic Automotive System* (Sensors, 2026) — 100 kS/s injector diagnostics requirement
+2. *A novel data-driven method for aero-engine performance degradation trend prediction under various operating conditions* (Mechanical Systems & Signal Processing, 2025) — operating-point normalisation
+3. *Bilateral Engine Asymmetry Monitoring (BEAM)* — symmetric-half comparisons for diagnostics
+4. *Avoiding the Pitfalls in Motorsports Data Acquisition* (SAE 2008-01-2987) — aliasing and sample-rate selection
+5. *Large Language Models for Time Series: A Survey* (IJCAI 2024) — the five LLM-on-time-series patterns and tokenisation issues
+6. *STREAM-VAE: Dual-Path Routing for Slow and Fast Dynamics in Vehicle Telemetry Anomaly Detection* (arXiv 2511.15339, 2025) — separation of drift/spike detectors
+7. *The Development of Data Acquisition System of Formula SAE Race Car Based on CAN Bus* (Jilin University, 2021) — reliability-data template and checklist inspection
+8. *A Change Point Detection Integrated Remaining Useful Life Estimation Model under Variable Operating Conditions* (arXiv 2401.04351) — change-point detection for degradation onset
