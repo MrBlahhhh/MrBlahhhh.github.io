@@ -151,11 +151,37 @@ We never act on a channel we're not sure about. About **306 channels** are confi
 
 **Tune thresholds against real failures.** All detection thresholds are currently provisional, calibrated against synthetic test data. The conscious decision is to run with deliberately conservative thresholds and tune them against real flagged events as they occur. There is no substitute for real failure data.
 
+## How to try the Android logger
+
+I'm distributing **time-limited loaner builds** through [Firebase App Distribution](https://firebase.google.com/docs/app-distribution) — R8-obfuscated APKs that hard-expire **30 days after I compile them**. This is not Play Store open testing: you still sign in with a Google account, but you can self-join via an invite link so I don't have to type emails one by one.
+
+### Install
+
+1. Get the current **invite link** from me (Firebase → App Distribution → Invite links → group **Open loaners**).
+2. Open that link on an Android phone, sign in with Google, and accept the tester invite.
+3. Open the App Distribution page for the release and tap **Download** / install.
+4. If Android blocks the install, allow installs from the App Distribution / browser source it prompts for.
+
+After install you should see package `com.geekopolis.haltechlogger` (version name ends in `-loaner`). When the build ages out, the app opens to an expired screen — ask me for a fresh compile.
+
+### On the car
+
+1. Power the ECU so the Rebel Wi-Fi AP is up.
+2. On the phone, join that SoftAP (no internet on that network — that's expected).
+3. Open the logger → **Connect**. The app must bind traffic to the ECU Wi-Fi; if polls fail, leave and rejoin the AP, then reconnect in-app.
+4. **Graphs** — AFR / Spark presets, time-window buttons, scrub on the strip charts; rotate for the landscape overlay.
+5. **Sessions** — start/stop a recording, play it back into Graphs, export one session or back up all of them (sessions live under app external storage and survive APK updates; full uninstall still wipes them unless you backed up).
+6. **Settings** (gear) — theme, °F/°C, psi/kPa/bar, AFR vs λ.
+
+If you only want to poke at UI without the car, install still works; live channels stay empty until you're on the ECU network.
+
+Source and protocol notes stay on GitHub: [haltech-rebel-logger](https://github.com/MrBlahhhh/haltech-rebel-logger).
+
 ## What's next
 
-The channel map and live logging path are on the car now — ~10 Hz sessions, Graphs, playback, DTCs. Next is hardening the Wi-Fi reconnect path when the phone briefly loses the ECU network, collecting real track sessions, and tuning detector thresholds against flagged events instead of synthetic data.
+The channel map and live logging path are on the car now — ~10 Hz sessions, Graphs, playback, DTCs, and loaner distribution via Firebase. Next is hardening the Wi-Fi reconnect path when the phone briefly loses the ECU network, collecting real track sessions, and tuning detector thresholds against flagged events instead of synthetic data.
 
-Deliberately deferred: cloud sync, multi-vehicle support, live on-track alerting, and machine learning models. Each has to earn its place by proving the deterministic layer isn't enough.
+Deliberately deferred: cloud sync, multi-vehicle support, live on-track alerting, Play Billing / paid unlock, and machine learning models. Each has to earn its place by proving the deterministic layer isn't enough.
 
 The full project covers the Android app in Kotlin, Python analysis scripts, and the protocol documentation. If you're reverse-engineering an aftermarket ECU's telemetry, the protocol-analysis work covers the full approach.
 
