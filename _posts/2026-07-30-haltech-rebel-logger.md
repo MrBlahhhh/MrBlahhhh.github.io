@@ -3,16 +3,16 @@ title: "Building a Predictive Maintenance Logger for My Haltech Rebel LS"
 date: 2026-07-30 00:00:00 -0400
 categories: car tech
 tags: [haltech, rebel-ls, android, datalogger, telemetry, predictive-maintenance, ls, v8]
-cover: /assets/images/haltech-rebel-logger/sessions-channel-map.jpg
+cover: /assets/images/haltech-rebel-logger/graphs-live.jpg
 lightbox: true
-excerpt: "Reverse-engineering the Haltech Rebel LS Wi-Fi telemetry protocol and building an Android app that logs 1,000+ ECU channels for predictive engine health monitoring — per-cylinder anomaly detection, drift trending, and what I've learned so far."
+excerpt: "Reverse-engineering the Haltech Rebel LS Wi-Fi telemetry protocol and building an Android app that logs 1,000+ ECU channels for predictive engine health monitoring — live graphs, session playback, and what I've learned so far."
 article_header:
   type: overlay
   theme: dark
   background_color: "#1f1f1f"
   background_image:
     gradient: "linear-gradient(rgba(0, 0, 0, .45), rgba(0, 0, 0, .65))"
-    src: /assets/images/haltech-rebel-logger/sessions-channel-map.jpg
+    src: /assets/images/haltech-rebel-logger/graphs-live.jpg
 ---
 
 <!--more-->
@@ -21,16 +21,16 @@ article_header:
 
 My Haltech Rebel LS is a fully programmable ECU on a supercharged LS V8. It monitors everything — injector current per cylinder, ignition coil voltage, knock sensors, lambda, fuel pressure, coolant temp, manifold pressure, RPM — and it has a built-in Wi-Fi access point that broadcasts this data over UDP.
 
-The obvious thing: log it all and watch for trouble. The problem is **volume**: at 5-10 Hz across 1,000 channels, a 20-minute track session generates 35-60 MB of raw data. Tens of millions of data points per session. How do you find the signal in that noise?
+The obvious thing: log it all and watch for trouble. The problem is **volume**: at ~10 Hz across 1,000 channels, a 20-minute track session generates 35–60 MB of raw data. Tens of millions of data points per session. How do you find the signal in that noise?
 
-There's also a hard constraint I didn't fully appreciate at first. The published research on injector diagnostics describes fault signatures that need **100 kS/s** (10 µs resolution) — needle displacement reducing peak current by 35%, coil charging delay increasing by 0.2 ms. We poll at 5-10 Hz. That means we cannot reconstruct injector current waveforms, misfire profiles from crank acceleration, or any per-combustion-event signal.
+There's also a hard constraint I didn't fully appreciate at first. The published research on injector diagnostics describes fault signatures that need **100 kS/s** (10 µs resolution) — needle displacement reducing peak current by 35%, coil charging delay increasing by 0.2 ms. We poll at ~10 Hz. That means we cannot reconstruct injector current waveforms, misfire profiles from crank acceleration, or any per-combustion-event signal.
 
 But the ECU *already does* that internally and exposes the results as derived scalars: `Injector N Current`, `Injection Stage 1 Dead Time`, `Flow Rate`, misfire counters, knock levels. Our strategy is to log the ECU's conclusions rather than try to reproduce its measurements. The achieved sample rate is recorded in every session's metadata, and no detector runs if the rate cannot support it.
 
 This is the story of how I reverse-engineered the protocol, built an Android app to pull it all down, and wrote a Python analysis pipeline that looks for two different kinds of failures — without drowning in data.
 
-![Channel map browser — each slot's identity is tagged with the correlation source](/assets/images/haltech-rebel-logger/sessions-channel-map.jpg){:.img-md}
-*The channel map browser. Each slot's identity is tagged with its correlation status — CONFIRMED, TENTATIVE, or PENDING. "Not identified yet" channels are ones we haven't matched to a known signal. The app logs everything, but detectors only run on CONFIRMED channels.*
+![Live Graphs — oil temperature, oil pressure, ignition angles](/assets/images/haltech-rebel-logger/graphs-live.jpg){:.img-md}
+*Live Graphs screen. Named channels in engineering units (°F, psi, degrees), each with a rolling 60-second strip chart, min/max, and the ECU window/slot identity underneath.*
 
 ## Two kinds of failures
 
@@ -51,18 +51,31 @@ The whole pipeline is just four layers:
 
 ### The app
 
-The phone joins the ECU's Wi-Fi (it broadcasts its own access point), polls it over a reverse-engineered UDP telemetry protocol, and writes every sample to a custom binary format. The format is self-describing — it carries the channel map inside it, so a session recorded today will still be readable years from now regardless of what app version wrote it.
+The phone joins the ECU's Wi-Fi (it broadcasts its own access point), polls it over a reverse-engineered UDP telemetry protocol, and writes every sample to a custom binary format (`.hrlg`). The format is self-describing — it carries the channel map inside it, so a session recorded today will still be readable years from now regardless of what app version wrote it.
+
+What the app does today, on the car:
+
+- **Dual-window poll** at ~10 Hz for the electrical / spark / knock window and ~5 Hz (held between refreshes) for the sensor / fuel / oil window — neither window is a superset of the other.
+- **Graphs** in engineering units (°F, psi, λ, %). Manifold pressure is shown as gauge pressure (baro-corrected) so idle vacuum reads negative instead of looking like several psi of boost on a naturally aspirated engine.
+- **Session recording** with on-device summarization, Room history, zip export, and **playback** of any saved session through the same graph UI (play/pause, scrub, 0.5–4×).
+- **DTC freeze-frame capture** when a trouble code sets, with a timestamp.
 
 The format makes three deliberate design decisions:
 
 - **Append-only:** Frames are written as they arrive. A crash or dead battery loses only the tail, not the whole file.
 - **Channel identity, not slot index:** Each entry stores the stable channel ID from the Haltech channel CSV, never the slot number. The slot layout can shift with ECU firmware or configuration changes — the channel ID cannot.
-- **Columnar sidecar:** At session end, the raw row-major frames are transcoded to a columnar format (delta + varint + zstd per channel) for efficient cross-session reads. This is the difference between scanning 36 MB of raw data and reading 2 MB of compressed data.
+- **Mapped channels only in frames:** `.hrlg` v2 stores the mapped slot set (~410 channels), not every raw ECU word — roughly 1.6 KB/frame, ~12 MB for a 25-minute session at 10 Hz.
 
-![Connect screen — ECU SSID, IP, and port settings](/assets/images/haltech-rebel-logger/connect-screen.jpg){:.img-md}
-*Connect screen. The ECU runs its own Wi-Fi access point — just tell the app the SSID and IP, and it handles the rest. The red error is a keepalive handshake failure, which happens when the phone's Wi-Fi radio decides to roam mid-session. Still working through that.*
+![Session playback — fuel pressure, oil temp, oil pressure](/assets/images/haltech-rebel-logger/graphs-playback.jpg){:.img-md}
+*Playback of a recorded session. Same strip charts as live; scrub the timeline and the trailing 60-second window rebuilds around that point.*
 
-At the end of a session, the app computes per-channel statistics: min, max, mean, p05, p50, p95, standard deviation, and sample count. That's ~300 channels × 12 numbers = a few kilobytes per session. **This is the only data that ever gets queried across sessions.** The raw 35 MB file stays on-device.
+![Landscape Graphs — throttle, coolant, fuel pressure overlaid](/assets/images/haltech-rebel-logger/graphs-landscape.jpg){:.img-lg}
+*Landscape mode overlays every selected channel on one chart. Units can't share a single axis (RPM vs psi vs %), so each series is normalized to its own min/max for the plot; the legend carries the real values.*
+
+![Wideband and fuel trim live graphs](/assets/images/haltech-rebel-logger/graphs-live-o2.jpg){:.img-md}
+*Bank 2 wideband and fuel trims during a live poll — the same lanes the sudden-failure detectors will read from session exports.*
+
+At the end of a session, the app computes per-channel statistics: min, max, mean, p05, p50, p95, standard deviation, and sample count. That's ~300 channels × 12 numbers = a few kilobytes per session. **This is the only data that ever gets queried across sessions.** The raw session file stays on-device (and can be exported as a zip).
 
 ### Sudden-failure detection
 
@@ -110,34 +123,37 @@ Every number carries units and a sample count: "Injector 3 current p50 = 0.71 A 
 
 ## The hardest part: the channel map
 
-The ECU broadcasts data in a fixed set of memory-mapped slots. Only a subset are actually mapped to ECU channels, and the slot a channel lives in can shift between firmware versions. The mapping from slot to channel identity was worked out by correlating raw bytes against Haltech's own PC software (NSP) CSV exports during known state changes.
+The ECU broadcasts data in a fixed set of memory-mapped slots. Only a subset are actually mapped to ECU channels, and the slot a channel lives in can shift between firmware versions. The mapping from slot to channel identity was worked out by correlating raw bytes against Haltech's own PC software (NSP) CSV exports during known state changes — including an engine-running capture so RPM, MAP, oil, fuel pressure, and knock weren't just coincidences from an engine-off session.
 
 Every mapping carries a confidence level:
 
 | Confidence | What it means | What we do with it |
 |---|---|---|
-| **CONFIRMED** | Verified against NSP CSV or known state change | Include in detectors |
-| **TENTATIVE** | Plausible but not yet verified | Include but flag it |
-| **PENDING** | In the CSV but not yet located in the window | **Exclude entirely** — never guess |
+| **CONFIRMED / high** | Verified against NSP CSV or known state change | Include in detectors |
+| **TENTATIVE / medium** | Plausible but not yet verified | Include but flag it |
+| **PENDING / not identified** | In the CSV but not yet located in the window | **Exclude entirely** — never guess |
 | **COLLISION** | Two channels map to the same slot | **Exclude** — ambiguous |
 
-We never act on a channel we're not sure about. The injector and ignition channels are fully confirmed. The big ones still pending: RPM, manifold pressure, coolant temperature, wideband O2 sensors, fuel pressure, and per-cylinder knock and ignition trim. These are all blocked on getting an engine-running capture with the NSP CSV correlation running simultaneously. That's the next milestone.
+We never act on a channel we're not sure about. About **306 channels** are confirmed across the two live windows the app polls. The Graphs picker only offers slots that actually exist in those windows — and anything still unidentified stays labelled that way rather than plotted as a misleading flat line.
+
+![Channel picker — confirmed vs not-yet-identified](/assets/images/haltech-rebel-logger/channel-picker.jpg){:.img-md}
+*Channel picker. Confirmed injector channels carry a slot; ignition corrections that aren't mapped yet stay labelled "not identified yet" and never get treated as real data.*
 
 ## What I'd do differently
 
-**Verify bytes off the wire, not in a simulation.** I spent a week debugging a protocol issue that didn't exist in my Python model. The actual app was sending a wrong-sized request while my "proven" reference was actually a different size. The fix: capture the phone's actual UDP traffic with tshark and compare against that — never against a filtered CSV extract.
+**Verify bytes off the wire, not in a simulation.** I spent a week debugging a protocol issue that didn't exist in my Python model. The actual app was sending a wrong-sized request while my "proven" reference was actually a different size. The fix: capture the phone's actual UDP traffic with tshark and compare against that — never against a filtered CSV extract. A later multi-second drop that looked like SoftAP corruption turned out to be a one-byte framing bug that only fired after a fixed number of transactions — same lesson, different week.
+
+**Never invent engineering-unit mappings from one capture.** The first time I "confirmed" RPM, MAP, and TPS from a single engine-off session, all three were wrong — they were raw analogue input millivolts. Correlation against an NSP CSV with the engine running is the only source of truth.
 
 **Never compare session averages.** Operating-point binning is the only way to get comparable numbers across sessions.
 
 **LLMs are synthesis tools, not data analysts.** They're terrible at reading raw numbers. Give them features, not samples.
 
-**Every channel needs a confidence level.** The first time I "confirmed" RPM, MAP, and TPS from a single engine-off capture, all three were wrong — they were raw analogue input millivolts, not the actual sensor readings. You need correlation against a known-good reference.
-
 **Tune thresholds against real failures.** All detection thresholds are currently provisional, calibrated against synthetic test data. The conscious decision is to run with deliberately conservative thresholds and tune them against real flagged events as they occur. There is no substitute for real failure data.
 
 ## What's next
 
-The engine-running capture unlocks everything: operating-point binning, the hot-idle fingerprint, bank-differential O2 sensors, and per-cylinder knock trim monitoring. After that it's just collecting sessions and tuning thresholds against real flagged events.
+The channel map and live logging path are on the car now — ~10 Hz sessions, Graphs, playback, DTCs. Next is hardening the Wi-Fi reconnect path when the phone briefly loses the ECU network, collecting real track sessions, and tuning detector thresholds against flagged events instead of synthetic data.
 
 Deliberately deferred: cloud sync, multi-vehicle support, live on-track alerting, and machine learning models. Each has to earn its place by proving the deterministic layer isn't enough.
 
