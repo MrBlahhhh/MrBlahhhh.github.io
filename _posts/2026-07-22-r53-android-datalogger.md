@@ -5,7 +5,7 @@ categories: car tech
 tags: [mini, r53, android, datalogger, flasher, obd, wideband, boost, tuning, ecu-flash]
 cover: /assets/images/r53-android-logger/main-screen.jpg
 lightbox: true
-excerpt: "R53 Logger - Flasher: live engine logging, wideband AFR, autolog WOT pulls, fault codes — and ECU backup / flash on facelift silver-cover boxes"
+excerpt: "R53 Logger - Flasher: live engine logging, wideband AFR, autolog WOT pulls, 3D AFR tuning graph, wideband calibration, fault codes — and ECU backup / flash on facelift silver-cover boxes"
 article_header:
   type: overlay
   theme: dark
@@ -47,10 +47,23 @@ Every pull saves as its own file. No scrubbing, no clipping, no forgetting. Driv
 
 ## A live graph that actually helps
 
-The built-in graph plots the last ~45 seconds of everything at once, each channel colour-coded against fixed, meaningful ranges — the RPM trace reads to 7,500 with a dashed redline marker at 7,400, drawn thick on top where your eye needs it. Toggles let me focus on what matters: spark and knock during a pull, boost and throttle when chasing a leak.
+The built-in graph plots the last 30 seconds of everything at once, each channel colour-coded against fixed, meaningful ranges — the RPM trace reads to 7,500 with a dashed redline marker at 7,400, drawn thick on top where your eye needs it. Toggles let me focus on what matters: spark and knock during a pull, boost and throttle when chasing a leak.
 
-![Live graph with headline values and channel toggles](/assets/images/r53-android-logger/live-graph.jpg){:.img-md}
-*The last 45 seconds of every channel, with the headline numbers up top.*
+![Live graph with headline values and channel toggles](/assets/images/r53-logger-play-store/live-graph-30s.jpg){:.img-md}
+*The last 30 seconds of every channel, with the headline numbers up top. Export CSV or open in datazap.me from the bottom.*
+
+## 3D AFR tuning graph — see where it runs lean
+
+Tuning fuel means knowing which cells the engine visited and how far off target each one ran. A live graph shows *when* something happened; the 3D surface shows *where* in the fuel map the problem lives.
+
+The tuning graph plots **actual AFR vs target** as a 3D surface across RPM and load. It ignores DFCO and tip-out leans so you're reading real combustion, not decel noise. Green means on-target; red/orange is lean. A target ramp (e.g. 12.8 at 2,000 rpm → 11.5 at 7,800 rpm, ±1.5) sits at the bottom for reference.
+
+Play back any log, scrub with two-finger pan, swap axes with the channel selector — and when you find the cell that's off, you know exactly where to add fuel.
+
+![3D AFR surface — visited cells, AFR error](/assets/images/r53-logger-play-store/3d-afr-graph-1.jpg){:.img-md}
+*Surface plot of AFR error. Red peaks are lean cells — that's exactly where the fuel table needs work.*
+
+The wideband calibration screen got its own upgrade too — set the ESP32 bridge hardware path (resistor divider or ADS1115) and controller curve (Innovate, AEM, or custom) from the phone, no serial terminal needed. Full details in the [Play Store writeup](/car/tech/2026/07/24/r53-logger-play-store.html).
 
 ## It reads fault codes too
 
@@ -62,4 +75,4 @@ Same K+DCAN cable, same app: read a full 512 KB ECU backup and (carefully) write
 
 ## Why build it myself
 
-Nothing out there did the whole job. The generic apps are too slow to tune with, the Mini-specific tools are desktop relics, and none of them merge wideband AFR with engine data, auto-record pulls, *and* flash a facelift box from the phone. Now **R53 Logger - Flasher** does both — and every drive is a chance to learn something new about what the old supercharged four is up to.
+Nothing out there did the whole job. The generic apps are too slow to tune with, the Mini-specific tools are desktop relics, and none of them merge wideband AFR with engine data, auto-record pulls, show a 3D AFR surface, *and* flash a facelift box from the phone. Now **R53 Logger - Flasher** does all of it — and every drive is a chance to learn something new about what the old supercharged four is up to.

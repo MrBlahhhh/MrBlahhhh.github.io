@@ -5,7 +5,7 @@ categories: car tech
 tags: [mini, r53, android, datalogger, flasher, play-store, boost, tuning, ecu-flash, immobilizer, for-sale]
 cover: /assets/images/r53-logger-play-store/main-screen.jpg
 lightbox: true
-excerpt: "R53 Logger - Flasher on Play closed testing — live logging plus ECU flash options (pedal, idle, fan, pops…). Join r53-logger-testers; facelift silver-cover write only; prepared ECUs $275."
+excerpt: "R53 Logger - Flasher on Play — 3D AFR tuning graph, wideband calibration, live logging + ECU flash (pedal, idle, fan, pops…). Join r53-logger-testers; facelift silver-cover write only; prepared ECUs $275."
 article_header:
   type: overlay
   theme: dark
@@ -33,7 +33,9 @@ Same idea as the [earlier Logger - Flasher writeup](/car/tech/2026/07/22/r53-and
 - **Live engine data** fast enough for a real pull — boost, throttle, temps, per-cylinder spark, knock, MAF, injector duty, short/long fuel trim
 - **Wideband AFR** over Bluetooth, merged into the same time-aligned CSV
 - **Autolog** — arms on WOT, keeps the pull through gear changes, saves each run as its own file
-- **Live graph** with channel toggles, fixed ranges, and a redline marker on the RPM trace
+- **Live graph** with channel toggles, fixed ranges, and a redline marker on the RPM trace — 30-second window, export straight to datazap.me
+- **3D AFR tuning graph** — 3D surface plot of actual AFR vs target across RPM and load, ignoring DFCO and tip-out leans. Play back any log, scrub with 2-finger pan, export CSV or open in Datazap
+- **Wideband calibration** — ESP32 bridge streams 0–5 V sensor output; pick resistor divider (easiest) or ADS1115 I2C (more accurate), then Innovate / AEM / custom curve. No laptop, no serial terminal — configured and saved from the phone
 - **Diagnostics** — read and clear fault codes with R53-specific notes (chassis modules stay on BMW hex titles — no fake SAE crosswalk)
 - **Channels & poll rate** — turn off blocks you don't care about so the ones you do watch update faster
 - **ECU backup / flash** — read a full 512 KB backup, send it to your tuner, and (carefully) write a tuner BIN back — **facelift silver-cover ECUs only**
@@ -43,8 +45,8 @@ There's a separate companion app for **module coding** (BC1, EMS, airbag, …) �
 
 Everything records to plain CSV and shares straight into datazap.me. Numbers were cross-checked against professional BMW diagnostic tools on a running engine.
 
-![Live graph with a pull in the middle](/assets/images/r53-logger-play-store/live-graph.jpg){:.img-md}
-*Live graph — idle, then a pull. Toggle the channels you care about; export CSV or open datazap from the bottom.*
+![Live graph — 30-second window, channel toggles, datazap export](/assets/images/r53-logger-play-store/live-graph-30s.jpg){:.img-md}
+*Live graph — 30s rolling window. Toggle the channels you care about; export CSV or open in datazap from the bottom.*
 
 ![Channels and poll-rate screen](/assets/images/r53-logger-play-store/channels.jpg){:.img-md}
 *Fast / Slow / Off per ECU block — drop what you don't tune with and the rest gets snappier.*
@@ -99,6 +101,45 @@ The summary line on the flash screen shows what's armed (`Pops off · Injectors 
 
 ![ECU flash after a completed backup](/assets/images/r53-logger-play-store/ecu-flash-done.jpg){:.img-md}
 *Backup complete — file saved on the phone, ready to send to your tuner or keep as your recovery copy.*
+
+## 3D AFR Tuning Graph
+
+The live graph shows what's happening *right now*, but tuning fuel means understanding what already happened — every cell the engine visited, and how far off target it ran. The 3D tuning graph plots **actual AFR minus target** as a surface across RPM and load, so a peak in the red means the car went lean right where you need the fuel.
+
+![3D AFR tuning graph — surface plot of AFR vs target](/assets/images/r53-logger-play-store/3d-afr-graph-1.jpg){:.img-md}
+*Surface plot: visited cells coloured by AFR error. Green is on-target; red/orange means lean — exactly where the fuel table needs work.*
+
+The graph ignores DFCO and tip-out leans so you're looking at real combustion events, not decel artifacts. A target line sits at the bottom — e.g. 12.8 at 2,000 rpm tapering to 11.5 at 7,800 rpm (±1.5) — and the surface shows every cell's deviation from that ramp.
+
+- **2-finger pan** to scrub through the log; **double-tap** resets the view
+- **Play / 4× speed** with elapsed time — drop in anywhere and watch the surface build
+- **Channel selector** — RPM, MAP, Boost, Throttle, MAF, Engine Temp, Intake Air Temp, Spark Adv (with per-cylinder), so you can swap axes or narrow to what matters
+- **Window / Reset / CSV / Datazap** along the bottom — same export pipeline as the live graph
+
+![Another angle of the 3D surface](/assets/images/r53-logger-play-store/3d-afr-graph-2.jpg){:.img-md}
+*Rotate and zoom — the surface makes it obvious which RPM/load cells consistently run off-target.*
+
+## Wideband calibration
+
+The wideband doesn't just show up — you have to tell the app which sensor is wired to the bridge and what voltage curve it follows. The calibration screen handles all of it in one place, no laptop required.
+
+![Wideband calibration — ESP32 bridge and controller curve](/assets/images/r53-logger-play-store/wideband-calibration.jpg){:.img-md}
+*Pick the hardware path (resistor divider or ADS1115), then the controller curve — Innovate, AEM, or custom endpoints.*
+
+**Hardware method** — how the ESP32 bridge reads the sensor's 0–5 V analog output:
+
+- **Resistor divider (ESP32 ADC) — easiest:** two equal resistors (e.g. 10k+10k) form a divider — wideband out → 10k → mid → 10k → GND, mid to GPIO34. Common ground with the controller. Works with nothing but the ESP32.
+- **ADS1115 I2C ADC — more accurate:** 16-bit external ADC over I²C for when you want the last tenth of an AFR point.
+
+**Controller curve** — translate volts to AFR:
+
+- **Innovate LC-1 / MTX-L** — 0.00 V → 7.35 AFR, 5.00 V → 22.39 AFR
+- **AEM (0.5–4.5 V → 8.5–18 AFR)** — the most common aftermarket curve
+- **Custom** — enter your own voltage/AFR endpoints for anything else
+
+The bridge firmware is open source (ESP32, streams sensor volts over BLE). Reflash it once, then calibrate and save from the phone — the app remembers your settings across sessions.
+
+The current build (172) defaults to the AEM curve. If you're running an Innovate or something custom, set it once and it sticks.
 
 ## Want to try it? (Play closed testing)
 
