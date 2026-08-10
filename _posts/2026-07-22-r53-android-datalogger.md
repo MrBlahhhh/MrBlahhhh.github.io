@@ -2,10 +2,10 @@
 title: "R53 Logger - Flasher — Android app for the Mini"
 date: 2026-07-22 00:00:00 -0400
 categories: car tech
-tags: [mini, r53, android, datalogger, flasher, obd, wideband, boost, tuning, ecu-flash]
+tags: [mini, r53, android, datalogger, flasher, obd, wideband, boost, tuning, ecu-flash, knock, esp32, shift-light]
 cover: /assets/images/r53-android-logger/main-screen.jpg
 lightbox: true
-excerpt: "R53 Logger - Flasher: live engine logging, wideband AFR, autolog WOT pulls, 3D AFR tuning graph, wideband calibration, fault codes — and ECU backup / flash on facelift silver-cover boxes"
+excerpt: "R53 Logger - Flasher: live engine logging, wideband AFR, autolog WOT pulls, 3D AFR tuning graph, per-cell fuel/trim/knock maps with knock events pinned to the map, wideband calibration, fault codes — and ECU backup / flash on facelift silver-cover boxes"
 article_header:
   type: overlay
   theme: dark
@@ -65,6 +65,36 @@ Play back any log, scrub with two-finger pan, swap axes with the channel selecto
 
 The wideband calibration screen got its own upgrade too — set the ESP32 bridge hardware path (resistor divider or ADS1115) and controller curve (Innovate, AEM, or custom) from the phone, no serial terminal needed. Full details in the [Play Store writeup](/car/tech/2026/07/24/r53-logger-play-store.html).
 
+## Fuel, trims, and spark — the whole map, colour-coded
+
+The 3D surface is great for spotting a lean *peak*; sometimes I just want to read the numbers cell by cell. So the same log plays back as flat, colour-coded maps across RPM (columns) and load (rows), and one tap swaps between them.
+
+**Fuel map.** Each cell shows how far AFR ran off target in open loop (`+` lean, `–` rich), and switches to closed-loop total trim (italic) where the ECU was correcting. Dim numbers are the tune's own value for reference, so a cell that's fighting the table jumps right out.
+
+![Fuel map heatmap — AFR error and trims per cell](/assets/images/r53-android-logger/fuel-map.jpg){:.img-xl}
+*Fuel map: green is on-target, blue is pulling fuel out, red is adding. The thin line traces the pull I've scrubbed to on the timeline.*
+
+**Trims map.** Total fuel trim (STFT + LTFT) per cell, full colour at ±20%. Blue means the ECU is yanking fuel back out, red means it's piling it in, green is happy. A whole low-rpm column glowing blue is the map telling me where the tune runs rich before I've touched a single table.
+
+![Trims map heatmap — STFT plus LTFT per cell](/assets/images/r53-android-logger/trims-map.jpg){:.img-xl}
+*Total trim per cell — the blue band down low is where it's commanding fuel back out.*
+
+## Knock, pinned to the cell that pinged
+
+This is the part I built the maps *around*. Every one of these views — 3D AFR, fuel, trims, and the spark map — drops a **yellow dot on the exact cell where a knock event fired**, and the dots stay put for the whole session. Instead of "I think it rattled somewhere in third," I can see the precise RPM-and-load region that pings, laid right over the fuel and timing there.
+
+![3D AFR surface with knock events marked](/assets/images/r53-android-logger/afr-3d-knock.jpg){:.img-lg}
+*The AFR surface with knock events dotted on. The lean cluster up top and the knock dots landing in the same neighbourhood is exactly the story you want to catch.*
+
+A running per-cylinder tally sits in the corner all session — `cyl4 ×67  cyl2 ×22  cyl3 ×14  cyl1 ×8` — so a single cylinder doing all the complaining (number 4, here) is obvious at a glance instead of buried in the log.
+
+The dedicated **spark map** shows timing where it matters: each visited cell reads degrees off the tune's own spark table, and cells where the ECU *pulled* timing go red. Dim numbers are the map target. Red cells stacked with yellow dots means knock and timing-pull are agreeing with each other — that's the corner of the map that needs the work.
+
+![Spark / knock map — timing pulled off the tune, per cell](/assets/images/r53-android-logger/knock-map.jpg){:.img-xl}
+*Spark map: red cells are where timing got pulled off the tune, yellow dots are knock events. They cluster in the same place for a reason.*
+
+The live readout backs it all up in real time — knock level and energy, retard in degrees, and the detector's noise-floor voltage, so I know it's calibrated to the engine's own mechanical racket instead of chasing ghosts.
+
 ## It reads fault codes too
 
 Since it's already talking to the car, it doubles as a diagnostics tool: reads stored and pending fault codes, translates them to plain English with R53-specific notes where it counts (lean code? check boost and vacuum leaks first; that P0116? classic R53 thermostat), and clears them with a tap once the fix is in. If I try to clear codes with the engine running, it tells me why the car refused in plain English instead of just failing.
@@ -73,6 +103,17 @@ Since it's already talking to the car, it doubles as a diagnostics tool: reads s
 
 Same K+DCAN cable, same app: read a full 512 KB ECU backup and (carefully) write a tune back — **facelift silver-cover ECUs only**. Before a quick write I can layer common changes onto the loaded BIN on the phone: **pops**, **injector size**, **redline**, **throttle pedal map**, idle, and fan kick-on. Details, screenshots, and how to get the app are in the [Play Store writeup for R53 Logger - Flasher](/car/tech/2026/07/24/r53-logger-play-store.html).
 
+## One ESP32, two jobs: wideband bridge meets shift light
+
+The wideband side has quietly grown up. A small **ESP32 bridge** reads the analog wideband, streams AFR to the app over Bluetooth LE, and the app merges it into the log time-aligned with everything else. When the bridge isn't around, the app just says so and keeps retrying in the background instead of hanging — you can see that state called out at the top of the main screen.
+
+![Main screen — build 236, wideband status and full live readout](/assets/images/r53-android-logger/main-screen-wideband.jpg){:.img-lg}
+*Live readout with the wideband merged in (AFR carries its own freshness age), and the K-Line / wideband connection state spelled out plainly up top.*
+
+Two small quality-of-life wins from the latest builds: the active controller curve gets stamped into each log's filename (`…_aem.csv` for the AEM curve), so I never have to guess which wideband a log came from, and CSV export is back to a plain, datazap-friendly format.
+
+Here's the part that isn't public *yet*: that same ESP32 is growing into the [CAN-bus shift light](/car/tech/2026/07/11/r53-esp32-shift-light.html) I built earlier — **one board reading the wideband and driving the WS2812B bar at once**, AFR to the phone and RPM to the LEDs off the same chip. It's on the bench and in testing right now; once I've shaken the bugs out I'll push the firmware and wiring to the existing repo: [esp32-shift-light-R53-mini](https://github.com/MrBlahhhh/esp32-shift-light-R53-mini).
+
 ## Why build it myself
 
-Nothing out there did the whole job. The generic apps are too slow to tune with, the Mini-specific tools are desktop relics, and none of them merge wideband AFR with engine data, auto-record pulls, show a 3D AFR surface, *and* flash a facelift box from the phone. Now **R53 Logger - Flasher** does all of it — and every drive is a chance to learn something new about what the old supercharged four is up to.
+Nothing out there did the whole job. The generic apps are too slow to tune with, the Mini-specific tools are desktop relics, and none of them merge wideband AFR with engine data, auto-record pulls, show a 3D AFR surface, pin every knock event to the exact map cell, *and* flash a facelift box from the phone. Now **R53 Logger - Flasher** does all of it — and every drive is a chance to learn something new about what the old supercharged four is up to.
