@@ -68,7 +68,7 @@ The CAN presets push this further: hand RPM, throttle and engine temp to the bri
 
 ## Closing the loop — how we actually tune with it
 
-This is the part that used to live on a laptop. The methodology is simple to state: **decide what AFR the engine should run, measure what it actually ran, and let the difference tell you what to change.** The app now does the measuring and the comparing.
+This is the part that used to live on a laptop. The [July post](/car/tech/2026/07/22/r53-android-datalogger.html) covered the analysis views themselves — the per-cell fuel, trim and spark maps, and knock events pinned to the exact cell that pinged. What's new is that they're wired into a complete workflow. The methodology is simple to state: **decide what AFR the engine should run, measure what it actually ran, and let the difference tell you what to change.**
 
 You set a target AFR curve — two points, linear between them:
 
@@ -82,7 +82,7 @@ Then you make a pull and look at what happened:
 
 <div>{%- include extensions/youtube.html id='NA8mJ3ce8yA' -%}</div>
 
-The AFR 3D view is where it comes together — measured AFR versus target, plotted as a surface over RPM and load. Green is on target. The hot ridge is where it ran lean of the curve; that's where the next fueling change goes:
+The AFR 3D surface is where it comes together — measured AFR versus target, over RPM and load, with the target curve you set driving the colouring. Green is on target. The hot ridge is where it ran lean of the curve; that's where the next fueling change goes:
 
 ![AFR error surface over RPM and load](/assets/images/r53-logger-august/afr-3d-surface.png){:.img-md}
 *Open loop shows AFR against the target curve; closed loop shows total trim. One glance says which cells need fuel — no exporting, no spreadsheet.*
