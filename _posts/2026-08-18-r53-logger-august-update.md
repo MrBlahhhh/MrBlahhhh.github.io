@@ -68,7 +68,7 @@ The CAN presets push this further: hand RPM, throttle and engine temp to the bri
 
 ## Closing the loop — how we actually tune with it
 
-This is the part that used to live on a laptop. The [July post](/car/tech/2026/07/22/r53-android-datalogger.html) covered the analysis views themselves — the per-cell fuel, trim and spark maps, and knock events pinned to the exact cell that pinged. What's new is that they're wired into a complete workflow. The methodology is simple to state: **decide what AFR the engine should run, measure what it actually ran, and let the difference tell you what to change.**
+This is the part that used to live on a laptop. The methodology is simple to state: **decide what AFR the engine should run, measure what it actually ran, and let the difference tell you what to change.** The app now does the measuring, the comparing, and the flashing — the full loop, phone in hand.
 
 You set a target AFR curve — two points, linear between them:
 
@@ -87,7 +87,29 @@ The AFR 3D surface is where it comes together — measured AFR versus target, ov
 ![AFR error surface over RPM and load](/assets/images/r53-logger-august/afr-3d-surface.png){:.img-md}
 *Open loop shows AFR against the target curve; closed loop shows total trim. One glance says which cells need fuel — no exporting, no spreadsheet.*
 
-The loop is: log the pull, read the surface, make **one** change, flash it from the same phone, and log the next pull. When the surface goes green and the knock trace stays quiet, you're done. The discipline of one-change-at-a-time is the entire method — the tooling just makes each iteration take minutes instead of an evening.
+The 3D surface is great for spotting a lean *peak*; sometimes you want to read the numbers cell by cell. The same log plays back as flat, colour-coded maps across RPM (columns) and load (rows), one tap apart.
+
+**Fuel map.** Each cell shows how far AFR ran off target in open loop (`+` lean, `–` rich), and switches to closed-loop total trim (italic) where the ECU was correcting. Dim numbers are the tune's own value for reference, so a cell that's fighting the table jumps right out.
+
+![Fuel map heatmap — AFR error and trims per cell](/assets/images/r53-android-logger/fuel-map.jpg){:.img-xl}
+*Fuel map: green is on-target, blue is pulling fuel out, red is adding. The thin line traces the pull scrubbed to on the timeline.*
+
+**Trims map.** Total fuel trim (STFT + LTFT) per cell, full colour at ±20%. Blue means the ECU is yanking fuel back out, red means it's piling it in, green is happy. A whole low-rpm column glowing blue is the map telling you where the tune runs rich before you've touched a single table.
+
+![Trims map heatmap — STFT plus LTFT per cell](/assets/images/r53-android-logger/trims-map.jpg){:.img-xl}
+*Total trim per cell — the blue band down low is where it's commanding fuel back out.*
+
+**Knock, pinned to the cell that pinged.** Every one of these views — 3D AFR, fuel, trims, and the spark map — drops a yellow dot on the exact cell where a knock event fired, and the dots stay put for the whole session. Instead of "I think it rattled somewhere in third," you see the precise RPM-and-load region that pings, laid right over the fuel and timing there. A running per-cylinder tally sits in the corner all session — `cyl4 ×67  cyl2 ×22  cyl3 ×14  cyl1 ×8` — so a single cylinder doing all the complaining is obvious at a glance.
+
+![3D AFR surface with knock events marked](/assets/images/r53-android-logger/afr-3d-knock.jpg){:.img-lg}
+*The AFR surface with knock events dotted on. The lean cluster up top and the knock dots landing in the same neighbourhood is exactly the story you want to catch.*
+
+The dedicated **spark map** shows timing where it matters: each visited cell reads degrees off the tune's own spark table, and cells where the ECU *pulled* timing go red. Red cells stacked with yellow dots means knock and timing-pull are agreeing with each other — that's the corner of the map that needs the work.
+
+![Spark / knock map — timing pulled off the tune, per cell](/assets/images/r53-android-logger/knock-map.jpg){:.img-xl}
+*Spark map: red cells are where timing got pulled off the tune, yellow dots are knock events. They cluster in the same place for a reason.*
+
+The loop is: log the pull, read the surface and the maps, make **one** change, flash it from the same phone, and log the next pull. When the surface goes green, the trims settle, and the knock dots stop landing, you're done. The discipline of one-change-at-a-time is the entire method — the tooling just makes each iteration take minutes instead of an evening.
 
 ## The Python side
 
