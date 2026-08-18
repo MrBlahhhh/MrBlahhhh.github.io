@@ -111,6 +111,29 @@ The dedicated **spark map** shows timing where it matters: each visited cell rea
 
 The loop is: log the pull, read the surface and the maps, make **one** change, flash it from the same phone, and log the next pull. When the surface goes green, the trims settle, and the knock dots stop landing, you're done. The discipline of one-change-at-a-time is the entire method — the tooling just makes each iteration take minutes instead of an evening.
 
+## The auto-tune — how a log becomes numbers you can type
+
+The **Fuel Rec** button turns the graph window you're looking at into a per-cell table of proposed changes. It's worth explaining exactly what it does, because the details are where most DIY fueling analysis goes wrong.
+
+**It never mixes its two signals.** The engine lives in two regimes, and each one has exactly one trustworthy measurement:
+
+- **Open loop — WOT.** The ECU switches its own correction off under full-load enrichment, so the wideband is the only authority. The app compares measured AFR against your target curve, cell by cell, and computes how far fuel delivery actually missed.
+- **Closed loop — idle and cruise.** Here the wideband is nearly useless for analysis, because the ECU has *already fixed the error* — measured AFR sits near stoich by construction, no matter how wrong the table is. But the ECU tells you exactly how hard it's working to fix it: **short-term plus long-term trim, stacked, is the answer.** A cell where total trim sits at −8% is a cell running 8% rich, full stop.
+
+Mixing these is the classic mistake. Read AFR at cruise and everything looks perfect over a table that's badly off; read trims at WOT and you're applying corrections the ECU froze back at cruise, under completely different conditions. The app attributes every cell to one regime and labels which — and since this ECU doesn't report loop status on any channel, the app infers it from the short-term trim's behaviour, holding a sample back until the evidence has settled.
+
+**The wideband is treated as a physical sensor, not a number.** Every AFR reading is shifted back in time by the transport delay you set — exhaust travel plus sensor response — so a reading lands on the cells that actually *fueled* it, not the cells the engine had moved on to. Readings that are stale or pinned at the sensor's rails get rejected before they can vote.
+
+**It refuses to overstate its confidence.** A cell needs multiple agreeing samples before it gets a recommendation at all — a blank cell is honest, a guess isn't. Every cell shows its own sample count so you judge the thin ones yourself. Wild corrections are clamped and *flagged* — beyond a certain size the right response is to distrust the data, not to rewrite the table. And neighbouring cells are smoothed against each other, weighted by how much data each one has.
+
+**The numbers are geared to the ECU's actual math.** This is the subtle one. On this ECU, a percent typed into the full-load fuel table is **not** a percent of fuel — the table participates in the injection calculation in a way that gears cell changes down substantially, and by a different amount depending on the cell's own value. Read "8% lean" off the wideband, type "+8%" into the cell, and you've under-corrected several-fold. The app knows the ECU's arithmetic and converts the measured fuel error into the *cell* change that actually delivers it, using your own tune's values — which is why it wants the car's BIN loaded, and tells you when it's approximating without one. Closed-loop corrections belong to a different table that does scale one-to-one, and the app routes them there instead.
+
+**Tap to add or pull fuel.** The simulator screen puts the proposed table under your fingers: tap a cell (or drag a block), then nudge with **−5 / −1 / +1 / +5** buttons. One tap can also seed the whole table from what the log recommends, and you adjust from there. Every edit is capped at ±15% per flash — deliberately. A bigger correction means the measurement no longer describes the engine you're about to create; big moves are two flashes with a log in between.
+
+And it doesn't just record your edits — it **redraws the log's AFR trace as if the table had carried them**, using the same gearing. Sections under closed-loop control are shaded "held," because adding fuel to a cell the ECU is trimming doesn't change the mixture — the trims just absorb it — and a simulation that pretended otherwise would be lying to you.
+
+**Getting it to your tuner.** When the table reads the way you want, one button exports the whole proposal as a CSV — every edited cell with its axes and its percentage — and hands it to the Android share sheet: email it, message it, drop it in Drive, whatever your tuner uses. The numbers are in table-percent, ready to be typed into a tuning tool as-is; the gearing is already done. And deliberately, **the auto-tune never writes the BIN itself** — proposed numbers stay proposed until a human puts them in a tune, and the app's flash path is a separate, checksummed affair. If you're your own tuner, that's the loop: export, apply, flash from the same phone, log the next pull.
+
 ## The Python side
 
 Not everything belongs on a phone. Off the car, a set of Python tools does the heavier analysis: chewing through a session's CSV and turning it into a short list of recommendations, auditing a bin's rev-limit configuration, and diffing two tunes to confirm a change did only what it claimed. The app's CSV format is the interchange — every log shares straight into the pipeline. The scripts encode a lot of hard-won specifics about this ECU, so they're staying private, but the shape of the workflow is the point: the phone measures, the scripts deliberate, the phone flashes.
