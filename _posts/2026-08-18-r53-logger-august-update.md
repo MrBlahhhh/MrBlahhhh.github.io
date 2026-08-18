@@ -26,7 +26,7 @@ When [R53 Logger - Flasher went to the Play Store](/car/tech/2026/07/24/r53-logg
 
 The moment a second R53 showed up, the flat file list stopped working. Whose backup is `ecu_backup_163021.bin`? Which car's log am I about to graph? Get that wrong with *logs* and you waste an evening. Get it wrong with a *flash* and you write one car's tune into another car's ECU.
 
-So everything is per-car now. The app identifies the car by the last seven of the VIN, and every bin, log, and fault read files under it. When a file arrives that the app can't attribute — say a backup read before the cluster answered — it asks, once, instead of guessing:
+So everything is per-car now. The app reads the VIN straight from the instrument cluster and identifies the car by its last seven, and every bin, log, and fault read files under it. When a file arrives that the app can't attribute — say a backup read before the cluster answered — it asks, once, instead of guessing:
 
 ![Which car is this?](/assets/images/r53-logger-august/garage-which-car.png){:.img-md}
 *Attribution is explicit. A file never silently lands on the wrong car.*
@@ -66,6 +66,15 @@ The CAN presets push this further: hand RPM, throttle and engine temp to the bri
 ![CAN presets](/assets/images/r53-logger-august/channels-can-presets.png){:.img-md}
 *Presets state their trade-offs instead of surprising you. And for the curious: raw block capture saves every ECU block verbatim, for working out where an unknown value lives.*
 
+There's also a **fast-link beta**: connect with the engine off and the app renegotiates the K-line from its ancient default up to 62,500 baud — several times the sample rate through the same cable. It survives everything a session throws at it now, including stopping and restarting logs.
+
+## Autolog — never miss a pull
+
+You don't fumble for a record button at wide-open throttle. Arm autolog and the app captures pulls by itself: the moment throttle crosses your arm threshold it starts a pull — and a **pre-trigger buffer** prepends the seconds *before*, so the launch is in the log even though the trigger came after it. A brief lift between gears doesn't end the recording; the pull carries through the shift as one run, then trails a few seconds after the final lift so you get the whole story. Each pull saves as its own file, with an optional continuous log alongside.
+
+![Autolog settings screen](/assets/images/r53-android-logger/autolog.jpg){:.img-sm}
+*Arm threshold, keep threshold, pre-trigger and trailing capture — set once, then just drive.*
+
 ## Closing the loop — how we actually tune with it
 
 This is the part that used to live on a laptop. The methodology is simple to state: **decide what AFR the engine should run, measure what it actually ran, and let the difference tell you what to change.** The app now does the measuring, the comparing, and the flashing — the full loop, phone in hand.
@@ -79,6 +88,8 @@ Then you make a pull and look at what happened:
 
 ![A pull in the live graph](/assets/images/r53-logger-august/live-graph-pull.png){:.img-md}
 *Third gear to 7,200. RPM, spark advance, knock, trims and AFR on one time axis — tap anywhere to read the exact values at that instant.*
+
+The graph is a full playback deck, not just a picture: replay a session at 1× to 4×, pinch to zoom time, drop marks, window in on one pull, and toggle any channel on or off. When you want the data elsewhere, it exports **CSV** for anything, or straight to **Datazap** for sharing a run online.
 
 <div>{%- include extensions/youtube.html id='NA8mJ3ce8yA' -%}</div>
 
@@ -138,10 +149,51 @@ And it doesn't just record your edits — it **redraws the log's AFR trace as if
 
 Not everything belongs on a phone. Off the car, a set of Python tools does the heavier analysis: chewing through a session's CSV and turning it into a short list of recommendations, auditing a bin's rev-limit configuration, and diffing two tunes to confirm a change did only what it claimed. The app's CSV format is the interchange — every log shares straight into the pipeline. The scripts encode a lot of hard-won specifics about this ECU, so they're staying private, but the shape of the workflow is the point: the phone measures, the scripts deliberate, the phone flashes.
 
+## ECU backup and flash — with an option deck
+
+The flash side is where this stops being "a logger app." On facelift silver-cover ECUs it reads a **full backup** first — always — then writes either a bin you supply, or one of the built-in **factory images: US Cooper S, JCW, and GP1**. Every write is checksummed, and the app verifies the tune before it touches the car — and can auto-fix what it finds.
+
+![ECU flash screen with factory images](/assets/images/r53-logger-play-store/flash-screen-factory.jpg){:.img-md}
+*Backup, factory software, or your own bin. The summary line always says exactly what's armed.*
+
+![Tune check before write](/assets/images/r53-logger-play-store/flash-tune-check.jpg){:.img-md}
+*The tune check runs before every write — nothing goes on the car unverified.*
+
+Then there's the option deck: tweaks applied **in memory** to whatever tune is loaded, before the write — no hex editor, no separate tool:
+
+- **Pops** — decel crackle on or off
+- **Injector scaling** — 330 (stock S), 380 (JCW/GP), 440, 550, 630 cc
+- **Redline** — raise the gear-dependent hard limit; the soft cut stays stock, like every real factory performance tune
+- **Throttle pedal remap** — stock, straight-linear, or a normalized Track curve with the same feel at every RPM
+- **Overboost** — raised throttle opening
+- **Idle RPM** — manual-transmission idle, cold and warm
+- **Cooling-fan kick-on temperature** — the fan comes on sooner, before heat soak
+- **Closed-loop trim learning range** — learn fuel trims further up the revs
+- **Cruise timing** for economy, and an experimental **lean cruise bias**
+
+![Flash options](/assets/images/r53-logger-play-store/flash-options.jpg){:.img-md}
+*The option deck. Each toggle states what it does and what it leaves alone.*
+
+![Pedal and fan presets](/assets/images/r53-logger-play-store/flash-options-pedal-fan.jpg){:.img-md}
+*Track pedal and fan presets — and options that can't verify their target in your bin refuse to apply rather than guess.*
+
+That last caption is the philosophy of the whole flash path: if a bin doesn't say which car it came off, the injector and redline options **decline** rather than write a wrong-variant value. The app would rather do nothing than do something silently wrong.
+
+![Flash complete](/assets/images/r53-logger-play-store/ecu-flash-done.jpg){:.img-md}
+*Backup taken, tune checked, written, verified.*
+
+## Diagnostics — codes, and adaptation resets
+
+The same cable reads **trouble codes** — the EMS2000 engine codes most people are after, plus other modules from a picker — and clears them where the clear command has been captured from a known-good tool. Where it hasn't, the app says so instead of sending a guess at your ECU. Codes can be shared out as a report, and every fault read files into the car's Garage history, so "has it thrown this before?" is a scroll, not a memory test.
+
+It also does **adaptation resets**: pick which engine adaptations to clear, reset them, and let the engine idle to relearn — the usual ritual after hardware changes, without the dealer tool.
+
 ## Flash safety, since we're flashing more
 
-Iterating faster means flashing more, and the flash path got hardened to match: nothing can take the cable away from a write in progress — logging, VIN reads, everything else waits. A backup read tells you which step failed and retries a security-locked ECU instead of giving up. The app checks the tune before every write and asks before a freshly flashed bin becomes the analysis baseline. And the beta 62.5k logging link now survives things that used to drop it, like stopping a log.
+Iterating faster means flashing more, and the flash path got hardened to match: nothing can take the cable away from a write in progress — logging, VIN reads, everything else waits. A backup read tells you which step failed and retries a security-locked ECU instead of giving up. And the app asks before a freshly flashed bin becomes the analysis baseline, so your graphs are always judged against the tune that's actually in the car.
+
+The small stuff is covered too: light and dark themes, °C or °F, and a force-quit that cleanly releases the USB cable to other apps.
 
 ## Get it
 
-**Mini R53 Logger - Flasher** is on the [Play Store](https://play.google.com/store/apps/details?id=com.geekopolis.r53logger). It logs on any R53; flashing supports the facelift silver-cover ECU. Same K+DCAN cable as before, and the ESP32 bridge is optional — everything above except the CAN channels and wideband works with just the cable.
+**Mini R53 Logger - Flasher** is on the [Play Store](https://play.google.com/store/apps/details?id=com.geekopolis.r53logger). Logging works on any R53; flashing supports the facelift silver-cover ECU. All you need is the same cheap K+DCAN cable every BMW owner has, and an Android phone or tablet — the ESP32 bridge is optional, for the CAN channels and wideband. Everything else above works with just the cable.
