@@ -141,9 +141,18 @@ Mixing these is the classic mistake. Read AFR at cruise and everything looks per
 
 **Tap to add or pull fuel.** The Fuel table simulator puts the proposed table under your fingers — and on a tablet in landscape it becomes a proper two-pane workbench, table on the left, AFR trace on the right. Tap a cell or drag a block, then move it with the **−5% / −1% / +1% / +5%** buttons; **Undo cell** and **Reset all** walk anything back. **Fill from log** seeds every cell from what the session recommends, and you adjust from there.
 
-Every edit is capped at ±15% per flash — deliberately. A bigger correction means the measurement no longer describes the engine you're about to create; big moves are repeated flashes with a log in between. The app is blunt about it, too — fill a rough table and it tells you straight: *"Filled 80 cells from 94 recommended. 70 were capped at the 15% per-flash limit (largest asked for +100%) — flash, log, and seed again."*
+![Fuel table simulator — selecting cells on a tablet](/assets/images/r53-logger-august/simulator-select.jpg){:.img-xl}
+*The workbench on a tablet: the real fuel table on the left, the log's AFR trace on the right. A drag has two cells selected, ready for the nudge buttons — the scrubber up top picks which slice of the session you're judging against.*
 
 And it doesn't just record your edits — it **redraws the log's AFR trace as if the table had carried them**: solid is what was recorded, dashed is the prediction, and the header keeps score for the window you've scrubbed to — how many samples land on edited cells, how many actually move, how many are held by the ECU, and the session's AFR before → after against your target. "Held" matters: adding fuel to a cell the ECU is trimming doesn't change the mixture — the trims just absorb it — and a simulation that pretended otherwise would be lying to you. Nothing here is written to the car.
+
+![Simulator predicting a pull with 27 cells edited](/assets/images/r53-logger-august/simulator-pull-predicted.jpg){:.img-xl}
+*A WOT pull with 27 cells edited: the white line traces the pull through the exact cells it visited, and the dashed AFR curve is what this table would have delivered. The header scores it — 64 samples land on edited cells, 61 move, AFR 12.72 → 12.64 against a 12.02 target.*
+
+Every edit is capped at ±15% per flash — deliberately. A bigger correction means the measurement no longer describes the engine you're about to create; big moves are repeated flashes with a log in between. The app is blunt about it, too:
+
+![Fill from log with the per-flash cap](/assets/images/r53-logger-august/simulator-fill-from-log.jpg){:.img-xl}
+*Fill from log seeded 80 cells across the whole 18-minute session — and says so plainly: 70 were capped at the 15% per-flash limit, the biggest wanted +100%. Flash, log, and seed again. Note "5057 held by the ECU": most of an 18-minute drive is closed-loop cruise, and the simulator refuses to pretend those samples would move.*
 
 **Getting it to your tuner.** When the table reads the way you want, one button exports the whole proposal as a CSV — every edited cell with its axes and its percentage — and hands it to the Android share sheet: email it, message it, drop it in Drive, whatever your tuner uses. The numbers are in table-percent, ready to be typed into a tuning tool as-is; the gearing is already done. And deliberately, **the auto-tune never writes the BIN itself** — proposed numbers stay proposed until a human puts them in a tune, and the app's flash path is a separate, checksummed affair. If you're your own tuner, that's the loop: export, apply, flash from the same phone, log the next pull.
 
