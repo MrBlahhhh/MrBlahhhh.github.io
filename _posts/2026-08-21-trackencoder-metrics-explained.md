@@ -17,6 +17,19 @@ article_header:
 
 <!--more-->
 
+<video controls loop muted playsinline preload="metadata"
+       poster="/assets/images/trackencoder-metrics/catching-a-slide-poster.jpg"
+       style="width:100%;height:auto;display:block;border-radius:8px;box-shadow:0 2px 14px rgba(0,0,0,.45);">
+  <source src="/assets/images/trackencoder-metrics/catching-a-slide.mp4" type="video/mp4">
+</video>
+
+*Seven seconds of catching the rear on a corner exit, and everything below
+working at once: the slip chips filling and the rears colouring up, red rings
+pinging over whichever tyre let go, the steering bar swinging amber as the rate
+climbs past 200 °/s, POWER OVERSTEER appearing, and the amber and red ribbons
+stacking along the top of the input trace behind it. The corner card on the
+right is scoring the corner while it happens.*
+
 ## What this thing is
 
 TrackEncoder is an Android app that takes a USB camera feed and my RaceCapture
@@ -33,10 +46,11 @@ This is the "what do these numbers mean" writeup.
 ## Two rules everything follows
 
 **Compare a measurement to a reference the car taught you, not to a number you
-assumed.** All four of my wheels free-roll about 4.7% slower than GPS — that's a
-rolling-circumference setting in the logger, not anything the car is doing. My
-throttle channel reads 12 at rest, not 0. So every threshold that matters is a
-percentage of something the app learns during the session.
+assumed.** All four of my wheels free-roll about 4.7% slower than GPS — rolling
+circumference versus whatever the logger is configured for, which moves every
+time slicks go on. My throttle channel reads 12 at rest, not 0. So every
+threshold that matters is a percentage of something the app learns during the
+session, and nothing here compares a wheel speed to GPS.
 
 **Never trust one sensor for something two can settle** — and know which sensor
 fails when:
@@ -154,22 +168,6 @@ and not just a colour change. Across 157 frames sampled over three laps I
 couldn't catch a single blue-filled tyre, which is what the calibration
 predicts: at an 8% threshold a clean lap produces **zero** front-lock events. If
 it were easy to screenshot, the threshold would be wrong.
-
-## Catching a slide, in real time
-
-Everything above, working at once:
-
-<video controls loop muted playsinline preload="metadata"
-       poster="/assets/images/trackencoder-metrics/catching-a-slide-poster.jpg"
-       style="width:100%;max-width:640px;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.4);">
-  <source src="/assets/images/trackencoder-metrics/catching-a-slide.mp4" type="video/mp4">
-</video>
-
-*Seven seconds of the aggressive lap. Watch the slip chips fill and the rears
-colour up, the red rings ping over whichever tyre let go, the steering bar swing
-and go amber as the rate climbs past 200 °/s, POWER OVERSTEER appear, and the
-amber and red ribbons stack up along the top of the input trace behind it. The
-corner card on the right is scoring the corner while it happens.*
 
 ## The radar pings
 
