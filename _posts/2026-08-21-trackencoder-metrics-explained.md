@@ -5,7 +5,7 @@ categories: car tech
 tags: [trackencoder, android, telemetry, racecapture, can, datalogger, vehicle-dynamics, track, cmp, vir]
 cover: /assets/images/trackencoder-metrics/hud-full.jpg
 lightbox: true
-excerpt: "My phone burns a live coaching overlay into track video. Here's every metric in plain language — the formulas, where the ideas came from, and the four bugs I only found because a caught slide makes the accelerometer go quiet."
+excerpt: "My phone burns a live coaching overlay into track video. Here's every metric in plain language — what it means, the formula behind it, and where the idea came from."
 article_header:
   type: overlay
   theme: dark
@@ -28,32 +28,28 @@ home.
 ![The full overlay](/assets/images/trackencoder-metrics/hud-full.jpg){:.img-lg}
 *The whole thing on the in-car Moto G, replaying my 1:43.60 at Carolina Motorsports Park. Everything sits on the A-pillar, the headliner and the dashboard — the parts of the frame the car body blocks anyway. Only about 20% of a bolted-in camera's frame ever carries road, and the overlay is laid out around that. Camera is unplugged here so the widgets are legible.*
 
-This post is the "what do these numbers mean" writeup, because I got asked and
-because writing it down forced me to check my own arithmetic. Which, it turns
-out, was wrong in four places.
+This is the "what do these numbers mean" writeup.
 
-## The two rules everything follows
+## Two rules everything follows
 
-Nearly every bug I've fixed in this thing was one of these being broken.
+**Compare a measurement to a reference the car taught you, not to a number you
+assumed.** All four of my wheels free-roll about 4.7% slower than GPS — that's a
+rolling-circumference setting in the logger, not anything the car is doing. My
+throttle channel reads 12 at rest, not 0. So every threshold that matters is a
+percentage of something the app learns during the session.
 
-**Never compare a measurement to a number you assumed.** Compare it to a
-reference the car taught you. My front wheels free-roll 5.9% slower than GPS. My
-rear axle runs 1.6% faster than the front on tyre size alone. My throttle
-channel reads 12 at rest, not 0. Every one of those broke a widget that had a
-constant hard-coded where a learned value belonged.
-
-**Never trust one sensor for something two can settle.** And know which sensor
-fails *when*:
+**Never trust one sensor for something two can settle** — and know which sensor
+fails when:
 
 | Sensor | Trust | Fails when |
 |---|---|---|
 | Wheel speeds | Highest — hardwired into the car | Below ~5 mph |
-| Steering angle | High — hardwired | Sign was inverted on my car |
+| Steering angle | High — hardwired | Zero can drift |
 | Accelerometers | Good for magnitude | **Goes quiet during a slide** |
 | GPS | Position only | Drops, drifts, lags under braking |
 | Yaw gyro | Lowest — glitchy on this unit | Anywhere |
 
-That third row cost me four separate bugs. It gets its own section.
+That third row shapes a lot of the design. It gets its own section.
 
 ## Coasting — the biggest time-loser
 
@@ -65,9 +61,6 @@ Secrets*.
 ![Coasting regions on the input trace](/assets/images/trackencoder-metrics/trace-coast.jpg){:.img-lg}
 *Two coasts in one eight-second window. Throttle green, brake red, steering white — the MoTeC/AiM colour convention. Each yellow region has a bright line at its start and end, and it's recorded per column, so it scrolls off with the data that produced it instead of vanishing the moment the car settles.*
 
-![The out-lap](/assets/images/trackencoder-metrics/coasting.jpg){:.img-lg}
-*Same frame in context — `COAST 6%` in the metrics block, on the 2:09 out-lap. On my 1:43 it reads 0%.*
-
 ```
 coasting  =  speed        > 20 mph
          AND throttle     < 90 % of learned travel
@@ -78,25 +71,25 @@ coasting  =  speed        > 20 mph
          sustained for    > 250 ms
 ```
 
-I started with "both pedals up" and it was far too narrow. A partial lift held
-down a straight is dead time too, so the throttle test is a *ceiling*, not a
-floor. The g test does the real work — a car earning its lap time is always
-using grip for something — and the throttle ceiling covers the one case g can't
-see: flat out at terminal velocity, where every g is zero and nothing is being
-wasted.
+Every term earns its place. The throttle test is a **ceiling**, not a floor — a
+partial lift held down a straight is dead time too. The g test does the real
+work, because a car earning its lap time is always using grip for something. The
+throttle ceiling covers the one case g can't see: flat out at terminal velocity,
+where every g is zero and nothing is being wasted. Steering and slip cover the
+case where g gets it *wrong* — see the slide section below. And the 250 ms is so
+a gear shift isn't counted as a coast.
 
-The 250 ms is so a gear shift isn't a coast.
+![The out-lap](/assets/images/trackencoder-metrics/coasting.jpg){:.img-lg}
+*Same frame in context — `COAST 6%` in the metrics block, on the 2:09 out-lap. On my 1:43 it reads under 1%.*
 
 Across three real laps it reads 9.3% on the out-lap, 0.50% on my fast lap, and
-0.41% on my most aggressive one. The old definition gave 6.1% against 2.0% and
-barely told them apart.
+0.41% on my most aggressive one.
 
 ## Wheel spin versus wheel lock
 
 A wheel turning faster than the car is spinning. A wheel turning slower is
-locking. Opposite problems, opposite fixes — and my original code took the
-absolute value and drew them identically, so **every braking zone looked like a
-burnout**.
+locking. Opposite problems, opposite fixes, so they're measured separately and
+drawn differently.
 
 ![Wheel spin with radar pings](/assets/images/trackencoder-metrics/slip-car.jpg){:.img-md}
 *25% rear slip on the throttle. Red rings expand and fade over the tyres that broke traction, the rears colour up the green-amber-red ramp, and the chip names it: POWER OVERSTEER, because the throttle was open when the wheels let go.*
@@ -122,6 +115,19 @@ My measured braking is p999 1.30 g across 213 minutes of logs, so 1.5 g is clear
 of anything real. The same figure taken from GPS speed differentiated at 40 ms
 claims 4.2 g, which is a good illustration of why the reference doesn't use GPS.
 
+### The two questions
+
+```
+spin (rear)  = (rear − frontAvg × axleRatio) / (frontAvg × axleRatio) × 100
+lock (any)   = (roadRef − wheel) / roadRef × 100
+```
+
+`axleRatio` is learned free-rolling each session — straight, off the brakes,
+under 30% throttle, under 0.35 g. On my car the two axles agree to **0.32%**,
+which is what same-size tyres front and rear should look like, but it's measured
+rather than assumed so a tyre change or a staggered setup can't move it
+silently.
+
 ### Which one it is
 
 The rule is mine, from the driver's seat, and it's just torque:
@@ -139,21 +145,31 @@ both feet off is tyres and road, not something I did, and colouring it is how an
 instrument teaches you to ignore it.
 
 ![Front lock-up ping](/assets/images/trackencoder-metrics/wheel-lock.jpg){:.img-lg}
-*57% brake, and both fronts have just pinged — the pale blue rings. Lock draws blue deliberately, outside the green-amber-red ramp entirely, because it's a different fault rather than a worse one. Note the rears reading **−1%** and **−3%**: negative, meaning slower than the front axle. Under the old code that sign was thrown away and drawn as 1% and 3% of wheelspin.*
+*57% brake, and both fronts have just pinged — the pale blue rings. Lock draws blue deliberately, outside the green-amber-red ramp entirely, because it's a different fault rather than a worse one. Note the rears reading **−1%** and **−3%**: negative, meaning slower than the front axle. The sign is the answer, so it's kept.*
 
-Worth noting what *isn't* in that frame: the tyres themselves are green. The
+Worth noting what *isn't* in that frame: the tyres themselves are green. That
 lock lasted a couple of hundred milliseconds and was over before the screenshot
 landed — the ring outlives it by 620 ms, which is the entire reason it's a ring
-and not a colour change. Across 157 frames sampled over three laps I couldn't
-catch a single blue-filled tyre, which is exactly what the calibration
-predicted: at an 8% threshold a clean lap produces **zero** front-lock events.
-That's the point. If it were easy to screenshot, the threshold would be wrong.
+and not just a colour change. Across 157 frames sampled over three laps I
+couldn't catch a single blue-filled tyre, which is what the calibration
+predicts: at an 8% threshold a clean lap produces **zero** front-lock events. If
+it were easy to screenshot, the threshold would be wrong.
 
-Before I fixed the reference, my front tyres were **permanently orange**. The
-lock test was `(gps − wheel) / gps > 5%`, comparing against an implied ratio of
-1.0, and my actual free-rolling front/GPS ratio is 0.9411. The fronts sat at
-5.9% "lock" at every speed, all lap. The widget was displaying its own
-calibration error and calling it a fault in the car.
+## Catching a slide, in real time
+
+Everything above, working at once:
+
+<video controls loop muted playsinline preload="metadata"
+       poster="/assets/images/trackencoder-metrics/catching-a-slide-poster.jpg"
+       style="width:100%;max-width:640px;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.4);">
+  <source src="/assets/images/trackencoder-metrics/catching-a-slide.mp4" type="video/mp4">
+</video>
+
+*Seven seconds of the aggressive lap. Watch the slip chips fill and the rears
+colour up, the red rings ping over whichever tyre let go, the steering bar swing
+and go amber as the rate climbs past 200 °/s, POWER OVERSTEER appear, and the
+amber and red ribbons stack up along the top of the input trace behind it. The
+corner card on the right is scoring the corner while it happens.*
 
 ## The radar pings
 
@@ -188,6 +204,9 @@ early, so a climbing temperature is visible well before it's a problem. Same
 reason a temperature needle sweeps across its face instead of sitting pinned
 until it redlines.
 
+Used for oil and water temperature, rear slip, steering rate and grip
+percentage. Lock-up sits deliberately outside it, in blue.
+
 ## The steering bar, coloured by how fast I turn
 
 How *far* I turned is the length of the bar. How *fast* I turned is its colour —
@@ -204,12 +223,15 @@ which is exactly the question the colour needs answered:
 ```
 
 Ordinary driving lives under about 150 °/s. Catching a slide runs 175–400. So
-full scale is **400 °/s**. My first guess had been 180, which sat at the *top of
-normal* — an ordinary quick turn-in would already have painted the bar red.
+full scale is **400 °/s**, and it's capped at 800 — one sample in the logs
+glitched to 1307 °/s, and an uncapped session maximum would leave every real
+save reading green for the rest of the day.
 
-It's capped at 800 too, because one sample in the logs glitched to 1307 °/s and
-an uncapped session maximum would have painted every real save green for the
-rest of the day.
+```
+rate    = |Δsteer| / Δt          at 25 Hz, smoothed 0.35
+scale   = clamp(session max, 400, 800)
+colour  = ramp(rate / scale)
+```
 
 ![Steering bar at two rates](/assets/images/trackencoder-metrics/steering-bar.jpg){:.img-lg}
 *Same widget, four minutes apart in the same session. 246 °/s catching the rear on a corner exit, and 9 °/s tracking down a straight. The rate is printed next to the angle — a colour with no number behind it is unreviewable.*
@@ -239,19 +261,22 @@ rear slip ≥ 5 % held 120 ms                       →  OVERSTEER
 otherwise                                         →  UNDERSTEER
 ```
 
-The verdict can be **upgraded mid-event**, which is the interesting case. The
-ribbon shades amber while the front pushes and turns red the moment the rear
-lets go, so a corner that understeers into a power-on slide reads as one event
-with a story. It's counted once, as the oversteer it ended as.
+The verdict can be **upgraded mid-event**, which is the interesting case. A
+ribbon along the top of the input trace shades amber while the front pushes and
+turns red the moment the rear lets go, so a corner that understeers into a
+power-on slide reads as one event with a story. It's counted once, as the
+oversteer it ended as. The ribbon is backfilled to where the evidence started —
+a saw only qualifies on its third reversal, so without that it would mark the
+recovery instead of the moment that caused it.
 
-## The bug that hid in four places at once
+## Why slip decides when the car is working, not lateral g
 
-Here's the one I'm glad I caught. **A car with the rear away isn't generating
-lateral force.** The accelerometer goes quiet at exactly the moment I'm working
-hardest.
+This is the physics behind that third row in the sensor table, and it shapes
+four different widgets.
 
-I spotted it as a false positive: the overlay flagged a power-oversteer catch
-through turn 2 as *coasting*. Pulling the data for that second and a half:
+**A car with the rear away isn't generating lateral force.** The accelerometer
+goes quiet at exactly the moment I'm working hardest. Here's a second and a half
+of a real opposite-lock catch:
 
 ```
  t      mph  steer   latG   |g|  rearSlip%
@@ -262,26 +287,19 @@ through turn 2 as *coasting*. Pulling the data for that second and a half:
 ```
 
 46 degrees of lock reversing to −53 in one second, 17% rear slip, 40% throttle —
-and combined g pinned at 0.24 the whole way through, just under my 0.25
-threshold. Every gate I'd written as `|latG| > threshold` was blind through it:
+and combined g pinned at 0.24 the whole way through. Any test written as
+`|latG| > threshold` is blind through that, so four of them take confirmed rear
+wheel slip as evidence in its own right instead:
 
-| Gate | Threshold | During the save |
+| Gate | Would be blind at | Also accepts |
 |---|---|---|
-| AT LIMIT load gate | 0.55 g | shut, all the way through |
-| `CORRECT` counter | 0.30 g | not counted |
-| Corner segmentation | 0.35 g | corner started *after* the save |
-| Coasting | < 0.25 g | called it **coasting** |
+| AT LIMIT load gate | 0.55 g | confirmed rear slip |
+| `CORRECT` counter | 0.30 g | confirmed rear slip |
+| Corner segmentation | 0.35 g | confirmed rear slip |
+| Coasting | < 0.25 g | vetoed by steering **or** slip |
 
-So the biggest event on the lap raised no chip, no ribbon and no count, and the
-corner report card was attributing that corner's phases to the wrong stretch of
-road. The load gate only opened once the car had gripped up again and the save
-was over.
-
-All four now take confirmed rear wheel slip as evidence in its own right. Slip
-is at its loudest exactly where lateral g goes quiet, which is what makes it the
-right corroborator rather than just another signal. Across three laps the AT
-LIMIT count went from 0/4/5 to 2/9/10 — about ten on a fourteen-corner lap,
-which is a flag that still means something.
+Slip is loudest exactly where lateral g goes quiet, which is what makes it the
+right corroborator rather than just another signal.
 
 ## The grip circle
 
@@ -321,7 +339,7 @@ that catches a slide is not a fault. They're reported, never flashed.
 Everything accumulates on a fixed 25 Hz tick driven by the device's own clock,
 not per frame. The GL loop runs at display refresh and would triple-count.
 
-## The balance bar, and why it ships dark
+## The balance bar
 
 This compares how fast the car *is* rotating against how fast the steering
 *asked* it to. The gap is understeer or oversteer.
@@ -334,16 +352,15 @@ error  = r_ref − yaw_measured                + understeer, − oversteer
 
 That's the bicycle model from Milliken, and it sits inside every production
 stability-control system. `K` is the understeer gradient, and with `K = 0` the
-model over-predicts yaw badly at speed — it reads permanent understeer, which is
-*confidently wrong* rather than absent. A driver who catches an instrument lying
-stops trusting the whole overlay, so the bar stays dark until the constants are
-measured.
+model over-predicts yaw badly at speed. The bar ships dark until the car
+constants are measured, because an instrument that's *confidently wrong* is
+worse than one that's absent.
 
-I did get an estimate out of the logs, though. Regressing steering against
-lateral g directly doesn't work, because a slow hairpin and a fast sweeper at the
-same g need completely different lock — the corner radius contaminates the
-slope. An FSAE skidpad removes that by holding radius constant, and radius is
-recoverable arithmetically, which lets every corner in every log contribute:
+I did get an estimate out of the logs. Regressing steering against lateral g
+directly doesn't work, because a slow hairpin and a fast sweeper at the same g
+need completely different lock — the corner radius contaminates the slope. An
+FSAE skidpad removes that by holding radius constant, and radius is recoverable
+arithmetically, which lets every corner in every log contribute:
 
 ```
 R      = v² / (a_y · g)
@@ -351,15 +368,13 @@ R      = v² / (a_y · g)
 δ_meas − δ_ack = K_us · a_y
 ```
 
-Over 28,736 steady-state samples: `K_us = 1.56 °/g` at the road wheel, intercept
-−0.55° — near enough zero that the fit is sound. Getting the signs right
-mattered; taking magnitudes folds the steering zero offset into a one-sided bias,
-which gave me a +3.35° intercept and an *inverted* slope on the first attempt.
+Over 28,736 steady-state samples — hands not moving, load not changing, speed
+held — `K_us` comes out at **1.56 °/g** at the road wheel with an intercept of
+−0.55°, near enough zero that the fit holds together.
 
-It's in the car file now, but still flagged unmeasured. It assumes steady state
-at every sample and scales with a wheelbase I haven't actually measured. Nice
-property though: it uses **no gyro at all**, only steering, speed and lateral g,
-so the gyro trouble on this unit doesn't touch it.
+It's in the car file, still flagged unmeasured, because it assumes steady state
+at every sample and scales with a wheelbase I haven't measured. Nice property
+though: it uses **no gyro at all**, only steering, speed and lateral g.
 
 ## Where the ideas came from
 
@@ -374,17 +389,6 @@ so the gyro trouble on this unit doesn't touch it.
   channel.
 - **Production ABS reference velocity** — the fastest-wheel road-speed estimate
   with a bounded deceleration.
-
-## What's still guessed
-
-Being honest about it: the sawing and saturation thresholds are still desk
-numbers, tuned against replayed logs rather than confirmed on track. The
-understeer gradient needs a proper steady-radius run. The gyro needs replacing
-before the yaw panel means anything.
-
-But the wheel-speed work, the coasting rule and the colour scales all came out
-of 213 minutes of real logs rather than my imagination, which is a better place
-than this started.
 
 Source is at [github.com/MrBlahhhh/TrackEncoder](https://github.com/MrBlahhhh/TrackEncoder)
 — `docs/metrics-explained.md` has the same content as a reference, and
