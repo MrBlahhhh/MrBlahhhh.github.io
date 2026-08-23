@@ -39,10 +39,11 @@ number the overlay computes arrived after the session, burned into video. The
 hasn't changed. What's new is that the recorder now has a voice, and the
 coaching behind that voice got a lot sharper.
 
-## "Turn five, brake at 150"
+## "Turn eight, brake at 475"
 
-I brake against the marker boards — the 300 / 200 / 100 boards that sit before
-every real corner. So the voice doesn't say *brake now*, which would make
+I brake against the marker boards — the 300 / 200 / 100 boards the track
+paints before its big braking zones. So the voice doesn't say *brake now*,
+which would make
 Bluetooth latency part of my braking zone. It says a **number**, well in
 advance — about seven seconds before the braking zone at whatever speed I'm
 carrying — and I execute it against the boards with my own eyes. Nothing about
@@ -56,9 +57,15 @@ moves deeper. Compressing a braking zone stops being something I reconstruct
 from data on Monday and becomes something the car asks me to do, corner by
 corner, while I'm there.
 
-Corners where my best trail-brakes past turn-in get no call — "brake at zero"
-isn't a thing you can do with a board, and the system would rather stay quiet
-than say something unusable.
+And the numbers are honest to the paint, not to the map. The distance a board
+counts to turned out to sit as much as 250 ft away from where the track map
+says the corner geometrically begins — so every call datum is measured by
+reading the actual boards off my own footage, frame by frame against the
+GPS log, and a corner only gets a call at all if its boards have been
+measured. Corners with no boards stay silent, and so do corners where my
+best trail-brakes past turn-in — "brake at zero" isn't a thing you can do
+with a board, and the system would rather say nothing than something
+unusable.
 
 ## Coaching that knows what a corner costs
 
