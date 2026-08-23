@@ -1,11 +1,11 @@
 ---
-title: "TrackEncoder — what every number on my overlay actually means"
+title: "TrackEncoder — my glovebox phone records my track video, coaches me live, calls my brake points, and draws the racing line"
 date: 2026-08-21 00:00:00 -0400
 categories: car tech
-tags: [trackencoder, android, telemetry, racecapture, can, datalogger, vehicle-dynamics, track, cmp, vir]
+tags: [trackencoder, android, telemetry, racecapture, can, datalogger, vehicle-dynamics, track, cmp, vir, telegram, tts, coaching, garmin-catalyst, llm]
 cover: /assets/images/trackencoder-metrics/hud-full.jpg
 lightbox: true
-excerpt: "My phone burns a live coaching overlay into track video. Here's every metric in plain language — what it means, the formula behind it, and where the idea came from."
+excerpt: "A $150 Android phone that burns a live coaching overlay into track video, runs from my pocket over Telegram, calls brake points into my helmet, paints my best lap on the road like a racing game, and hands the session to an LLM that names the three things worth the most time. One post, the whole system."
 article_header:
   type: overlay
   theme: dark
@@ -13,6 +13,10 @@ article_header:
   background_image:
     gradient: "linear-gradient(rgba(0, 0, 0, .45), rgba(0, 0, 0, .65))"
     src: /assets/images/trackencoder-metrics/hud-full.jpg
+redirect_from:
+  - /car/tech/2026/08/22/trackencoder-remote-control.html
+  - /car/tech/2026/08/23/trackencoder-voice-coach.html
+  - /car/tech/2026/08/23/trackencoder-ghost-car.html
 ---
 
 <!--more-->
@@ -31,13 +35,6 @@ steering bar swinging amber as the rate climbs, POWER OVERSTEER appearing, and
 the amber and red ribbons stacking along the top of the input trace behind it.
 The corner card on the right is scoring the corner while it happens.*
 
-*Two newer readouts are in this one too. **TRACK POS** across the top is where
-the car sits on the road, projected onto a surveyed centreline — 12.3 m wide at
-CMP — so it can say which third of the tarmac I'm using. **PRED** in the timing
-stack is where the lap finishes if the current delta holds, which is the number
-I actually want mid-corner: a tenth up means nothing until you know whether it
-lands on a 1:43 or a 1:46.*
-
 ## What this thing is
 
 TrackEncoder is an Android app that takes a USB camera feed and my RaceCapture
@@ -49,7 +46,62 @@ home.
 ![The full overlay](/assets/images/trackencoder-metrics/hud-full.jpg){:.img-lg}
 *The whole thing on the in-car Moto G, replaying my 1:43.60 at Carolina Motorsports Park. Everything sits on the A-pillar, the headliner and the dashboard — the parts of the frame the car body blocks anyway. Only about 20% of a bolted-in camera's frame ever carries road, and the overlay is laid out around that. Camera is unplugged here so the widgets are legible.*
 
-This is the "what do these numbers mean" writeup.
+This is the whole system in one post: [the overlay's
+metrics](#two-rules-everything-follows), [the ghost-car racing
+line](#the-ghost-car), [running it from my pocket](#run-it-from-the-paddock),
+[the voice in my helmet](#turn-eight-brake-at-475), and [the session handoff
+to a language model](#the-handoff-one-button-three-findings).
+
+## The ghost car
+
+<video controls playsinline preload="metadata"
+       poster="/assets/images/trackencoder-metrics/ghost-car-poster.jpg"
+       style="width:100%;height:auto;display:block;border-radius:8px;box-shadow:0 2px 14px rgba(0,0,0,.45);">
+  <source src="/assets/images/trackencoder-metrics/ghost-car.mp4" type="video/mp4">
+</video>
+
+*The left column of the overlay, magnified. Top: the whole circuit. Below it:
+the next 100 metres of road, drawn like a racing game draws it. The wide faded
+line is my best lap painted onto the tarmac — red where it braked, amber
+between brake release and apex, green on throttle. The crisp line is me, live,
+wearing the same colours from my own pedals. The dot is my car, lit by what my
+feet are doing right now; the hollow ring is the ghost — my best lap replayed
+on this lap's clock, ahead of me or behind me exactly like a video game. B and
+A mark its brake point and apex on the road.*
+
+Racing games solved coaching display decades ago: paint the ideal line on the
+road, colour it by what the pedals should be doing, and run a ghost car so
+"ahead" and "behind" are something you *see* rather than compute. That's now
+burned into every frame the recorder writes.
+
+Everything on the panel is measured, and each element has its own source of
+truth:
+
+- **The road** — centreline and width from my Garmin Catalyst's surveyed track
+  database, one point per metre. All my track maps now come from that survey,
+  which is also what cuts the sectors, so every distance in the system —
+  brake points, apexes, sector times — lives on the same ruler the Catalyst
+  uses.
+- **The painted line** — where my fastest lap of the session actually drove,
+  recorded metre by metre, coloured by *its* pedals: red from its measured
+  brake onset for its measured braking zone, amber to its apex, green
+  everywhere else. The colour boundary where the paint turns red **is** the
+  target brake point, on the road, arriving before the corner does.
+- **My line and my dot** — the same measurement, this lap, coloured by my own
+  pedals live. Where my red starts against where the paint turns red is the
+  brake-point comparison, readable at speed. About five seconds of history
+  stays on screen, so the braking story is still visible mid-corner.
+- **The ghost** — the reference lap replayed against this lap's clock through
+  the delta grid's metre-by-metre timing, which is the same machinery that
+  produces the live delta number.
+
+Two honesty rules keep it from lying. The road draws at twice its true width —
+at real scale the lines nearly fill the corridor — but every lateral offset
+is scaled by the same factor, so *where you are between the edges* stays true;
+a car at the real edge draws at the drawn edge. And the display physically
+cannot draw an impossible move: the drawn line's sideways rate is capped at
+what a tyre can actually do at your current speed, so GPS scatter shows up as
+nothing instead of as a 100-mph sideways hop.
 
 ## Two rules everything follows
 
@@ -382,6 +434,201 @@ It's in the car file, still flagged unmeasured, because it assumes steady state
 at every sample and scales with a wheelbase I haven't measured. Nice property
 though: it uses **no gyro at all**, only steering, speed and lateral g.
 
+## Run it from the paddock
+
+The phone lives in the glovebox and I never open it. A recorder bolted
+somewhere you can't reach needs to be operable from somewhere you can, and
+there are three ways in — none of them need the phone in your hand.
+
+**Telegram** is the one I actually use. One card in the chat, rewritten in
+place rather than repeated, with the state written into the buttons — so the
+answer is visible without pressing anything:
+
+- start / stop
+- camera and frame rate
+- storage, and how much has been written this session
+- phone temperature and whether Android has started throttling
+- last lap
+- the phone's address, as a button that opens the file browser
+
+It works from anywhere with signal, because the phone dials out rather than
+waiting to be reached. No port forwarding, no VPN, no knowing what address the
+car's hotspot handed out this morning.
+
+**A web page** on port 8080 does the same, plus the files. Any browser on the
+same network — a hotspot from either end is enough, and neither needs the
+internet. Buttons are sized for a gloved thumb, and it's plain links rather
+than JavaScript, so it can't get stuck in a state its own script invented.
+
+**The notification shade**, for when the phone is already in your hand.
+
+### Pull the session onto the laptop over wifi
+
+The card is a microSD in the phone's SIM tray — deliberate, more on why
+below — and nobody wants to pull a SIM tray in a paddock. So the video comes
+off over the network. The web page lists everything with sizes and dates; tick
+what you want and it hands back a command to paste:
+
+```
+curl.exe -C - -o "2026-08-22_1532_CMP_000.mp4" "http://192.168.1.88:8080/dl/2026-08-22_1532_CMP_000.mp4"
+```
+
+**Every download resumes.** The server answers `206 Partial Content`, so a
+transfer that dies at 80% picks up where it stopped, and re-running the whole
+block skips whatever already finished. That matters when the files are
+gigabytes, the link is paddock wifi, and the session can't be recorded a
+second time. A zip would be one click — and one dropped connection would cost
+the entire download, which is the wrong trade for footage you can't recreate.
+
+Clearing the card is on the same page, behind a confirmation, and only ever
+touches files this app wrote.
+
+### It handles the grid queue by itself
+
+The supply to the phone is switched. I cut power sitting in the grid queue
+waiting to go out, and that used to be the end of the session. Now it's an
+ordinary pause: power goes, the phone (alive on its own battery) closes the
+file properly and tells Telegram it did; power comes back, and it starts
+recording again on its own, retrying while the powered hub re-enumerates the
+camera. Measured on the bench, cut-to-recording-again was about **16 seconds**,
+most of which was me.
+
+This is also why the card sits in the phone's SIM tray rather than in a reader
+on the hub. The hub's supply is the one being switched, and everything
+downstream of it goes away for a few seconds when that happens. The camera can
+afford that — it comes back. Storage can't, because the file being written
+*is* the session. In the SIM tray it's on the phone's own power rail, where
+nothing the hub does can reach it.
+
+### It won't record something worthless
+
+Two things have to be true before it will start, checked wherever you start it
+from: **there has to be power** (the supply is switched; a session that starts
+on battery was never meant to be running), and **the camera has to be
+delivering frames** — not "is a camera plugged in", but has it produced a
+picture within the last two seconds. A status line saying *1920x1080, 30 fps*
+is reporting the last thing the camera **announced**, which stays true long
+after it stops sending anything. A `FORCE` button overrides both, off at every
+launch and deliberately not remembered — an override that survives between
+sessions is off on the morning you needed it.
+
+### Keeping it cool in a glovebox
+
+The screen is the thing that makes heat in a phone nobody is looking at. The
+moment a recording is confirmed running, the app blanks the panel and the
+phone drops to a genuine sleep, holding nothing but the CPU wake lock that
+keeps the encoder fed. The battery holds at **80%** rather than sitting full
+and hot all day, with the charger carrying the load. Temperature goes to
+Telegram — a note when it gets warm, a louder one if it gets genuinely hot,
+and an all-clear when it comes back down.
+
+## "Turn eight, brake at 475"
+
+The recorder has a voice now — brake calls into my helmet over Bluetooth.
+
+I brake against the marker boards — the 300 / 200 / 100 boards the track
+paints before its big braking zones. So the voice doesn't say *brake now*,
+which would make Bluetooth latency part of my braking zone. It says a
+**number**, well in advance — about seven seconds before the braking zone at
+whatever speed I'm carrying — and I execute it against the boards with my own
+eyes. Nothing about the call is timing-critical, which is what makes a $150
+Android phone able to do the Catalyst's headline trick.
+
+The number is my own best lap's brake point for that corner, measured back
+from turn-in and rounded to the 25 ft a board lets you place. That makes it a
+ratchet: brake later than the call, and the best updates, so next lap the call
+moves deeper. Compressing a braking zone stops being something I reconstruct
+from data on Monday and becomes something the car asks me to do, corner by
+corner, while I'm there.
+
+And the numbers are honest to the paint, not to the map. The distance a board
+counts to turned out to sit as much as 250 ft away from where the track map
+says the corner geometrically begins — so every call datum is measured by
+reading the actual boards off my own footage, frame by frame against the GPS
+log, and a corner only gets a call at all if its boards have been measured.
+Corners with no boards stay silent, and so do corners where my best
+trail-brakes past turn-in — "brake at zero" isn't a thing you can do with a
+board, and the system would rather say nothing than something unusable.
+
+### Coaching that knows what a corner costs
+
+Every coaching line the overlay writes ends with measured time:
+
+```
+T7: braked 42 ft earlier than your best [0.4 s]
+T2: 4.1 mph less at the apex than your best [0.2 s]
+```
+
+That `[0.4 s]` is not an estimate. The delta grid keeps a millisecond clock in
+every metre of the lap for both the current lap and the reference, so the time
+lost through a corner is the subtraction of four numbers. Findings are ranked
+by those measured seconds — *three things that would cut the most lap time*
+means top three by time, not by how often a flag happened to trip.
+
+It can also call **turn-in** — early or late, in feet, from where lateral load
+actually rises rather than where the map thinks the corner starts — and
+**track-out**, which only speaks on circuits where the GPS is honest enough to
+support it, and stays silent everywhere else rather than coaching noise.
+
+The voice can speak this advice too, compressed to something that survives
+being heard at 100 mph: *"brake later into turn seven."* One phrase every six
+seconds at most, and a brake call interrupts advice mid-sentence, because the
+corner that's arriving outranks the one that's gone. No model runs in the
+car — the voice is a deterministic rule reading numbers the overlay already
+computed, which means it works with the radio off, the cloud unreachable, and
+the phone in a glovebox at 140°F.
+
+### The session knows its own shape
+
+The coaching summary opens with a pace trend — lap time fitted across the
+session's real laps: `IMPROVING`, `STABLE`, or `DEGRADING`, with a predicted
+next lap. The moment a session turns DEGRADING, the phone sends a Telegram
+message to my pocket — because when the pace falls off half a second a lap,
+the answer is tyres, driver, or heat, and I'd like to be asking that question
+in the paddock rather than discovering it on Monday.
+
+Out-laps and cool-down laps are fenced statistically — a lap far slower than
+the session's own spread is recorded but never coached from — so "4 mph slower
+at every apex" on a cool-down lap doesn't bury the three findings that matter.
+
+And TrackEncoder carries a **kerb map** — built offline from my Catalyst's own
+logged laps, marking the stretches of each circuit where running wide
+genuinely changes the ride, tagged with the turn and the side of the road.
+Because the map knows where kerbs *aren't*, it will never invent kerb advice
+at a track that has none.
+
+## The handoff: one button, three findings
+
+What the car can't do is notice that five findings are one habit. "T7 apex
+speed", "T9 apex speed" and "T12 apex speed" are three lines in a list; *"you
+turn in early on every long-radius right, and it's worth eight tenths"* is a
+level of reasoning above what a threshold can reach.
+
+So there's a **COACH** button on the Telegram card. Press it and the phone
+builds a plain-text summary and sends it to a language model, which reads the
+whole session at once and answers with a ranked three — straight back into the
+same chat, next to the temperature warnings.
+
+What goes out is deliberately narrow — **no video, no GPS trace, no raw
+telemetry**. It's the analysis the app already wrote, a few tens of kilobytes
+of derived numbers:
+
+- lap times, the optimal-splice lap, and per-sector consistency
+- the session's pace trend (improving / stable / degrading, seconds per lap)
+- every corner's findings aggregated with counts, worst cases, and measured
+  seconds lost — for today and for every session on record at that track
+- which tyre-and-surface bucket the numbers came from, so the model can't
+  compare a wet lap to a dry one
+- the circuit's kerb map, so "use more kerb at T6" is only ever said where a
+  kerb exists
+
+The provider is one text file on the card — key, URL, model. The request
+speaks the standard OpenAI-compatible chat format, so OpenRouter, Nous,
+Together, a local llama.cpp on the bench, or Anthropic's API (its shape is
+auto-detected from the URL) all work by editing one line. Mine currently
+points at DeepSeek. The model is capped at a few hundred tokens of reply:
+three findings and their evidence, not an essay.
+
 ## Where the ideas came from
 
 - **Ross Bentley, *Speed Secrets*** — coasting as the primary time-loser;
@@ -395,6 +642,8 @@ though: it uses **no gyro at all**, only steering, speed and lateral g.
   channel.
 - **Production ABS reference velocity** — the fastest-wheel road-speed estimate
   with a bounded deceleration.
+- **Racing games** — the painted driving line coloured by pedal phase, and the
+  ghost car as the natural display for "ahead or behind".
 
 Source is at [github.com/MrBlahhhh/TrackEncoder](https://github.com/MrBlahhhh/TrackEncoder)
 — `docs/metrics-explained.md` has the same content as a reference, and
