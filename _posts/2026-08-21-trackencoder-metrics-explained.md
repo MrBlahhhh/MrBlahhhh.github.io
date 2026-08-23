@@ -23,12 +23,20 @@ article_header:
   <source src="/assets/images/trackencoder-metrics/catching-a-slide.mp4" type="video/mp4">
 </video>
 
-*Seven seconds of catching the rear on a corner exit, and everything below
-working at once: the slip chips filling and the rears colouring up, red rings
-pinging over whichever tyre let go, the steering bar swinging amber as the rate
-climbs past 200 °/s, POWER OVERSTEER appearing, and the amber and red ribbons
-stacking along the top of the input trace behind it. The corner card on the
-right is scoring the corner while it happens.*
+*Half a minute of the most aggressive lap in my logs, catching the rear three
+separate times — 33% rear slip four seconds in, 15% at fourteen, 26% at
+twenty-seven. Everything below is working at once: the slip chips filling and
+the rears colouring up, red rings pinging over whichever tyre let go, the
+steering bar swinging amber as the rate climbs, POWER OVERSTEER appearing, and
+the amber and red ribbons stacking along the top of the input trace behind it.
+The corner card on the right is scoring the corner while it happens.*
+
+*Two newer readouts are in this one too. **TRACK POS** across the top is where
+the car sits on the road, projected onto a surveyed centreline — 12.3 m wide at
+CMP — so it can say which third of the tarmac I'm using. **PRED** in the timing
+stack is where the lap finishes if the current delta holds, which is the number
+I actually want mid-corner: a tenth up means nothing until you know whether it
+lands on a 1:43 or a 1:46.*
 
 ## What this thing is
 
