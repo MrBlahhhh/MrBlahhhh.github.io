@@ -700,12 +700,15 @@ target to chase in the rain, and chasing it is worse than having no target —
 the driver either dismisses the overlay or trusts it and crashes.
 
 So there is a conditions field, cycling `200TW · DRY → SLICK · DRY → STREET ·
-DRY` and the same three wet. STREET is the street-compound drift rubber I run
-at some NCCAR and CMP events, which is a different grip world again. Changing
-it re-points the history at a different file rather than mixing buckets, and
-it can be changed from the Telegram card — the button's label *is* the
-current bucket — so it takes about two seconds when it starts raining at
-lunchtime and I am nowhere near the car.
+DRY`, the same three wet, and then `STREET MODE` before it wraps. STREET is
+the street-compound drift rubber I run at some NCCAR and CMP events, which is
+a different grip world again. STREET MODE is the road-driving switch from the
+section above, riding the same control because it answers the same question —
+*what am I doing today* — which means street mode is one button press from
+the Telegram card too, right when the car is being driven home. Changing any
+of it re-points the history at a different file rather than mixing buckets,
+and takes about two seconds when it starts raining at lunchtime and I am
+nowhere near the car.
 
 ## Where the ideas came from
 
