@@ -344,13 +344,27 @@ rear slip ≥ 5 % held 120 ms                       →  OVERSTEER
 otherwise                                         →  UNDERSTEER
 ```
 
+### The yellow and red bars along the top of the input trace
+
+That's where these events are drawn, and they're the one thing on the
+overlay with no label next to them, so: **amber is understeer, red is
+oversteer**, and a bar spans exactly the stretch of time the car was asking
+for more than it had. Same colour convention as the balance bar.
+
+![The AT LIMIT ribbon](/assets/images/trackencoder-metrics/limit-ribbon.jpg){:.img-lg}
+*Eight seconds of input trace — throttle green, brake red, steering white — with the limit ribbon above it. Red bars are oversteer, amber are understeer, and the gaps are the car doing what it was told. This is a busy stretch: two long red events either side of an amber one, which is what a car that rotates easily looks like when it's being pushed.*
+
 The verdict can be **upgraded mid-event**, which is the interesting case. A
-ribbon along the top of the input trace shades amber while the front pushes and
-turns red the moment the rear lets go, so a corner that understeers into a
-power-on slide reads as one event with a story. It's counted once, as the
-oversteer it ended as. The ribbon is backfilled to where the evidence started —
-a saw only qualifies on its third reversal, so without that it would mark the
-recovery instead of the moment that caused it.
+bar shades amber while the front pushes and turns red the moment the rear
+lets go, so a corner that understeers into a power-on slide reads as one bar
+with a story rather than two separate events. It's counted once, as the
+oversteer it ended as. Each bar is also backfilled to where the evidence
+started — a saw only qualifies on its third reversal, so without that it
+would mark the recovery instead of the moment that caused it.
+
+It's a thin ribbon rather than a full-height wash because the coasting
+regions are already a full-height yellow wash on that same panel, and two
+overlapping washes read as one confused stain.
 
 ## Why slip decides when the car is working, not lateral g
 
