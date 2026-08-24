@@ -446,6 +446,13 @@ there are three ways in — none of them need the phone in your hand.
 place rather than repeated, with the state written into the buttons — so the
 answer is visible without pressing anything:
 
+![The Telegram card](/assets/images/trackencoder-metrics/telegram-card.png){:.img-md}
+*The card mid-session: recording at 1080p30, card space, phone temperature,
+last lap, and the file browser's address as a tappable link. The tyre row
+shows the conditions bucket the coaching is comparing against — press it to
+cycle tyre and surface without opening the glovebox — and COACH is the
+button that sends the session's numbers to the language model.*
+
 - start / stop
 - camera and frame rate
 - storage, and how much has been written this session
