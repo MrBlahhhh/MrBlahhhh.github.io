@@ -5,7 +5,7 @@ categories: car tech
 tags: [trackencoder, android, telemetry, racecapture, can, datalogger, vehicle-dynamics, track, cmp, vir, telegram, tts, coaching, garmin-catalyst, llm]
 cover: /assets/images/trackencoder-metrics/hud-full.jpg
 lightbox: true
-excerpt: "A $150 Android phone that burns a live coaching overlay into track video, runs from my pocket over Telegram, calls brake points into my helmet, paints my best lap on the road like a racing game, and hands the session to an LLM that names the three things worth the most time. One post, the whole system."
+excerpt: "A $150 Android phone that burns a live coaching overlay into track video — with sound now — runs from my pocket over Telegram, calls brake points into my helmet, paints my best lap on the road like a racing game, and hands the session to an LLM that names the three things worth the most time. One post, the whole system."
 article_header:
   type: overlay
   theme: dark
@@ -39,11 +39,11 @@ chasing it.*
 
 ## What this thing is
 
-TrackEncoder is an Android app that takes a USB camera feed and my RaceCapture
-MK4's CAN telemetry over Bluetooth, burns a coaching overlay into the video
-live, and writes it to an SD card in the car. No post-processing, no syncing
-data to footage afterwards — the analysis is already in the frame when I get
-home.
+TrackEncoder is an Android app that takes a USB camera feed and a USB
+microphone, pulls my RaceCapture MK4's CAN telemetry over Bluetooth, burns a
+coaching overlay into the video live, and writes the lot to an SD card in the
+car. No post-processing, no syncing data to footage afterwards — the analysis
+is already in the frame when I get home.
 
 ![The full overlay](/assets/images/trackencoder-metrics/hud-full.jpg){:.img-lg}
 *The whole thing on the in-car Moto G, mid-slide on the aggressive replay lap at Carolina Motorsports Park. Everything sits on the A-pillar, the headliner and the dashboard — the parts of the frame the car body blocks anyway. Only about 20% of a bolted-in camera's frame ever carries road, and the overlay is laid out around that. The ghost-car panel is top-left, under the circuit map.*
@@ -51,8 +51,9 @@ home.
 This is the whole system in one post: [the overlay's
 metrics](#two-rules-everything-follows), [the ghost-car racing
 line](#the-ghost-car), [running it from my pocket](#run-it-from-the-paddock),
-[the voice in my helmet](#turn-eight-brake-at-475), and [the session handoff
-to a language model](#the-handoff-one-button-three-findings).
+[the voice in my helmet](#turn-eight-brake-at-475), [the session handoff to a
+language model](#the-handoff-one-button-three-findings), and [a street mode
+that puts most of it away](#street-mode).
 
 ## The ghost car
 
@@ -104,6 +105,28 @@ a car at the real edge draws at the drawn edge. And the display physically
 cannot draw an impossible move: the drawn line's sideways rate is capped at
 what a tyre can actually do at your current speed, so GPS scatter shows up as
 nothing instead of as a 100-mph sideways hop.
+
+## It has sound now
+
+The recordings were silent for their whole life until this week. A USB
+microphone on the same hub as the camera now goes into the file as a second
+track — one AAC track beside the video, muxed as it records, closed with the
+same segment. Nothing to sync afterwards, same as everything else here.
+
+It matters more than "nice to have". Engine note tells you what gear I was
+in without reading the tacho, the tyres tell you when they let go a beat
+before the slip car does, and a session with a passenger instructor is
+worth nothing on mute. It survives the rest of the machinery too: segment
+rotation carries the audio track across the cut, and a power cut closes both
+tracks rather than leaving an audio track dangling.
+
+Two things it does deliberately. It picks its input rather than accepting
+Android's default — because the video capture dongle *also* registers as a
+USB audio device, with a line-in wired to nothing, and Android happily made
+that the default input. My first "working" recording was thirty-four seconds
+of perfect digital silence recorded from the camera. And if there's no
+microphone, no permission, or no audio format, the recording carries on
+video-only: a missing audio track must never cost video.
 
 ## Two rules everything follows
 
@@ -637,6 +660,38 @@ Together, a local llama.cpp on the bench, or Anthropic's API (its shape is
 auto-detected from the URL) all work by editing one line. Mine currently
 points at DeepSeek. The model is capped at a few hundred tokens of reply:
 three findings and their evidence, not an essay.
+
+## Street mode
+
+Everything above is an engineering screen for a circuit. On the road it is
+absurd — and worse, actively wrong: a lap timer and a corner-by-corner
+scoreboard on a public road are scoring me against a track I am not on,
+which is not a thing I want burned into video or in my eyeline.
+
+So one empty file on the card, `config/street.txt`, puts the lap-shaped half
+away: the ghost car, the timing stack, the consistency figures, the track
+position bar, the lap metrics, and the whole coaching chain including the
+brake calls in my helmet. What stays is everything that is about the *car*
+rather than the lap — wheel slip and the radar pings, the grip circle, the
+balance bar, the steering rate, the dials, the input traces. Those mean
+exactly as much on a back road as they do at CMP.
+
+Delete the file and the next launch is a track day again.
+
+## Conditions, and why the coaching never mixes them
+
+One more thing that sits underneath all the coaching: every corner best is
+filed against the tyre and surface that set it. A dry slick lap is not a
+target to chase in the rain, and chasing it is worse than having no target —
+the driver either dismisses the overlay or trusts it and crashes.
+
+So there is a conditions field, cycling `200TW · DRY → SLICK · DRY → STREET ·
+DRY` and the same three wet. STREET is the street-compound drift rubber I run
+at some NCCAR and CMP events, which is a different grip world again. Changing
+it re-points the history at a different file rather than mixing buckets, and
+it can be changed from the Telegram card — the button's label *is* the
+current bucket — so it takes about two seconds when it starts raining at
+lunchtime and I am nowhere near the car.
 
 ## Where the ideas came from
 
