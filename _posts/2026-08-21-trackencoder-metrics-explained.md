@@ -5,7 +5,7 @@ categories: car tech
 tags: [trackencoder, android, telemetry, racecapture, can, datalogger, vehicle-dynamics, track, cmp, vir, telegram, tts, coaching, garmin-catalyst, llm]
 cover: /assets/images/trackencoder-metrics/hud-full.jpg
 lightbox: true
-excerpt: "A $150 Android phone that burns a live coaching overlay into track video — with sound now — runs from my pocket over Telegram, calls brake points into my helmet, paints my best lap on the road like a racing game, and hands the session to an LLM that names the three things worth the most time. One post, the whole system."
+excerpt: "A $150 Android phone that burns a live coaching overlay into track video — with sound now — runs from my pocket over Telegram, calls brake points into my helmet by the circuit's own turn numbers, paints my best lap on the road like a racing game, and hands the session to an LLM that names the three things worth the most time. One post, the whole system."
 article_header:
   type: overlay
   theme: dark
@@ -146,9 +146,20 @@ fails when:
 | Steering angle | High — hardwired | Zero can drift |
 | Accelerometers | Good for magnitude | **Goes quiet during a slide** |
 | GPS | Position only | Drops, drifts, lags under braking |
-| Yaw gyro | Lowest — glitchy on this unit | Anywhere |
+| Yaw gyro | Lowest — unproven on this car | until it is, assume anywhere |
 
-That third row shapes a lot of the design. It gets its own section.
+Two of those rows shape a lot of the design.
+
+The **gyro** row is why nothing on this overlay depends on a gyro if it can
+help it. Every widget that needs to know the car is rotating gets there from
+wheel speeds, steering and lateral g instead — hardwired channels, all of
+them. The one instrument that genuinely needs a rotation measurement, the
+balance bar, ships dark until the gyro proves itself on the car. That is a
+design rule, not a workaround: a sensor stays untrusted until a session says
+otherwise, and the widget that depends on it stays off in the meantime.
+
+The **accelerometer** row gets its own section below, because it fails in a way
+that is far more interesting.
 
 ## Coasting — the biggest time-loser
 
@@ -246,7 +257,7 @@ instrument teaches you to ignore it.
 ![Front lock-up ping](/assets/images/trackencoder-metrics/wheel-lock.jpg){:.img-lg}
 *57% brake, and both fronts have just pinged — the pale blue rings. Lock draws blue deliberately, outside the green-amber-red ramp entirely, because it's a different fault rather than a worse one. Note the rears reading **−1%** and **−3%**: negative, meaning slower than the front axle. The sign is the answer, so it's kept.*
 
-Worth noting what *isn't* in that frame: the tyres themselves are green. That
+Look at what *isn't* in that frame: the tyres themselves are green. That
 lock lasted a couple of hundred milliseconds and was over before the screenshot
 landed — the ring outlives it by 620 ms, which is the entire reason it's a ring
 and not just a colour change. Across 157 frames sampled over three laps I
@@ -311,7 +322,7 @@ glitched to 1307 °/s, and an uncapped session maximum would leave every real
 save reading green for the rest of the day.
 
 ```
-rate    = |Δsteer| / Δt          at 25 Hz, smoothed 0.35
+rate    = |Δsteer| / Δt          per sample, on the clock, smoothed 0.35
 scale   = clamp(session max, 400, 800)
 colour  = ramp(rate / scale)
 ```
@@ -433,8 +444,15 @@ neighbour rather than drawing a confident ring around twelve points.
 `STEER °/s` and `CORRECT` are review statistics, not live scolds — a correction
 that catches a slide is not a fault. They're reported, never flashed.
 
-Everything accumulates on a fixed 25 Hz tick driven by the device's own clock,
-not per frame. The GL loop runs at display refresh and would triple-count.
+Everything accumulates against the device's own clock rather than per frame —
+the GL loop runs at display refresh and would triple-count every one of these.
+
+And it accumulates against the **measured** telemetry rate, not the configured
+one. The channels are set up for 25 Hz; what actually arrives is nearer 15,
+and at times 10. So every duration on this panel comes off a clock, never off
+a count of samples. A sample count that gets read as a duration is the single
+most common way a metric like `COAST` ends up quietly reporting a percentage
+of the wrong thing.
 
 ## The balance bar
 
@@ -449,9 +467,18 @@ error  = r_ref − yaw_measured                + understeer, − oversteer
 
 That's the bicycle model from Milliken, and it sits inside every production
 stability-control system. `K` is the understeer gradient, and with `K = 0` the
-model over-predicts yaw badly at speed. The bar ships dark until the car
-constants are measured, because an instrument that's *confidently wrong* is
-worse than one that's absent.
+model over-predicts yaw badly at speed.
+
+The bar ships **dark**, and it needs two things before it lights. `K` has to be
+measured rather than estimated. And `yaw_measured` has to come from a gyro this
+car has actually proven — it is the one instrument here that cannot be built
+out of wheel speeds and steering, so it is the one place the least-trusted
+channel in the table is unavoidable. Until both land, the bar reads
+`NEEDS CAR CONSTANTS` on its face and stays unlit.
+
+That is the rule the whole overlay runs on: an instrument that is *confidently
+wrong* is worse than one that is absent. A driver who catches a gauge lying
+once stops trusting every gauge next to it.
 
 I did get an estimate out of the logs. Regressing steering against lateral g
 directly doesn't work, because a slow hairpin and a fast sweeper at the same g
@@ -516,7 +543,7 @@ off over the network. The web page lists everything with sizes and dates; tick
 what you want and it hands back a command to paste:
 
 ```
-curl.exe -C - -o "2026-08-22_1532_CMP_000.mp4" "http://192.168.1.88:8080/dl/2026-08-22_1532_CMP_000.mp4"
+curl.exe -C - -o "2026-08-22_1532_CMP_000.mp4" "http://192.168.1.245:8080/dl/2026-08-22_1532_CMP_000.mp4"
 ```
 
 **Every download resumes.** The server answers `206 Partial Content`, so a
@@ -586,6 +613,48 @@ ratchet: brake later than the call, and the best updates, so next lap the call
 moves deeper. Compressing a braking zone stops being something I reconstruct
 from data on Monday and becomes something the car asks me to do, corner by
 corner, while I'm there.
+
+### And turn eight is really turn eight
+
+A number burned into video that disagrees with the number on the circuit's own
+map is worse than no number at all. You cannot use it to talk to an instructor,
+and every stored best behind it is filed under the wrong corner.
+
+So the turn numbers are not derived from the road. They come from the
+circuit's published survey, and the geometry only decides where each one
+begins and ends.
+
+That split is forced by the tarmac. **Turn numbering is not recoverable from
+the shape of the road.** Measured at CMP, fourteen published turns show at
+most *twelve* curvature peaks at any threshold — some official turns are
+gentle enough that the road barely marks them, and consecutive turns the same
+way merge into one bend. VIR has sub-lettered turns, 5a and 5b, that no
+geometry can invent. And the circuit's own map labels a T18 at VIR that nobody
+counts, because it is on the front straight — the sort of thing no data source
+records and only a driver knows.
+
+What pins the numbers down is **corner angle**. Angle is a property of the
+road, so it survives whatever line is driven; radius does not, because a
+racing line straightens a corner out — CMP's T1 is surveyed at 80 ft radius
+and drives at 50 m. Matching the sequence of surveyed angles fixes each
+official number to a place. CMP's survey totals 1026° against the 1062° our
+map measures, a 3.5% agreement, and where several official turns share one
+bend they split in proportion to their surveyed angles. Checked against
+straights that took no part in the placement: front straight 504 m surveyed
+against 535 m measured, back straight 400 against 480.
+
+On the car that reads as T1 through T14 at CMP, fifty-seven corner events,
+none out of sequence. VIR is deliberately still on geometry numbering until
+its angle table exists — the twenty-three curvature candidates matching its
+twenty-three labels is a coincidence, one of them a 1352 m radius that is
+actually the back straight. Guessing there would put wrong numbers on video,
+so it does not guess.
+
+The corner *identity* underneath is permanent and append-only, separate from
+the displayed number. A corner discovered later can change what it is called
+without changing which stored best belongs to it — otherwise a turn quietly
+inherits another turn's brake point, and the coaching starts comparing the
+hairpin against the sweeper.
 
 And the numbers are honest to the paint, not to the map. The distance a board
 counts to turned out to sit as much as 250 ft away from where the track map
