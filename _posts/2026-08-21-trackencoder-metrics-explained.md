@@ -48,7 +48,7 @@ car. No post-processing, no syncing data to footage afterwards — the analysis
 is already in the frame when I get home.
 
 ![The full overlay](/assets/images/trackencoder-metrics/hud-full.jpg){:.img-lg}
-*The whole thing on the in-car Moto G, mid-slide on the aggressive lap at Carolina Motorsports Park — 34% slip at the left rear, 13% at the right, and the car caught on the way out of turn 10. Everything sits on the A-pillar, the headliner and the dashboard — the parts of the frame the car body blocks anyway. Only about 20% of a bolted-in camera's frame ever carries road, and the overlay is laid out around that. The ghost-car panel is top-left, under the circuit map.*
+*The whole thing on the in-car Moto G, mid-slide on the aggressive lap at Carolina Motorsports Park — 31% slip at the left rear, 15% at the right, and the car caught on the way out of turn 10. Everything sits on the A-pillar, the headliner and the dashboard — the parts of the frame the car body blocks anyway. Only about 20% of a bolted-in camera's frame ever carries road, and the overlay is laid out around that. The ghost-car panel is top-left, under the circuit map.*
 
 This is the whole system in one post: [the overlay's
 metrics](#two-rules-everything-follows), [the ghost-car racing
@@ -71,8 +71,15 @@ line is my best lap painted onto the tarmac — red where it braked, amber
 between brake release and apex, green on throttle. The crisp line is me, live,
 wearing the same colours from my own pedals. The dot is my car, lit by what my
 feet are doing right now; the hollow ring is the ghost — my best lap replayed
-on this lap's clock, ahead of me or behind me exactly like a video game. B and
-A mark its brake point and apex on the road.*
+on this lap's clock, ahead of me or behind me exactly like a video game. B
+marks its brake point.
+
+The two arrows are apexes, and they are the reason this panel earns its space.
+The white one, pointing out, is where my best lap apexed. The magenta one,
+pointing in, is where I apexed the same corner last time round. They meet nose
+to nose when I get it right and pull apart along the road when I do not — so
+**early or late is a gap I can see on the approach**, while there is still
+something to be done about it, instead of a number I read at home.*
 
 Racing games solved coaching display decades ago: paint the ideal line on the
 road, colour it by what the pedals should be doing, and run a ghost car so
