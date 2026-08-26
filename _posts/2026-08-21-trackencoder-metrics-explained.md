@@ -27,15 +27,17 @@ redirect_from:
   <source src="/assets/images/trackencoder-metrics/hero-aggressive-lap.mp4" type="video/mp4">
 </video>
 
-*The most aggressive lap in my logs, replayed through today's overlay — every
-system in this post working at once. The rear steps out repeatedly through
-this stretch: POWER OVERSTEER lights, red rings ping over the rear tyres, the
+*Two laps, back to back, exactly as I drove them: my most aggressive lap at
+Carolina Motorsports Park and then the lap that followed it. Every system in
+this post is working at once. Through the aggressive lap the rear steps out
+repeatedly — POWER OVERSTEER lights, red rings ping over the rear tyres, the
 amber and red ribbons stack along the top of the input trace, and the corner
-card scores each corner as it happens — ENTRY in the red, APEX EARLY, the
-delta ticking against my 1:43.60. Top-left, the ghost-car panel paints the
-corner ahead: my best lap on the road in brake/transition/throttle colours,
-the hollow ghost running its clock, and my dot — lit by my own pedals —
-chasing it.*
+card scores each corner as it happens: ENTRY in the red, APEX EARLY, the delta
+ticking against my 1:46.91. Then the second lap runs the same road with the
+car settled, which is the comparison the overlay exists to make. Top-left, the
+ghost-car panel paints the corner ahead: my best lap on the road in
+brake/transition/throttle colours, the hollow ghost running its clock, and my
+dot — lit by my own pedals — chasing it.*
 
 ## What this thing is
 
@@ -46,7 +48,7 @@ car. No post-processing, no syncing data to footage afterwards — the analysis
 is already in the frame when I get home.
 
 ![The full overlay](/assets/images/trackencoder-metrics/hud-full.jpg){:.img-lg}
-*The whole thing on the in-car Moto G, mid-slide on the aggressive replay lap at Carolina Motorsports Park. Everything sits on the A-pillar, the headliner and the dashboard — the parts of the frame the car body blocks anyway. Only about 20% of a bolted-in camera's frame ever carries road, and the overlay is laid out around that. The ghost-car panel is top-left, under the circuit map.*
+*The whole thing on the in-car Moto G, mid-slide on the aggressive lap at Carolina Motorsports Park — 34% slip at the left rear, 13% at the right, and the car caught on the way out of turn 10. Everything sits on the A-pillar, the headliner and the dashboard — the parts of the frame the car body blocks anyway. Only about 20% of a bolted-in camera's frame ever carries road, and the overlay is laid out around that. The ghost-car panel is top-left, under the circuit map.*
 
 This is the whole system in one post: [the overlay's
 metrics](#two-rules-everything-follows), [the ghost-car racing
