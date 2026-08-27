@@ -49,7 +49,7 @@ car. No post-processing, no syncing data to footage afterwards — the analysis
 is already in the frame when I get home.
 
 ![The full overlay](/assets/images/trackencoder-metrics/hud-full.jpg){:.img-lg}
-*The whole thing on the in-car Moto G, mid-slide on the aggressive lap at Carolina Motorsports Park — 31% slip at the left rear, 15% at the right, and the car caught on the way out of turn 10. Everything sits on the A-pillar, the headliner and the dashboard — the parts of the frame the car body blocks anyway. Only about 20% of a bolted-in camera's frame ever carries road, and the overlay is laid out around that. The ghost-car panel is top-left, under the circuit map.*
+*The whole thing on the in-car Moto G, mid-slide on the aggressive lap at Carolina Motorsports Park — 31% slip at the left rear, 15% at the right, and the car caught on the way out of turn 10. Everything sits on the A-pillar, the headliner and the dashboard — the parts of the frame the car body blocks anyway. Only about 20% of a bolted-in camera's frame ever carries road, and the overlay is laid out around that. The ghost-car panel is top-left.*
 
 This is the whole system in one post: [the overlay's
 metrics](#two-rules-everything-follows), [the ghost-car racing
@@ -66,14 +66,15 @@ that puts most of it away](#street-mode).
   <source src="/assets/images/trackencoder-metrics/ghost-car.mp4" type="video/mp4">
 </video>
 
-*The left column of the overlay, magnified. Top: the whole circuit. Below it:
-the next 100 metres of road, drawn like a racing game draws it. The wide faded
-line is my best lap painted onto the tarmac — red where it braked, amber
-between brake release and apex, green on throttle. The crisp line is me, live,
-wearing the same colours from my own pedals. The dot is my car, lit by what my
-feet are doing right now; the hollow ring is the ghost — my best lap replayed
-on this lap's clock, ahead of me or behind me exactly like a video game. B
-marks its brake point.
+*The ghost card, magnified — and the road under it is now the real road. The
+card draws on satellite imagery of the circuit, georeferenced onto the same
+metre grid every measurement in the system lives on, showing about 130 metres
+of ground around the car. The wide line is my best lap painted onto the
+actual tarmac — red where it braked, amber between brake release and apex,
+green on throttle. The crisp line is me, live, wearing the same colours from
+my own pedals. The dot is my car, lit by what my feet are doing right now;
+the hollow ring is the ghost — my best lap replayed on this lap's clock,
+ahead of me or behind me exactly like a video game. B marks its brake point.
 
 The arrows are apexes, three of them, and they are the reason this panel earns
 its space. **Green** is where this car should apex — worked out from its own
@@ -98,6 +99,12 @@ truth:
   which is also what cuts the sectors, so every distance in the system —
   brake points, apexes, sector times — lives on the same ruler the Catalyst
   uses.
+- **The photo** — satellite tiles of the circuit (credit drawn in-frame),
+  stitched, cached on the phone for a venue with no signal, and
+  georeferenced into the *same* local-metre frame as the survey. One
+  projection for the photo and the measurements means they cannot drift
+  apart by construction — the only thing that can put the painted line off
+  the photographed asphalt is the GPS itself.
 - **The painted line** — where my fastest lap of the session actually drove,
   recorded metre by metre, coloured by *its* pedals: red from its measured
   brake onset for its measured braking zone, amber to its apex, green
@@ -111,13 +118,13 @@ truth:
   the delta grid's metre-by-metre timing, which is the same machinery that
   produces the live delta number.
 
-Two honesty rules keep it from lying. The road draws at twice its true width —
-at real scale the lines nearly fill the corridor — but every lateral offset
-is scaled by the same factor, so *where you are between the edges* stays true;
-a car at the real edge draws at the drawn edge. And the display physically
-cannot draw an impossible move: the drawn line's sideways rate is capped at
-what a tyre can actually do at your current speed, so GPS scatter shows up as
-nothing instead of as a 100-mph sideways hop.
+Two honesty rules keep it from lying. On a photograph the geometry has to be
+true — an exaggerated lateral would put the line in the grass — so unlike the
+drawn card this one replaces, nothing is scaled: a metre across the road on
+screen is a metre across the road. And the display physically cannot draw an
+impossible move: the drawn line's sideways rate is capped at what a tyre can
+actually do at your current speed, so GPS scatter shows up as nothing instead
+of as a 100-mph sideways hop.
 
 ## It records sound
 
