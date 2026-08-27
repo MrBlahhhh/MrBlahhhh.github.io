@@ -97,6 +97,14 @@ The usual advice — *"late apex the slow corners"* — is not something a
 computer can draw. This turns it into two numbers it can measure: how much
 the corner turns, and how much power the car has relative to its grip.
 
+**The idea is not mine.** It comes from Paradigm Shift Racing's *Racing Line
+Fundamentals* series, and specifically from
+[#2, *The Ideal Apex*](https://www.paradigmshiftracing.com/racing-basics/racing-line-fundamentals-2-learn-how-a-vehicles-cornering-vs-acceleration-potential-determines-its-ideal-apex-and-line-through-a-corner):
+*"the more acceleration potential a vehicle has in relation to its cornering
+ability, the later the apex it will need."* That sentence is the whole model.
+What follows is my attempt to make it something a phone can compute per
+corner — which, as I'll get to, is further than the original goes.
+
 **Step one: what the car is.** Every session builds a grip envelope from
 your own driving, per speed band: the largest longitudinal g it has actually
 seen, and the largest lateral g. The ratio of the two is the car's
@@ -152,19 +160,35 @@ the same treatment, while T1 — half as much again in turning — gets an apex
 two thirds of the way through its arc. Give the same corners to a car with
 twice the power-to-grip and every one of those fractions moves later.
 
-**What is honest about this, and what is not.** The capability ratio is
-measured. The corner geometry is measured, from a surveyed centreline.
-**The 90° is a chosen constant** — it is the shape of the rule, picked
-because it puts the answers where a driving coach would put them, and it
-has not been fitted to anything. My car's measured lateral peak of 2.63 g
-is also higher than street tyres should manage, which makes the 0.45
-suspect at the input end.
+**Where the 90° comes from.** Also Paradigm Shift Racing: the same lesson
+sets a limit on how far a corner entry can be turned away from the ideal
+direction of force — *"an entry shouldn't ever [exceed 90 degrees]"* — and
+promises more on "the implications of this 90-degree limit" later in the
+series. So the number is borrowed, not invented.
 
-And the green arrow itself has never been checked against a lap somebody
-agrees was well driven. So it is drawn as a **target to argue with**, not
-an instruction: when green and blue disagree, the interesting question is
-which of them is wrong. That question is on the list to settle with real
-laps, and the answer will end up back in this post either way.
+**But my use of it goes beyond theirs, and that is the weak joint.** They
+state 90° as a *limit* — a boundary an entry should never cross. I have
+turned it into the *span of a mapping*, so that a capability of 0 leaves
+the full 90° of turning after the apex and a capability of 1 leaves none.
+Nothing in the source says the relationship across that range is linear.
+That linearity is mine, it is the least defensible line in the whole
+feature, and it is doing real work in every number in the table above.
+
+The same article is explicit that *"these principles… are not meant to be
+used by a driver to try to precisely calculate the ideal line."* Drawing a
+marker on a specific metre of road is exactly that. I think it is still
+worth doing — a target you can disagree with beats no target — but it is
+fair to say the source would not have drawn this arrow.
+
+**What is measured and what is not.** The capability ratio is measured, and
+the corner geometry is measured from a surveyed centreline. Against that,
+my car's lateral peak of 2.63 g is higher than street tyres should manage,
+which makes the 0.45 suspect at the input end; and the green arrow has
+never been checked against a lap somebody agrees was well driven. So it is
+drawn as a **target to argue with**, not an instruction: when green and
+blue disagree, the interesting question is which of them is wrong. That
+gets settled with real laps, and the answer will come back to this post
+either way.
 
 Everything on the panel is measured, and each element has its own source of
 truth:
@@ -874,6 +898,19 @@ nowhere near the car.
 
 ## Where the ideas came from
 
+- **[Paradigm Shift Racing](https://www.paradigmshiftracing.com/racing-basics), *Racing Line Fundamentals*** —
+  the whole basis of the green ideal-apex marker.
+  [#1, *The Acceleration Point*](https://www.paradigmshiftracing.com/racing-basics/heres-a-simple-way-to-visualize-why-the-ideal-acceleration-point-is-always-at-the-apex-of-a-corner-and-why-straightaway-length-doesnt-matter-racing-line-fundamentals-1)
+  for why the acceleration point sits at the apex regardless of what follows;
+  [#2, *The Ideal Apex*](https://www.paradigmshiftracing.com/racing-basics/racing-line-fundamentals-2-learn-how-a-vehicles-cornering-vs-acceleration-potential-determines-its-ideal-apex-and-line-through-a-corner)
+  for the acceleration-versus-cornering ratio governing apex placement, and
+  for the 90° entry limit I borrowed as the span of the mapping.
+  [*The Rules Of Racing Line Optimization*](https://www.paradigmshiftracing.com/racing-basics/the-rules-of-the-racing-line)
+  and the [*Racing Line Infographic + Apex Troubleshooter*](https://www.paradigmshiftracing.com/racing-basics/racing-line-infographic-apex-troubleshooter)
+  are the quick reference for the apex spectrum the marker is trying to place
+  a car on. The linear mapping across that span is my own, and the source is
+  explicit that these principles are not meant for precisely calculating a
+  line — see the honesty note in [the apex section](#how-the-green-apex-is-worked-out).
 - **Ross Bentley, *Speed Secrets*** — coasting as the primary time-loser;
   brake/throttle/steering traces as the first thing to read in any log.
 - **Milliken & Milliken, *Race Car Vehicle Dynamics*** — the friction circle,
