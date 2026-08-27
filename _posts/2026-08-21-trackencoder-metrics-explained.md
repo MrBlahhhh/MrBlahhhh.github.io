@@ -91,6 +91,81 @@ road, colour it by what the pedals should be doing, and run a ghost car so
 "ahead" and "behind" are something you *see* rather than compute. That is
 burned into every frame the recorder writes.
 
+### How the green apex is worked out
+
+The usual advice — *"late apex the slow corners"* — is not something a
+computer can draw. This turns it into two numbers it can measure: how much
+the corner turns, and how much power the car has relative to its grip.
+
+**Step one: what the car is.** Every session builds a grip envelope from
+your own driving, per speed band: the largest longitudinal g it has actually
+seen, and the largest lateral g. The ratio of the two is the car's
+*capability*:
+
+```
+capability = peak longitudinal g ÷ peak lateral g
+```
+
+Nothing from a spec sheet — the car as driven, today, on today's tyres. A
+car that can put power down hard relative to its cornering grip wants to be
+pointed straight sooner, so it apexes **later**. A car that has to carry
+speed through the corner because it cannot accelerate out of it apexes
+**earlier**. That is the whole intuition, reduced to one number.
+
+**Step two: what the corner is.** The corner's size is measured in *degrees
+of turning*, not metres of road. Walking the surveyed centreline one metre
+at a time from the braking point to the exit, the heading change at each
+step is summed:
+
+```
+total turn = Σ |Δheading| over the corner
+```
+
+CMP's turn 1 comes out at 153°; turn 2 at 78°. Two corners of similar
+length can be very different corners, and this is the number that says so.
+Under 15° the road is a kink, the model has nothing useful to say, and no
+marker is drawn.
+
+**Step three: where the apex goes.** The apex is defined as the point where
+a set amount of turning is still left to do:
+
+```
+turning left after the apex = 90° × (1 − capability)
+target fraction = 1 − (turning left after apex ÷ total turn)
+apex = the first metre where cumulative turn ≥ total turn × target fraction
+```
+
+So the apex is placed by *arc*, not by distance — it lands where the road
+has already done its share of the bending. Working it through with my car's
+measured capability of 0.45, which leaves 49.5° of turning after the apex:
+
+| Corner | Total turn | Target fraction | Apex lands |
+|---|---|---|---|
+| T1 | 153° | 0.68 | 109 m into the corner |
+| T2 | 78° | 0.36 | 43 m in |
+| T3 | 82° | 0.40 | 69 m in |
+| T4 | 106° | 0.53 | 103 m in |
+| T5 | 140° | 0.65 | 89 m in |
+
+Notice T2 and T3 are nearly the same corner by this measure and get nearly
+the same treatment, while T1 — half as much again in turning — gets an apex
+two thirds of the way through its arc. Give the same corners to a car with
+twice the power-to-grip and every one of those fractions moves later.
+
+**What is honest about this, and what is not.** The capability ratio is
+measured. The corner geometry is measured, from a surveyed centreline.
+**The 90° is a chosen constant** — it is the shape of the rule, picked
+because it puts the answers where a driving coach would put them, and it
+has not been fitted to anything. My car's measured lateral peak of 2.63 g
+is also higher than street tyres should manage, which makes the 0.45
+suspect at the input end.
+
+And the green arrow itself has never been checked against a lap somebody
+agrees was well driven. So it is drawn as a **target to argue with**, not
+an instruction: when green and blue disagree, the interesting question is
+which of them is wrong. That question is on the list to settle with real
+laps, and the answer will end up back in this post either way.
+
 Everything on the panel is measured, and each element has its own source of
 truth:
 
