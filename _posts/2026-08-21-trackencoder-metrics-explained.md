@@ -5,7 +5,7 @@ categories: car tech
 tags: [trackencoder, android, telemetry, racecapture, can, datalogger, vehicle-dynamics, track, cmp, vir, telegram, tts, coaching, garmin-catalyst, llm]
 cover: /assets/images/trackencoder-metrics/hud-full.jpg
 lightbox: true
-excerpt: "A $150 Android phone that burns a live coaching overlay into track video — with sound now — runs from my pocket over Telegram, calls brake points into my helmet by the circuit's own turn numbers, paints my best lap on the road like a racing game, and hands the session to an LLM that names the three things worth the most time. One post, the whole system."
+excerpt: "A $150 Android phone that burns a live coaching overlay into track video, with sound, runs from my pocket over Telegram, calls brake points into my helmet by the circuit's own turn numbers, paints my best lap on the road like a racing game, and hands the session to an LLM that names the three things worth the most time. One post, the whole system."
 article_header:
   type: overlay
   theme: dark
@@ -27,15 +27,16 @@ redirect_from:
   <source src="/assets/images/trackencoder-metrics/hero-aggressive-lap.mp4" type="video/mp4">
 </video>
 
-*Two laps, back to back, exactly as I drove them: my most aggressive lap at
-Carolina Motorsports Park and then the lap that followed it. Every system in
-this post is working at once. Through the aggressive lap the rear steps out
-repeatedly — POWER OVERSTEER lights, red rings ping over the rear tyres, the
-amber and red ribbons stack along the top of the input trace, and the corner
-card scores each corner as it happens: ENTRY in the red, APEX EARLY, the delta
-ticking against my 1:46.91. Then the second lap runs the same road with the
-car settled, which is the comparison the overlay exists to make. Top-left, the
-ghost-car panel paints the corner ahead: my best lap on the road in
+*Three laps back to back at Carolina Motorsports Park, exactly as I drove
+them: a lap in, my most aggressive lap, and the lap out the other side. Every
+system in this post is working at once. Through the aggressive lap the rear
+steps out repeatedly — POWER OVERSTEER lights, red rings ping over the rear
+tyres, the amber and red ribbons stack along the top of the input trace, and
+the corner card scores each corner as it happens: ENTRY in the red, APEX EARLY,
+the delta ticking against my 1:46.91. The laps either side run the same road
+with the car settled, and that is the comparison the overlay exists to make —
+the same corners, three times, scored the same way. Top-left, the ghost-car
+panel paints the corner ahead: my best lap on the road in
 brake/transition/throttle colours, the hollow ghost running its clock, and my
 dot — lit by my own pedals — chasing it.*
 
@@ -74,23 +75,26 @@ feet are doing right now; the hollow ring is the ghost — my best lap replayed
 on this lap's clock, ahead of me or behind me exactly like a video game. B
 marks its brake point.
 
-The two arrows are apexes, and they are the reason this panel earns its space.
-The white one, pointing out, is where my best lap apexed. The magenta one,
-pointing in, is where I apexed the same corner last time round. They meet nose
-to nose when I get it right and pull apart along the road when I do not — so
-**early or late is a gap I can see on the approach**, while there is still
-something to be done about it, instead of a number I read at home.*
+The arrows are apexes, three of them, and they are the reason this panel earns
+its space. **Green** is where this car should apex — worked out from its own
+acceleration against its own grip, so a car that puts power down early gets a
+later apex than one that has to carry speed. **Blue** is where my best lap
+apexed. **Red** is where I apexed the lap being driven, drawn the moment the
+steering comes off its peak and the car starts tracking out. Where they line
+up, that corner is solved. Where they spread along the road, the gap is the
+answer — green against blue says my best lap is not apexing where the car
+wants, blue against red says this lap is not repeating my best.*
 
 Racing games solved coaching display decades ago: paint the ideal line on the
 road, colour it by what the pedals should be doing, and run a ghost car so
-"ahead" and "behind" are something you *see* rather than compute. That's now
+"ahead" and "behind" are something you *see* rather than compute. That is
 burned into every frame the recorder writes.
 
 Everything on the panel is measured, and each element has its own source of
 truth:
 
 - **The road** — centreline and width from my Garmin Catalyst's surveyed track
-  database, one point per metre. All my track maps now come from that survey,
+  database, one point per metre. All my track maps come from that survey,
   which is also what cuts the sectors, so every distance in the system —
   brake points, apexes, sector times — lives on the same ruler the Catalyst
   uses.
@@ -115,10 +119,9 @@ cannot draw an impossible move: the drawn line's sideways rate is capped at
 what a tyre can actually do at your current speed, so GPS scatter shows up as
 nothing instead of as a 100-mph sideways hop.
 
-## It has sound now
+## It records sound
 
-The recordings were silent for their whole life until this week. A USB
-microphone on the same hub as the camera now goes into the file as a second
+A USB microphone on the same hub as the camera goes into the file as a second
 track — one AAC track beside the video, muxed as it records, closed with the
 same segment. Nothing to sync afterwards, same as everything else here.
 
@@ -438,7 +441,7 @@ neighbour rather than drawing a confident ring around twelve points.
 ## Lap metrics
 
 ![Lap metrics](/assets/images/trackencoder-metrics/metrics.jpg){:.img-md}
-*Live lap on the left, last completed on the right. Green beats the session best, red is worse. `AT LIMIT 6U/20` means six understeer events and twenty oversteer ones so far this lap — this car does not lack for oversteer.*
+*Live lap on the left, last completed on the right. Green beats the session best, red is worse. `AT LIMIT 6 US · 5 OS` counts the two at-the-limit faults separately — six understeer events and five oversteer ones so far this lap — because the fix is not the same for both: one is entry speed, the other is the right foot.*
 
 | Row | Definition | Better is |
 |---|---|---|
@@ -567,12 +570,11 @@ touches files this app wrote.
 
 ### It handles the grid queue by itself
 
-The supply to the phone is switched. I cut power sitting in the grid queue
-waiting to go out, and that used to be the end of the session. Now it's an
-ordinary pause: power goes, the phone (alive on its own battery) closes the
-file properly and tells Telegram it did; power comes back, and it starts
-recording again on its own, retrying while the powered hub re-enumerates the
-camera. Measured on the bench, cut-to-recording-again was about **16 seconds**,
+The supply to the phone is switched, and cutting it in the grid queue is an
+ordinary pause rather than the end of the session. Power goes, the phone —
+alive on its own battery — closes the file properly and tells Telegram it did.
+Power comes back and it starts recording again on its own, retrying while the
+powered hub re-enumerates the camera. Measured on the bench, cut-to-recording-again was about **16 seconds**,
 most of which was me.
 
 This is also why the card sits in the phone's SIM tray rather than in a reader
@@ -606,7 +608,7 @@ and an all-clear when it comes back down.
 
 ## "Turn eight, brake at 475"
 
-The recorder has a voice now — brake calls into my helmet over Bluetooth.
+The recorder has a voice — brake calls into my helmet over Bluetooth.
 
 I brake against the marker boards — the 300 / 200 / 100 boards the track
 paints before its big braking zones. So the voice doesn't say *brake now*,
@@ -666,8 +668,8 @@ inherits another turn's brake point, and the coaching starts comparing the
 hairpin against the sweeper.
 
 And the numbers are honest to the paint, not to the map. The distance a board
-counts to turned out to sit as much as 250 ft away from where the track map
-says the corner geometrically begins — so every call datum is measured by
+counts to sits as much as 250 ft away from where the track map says the corner
+geometrically begins — so every call datum is measured by
 reading the actual boards off my own footage, frame by frame against the GPS
 log, and a corner only gets a call at all if its boards have been measured.
 Corners with no boards stay silent, and so do corners where my best
