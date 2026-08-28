@@ -2,10 +2,10 @@
 title: "The R53 K-line + CAN bridge — one board that reads the ECU, watches the bus and runs the shift light"
 date: 2026-08-27 08:00:00 -0400
 categories: car tech
-tags: [mini, r53, esp32, esp32-s3, xiao, can-bus, k-line, obd2, l9637d, sn65hvd230, ems2000, datalogger, shift-light, wiring]
+tags: [mini, r53, esp32, esp32-s3, xiao, can-bus, k-line, obd2, l9637d, sn65hvd230, ems2000, datalogger, shift-light, wiring, pcb, kicad, jlcpcb]
 cover: /assets/images/r53-kline-bridge/board-pictorial.png
 lightbox: true
-excerpt: "The shift light grew a second job, then a third. Here is the whole board — transceiver choice, OBD2 pin colours, the two parts that destroy something if you fit them backwards, and every wire drawn in colour."
+excerpt: "The shift light grew a second job, then a third. Here is the whole board — transceiver choice, OBD2 pin colours, the two parts that destroy something if you fit them backwards, every wire drawn in colour, and the PCB it all became."
 article_header:
   type: overlay
   theme: dark
@@ -117,6 +117,57 @@ One part of that port was not cosmetic, and is worth repeating for anyone doing 
 The K-line half is specified but not written — the board does CAN and the shift light today. The 62500-baud bench test on the L9637D is the next real milestone, and it is the one that decides whether this can carry a flashing session as well as a logging one. One L9637D is already mounted on an adapter for it, so it does not eat a board from the build stock.
 
 Full write-up of the port, including the checklist that is still open: [PORTING.md](https://github.com/MrBlahhhh/R53_Mini_Kline_Canbus_Logger_Shiftlight/blob/main/docs/PORTING.md).
+
+## It is a real board now
+
+The wiring above describes a thing built on protoboard. It is also a PCB — 85 × 58 mm, four layers, routed clean.
+
+![3D render of the carrier board](/assets/images/r53-kline-bridge/pcb-3d.png)
+
+The XIAO drops into the two sockets in the middle. The car harness screws into the green block along the bottom, the 5 V module stands in its own three-way socket top left, and the eight yellow pads under the module are test points — every net you would want a scope on, brought somewhere you can reach it with the module fitted.
+
+![Top view, routed](/assets/images/r53-kline-bridge/pcb-top.png)
+
+Nothing here is soldered by a machine. It is a bare board and a stencil from JLCPCB, parts bought loose, reflowed on a hotplate — so everything surface-mount is on the top side and the packages are all ones a hotplate is happy with: SOIC-8, SOT-353, 0805, 1206, 1210, SMC. Nothing leadless, nothing on the bottom. That decision came out of the last board I had quoted: assembly was 2.3× the hand cost at five boards, and almost all of the difference was setup and extended-part fees rather than labour.
+
+### The schematic
+
+Four sheets. The netlist is written in Python and the KiCad files are build outputs — `python gen/build_board.py` places, routes, stitches the planes and tidies the silkscreen from nothing.
+
+![Harness and rails](/assets/images/r53-kline-bridge/sch-power.png)
+
+Fuse, then clamp, then module, in that order. Pin 16 is permanent live and the car does not fuse it, so the polyfuse is there to stop the OBD2 wire becoming the fusible link no matter what the TVS decides to do.
+
+![K-line front end](/assets/images/r53-kline-bridge/sch-kline.png)
+
+Note the two 1 kΩ pull-up positions in parallel. The second is not fitted. If 62500 baud will not frame cleanly the fix is a stiffer pull-up, and 500 Ω should cost a soldering iron rather than a board respin.
+
+![CAN](/assets/images/r53-kline-bridge/sch-can.png)
+
+![XIAO sockets and shift light](/assets/images/r53-kline-bridge/sch-mcu.png)
+
+### Two things the tooling caught that I would have missed
+
+**The TVS is drawn as a Zener.** KiCad has no unidirectional-TVS symbol, and `Device:D_TVS` is the bidirectional one — which reads identically either way round. This part does not: reversed, it is a forward diode across the battery and it conducts on the first key-on. Drawing it with a cathode means the polarity audit can check it, and it does.
+
+**The 5 V module's footprint was wrong by the size of the component.** U1 is a socket, and a stock `PinSocket_1x03` footprint describes the socket — 3.6 × 8.7 mm. The thing that actually occupies that space is the module standing on it, 11.5 × 7.6. So DRC was happy to let five parts sit *underneath the module*, and said nothing, because it is a 3D clearance against a part that is not on the board. The footprint now carries the module's body as its courtyard, which turns "remember this" into a check the board makes every time it is rebuilt.
+
+### Where the XIAO's dimensions came from
+
+The socket row spacing is not in any spec table Seeed publish. It came out of **their own KiCad PCB file** for the part, opened with `pcbnew` and asked for its through-hole pads:
+
+```
+column x =  1.260   7 pads, 2.54 mm pitch   (pins 1-7)
+column x = 16.500   7 pads, 2.54 mm pitch   (pins 8-14)
+
+ROW SPACING = 15.240 mm, exactly 0.600"
+```
+
+The two further columns in that file, at x = −0.010 and x = 17.770, are the castellated half-holes on the board edges. A footprint built from those would be 2.5 mm too wide, and would look perfectly reasonable right up until the module would not go in.
+
+The same file answered the antenna question. `ANT1` on a XIAO is a **U.FL connector**, not a PCB antenna — so the module radiates from a pigtail, copper underneath detunes nothing, and the ground plane stays whole under the CAN pair, which is where it is actually wanted.
+
+Board files, gerbers and a BOM where every line carries an in-stock LCSC number: [hardware/pcb](https://github.com/MrBlahhhh/R53_Mini_Kline_Canbus_Logger_Shiftlight/tree/main/hardware/pcb). Never manufactured yet.
 
 Repo, with the full interactive wiring reference and every diagram above:
 **[github.com/MrBlahhhh/R53_Mini_Kline_Canbus_Logger_Shiftlight](https://github.com/MrBlahhhh/R53_Mini_Kline_Canbus_Logger_Shiftlight)**
