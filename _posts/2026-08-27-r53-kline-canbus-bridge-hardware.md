@@ -126,14 +126,16 @@ The wiring above describes a thing built on protoboard. It is also a PCB — 90 
 
 The XIAO drops into the two sockets in the middle. The car harness screws into the green block along the bottom, and the 5 V module stands in its own three-way socket top left.
 
-There are two kinds of test point, which is deliberate rather than duplication:
+Fifteen test points, all **plated through-holes**, differing only in size:
 
-| | count | nets |
-|---|---:|---|
-| **Flat pads** | 6 | `VBAT_F`, `K_LINE`, `KL_RX`, `CANH`, `CANL`, `LED_DOUT` |
-| **Drilled holes** | 9 | 3 × 3V3, 4 × ground, 2 × 5 V |
+| | count | drill | nets |
+|---|---:|---|---|
+| **Signal** | 6 | 0.7 mm | `VBAT_F`, `K_LINE`, `KL_RX`, `CANH`, `CANL`, `LED_DOUT` |
+| **Rail tap** | 9 | 1.0 mm | 2 × 3V3, 1 × EXT_3V3, 4 × ground, 2 × 5 V |
 
-The pads are for a scope probe — the six nets you would actually look at when something misbehaves, brought somewhere you can reach with the module fitted. The holes are for power, because a flying lead soldered into a hole survives a car and a jumper pushed onto a header pin does not.
+The signal points were SMD pads first, on the reasoning that a scope tip only needs somewhere to touch. That left the board carrying two visibly different kinds of test point, and the first person to look at a photo of it read them as duplication — reasonably, because a distinction you have to explain is a distinction that is not working. A drilled point does everything the SMD pad did *and* takes a probe hook or a soldered wire. There was never a reason to have both, and defending the split was the wrong instinct.
+
+The rails had a subtler version of the same problem: three taps on `+3V3` — the XIAO's own regulator, the one you should *not* load — and none at all on `EXT_3V3`, the AMS1117 rail that exists precisely so something can be hung off it. One got repointed.
 
 ![Top view, routed](/assets/images/r53-kline-bridge/pcb-top.png)
 
