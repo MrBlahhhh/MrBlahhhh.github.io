@@ -124,13 +124,22 @@ The wiring above describes a thing built on protoboard. It is also a PCB — 90 
 
 ![3D render of the carrier board](/assets/images/r53-kline-bridge/pcb-3d.png)
 
-The XIAO drops into the two sockets in the middle. The car harness screws into the green block along the bottom, the 5 V module stands in its own three-way socket top left, and the eight yellow pads under the module are test points — every net you would want a scope on, brought somewhere you can reach it with the module fitted.
+The XIAO drops into the two sockets in the middle. The car harness screws into the green block along the bottom, and the 5 V module stands in its own three-way socket top left.
+
+There are two kinds of test point, which is deliberate rather than duplication:
+
+| | count | nets |
+|---|---:|---|
+| **Flat pads** | 6 | `VBAT_F`, `K_LINE`, `KL_RX`, `CANH`, `CANL`, `LED_DOUT` |
+| **Drilled holes** | 9 | 3 × 3V3, 4 × ground, 2 × 5 V |
+
+The pads are for a scope probe — the six nets you would actually look at when something misbehaves, brought somewhere you can reach with the module fitted. The holes are for power, because a flying lead soldered into a hole survives a car and a jumper pushed onto a header pin does not.
 
 ![Top view, routed](/assets/images/r53-kline-bridge/pcb-top.png)
 
 Everything surface-mount is on the top side, in packages nothing exotic — SOIC-8, SOT-353, SOT-223, SOT-23, 0805, 1206, 1210, SMA, SMC. Nothing leadless, nothing on the bottom. That started as a constraint for reflowing it on a hotplate and turned out to be the right shape for machine assembly too.
 
-The through-hole parts are deliberately *not* on the assembly BOM: the two XIAO sockets, the screw terminal, the two headers and the 5 V module's socket are five easy hand-solder joints on a board that arrives otherwise finished.
+The through-hole parts are deliberately *not* on the assembly BOM: the two XIAO sockets, the screw terminal, the microSD socket, the spare header, the shift-light header and the 5 V module's socket are a handful of easy hand-solder joints on a board that arrives otherwise finished.
 
 ### The schematic
 
@@ -158,9 +167,9 @@ Two things were missing and both are the kind that only bite once.
 
 One thing I have left as a known limitation rather than pretend away: the module needs 8 V in, and cranking pulls a tired battery below that. The board will reset on every start. Not damage, but you lose the log across exactly the moment you might want it, and fixing it properly means a buck-boost rather than a buck.
 
-### Six spare pins do not fit three ideas
+### Six spare pins did not fit three ideas, so one of them moved onto the board
 
-The expansion header brings out 3.3 V, 5 V, ground and the six XIAO pins the board does not use. Worth doing the arithmetic before planning what goes on it:
+The original plan was an expansion header carrying the six XIAO pins the board does not use, and three things to eventually hang off it. The arithmetic never worked:
 
 | | bus | pins |
 |---|---|---:|
@@ -170,11 +179,21 @@ The expansion header brings out 3.3 V, 5 V, ground and the six XIAO pins the boa
 | | **wanted** | **8** |
 | | **available** | **6** |
 
-An SD card and a UART GPS do not coexist. An **I²C** GPS shares the IMU's two pins and all three fit exactly.
+An SD card and a UART GPS cannot coexist on six pins. Rather than leave that as a decision for later, **the microSD won and is now on the board** — a 1×6 socket that takes the standard Amazon breakout directly, in the pin order printed on the module: `3V3 / CS / MOSI / CLK / MISO / GND`. It takes the SPI bus, and what is left over is the I²C pair, on a smaller spare header.
 
-There is also an AMS1117-3.3 footprint on the board, not fitted, with a solder jumper that chooses where the header's 3.3 V comes from — bridged to the XIAO as made. It is there because the XIAO's own regulator is already carrying the ESP32-S3 and the CAN transceiver. That is fine for an IMU. An SD card mid-write plus a GPS acquiring, on top of a WiFi burst, is asking too much of it.
+So the header is now six ways of `5V / 3V3 / GND / GND / D4 / D5` — both rails and the I²C pair, which is an IMU, or an I²C GPS, or both sharing the bus.
 
-And nine drilled 1 mm pads on the rails — three 3V3, four ground, two 5 V — because a flying lead soldered into a hole survives a car and a jumper wire pushed onto a header pin does not.
+The **AMS1117-3.3 is now fitted**, not a footprint. The XIAO's own regulator is already carrying the ESP32-S3 and the CAN transceiver, and a card mid-write on top of a WiFi burst is asking too much of it, so the card gets its own 3.3 V from the 5 V rail.
+
+That regulator is the one part on this board whose heat is a decision rather than a rounding error. It is linear, dropping 1.7 V, so every milliamp the card draws becomes heat in a SOT-223:
+
+| sustained | dissipated | rise |
+|---|---|---|
+| 100 mA | 0.17 W | ~13 °C |
+| **200 mA** | **0.35 W** | **~26 °C** — a card in SPI mode |
+| 500 mA | 0.85 W | ~65 °C — too hot in a car |
+
+Roughly 300 mA of headroom, which is fine for a card and not fine for a card plus something hungry. Anything added later goes on its own regulator, or takes 5 V and makes its own.
 
 ### Two things the tooling caught that I would have missed
 
@@ -206,6 +225,24 @@ Carried over unread, it silently dropped two capacitors that must be fitted. The
 It was also including three parts the design says to leave *off*: a second 1 kΩ that would have made the K-line pull-up 500 Ω, and two 62 Ω that would have put ~124 Ω across a CAN bus the car already terminates at both ends. That board would have come back measuring 40 Ω where the documentation says expect 60, and nothing would have looked wrong.
 
 Both directions are now driven off the netlist note rather than a designator list, so it cannot rot the same way. The lesson generalises: **a hardcoded list of reference designators is a landmine in any file you fork.**
+
+### Five failures that printed reassuring output
+
+That BOM bug turned out not to be the only one of its shape, and the rest surfaced in a single evening of checking the board before ordering it. Every one of them produced *plausible, confident output* while being wrong. None produced an error.
+
+**A comment made every power rail thin.** The note explaining why the Power netclass is 0.60 mm was written *inside* the JSON template that generates the KiCad project file. That made the file unparseable, so KiCad silently reset the net settings to a single default class and routed every rail at 0.25 mm. Nothing failed, because narrow track is legal track. The only symptom was an ampacity note in my own audit, which for a while I read as a routing problem.
+
+**Two rails had no netclass at all.** `VBAT_FUSED` — the far side of the reverse-polarity diode, carrying identical current to `VBAT_F` — and the new LDO output. A rail that gets renamed halfway through a schematic needs a glob, not a second entry someone has to remember to add.
+
+**Three audit tables were describing a different board.** They were forked from an earlier design, and named nets and parts that do not exist here: seven rails reported as "plane-fed" that were simply absent, a dissipation check pointed at two parts not on the board, and a purchasing list that called the microSD socket a spare header and omitted the actual spare header entirely. Ordering from that list would have got an unusable 1×8 and no socket for the card. All three now cross-check themselves against the generated netlist and fail loudly.
+
+**Mounting holes 0.5 mm out of square.** The right-hand pair sat closer to the edge than the left, left over from an earlier outline. No copper was at risk — but anyone drilling a bracket from the pattern would have found out the hard way.
+
+**And a schematic that plotted five dead pins.** This one is my favourite, because it is so specific. The function that defines a part takes `(mpn, note, nc, lcsc)`. I passed a part number positionally in the wrong slot, so it landed in `note` — and the note *sentence* landed in `nc`, the list of no-connect pins. `nc` is iterated for pin numbers, and iterating a string in Python yields characters. Every pin whose digit appeared anywhere in that sentence got a no-connect flag. The microSD socket plotted with pins 2–6 dead.
+
+ERC passed, because drawing a no-connect is a legal thing to do. The board was never affected, because the netlist is built from a different field — the gerbers were correct the whole time. It was caught only because I rendered the sheet and looked at it before publishing it here.
+
+The through-line: **every one of these failed by printing something reassuring.** A check that examines nothing looks exactly like a check that passes. That is the case worth engineering against — not the crash, which tells you where it is.
 
 Board files, gerbers and a BOM where every line carries an in-stock LCSC part number: [hardware/pcb](https://github.com/MrBlahhhh/R53_Mini_Kline_Canbus_Logger_Shiftlight/tree/main/hardware/pcb). Not manufactured yet — boards are on order.
 
