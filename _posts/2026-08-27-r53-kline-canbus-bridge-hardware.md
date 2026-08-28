@@ -197,6 +197,22 @@ That regulator is the one part on this board whose heat is a decision rather tha
 
 Roughly 300 mA of headroom, which is fine for a card and not fine for a card plus something hungry. Anything added later goes on its own regulator, or takes 5 V and makes its own.
 
+### The socket footprint was guessed, then built backwards
+
+J5 started as a stock `PinSocket_1x06` — which is exactly the mistake the 5 V module footprint made earlier in this project and was supposed to have taught me not to repeat. A stock socket footprint describes the socket. The thing that occupies the space is the module standing in it, and nothing checked whether that module actually fit.
+
+I guessed 15 × 15 mm. A photo of the real part, ruler included, said otherwise:
+
+![The microSD breakout, measured](/assets/images/r53-kline-bridge/pcb-sd-clearance.png)
+
+18 × 18 mm PCB, 20 mm across including the folded-steel card-slot shell. Building the footprint against that number instead of the guess, I turned the module to face *inward*, over the board, reasoning that facing outward it would hang most of its length off the 10 mm of clear board past J5. Facing inward it collided with four other parts the moment the real size replaced the guess — but the collision was the second problem, not the first. The first is that a microSD slot facing into the board interior is not reachable. You cannot remove a card you cannot get a finger on.
+
+The fix was to face it outward, the way J5 was placed to begin with, and let it overhang the board edge — on purpose. The enclosure gets a cutout above it, so the card comes out without opening the case:
+
+![The module as placed, overhanging the edge on purpose](/assets/images/r53-kline-bridge/pcb-3d.png)
+
+Ten millimetres of unsupported PCB, held only by the six-pin header. That reads as a defect in isolation and is a requirement in context — it is the reason J5 sits this close to the board edge at all. The lesson is not "measure the part," although that's true too. It's that a fix which makes the geometry work can still be backwards, if the reason the geometry was wrong in the first place was that something has to be reachable by a human hand.
+
 ### Two things the tooling caught that I would have missed
 
 **The TVS is drawn as a Zener.** KiCad has no unidirectional-TVS symbol, and `Device:D_TVS` is the bidirectional one — which reads identically either way round. This part does not: reversed, it is a forward diode across the battery and it conducts on the first key-on. Drawing it with a cathode means the polarity audit can check it, and it does.
