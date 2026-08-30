@@ -5,7 +5,7 @@ categories: car tech
 tags: [mini, r53, esp32, esp32-s3, xiao, can-bus, k-line, obd2, l9637d, sn65hvd230, ems2000, datalogger, shift-light, wiring, pcb, kicad, jlcpcb]
 cover: /assets/images/r53-kline-bridge/board-pictorial.png
 lightbox: true
-excerpt: "The shift light grew a second job, then a third. Here is the whole board — transceiver choice, OBD2 pin colours, the two parts that destroy something if you fit them backwards, every wire drawn in colour, and the PCB it all became."
+excerpt: "The shift light grew a second job, then a third. One board now reads the ECU at 62500, watches the CAN bus, reads the chassis modules and runs the shift light — merging the lot into a single 8.5 Hz stream to the phone. Here is the whole thing: transceiver choice, OBD2 pin colours, the two parts that destroy something if you fit them backwards, every wire drawn in colour, and the PCB it all became."
 article_header:
   type: overlay
   theme: dark
@@ -19,9 +19,12 @@ article_header:
 
 The [CAN shift light](/car/tech/2026/07/11/r53-esp32-shift-light.html) was supposed to be a weekend job. Read RPM off the bus, light up eight LEDs, done. It has since grown a second job and then a third, and what is in the footwell now is a small bridge that does all of this at once:
 
-- **Reads the ECU over K-line.** The R53's Siemens EMS2000 speaks DS2 at 9600 baud, 8E1, with B8/XOR framing. The board handles the protocol and ships raw block payloads over BLE, so the phone does the decoding.
+- **Reads the ECU over K-line.** The R53's Siemens EMS2000 speaks DS2, and the board negotiates the fast 62500-baud session itself at key-on. It ships raw block payloads over BLE, so the phone does the decoding.
 - **Listens to the CAN bus.** RPM, throttle, coolant and road speed off the car's own bus, plus AEMnet lambda from the wideband gauge spliced onto the same pair.
+- **Reads the chassis modules.** Instrument cluster and the other body modules, on the second K-line, at the 9600 they insist on.
 - **Drives the shift light.** Same eight WS2812Bs as before, still working with no phone connected and no app running.
+
+All of it arrives at the phone as **one merged stream**. The board fuses the ECU blocks, the CAN channels and the lambda into a single feed over a single Bluetooth link, timestamped together, so the app is not stitching three sources into one row and hoping they line up.
 
 It feeds [R53 Logger - Flasher](/car/tech/2026/07/24/r53-logger-play-store.html), which does the logging, the analysis and the flashing. This post is the hardware.
 
@@ -70,7 +73,7 @@ Around it:
 - **10 k / 20 k divider** on the way back, because the L9637D's RX output swings to 5 V and the ESP32 wants 3.3 V.
 - **100 nF** sat right at pin 3.
 
-The one requirement that drove the transceiver choice: **62500 baud**. That is the programming-session rate, and a bridge that cannot hold it is not worth building — it would log fine and then be useless for flashing. That figure is still on the bench-test list rather than proven.
+The one requirement that drove the transceiver choice: **62500 baud**. That is the programming-session rate, and a bridge that cannot hold it is not worth building — it would log fine and then be useless for anything else. It holds it on the car, with a single 1 kΩ pull-up, and that rate is what the whole logging and backup story below depends on.
 
 ## The OBD2 pigtail, and reading it properly
 
@@ -108,15 +111,44 @@ Everything else in the BOM fits either way round. These two do not.
 
 Resistors and the ceramic cap have no polarity at all, so those are free.
 
-## Where it stands
+## Where it stands — it is on the car
 
-The design is settled, the parts are in, and the firmware is ported — `board = seeed_xiao_esp32s3`, LED on GPIO2, CAN on GPIO4/GPIO7. It compiles clean. **It has not been flashed to a XIAO yet**, so the first power-up is a bench test, not an install.
+The board is built, flashed and running in the footwell. Every job on the list above happens at once, on one board, over one Bluetooth link.
 
-One part of that port was not cosmetic, and is worth repeating for anyone doing the same swap. The optional ADS1115 sat on GPIO7 and GPIO8 — which on the XIAO become CAN RXD and the pins reserved for the K-line UART. The I²C bring-up is lazy, so nothing happens until the phone asks for ADS1115 mode; at that moment `Wire.begin(7, 8)` would seize the CAN receive line. The bus would go quiet after a settings change, with nothing in the wiring to blame. Moving it to `D4`/`D5` costs nothing and removes a fault that would have been miserable to find.
+### 8.5 Hz, and the phone is not in the loop
 
-The K-line half is specified but not written — the board does CAN and the shift light today. The 62500-baud bench test on the L9637D is the next real milestone, and it is the one that decides whether this can carry a flashing session as well as a logging one. One L9637D is already mounted on an adapter for it, so it does not eat a board from the build stock.
+The number that matters for logging is how many complete rows per second reach the phone, and that is **8.5 Hz** now, up from 3.5.
 
-Full write-up of the port, including the checklist that is still open: [PORTING.md](https://github.com/MrBlahhhh/R53_Mini_Kline_Canbus_Logger_Shiftlight/blob/main/docs/PORTING.md).
+Most of that came from moving the session onto the board. The bridge probes the ECU at key-on, negotiates the 62500-baud session itself, and then runs the poll rotation on its own — the phone hands it a list of blocks once and receives a stream. Previously every single block read cost a round trip out to the phone and back before the next one could start, and on the car that round trip measured 60 ms out of every 142 ms exchange. Nearly half the sample period was spent asking permission for a request that had already been decided.
+
+The rest came from the main loop. Each subsystem already paced itself, so the 20 ms delay holding the whole loop together was pure latency; at 1 ms nothing else changed and the rate more than doubled.
+
+The rotation lives in the board's flash, so it survives a reboot. Pull the bridge's power mid-drive and it comes back on its own, re-negotiates the fast session and picks up the same list of blocks it was running before.
+
+### One stream, not three
+
+The wideband, the CAN channels and the ECU blocks all arrive on the same link, merged on the board. That is worth more than it sounds. The lambda reading and the load and rpm it belongs with are sampled and sent together, so a fuelling number and the conditions that produced it are the same row rather than two rows that happen to be close in time.
+
+### It reads the whole ECU now
+
+Two things that used to need the cable now work over Bluetooth:
+
+- **Chassis number from the instrument cluster**, so the app knows which car it is plugged into and applies that car's wideband calibration, AFR targets and alarms without being told.
+- **A full 512 KB ECU backup.** Around seven minutes over the air, and the image is byte-for-byte identical to one read over the cable — verified by reading the same ECU both ways and comparing.
+
+That second one is the useful one. A backup is the file you want before anyone touches a calibration, and until now it meant getting a laptop and a cable into the footwell.
+
+Writing to the ECU still goes down the cable, deliberately. A dropped radio link in the middle of a flash is a different class of problem to a dropped log, and there is no good reason to take that risk when the cable is right there for the one operation that needs it.
+
+### Both K-lines
+
+The R53 puts the ECU on one K-line and the body and chassis modules on a second. Linking the two at the OBD2 connector — the same jumper a K+DCAN cable carries — puts every module on a bus the board can see, with no firmware change and one wire. Details are in [the hardware notes](https://github.com/MrBlahhhh/R53_Mini_Kline_Canbus_Logger_Shiftlight/blob/main/firmware/esp32_kline_bridge_HARDWARE.md).
+
+### One porting note worth repeating
+
+The optional ADS1115 sat on GPIO7 and GPIO8 — which on the XIAO become CAN RXD and the pins reserved for the K-line UART. The I²C bring-up is lazy, so nothing happens until the phone asks for ADS1115 mode; at that moment `Wire.begin(7, 8)` would seize the CAN receive line. Moving it to `D4`/`D5` costs nothing and removes a fault that would have been miserable to find.
+
+Full write-up of the port: [PORTING.md](https://github.com/MrBlahhhh/R53_Mini_Kline_Canbus_Logger_Shiftlight/blob/main/docs/PORTING.md).
 
 ## It is a real board now
 
