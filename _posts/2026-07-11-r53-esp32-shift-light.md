@@ -256,10 +256,74 @@ in one pass.
 Gerbers, BOM and placement files are in the repo under `hardware/pcb/fab`.
 Nothing has been manufactured yet, so treat rev A as exactly that.
 
+## Reading the whole bus, not just RPM
+
+The board was already listening to every frame on the bus and throwing away all
+but one of them. The app now decodes eleven channels off the car, plus the AEM
+wideband that shares the same pair, and plots each one.
+
+**No firmware change was needed.** The frames were always arriving; the protocol
+already had a filter command. Switching the graph on narrows the stream to the
+ten IDs those channels need, because a 500 kbit bus in full flow is far more
+than Bluetooth will carry.
+
+### One chart per channel, not one chart
+
+Engine speed runs to 7500. Lambda lives between 0.7 and 1.3. Put both on the
+same axis and lambda is a flat line along the bottom that tells you nothing —
+so each channel gets its own small chart with its own scale, stacked and
+scrollable. Colour encodes what a channel is *about* — engine, temperature,
+motion, fuel and air — rather than being eleven different hues that mean
+nothing.
+
+### What the R53 puts on the bus
+
+Every one of these came from a DBC-generated decoder rather than guesswork. The
+start bit is into the frame read as a single little-endian word, which is how a
+DBC describes an Intel signal.
+
+| Channel | ID | Start bit | Length | Scale | Offset |
+|---|---|---:|---:|---:|---:|
+| Engine speed | `0x316` | 16 | 16 | 0.15625 | 0 |
+| Coolant | `0x329` | 8 | 8 | 0.75 | −48.373 |
+| Throttle | `0x329` | 40 | 8 | 1 | 0 |
+| Oil temp | `0x545` | 32 | 8 | 1 | −48.373 |
+| Oil pressure | `0x565` | 48 | 8 | 2 | 0 |
+| Road speed | `0x153` | 11 | 13 | 0.0625 | −0.625 |
+| Wheel speeds | `0x1F0` | 0/16/32/48 | 12 | 0.0625 | 0 |
+| Steering angle | `0x1F5` | 0 | 15 | 0.045 | 0 |
+| Fuel level | `0x613` | 16 | 7 | 1 | 0 |
+| Outside temp | `0x615` | 24 | 7 | 1 | 0 |
+
+Two of those have a catch. **Steering angle keeps its sign in a separate bit**
+above the magnitude — read it as one 16-bit field and it comes out half a turn
+wrong. **Outside temp does the same.** And the RPM scale is worth a note: the
+0.15625 above is 1/6.4, which is exactly what the shift light has been running
+on since the first version. The struct comment in that DBC header says 0.2. The
+unpack function says 0.156, and the car agrees with the unpack function.
+
+### The wideband
+
+The AEM is the odd one out. It is **big-endian where the car is little-endian**,
+and it uses 29-bit extended IDs:
+
+| Field | Bytes | Scale |
+|---|---|---|
+| Lambda | 0–1, big-endian | ×0.0001 |
+| Oxygen % | 2–3, signed | ×0.001 |
+| Volts | 4 | ×0.1 |
+| Status | 6 | `0x02` sensor · `0x20` free-air cal · `0x80` valid |
+| Fault | 7 | `0x40` sensor fault |
+
+That validity bit matters more than it looks. A wideband that is still warming
+up publishes a lambda anyway, and it is wrong. The app holds those readings back
+rather than drawing a confident line through them, and says why: *warming up,
+readings held back*.
+
 ## What's next
 
 - **Per-gear shift points.** The thresholds are adjustable now, but they're one set for the whole car. An R53 doesn't want the same shift point in second as it does in fifth.
 - **Ambient dimming.** A light sensor to knock the brightness down for night sessions. There are spare pins on the carrier for it.
-- **More than RPM.** The board already sees the whole bus. Coolant temp on the bar during a cool-down lap is close to free.
+- **Channels on the bar itself.** The app graphs eleven of them now; putting coolant on the LEDs during a cool-down lap is the obvious next step.
 
 For eight LEDs, one board, and an afternoon of firmware, it already does the one thing it needs to do: when the bar goes red and starts flashing, I shift. My eyes never leave the track. The difference now is that when I want it flashing 300 RPM earlier, I change it from the driver's seat.
