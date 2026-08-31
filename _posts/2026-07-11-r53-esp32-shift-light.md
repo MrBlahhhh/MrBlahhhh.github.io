@@ -186,10 +186,66 @@ Buck, not a resistor divider and not a linear regulator. A linear part dropping 
 ![Quick-splice taps on the switched feed, with ring terminals on a ground stud](/assets/images/r53-shift-light/install-power-tap.jpg){:.img-md}
 *Add-a-fuse feed tapped in behind the R53's dash, with ground on a proper stud rather than a random screw into painted metal. A shift light with a poor ground flickers, and it looks exactly like a firmware bug.*
 
+## One board instead of five things
+
+Everything above works, and it is still a dev board, a CAN breakout, a USB buck module and a knot of jumper wires. Every one of those joints is a thing that vibrates loose in a car. So there is now a PCB that is all of it at once.
+
+![The carrier board, rendered](/assets/images/r53-shift-light/carrier-board.jpg){:.img-lg}
+*62 x 46 mm, four layer. Three screw terminals along the bottom edge, the ESP32 soldered flat in the middle, the CAN transceiver on the board rather than hanging off it.*
+
+What changed against the loose-parts build:
+
+- **The CAN transceiver is on the board.** No breakout module, and the bus gets its own screw terminal with clamps on both lines.
+- **The 12 V input is protected properly.** A resettable fuse, a bidirectional TVS clamping at 26 V, then a Schottky blocking reverse polarity, then the same switching regulator down to 5 V.
+- **The strip data line goes through a level shifter.** A WS2812B on a 5 V rail wants 3.5 V to read a logic high and the ESP32 puts out 3.3 V. It usually works. "Usually" is the problem, and a 74AHCT1G125 costs eight cents.
+- **Nothing plugs in.** The ESP32-C3 SuperMini is soldered flat, not socketed. No socket to walk out of on a rough surface.
+
+The bus termination jumper ships **open**, and should stay that way. A car's CAN bus is already terminated at both ends; a third 120 Ω across the pair drops it to about 40 Ω and can stop it working. That jumper is there for a bench bus, not for the car.
+
+### Parts
+
+Everything except the module and the terminals is a common jellybean part. The
+LCSC numbers are the ones the design carries; the blanks are parts where any
+equivalent will do.
+
+| Ref | Part | Qty | Package | LCSC |
+|---|---|---:|---|---|
+| U2 | ESP32-C3 SuperMini | 1 | module, soldered flat | buy separately |
+| U1 | Recom R-78E5.0-1.0 | 1 | SIP-3 | 12 V to 5 V, 1 A switching |
+| U3 | SN65HVD230DR | 1 | SOIC-8 | C12084 |
+| U4 | 74AHCT1G125GW | 1 | SOT-23-5 | C129276 |
+| D1 | SMBJ26CA | 1 | SMB | bidirectional, input clamp |
+| D2 | SS34 | 1 | SMA | reverse-polarity block |
+| D3, D4 | SMAJ26CA | 2 | SMA | C134976 |
+| F1 | 1.1 A PTC resettable | 1 | 1812 | |
+| C1 | 10 µF 50 V | 1 | 1206 | |
+| C2 | 22 µF 16 V | 1 | 1206 | C12891 |
+| C3–C6 | 100 nF 16 V | 4 | 0805 | C49678 |
+| C7 | 1000 µF 10 V | 1 | radial, 10 mm, 5 mm pitch | |
+| R1 | 120 Ω | 1 | 0805 | termination, unused unless JP1 is bridged |
+| R2 | 330 Ω | 1 | 0805 | |
+| J1, J2 | 2-way screw terminal | 2 | 5.08 mm | |
+| J3 | 3-way screw terminal | 1 | 5.08 mm | |
+
+Off the board you still need the eight-LED WS2812B strip, an add-a-fuse, and
+wire.
+
+### Building one
+
+The through-hole parts cannot go through a hot plate, and neither can the
+module: the SuperMini is a populated board with its own reflowed components, and
+taking it to paste temperature makes them move. So the order is reflow the SMD
+parts, hand-solder the terminals and the regulator and the big capacitor, then
+solder the module last. Its pads deliberately extend outward past the module
+edge, so you run an iron down the outside and watch each joint form.
+
+Gerbers, BOM and placement files are in the repo under `hardware/pcb/fab`.
+Nothing has been manufactured yet, so treat rev A as exactly that.
+
 ## What's next
 
 - **Per-gear shift points.** The thresholds are adjustable now, but they're one set for the whole car. An R53 doesn't want the same shift point in second as it does in fifth.
-- **Ambient dimming.** A light sensor to knock the brightness down for night sessions.
+- **Ambient dimming.** A light sensor to knock the brightness down for night sessions. There are spare pins on the carrier for it.
 - **More than RPM.** The board already sees the whole bus. Coolant temp on the bar during a cool-down lap is close to free.
 
 For eight LEDs, one board, and an afternoon of firmware, it already does the one thing it needs to do: when the bar goes red and starts flashing, I shift. My eyes never leave the track. The difference now is that when I want it flashing 300 RPM earlier, I change it from the driver's seat.
