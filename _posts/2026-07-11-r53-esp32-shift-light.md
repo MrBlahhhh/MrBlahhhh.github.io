@@ -267,16 +267,28 @@ already had a filter command. Switching the graph on narrows the stream to the
 ten IDs those channels need, because a 500 kbit bus in full flow is far more
 than Bluetooth will carry.
 
-### One chart per channel, not one chart
+![The graph tab, three channels overlaid](/assets/images/r53-shift-light/app-graph.jpg){:.img-sm}
+*Engine speed, throttle and air/fuel on one plot. That trace is a real pull: throttle spikes, revs climb behind it, and the mixture goes rich and stays busy while the wideband works.*
 
-Engine speed runs to 7500. Lambda lives between 0.7 and 1.3. Put both on the
-same axis and lambda is a flat line along the bottom that tells you nothing —
-so each channel gets its own small chart with its own scale, stacked and
-scrollable. Colour encodes what a channel is *about* — engine, temperature,
-motion, fuel and air — rather than being eleven different hues that mean
-nothing.
+### One plot, not one axis
+
+Engine speed runs to 7500. AFR lives between 10 and 19. Put both on one *scale*
+and AFR is a flat line along the bottom that tells you nothing.
+
+So they share a plot without sharing a scale: each channel is drawn against its
+own fixed range, and the two most important get a labelled axis in their own
+colour — engine speed on the left, whatever else you are watching on the right.
+Colouring each axis to match its trace is what stops two scales being
+ambiguous. A number on the left edge is red, and so is the line it belongs to.
+
+That is the whole point of putting them together. "Throttle came off and the
+mixture went lean right there" is one glance instead of two.
 
 ### What the R53 puts on the bus
+
+![The CAN bus tab listing every id on the bus](/assets/images/r53-shift-light/app-canbus.jpg){:.img-sm}
+*Every id the car is sending, its rate, and its latest bytes. Fifteen of them, and just over a thousand frames a second between them — which is why the graph filters down to only the ids it needs rather than streaming the lot over Bluetooth.*
+
 
 Every one of these came from a DBC-generated decoder rather than guesswork. The
 start bit is into the frame read as a single little-endian word, which is how a
@@ -294,6 +306,13 @@ DBC describes an Intel signal.
 | Steering angle | `0x1F5` | 0 | 15 | 0.045 | 0 |
 | Fuel level | `0x613` | 16 | 7 | 1 | 0 |
 | Outside temp | `0x615` | 24 | 7 | 1 | 0 |
+
+You can check those against the screenshot above. `0x329` reads `C0 B6 ...`, and
+byte 1 of 182 gives 182 × 0.75 − 48.373 = 88.1 °C — a warm engine, which it was.
+`0x316` reads `01 00 06 23`, and bytes 2 and 3 little-endian give 8966 × 0.15625
+= 1400 rpm, which is what the graph was showing at the time. The AEM's byte 4
+reads `89`, which is 13.7 V: a running car's charging voltage, and about the
+strongest confirmation of a byte layout you can get without a reference.
 
 Two of those have a catch. **Steering angle keeps its sign in a separate bit**
 above the magnitude — read it as one 16-bit field and it comes out half a turn
