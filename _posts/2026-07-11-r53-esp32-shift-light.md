@@ -137,6 +137,22 @@ Worth being clear about this, because it's the part that matters in the car: **t
 
 Nothing on the Bluetooth side sits between the CAN bus and the LEDs.
 
+### Getting the app
+
+It's free, and it isn't on the Play Store. You install the APK directly:
+
+> **Download:** [r53-shift-light.apk](https://mrblahhhh.github.io/assets/apk/r53-shift-light.apk) · Android 8.0 or newer · about 1 MB
+
+<div style="max-width:180px;margin:1.25rem auto;">
+  <img src="/assets/images/r53-shift-light/app-qr.png"
+       alt="QR code linking to the R53 shift light APK download"
+       style="width:100%;height:auto;display:block;border-radius:6px;">
+</div>
+
+*Scan it from the car and install without touching a computer.*
+
+Android will warn you about installing an app from outside the Play Store. That's expected for anything sideloaded, and you'll need to let your browser install unknown apps when it asks. The app asks for one permission: Nearby devices on Android 12 and up, or Location on 11 and older, which is how those versions gate Bluetooth scanning. It holds no internet permission at all, so it cannot send anything anywhere even if you wanted it to.
+
 ## Mounting
 
 ![Shift light installed on the column shroud, under the tach pod](/assets/images/r53-shift-light/shift-light-installed.jpg){:.img-md}
