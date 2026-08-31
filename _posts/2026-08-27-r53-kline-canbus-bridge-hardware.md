@@ -142,7 +142,13 @@ Writing to the ECU still goes down the cable, deliberately. A dropped radio link
 
 ### Both K-lines
 
-The R53 puts the ECU on one K-line and the body and chassis modules on a second. Linking the two at the OBD2 connector — the same jumper a K+DCAN cable carries — puts every module on a bus the board can see, with no firmware change and one wire. Details are in [the hardware notes](https://github.com/MrBlahhhh/R53_Mini_Kline_Canbus_Logger_Shiftlight/blob/main/firmware/esp32_kline_bridge_HARDWARE.md).
+The R53 puts the ECU on one K-line and the body and chassis modules on a second. They come out of the OBD2 connector as two separate pins, 7 and 8, so a board landed on pin 7 talks to the engine and hears nothing else on the car.
+
+Linking the two pins is the whole of it. That is what a K+DCAN cable does internally, and it is the reason one of those talks to every module rather than just the engine. The bridge has a single transceiver, so it gets the same link out at the input terminal: pin 7 and pin 8 twisted together and screwed into one position on the block. No firmware change, no second transceiver, nothing to fit.
+
+It is deliberately not a jumper on the PCB. There it would cost a terminal position and a net, and it would have to be assembled right to work at all. At the screw clamp it is a screwdriver, and backing it off puts the two lines back to independent if I ever want that.
+
+With the link in, the instrument cluster answers. That is where the chassis number comes from, and it is the prerequisite for coding modules over Bluetooth rather than over a cable. Wiring detail is in [the hardware notes](https://github.com/MrBlahhhh/R53_Mini_Kline_Canbus_Logger_Shiftlight/blob/main/docs/HARDWARE.md).
 
 ### One porting note worth repeating
 
