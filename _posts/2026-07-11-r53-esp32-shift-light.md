@@ -191,7 +191,7 @@ Buck, not a resistor divider and not a linear regulator. A linear part dropping 
 Everything above works, and it is still a dev board, a CAN breakout, a USB buck module and a knot of jumper wires. Every one of those joints is a thing that vibrates loose in a car. So there is now a PCB that is all of it at once.
 
 ![The carrier board, rendered](/assets/images/r53-shift-light/carrier-board.jpg){:.img-lg}
-*52 x 44 mm, four layer. Three screw terminals along the bottom edge, the ESP32 soldered down in the middle, the CAN transceiver on the board rather than hanging off it.*
+*52 x 46 mm, four layer. Three screw terminals along the bottom edge, the ESP32 soldered down in the middle with its USB-C facing the top edge, the CAN transceiver on the board rather than hanging off it.*
 
 What changed against the loose-parts build:
 
@@ -200,7 +200,9 @@ What changed against the loose-parts build:
 - **The strip data line goes through a level shifter.** A WS2812B on a 5 V rail wants 3.5 V to read a logic high and the ESP32 puts out 3.3 V. It usually works. "Usually" is the problem, and a 74AHCT1G125 costs eight cents.
 - **Nothing plugs in.** The ESP32-C3 SuperMini is soldered down, not socketed. No socket to walk out of on a rough surface.
 
-The module sits on plated through-holes in oblong pads that run outward past its body. That covers every way these boards ship: castellated half-holes, plain through-holes, or header pins already fitted. A flat SMD land only works for the first kind, and on the other two the copper ends up underneath the module with no way to reach it.
+The module sits on plated through-holes in oblong pads that run outward past its body. Mine has plain through-holes set in from the edge rather than castellated half-holes, and a flat SMD land would have put the copper underneath it with no way to reach it. The oblong pads work either way, and take a module with header pins already fitted too.
+
+Every dimension on that footprint came off the actual part with calipers: 17.94 mm across the body, 22.89 mm of PCB, 24.17 mm overall — so the USB-C shell stands 1.28 mm proud of the board it is on. That last number matters more than it sounds. The connector has to end up at the edge of the carrier, or you cannot plug a cable in.
 
 The bus termination jumper ships **open**, and should stay that way. A car's CAN bus is already terminated at both ends; a third 120 Ω across the pair drops it to about 40 Ω and can stop it working. That jumper is there for a bench bus, not for the car.
 
