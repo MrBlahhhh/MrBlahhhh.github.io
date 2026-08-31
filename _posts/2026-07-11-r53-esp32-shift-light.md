@@ -170,7 +170,11 @@ The board takes 5 V over USB-C, and the car has 12 V. Two cheap parts bridge tha
 
 **An add-a-fuse tap** in the fuse box. It piggybacks a new fused circuit onto an existing one without cutting a single factory wire, and it puts your circuit on its own fuse instead of borrowing someone else's headroom.
 
+On the R53 the interior fuse box is in the **driver's side lower kick panel, behind a cover**, which is convenient: it is directly below where the wire comes down the A-pillar, so the whole run stays on one side of the car and out of sight.
+
 Pick an **ignition-switched** fuse, not a permanent live. A shift light that stays awake in the car park will flatten the battery over a weekend, and it is a genuinely annoying fault to diagnose because everything works perfectly right up until the morning it doesn't.
+
+Test before you commit, because the box carries both kinds. Probe the fuse with a meter or a test light: key out should read 0 V, key to position 1 should read 12 V. Some circuits also drop out while cranking, which only means the light reboots when the engine starts. Stay off anything with a **yellow connector**, which is airbag.
 
 ![Running the power wire down behind the A-pillar trim](/assets/images/r53-shift-light/install-wire-run.jpg){:.img-md}
 *Feeding the 12 V supply down behind the A-pillar trim in the R53. It runs behind the trim rather than across the dash, so nothing is visible and nothing crosses the airbag path.*
