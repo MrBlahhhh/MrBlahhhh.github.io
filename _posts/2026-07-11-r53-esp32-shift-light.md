@@ -206,31 +206,37 @@ The bus termination jumper ships **open**, and should stay that way. A car's CAN
 
 ### Parts
 
-Everything except the module and the terminals is a common jellybean part. The
-LCSC numbers are the ones the design carries; the blanks are parts where any
-equivalent will do.
+Sixteen lines, and everything except the module and the terminals is a common
+jellybean part. LCSC numbers are the ones the design carries; blanks are parts
+where any equivalent of the right rating will do.
 
-| Ref | Part | Qty | Package | LCSC |
-|---|---|---:|---|---|
-| U2 | ESP32-C3 SuperMini | 1 | module, soldered flat | buy separately |
-| U1 | Recom R-78E5.0-1.0 | 1 | SIP-3 | 12 V to 5 V, 1 A switching |
-| U3 | SN65HVD230DR | 1 | SOIC-8 | C12084 |
-| U4 | 74AHCT1G125GW | 1 | SOT-23-5 | C129276 |
-| D1 | SMBJ26CA | 1 | SMB | bidirectional, input clamp |
-| D2 | SS34 | 1 | SMA | reverse-polarity block |
-| D3, D4 | SMAJ26CA | 2 | SMA | C134976 |
-| F1 | 1.1 A PTC resettable | 1 | 1812 | |
-| C1 | 10 µF 50 V | 1 | 1206 | |
-| C2 | 22 µF 16 V | 1 | 1206 | C12891 |
-| C3–C6 | 100 nF 16 V | 4 | 0805 | C49678 |
-| C7 | 220 µF 10 V | 1 | SMD, 6.3 × 7.7 mm | |
-| R1 | 120 Ω | 1 | 0805 | termination, unused unless JP1 is bridged |
-| R2 | 330 Ω | 1 | 0805 | |
-| J1, J2 | 2-way screw terminal | 2 | 5.08 mm | |
-| J3 | 3-way screw terminal | 1 | 5.08 mm | |
+| Ref | Part | Qty | Package | LCSC | Notes |
+|---|---|---:|---|---|---|
+| U2 | ESP32-C3 SuperMini | 1 | 2×8, 2.54 mm | — | buy separately, soldered through-hole |
+| U1 | Recom R-78E5.0-1.0 | 1 | SIP-3 | — | 12 V→5 V, 1 A switching |
+| U3 | SN65HVD230DR | 1 | SOIC-8 | C12084 | CAN transceiver |
+| U4 | 74AHCT1G125GW | 1 | SOT-23-5 | C129276 | 3.3 V→5 V buffer |
+| D1 | SMBJ26CA | 1 | SMB | — | bidirectional input clamp |
+| D2 | SS34 | 1 | SMA | — | reverse-polarity block |
+| D3, D4 | SMAJ26CA | 2 | SMA | C134976 | CAN bus clamps |
+| F1 | 1.1 A PTC resettable | 1 | 1812 | — | |
+| C1 | 10 µF 50 V | 1 | 1206 | — | regulator input |
+| C2 | 22 µF 16 V | 1 | 1206 | C12891 | regulator output |
+| C3–C6 | 100 nF 16 V | 4 | 0805 | C49678 | decoupling |
+| C7 | 220 µF 10 V | 1 | SMD, 6.3 × 7.7 mm | — | LED inrush reservoir |
+| R1 | 120 Ω | 1 | 0805 | — | termination, unused unless JP1 is bridged |
+| R2 | 330 Ω | 1 | 0805 | — | series damping on the data line |
+| J1, J2 | 2-way screw terminal | 2 | 5.08 mm | — | 12 V in, CAN |
+| J3 | 3-way screw terminal | 1 | 5.08 mm | — | shift light |
+
+JP1 is not on the list because it is not a part: it is a solder jumper, two
+pads on the board, and it stays open.
 
 Off the board you still need the eight-LED WS2812B strip, an add-a-fuse, and
 wire.
+
+Gerbers, the machine-readable BOM and the placement file are in the repo under
+[`hardware/pcb/fab`](https://github.com/MrBlahhhh/esp32-shift-light-R53-mini/tree/main/hardware/pcb/fab).
 
 ### Building one
 
