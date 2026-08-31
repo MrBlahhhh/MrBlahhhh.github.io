@@ -164,6 +164,24 @@ The housing is up on Cults3D if you want to print your own:
 
 > **Download:** [R53 shift light housing on Cults3D](https://cults3d.com/en/3d-model/various/r53-shift-light-housing)
 
+## Powering it
+
+The board takes 5 V over USB-C, and the car has 12 V. Two cheap parts bridge that, and both are worth buying rather than improvising.
+
+**An add-a-fuse tap** in the fuse box. It piggybacks a new fused circuit onto an existing one without cutting a single factory wire, and it puts your circuit on its own fuse instead of borrowing someone else's headroom.
+
+Pick an **ignition-switched** fuse, not a permanent live. A shift light that stays awake in the car park will flatten the battery over a weekend, and it is a genuinely annoying fault to diagnose because everything works perfectly right up until the morning it doesn't.
+
+![Running the power wire down behind the A-pillar trim](/assets/images/r53-shift-light/install-wire-run.jpg){:.img-md}
+*Feeding the 12 V supply down behind the A-pillar trim in the R53. It runs behind the trim rather than across the dash, so nothing is visible and nothing crosses the airbag path.*
+
+**A 12 V to 5 V USB buck converter**, the sort sold for golf carts and motorcycles. The dual-USB Aideepen modules are about sixteen dollars for a two-pack and rated 5 V at 3 A, which is generous: the board and eight WS2812Bs together draw well under half an amp even with the bar full and the brightness up. Headroom costs nothing here and a supply running at its limit gets hot.
+
+Buck, not a resistor divider and not a linear regulator. A linear part dropping 12 V to 5 V burns the difference as heat, and at half an amp that is three and a half watts out of a plastic box tucked behind a dash.
+
+![Quick-splice taps on the switched feed, with ring terminals on a ground stud](/assets/images/r53-shift-light/install-power-tap.jpg){:.img-md}
+*Add-a-fuse feed tapped in behind the R53's dash, with ground on a proper stud rather than a random screw into painted metal. A shift light with a poor ground flickers, and it looks exactly like a firmware bug.*
+
 ## What's next
 
 - **Per-gear shift points.** The thresholds are adjustable now, but they're one set for the whole car. An R53 doesn't want the same shift point in second as it does in fifth.
