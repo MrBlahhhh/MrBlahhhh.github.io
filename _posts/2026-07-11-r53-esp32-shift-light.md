@@ -191,7 +191,7 @@ Buck, not a resistor divider and not a linear regulator. A linear part dropping 
 Everything above works, and it is still a dev board, a CAN breakout, a USB buck module and a knot of jumper wires. Every one of those joints is a thing that vibrates loose in a car. So there is now a PCB that is all of it at once.
 
 ![The carrier board, rendered](/assets/images/r53-shift-light/carrier-board.jpg){:.img-lg}
-*54 x 48 mm, four layer. Three screw terminals along the bottom edge with every pin labelled, the ESP32 soldered down in the middle with its USB-C facing the top edge, the CAN transceiver on the board rather than hanging off it. M3 holes in all four corners, because a board that lives behind a dash needs to be bolted to something.*
+*54 x 48 mm, four layer. Three screw terminals along the bottom edge with every pin labelled, the ESP32 soldered down dead centre with its USB-C shell overhanging the top edge, the CAN transceiver on the board rather than hanging off it. M3 holes in all four corners, because a board that lives behind a dash needs to be bolted to something.*
 
 What changed against the loose-parts build:
 
@@ -205,6 +205,27 @@ What changed against the loose-parts build:
 The module sits on plated through-holes in oblong pads that run outward past its body. Mine has plain through-holes set in from the edge rather than castellated half-holes, and a flat SMD land would have put the copper underneath it with no way to reach it. The oblong pads work either way, and take a module with header pins already fitted too.
 
 Every dimension on that footprint came off the actual part with calipers: 17.94 mm across the body, 22.89 mm of PCB, 24.17 mm overall — so the USB-C shell stands 1.28 mm proud of the board it is on. That last number matters more than it sounds. The connector has to end up at the edge of the carrier, or you cannot plug a cable in.
+
+The first routed rev got exactly that wrong. The module went down at 270
+degrees on the strength of a comment claiming 270 faced the top edge, but the
+comment's numbers had been worked out for the footprint at 0 degrees, and
+KiCad rotates the pads with the part. The port spent a week aimed at the bulk
+capacitor from 5 mm away, through a clean ERC, a clean DRC, a netlist compare
+and every audit in the pipeline. None of those checks knows what a connector
+is.
+
+The board you see above is the fix: module at 0 degrees, centred, riding high
+enough that the shell overhangs the top edge by 1.2 mm, so a plug's overmold
+never meets the carrier at all. And the pipeline got a new check out of it.
+`audit_usb.py` takes the port's position and direction from pads 1 and 16 of
+the placed board and fails if anything sits in a plug-sized corridor. It reads
+the copper, not the comment. Pointed at the broken rev it says `C7 sits in the
+plug corridor`, which is the sentence nobody wrote for a week.
+
+![The carrier board from an angle](/assets/images/r53-shift-light/carrier-board-iso.jpg){:.img-lg}
+*The same board from an angle. The module's oblong pads run outward past its
+body, so every joint is reachable with an iron once the module is sitting on
+them.*
 
 The bus termination jumper ships **open**, and should stay that way. A car's CAN bus is already terminated at both ends; a third 120 Ω across the pair drops it to about 40 Ω and can stop it working. That jumper is there for a bench bus, not for the car.
 
