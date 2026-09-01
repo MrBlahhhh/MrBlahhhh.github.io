@@ -191,7 +191,7 @@ Buck, not a resistor divider and not a linear regulator. A linear part dropping 
 Everything above works, and it is still a dev board, a CAN breakout, a USB buck module and a knot of jumper wires. Every one of those joints is a thing that vibrates loose in a car. So there is now a PCB that is all of it at once.
 
 ![The carrier board, rendered](/assets/images/r53-shift-light/carrier-board.jpg){:.img-lg}
-*54 x 46 mm, four layer. Three screw terminals along the bottom edge, the ESP32 soldered down in the middle with its USB-C facing the top edge, the CAN transceiver on the board rather than hanging off it. M3 holes in all four corners, because a board that lives behind a dash needs to be bolted to something.*
+*54 x 48 mm, four layer. Three screw terminals along the bottom edge with every pin labelled, the ESP32 soldered down in the middle with its USB-C facing the top edge, the CAN transceiver on the board rather than hanging off it. M3 holes in all four corners, because a board that lives behind a dash needs to be bolted to something.*
 
 What changed against the loose-parts build:
 
@@ -200,6 +200,7 @@ What changed against the loose-parts build:
 - **The strip data line goes through a level shifter.** A WS2812B on a 5 V rail wants 3.5 V to read a logic high and the ESP32 puts out 3.3 V. It usually works. "Usually" is the problem, and a 74AHCT1G125 costs eight cents.
 - **Nothing plugs in.** The ESP32-C3 SuperMini is soldered down, not socketed. No socket to walk out of on a rough surface.
 - **It bolts down.** M3 clearance holes in all four corners, sized around a washer rather than the screw, so the row of terminals still has room to breathe. Cable-tying a bare PCB to a loom behind the dash is how you find out what a stray track can short against.
+- **Every terminal pin is labelled on the board.** `+12V GND`, `CANH CANL`, `+5V DATA GND`, printed above the pin it belongs to. You wire one of these upside down under a dash with a torch in your teeth, and a designator like "J2" tells you nothing at that moment.
 
 The module sits on plated through-holes in oblong pads that run outward past its body. Mine has plain through-holes set in from the edge rather than castellated half-holes, and a flat SMD land would have put the copper underneath it with no way to reach it. The oblong pads work either way, and take a module with header pins already fitted too.
 
