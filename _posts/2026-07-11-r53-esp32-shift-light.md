@@ -141,7 +141,7 @@ Nothing on the Bluetooth side sits between the CAN bus and the LEDs.
 
 It's free, and it isn't on the Play Store. You install the APK directly:
 
-> **Download:** [r53-shift-light.apk](https://mrblahhhh.github.io/assets/apk/r53-shift-light.apk) · Android 8.0 or newer · about 1 MB
+> **Download:** [r53-shift-light.apk](https://mrblahhhh.github.io/assets/apk/r53-shift-light.apk) · version 1.1 · Android 8.0 or newer · about 1 MB
 
 <div style="max-width:180px;margin:1.25rem auto;">
   <img src="/assets/images/r53-shift-light/app-qr.png"
