@@ -217,11 +217,11 @@ where any equivalent of the right rating will do.
 | U2 | ESP32-C3 SuperMini | 1 | 2×8, 2.54 mm | — | buy separately, soldered through-hole |
 | U1 | Recom R-78E5.0-1.0 | 1 | SIP-3 | — | 12 V→5 V, 1 A switching |
 | U3 | SN65HVD230DR | 1 | SOIC-8 | C12084 | CAN transceiver |
-| U4 | 74AHCT1G125GW | 1 | SOT-23-5 | C129276 | 3.3 V→5 V buffer |
+| U4 | 74HCT1G125GV,125 | 1 | SOT-23-5 | C12502 | 3.3 V→5 V buffer |
 | D1 | SMBJ26CA | 1 | SMB | — | bidirectional input clamp |
 | D2 | SS34 | 1 | SMA | — | reverse-polarity block |
 | D3, D4 | SMAJ26CA | 2 | SMA | C134976 | CAN bus clamps |
-| F1 | 1.1 A PTC resettable | 1 | 1812 | — | |
+| F1 | Littelfuse 1812L110/33MR | 1 | 1812 | C142747 | 1.1 A PTC, **33 V** — see below |
 | C1 | 10 µF 50 V | 1 | 1206 | — | regulator input |
 | C2 | 22 µF 16 V | 1 | 1206 | C12891 | regulator output |
 | C3–C6 | 100 nF 16 V | 4 | 0805 | C49678 | decoupling |
@@ -233,6 +233,21 @@ where any equivalent of the right rating will do.
 
 JP1 is not on the list because it is not a part: it is a solder jumper, two
 pads on the board, and it stays open.
+
+Two of those rows are worth a sentence, because both were wrong in an earlier
+version of this page and both would have cost money.
+
+**U4 was listed as `C129276`.** That number is an STM32F767BIT6 — a 216 MHz
+microcontroller, about thirty dollars each. JLC's matcher offered it without
+complaint, because the number was exactly what it had been given. The part is a
+nine-cent buffer. The package was wrong independently too: Nexperia's `GW`
+suffix is SOT-353, not the SOT-23-5 land on the board. `GV` is SOT-753, which
+*is* JEDEC SOT-23-5.
+
+**F1 is rated 33 V and that is the whole point of it.** The obvious 1812 PTC on
+LCSC is rated 8 V, and this fuse sits *ahead* of the TVS, where it sees the raw
+harness including whatever the alternator is doing. An 8 V part on a 12 V line
+is not protection.
 
 Off the board you still need the eight-LED WS2812B strip, an add-a-fuse, and
 wire.
