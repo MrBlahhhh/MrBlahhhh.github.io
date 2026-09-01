@@ -191,7 +191,7 @@ Buck, not a resistor divider and not a linear regulator. A linear part dropping 
 Everything above works, and it is still a dev board, a CAN breakout, a USB buck module and a knot of jumper wires. Every one of those joints is a thing that vibrates loose in a car. So there is now a PCB that is all of it at once.
 
 ![The carrier board, rendered](/assets/images/r53-shift-light/carrier-board.jpg){:.img-lg}
-*52 x 46 mm, four layer. Three screw terminals along the bottom edge, the ESP32 soldered down in the middle with its USB-C facing the top edge, the CAN transceiver on the board rather than hanging off it.*
+*54 x 46 mm, four layer. Three screw terminals along the bottom edge, the ESP32 soldered down in the middle with its USB-C facing the top edge, the CAN transceiver on the board rather than hanging off it. M3 holes in all four corners, because a board that lives behind a dash needs to be bolted to something.*
 
 What changed against the loose-parts build:
 
@@ -199,6 +199,7 @@ What changed against the loose-parts build:
 - **The 12 V input is protected properly.** A resettable fuse, a bidirectional TVS clamping at 26 V, then a Schottky blocking reverse polarity, then the same switching regulator down to 5 V.
 - **The strip data line goes through a level shifter.** A WS2812B on a 5 V rail wants 3.5 V to read a logic high and the ESP32 puts out 3.3 V. It usually works. "Usually" is the problem, and a 74AHCT1G125 costs eight cents.
 - **Nothing plugs in.** The ESP32-C3 SuperMini is soldered down, not socketed. No socket to walk out of on a rough surface.
+- **It bolts down.** M3 clearance holes in all four corners, sized around a washer rather than the screw, so the row of terminals still has room to breathe. Cable-tying a bare PCB to a loom behind the dash is how you find out what a stray track can short against.
 
 The module sits on plated through-holes in oblong pads that run outward past its body. Mine has plain through-holes set in from the edge rather than castellated half-holes, and a flat SMD land would have put the copper underneath it with no way to reach it. The oblong pads work either way, and take a module with header pins already fitted too.
 
@@ -230,12 +231,15 @@ where any equivalent of the right rating will do.
 | R2 | 330 Ω | 1 | 0805 | — | series damping on the data line |
 | J1, J2 | 2-way screw terminal | 2 | 5.08 mm | — | 12 V in, CAN |
 | J3 | 3-way screw terminal | 1 | 5.08 mm | — | shift light |
+| H1–H4 | M3 × 8 screw, washer, nut | 4 | — | — | corner fixings, hardware-store parts |
 
 JP1 is not on the list because it is not a part: it is a solder jumper, two
-pads on the board, and it stays open.
+pads on the board, and it stays open. The M3 hardware is on it for the sake of
+ordering, not because JLC ships it.
 
 Two of those rows are worth a sentence, because both were wrong in an earlier
-version of this page and both would have cost money.
+version of this page and both would have cost money. A third thing is worth
+knowing before you upload anything.
 
 **U4 was listed as `C129276`.** That number is an STM32F767BIT6 — a 216 MHz
 microcontroller, about thirty dollars each. JLC's matcher offered it without
@@ -248,6 +252,16 @@ suffix is SOT-353, not the SOT-23-5 land on the board. `GV` is SOT-753, which
 LCSC is rated 8 V, and this fuse sits *ahead* of the TVS, where it sees the raw
 harness including whatever the alternator is doing. An 8 V part on a 12 V line
 is not protection.
+
+**Check the placement preview, and expect two parts to be turned.** KiCad and
+LCSC do not agree on which way a part points inside its own package, and for
+two of these — the SOIC-8 transceiver and the SOT-23-5 buffer — the disagreement
+is a right angle. JLC's preview shows both 90 degrees off. Nothing is wrong with
+the board; the placement file is what needs correcting, so the design applies a
+−90 to those two footprints on the way out to `positions.csv` and leaves the
+copper alone. It is worth a look at the preview regardless. It is the only
+stage of the whole order where a human sees the parts on the board before a
+machine puts them there.
 
 Off the board you still need the eight-LED WS2812B strip, an add-a-fuse, and
 wire.
