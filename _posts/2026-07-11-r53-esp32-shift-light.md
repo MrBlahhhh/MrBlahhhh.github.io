@@ -29,6 +29,13 @@ So I built my own: an **8-LED WS2812B bar** in a 3D-printed housing on the colum
 > shows you the CAN bus. Details below, under
 > [Setting it up from your phone](#setting-it-up-from-your-phone).
 
+> ### Update: iPhone works now too
+>
+> The app is a web page as well, so an iPhone no longer needs an app I cannot
+> ship. One catch: Safari has never had Web Bluetooth, so it has to be opened in
+> **Bluefy**. See
+> [The R53 shift light app now runs on iPhone](/car/tech/2026/09/02/r53-shift-light-web-app-for-iphone.html).
+
 <div style="max-width:340px;margin:1.5rem auto;">
   <div style="position:relative;padding-bottom:177.78%;height:0;overflow:hidden;border-radius:8px;box-shadow:0 2px 14px rgba(0,0,0,.45);">
     <iframe src="https://www.youtube.com/embed/FrWZCIEsT3Q"
