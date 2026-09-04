@@ -209,7 +209,7 @@ half watts inside a plastic box behind a dash.
 For the install:
 
 - **Multimeter** and a **12 V test lamp**. Both, not either. Step 2 explains why.
-- **Four T-taps** sized to the wire, or quick-splice connectors
+- **Four taps** sized to the wire, Posi-Tap or T-tap
 - **Ring terminal** and an 8 mm spanner, if you ground to a stud
 - **Trim tools** for the dash end panel and the column shroud
 - Cable ties
@@ -267,7 +267,7 @@ apart if you are probing around:
 **Stay off anything in a yellow connector housing.** That is airbag, and the
 clock spring is right there under the shroud.
 
-Once the wire checks out, the T-tap goes over it. Match the tap to the wire
+Once the wire checks out, the tap goes over it. Match the tap to the wire
 gauge, seat the metal blade all the way down with pliers rather than thumb
 pressure, and close the cover until it clicks. Then pull on the wire. A tap that
 lets go on the bench will let go on a kerb.
@@ -282,7 +282,7 @@ Two options, and one is better:
 
 - **A body stud with a ring terminal.** Do this if there is one in reach. Scrape
   to bare metal if the stud is painted.
-- **T-tap the brown in the same harness.** Works, but it is a shared return.
+- **Tap the brown in the same harness.** Works, but it is a shared return.
 
 A shift light with a poor ground flickers, and it looks exactly like a firmware
 bug. I have chased it as one. Ground it properly the first time.
@@ -338,6 +338,39 @@ path.
 Cable-tie the board and the converter to an existing loom rather than letting
 them hang. Anything loose behind a dash eventually finds something to rattle
 against or short on.
+
+### Step 6 — Optional: an AEM wideband on the same pair
+
+If you run a wideband, its CAN output goes onto the **same pair**, into the same
+two taps you made in step 4. AEM CAN High joins the yellow/black tap, AEM CAN Low
+joins the yellow/brown. A Posi-Tap will take the second wire alongside the first.
+Nothing else changes, and the board picks the gauge up with no configuration.
+
+That works because of how AEM addresses its frames:
+
+| | Car | AEM X-Series |
+|---|---|---|
+| ID format | 11-bit standard | **29-bit extended** |
+| Bit rate | 500 kb/s | 500 kb/s |
+
+Same bit rate, different ID space. The car's `0x316`, `0x329`, `0x1F0` and the
+rest cannot collide with anything the AEM sends, so neither device has to know
+the other is there.
+
+**This is specific to the AEM.** A gauge or controller that puts standard 11-bit
+IDs on the bus can land on an address the car is already using, and then you are
+troubleshooting the car instead of the gauge. Check what any other device
+transmits before you put it on the factory pair.
+
+One difference worth knowing. The shift light is listen-only and never drives the
+bus. The AEM **transmits**: it adds frames and it acknowledges. That is fine for
+the reasons above, but it makes the wideband a real node on your car's bus rather
+than a passenger, which the shift light is not.
+
+No termination for it either, same reason as step 4.
+
+Byte layout and the warm-up handling are further down, under
+[The wideband](#the-wideband).
 
 ### Powering up
 
