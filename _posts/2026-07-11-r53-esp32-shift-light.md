@@ -171,75 +171,194 @@ The housing is up on Cults3D if you want to print your own:
 
 > **Download:** [R53 shift light housing on Cults3D](https://cults3d.com/en/3d-model/various/r53-shift-light-housing)
 
-## Powering it
+## Wiring it in
 
-The board takes 5 V over USB-C and the car has 12 V. So the install is three
-connections plus one cheap part: a switched 12 V feed, a ground, the CAN pair,
-and a buck converter to drop 12 down to 5.
+Four connections to the car and one converter. Everything is behind a single
+panel in the left footwell, and none of it needs a factory wire cut.
 
-### Finding switched 12 V at the column
+Here is the whole job before the detail:
 
-The steering column harness is the closest source to where the light mounts,
-which keeps the whole run short and hidden under the shroud.
+| Connection | Colour | WDS | Terminal | Cluster pin |
+|---|---|---|---|---|
+| Switched 12 V | **green / blue** | GN/BL 0.5 mm² | 15, fuse F40 (5 A) | X11177 pin 16 |
+| Ground | **brown** | BR | 31 | body stud preferred |
+| CAN High | **yellow / black** | GE/SW 0.5 mm² | CAN_H | X11177 pin 11 |
+| CAN Low | **yellow / brown** | GE/BR 0.5 mm² | CAN_L | X11177 pin 24 |
+
+Those colours and pins come off the factory WDS sheets for the instrument
+cluster, not off a forum post. One of them is wrong in the reference most
+people start from, which is covered in step 4.
+
+### What you need
+
+Electronics:
+
+- **ESP32-C3 SuperMini** or S3-Zero, whichever you have
+- **SN65HVD230** CAN transceiver breakout, the blue screw-terminal type
+- **8-LED WS2812B** stick
+- **12 V to 5 V USB buck converter**, the golf-cart or motorcycle sort. The
+  Aideepen dual-USB modules are about sixteen dollars for a two-pack, rated
+  5 V at 3 A. The board and a full strip together draw well under half an amp,
+  so that is generous, and a supply running at its limit gets hot.
+
+Buck, not a resistor divider and not a linear regulator. A linear part dropping
+12 V to 5 V burns the difference as heat, and at half an amp that is three and a
+half watts inside a plastic box behind a dash.
+
+For the install:
+
+- **Multimeter** and a **12 V test lamp**. Both, not either. Step 2 explains why.
+- **Four T-taps** sized to the wire, or quick-splice connectors
+- **Ring terminal** and an 8 mm spanner, if you ground to a stud
+- **Trim tools** for the dash side panel and the column shroud
+- Cable ties
+
+### Step 1 — Get behind the left dash panel
+
+The left footwell side trim comes off with a trim tool. Everything for this
+install lives behind it: the interior fuse box, the main harness carrying the
+switched feed, and the CAN pair.
+
+It is also directly below where the strip wire comes down the A-pillar, so the
+whole run stays on one side of the car and out of sight.
+
+### Step 2 — Find and verify switched 12 V
 
 ![Quick-splice taps on the switched feed, with ring terminals on a ground stud](/assets/images/r53-shift-light/install-power-tap.jpg){:.img-md}
-*The switched feed tapped in behind the R53's dash, with ground on a proper stud rather than a random screw into painted metal. A shift light with a poor ground flickers, and it looks exactly like a firmware bug.*
+*The switched feed tapped in behind the R53's dash, with ground on a proper stud rather than a random screw into painted metal.*
 
-Drop the lower column shroud and find the harness going into the column. On my
-car the **green wire with a blue stripe and yellow hatching** is the switched
-feed. Probe it before you trust it: key out reads 0 V, key on reads 12 V.
-That's the whole test and it takes thirty seconds.
+You are looking for the **green wire with a blue stripe**. WDS calls it
+`GN/BL`, 0.5 mm², terminal 15, fed from fuse **F40 at 5 A**, landing on pin 16
+of connector X11177 at the instrument cluster.
 
-That colour isn't a guess. WDS gives terminal 15 at the instrument cluster as
-**GN/BL, 0.5 mm²**, off fuse **F40, 5 A**, landing on pin 16 of connector
-X11177. A green base is terminal 15 across BMW and MINI generally, and here the
-factory sheet names the exact wire.
+Colours can move by build date and market, so verify before you commit. Four
+checks, meter on the wire and the black lead on a known brown ground:
 
-The cluster's other rails sit on the same connector, which is useful to know so
-you can tell them apart while probing:
+1. **Key out** — should read 0 V
+2. **Key on** — should read about 12 V
+3. **Cranking** — watch whether it drops out. Plenty of switched circuits do,
+   which only means the light reboots when the engine starts.
+4. **Under load** — this is the one people skip. A signal wire reads a happy
+   12 V on a meter and then collapses the moment you draw anything from it.
+   Put the test lamp on it. If the lamp lights properly and the voltage holds,
+   the wire can carry the light.
 
-| Terminal | What it is | Fuse | Wire | X11177 pin |
-|----------|-----------|------|------|------------|
+The cluster's other rails are on the same connector, which is how you tell them
+apart if you are probing around:
+
+| Terminal | What it is | Fuse | Colour | X11177 pin |
+|---|---|---|---|---|
 | 15 | ignition on | F40, 5 A | GN/BL | 16 |
 | R | accessory | F9, 5 A | VI/SW | 2 |
 | 30 | permanent | F21, 10 A | RT/GE | 15 |
 | 50 | starter signal | F5, 5 A | SW/VI | 3 |
 | 58G | dash illumination | via S241 | GR/RT | 14 |
 
-F40 is a 5 A fuse and the cluster is already on it. The board and a full strip
-stay under half an amp so it fits, but you are sharing the instrument cluster's
-ignition feed. If that bothers you, the add-a-fuse below puts the light on a
-circuit of its own.
+**Stay off anything in a yellow connector housing.** That is airbag, and the
+clock spring is right there under the shroud.
 
-Two more things while the meter is already out. Does it drop while cranking?
-Plenty of switched circuits do, which only means the light reboots when the
-engine starts. And does it hold 12 V *under load*? A signal wire reads a happy
-12 V on a meter and then collapses the moment you draw anything from it, so
-finish with a test lamp rather than an unloaded number.
+Once the wire checks out, the T-tap goes over it. Match the tap to the wire
+gauge, seat the metal blade all the way down with pliers rather than thumb
+pressure, and close the cover until it clicks. Then pull on the wire. A tap that
+lets go on the bench will let go on a kerb.
 
-**Stay off anything in a yellow connector housing.** That's airbag, and the
-clock spring lives right there under the shroud.
+### Step 3 — Ground
 
-Once you've found the wire, the **T-tap** supplied in the kit goes over it.
-Match the tap to the wire gauge, seat the blade all the way down with pliers
-instead of thumb pressure, and close the cover until it clicks.
+**Brown is ground** on a BMW or MINI. Not black. If you have come off a Japanese
+or domestic car that one will catch you out, because black here is usually
+switched power.
 
-### If you pop that fuse
+Two options, and one is better:
 
-The fuse box is in the **left footwell, in the side trim**, which is the same
-panel you pulled to get at the harness. Convenient, and also the reason to know
-which fuse you are leaning on.
+- **A body stud with a ring terminal.** Do this if there is one in reach. Scrape
+  to bare metal if the stud is painted.
+- **T-tap the brown in the same harness.** Works, but it is a shared return.
 
-Blow F40 and the cluster loses terminal 15. It stays alive on terminal 30, so
-the odometer and the stored faults survive, but the ignition side of the cluster
-stops waking with the key. That presents as a dead or half-dead instrument
-cluster, which sends people hunting for a failed cluster instead of a 5 A fuse.
-Check the fuse first.
+A shift light with a poor ground flickers, and it looks exactly like a firmware
+bug. I have chased it as one. Ground it properly the first time.
 
-The cluster's four rails, so you can tell which one went:
+### Step 4 — Tap the CAN pair
+
+![The CAN pair and the switched feed tapped into the main harness behind the left dash panel](/assets/images/r53-shift-light/install-can-tap.jpg){:.img-md}
+*The twisted yellow pair in the middle is CAN. The green/blue switched feed is tapped above it. Both taps sit in the same loom behind the left dash panel.*
+
+The pair is **twisted**, which is the easiest way to pick it out of the loom.
+Follow the twist and you have found it.
+
+| Signal | Colour | WDS | Cluster pin | Board terminal |
+|---|---|---|---|---|
+| CAN High | yellow / **black** | GE/SW | X11177 pin 11 | `CANH` |
+| CAN Low | yellow / **brown** | GE/BR | X11177 pin 24 | `CANL` |
+
+Bus speed is **500 kb/s**.
+
+Write those down, because the reference most people start from is wrong on one
+of them. The [Autosport Labs RaceCapture notes for the
+R50/R52/R53](https://wiki.autosportlabs.com/Mini_Cooper_R50_R52_R5) list CAN
+High as yellow/**red**, and flag the whole entry "VERIFY" themselves. Yellow/red
+on this car is **BC-TRIP**, the on-board computer trip button, which BMW's own
+OBC retrofit instructions put on X11175 pin 3. An easy wire to grab by mistake,
+and it would sit there doing nothing.
+
+If you would rather not trust colours at all, the connector settles it. X11177
+is the black 26-pin plug on the back of the **centre speedo**, CAN on pins 11
+and 24.
+
+One trap if you go looking in the factory documents: BMW call that centre pod
+the *Tachometer*, which is German for speedometer, not the rev counter. Read it
+as the English word and you end up behind the wrong dial.
+
+**Getting the pair backwards costs you nothing.** The transceiver is
+listen-only and never drives the bus, so a swapped pair means the board hears
+nothing and blinks red. Swap them and try again.
+
+Do not fit a termination resistor. A car's CAN bus is already terminated at both
+ends, and a third 120 Ω across the pair drops it to about 40 Ω and can stop the
+bus working.
+
+### Step 5 — Run the strip to the column
+
+![Running the power wire down behind the A-pillar trim](/assets/images/r53-shift-light/install-wire-run.jpg){:.img-md}
+*Feeding the supply down behind the A-pillar trim. It runs behind the trim rather than across the dash, so nothing is visible and nothing crosses the airbag path.*
+
+Three wires to the strip: `+5V`, `DATA`, `GND`. Run them behind the A-pillar
+trim, not across the dash. Nothing visible, and nothing crossing the airbag
+path.
+
+Cable-tie the board and the converter to an existing loom rather than letting
+them hang. Anything loose behind a dash eventually finds something to rattle
+against or short on.
+
+### Powering up
+
+Key on. The onboard LED tells you where you are:
+
+| Status LED | Meaning | What to check |
+|---|---|---|
+| Nothing at all | no power | fuse, the 12 V tap, the buck converter output |
+| **Blinking red** | CAN down | the pair is swapped, or a tap is not biting |
+| **Green** | CAN up, reading the bus | you are done |
+| **Blue** | CAN up and a phone connected | done, and paired |
+
+Green with the strip dead is usually the data line or the strip ground, not CAN.
+Blinking red with good 12 V is nearly always the CAN pair: reverse it first, and
+only then start doubting the taps.
+
+### If you popped a fuse
+
+Blow **F40** and the cluster loses terminal 15. It stays alive on terminal 30,
+so the odometer, the clock and the stored faults all survive, but the ignition
+side of the cluster stops waking with the key.
+
+That presents as a **dead or half-dead instrument cluster**, which is exactly
+the symptom that sends people shopping for a replacement cluster. Check the 5 A
+fuse first. The fuse box is in the same left footwell panel you already have
+off.
+
+The cluster's four rails, so you can work out which one went:
 
 | Fuse | Amps | Feeds the cluster's |
-|------|------|---------------------|
+|---|---|---|
 | 40 | 5 A | terminal 15, ignition |
 | 9 | 5 A | terminal R, accessory |
 | 21 | 10 A | terminal 30, permanent |
@@ -247,206 +366,29 @@ The cluster's four rails, so you can tell which one went:
 
 One honest caveat on that first row. WDS is unambiguous that terminal 15 at the
 cluster comes off F40, and fuses 9, 21 and 5 line up exactly with the public
-fuse charts. Fuse 40 is the one where those charts disagree, listing it as the
+fuse charts. Fuse 40 is the row where those charts disagree, listing it as the
 steering control unit fan relay and PDC instead. They also print 40 and 41
 identically and leave 42 blank, so I would trust the label inside your own fuse
 box cover over any chart on the internet, this post included.
 
+F40 is a 5 A fuse and the cluster is already on it. The board and a full strip
+stay under half an amp so it fits, but you are sharing the instrument cluster's
+ignition feed. If that bothers you, use the add-a-fuse instead.
 
-### Ground
-
-**Brown is ground** on a BMW or MINI. Not black. If you've come off a Japanese
-or domestic car that one will catch you out, because black here is usually
-switched power.
-
-T-tap the brown in the same harness, or run a ring terminal to a real ground
-stud on the body if there's one in reach. The stud is better.
-
-### The CAN pair
-
-The bus is on the **driver's side panel**, in the main harness above the dead
-pedal. It's a twisted pair, which is the easiest way to pick it out of the loom.
-
-| Signal | Wire | Cluster pin | Terminal |
-|--------|------|-------------|----------|
-| CAN High | yellow / black | X11177 pin 11 | `CANH` |
-| CAN Low | yellow / brown | X11177 pin 24 | `CANL` |
-
-Bus speed is **500 kb/s**.
-
-Those colours are off my own car and confirmed against the WDS sheet for the
-instrument cluster control unit, where they're written `GE/SW` and `GE/BR`.
-Worth spelling out, because the reference most people start from is wrong on
-one of them. The [Autosport Labs
-RaceCapture notes for the R50/R52/R53](https://wiki.autosportlabs.com/Mini_Cooper_R50_R52_R5)
-list CAN High as yellow/**red** and flag the whole entry "VERIFY" themselves.
-Yellow/red on this car is **BC-TRIP**, the on-board computer trip button, which
-BMW's own OBC retrofit instructions put on X11175 pin 3. An easy wire to grab
-by mistake, and it would sit there doing nothing. CAN High is
-yellow/**black**.
-
-If you'd rather not trust colours at all, the cluster connector settles it.
-**X11177** is the black 26-pin plug on the back of the **centre speedo**, and
-CAN sits on pins 11 and 24, straight out of the factory retrofit documentation.
-
-One trap there. BMW's parts and workshop documents call that centre pod the
-*Tachometer*, which is German for speedometer, not the rev counter. Read it as
-the English word and you go looking behind the wrong dial.
-
-Since I just told you to avoid yellow, worth drawing the line clearly: an
-airbag circuit is a **yellow connector housing**. The CAN pair is yellow-striped
-wire inside the main loom. Not the same thing.
-
-Getting the two the wrong way round costs you nothing. The transceiver is
-listen-only and never drives the bus, so a swapped pair just means the board
-hears nothing and blinks red. Swap them and try again.
-
-### Twelve volts down to five
-
-**A 12 V to 5 V USB buck converter**, the sort sold for golf carts and motorcycles. The dual-USB Aideepen modules are about sixteen dollars for a two-pack and rated 5 V at 3 A, which is generous: the board and eight WS2812Bs together draw well under half an amp even with the bar full and the brightness up. Headroom costs nothing here and a supply running at its limit gets hot.
-
-![Running the power wire down behind the A-pillar trim](/assets/images/r53-shift-light/install-wire-run.jpg){:.img-md}
-*Feeding the 12 V supply down behind the A-pillar trim in the R53. It runs behind the trim rather than across the dash, so nothing is visible and nothing crosses the airbag path.*
-
-Buck, not a resistor divider and not a linear regulator. A linear part dropping 12 V to 5 V burns the difference as heat, and at half an amp that is three and a half watts out of a plastic box tucked behind a dash.
-
-### If you'd rather not tap the column
+### Alternative: an add-a-fuse instead of tapping the harness
 
 **An add-a-fuse** in the interior fuse box does the same job without touching
-the column harness at all. It piggybacks a new fused circuit onto an existing
-one without cutting a single factory wire, and it puts the light on its own
-fuse instead of borrowing someone else's headroom.
+the harness at all. It piggybacks a new fused circuit onto an existing one
+without cutting a single factory wire, and it puts the light on its own fuse
+instead of borrowing the cluster's headroom.
 
-On the R53 that box is in the **driver's side lower kick panel, behind a
-cover**, directly below where the wire comes down the A-pillar, so the whole
-run stays on one side of the car and out of sight.
+The box is behind the same panel, so nothing about the wire run changes.
 
-Pick an **ignition-switched** fuse, not a permanent live. A shift light that
-stays awake in the car park will flatten the battery over a weekend, and it is
-a genuinely annoying fault to diagnose because everything works perfectly right
-up until the morning it doesn't. Same probe test as above: key out 0 V, key on
-12 V.
-
-## One board instead of five things
-
-Everything above works, and it is still a dev board, a CAN breakout, a USB buck module and a knot of jumper wires. Every one of those joints is a thing that vibrates loose in a car. So there is now a PCB that is all of it at once.
-
-![The carrier board, rendered](/assets/images/r53-shift-light/carrier-board.jpg){:.img-lg}
-*54 x 48 mm, four layer. Three screw terminals along the bottom edge with every pin labelled, the ESP32 soldered down dead centre with its USB-C shell overhanging the top edge, the CAN transceiver on the board rather than hanging off it. M3 holes in all four corners, because a board that lives behind a dash needs to be bolted to something.*
-
-What changed against the loose-parts build:
-
-- **The CAN transceiver is on the board.** No breakout module, and the bus gets its own screw terminal with clamps on both lines.
-- **The 12 V input is protected properly.** A resettable fuse, a bidirectional TVS clamping at 26 V, then a Schottky blocking reverse polarity, then the same switching regulator down to 5 V.
-- **The strip data line goes through a level shifter.** A WS2812B on a 5 V rail wants 3.5 V to read a logic high and the ESP32 puts out 3.3 V. It usually works. "Usually" is the problem, and a 74AHCT1G125 costs eight cents.
-- **Nothing plugs in.** The ESP32-C3 SuperMini is soldered down, not socketed. No socket to walk out of on a rough surface.
-- **It bolts down.** M3 clearance holes in all four corners, sized around a washer rather than the screw, so the row of terminals still has room to breathe. Cable-tying a bare PCB to a loom behind the dash is how you find out what a stray track can short against.
-- **Every terminal pin is labelled on the board.** `+12V GND`, `CANH CANL`, `+5V DATA GND`, printed above the pin it belongs to. You wire one of these upside down under a dash with a torch in your teeth, and a designator like "J2" tells you nothing at that moment.
-
-The module sits on plated through-holes in oblong pads that run outward past its body. Mine has plain through-holes set in from the edge rather than castellated half-holes, and a flat SMD land would have put the copper underneath it with no way to reach it. The oblong pads work either way, and take a module with header pins already fitted too.
-
-Every dimension on that footprint came off the actual part with calipers: 17.94 mm across the body, 22.89 mm of PCB, 24.17 mm overall — so the USB-C shell stands 1.28 mm proud of the board it is on. That last number matters more than it sounds. The connector has to end up at the edge of the carrier, or you cannot plug a cable in.
-
-The first routed rev got exactly that wrong. The module went down at 270
-degrees on the strength of a comment claiming 270 faced the top edge, but the
-comment's numbers had been worked out for the footprint at 0 degrees, and
-KiCad rotates the pads with the part. The port spent a week aimed at the bulk
-capacitor from 5 mm away, through a clean ERC, a clean DRC, a netlist compare
-and every audit in the pipeline. None of those checks knows what a connector
-is.
-
-The board you see above is the fix: module at 0 degrees, centred, riding high
-enough that the shell overhangs the top edge by 1.2 mm, so a plug's overmold
-never meets the carrier at all. And the pipeline got a new check out of it.
-`audit_usb.py` takes the port's position and direction from pads 1 and 16 of
-the placed board and fails if anything sits in a plug-sized corridor. It reads
-the copper, not the comment. Pointed at the broken rev it says `C7 sits in the
-plug corridor`, which is the sentence nobody wrote for a week.
-
-![The carrier board from an angle](/assets/images/r53-shift-light/carrier-board-iso.jpg){:.img-lg}
-*The same board from an angle. The module's oblong pads run outward past its
-body, so every joint is reachable with an iron once the module is sitting on
-them.*
-
-The bus termination jumper ships **open**, and should stay that way. A car's CAN bus is already terminated at both ends; a third 120 Ω across the pair drops it to about 40 Ω and can stop it working. That jumper is there for a bench bus, not for the car.
-
-### Parts
-
-Sixteen lines, and everything except the module and the terminals is a common
-jellybean part. LCSC numbers are the ones the design carries; blanks are parts
-where any equivalent of the right rating will do.
-
-| Ref | Part | Qty | Package | LCSC | Notes |
-|---|---|---:|---|---|---|
-| U2 | ESP32-C3 SuperMini | 1 | 2×8, 2.54 mm | — | buy separately, soldered through-hole |
-| U1 | Recom R-78E5.0-1.0 | 1 | SIP-3 | — | 12 V→5 V, 1 A switching |
-| U3 | SN65HVD230DR | 1 | SOIC-8 | C12084 | CAN transceiver |
-| U4 | 74HCT1G125GV,125 | 1 | SOT-23-5 | C12502 | 3.3 V→5 V buffer |
-| D1 | SMBJ26CA | 1 | SMB | — | bidirectional input clamp |
-| D2 | SS34 | 1 | SMA | — | reverse-polarity block |
-| D3, D4 | SMAJ26CA | 2 | SMA | C134976 | CAN bus clamps |
-| F1 | Littelfuse 1812L110/33MR | 1 | 1812 | C142747 | 1.1 A PTC, **33 V** — see below |
-| C1 | 10 µF 50 V | 1 | 1206 | — | regulator input |
-| C2 | 22 µF 16 V | 1 | 1206 | C12891 | regulator output |
-| C3–C6 | 100 nF 16 V | 4 | 0805 | C49678 | decoupling |
-| C7 | 220 µF 10 V | 1 | SMD, 6.3 × 7.7 mm | — | LED inrush reservoir |
-| R1 | 120 Ω | 1 | 0805 | — | termination, unused unless JP1 is bridged |
-| R2 | 330 Ω | 1 | 0805 | — | series damping on the data line |
-| J1, J2 | 2-way screw terminal | 2 | 5.08 mm | — | 12 V in, CAN |
-| J3 | 3-way screw terminal | 1 | 5.08 mm | — | shift light |
-| H1–H4 | M3 × 8 screw, washer, nut | 4 | — | — | corner fixings, hardware-store parts |
-
-JP1 is not on the list because it is not a part: it is a solder jumper, two
-pads on the board, and it stays open. The M3 hardware is on it for the sake of
-ordering, not because JLC ships it.
-
-Two of those rows are worth a sentence, because both were wrong in an earlier
-version of this page and both would have cost money. A third thing is worth
-knowing before you upload anything.
-
-**U4 was listed as `C129276`.** That number is an STM32F767BIT6 — a 216 MHz
-microcontroller, about thirty dollars each. JLC's matcher offered it without
-complaint, because the number was exactly what it had been given. The part is a
-nine-cent buffer. The package was wrong independently too: Nexperia's `GW`
-suffix is SOT-353, not the SOT-23-5 land on the board. `GV` is SOT-753, which
-*is* JEDEC SOT-23-5.
-
-**F1 is rated 33 V and that is the whole point of it.** The obvious 1812 PTC on
-LCSC is rated 8 V, and this fuse sits *ahead* of the TVS, where it sees the raw
-harness including whatever the alternator is doing. An 8 V part on a 12 V line
-is not protection.
-
-**Check the placement preview, and expect two parts to be turned.** KiCad and
-LCSC do not agree on which way a part points inside its own package, and for
-two of these — the SOIC-8 transceiver and the SOT-23-5 buffer — the disagreement
-is a right angle. JLC's preview shows both 90 degrees off. Nothing is wrong with
-the board; the placement file is what needs correcting, so the design applies a
-−90 to those two footprints on the way out to `positions.csv` and leaves the
-copper alone. It is worth a look at the preview regardless. It is the only
-stage of the whole order where a human sees the parts on the board before a
-machine puts them there.
-
-Off the board you still need the eight-LED WS2812B strip, an add-a-fuse, and
-wire.
-
-Gerbers, the machine-readable BOM and the placement file are in the repo under
-[`hardware/pcb/fab`](https://github.com/MrBlahhhh/esp32-shift-light-R53-mini/tree/main/hardware/pcb/fab).
-
-### Building one
-
-The through-hole parts cannot go through a hot plate, and neither can the
-module: the SuperMini is a populated board with its own reflowed components, and
-taking it to paste temperature makes them move. So the order is reflow the SMD
-parts, hand-solder the three terminals and the regulator, then solder the module
-last. Its pads run outward past the module edge, so you work down the outside
-with an iron and watch each joint form.
-
-Only four parts are hand-soldered: the three terminals and the regulator.
-Everything else, the bulk capacitor included, is SMD and goes through the plate
-in one pass.
-
-Gerbers, BOM and placement files are in the repo under `hardware/pcb/fab`.
-Nothing has been manufactured yet, so treat rev A as exactly that.
+Pick an **ignition-switched** position, not a permanent live. A shift light that
+stays awake in the car park will flatten the battery over a weekend, and it is a
+genuinely annoying fault to diagnose because everything works perfectly right up
+until the morning it does not. Same probe test as step 2: key out 0 V, key on
+12 V, then load it.
 
 ## Reading the whole bus, not just RPM
 
@@ -534,7 +476,7 @@ readings held back*.
 ## What's next
 
 - **Per-gear shift points.** The thresholds are adjustable now, but they're one set for the whole car. An R53 doesn't want the same shift point in second as it does in fifth.
-- **Ambient dimming.** A light sensor to knock the brightness down for night sessions. There are spare pins on the carrier for it.
+- **Ambient dimming.** No light sensor needed: the dash illumination circuit is already in the same loom. WDS has it as 58G, `GR/RT`, on X11177 pin 14. Read it through a divider and the bar tracks the dash rheostat, so it stops being blinding on a night session.
 - **Channels on the bar itself.** The app graphs eleven of them now; putting coolant on the LEDs during a cool-down lap is the obvious next step.
 
 For eight LEDs, one board, and an afternoon of firmware, it already does the one thing it needs to do: when the bar goes red and starts flashing, I shift. My eyes never leave the track. The difference now is that when I want it flashing 300 RPM earlier, I change it from the driver's seat.
