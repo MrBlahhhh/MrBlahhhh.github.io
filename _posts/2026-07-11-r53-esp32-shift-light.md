@@ -228,9 +228,8 @@ That is the only panel the wiring needs. **The fuse box is somewhere else**,
 lower down in the left footwell side trim, and you only need it if you take the
 add-a-fuse route in the last section or go hunting a blown fuse later.
 
-The panel also sits right at the base of the A-pillar, so the strip wire comes
-straight down the pillar and lands next to the board with nothing crossing the
-dash.
+The panel is also close to the base of the steering column, which is where the
+strip wire runs. Nothing crosses the dash and nothing leaves the cabin.
 
 ### Step 2 — Find and verify switched 12 V
 
@@ -328,16 +327,30 @@ bus working.
 
 ### Step 5 — Run the strip to the column
 
-![Running the power wire down behind the A-pillar trim](/assets/images/r53-shift-light/install-wire-run.jpg){:.img-md}
-*Feeding the supply down behind the A-pillar trim. It runs behind the trim rather than across the dash, so nothing is visible and nothing crosses the airbag path.*
+![Routing the shift light wire out of sight](/assets/images/r53-shift-light/install-wire-run.jpg){:.img-md}
+*The run stays out of sight the whole way. Nothing crosses the dash and nothing is visible from the driver's seat.*
 
-Three wires to the strip: `+5V`, `DATA`, `GND`. Run them behind the A-pillar
-trim, not across the dash. Nothing visible, and nothing crossing the airbag
+Three wires to the strip: `+5V`, `DATA`, `GND`. They stay **inside the cabin**
+the whole way. From the board behind the dash end panel, run them across to the
+steering column, then **up the column and tuck them inside the shroud at the
+top**, coming out right where the housing clips on.
+
+Short run, nothing behind the dash, nothing near the A-pillar or the airbag
 path.
 
-Cable-tie the board and the converter to an existing loom rather than letting
-them hang. Anything loose behind a dash eventually finds something to rattle
-against or short on.
+Two things to get right while the shroud is off:
+
+- **Leave slack for the column.** The R53 column adjusts for rake. Move it
+  through its full travel with the wire in place before you close anything up.
+  A wire that is tight at one end of the adjustment gets pulled or pinched at
+  the other, and you will not find that until the day someone else drives the
+  car.
+- **Keep clear of the stalks and the clock spring.** Tuck the wire against the
+  column itself, not across the back of the switchgear.
+
+Cable-tie the board and the converter to an existing loom behind the panel
+rather than letting them hang. Anything loose behind a dash eventually finds
+something to rattle against or short on.
 
 ### Step 6 — Optional: an AEM wideband on the same pair
 
