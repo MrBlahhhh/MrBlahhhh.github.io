@@ -173,8 +173,9 @@ The housing is up on Cults3D if you want to print your own:
 
 ## Wiring it in
 
-Four connections to the car and one converter. Everything is behind a single
-panel in the left footwell, and none of it needs a factory wire cut.
+Four connections to the car and one converter. Every wire you need is behind
+the access panel on the left end of the dash, which pops off by hand, and none
+of it needs a factory wire cut.
 
 Here is the whole job before the detail:
 
@@ -210,17 +211,26 @@ For the install:
 - **Multimeter** and a **12 V test lamp**. Both, not either. Step 2 explains why.
 - **Four T-taps** sized to the wire, or quick-splice connectors
 - **Ring terminal** and an 8 mm spanner, if you ground to a stud
-- **Trim tools** for the dash side panel and the column shroud
+- **Trim tools** for the dash end panel and the column shroud
 - Cable ties
 
-### Step 1 — Get behind the left dash panel
+If you would rather not build one, I have made a couple for other people. The
+first prototypes went out at **$65**.
 
-The left footwell side trim comes off with a trim tool. Everything for this
-install lives behind it: the interior fuse box, the main harness carrying the
-switched feed, and the CAN pair.
+### Step 1 — Pop the dash end panel
 
-It is also directly below where the strip wire comes down the A-pillar, so the
-whole run stays on one side of the car and out of sight.
+Open the driver's door and look at the end of the dash. There is an access panel
+there that comes off by hand, or with gentle help from a trim tool. Behind it,
+in easy reach, is the main harness carrying both the switched feed and the CAN
+pair.
+
+That is the only panel the wiring needs. **The fuse box is somewhere else**,
+lower down in the left footwell side trim, and you only need it if you take the
+add-a-fuse route in the last section or go hunting a blown fuse later.
+
+The panel also sits right at the base of the A-pillar, so the strip wire comes
+straight down the pillar and lands next to the board with nothing crossing the
+dash.
 
 ### Step 2 — Find and verify switched 12 V
 
@@ -279,8 +289,8 @@ bug. I have chased it as one. Ground it properly the first time.
 
 ### Step 4 — Tap the CAN pair
 
-![The CAN pair and the switched feed tapped into the main harness behind the left dash panel](/assets/images/r53-shift-light/install-can-tap.jpg){:.img-md}
-*The twisted yellow pair in the middle is CAN. The green/blue switched feed is tapped above it. Both taps sit in the same loom behind the left dash panel.*
+![The CAN pair and the switched feed tapped into the main harness behind the dash end panel](/assets/images/r53-shift-light/install-can-tap.jpg){:.img-md}
+*The twisted yellow pair in the middle is CAN. The green/blue switched feed is tapped above it. Both taps sit in the same loom behind the dash end panel.*
 
 The pair is **twisted**, which is the easiest way to pick it out of the loom.
 Follow the twist and you have found it.
@@ -352,8 +362,8 @@ side of the cluster stops waking with the key.
 
 That presents as a **dead or half-dead instrument cluster**, which is exactly
 the symptom that sends people shopping for a replacement cluster. Check the 5 A
-fuse first. The fuse box is in the same left footwell panel you already have
-off.
+fuse first. The fuse box is not behind the dash end panel: it is lower down, in
+the left footwell side trim.
 
 The cluster's four rails, so you can work out which one went:
 
@@ -382,7 +392,9 @@ the harness at all. It piggybacks a new fused circuit onto an existing one
 without cutting a single factory wire, and it puts the light on its own fuse
 instead of borrowing the cluster's headroom.
 
-The box is behind the same panel, so nothing about the wire run changes.
+The box is in the left footwell side trim, lower down and a different panel from
+the dash end cap, so this route means opening two panels instead of one. Nothing
+about the wire run changes.
 
 Pick an **ignition-switched** position, not a permanent live. A shift light that
 stays awake in the car park will flatten the battery over a weekend, and it is a
@@ -472,11 +484,5 @@ That validity bit matters more than it looks. A wideband that is still warming
 up publishes a lambda anyway, and it is wrong. The app holds those readings back
 rather than drawing a confident line through them, and says why: *warming up,
 readings held back*.
-
-## What's next
-
-- **Per-gear shift points.** The thresholds are adjustable now, but they're one set for the whole car. An R53 doesn't want the same shift point in second as it does in fifth.
-- **Ambient dimming.** No light sensor needed: the dash illumination circuit is already in the same loom. WDS has it as 58G, `GR/RT`, on X11177 pin 14. Read it through a divider and the bar tracks the dash rheostat, so it stops being blinding on a night session.
-- **Channels on the bar itself.** The app graphs eleven of them now; putting coolant on the LEDs during a cool-down lap is the obvious next step.
 
 For eight LEDs, one board, and an afternoon of firmware, it already does the one thing it needs to do: when the bar goes red and starts flashing, I shift. My eyes never leave the track. The difference now is that when I want it flashing 300 RPM earlier, I change it from the driver's seat.
