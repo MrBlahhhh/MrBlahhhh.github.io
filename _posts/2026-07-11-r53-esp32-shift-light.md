@@ -209,7 +209,9 @@ half watts inside a plastic box behind a dash.
 For the install:
 
 - **Multimeter** and a **12 V test lamp**. Both, not either. Step 2 explains why.
-- **Four taps** sized to the wire, Posi-Tap or T-tap
+- **Four Posi-Taps**, sized to the wire gauge. These ship with the kit. Not
+  Scotchloks or T-taps: those slice strands on the way in, and a wire that has
+  lost half its copper under a dash fails months later on a bump
 - **Ring terminal** and an 8 mm spanner, if you ground to a stud
 - **Trim tools** for the dash end panel and the column shroud
 - Cable ties
@@ -233,7 +235,7 @@ strip wire runs. Nothing crosses the dash and nothing leaves the cabin.
 
 ### Step 2 — Find and verify switched 12 V
 
-![Quick-splice taps on the switched feed, with ring terminals on a ground stud](/assets/images/r53-shift-light/install-power-tap.jpg){:.img-md}
+![Posi-Taps on the switched feed, with ring terminals on a ground stud](/assets/images/r53-shift-light/install-power-tap.jpg){:.img-md}
 *The switched feed tapped in behind the R53's dash, with ground on a proper stud rather than a random screw into painted metal.*
 
 You are looking for the **green wire with a blue stripe**. WDS calls it
@@ -266,10 +268,23 @@ apart if you are probing around:
 **Stay off anything in a yellow connector housing.** That is airbag, and the
 clock spring is right there under the shroud.
 
-Once the wire checks out, the tap goes over it. Match the tap to the wire
-gauge, seat the metal blade all the way down with pliers rather than thumb
-pressure, and close the cover until it clicks. Then pull on the wire. A tap that
-lets go on the bench will let go on a kerb.
+Once the wire checks out, the Posi-Tap goes on:
+
+1. **Match the tap to the gauge.** They are sized, and the size is the whole
+   trick. Too large and the pin never reaches copper; too small and you crush
+   the wire.
+2. **Open the tap and lay the factory wire through the body.** It passes
+   straight through. Nothing is cut and nothing is stripped.
+3. **Screw the cap down** until it is firm. That drives the pin through the
+   insulation and onto the conductor. Hand tight, no pliers.
+4. **Strip about 6 mm of the branch wire**, push it into the end port and
+   tighten that cap onto it.
+5. **Pull on both wires.** A tap that lets go on the bench will let go on a
+   kerb.
+
+If you ever need the car back to standard, a Posi-Tap comes off and the factory
+wire keeps its insulation sealed around the pin hole. That is most of why they
+are in the kit.
 
 ### Step 3 — Ground
 
@@ -281,7 +296,7 @@ Two options, and one is better:
 
 - **A body stud with a ring terminal.** Do this if there is one in reach. Scrape
   to bare metal if the stud is painted.
-- **Tap the brown in the same harness.** Works, but it is a shared return.
+- **Posi-Tap the brown in the same harness.** Works, but it is a shared return.
 
 A shift light with a poor ground flickers, and it looks exactly like a firmware
 bug. I have chased it as one. Ground it properly the first time.
@@ -356,8 +371,10 @@ something to rattle against or short on.
 
 If you run a wideband, its CAN output goes onto the **same pair**, into the same
 two taps you made in step 4. AEM CAN High joins the yellow/black tap, AEM CAN Low
-joins the yellow/brown. A Posi-Tap will take the second wire alongside the first.
-Nothing else changes, and the board picks the gauge up with no configuration.
+joins the yellow/brown. Twist the gauge's branch wire together with the board's
+before you clamp them, so one port holds both, or put a second tap further along
+the same wire if they will not sit in the gauge range together. Nothing else
+changes, and the board picks the gauge up with no configuration.
 
 That works because of how AEM addresses its frames:
 
