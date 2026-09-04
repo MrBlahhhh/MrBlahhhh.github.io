@@ -173,25 +173,159 @@ The housing is up on Cults3D if you want to print your own:
 
 ## Powering it
 
-The board takes 5 V over USB-C, and the car has 12 V. Two cheap parts bridge that, and both are worth buying rather than improvising.
+The board takes 5 V over USB-C and the car has 12 V. So the install is three
+connections plus one cheap part: a switched 12 V feed, a ground, the CAN pair,
+and a buck converter to drop 12 down to 5.
 
-**An add-a-fuse tap** in the fuse box. It piggybacks a new fused circuit onto an existing one without cutting a single factory wire, and it puts your circuit on its own fuse instead of borrowing someone else's headroom.
+### Finding switched 12 V at the column
 
-On the R53 the interior fuse box is in the **driver's side lower kick panel, behind a cover**, which is convenient: it is directly below where the wire comes down the A-pillar, so the whole run stays on one side of the car and out of sight.
+The steering column harness is the closest source to where the light mounts,
+which keeps the whole run short and hidden under the shroud.
 
-Pick an **ignition-switched** fuse, not a permanent live. A shift light that stays awake in the car park will flatten the battery over a weekend, and it is a genuinely annoying fault to diagnose because everything works perfectly right up until the morning it doesn't.
+![Quick-splice taps on the switched feed, with ring terminals on a ground stud](/assets/images/r53-shift-light/install-power-tap.jpg){:.img-md}
+*The switched feed tapped in behind the R53's dash, with ground on a proper stud rather than a random screw into painted metal. A shift light with a poor ground flickers, and it looks exactly like a firmware bug.*
 
-Test before you commit, because the box carries both kinds. Probe the fuse with a meter or a test light: key out should read 0 V, key to position 1 should read 12 V. Some circuits also drop out while cranking, which only means the light reboots when the engine starts. Stay off anything with a **yellow connector**, which is airbag.
+Drop the lower column shroud and find the harness going into the column. On my
+car the **green wire with a blue stripe and yellow hatching** is the switched
+feed. Probe it before you trust it: key out reads 0 V, key on reads 12 V.
+That's the whole test and it takes thirty seconds.
+
+That colour isn't a guess. WDS gives terminal 15 at the instrument cluster as
+**GN/BL, 0.5 mm²**, off fuse **F40, 5 A**, landing on pin 16 of connector
+X11177. A green base is terminal 15 across BMW and MINI generally, and here the
+factory sheet names the exact wire.
+
+The cluster's other rails sit on the same connector, which is useful to know so
+you can tell them apart while probing:
+
+| Terminal | What it is | Fuse | Wire | X11177 pin |
+|----------|-----------|------|------|------------|
+| 15 | ignition on | F40, 5 A | GN/BL | 16 |
+| R | accessory | F9, 5 A | VI/SW | 2 |
+| 30 | permanent | F21, 10 A | RT/GE | 15 |
+| 50 | starter signal | F5, 5 A | SW/VI | 3 |
+| 58G | dash illumination | via S241 | GR/RT | 14 |
+
+F40 is a 5 A fuse and the cluster is already on it. The board and a full strip
+stay under half an amp so it fits, but you are sharing the instrument cluster's
+ignition feed. If that bothers you, the add-a-fuse below puts the light on a
+circuit of its own.
+
+Two more things while the meter is already out. Does it drop while cranking?
+Plenty of switched circuits do, which only means the light reboots when the
+engine starts. And does it hold 12 V *under load*? A signal wire reads a happy
+12 V on a meter and then collapses the moment you draw anything from it, so
+finish with a test lamp rather than an unloaded number.
+
+**Stay off anything in a yellow connector housing.** That's airbag, and the
+clock spring lives right there under the shroud.
+
+Once you've found the wire, the **T-tap** supplied in the kit goes over it.
+Match the tap to the wire gauge, seat the blade all the way down with pliers
+instead of thumb pressure, and close the cover until it clicks.
+
+### If you pop that fuse
+
+The fuse box is in the **left footwell, in the side trim**, which is the same
+panel you pulled to get at the harness. Convenient, and also the reason to know
+which fuse you are leaning on.
+
+Blow F40 and the cluster loses terminal 15. It stays alive on terminal 30, so
+the odometer and the stored faults survive, but the ignition side of the cluster
+stops waking with the key. That presents as a dead or half-dead instrument
+cluster, which sends people hunting for a failed cluster instead of a 5 A fuse.
+Check the fuse first.
+
+The cluster's four rails, so you can tell which one went:
+
+| Fuse | Amps | Feeds the cluster's |
+|------|------|---------------------|
+| 40 | 5 A | terminal 15, ignition |
+| 9 | 5 A | terminal R, accessory |
+| 21 | 10 A | terminal 30, permanent |
+| 5 | 5 A | terminal 50, starter and EWS |
+
+One honest caveat on that first row. WDS is unambiguous that terminal 15 at the
+cluster comes off F40, and fuses 9, 21 and 5 line up exactly with the public
+fuse charts. Fuse 40 is the one where those charts disagree, listing it as the
+steering control unit fan relay and PDC instead. They also print 40 and 41
+identically and leave 42 blank, so I would trust the label inside your own fuse
+box cover over any chart on the internet, this post included.
+
+
+### Ground
+
+**Brown is ground** on a BMW or MINI. Not black. If you've come off a Japanese
+or domestic car that one will catch you out, because black here is usually
+switched power.
+
+T-tap the brown in the same harness, or run a ring terminal to a real ground
+stud on the body if there's one in reach. The stud is better.
+
+### The CAN pair
+
+The bus is on the **driver's side panel**, in the main harness above the dead
+pedal. It's a twisted pair, which is the easiest way to pick it out of the loom.
+
+| Signal | Wire | Cluster pin | Terminal |
+|--------|------|-------------|----------|
+| CAN High | yellow / black | X11177 pin 11 | `CANH` |
+| CAN Low | yellow / brown | X11177 pin 24 | `CANL` |
+
+Bus speed is **500 kb/s**.
+
+Those colours are off my own car and confirmed against the WDS sheet for the
+instrument cluster control unit, where they're written `GE/SW` and `GE/BR`.
+Worth spelling out, because the reference most people start from is wrong on
+one of them. The [Autosport Labs
+RaceCapture notes for the R50/R52/R53](https://wiki.autosportlabs.com/Mini_Cooper_R50_R52_R5)
+list CAN High as yellow/**red** and flag the whole entry "VERIFY" themselves.
+Yellow/red on this car is **BC-TRIP**, the on-board computer trip button, which
+BMW's own OBC retrofit instructions put on X11175 pin 3. An easy wire to grab
+by mistake, and it would sit there doing nothing. CAN High is
+yellow/**black**.
+
+If you'd rather not trust colours at all, the cluster connector settles it.
+**X11177** is the black 26-pin plug on the back of the **centre speedo**, and
+CAN sits on pins 11 and 24, straight out of the factory retrofit documentation.
+
+One trap there. BMW's parts and workshop documents call that centre pod the
+*Tachometer*, which is German for speedometer, not the rev counter. Read it as
+the English word and you go looking behind the wrong dial.
+
+Since I just told you to avoid yellow, worth drawing the line clearly: an
+airbag circuit is a **yellow connector housing**. The CAN pair is yellow-striped
+wire inside the main loom. Not the same thing.
+
+Getting the two the wrong way round costs you nothing. The transceiver is
+listen-only and never drives the bus, so a swapped pair just means the board
+hears nothing and blinks red. Swap them and try again.
+
+### Twelve volts down to five
+
+**A 12 V to 5 V USB buck converter**, the sort sold for golf carts and motorcycles. The dual-USB Aideepen modules are about sixteen dollars for a two-pack and rated 5 V at 3 A, which is generous: the board and eight WS2812Bs together draw well under half an amp even with the bar full and the brightness up. Headroom costs nothing here and a supply running at its limit gets hot.
 
 ![Running the power wire down behind the A-pillar trim](/assets/images/r53-shift-light/install-wire-run.jpg){:.img-md}
 *Feeding the 12 V supply down behind the A-pillar trim in the R53. It runs behind the trim rather than across the dash, so nothing is visible and nothing crosses the airbag path.*
 
-**A 12 V to 5 V USB buck converter**, the sort sold for golf carts and motorcycles. The dual-USB Aideepen modules are about sixteen dollars for a two-pack and rated 5 V at 3 A, which is generous: the board and eight WS2812Bs together draw well under half an amp even with the bar full and the brightness up. Headroom costs nothing here and a supply running at its limit gets hot.
-
 Buck, not a resistor divider and not a linear regulator. A linear part dropping 12 V to 5 V burns the difference as heat, and at half an amp that is three and a half watts out of a plastic box tucked behind a dash.
 
-![Quick-splice taps on the switched feed, with ring terminals on a ground stud](/assets/images/r53-shift-light/install-power-tap.jpg){:.img-md}
-*Add-a-fuse feed tapped in behind the R53's dash, with ground on a proper stud rather than a random screw into painted metal. A shift light with a poor ground flickers, and it looks exactly like a firmware bug.*
+### If you'd rather not tap the column
+
+**An add-a-fuse** in the interior fuse box does the same job without touching
+the column harness at all. It piggybacks a new fused circuit onto an existing
+one without cutting a single factory wire, and it puts the light on its own
+fuse instead of borrowing someone else's headroom.
+
+On the R53 that box is in the **driver's side lower kick panel, behind a
+cover**, directly below where the wire comes down the A-pillar, so the whole
+run stays on one side of the car and out of sight.
+
+Pick an **ignition-switched** fuse, not a permanent live. A shift light that
+stays awake in the car park will flatten the battery over a weekend, and it is
+a genuinely annoying fault to diagnose because everything works perfectly right
+up until the morning it doesn't. Same probe test as above: key out 0 V, key on
+12 V.
 
 ## One board instead of five things
 
