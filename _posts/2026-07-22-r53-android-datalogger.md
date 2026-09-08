@@ -17,6 +17,11 @@ article_header:
 
 <!--more-->
 
+> **This page is out of date.** The current page for R53 Logger - Flasher —
+> what it costs, which ECUs it can write, and what is still beta — is
+> **[R53 Logger - Flasher on the Play Store](/car/tech/2026/07/24/r53-logger-play-store.html)**.
+
+
 The R53's factory diagnostics are twenty years old, and the generic OBD apps poll so slowly they're useless for anything beyond checking why the CEL is on. The good logging tools cost real money or live on a laptop. I wanted something I could plug in at a red light and actually *see* what the supercharged W11 was doing — and, on the same cable, back up and carefully flash a facelift ECU. So I built **R53 Logger - Flasher**.
 
 ![Main screen with live engine data](/assets/images/r53-android-logger/main-screen.jpg){:.img-md}

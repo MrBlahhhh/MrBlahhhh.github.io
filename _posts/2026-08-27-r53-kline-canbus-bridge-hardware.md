@@ -17,6 +17,11 @@ article_header:
 
 <!--more-->
 
+> **This page is out of date.** The current page for R53 Logger - Flasher —
+> what it costs, which ECUs it can write, and what is still beta — is
+> **[R53 Logger - Flasher on the Play Store](/car/tech/2026/07/24/r53-logger-play-store.html)**.
+
+
 The [CAN shift light](/car/tech/2026/07/11/r53-esp32-shift-light.html) was supposed to be a weekend job. Read RPM off the bus, light up eight LEDs, done. It has since grown a second job and then a third, and what is in the footwell now is a small bridge that does all of this at once:
 
 - **Reads the ECU over K-line.** The R53's Siemens EMS2000 speaks DS2, and the board negotiates the fast 62500-baud session itself at key-on. It ships raw block payloads over BLE, so the phone does the decoding.

@@ -17,6 +17,11 @@ article_header:
 
 <!--more-->
 
+> **This page is out of date.** The current page for R53 Logger - Flasher —
+> what it costs, which ECUs it can write, and what is still beta — is
+> **[R53 Logger - Flasher on the Play Store](/car/tech/2026/07/24/r53-logger-play-store.html)**.
+
+
 When [R53 Logger - Flasher went to the Play Store](/car/tech/2026/07/24/r53-logger-play-store.html) in July it was a logger that could also flash. A month and roughly 370 commits later it's become the whole tuning loop: log a pull, see exactly where fueling missed the target, change one thing, flash it, log again — all from the phone, with every file filed against the car it came from.
 
 ![Main screen at build 299](/assets/images/r53-logger-august/main-screen.png){:.img-md}

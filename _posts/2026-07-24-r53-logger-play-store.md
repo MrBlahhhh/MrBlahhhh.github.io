@@ -5,7 +5,7 @@ categories: car tech
 tags: [mini, r53, android, datalogger, flasher, play-store, boost, tuning, ecu-flash, immobilizer, for-sale]
 cover: /assets/images/r53-logger-play-store/main-screen.jpg
 lightbox: true
-excerpt: "R53 Logger - Flasher on Play — 3D AFR tuning graph, wideband calibration, live logging + ECU flash (pedal, idle, fan, pops…). Join r53-logger-testers; facelift silver-cover write only; prepared ECUs $275."
+excerpt: "R53 Logger - Flasher on Play — live logging, 3D AFR tuning graph, wideband calibration and ECU flash. BETA. Facelift and pre-facelift-conversion ECUs supported for write. App unlock $25, flash $50, factory software $50; prepared ECUs $275."
 article_header:
   type: overlay
   theme: dark
@@ -16,6 +16,39 @@ article_header:
 ---
 
 <!--more-->
+
+## Read this first — it's beta, and this page is the current one
+
+**This post is the up-to-date page for R53 Logger - Flasher.** Older writeups
+of the app are still online and are out of date; if you landed on one, come
+back here.
+
+**The app is beta.** It reads and writes a twenty-year-old engine controller on
+a car you presumably like. It has been developed against a small number of
+cars, and a flash that stops part-way leaves an ECU that will not start until
+it is written again. Always take a backup, always run the car off a battery
+charger, and keep a desktop OBD recovery path available.
+
+**Lean cruise is VERY, VERY beta.** It leans the mixture at steady cruise. It
+is the one option that changes fuelling while you are driving on it rather than
+at wide-open throttle, and it has had the least testing of anything in the
+list. If you are not prepared to watch AFRs and back it out, leave it off.
+
+*Last updated 2026-09-08.*
+
+## What it costs
+
+Everything is a one-off in-app purchase — no subscription.
+
+| | |
+| --- | --- |
+| **App unlock** | **$25** — logging, graphs, 3D AFR, wideband, diagnostics, backup |
+| **Flash unlock** | **$50** — write to the ECU, plus the at-write tune options |
+| **Factory software** | **$50** — the built-in US Cooper S / JCW / GP1 base images |
+| Prepared facelift ECU | $275 — see below |
+
+Backup is part of the app unlock. You can read and keep a full 512 KB copy of
+your own ECU without buying the flash unlock.
 
 ## It's finished
 
@@ -53,7 +86,28 @@ Everything records to plain CSV and shares straight into datazap.me. Numbers wer
 
 ## ECU backup and flash
 
-**Important:** flash and the at-flash tune options only work on **facelift R53 ECUs with the silver back cover**. Pre-facelift / black-cover boxes are out of scope for write — logging, graphing, and diagnostics still do what they do on the car you're connected to; the write path is the silver-cover family only.
+**Which ECUs can be written** (updated September 2026 — this used to be
+facelift-only, and it isn't any more):
+
+| Software the app reports | Write | Tune options |
+| --- | --- | --- |
+| `740A0` / `740P10` — facelift, silver cover | yes | yes |
+| `740J10` — pre-facelift conversion | yes | yes |
+| `740N20`, `740G00`, `740R10` | no | no |
+
+**Logging, live data, diagnostics and backup work on any R53 EMS2000**,
+silver cover or black. That has never been the restricted part.
+
+The app reads the software version off your own ECU and off the BIN before it
+does anything, and refuses to write a family it does not have verified table
+addresses for — it will not guess. If it sees software it doesn't know, it
+offers to email me the file so support can be added.
+
+A note on the pre-facelift family, because it cost a customer two days: those
+ECUs take a calibration one block **shorter** than the facelift ones. The app
+now knows that. If you flashed a pre-facelift box with a build before 451 and
+it stopped around 96%, write it again with a current build — the calibration
+was complete, it was the finishing step that never ran.
 
 Backup is read-only and safe. Write is dangerous — key on / engine off, keep the car on a battery charger, and keep a desktop OBD recovery path ready. The app checks the tune before writing (and can auto-fix checksum / layout issues). Pick a 512 KB BIN, or load factory **US S / JCW / GP1** as a base, then either a **quick write** (calibration region, ~60 KB) or a **full write** (512 KB).
 
@@ -92,10 +146,17 @@ Before a quick write, you can tweak the loaded tune **in memory** — no separat
 
 - **Enable pops (decel crackle)** — with an aggressiveness slider from stock to max
 - **Set injector size** — for when you've upsized injectors (stock S / JCW sizes and common bigger ones)
-- **Set redline** — raises the hard rev limit; soft cut stays alone
+- **Set redline** — raises the per-gear rev limit. The R53's limiter is a
+  *fuel* cut, not a throttle cut: it trims torque by shutting injectors in a
+  rotating pattern, then cuts all four a fixed step above the limit. That step
+  is an offset, so it moves up with the limit and there is nothing else to set
 - **Remap throttle pedal** — stock, straight (linear), or track feel
 - **Set idle RPM (manual transmission)** — manuals only. Writes the same target across **cold/startup and warm** idle on normal idle, A/C on, and coasting back to idle so it stays consistent. Stock restores factory cold (1250) plus the warm schedules; raised presets for mild / street / race-cam / big-cam. Automatic cars: leave this off.
 - **Cooling-fan kick-on temperature** — low and medium speeds only (high stays factory). Shown in **°F**. **Stock** 221 / 233 °F; **Earlier** 216 / 230 °F; **Even earlier** 200 / 220 °F for heat-soak / track use.
+- **Lean cruise** — **VERY, VERY beta.** Leans the mixture at steady-state
+  cruise for economy. Unlike everything else here it changes fuelling in the
+  part of the map you drive on every day, and it is the least-tested option in
+  the app. Watch your AFRs, and turn it off at the first thing you don't like.
 
 The summary line on the flash screen shows what's armed (`Pops off · Injectors unchanged · Idle unchanged · Fan unchanged · …`). The app auto-checks (and can auto-fix) the tune whenever options change the image, and again before write.
 
@@ -139,7 +200,7 @@ The wideband doesn't just show up — you have to tell the app which sensor is w
 
 The bridge firmware is open source (ESP32, streams sensor volts over BLE). Reflash it once, then calibrate and save from the phone — the app remembers your settings across sessions.
 
-The current build (172) defaults to the AEM curve. If you're running an Innovate or something custom, set it once and it sticks.
+The app defaults to the AEM curve. If you're running an Innovate or something custom, set it once and it sticks.
 
 ## Want to try it? (Play closed testing)
 
