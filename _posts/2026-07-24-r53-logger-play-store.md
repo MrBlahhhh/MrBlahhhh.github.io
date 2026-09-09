@@ -141,6 +141,9 @@ Before a quick write, you can tweak the loaded tune **in memory** — no separat
 ![Flash options — Track pedal and fan presets](/assets/images/r53-logger-play-store/flash-options-pedal-fan.jpg){:.img-md}
 *Pedal map (Stock / Straight / Track) and cooling fan — Stock, Earlier 216/230 °F, or Even earlier 200/220 °F.*
 
+![Pedal map presets — Stock, Straight and Track plotted together](/assets/images/r53-logger-play-store/pedal-map-presets.png){:.img-lg}
+*The three pedal presets, plotted from the actual table the app writes. Stock isn't one curve — it's sixteen, one per RPM row, so a quarter of pedal travel asks for 85% torque just off idle and 13% at 6500. Track and Straight put the same curve on every row, so pedal position means the same thing wherever the tach is sitting. WOT is 100% on all three.*
+
 ![Flash options — pops, injectors, redline, pedal](/assets/images/r53-logger-play-store/flash-options.jpg){:.img-md}
 *Same options list — pops, injectors, redline, pedal, idle, and fan all live here.*
 
