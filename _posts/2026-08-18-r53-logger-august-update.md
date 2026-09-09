@@ -167,7 +167,7 @@ Not everything belongs on a phone. Off the car, a set of Python tools does the h
 
 ## ECU backup and flash — with an option deck
 
-The flash side is where this stops being "a logger app." On facelift silver-cover ECUs it reads a **full backup** first — always — then writes either a bin you supply, or one of the built-in **factory images: US Cooper S, JCW, and GP1**. Every write is checksummed, and the app verifies the tune before it touches the car — and can auto-fix what it finds.
+The flash side is where this stops being "a logger app." It reads a **full backup** first — always — then writes either a bin you supply, or one of the built-in **factory images: US Cooper S, JCW, and GP1**. Every write is checksummed, and the app verifies the tune before it touches the car — and can auto-fix what it finds.
 
 ![ECU flash screen with factory images](/assets/images/r53-logger-play-store/flash-screen-factory.jpg){:.img-md}
 *Backup, factory software, or your own bin. The summary line always says exactly what's armed.*
@@ -212,4 +212,4 @@ The small stuff is covered too: light and dark themes, °C or °F, and a force-q
 
 ## Get it
 
-**Mini R53 Logger - Flasher** is on the [Play Store](https://play.google.com/store/apps/details?id=com.geekopolis.r53logger). Logging works on any R53; flashing supports the facelift silver-cover ECU. All you need is the same cheap K+DCAN cable every BMW owner has, and an Android phone or tablet — the ESP32 bridge is optional, for the CAN channels and wideband. Everything else above works with just the cable.
+**Mini R53 Logger - Flasher** is on the [Play Store](https://play.google.com/store/apps/details?id=com.geekopolis.r53logger). Logging works on any R53; flashing supported only the facelift silver-cover ECU when this was written, and now covers pre-facelift `740J10` conversions too — see the [current page](/car/tech/2026/07/24/r53-logger-play-store.html). All you need is the same cheap K+DCAN cable every BMW owner has, and an Android phone or tablet — the ESP32 bridge is optional, for the CAN channels and wideband. Everything else above works with just the cable.

@@ -71,8 +71,8 @@ Same idea as the [earlier Logger - Flasher writeup](/car/tech/2026/07/22/r53-and
 - **Wideband calibration** — ESP32 bridge streams 0–5 V sensor output; pick resistor divider (easiest) or ADS1115 I2C (more accurate), then Innovate / AEM / custom curve. No laptop, no serial terminal — configured and saved from the phone
 - **Diagnostics** — read and clear fault codes with R53-specific notes (chassis modules stay on BMW hex titles — no fake SAE crosswalk)
 - **Channels & poll rate** — turn off blocks you don't care about so the ones you do watch update faster
-- **ECU backup / flash** — read a full 512 KB backup, send it to your tuner, and (carefully) write a tuner BIN back — **facelift silver-cover ECUs only**
-- **Flash options** — before a quick write, optionally layer on pops, injector size, redline, throttle-pedal map, idle RPM (manual, cold + warm), and cooling-fan kick-on including an even-earlier 200 / 220 °F preset (same silver-cover limit)
+- **ECU backup / flash** — read a full 512 KB backup, send it to your tuner, and (carefully) write a tuner BIN back — see the supported-ECU table below
+- **Flash options** — before a quick write, optionally layer on pops, injector size, redline, throttle-pedal map, idle RPM (manual, cold + warm), cooling-fan kick-on including an even-earlier 200 / 220 °F preset, and lean cruise (very beta — see the warning at the top)
 
 There's a separate companion app for **module coding** (BC1, EMS, airbag, …) — see [R53 Coding](/car/tech/2026/07/26/r53-coding.html).
 

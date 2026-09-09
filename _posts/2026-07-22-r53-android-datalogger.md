@@ -5,7 +5,7 @@ categories: car tech
 tags: [mini, r53, android, datalogger, flasher, obd, wideband, boost, tuning, ecu-flash, knock, esp32, shift-light]
 cover: /assets/images/r53-android-logger/main-screen.jpg
 lightbox: true
-excerpt: "R53 Logger - Flasher: live engine logging, wideband AFR, autolog WOT pulls, 3D AFR tuning graph, per-cell fuel/trim/knock maps with knock events pinned to the map, wideband calibration, fault codes — and ECU backup / flash on facelift silver-cover boxes"
+excerpt: "R53 Logger - Flasher: live engine logging, wideband AFR, autolog WOT pulls, 3D AFR tuning graph, per-cell fuel/trim/knock maps with knock events pinned to the map, wideband calibration, fault codes — and ECU backup / flash. Superseded: see the current page."
 article_header:
   type: overlay
   theme: dark
@@ -106,7 +106,11 @@ Since it's already talking to the car, it doubles as a diagnostics tool: reads s
 
 ## ECU backup, flash, and flash-time options
 
-Same K+DCAN cable, same app: read a full 512 KB ECU backup and (carefully) write a tune back — **facelift silver-cover ECUs only**. Before a quick write I can layer common changes onto the loaded BIN on the phone: **pops**, **injector size**, **redline**, **throttle pedal map**, idle, and fan kick-on. Details, screenshots, and how to get the app are in the [Play Store writeup for R53 Logger - Flasher](/car/tech/2026/07/24/r53-logger-play-store.html).
+Same K+DCAN cable, same app: read a full 512 KB ECU backup and (carefully) write a tune back.
+
+*(This said "facelift silver-cover ECUs only" when it was written in July. That
+is no longer true — pre-facelift conversions running `740J10` are supported for
+write as well. The [current page](/car/tech/2026/07/24/r53-logger-play-store.html) has the up-to-date list.)* Before a quick write I can layer common changes onto the loaded BIN on the phone: **pops**, **injector size**, **redline**, **throttle pedal map**, idle, and fan kick-on. Details, screenshots, and how to get the app are in the [Play Store writeup for R53 Logger - Flasher](/car/tech/2026/07/24/r53-logger-play-store.html).
 
 ## One ESP32, two jobs: wideband bridge meets shift light
 
