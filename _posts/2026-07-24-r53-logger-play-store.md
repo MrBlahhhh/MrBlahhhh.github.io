@@ -34,7 +34,7 @@ is the one option that changes fuelling while you are driving on it rather than
 at wide-open throttle, and it has had the least testing of anything in the
 list. If you are not prepared to watch AFRs and back it out, leave it off.
 
-*Last updated 2026-09-08.*
+*Last updated 2026-09-09.*
 
 ## What it costs
 
@@ -144,6 +144,15 @@ Before a quick write, you can tweak the loaded tune **in memory** — no separat
 ![Pedal map presets — Stock, Straight and Track plotted together](/assets/images/r53-logger-play-store/pedal-map-presets.png){:.img-lg}
 *The three pedal presets, plotted from the actual table the app writes. Stock isn't one curve — it's sixteen, one per RPM row, so a quarter of pedal travel asks for 85% torque just off idle and 13% at 6500. Track and Straight put the same curve on every row, so pedal position means the same thing wherever the tach is sitting. Straight is exactly that: torque equals pedal, 1:1. WOT is 100% on all three.*
 
+![All six pedal presets over the stock surface](/assets/images/r53-logger-play-store/pedal-presets-3d.png){:.img-lg}
+*The same thing in three dimensions, now with the three new presets. Stock is the green surface: steep at low RPM, lazy at high RPM. Eco, Sport and Sport+ keep that shape and slide it along the pedal axis. Track and Straight throw the shape away and put one curve on every RPM row.*
+
+![What a Pedal Commander does to the stock map](/assets/images/r53-logger-play-store/pedal-commander-3d.png){:.img-lg}
+*For comparison: a Pedal Commander never touches the table. It rescales the pedal sensor before the ECU reads it, so the ECU samples the stock surface further along the pedal axis — the whole shape slides toward you, twitchy wall included. Sport and Sport+ in the app do the same job in the map itself, and update the ECU's torque monitor alongside so the shifted request can't set a fault.*
+
+![Flash options — the pedal presets](/assets/images/r53-logger-play-store/flash-options-pedal-presets.png){:.img-md}
+*The pedal card on Modify: Eco, Sport, Sport+, Straight and Track. Stock is the row above it.*
+
 ![Flash options — pops, injectors, redline, pedal](/assets/images/r53-logger-play-store/flash-options.jpg){:.img-md}
 *Same options list — pops, injectors, redline, pedal, idle, and fan all live here.*
 
@@ -153,7 +162,7 @@ Before a quick write, you can tweak the loaded tune **in memory** — no separat
   *fuel* cut, not a throttle cut: it trims torque by shutting injectors in a
   rotating pattern, then cuts all four a fixed step above the limit. That step
   is an offset, so it moves up with the limit and there is nothing else to set
-- **Remap throttle pedal** — stock, straight (linear), or track feel
+- **Remap throttle pedal** — Stock, Eco, Sport, Sport+ (the stock curve read at 0.8× / 1.25× / 1.5× pedal — what a Pedal Commander does, but in the map), Straight (a true 1:1 line), or Track (one normalised curve at every RPM). Every preset also writes the ECU's torque-monitor table to match, so a remapped pedal can't set P1689
 - **Set idle RPM (manual transmission)** — manuals only. Writes the same target across **cold/startup and warm** idle on normal idle, A/C on, and coasting back to idle so it stays consistent. Stock restores factory cold (1250) plus the warm schedules; raised presets for mild / street / race-cam / big-cam. Automatic cars: leave this off.
 - **Cooling-fan kick-on temperature** — low and medium speeds only (high stays factory). Shown in **°F**. **Stock** 221 / 233 °F; **Earlier** 216 / 230 °F; **Even earlier** 200 / 220 °F for heat-soak / track use.
 - **Lean cruise** — **VERY, VERY beta.** Leans the mixture at steady-state
