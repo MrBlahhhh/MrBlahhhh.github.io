@@ -3,7 +3,7 @@ title: "TrackEncoder — my glovebox phone records my track video, coaches me li
 date: 2026-08-21 00:00:00 -0400
 categories: car tech
 tags: [trackencoder, android, telemetry, racecapture, can, datalogger, vehicle-dynamics, track, cmp, vir, nccar, telegram, tts, coaching, garmin-catalyst, llm, yaw-rate, understeer-gradient]
-cover: /assets/images/trackencoder-metrics/hud-full.jpg
+cover: /assets/images/trackencoder-metrics/hud-nccar.jpg
 lightbox: true
 excerpt: "A $150 Android phone that burns a live coaching overlay into track video, with sound, runs from my pocket over Telegram, calls brake points into my helmet by the circuit's own turn numbers, paints my best lap on the road like a racing game, and hands the session to an LLM that names the three things worth the most time. One post, the whole system, and now every card on the screen explained one at a time: what it tells me in plain English, then the maths underneath it."
 article_header:
@@ -12,7 +12,7 @@ article_header:
   background_color: "#1f1f1f"
   background_image:
     gradient: "linear-gradient(rgba(0, 0, 0, .45), rgba(0, 0, 0, .65))"
-    src: /assets/images/trackencoder-metrics/hud-full.jpg
+    src: /assets/images/trackencoder-metrics/hud-nccar.jpg
 redirect_from:
   - /car/tech/2026/08/22/trackencoder-remote-control.html
   - /car/tech/2026/08/23/trackencoder-voice-coach.html
@@ -48,8 +48,8 @@ coaching overlay into the video live, and writes the lot to an SD card in the
 car. No post-processing, no syncing data to footage afterwards — the analysis
 is already in the frame when I get home.
 
-![The full overlay](/assets/images/trackencoder-metrics/hud-full.jpg){:.img-lg}
-*The whole thing on the in-car Moto G, mid-slide on the aggressive lap at Carolina Motorsports Park — 31% slip at the left rear, 15% at the right, and the car caught on the way out of turn 10. Everything sits on the A-pillar, the headliner and the dashboard — the parts of the frame the car body blocks anyway. Only about 20% of a bolted-in camera's frame ever carries road, and the overlay is laid out around that. The ghost-car panel is top-left.*
+![The full overlay](/assets/images/trackencoder-metrics/hud-nccar.jpg){:.img-lg}
+*The whole thing as it ships today, on the in-car Moto G at NCCAR on 12 September 2026: lap 4, turning in to T10 at 42 mph, 0.35 s up on the reference lap, the yaw panel and the corner card both live. Everything sits on the A-pillar, the headliner and the dashboard, the parts of the frame the car body blocks anyway. Only about 20% of a bolted-in camera's frame ever carries road, and the overlay is laid out around that. The ghost-car panel is top-left, on satellite imagery of the circuit.*
 
 This is the whole system in one post: [every card on the screen, clockwise,
 plain English first and the maths under it](#the-overlay-card-by-card),
