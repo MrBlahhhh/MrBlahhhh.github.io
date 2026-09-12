@@ -2,10 +2,10 @@
 title: "TrackEncoder — my glovebox phone records my track video, coaches me live, calls my brake points, and draws the racing line"
 date: 2026-08-21 00:00:00 -0400
 categories: car tech
-tags: [trackencoder, android, telemetry, racecapture, can, datalogger, vehicle-dynamics, track, cmp, vir, telegram, tts, coaching, garmin-catalyst, llm]
+tags: [trackencoder, android, telemetry, racecapture, can, datalogger, vehicle-dynamics, track, cmp, vir, nccar, telegram, tts, coaching, garmin-catalyst, llm, yaw-rate, understeer-gradient]
 cover: /assets/images/trackencoder-metrics/hud-full.jpg
 lightbox: true
-excerpt: "A $150 Android phone that burns a live coaching overlay into track video, with sound, runs from my pocket over Telegram, calls brake points into my helmet by the circuit's own turn numbers, paints my best lap on the road like a racing game, and hands the session to an LLM that names the three things worth the most time. One post, the whole system."
+excerpt: "A $150 Android phone that burns a live coaching overlay into track video, with sound, runs from my pocket over Telegram, calls brake points into my helmet by the circuit's own turn numbers, paints my best lap on the road like a racing game, and hands the session to an LLM that names the three things worth the most time. One post, the whole system, and now every card on the screen explained one at a time: what it tells me in plain English, then the maths underneath it."
 article_header:
   type: overlay
   theme: dark
@@ -51,12 +51,501 @@ is already in the frame when I get home.
 ![The full overlay](/assets/images/trackencoder-metrics/hud-full.jpg){:.img-lg}
 *The whole thing on the in-car Moto G, mid-slide on the aggressive lap at Carolina Motorsports Park — 31% slip at the left rear, 15% at the right, and the car caught on the way out of turn 10. Everything sits on the A-pillar, the headliner and the dashboard — the parts of the frame the car body blocks anyway. Only about 20% of a bolted-in camera's frame ever carries road, and the overlay is laid out around that. The ghost-car panel is top-left.*
 
-This is the whole system in one post: [the overlay's
-metrics](#two-rules-everything-follows), [the ghost-car racing
-line](#the-ghost-car), [running it from my pocket](#run-it-from-the-paddock),
+This is the whole system in one post: [every card on the screen, clockwise,
+plain English first and the maths under it](#the-overlay-card-by-card),
+[the rules the metrics follow](#two-rules-everything-follows), [the ghost-car
+racing line](#the-ghost-car), [running it from my pocket](#run-it-from-the-paddock),
 [the voice in my helmet](#turn-eight-brake-at-475), [the session handoff to a
 language model](#the-handoff-one-button-three-findings), and [a street mode
 that puts most of it away](#street-mode).
+
+## The overlay, card by card
+
+![The full overlay at NCCAR](/assets/images/trackencoder-metrics/hud-nccar.jpg){:.img-lg}
+*NCCAR, 12 September 2026, lap 4 of the afternoon session, turning in to T10,
+the right-hander at the back of the new chicane. 42 mph, 85° of lock on the
+hand wheel, 0.35 s up on the reference lap. Every card below is cut from this
+one frame, so the numbers on them agree with each other.*
+
+Thirteen cards. Starting top-left and going round the screen clockwise, each
+one gets the plain-English reading first, then the technical details: what is
+measured, what is computed from it, and where every constant came from. Where
+a card already has a long section further down the post, the details here are
+the short version and link to it.
+
+### 1. SAT: my best lap painted on the real road
+
+![The satellite card at NCCAR](/assets/images/trackencoder-metrics/nccar-sat-card.jpg){:.img-md}
+*T10 on satellite imagery of NCCAR, about 430 ft of ground around the car.
+The wide line is my best lap on the actual tarmac, coloured by its pedals.
+The thin line is this lap. The dot is me, the hollow ring is the ghost, and
+the arrows are the three apexes.*
+
+**In plain English.** This is the racing-game view. My fastest lap of the
+session is painted onto a photograph of the circuit: red where it was
+braking, amber from brake release to the apex, green on the throttle. My
+current lap draws over it in the same colours from my own pedals, so where
+my red starts against where the paint turns red is the brake-point
+comparison, on the road, before the corner arrives. The ring is my best lap
+replayed on this lap's clock. Ahead of the dot, I am losing. Behind it, I am
+winning.
+
+The three arrows are apexes. Green is where the car *should* apex given its
+own power against its own grip. Blue is where my best lap apexed. Red is
+where this lap apexed. When they stack, the corner is solved. When they
+spread along the road, the gap is the lesson.
+
+**The technical details.** The photo is stitched satellite tiles,
+georeferenced into the same local-metre frame as the surveyed centreline,
+so the painted line and the photographed asphalt cannot drift apart by
+construction. NCCAR's image is 3010 by 4841 pixels at 0.240 m per pixel,
+built offline and cached on the phone for a venue with no signal. The line
+is my best lap's position recorded metre by metre, and the ghost is that lap
+replayed through the delta grid's per-metre clocks (card 3). Nothing on this
+card is scaled: a metre across the road on screen is a metre across the
+road, and the drawn line's sideways rate is capped at what a tyre can do at
+the current speed so a GPS jump shows as nothing rather than a hop.
+
+The green apex is placed by arc, not distance:
+
+```
+capability = p99 longitudinal g ÷ p99 lateral g      from the grip envelope, this session
+remaining  = 90° × (1 − capability)                  turning still to do at the apex
+apex       = first metre where cumulative heading change ≥ total − remaining
+```
+
+The idea is Paradigm Shift Racing's, the linear mapping across the 90° is
+mine, and both are argued out in full in [the ghost-car section](#the-ghost-car).
+
+### 2. POSITION: where the car sits across the road
+
+![The position bar](/assets/images/trackencoder-metrics/nccar-position.jpg){:.img-md}
+*Top row: the road as a line from its left edge to its right, the surveyed
+line as the purple tick in the middle, my car as the amber marker. 4.2 m
+(14 ft) left of the line, turning in to a right-hander. Bottom row is card 3.*
+
+**In plain English.** Am I using the whole road? The marker is where the car
+is across the tarmac right now. Left of the purple tick is left of the
+surveyed line. It goes red when I am within a car's width of the edge, which
+on a fast lap is exactly where it should be on entry and exit, and on a
+timid one never is.
+
+**The technical details.** The offset is the cross-track distance from the
+GPS fix to the surveyed centreline, signed positive to the left, in metres.
+The bar's width is the track's surveyed width, 12.35 m at NCCAR, so the
+marker is placed at:
+
+```
+frac   = 0.5 − offset / trackWidth        0 = left edge, 1 = right edge
+red    when |offset| > 0.42 × trackWidth   a car's width from the edge
+```
+
+This is the one card on the screen that depends on GPS position alone.
+Wheel speeds cannot help with sideways, so its accuracy is the receiver's
+lateral accuracy and nothing better, and the track file carries that figure
+so the coaching can decide whether track-out advice is honest at this venue.
+The card prints metres today; feet are coming.
+
+### 3. VS BEST: the lap in 24 pieces
+
+**In plain English.** The big number is how far up or down I am on my best
+lap *at this point on the track*, not at this moment in time. The ribbon is
+the lap cut into 24 equal lengths of road, each one coloured as I complete
+it: purple I beat my best there by a clear margin, green I gained a little,
+yellow I lost. Grey is road I have not reached yet, and the brighter grey
+cell is the one I am on. Under the ribbon, the three sector totals.
+
+So in the crop above I am 0.35 s up. S1 was worth a tenth despite three
+yellow cells in the middle of it, S2 a quarter, and S3 has just started and
+is a tenth up already.
+
+**The technical details.** The delta grid keeps a millisecond clock for
+every 1 m cell of the lap, for the current lap and the reference lap, on a
+lap-distance channel that repeats to about 2.4 m at the same fixed point
+on the map (typical error, replayed over three sessions). The delta at any
+point is the difference of two clocks at the same cell, so it is a
+subtraction, not a model:
+
+```
+delta(here)      = t_this(cell) − t_ref(cell)
+segment k gain   = delta(end of k) − delta(start of k)        24 segments
+sector s         = Σ segment gains over its 8 segments
+```
+
+Colours: purple below −40 ms, green any gain, yellow any loss. The whole
+thing is checked against the one number that cannot argue: the delta as the
+car crosses the line must equal this lap's time minus the reference lap's
+time. Over real logged sessions they agree within 19 ms, under one telemetry
+sample. The first lap of a session reads `NO REFERENCE LAP YET` rather than
+comparing against nothing. [More on the delta and its checks below](#coaching-that-knows-what-a-corner-costs).
+
+### 4. YAW: what the steering asked for, and what the car did
+
+![The yaw panel](/assets/images/trackencoder-metrics/nccar-yaw.jpg){:.img-md}
+*White is the gyro: the car rotating at 23 °/s into a right-hander. Blue is
+the yaw rate the steering asked for through the bicycle model. The scale
+follows the window's peak, ±35 °/s here. The footer carries the slip angle
+and, once the car constants are measured, the balance verdict. This frame is
+from the afternoon: the constant was measured off this session's own
+sweepers that evening, so the header still says EST K.*
+
+**In plain English.** Two lines that should sit on top of each other. The
+white one is how fast the car is actually turning. The blue one is how fast
+it *should* be turning for the amount of steering I have on, at this speed,
+in this car. When white falls below blue the front is not delivering what I
+asked for: understeer, PUSH. When white climbs above blue the rear is
+helping more than the steering asked: ROTATING. Inside 2 °/s of each other
+the car is NEUTRAL and the footer says so. The SLIP figure is how far the
+car is pointing away from where it is going, and it is coloured for use,
+not fear: grey means grip going spare, green means the tyres are at their
+peak, red means past it.
+
+**The technical details.** The reference is the linear bicycle model from
+Milliken, the same relation inside every production stability-control ECU:
+
+```
+δ      = SteerAngle × steering_sign ÷ steering_ratio      road-wheel angle; 12.5:1 measured
+r_ref  = v · δ / ( L · (1 + K · v²) )                     yaw rate the steering asked for
+error  = r_ref − r_gyro                                   + PUSH, − ROTATING, |error| < 2 °/s NEUTRAL
+```
+
+`L` is 2.66 m, BMW's published wheelbase for the E82. `K` is the understeer
+gradient, 0.00268 s²/m², which is 4.0 °/g at the road wheel, measured this
+month on NCCAR's three sweepers and written up in
+[its own section](#the-yaw-panel-and-how-k-got-measured). The verdict only
+computes while the car is in a steady corner: above 15 mph, above 0.30 g
+lateral, hands moving under 60 °/s, and it is smoothed with a 60 ms time
+constant so one bump does not print ROTATING. The reference line draws
+dimmed, and the verdict stays off the footer, until `vehicle.json` says the
+constants were measured. A confident model with a guessed K reads permanent
+understeer at speed.
+
+The slip angle is the gyro and the lateral accelerometer disagreeing:
+
+```
+dβ/dt = a_y · g / v − r_gyro           leaky-integrated, so gyro bias bleeds away
+```
+
+Bands: under 5° grey, 5 to 10° green, over 10° red. The band is wide because
+the exact peak is a property of the tyre carcass and no tyre curve for this
+compound exists yet. The readout blanks to `SLIP --` when the gyro is stale
+or the integral has run past 14°, which is the same sanity gate the slip car
+uses for its body twist. One more constant lives under this card: the car
+file records which way the IMU is mounted, because on this car the lateral
+accelerometer and the yaw gyro read the same event with opposite signs
+(correlation −0.988 over 38,086 samples above 30 mph). Measured, and applied
+once, where the two are subtracted.
+
+### 5. The corner card
+
+![The corner card](/assets/images/trackencoder-metrics/nccar-corner-card.jpg){:.img-md}
+*T10, live, a chicane corner, scored APEX EARLY. Four phases timed against my
+best pass through this same corner, the grip used through entry and exit,
+the coaching line, and the apex speed against the best.*
+
+**In plain English.** Every corner gets a report card the moment I leave it.
+The number is the circuit's own turn number, not a count the software
+made up. The chips say whether this is the live corner or the last one,
+what shape it is (CHI for a chicane, DBL for a double apex), and the verdict:
+APEX EARLY, APEX LATE, LATE THR, SPIN, LATE BRAKE, or nothing if it was
+clean. Then four rows, one per phase of the corner, each a time and how it
+compares with my best pass through this corner: green is quicker, purple is
+slower. The percentages beside ENTRY and EXIT are how much of the available
+grip I used through each. The line under them is the one thing worth
+changing, with the time it is worth. The last row is the apex speed and the
+gap to my best.
+
+In the crop: brake zone 0.33 s quicker than my best pass, entry 1.97 s
+slower, exit 1.74 s quicker, apex 0.2 mph down. That is a corner that was
+turned in early, ran a long slow middle, and then got a good exit out of it.
+The verdict chip agrees.
+
+**The technical details.** A corner is identified by the nearest track-map
+point at the lateral-g peak, so the same bend is recognised lap after lap
+without a lap-distance channel. The four phases:
+
+```
+BRAKE   brake onset → turn-in (lateral load rising)
+ENTRY   turn-in → apex window
+MID     a fixed 0.6 s window centred on the apex (±300 ms)
+EXIT    apex window → corner end (lateral load gone)
+```
+
+MID is a datum rather than a phase, which is why it reads 0.60 and +0.00 on
+every corner: ENTRY and EXIT are measured to and from it. The deltas are
+cell-clock subtractions against the stored best pass, the same arithmetic as
+card 3. The grip percentages are the mean of `g / envelope` (card 7's
+fraction) through that phase; trail-braking round the bottom of the
+friction circle scores high on entry, an L-shaped brake-then-turn scores low
+even when its time looks fine.
+
+The apex placement is measured from the kinematic yaw rate, no gyro
+involved, and compared with where the car's own capability says the apex
+should be:
+
+```
+dψ         = a_y · g / v · dt                integrated from turn-in
+placement  = arc at apex ÷ total arc
+target     = 1 − (90° × (1 − drive/lat)) ÷ total arc
+APEX EARLY   throttle opened then closed, or speed reversed, or placement > 12% of arc before target
+APEX LATE    placement > 12% of arc after target
+LATE THR     throttle opened > 400 ms after the apex with no wheelspin
+SPIN         late throttle with confirmed exit wheelspin: stated, not scolded
+LATE BRAKE   a chicane where the car was not slowing as the steering crossed centre
+```
+
+Two tests were measured and rejected before shipping. "Full throttle at the
+apex" cannot be measured on this car: median peak throttle after the apex is
+44% of travel because the exit is wheelspin-limited, so the card watches the
+throttle *opening* instead. And the 90° rule is only flagged on the entry
+arc (p90 90.0° over 299 corners); the exit arc on a sweeping section absorbs
+the next corner and reads 177° at p90, which is two corners rather than one
+bad one. Entry shape is also scored: curvature should rise linearly from
+turn-in to apex like an Euler spiral, so the correlation of curvature with
+time is computed, 1.0 is textbook, and under 0.6 the ENTRY label goes amber
+for a stepped turn-in. Median across my logs is 0.73.
+
+### 6. LAP METRICS: how the lap was driven
+
+![Lap metrics](/assets/images/trackencoder-metrics/nccar-metrics.jpg){:.img-md}
+*Live lap on the left, last completed on the right. Green beats the session
+best, red is worse. AT LIMIT reads 5US·2OS·5off: five understeer events, two
+oversteer, and five of the seven on the wrong side of the racing-line rule.*
+
+**In plain English.** Seven habits, scored per lap. How much of the lap was
+flat out. How much was coasting, which is the biggest single time-loser in a
+novice's data. How much of the available grip I used on average. Peak brake.
+How smooth my hands were, and how many times I had to correct. And how often
+I asked the car for more than it had, split into understeer and oversteer
+because the fix is different: one is entry speed, the other is the right
+foot. The `off` count is the subset that were on the wrong side of the
+corner, understeer on the exit or oversteer on the entry, which are line
+errors dressed up as grip problems.
+
+**The technical details.** The full table with every definition is in
+[Lap metrics](#lap-metrics). The rules: everything accumulates on a clock,
+never on a count of samples or frames, because the render loop runs at
+display refresh and telemetry arrives at whatever rate the car delivers.
+The off-side rule is Paradigm Shift Racing's: the car should be at the
+understeer limit on entry and the oversteer limit on exit, so an event on
+the other side is counted separately.
+
+### 7. GRIP: the friction circle
+
+![The grip circle](/assets/images/trackencoder-metrics/nccar-grip.jpg){:.img-md}
+*The dot is the car's combined g right now, 85% of the envelope in that
+direction. The dashed egg is the envelope: the 99th percentile of what the
+tyres have done this session at this speed, per direction. The trail is the
+last few seconds, coloured by phase. Under it, the car's place on the apex
+spectrum.*
+
+**In plain English.** The dot is what the tyres are doing now: down for
+braking, up for accelerating, sideways for cornering. The dashed ring is
+the most they have done today. If the dot lives on the ring, I am using the
+car. If it sits inside, I am not. It is egg-shaped on purpose: this car
+brakes and corners far harder than it accelerates, and a perfect circle
+would make every power-limited exit look like cowardice. The line under it
+turns that shape into advice: DRV/LAT 0.59 means the car can accelerate at
+59% of what it can corner at, and a car like that wants a late apex.
+
+**The technical details.**
+
+```
+|g|      = √(a_x² + a_y²)
+GRIP %   = |g| ÷ envelope radius in the dot's direction
+envelope = p99 of brake, accel and lateral g, separately, per speed band
+bands    = <40, 40–70, >70 mph, each needing 300 live samples before it draws
+DRV/LAT  = accel p99 ÷ lateral p99      <0.35 EARLY-MID APEX, <0.70 LATE APEX, else VERY LATE APEX
+```
+
+Percentiles rather than maxima because a maximum only ever grows: one
+kerb strike would set the ring for the day and make every real corner look
+like 60%. A percentile can forget a spike. Banded by speed because the
+achievable g-g set changes with speed, and one session-wide envelope
+flatters slow corners while libelling fast ones. The band that is drawn is
+the one the car is in now, and a band with too few samples falls back to
+its neighbour rather than drawing a confident ring around twelve points.
+`PK 1.00g` is the envelope radius in the dot's current direction. The
+apex-spectrum line is the same idea as the green arrow on card 1, in words:
+the ratio of the two halves of the envelope.
+
+### 8. The input trace
+
+![The input trace](/assets/images/trackencoder-metrics/nccar-inputs.jpg){:.img-md}
+*Eight seconds of my feet and hands. Throttle green, brake red, steering
+white, the MoTeC and AiM colour convention. The amber bars across the top
+are AT LIMIT events, understeer; red would be oversteer. A full-height
+yellow wash marks a coast. The readouts above are the live values.*
+
+**In plain English.** This is the panel a data coach reads first. A smooth
+lap has a green line that opens once and stays open, a red line that is one
+clean spike per corner, and a white line that turns once and unwinds once.
+Stabs in the green are hesitation. A red line with two humps is a driver
+who braked, released, and braked again. The amber bar over this stretch is
+the car telling me I asked for more front grip than it had, for exactly
+that long. The percentages are of *my* pedal travel, learned this session,
+because my throttle reads 12 at rest, not 0.
+
+**The technical details.** The channels are the car's own: throttle
+position from the ECU, brake pressure from the line, steering angle from the
+column, all at whatever rate the RaceCapture delivers over WiFi, 48 Hz on
+the car. Throttle and brake are shown as a percentage of the travel learned
+this session, not of the sensor range. The limit ribbon, the coast wash and
+their rules are each their own section: [coasting](#coasting--the-biggest-time-loser),
+[AT LIMIT](#at-limit--asking-for-more-than-the-car-had), and
+[why slip decides when the car is working](#why-slip-decides-when-the-car-is-working-not-lateral-g).
+The 0:08.00 in the corner is the window width; it is short so one corner
+fills the panel.
+
+### 9. The dials and the steering bar
+
+![The dials](/assets/images/trackencoder-metrics/nccar-dials.jpg){:.img-md}
+*Speed and revs. Above them the steering bar, 85° of lock at
+61 °/s: length is how far I have turned, colour is how fast.*
+
+**In plain English.** Speed in mph and engine speed, because a video with
+no speedo is a video nobody can learn from. The steering bar above the
+speed dial is about the hands rather than the wheel: a green bar is a
+smooth input, a red one is me catching something. The number next to it is
+the rate, because a colour with no number behind it is not reviewable.
+
+**The technical details.** Speed is the calibrated mph channel that every
+cross-channel comparison in the app uses, never a raw wheel count. The
+steering bar's colour scale is measured from every log I have: ordinary
+driving lives under 150 °/s, catching a slide runs 175 to 400, so full
+scale is 400 °/s and the session maximum is capped at 800 because one
+glitched sample read 1307. Details in [the steering bar](#the-steering-bar-coloured-by-how-fast-i-turn).
+
+### 10. The call: one line of coaching, with its price
+
+![The call banner](/assets/images/trackencoder-metrics/nccar-call.jpg){:.img-md}
+*The newest coaching line, wrapped to two lines so it survives the video.
+This one carries a `?`: the exit-speed threshold was still a desk number
+when the frame was recorded. It was measured off this session that evening
+and the mark is gone.*
+
+**In plain English.** One sentence per corner, only when there is something
+worth saying, and always in the circuit's own turn number so I can repeat it
+to an instructor. Braked earlier than my best, turned in early, slower at
+the apex, slower on exit, each in feet or mph against the best pass I have
+made through that corner. Where the delta grid can price it, the line ends
+with the time it was worth: `[0.2 s]`. A `?` on the end means the threshold
+that fired the line has not been measured yet, so read it as a hint rather
+than a finding.
+
+**The technical details.** Each line compares this pass against the stored
+best pass through the same corner, in the same tyre-and-surface conditions.
+The thresholds live in a file with a `measured` flag on each, and the flag
+is what draws the `?`. Three of the four are measured as of this weekend,
+each tuned so it fires on roughly one corner in five, because a flag that
+fires every corner gets ignored:
+
+```
+apex speed   3.0 mph   measured, CMP 117 comparisons + NCCAR 45
+exit speed   5.0 mph   measured, NCCAR 45 comparisons: 3.0 fired on 38% of passes, 5.0 on 22%
+turn-in      50 ft     measured, NCCAR: the old 16 ft desk value fired on 49% of passes, 50 ft on 20%
+brake early  33 ft     still a desk number, still carries the ?
+```
+
+The cost in brackets is the difference of cell clocks across the corner's
+whole extent, braking zone through to where the next straight has begun,
+because a bad exit is paid for on the straight. Turn-in is measured from
+where lateral load actually rises, not where the map thinks the corner
+starts. Lines are ranked by that measured cost, so "the three things worth
+the most time" means top three by seconds. [The coaching section](#turn-eight-brake-at-475)
+has the voice, the ratchet and the turn numbering.
+
+### 11. The timing stack
+
+![The timing stack](/assets/images/trackencoder-metrics/nccar-timing.jpg){:.img-md}
+*Session clock, the live lap, the reference lap, the last lap, and the delta
+in large type. PRED is where this lap lands if the delta holds. OPT is the
+lap already driven in pieces, with the number of joins it took.*
+
+**In plain English.** The lap timer, plus two numbers a stopwatch cannot
+give you. PRED is this lap's time if I hold the gap I have right now. OPT
+is the best lap I could have driven today from pieces I actually drove: the
+fastest run through each stretch, joined only where the joins ask nothing
+of the car. The bracket is how many joins it took; a lap with five joins is
+a lap I could do, one with forty is a collage. The ENGINE row is a single
+word until it is not.
+
+**The technical details.** `PRED = reference lap + delta(here)`. OPT is
+harder than it looks. Adding up the quickest time through every cell gives
+a lap eleven seconds faster than anything I have driven, because consecutive
+cells come from laps carrying different speeds and the car would have to
+change speed instantly at every seam. So a join is only allowed where two
+laps are at the same place *and* the same speed, and only in the middle of a
+straight, where the car is settled. Measured on 19 CMP laps:
+
+```
+splice anywhere speeds match   96.0 s   −7.6 s on the best   387 joins
+splice mid-straight only      102.9 s   −0.7 s on the best     2 joins
+```
+
+If the composite ever comes out slower than the best lap it prints nothing,
+because a lap has a hole in it and the result is built from fragments. The
+ENGINE row watches oil and water against their limits and names the worst
+offender with its value when one crosses.
+
+### 12. CONSISTENCY: which part of the lap I am not repeating
+
+**In plain English.** Consistency is the thing a quick driver runs out of
+last, so the useful question is not "how much do my lap times vary" but
+"which part of the lap am I failing to repeat". Three percentages, all
+smaller is better. SEQ3: can I do it three times in a row, right now. TOP3:
+how close are my three best. TOP5: how deep does the pace go. Dashes until
+there are enough laps to compare, which is where the frame above was: early
+in the session.
+
+**The technical details.** Whole-lap variance hides the answer: two corners
+half a second apart in opposite directions read as a perfect lap. So it is
+measured per sector from the cell clocks and then averaged, and each figure
+is a coefficient of variation so a 130 ft sector and a 2,300 ft one are
+comparable:
+
+```
+sector time  = t(cell at sector end) − t(cell at sector start)     per kept lap
+CV(sector)   = σ_population(times) ÷ mean(times)
+figure       = mean of CV over sectors with ≥ 2 valid laps
+SEQ3 = best three consecutive laps     TOP3 = three fastest     TOP5 = five fastest
+```
+
+The sectors are the Garmin Catalyst's own, from the track file. The formula
+is not Garmin's, which could not be reproduced from lap times; expect these
+to track the device closely and not to match its third decimal. The
+coaching log records the same three figures at every lap with the count of
+usable sectors, so a session can be checked afterwards.
+
+### 13. WHEEL SLIP: which tyre let go, and why
+
+**In plain English.** The car from above, with a percentage at each wheel.
+A rear turning faster than the car is wheelspin and colours up green to
+amber to red. A wheel turning slower is a lock-up and pings blue, because it
+is a different fault rather than a worse one. Rings flash over the tyre that
+misbehaved and fade, so I see *when* it happened. The chip names it: POWER
+OVERSTEER if the throttle was open when the rear let go. Oil and water sit
+in the body, coloured on the same ramp as everything else. In the frame
+above every wheel reads 0 to 2%, which is what turning in to a chicane at
+42 mph should look like.
+
+**The technical details.** Road speed comes from the fastest undriven
+wheel with a rate limit, the same trick as an ABS reference velocity, so a
+locked front cannot hide inside its own reference:
+
+```
+roadRef = max( max(FL, FR), roadRef − 1.5 g · dt )
+spin    = (rear − frontAvg × axleRatio) ÷ (frontAvg × axleRatio)      axleRatio learned free-rolling, 0.32% on this car
+lock    = (roadRef − wheel) ÷ roadRef
+SPIN    if spin > 4% and throttle > 15%        LOCK if lock > 8% and brake > 15%
+```
+
+Everything else about it, the 1.5 g (my measured p999 braking is 1.30 g),
+the 620 ms ring lifetime, and why a reading past the threshold with both
+feet off is printed without colour, is in
+[Wheel spin versus wheel lock](#wheel-spin-versus-wheel-lock) and
+[The radar pings](#the-radar-pings).
+
 
 ## The ghost car
 
@@ -264,17 +753,20 @@ fails when:
 | Steering angle | High — hardwired | Zero can drift |
 | Accelerometers | Good for magnitude | **Goes quiet during a slide** |
 | GPS | Position only | Drops, drifts, lags under braking |
-| Yaw gyro | Lowest — unproven on this car | until it is, assume anywhere |
+| Yaw gyro | Proven this month: tracks a_y/v to corr 0.99 | bias at rest, so it is only ever integrated with a leak |
 
 Two of those rows shape a lot of the design.
 
 The **gyro** row is why nothing on this overlay depends on a gyro if it can
 help it. Every widget that needs to know the car is rotating gets there from
-wheel speeds, steering and lateral g instead — hardwired channels, all of
+wheel speeds, steering and lateral g instead, hardwired channels, all of
 them. The one instrument that genuinely needs a rotation measurement, the
-balance bar, ships dark until the gyro proves itself on the car. That is a
-design rule, not a workaround: a sensor stays untrusted until a session says
-otherwise, and the widget that depends on it stays off in the meantime.
+balance verdict on the yaw panel, shipped dark until the gyro proved itself
+on the car. It did this month: 38,086 samples above 30 mph at NCCAR, the
+gyro against the kinematic yaw rate `a_y·g/v`, correlation 0.988. That is
+the design rule working as intended, not a workaround: a sensor stays
+untrusted until a session says otherwise, and the widget that depends on it
+stays off in the meantime.
 
 The **accelerometer** row gets its own section below, because it fails in a way
 that is far more interesting.
@@ -478,7 +970,7 @@ otherwise                                         →  UNDERSTEER
 That's where these events are drawn, and they're the one thing on the
 overlay with no label next to them, so: **amber is understeer, red is
 oversteer**, and a bar spans exactly the stretch of time the car was asking
-for more than it had. Same colour convention as the balance bar.
+for more than it had. Same colour convention as the yaw panel's verdict.
 
 ![The AT LIMIT ribbon](/assets/images/trackencoder-metrics/limit-ribbon.jpg){:.img-lg}
 *Eight seconds of input trace — throttle green, brake red, steering white — with the limit ribbon above it. Red bars are oversteer, amber are understeer, and the gaps are the car doing what it was told. This is a busy stretch: two long red events either side of an amber one, which is what a car that rotates easily looks like when it's being pushed.*
@@ -529,8 +1021,10 @@ right corroborator rather than just another signal.
 
 ## The grip circle
 
-A dot showing what the tyres are doing now, inside a ring showing the most
-they've ever done.
+A dot showing what the tyres are doing now, inside a ring showing the 99th
+percentile of what they have done this session. A percentile rather than a
+maximum, because a maximum only grows: one kerb strike would set the ring
+for the day.
 
 ![Grip circle](/assets/images/trackencoder-metrics/grip-circle.jpg){:.img-md}
 *The friction circle from Milliken's Race Car Vehicle Dynamics, with the trail coloured by phase — brake red, lateral amber, drive green. Egg-shaped on purpose: this car brakes and corners far harder than it accelerates, and a perfect circle makes every power-limited exit look like timidity.*
@@ -572,10 +1066,10 @@ a count of samples. A sample count that gets read as a duration is the single
 most common way a metric like `COAST` ends up quietly reporting a percentage
 of the wrong thing.
 
-## The balance bar
+## The yaw panel, and how K got measured
 
-This compares how fast the car *is* rotating against how fast the steering
-*asked* it to. The gap is understeer or oversteer.
+The balance reading compares how fast the car *is* rotating against how fast
+the steering *asked* it to. The gap is understeer or oversteer.
 
 ```
 δ      = SteerAngle / steering_ratio         road-wheel angle
@@ -583,26 +1077,26 @@ r_ref  = v · δ / (L · (1 + K · v²))          the rate asked for
 error  = r_ref − yaw_measured                + understeer, − oversteer
 ```
 
-That's the bicycle model from Milliken, and it sits inside every production
-stability-control system. `K` is the understeer gradient, and with `K = 0` the
-model over-predicts yaw badly at speed.
+That is the bicycle model from Milliken, and it sits inside every production
+stability-control system. `K` is the understeer gradient, and with `K = 0`
+the model over-predicts yaw badly at speed.
 
-The bar ships **dark**, and it needs two things before it lights. `K` has to be
-measured rather than estimated. And `yaw_measured` has to come from a gyro this
-car has actually proven — it is the one instrument here that cannot be built
-out of wheel speeds and steering, so it is the one place the least-trusted
-channel in the table is unavoidable. Until both land, the bar reads
-`NEEDS CAR CONSTANTS` on its face and stays unlit.
+For most of this project the reading was dark. It needed two things: a gyro
+this car had proven, and a `K` that was measured rather than estimated. An
+instrument that is confidently wrong is worse than one that is absent, and a
+driver who catches a gauge lying once stops trusting every gauge next to it.
+Both landed on 12 September at NCCAR, and the verdict now prints on the yaw
+panel's footer (card 4) under the two lines it summarises. The balance bar's
+old slot went to the VS BEST ribbon, because "am I ahead" is the question
+every other card serves.
 
-That is the rule the whole overlay runs on: an instrument that is *confidently
-wrong* is worse than one that is absent. A driver who catches a gauge lying
-once stops trusting every gauge next to it.
+### The first estimate, and why it was wrong for this car
 
-I did get an estimate out of the logs. Regressing steering against lateral g
-directly doesn't work, because a slow hairpin and a fast sweeper at the same g
-need completely different lock — the corner radius contaminates the slope. An
-FSAE skidpad removes that by holding radius constant, and radius is recoverable
-arithmetically, which lets every corner in every log contribute:
+Regressing steering against lateral g directly does not work, because a slow
+hairpin and a fast sweeper at the same g need completely different lock: the
+corner radius contaminates the slope. The FSAE skidpad removes that by
+holding radius constant. Radius is recoverable arithmetically, so every
+corner in every log can contribute:
 
 ```
 R      = v² / (a_y · g)
@@ -610,13 +1104,61 @@ R      = v² / (a_y · g)
 δ_meas − δ_ack = K_us · a_y
 ```
 
-Over 28,736 steady-state samples — hands not moving, load not changing, speed
-held — `K_us` comes out at **1.56 °/g** at the road wheel with an intercept of
-−0.55°, near enough zero that the fit holds together.
+Over 28,736 steady-state CMP samples that gave **1.56 °/g**. It was honest
+about being an estimate, and it turned out to be the wrong number for this
+car: those samples live in the low-g linear range, and this car does not
+corner there.
 
-It's in the car file, still flagged unmeasured, because it assumes steady state
-at every sample and scales with a wheelbase I haven't measured. Nice property
-though: it uses **no gyro at all**, only steering, speed and lateral g.
+### The measurement: three sweepers as a skidpad
+
+NCCAR has three long, steady corners: T7, a 227° right at about 310 ft
+radius; T13, a 195° left at about 155 ft; and T6, a 169° left at about
+230 ft. A car settled in the middle of each is doing what a skidpad asks
+for, so the nine clean laps from the two sessions were run through the same
+regression, with the radius taken from the gyro rather than the map:
+
+```
+steady   = |a_y| > 0.3 g, |r| > 0.15 rad/s, |dr/dt| < 15 °/s², steer, yaw and a_y agreeing in sign
+δ_road   = SteerAngle × steering_sign / 12.5
+δ_ack    = L · r / v
+K_us     = slope of (δ_road − δ_ack) against a_y, on the gyro's handedness
+```
+
+| Corner | Direction | Samples | K_us |
+|---|---|---|---|
+| T7 | right | 6,051 | 4.02 °/g |
+| T13 | left | 4,419 | 4.06 °/g |
+| T6 | left | 4,333 | 3.97 °/g |
+
+A right and two lefts within 0.1 °/g of each other. That is the uniform-grip
+assumption confirmed rather than made, and it is the number in the car file:
+
+```
+K = 4.0 °/g × π/180 ÷ (9.81 × 2.66 m) = 0.00268 s²/m²       measured: true
+```
+
+Two caveats are written into the file next to it. It is the loaded-range K,
+0.6 to 1.1 g. Below 0.6 g the slope is near zero and it builds toward the
+limit (T7 by band: 0.1, 3.9, 5.3 °/g), which is the tyre going nonlinear, so
+the reference is calibrated for where the car actually lives on a lap and
+will over-predict yaw on a gentle corner. And there is aero. NCCAR is flat,
+the car carries a splitter, and a two-parameter fit over 14,373 loaded
+samples gives `K = 5.39 − 1.54e-3 · v²` °/g with v in m/s: 4.9 °/g at
+40 mph falling to 4.0 at 67, which is the direction front downforce pushes.
+Speed is confounded with radius across only three corners, so that is
+recorded as a trend and the model keeps a single K until a fourth sweeper
+at a different speed says otherwise.
+
+### The gyro proving itself
+
+The same session settled the other half. The yaw gyro against the kinematic
+yaw rate `a_y·g/v` over 38,086 samples above 30 mph on the clean laps:
+correlation −0.988, slope −0.96. The gyro is real, and it reads the opposite
+way round to the lateral accelerometer on this car, the same mounting fact
+already known about the longitudinal axis. So the car file records the IMU's
+handedness as `lateral_sign`, and the one place the two are subtracted (the
+slip-angle integrator) applies it. With that in, the slip angle peaks at
+6.8° on a clean lap and never runs past the 14° sanity gate.
 
 ## Run it from the paddock
 
@@ -767,6 +1309,12 @@ twenty-three labels is a coincidence, one of them a 1352 m radius that is
 actually the back straight. Guessing there would put wrong numbers on video,
 so it does not guess.
 
+NCCAR got its numbers the same way this month, from the circuit's new
+layout map: fourteen turns, T1 the hairpin through T14 onto the straight,
+with the new chicane as T8, T9 and T10. They are a turn list in the track
+file with the survey they came from, and every card, call and coaching line
+above uses them.
+
 The corner *identity* underneath is permanent and append-only, separate from
 the displayed number. A corner discovered later can change what it is called
 without changing which stored best belongs to it — otherwise a turn quietly
@@ -801,6 +1349,20 @@ It can also call **turn-in** — early or late, in feet, from where lateral load
 actually rises rather than where the map thinks the corner starts — and
 **track-out**, which only speaks on circuits where the GPS is honest enough to
 support it, and stays silent everywhere else rather than coaching noise.
+
+Every threshold that fires a line carries a `measured` flag, and a line whose
+threshold is still a desk number ends in `?`. As of this weekend three of the
+four are measured against the corner-by-corner record (apex speed 3.0 mph,
+exit speed 5.0 mph, turn-in 50 ft), each set so it fires on roughly one
+corner in five. Brake-early still carries the mark.
+
+This is what the ranking looked like after nine clean laps at NCCAR on
+12 September, measured seconds per lap against my best pass through each
+corner: T1, the hairpin, 0.95 s; T13, the long left, 0.58 s; T14, the last
+corner onto the straight, 0.56 s; then T4, T8 and T7 at about a quarter of a
+second each. Four seconds in total, and a stitched lap of 97.16 s against a
+best of 100.13 s. Three corners, two seconds. That is the list the overlay
+exists to write.
 
 The voice can speak this advice too, compressed to something that survives
 being heard at 100 mph: *"brake later into turn seven."* One phrase every six
@@ -873,7 +1435,7 @@ away: the ghost car, the timing stack, the consistency figures, the track
 position bar, the lap metrics, and the whole coaching chain including the
 brake calls in my helmet. What stays is everything that is about the *car*
 rather than the lap — wheel slip and the radar pings, the grip circle, the
-balance bar, the steering rate, the dials, the input traces. Those mean
+yaw panel, the steering rate, the dials, the input traces. Those mean
 exactly as much on a back road as they do at CMP.
 
 Delete the file and the next launch is a track day again.
