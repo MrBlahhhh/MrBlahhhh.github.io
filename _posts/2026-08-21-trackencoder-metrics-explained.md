@@ -306,35 +306,10 @@ turn-in to apex like an Euler spiral, so the correlation of curvature with
 time is computed, 1.0 is textbook, and under 0.6 the ENTRY label goes amber
 for a stepped turn-in. Median across my logs is 0.73.
 
-### 6. LAP METRICS: how the lap was driven
-
-![Lap metrics](/assets/images/trackencoder-metrics/nccar-metrics.jpg){:.img-md}
-*Live lap on the left, last completed on the right. Green beats the session
-best, red is worse. AT LIMIT reads 5US·2OS·5off: five understeer events, two
-oversteer, and five of the seven on the wrong side of the racing-line rule.*
-
-**In plain English.** Seven habits, scored per lap. How much of the lap was
-flat out. How much was coasting, which is the biggest single time-loser in a
-novice's data. How much of the available grip I used on average. Peak brake.
-How smooth my hands were, and how many times I had to correct. And how often
-I asked the car for more than it had, split into understeer and oversteer
-because the fix is different: one is entry speed, the other is the right
-foot. The `off` count is the subset that were on the wrong side of the
-corner, understeer on the exit or oversteer on the entry, which are line
-errors dressed up as grip problems.
-
-**The technical details.** The full table with every definition is in
-[Lap metrics](#lap-metrics). The rules: everything accumulates on a clock,
-never on a count of samples or frames, because the render loop runs at
-display refresh and telemetry arrives at whatever rate the car delivers.
-The off-side rule is Paradigm Shift Racing's: the car should be at the
-understeer limit on entry and the oversteer limit on exit, so an event on
-the other side is counted separately.
-
-### 7. GRIP: the friction circle
+### 6. GRIP: the friction circle
 
 ![The grip circle](/assets/images/trackencoder-metrics/nccar-grip.jpg){:.img-md}
-*The dot is the car's combined g right now, 85% of the envelope in that
+*Top-right of the screen as it ships now. The dot is the car's combined g right now, 85% of the envelope in that
 direction. The dashed egg is the envelope: the most these tyres have shown
 on this surface, per direction, at this speed. The trail is the last few
 seconds, coloured by phase. Under it, the car's place on the apex
@@ -376,6 +351,35 @@ came out within 0.1 g of each other (lateral 0.96, 1.07, 1.04 g). `PK
 1.00g` is the envelope radius in the dot's current direction. The
 apex-spectrum line is the same idea as the green arrow on card 1, in words:
 the ratio of the two halves of the envelope.
+
+### 7. LAP METRICS: how the lap was driven
+
+![Lap metrics](/assets/images/trackencoder-metrics/nccar-metrics.jpg){:.img-md}
+*Live lap on the left, last completed on the right. Green beats the session
+best, red is worse. AT LIMIT reads 5US·2OS·5off: five understeer events, two
+oversteer, and five of the seven on the wrong side of the racing-line rule.*
+
+**In plain English.** Seven habits, scored per lap. The card lives in the
+right column under the grip circle and only appears for six seconds after
+a lap closes, when its LAST column has just been filled: it is a debrief,
+not an instrument, and it earns its space when the lap it describes has
+just ended. How much of the lap was
+flat out. How much was coasting, which is the biggest single time-loser in a
+novice's data. How much of the available grip I used on average. Peak brake.
+How smooth my hands were, and how many times I had to correct. And how often
+I asked the car for more than it had, split into understeer and oversteer
+because the fix is different: one is entry speed, the other is the right
+foot. The `off` count is the subset that were on the wrong side of the
+corner, understeer on the exit or oversteer on the entry, which are line
+errors dressed up as grip problems.
+
+**The technical details.** The full table with every definition is in
+[Lap metrics](#lap-metrics). The rules: everything accumulates on a clock,
+never on a count of samples or frames, because the render loop runs at
+display refresh and telemetry arrives at whatever rate the car delivers.
+The off-side rule is Paradigm Shift Racing's: the car should be at the
+understeer limit on entry and the oversteer limit on exit, so an event on
+the other side is counted separately.
 
 ### 8. The input trace
 
