@@ -335,14 +335,16 @@ the other side is counted separately.
 
 ![The grip circle](/assets/images/trackencoder-metrics/nccar-grip.jpg){:.img-md}
 *The dot is the car's combined g right now, 85% of the envelope in that
-direction. The dashed egg is the envelope: the 99th percentile of what the
-tyres have done this session at this speed, per direction. The trail is the
-last few seconds, coloured by phase. Under it, the car's place on the apex
+direction. The dashed egg is the envelope: the most these tyres have shown
+on this surface, per direction, at this speed. The trail is the last few
+seconds, coloured by phase. Under it, the car's place on the apex
 spectrum.*
 
 **In plain English.** The dot is what the tyres are doing now: down for
 braking, up for accelerating, sideways for cornering. The dashed ring is
-the most they have done today. If the dot lives on the ring, I am using the
+the most they have ever done on this tyre and this surface, remembered
+between sessions, so the first corner of the day is measured against the
+same ring as the last one. If the dot lives on the ring, I am using the
 car. If it sits inside, I am not. It is egg-shaped on purpose: this car
 brakes and corners far harder than it accelerates, and a perfect circle
 would make every power-limited exit look like cowardice. The line under it
@@ -354,19 +356,24 @@ turns that shape into advice: DRV/LAT 0.59 means the car can accelerate at
 ```
 |g|      = √(a_x² + a_y²)
 GRIP %   = |g| ÷ envelope radius in the dot's direction
-envelope = p99 of brake, accel and lateral g, separately, per speed band
-bands    = <40, 40–70, >70 mph, each needing 300 live samples before it draws
-DRV/LAT  = accel p99 ÷ lateral p99      <0.35 EARLY-MID APEX, <0.70 LATE APEX, else VERY LATE APEX
+envelope = max( stored floor, p99 this session )   for brake, accel and lateral, per speed band
+bands    = <40, 40–70, >70 mph, crossfaded over ±5 mph of each edge
+floor    = rises when the session p99 clears it with ≥ 10,000 samples in the band; never falls
+DRV/LAT  = accel ÷ lateral      <0.35 EARLY-MID APEX, <0.70 LATE APEX, else VERY LATE APEX
 ```
 
-Percentiles rather than maxima because a maximum only ever grows: one
-kerb strike would set the ring for the day and make every real corner look
-like 60%. A percentile can forget a spike. Banded by speed because the
-achievable g-g set changes with speed, and one session-wide envelope
-flatters slow corners while libelling fast ones. The band that is drawn is
-the one the car is in now, and a band with too few samples falls back to
-its neighbour rather than drawing a confident ring around twelve points.
-`PK 1.00g` is the envelope radius in the dot's current direction. The
+The envelope is a property of the tyre, the surface and the car, so it is
+filed the way the corner bests are, per tyre and surface bucket, and kept
+between sessions. What is stored is a floor the ring never goes below. It
+rises when a session's 99th percentile clears it with five minutes of data
+in the band behind the number, which is the spike guard: a two-second kerb
+strike is 0.6% of those samples and cannot set the floor. It shrinks only
+when the conditions change (a different file) or when I press GRIP on the
+Telegram card. Banded by speed because the achievable g-g set changes with
+speed, and blended across the band edges so crossing 40 mph mid-corner
+moves the ring instead of jumping it. On this car at NCCAR the three bands
+came out within 0.1 g of each other (lateral 0.96, 1.07, 1.04 g). `PK
+1.00g` is the envelope radius in the dot's current direction. The
 apex-spectrum line is the same idea as the green arrow on card 1, in words:
 the ratio of the two halves of the envelope.
 
@@ -1023,10 +1030,10 @@ right corroborator rather than just another signal.
 
 ## The grip circle
 
-A dot showing what the tyres are doing now, inside a ring showing the 99th
-percentile of what they have done this session. A percentile rather than a
-maximum, because a maximum only grows: one kerb strike would set the ring
-for the day.
+A dot showing what the tyres are doing now, inside a ring showing the most
+they have shown on this tyre and surface, kept between sessions and only
+ever growing. A percentile with five minutes of data behind it sets the
+ring, not a maximum, so one kerb strike cannot set it for the day.
 
 ![Grip circle](/assets/images/trackencoder-metrics/grip-circle.jpg){:.img-md}
 *The friction circle from Milliken's Race Car Vehicle Dynamics, at 95% of the envelope trail-braking into T9 at NCCAR, with the trail coloured by phase: brake red, lateral amber, drive green. The trail runs red down the braking axis and swings amber as the lateral builds, which is the shape trail-braking is supposed to draw. Egg-shaped on purpose: this car brakes and corners far harder than it accelerates, and a perfect circle makes every power-limited exit look like timidity.*
@@ -1037,8 +1044,10 @@ GRIP % = current combined g / envelope radius in this direction
 
 The envelope is **banded by speed** (<40, 40–70, >70 mph), because the achievable
 g-g set changes with speed and one session-wide envelope flatters slow corners
-while libelling fast ones. A band with under 200 live samples falls back to its
-neighbour rather than drawing a confident ring around twelve points.
+while libelling fast ones, and the bands crossfade over ±5 mph of each edge so
+the ring never jumps. A band with nothing stored and under 200 live samples
+stands aside for the best-evidenced one rather than drawing a confident ring
+around twelve points.
 
 ## Lap metrics
 
