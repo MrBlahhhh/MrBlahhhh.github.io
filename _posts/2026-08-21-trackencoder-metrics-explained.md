@@ -467,19 +467,33 @@ has the voice, the ratchet and the turn numbering.
 
 ![The timing stack](/assets/images/trackencoder-metrics/nccar-timing.jpg){:.img-md}
 *Session clock, the live lap, the reference lap, the last lap, and the delta
-in large type. PRED is where this lap lands if the delta holds. OPT is the
-lap already driven in pieces, with the number of joins it took.*
+in large type. BEST is the lap the delta is measured against, and its chip
+says where it came from: this session, today, or the last 48 hours. PRED is
+where this lap lands if the delta holds. OPT is the lap already driven in
+pieces, with the number of joins it took.*
 
 **In plain English.** The lap timer, plus two numbers a stopwatch cannot
-give you. PRED is this lap's time if I hold the gap I have right now. OPT
+give you. BEST is the reference everything else on the screen compares
+against, and which lap that is, is a setting: the best of this session, the
+best of today, or the best of the last 48 hours, which is a track weekend.
+The stored laps are filed by track, car, tyre and surface, so yesterday's
+dry lap is never the target in the rain, and a lap driven today that beats
+the stored one takes over on the spot. PRED is this lap's time if I hold the
+gap I have right now. OPT
 is the best lap I could have driven today from pieces I actually drove: the
 fastest run through each stretch, joined only where the joins ask nothing
 of the car. The bracket is how many joins it took; a lap with five joins is
 a lap I could do, one with forty is a collage. The ENGINE row is a single
 word until it is not.
 
-**The technical details.** `PRED = reference lap + delta(here)`. OPT is
-harder than it looks. Adding up the quickest time through every cell gives
+**The technical details.** `PRED = reference lap + delta(here)`. The
+reference is the fastest accepted lap the window admits, kept between
+sessions as the grid's own material, a millisecond clock and a lateral
+offset for every metre of the lap, so a stored reference drives the delta,
+the ghost and the painted line exactly as a live one does. Positive is
+slower and carries a `+`; negative is faster. Slower is yellow rather than
+red, the F1 timing convention, because red on this overlay is reserved for
+faults. OPT is harder than it looks. Adding up the quickest time through every cell gives
 a lap eleven seconds faster than anything I have driven, because consecutive
 cells come from laps carrying different speeds and the car would have to
 change speed instantly at every seam. So a join is only allowed where two
