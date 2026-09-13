@@ -104,8 +104,10 @@ built offline and cached on the phone for a venue with no signal. The line
 is my best lap's position recorded metre by metre, and the ghost is that lap
 replayed through the delta grid's per-metre clocks (card 3). Nothing on this
 card is scaled: a metre across the road on screen is a metre across the
-road, and the drawn line's sideways rate is capped at what a tyre can do at
-the current speed so a GPS jump shows as nothing rather than a hop.
+road, and the live line and the painted line are built from the same
+per-metre laterals with the same smoothing over about 30 ft of road, so a
+line driven the same twice draws the same twice. Only the car dot is
+rate-limited, and only enough to swallow a GPS teleport.
 
 The green apex is placed by arc, not distance:
 
@@ -736,10 +738,13 @@ truth:
 Two honesty rules keep it from lying. On a photograph the geometry has to be
 true — an exaggerated lateral would put the line in the grass — so unlike the
 drawn card this one replaces, nothing is scaled: a metre across the road on
-screen is a metre across the road. And the display physically cannot draw an
-impossible move: the drawn line's sideways rate is capped at what a tyre can
-actually do at your current speed, so GPS scatter shows up as nothing instead
-of as a 100-mph sideways hop.
+screen is a metre across the road. And both lines on it are the same
+measurement treated the same way: my live line and my painted best lap are
+built from the same per-metre laterals with the same smoothing over about
+30 ft of road, so where I drove the same line twice the two draw on top of
+each other, and where they sit apart it is me, not the drawing. The
+receiver repeats lap to lap to about a foot and a half; that is what a gap
+between the two lines is worth.
 
 ## It records sound
 
