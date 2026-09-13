@@ -27,18 +27,19 @@ redirect_from:
   <source src="/assets/images/trackencoder-metrics/hero-aggressive-lap.mp4" type="video/mp4">
 </video>
 
-*Three laps back to back at Carolina Motorsports Park, exactly as I drove
-them: a lap in, my most aggressive lap, and the lap out the other side. Every
-system in this post is working at once. Through the aggressive lap the rear
-steps out repeatedly — POWER OVERSTEER lights, red rings ping over the rear
-tyres, the amber and red ribbons stack along the top of the input trace, and
-the corner card scores each corner as it happens: ENTRY in the red, APEX EARLY,
-the delta ticking against my 1:46.91. The laps either side run the same road
-with the car settled, and that is the comparison the overlay exists to make —
-the same corners, three times, scored the same way. Top-left, the ghost-car
-panel paints the corner ahead: my best lap on the road in
-brake/transition/throttle colours, the hollow ghost running its clock, and my
-dot — lit by my own pedals — chasing it.*
+*Three laps back to back at NCCAR on 12 September 2026, exactly as I drove
+them: a lap stuck behind traffic (1:47.5), the lap after it (1:40.95), and my
+best of the day (1:40.46). Every system in this post is working at once. On
+the exit of T7 the rear steps out on the throttle: POWER OVERSTEER lights,
+red rings ping over the rear tyres, the amber and red ribbons stack along the
+top of the input trace, and the corner card scores each corner as it happens,
+APEX EARLY, the delta ticking against the reference lap. The traffic lap is
+the comparison the overlay exists to make: the same corners, three times,
+scored the same way, with the COASTING chip and a `[3.3 s]` coaching line
+saying exactly what following a slower car cost. Top-left, the ghost-car
+panel paints the corner ahead on satellite imagery of the circuit: my best
+lap on the road in brake/transition/throttle colours, the hollow ghost
+running its clock, and my dot, lit by my own pedals, chasing it.*
 
 ## What this thing is
 
@@ -555,7 +556,8 @@ feet off is printed without colour, is in
   <source src="/assets/images/trackencoder-metrics/ghost-car.mp4" type="video/mp4">
 </video>
 
-*The ghost card, magnified — and the road under it is now the real road. The
+*The ghost card, magnified, through T6 and T7 on my best lap at NCCAR, and
+the road under it is the real road. The
 card draws on satellite imagery of the circuit, georeferenced onto the same
 metre grid every measurement in the system lives on, showing about 130 metres
 of ground around the car. The wide line is my best lap painted onto the
@@ -779,7 +781,7 @@ and it's the first thing Ross Bentley goes after in a novice's data in *Speed
 Secrets*.
 
 ![Coasting regions on the input trace](/assets/images/trackencoder-metrics/trace-coast.jpg){:.img-lg}
-*Two coasts in one eight-second window. Throttle green, brake red, steering white — the MoTeC/AiM colour convention. Each yellow region has a bright line at its start and end, and it's recorded per column, so it scrolls off with the data that produced it instead of vanishing the moment the car settles.*
+*Two coasts in one eight-second window, on the exit of T12 at NCCAR with a slower car ahead. Throttle green, brake red, steering white, the MoTeC/AiM colour convention. Each yellow region has a bright line at its start and end, and it is recorded per column, so it scrolls off with the data that produced it instead of vanishing the moment the car settles. The COASTING chip under the trace is lit while the rule holds.*
 
 ```
 coasting  =  speed        > 20 mph
@@ -800,7 +802,7 @@ case where g gets it *wrong* — see the slide section below. And the 250 ms is 
 a gear shift isn't counted as a coast.
 
 ![The out-lap](/assets/images/trackencoder-metrics/coasting.jpg){:.img-lg}
-*Same frame in context — `COAST 6%` in the metrics block, on the 2:09 out-lap. On my 1:43 it reads under 1%.*
+*Same frame in context: `COAST 7%` in the metrics block, on the lap spent behind traffic, and the corner card pricing what it cost at T12: 14.9 mph down at the apex, 3.3 s. On the best lap of the day COAST reads 1%.*
 
 Across three real laps it reads 9.3% on the out-lap, 0.50% on my fast lap, and
 0.41% on my most aggressive one.
@@ -812,7 +814,7 @@ locking. Opposite problems, opposite fixes, so they're measured separately and
 drawn differently.
 
 ![Wheel spin with radar pings](/assets/images/trackencoder-metrics/slip-car.jpg){:.img-md}
-*25% rear slip on the throttle. Red rings expand and fade over the tyres that broke traction, the rears colour up the green-amber-red ramp, and the chip names it: POWER OVERSTEER, because the throttle was open when the wheels let go.*
+*14% at the right rear and 5% at the left, on the throttle out of T7 at NCCAR. Red rings expand and fade over the tyres that broke traction, the rears colour up the green-amber-red ramp, and the chip names it: POWER OVERSTEER, because the throttle was open when the wheels let go.*
 
 ### Road speed without GPS
 
@@ -865,7 +867,7 @@ both feet off is tyres and road, not something I did, and colouring it is how an
 instrument teaches you to ignore it.
 
 ![Front lock-up ping](/assets/images/trackencoder-metrics/wheel-lock.jpg){:.img-lg}
-*57% brake, and both fronts have just pinged — the pale blue rings. Lock draws blue deliberately, outside the green-amber-red ramp entirely, because it's a different fault rather than a worse one. Note the rears reading **−1%** and **−3%**: negative, meaning slower than the front axle. The sign is the answer, so it's kept.*
+*Trail-braking into T9 at NCCAR: 27% brake, 50° of lock, and the inside front has just pinged, the pale blue ring over the right front. Lock draws blue deliberately, outside the green-amber-red ramp entirely, because it is a different fault rather than a worse one. The input panel beside it is the same instant: brake still on, steering still winding in, and an amber understeer bar over the trace saying the front was already asking for more than it had.*
 
 Look at what *isn't* in that frame: the tyres themselves are green. That
 lock lasted a couple of hundred milliseconds and was over before the screenshot
@@ -938,7 +940,7 @@ colour  = ramp(rate / scale)
 ```
 
 ![Steering bar at two rates](/assets/images/trackencoder-metrics/steering-bar.jpg){:.img-lg}
-*Same widget, four minutes apart in the same session. 246 °/s catching the rear on a corner exit, and 9 °/s tracking down a straight. The rate is printed next to the angle — a colour with no number behind it is unreviewable.*
+*Same widget, eight minutes apart in the same session at NCCAR. 147 °/s winding on lock into T9, and 4 °/s on the straight. The rate is printed next to the angle; a colour with no number behind it is unreviewable.*
 
 ## AT LIMIT — asking for more than the car had
 
@@ -973,7 +975,7 @@ oversteer**, and a bar spans exactly the stretch of time the car was asking
 for more than it had. Same colour convention as the yaw panel's verdict.
 
 ![The AT LIMIT ribbon](/assets/images/trackencoder-metrics/limit-ribbon.jpg){:.img-lg}
-*Eight seconds of input trace — throttle green, brake red, steering white — with the limit ribbon above it. Red bars are oversteer, amber are understeer, and the gaps are the car doing what it was told. This is a busy stretch: two long red events either side of an amber one, which is what a car that rotates easily looks like when it's being pushed.*
+*Eight seconds of input trace, throttle green, brake red, steering white, with the limit ribbon above it. Red bars are oversteer, amber are understeer, and the gaps are the car doing what it was told. This is T7 at NCCAR: two amber understeer events through the long right-hander, then a short red one the moment the throttle went down on the exit, which is the same POWER OVERSTEER the slip car flagged above.*
 
 The verdict can be **upgraded mid-event**, which is the interesting case. A
 bar shades amber while the front pushes and turns red the moment the rear
@@ -1027,7 +1029,7 @@ maximum, because a maximum only grows: one kerb strike would set the ring
 for the day.
 
 ![Grip circle](/assets/images/trackencoder-metrics/grip-circle.jpg){:.img-md}
-*The friction circle from Milliken's Race Car Vehicle Dynamics, with the trail coloured by phase — brake red, lateral amber, drive green. Egg-shaped on purpose: this car brakes and corners far harder than it accelerates, and a perfect circle makes every power-limited exit look like timidity.*
+*The friction circle from Milliken's Race Car Vehicle Dynamics, at 95% of the envelope trail-braking into T9 at NCCAR, with the trail coloured by phase: brake red, lateral amber, drive green. The trail runs red down the braking axis and swings amber as the lateral builds, which is the shape trail-braking is supposed to draw. Egg-shaped on purpose: this car brakes and corners far harder than it accelerates, and a perfect circle makes every power-limited exit look like timidity.*
 
 ```
 GRIP % = current combined g / envelope radius in this direction
@@ -1041,7 +1043,7 @@ neighbour rather than drawing a confident ring around twelve points.
 ## Lap metrics
 
 ![Lap metrics](/assets/images/trackencoder-metrics/metrics.jpg){:.img-md}
-*Live lap on the left, last completed on the right. Green beats the session best, red is worse. `AT LIMIT 6 US · 5 OS` counts the two at-the-limit faults separately — six understeer events and five oversteer ones so far this lap — because the fix is not the same for both: one is entry speed, the other is the right foot.*
+*Live lap on the left, last completed on the right. Green beats the session best, red is worse. `AT LIMIT 3US·1OS·3off` counts the two at-the-limit faults separately, three understeer events and one oversteer so far this lap, because the fix is not the same for both: one is entry speed, the other is the right foot. The `3off` is the subset on the wrong side of the corner, which is the line rather than the grip.*
 
 | Row | Definition | Better is |
 |---|---|---|
