@@ -186,6 +186,30 @@ pack, and lane count and the one-way flag catch a divided US highway tagged
 `primary`, which is most of them. Two-lane `primary` is never suppressed,
 because a US route over a ridge is the entire point.
 
+## A real one: Sparta NC to Marion VA
+
+![Seven real Valhalla alternates, scored by the app](/assets/images/touge/sparta-marion.png)
+
+This is not a mockup. Those are seven alternates a real Valhalla instance
+returned for those two towns, and every number on the screen came out of the
+app's own scorer running over the returned geometry.
+
+It taught me something I had wrong. I had assumed the job was: ask the router
+for alternatives, then rank them. Default `auto` costing gave me three
+efficient variants of the same corridor, scoring 15, 27 and 13. That is the
+correct answer to "get me to Marion" and useless as input to a screen about
+which road is better.
+
+Asking again with `use_highways=0` surfaced Big Ridge Road, Comers Rock Road
+and Mount Carmel Road, at 33 to 35. So ranking alternates only helps if the
+alternates contain good roads in the first place, which means the vehicle mode
+has to shape the *request* and not just re-sort the reply.
+
+The other nice thing is that it landed on the tie case by itself. The top two
+are 2.5 points apart, under the 8 point margin, so the local ranking is not
+decisive and this is exactly the request that goes to the model. I did not
+construct that; it is just what those roads score.
+
 ## Police on the map, and what that actually costs
 
 ![The driving screen, map left, media pane right](/assets/images/touge/dash-split.png)
@@ -264,7 +288,7 @@ apart.
 Built and tested: the map stack on PMTiles read straight off the card, the
 curvature and relief scoring, the record trigger, the offline search index,
 GPX import, the opening-hours parser, the IMU zero, the split dash, the route
-choice screen. 186 unit tests, all green.
+choice screen. 205 unit tests, all green.
 
 Not built yet: the router itself, and the encoder. Routing is going to be
 BRouter. GraphHopper dropped Android and offline support, and Valhalla
