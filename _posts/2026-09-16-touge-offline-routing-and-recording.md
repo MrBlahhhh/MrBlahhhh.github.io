@@ -98,11 +98,21 @@ is right.
 
 ![The driving screen, map left, media pane right](/assets/images/touge/dash-split.png)
 
-Map on the left three quarters, media on the right quarter, the way the Bronco
-lays out Android Auto. I tried a third for the media pane first, which is what
-Android Auto does. On a head unit that is correct, because the media card is
-what you look at between turns. Here the map is the product, so the difference
-went back to the map where it buys lookahead.
+Map on the left, media pane on the right, the way the Bronco lays out Android
+Auto. I started by copying Android Auto's split, then trimmed it, then went
+looking for what the actual standard is and found there isn't one. Google
+publishes no ratio for Coolwalk. It tiles cards and the proportion falls out
+of the head unit's aspect, its size, and which side you put the driver on.
+
+So the pane is not a share of the screen at all. It is 260 dp, and the map
+takes everything else. What the pane needs is room for three controls and two
+lines of text, and that is a fixed number of dp; everything past it is album
+art, which is the only thing on there that is decoration rather than
+information. The 260 is derived: three controls at 64 dp with 16 dp between
+them is 224, plus padding. Below that they stop clearing a gloved thumb.
+
+On a 1280 dp panel it works out to a fifth. On a wider one it is less, and the
+map gets the difference instead of the artwork growing, which is the point.
 
 The pane reads the Android media session rather than integrating with
 anything, so Pandora, Spotify and a podcast app all work and none of them had
@@ -205,7 +215,7 @@ apart.
 Built and tested: the map stack on PMTiles read straight off the card, the
 curvature and relief scoring, the record trigger, the offline search index,
 GPX import, the opening-hours parser, the IMU zero, the split dash, the route
-choice screen. 151 unit tests, all green.
+choice screen. 160 unit tests, all green.
 
 Not built yet: the router itself, and the encoder. Routing is going to be
 BRouter. GraphHopper dropped Android and offline support, and Valhalla
