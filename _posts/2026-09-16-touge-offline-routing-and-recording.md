@@ -90,13 +90,33 @@ a half second timeout.
 Most of the time it is not close. On the screenshot above the pick is sixteen
 points clear, and nothing was sent anywhere.
 
+It took me a couple of goes to get this screen right. The first version was a
+list with a little curvature trace beside each route, and the trace answered
+the wrong question. The score already says which one is twistier. What a list
+cannot tell you is **how far out of my way this takes me**, and that is a
+geographic question: two routes six kilometres apart look identical in a
+table, and on a map one of them visibly loops north over a ridge.
+
+So every candidate is drawn at once and the camera fits all of them, north up
+and flat. An overview that rotates with your heading is harder to compare
+shapes on, and comparing shapes is the only thing the screen is for.
+
+Each bubble also carries the detour in plain numbers, measured against the
+fastest candidate rather than the shortest. The fast one is what a driver in a
+hurry would take; everything else is the price of the better road, and that
+price should be a number and not a feeling.
+
+The labels go somewhere specific, too. Alternatives share most of their
+length, so a bubble at each route's midpoint puts three of them on the same
+kilometre of shared road, each pointing at a line you cannot pick out. Each
+route is labelled at the point where it is furthest from every other
+candidate, which is exactly where they visibly diverge.
+
 The fastest route is always drawn. Sometimes the point is to get there, and an
 app you have to argue with about that is one you stop trusting on the days it
 is right.
 
 ## The dash
-
-![The driving screen, map left, media pane right](/assets/images/touge/dash-split.png)
 
 Map on the left, media pane on the right, the way the Bronco lays out Android
 Auto. I started by copying Android Auto's split, then trimmed it, then went
@@ -166,6 +186,35 @@ pack, and lane count and the one-way flag catch a divided US highway tagged
 `primary`, which is most of them. Two-lane `primary` is never suppressed,
 because a US route over a ridge is the entire point.
 
+## Police on the map, and what that actually costs
+
+![The driving screen, map left, media pane right](/assets/images/touge/dash-split.png)
+
+That blue pin is a police report from four minutes ago. Waze has no public
+API. The endpoint its own web map calls is undocumented, rate limited, and
+using it is against Waze's terms of service, so it can change shape or start
+refusing requests any morning with no notice and no recourse.
+
+Which means the only sane way to build it is to assume it will stop working.
+Every path through my code degrades to *no icons*, never to an error on the
+driving screen and never to a blocked navigation. The map works fine with the
+feed returning nothing, because that is the state it will eventually be in.
+
+The interesting problem is not fetching it, it is staleness. A police report
+is worth something for about twenty minutes and nothing at all after an hour,
+and the feed will happily keep handing you one for far longer. A pin with no
+age on it is worse than no pin, because it invites you to trust a car that
+left before you set off. So every alert carries its age, the icon fades as it
+gets older, and the expiry is per type: police at 25 minutes because a speed
+trap is a car and cars leave, a closed road at six hours because it is still
+closed in the morning.
+
+Two smaller things. The query box is thrown ahead along your heading rather
+than wrapped around the car, since half a centred box is road you have already
+driven and it is half the rate limit spent on nothing. And alerts are filtered
+against the route rather than the box, because a report two valleys over is
+inside any sensible bounding box and is not on your road.
+
 ## Search that actually finds things
 
 This is the thing that decides whether an app survives a trip, and it is the
@@ -215,7 +264,7 @@ apart.
 Built and tested: the map stack on PMTiles read straight off the card, the
 curvature and relief scoring, the record trigger, the offline search index,
 GPX import, the opening-hours parser, the IMU zero, the split dash, the route
-choice screen. 160 unit tests, all green.
+choice screen. 186 unit tests, all green.
 
 Not built yet: the router itself, and the encoder. Routing is going to be
 BRouter. GraphHopper dropped Android and offline support, and Valhalla
