@@ -288,7 +288,7 @@ apart.
 Built and tested: the map stack on PMTiles read straight off the card, the
 curvature and relief scoring, the record trigger, the offline search index,
 GPX import, the opening-hours parser, the IMU zero, the split dash, the route
-choice screen. 205 unit tests, all green.
+choice screen. 216 unit tests, all green.
 
 Not built yet: the router itself, and the encoder. Routing is going to be
 BRouter. GraphHopper dropped Android and offline support, and Valhalla
