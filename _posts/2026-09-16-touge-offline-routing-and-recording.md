@@ -6,7 +6,7 @@ categories: car tech
 tags: [touge, android, navigation, offline, maplibre, pmtiles, valhalla, meshtastic, lora, gmrs, tpms, radar, valentine-one, android-auto, dashcam, telemetry, kotlin, compose, openstreetmap, motorcycle, bronco, back-roads]
 cover: /assets/images/touge/v2/group.png
 lightbox: true
-excerpt: "An Android app for the roads worth driving. Four routes per leg ranked on measured curvature, turn by turn with a Japanese touge voice, five cars kept together over cell or LoRa with no signal at all, tyre alarms, a 100 mile radar disc, a V1 that quiets itself in town, and a dashcam that keeps the telemetry off the video."
+excerpt: "Offline back-road navigation, five cars kept together over LoRa with no signal, and a dashcam that keeps the telemetry off the video."
 article_header:
   type: overlay
   theme: dark
