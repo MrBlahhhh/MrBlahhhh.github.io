@@ -208,8 +208,9 @@ Everything below is the app running with the Blue Ridge map pack installed. Noth
 <div>
 <span class="k">Your car</span>
 <ul class="tight">
-<li>Sixty plan-view icons drawn from a few parameters each: R53 and R56 Mini, E82, GT86 and GR86, Bronco, Miata, S2000, Type R, RX-7, 911, Cayman, Elise, Mustang, WRX and STI, Evo, GTI, Wrangler, 4Runner, Tacoma, Raptor, two bikes, and more.</li>
-<li>Pick a swatch and every icon repaints in your color. The preview is what the group sees.</li>
+<li><b>Sixty cars, drawn not photographed.</b> Each one is a description: nose shape, where the cabin sits, what the headlights look like, and its own details. The R53's contrast roof and bonnet stripes, the E82's quad lights, the GT86's pointed nose, the NA Miata's pop-up lights, the 911's rear grille, the Bronco's spare on the tailgate, wings, flares, roof racks, kidney grilles, quad exhausts.</li>
+<li>Search by make or model: Mini, GT86, Bronco, 911, Wrangler, Raptor, two bikes.</li>
+<li>Pick a swatch and every icon repaints in your color. The preview is exactly what the group sees on their map.</li>
 </ul>
 </div>
 </div>
@@ -237,6 +238,22 @@ Everything below is the app running with the Blue Ridge map pack installed. Noth
 <ul class="tight">
 <li>Under 600 dp of width the app switches to one column: map, next turn, the group, three buttons.</li>
 <li><b>Background presence</b> keeps sending your position every 30 seconds with the app closed, under one notification, for the rider who only wants to be on the map.</li>
+</ul>
+</div>
+</div>
+
+## Alerts you control
+
+<div class="row">
+<figure><img src="/assets/images/touge/v2/alerts.png" alt="Alerts screen: one row per kind with a map toggle and a voice toggle"><figcaption>One row per kind, both switches on the row.</figcaption></figure>
+<div>
+<span class="k">Map and voice, separately</span>
+<ul class="tight">
+<li>Waze puts every report type behind its own page with the same two switches on each. Here it is one screen: every kind is a row, and the pin toggle and the speaker toggle sit on it.</li>
+<li>They answer different questions. A pin is <em>what is out there</em>, worth a glance in traffic; a spoken warning is <em>act now</em>, and far fewer things earn one. Traffic drawn and silent is the setting most drivers land on, and one switch cannot say that.</li>
+<li>Defaults: police, crashes, hazards and closed roads speak; traffic and animals draw and stay quiet.</li>
+<li>Warning distance is ½, 1, 1.5 or 2 miles, and a chime can lead the words so the first syllable is not the warning.</li>
+<li>Voice follows the voice mode, so Silent stays silent.</li>
 </ul>
 </div>
 </div>
@@ -344,12 +361,23 @@ Everything below is the app running with the Blue Ridge map pack installed. Noth
 <ul class="tight">
 <li>Display and map view, vehicle, speed readout, recorded and track overlays.</li>
 <li>Layout: tablet or phone; background presence.</li>
-<li>Voice, routing server, group ride, weather radar feed, radar detector, tires, places, sensors, map packs.</li>
+<li>Route line color, voice, routing server, group ride, alerts, traffic, weather radar feed, radar detector, tires, places, sensors, map packs.</li>
 </ul>
 </div>
 </div>
 
 <div class="row flip">
+<figure><img src="/assets/images/touge/v2/settings-routeline.png" alt="Settings: route line color swatches, blue selected"><figcaption>The route line is your color. Blue by default, the one drivers already read as "the way you are going".</figcaption></figure>
+<div>
+<span class="k">Route line</span>
+<ul class="tight">
+<li>Seven swatches, blue by default. Separate from the vehicle accent, which marks this car on the map and in the group — a route in the same color was one more thing that looked like you.</li>
+<li>Android Auto draws the same line in the same color.</li>
+</ul>
+</div>
+</div>
+
+<div class="row">
 <figure><img src="/assets/images/touge/v2/settings-radar.png" alt="Settings: weather radar switch and tile feed field, radar detector switch"><figcaption>The radar feed field and the V1 switch.</figcaption></figure>
 <div>
 <span class="k">What needs setting up</span>
