@@ -2,7 +2,7 @@
 title: "Touge — an offline nav and dashcam app that picks roads by how twisty they are, and never covers the video"
 date: 2026-09-16 00:00:00 -0400
 categories: car tech
-tags: [touge, android, navigation, offline, maplibre, pmtiles, brouter, gpx, dashcam, telemetry, kotlin, compose, srtm, openstreetmap, motorcycle, back-roads]
+tags: [touge, android, navigation, offline, maplibre, pmtiles, valhalla, gpx, dashcam, telemetry, kotlin, compose, srtm, openstreetmap, motorcycle, back-roads]
 cover: /assets/images/touge/frame-composite.png
 lightbox: true
 excerpt: "A new Android app for the roads I actually want to drive. It works with the phone in airplane mode, ranks routes on measured curvature instead of arrival time, starts the camera when it sees a good road coming rather than after the first corner, and puts the overlay in a margin around the video instead of on top of it."
@@ -16,6 +16,11 @@ article_header:
 ---
 
 <!--more-->
+
+> **Update, 17 September 2026.** The screenshots in this post are renders made
+> before the app ran. It runs now, the routing engine is Valhalla rather than
+> BRouter, and there are real screenshots in
+> [the follow-up](/car/tech/2026/09/17/touge-running-on-the-tablet.html).
 
 I have been paying for DMD2 for a while. The feature list is right and the app
 is hard to use with a helmet on, and its address search is close to unusable.
