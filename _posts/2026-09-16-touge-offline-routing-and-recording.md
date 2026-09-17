@@ -231,7 +231,7 @@ Everything below is the app running with the Blue Ridge map pack installed. Noth
 ## The car
 
 <div class="row">
-<figure><img src="/assets/images/touge/v2/tyres.png" alt="Tires screen with four wheel tiles; rear left is leaking"><figcaption>Four tiles, one leaking. The rate is a fitted slope, not two samples.</figcaption></figure>
+<figure><img src="/assets/images/touge/v2/tires.png" alt="Tires screen with four wheel tiles; rear left is leaking"><figcaption>Four tiles, one leaking. The rate is a fitted slope, not two samples.</figcaption></figure>
 <div>
 <span class="k">Tire pressure</span>
 <ul class="tight">
@@ -351,6 +351,13 @@ Everything below is the app running with the Blue Ridge map pack installed. Noth
 <div class="last"></div>
 
 ## The recorder
+
+<video controls loop muted playsinline preload="metadata"
+       poster="/assets/images/touge/v2/recorder-nccar-poster.jpg"
+       style="width:100%;height:auto;display:block;border-radius:16px;box-shadow:0 2px 14px rgba(0,0,0,.45);">
+  <source src="/assets/images/touge/v2/recorder-nccar.mp4" type="video/mp4">
+</video>
+<p style="color:#9aa3ad;font-size:13px;margin:8px 0 22px">NCCAR, 13 September, recorded with TrackEncoder, the recorder Touge's is lifted from. Same cards, same trigger; Touge draws them in a margin around the picture instead of over it.</p>
 
 <div class="row">
 <figure><img src="/assets/images/touge/frame-composite.png" alt="The recorded frame: camera picture untouched, telemetry cards in the margin"><figcaption>The video is untouched, pixel for pixel. The cards live in the margin.</figcaption></figure>
