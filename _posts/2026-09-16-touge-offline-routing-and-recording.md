@@ -110,17 +110,18 @@ Everything below is the app running with the Blue Ridge map pack installed. Noth
 </div>
 </div>
 
-<div class="row flip">
-<figure><img src="/assets/images/touge/v2/stop-ahead.png" alt="Stop ahead card 1.3 miles out with Skip, Later and Go on"><figcaption>Two miles before a stop: Skip, Later, or Go on. Nothing to dismiss.</figcaption></figure>
-<div>
-<span class="k">Stops</span>
-<div class="quote">The choice comes before the route drags you into a town centre you were only passing through.</div>
+## Skipping a stop without stopping
+
+<p class="lead">Google's version is a small dialog at the moment you are looking for a parking space. This one comes up two miles out, with three big buttons, and needs no answer.</p>
+
+<figure><img src="/assets/images/touge/v2/stop-ahead.png" alt="Stop ahead card 1.3 miles out with Skip, Later and Go on"><figcaption>1.3 miles from Marion, an intermediate stop. Skip drops it, Later moves it to the end of the trip, Go on keeps it.</figcaption></figure>
+
 <ul class="tight">
-<li><b>Skip</b> drops the stop. <b>Later</b> moves it to the end of the trip. <b>Go on</b> stops as planned.</li>
-<li>Arriving under 5 mph advances the trip on its own. The card is never modal.</li>
+<li><b>Skip</b> drops the stop and the route goes straight on to the next one, so a town you only meant to pass does not pull you into its centre and back out.</li>
+<li><b>Later</b> moves it to the end of the trip.</li>
+<li><b>Go on</b> keeps it as planned. Nothing is modal; ignore the card and the trip advances on its own when you arrive under 5 mph.</li>
+<li>To try it: set two stops, start, and drive to within two miles of the first. The card appears on the driving screen and on the phone layout.</li>
 </ul>
-</div>
-</div>
 
 <div class="grid3">
 <div class="tile"><b>Silent</b><p>The turn card still counts down.</p></div>
@@ -174,6 +175,7 @@ Everything below is the app running with the Blue Ridge map pack installed. Noth
 <li><b>Cell when there is no radio.</b> The same fix, with its timestamp, signed with HMAC-SHA256 under the ride key, to <code>server/convoy.py</code> beside Valhalla. No database, no accounts, positions pruned after thirty minutes. Plain http is refused.</li>
 <li><b>Timestamps decide.</b> Every fix carries the time it was measured. A late cell packet never overwrites a newer mesh one.</li>
 <li><b>Name, colour and car icon travel with the fix</b> on both links, so what you set is what the others see.</li>
+<li><b>The ping interval is a setting:</b> 10 s, 30 s, 1 min or 2 min, for both links. Thirty seconds is a few hundred milliseconds of LoRa airtime per car.</li>
 </ul>
 
 <div class="row">
@@ -198,13 +200,18 @@ Everything below is the app running with the Blue Ridge map pack installed. Noth
 </div>
 </div>
 
+### Setting up the radio
+
 <div class="row">
-<figure><img src="/assets/images/touge/v2/pair.png" alt="Meshtastic radio screen listing paired and nearby radios"><figcaption>Pick the radio this tablet talks through. Bonded first, then nearby.</figcaption></figure>
+<figure><img src="/assets/images/touge/v2/mesh-setup.png" alt="Meshtastic radio screen: paired and nearby radios, and the radio setup for this ride"><figcaption>Pair, then one button configures the radio for the ride.</figcaption></figure>
 <div>
-<span class="k">Pairing a radio</span>
+<span class="k">Standard Meshtastic, nothing custom on the air</span>
 <ul class="tight">
-<li>Bonded Meshtastic radios are listed; a scan finds ones not yet paired and a tap starts the bond.</li>
-<li>One radio per car. The chosen address is the one the app connects to, so two radios in range are not a coin toss.</li>
+<li><b>Pairing:</b> bonded radios are listed, a scan finds ones not yet paired, a tap starts the bond. PIN is the Meshtastic default, 123456.</li>
+<li><b>Configure this radio for the ride</b> sends four admin messages over BLE: region US (915 MHz), preset LONG_FAST, hop limit 3, and a primary channel named for the ride (<code>tg-</code> plus six characters of the key's hash) with encryption off. The radio applies it and restarts. Every tablet on the ride derives the same channel name, so nothing is typed.</li>
+<li><b>Speed:</b> LONG_FAST is about 1 kbit/s. A position packet is under 40 bytes, so a ping is a few hundred milliseconds of airtime and range is measured in miles of ridge line.</li>
+<li><b>Discovery</b> is Meshtastic's own: every radio on the channel rebroadcasts up to three hops and keeps a node list. Touge reads that list and the standard Position and NodeInfo packets. Only the car icon and colour go on a private port (256) that other apps ignore.</li>
+<li><b>The official Meshtastic app on an iPhone or Android</b>, with its own radio on the same channel name and encryption off, sees every car as a node on its map, and its position shows on ours, as a generic car.</li>
 </ul>
 </div>
 </div>
@@ -251,7 +258,8 @@ Everything below is the app running with the Blue Ridge map pack installed. Noth
 <div>
 <span class="k">Weather radar</span>
 <ul class="tight">
-<li>Same IEM tile source RyanWeather uses, refreshed every five minutes or after 8 km of travel.</li>
+<li>No key, no account. The default feed is the Iowa Environmental Mesonet's national composite, served as public map tiles, the same feed RyanWeather reads. Refreshed every five minutes or after 8 km of travel.</li>
+<li>Any XYZ tile template with <code>{z}/{x}/{y}</code> can be pasted into the setting instead, RainViewer included.</li>
 <li>Off by default; it needs a connection.</li>
 </ul>
 </div>
@@ -297,6 +305,34 @@ Everything below is the app running with the Blue Ridge map pack installed. Noth
 <div class="tile"><b>Police reports</b><p>Over SABRE, an open Android protocol. Every alert carries its age and fades; police expire at 25 minutes, a closed road at six hours.</p></div>
 <div class="tile"><b>Your own Valhalla</b><p>Routing defaults to the public FOSSGIS instance. Settings take your own URL. Hosting on mine is about $3 a month per user and answers in well under a second.</p></div>
 <div class="tile"><b>Android Auto</b><p>The head unit shows the next turn, its distance and the ETA from the same guidance the tablet runs.</p></div>
+</div>
+
+## The settings screen
+
+<p class="lead">One long screen, written back on change. Every toggle stays flipped.</p>
+
+<div class="row">
+<figure><img src="/assets/images/touge/v2/settings-group.png" alt="Settings: group ride section with You, Start or join, Meshtastic radio buttons, sharing switch, ping interval chips, LoRa relay"><figcaption>Group ride: identity, ride, radio, sharing, ping interval, LoRa relay, demo group.</figcaption></figure>
+<div>
+<span class="k">Sections</span>
+<ul class="tight">
+<li>Display and map view, vehicle, speed readout, recorded and track overlays.</li>
+<li>Layout: tablet or phone; background presence.</li>
+<li>Voice, routing server, group ride, weather radar feed, radar detector, tyres, places, sensors, map packs.</li>
+</ul>
+</div>
+</div>
+
+<div class="row flip">
+<figure><img src="/assets/images/touge/v2/settings-radar.png" alt="Settings: weather radar switch and tile feed field, radar detector switch"><figcaption>The radar feed field and the V1 switch.</figcaption></figure>
+<div>
+<span class="k">What needs setting up</span>
+<ul class="tight">
+<li>Nothing, to drive: the public routing instance, the IEM radar feed and the demo group need no keys.</li>
+<li>A ride needs a key, made on the Ride screen and shared by QR, link or mesh.</li>
+<li>A radio needs pairing once and one tap of configure per ride.</li>
+</ul>
+</div>
 </div>
 
 <div class="last"></div>
