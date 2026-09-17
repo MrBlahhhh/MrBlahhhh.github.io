@@ -56,7 +56,7 @@ article_header:
 <p>Plans the twisty way, calls the corners, keeps five cars on one map with no signal, and records the drive with the numbers around the video instead of on it. A paid app, with an optional small monthly subscription for routing on my server.</p>
 <div class="stats">
 <div class="stat"><b>4</b><span>routes per leg</span></div>
-<div class="stat"><b>0</b><span>accounts, no data leaves the car</span></div>
+<div class="stat"><b>0</b><span>accounts</span></div>
 <div class="stat"><b>30 s</b><span>group pings, mesh or cell</span></div>
 <div class="stat"><b>100 mi</b><span>radar disc</span></div>
 <div class="stat"><b>60</b><span>car icons</span></div>
