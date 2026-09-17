@@ -317,7 +317,7 @@ Everything below is the app running with the Blue Ridge map pack installed. Noth
 <div class="tile"><b>Breadcrumbs</b><p>Every ride is recorded as GPX with no button. Points closer than 50 feet are dropped unless the heading moved 12 degrees, so the corners are kept.</p></div>
 <div class="tile"><b>Police reports</b><p>Over SABRE, an open Android protocol. Every alert carries its age and fades; police expire at 25 minutes, a closed road at six hours.</p></div>
 <div class="tile"><b>Routing server</b><p>Routing defaults to the public FOSSGIS instance, which is free, shared and rate limited. A small monthly subscription (about $3) routes on my server, which answers in well under a second and carries the Appalachian extract. Settings also take any Valhalla URL of your own.</p></div>
-<div class="tile"><b>Android Auto</b><p>The head unit shows the next turn, its distance and the ETA from the same guidance the tablet runs.</p></div>
+<div class="tile"><b>Android Auto</b><p>The tablet's map on the head unit: same style and pack, the route, the group's cars with their icons, the radar disc as an inset, heading up. The turn card with lanes and ETA; Skip, Later and Go on when a stop is ahead; Group, Routes, Search and Tires as car screens; tire and radar alerts as car toasts. The phone app does the work and the head unit shows it.</p></div>
 </div>
 
 ## The settings screen
