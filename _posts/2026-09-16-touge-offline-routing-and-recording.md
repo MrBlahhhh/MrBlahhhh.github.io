@@ -53,10 +53,10 @@ article_header:
 <div class="hero">
 <span class="k">Android · offline · for the pass</span>
 <h1>Touge</h1>
-<p>Plans the twisty way, calls the corners, keeps five cars on one map with no signal, and records the drive with the numbers around the video instead of on it.</p>
+<p>Plans the twisty way, calls the corners, keeps five cars on one map with no signal, and records the drive with the numbers around the video instead of on it. A paid app, with an optional small monthly subscription for routing on my server.</p>
 <div class="stats">
 <div class="stat"><b>4</b><span>routes per leg</span></div>
-<div class="stat"><b>0</b><span>accounts, subscriptions</span></div>
+<div class="stat"><b>0</b><span>accounts, no data leaves the car</span></div>
 <div class="stat"><b>30 s</b><span>group pings, mesh or cell</span></div>
 <div class="stat"><b>100 mi</b><span>radar disc</span></div>
 <div class="stat"><b>60</b><span>car icons</span></div>
@@ -71,13 +71,13 @@ Everything below is the app running with the Blue Ridge map pack installed. Noth
 <p class="lead">Every other nav app offers alternatives as minutes saved. Touge offers them as corners.</p>
 
 <div class="row">
-<figure><img src="/assets/images/touge/v2/route-picker.png" alt="Four routes from Sparta NC to Marion VA, each in its own colour with time, distance and twist score"><figcaption>Sparta, NC to Marion, VA. Four routes, four colours, one card per route in the same colour.</figcaption></figure>
+<figure><img src="/assets/images/touge/v2/route-picker.png" alt="Four routes from Sparta NC to Marion VA, each in its own color with time, distance and twist score"><figcaption>Sparta, NC to Marion, VA. Four routes, four colors, one card per route in the same color.</figcaption></figure>
 <div>
 <span class="k">Route picker</span>
 <ul class="tight">
 <li>The TWIST score is measured off the geometry: heading change per mile, share of distance in real corners, median corner radius, junctions per mile. No model guesses which road sounds scenic.</li>
 <li>Four routes come from asking Valhalla four times at different highway tolerances and merging by shape. The fastest is always one of them.</li>
-<li>Each card sits where its route is furthest from the others and wears the route's colour. The selected one is outlined.</li>
+<li>Each card sits where its route is furthest from the others and wears the route's color. The selected one is outlined.</li>
 <li>The detour is a number against the fastest option, not a feeling.</li>
 </ul>
 </div>
@@ -117,7 +117,7 @@ Everything below is the app running with the Blue Ridge map pack installed. Noth
 <figure><img src="/assets/images/touge/v2/stop-ahead.png" alt="Stop ahead card 1.3 miles out with Skip, Later and Go on"><figcaption>1.3 miles from Marion, an intermediate stop. Skip drops it, Later moves it to the end of the trip, Go on keeps it.</figcaption></figure>
 
 <ul class="tight">
-<li><b>Skip</b> drops the stop and the route goes straight on to the next one, so a town you only meant to pass does not pull you into its centre and back out.</li>
+<li><b>Skip</b> drops the stop and the route goes straight on to the next one, so a town you only meant to pass does not pull you into its center and back out.</li>
 <li><b>Later</b> moves it to the end of the trip.</li>
 <li><b>Go on</b> keeps it as planned. Nothing is modal; ignore the card and the trip advances on its own when you arrive under 5 mph.</li>
 <li>To try it: set two stops, start, and drive to within two miles of the first. The card appears on the driving screen and on the phone layout.</li>
@@ -135,14 +135,15 @@ Everything below is the app running with the Blue Ridge map pack installed. Noth
 <p class="lead">A group spread over eight miles of ridge road is not a question of pins on a map. It is who, how far, and how old that fix is.</p>
 
 <div class="row">
-<figure><img src="/assets/images/touge/v2/group.png" alt="Five group cars drawn on the route in their own colours and icons, with the group card listing gap and age"><figcaption>Five cars, each its own model and colour. The group card sorts front to back.</figcaption></figure>
+<figure><img src="/assets/images/touge/v2/group.png" alt="Five group cars drawn on the route in their own colors and icons, with the group card listing gap and age"><figcaption>Five cars, each its own model and color. The group card sorts front to back.</figcaption></figure>
 <div>
 <span class="k">Group card</span>
 <ul class="tight">
-<li><b>Gap is measured along the road.</b> On a switchback the car two hairpins back is 300 m away and four minutes behind, and the card says four minutes.</li>
+<li><b>Gap is measured along the road.</b> On a switchback the car two hairpins back is 1,000 feet away and four minutes behind, and the card says four minutes.</li>
 <li><b>Age is the age of the fix</b>, not of the packet. A car that stops reporting greys out and stays in the table with its last-seen time. Tom, two minutes stale, is still there.</li>
-<li>More than 120 m off the shared route falls back to straight line and gets a <code>~</code>.</li>
+<li>More than 400 feet off the shared route falls back to straight line and gets a <code>~</code>.</li>
 <li>The worst gap and any silent car are spoken.</li>
+<li><b>No teleporting.</b> Between pings each car is dead-reckoned along the route at its last speed (a 30 s ping at 45 mph is 660 feet), and when the real fix lands the icon eases onto it over a couple of seconds. Prediction stops after a minute, so a car that has gone quiet stays where it was last seen.</li>
 </ul>
 </div>
 </div>
@@ -174,7 +175,7 @@ Everything below is the app running with the Blue Ridge map pack installed. Noth
 <li><b>Mesh first.</b> With a radio connected, positions go out over LoRa every 30 seconds. Touge talks to the radio directly over BLE using the Meshtastic protobufs; the N30 has no GPS, so the tablet supplies the fix. The channel runs in the clear.</li>
 <li><b>Cell when there is no radio.</b> The same fix, with its timestamp, signed with HMAC-SHA256 under the ride key, to <code>server/convoy.py</code> beside Valhalla. No database, no accounts, positions pruned after thirty minutes. Plain http is refused.</li>
 <li><b>Timestamps decide.</b> Every fix carries the time it was measured. A late cell packet never overwrites a newer mesh one.</li>
-<li><b>Name, colour and car icon travel with the fix</b> on both links, so what you set is what the others see.</li>
+<li><b>Name, color and car icon travel with the fix</b> on both links, so what you set is what the others see.</li>
 <li><b>The ping interval is a setting:</b> 10 s, 30 s, 1 min or 2 min, for both links. Thirty seconds is a few hundred milliseconds of LoRa airtime per car.</li>
 </ul>
 
@@ -190,12 +191,12 @@ Everything below is the app running with the Blue Ridge map pack installed. Noth
 </div>
 
 <div class="row flip">
-<figure><img src="/assets/images/touge/v2/profile.png" alt="Profile screen: name, colour swatches, and a searchable grid of car icons"><figcaption>You: a name, a colour, and your car from a catalogue of sixty.</figcaption></figure>
+<figure><img src="/assets/images/touge/v2/profile.png" alt="Profile screen: name, color swatches, and a searchable grid of car icons"><figcaption>You: a name, a color, and your car from a catalogue of sixty.</figcaption></figure>
 <div>
 <span class="k">Your car</span>
 <ul class="tight">
 <li>Sixty plan-view icons drawn from a few parameters each: R53 and R56 Mini, E82, GT86 and GR86, Bronco, Miata, S2000, Type R, RX-7, 911, Cayman, Elise, Mustang, WRX and STI, Evo, GTI, Wrangler, 4Runner, Tacoma, Raptor, two bikes, and more.</li>
-<li>Pick a swatch and every icon repaints in your colour. The preview is what the group sees.</li>
+<li>Pick a swatch and every icon repaints in your color. The preview is what the group sees.</li>
 </ul>
 </div>
 </div>
@@ -210,7 +211,7 @@ Everything below is the app running with the Blue Ridge map pack installed. Noth
 <li><b>Pairing:</b> bonded radios are listed, a scan finds ones not yet paired, a tap starts the bond. PIN is the Meshtastic default, 123456.</li>
 <li><b>Configure this radio for the ride</b> sends four admin messages over BLE: region US (915 MHz), preset LONG_FAST, hop limit 3, and a primary channel named for the ride (<code>tg-</code> plus six characters of the key's hash) with encryption off. The radio applies it and restarts. Every tablet on the ride derives the same channel name, so nothing is typed.</li>
 <li><b>Speed:</b> LONG_FAST is about 1 kbit/s. A position packet is under 40 bytes, so a ping is a few hundred milliseconds of airtime and range is measured in miles of ridge line.</li>
-<li><b>Discovery</b> is Meshtastic's own: every radio on the channel rebroadcasts up to three hops and keeps a node list. Touge reads that list and the standard Position and NodeInfo packets. Only the car icon and colour go on a private port (256) that other apps ignore.</li>
+<li><b>Discovery</b> is Meshtastic's own: every radio on the channel rebroadcasts up to three hops and keeps a node list. Touge reads that list and the standard Position and NodeInfo packets. Only the car icon and color go on a private port (256) that other apps ignore.</li>
 <li><b>The official Meshtastic app on an iPhone or Android</b>, with its own radio on the same channel name and encryption off, sees every car as a node on its map, and its position shows on ours, as a generic car.</li>
 </ul>
 </div>
@@ -230,12 +231,12 @@ Everything below is the app running with the Blue Ridge map pack installed. Noth
 ## The car
 
 <div class="row">
-<figure><img src="/assets/images/touge/v2/tyres.png" alt="Tyres screen with four wheel tiles; rear left is leaking"><figcaption>Four tiles, one leaking. The rate is a fitted slope, not two samples.</figcaption></figure>
+<figure><img src="/assets/images/touge/v2/tyres.png" alt="Tires screen with four wheel tiles; rear left is leaking"><figcaption>Four tiles, one leaking. The rate is a fitted slope, not two samples.</figcaption></figure>
 <div>
-<span class="k">Tyre pressure</span>
+<span class="k">Tire pressure</span>
 <ul class="tight">
 <li>Bluetooth TPMS sensors (Zeepin/TPMSII, DJTPMS, Tesla) bind to a wheel by tapping the wheel, then the sensor.</li>
-<li>Alarms in order: under 20 psi; losing 2 psi a minute (a least-squares slope over two minutes, so a puncture trips it and quantisation does not); 10 psi below the tyre's peak; over 158°F.</li>
+<li>Alarms in order: under 20 psi; losing 2 psi a minute (a least-squares slope over two minutes, so a puncture trips it and quantization does not); 10 psi below the tire's peak; over 158°F.</li>
 <li>A red strip on the driving screen and one spoken line naming the corner.</li>
 </ul>
 </div>
@@ -258,7 +259,7 @@ Everything below is the app running with the Blue Ridge map pack installed. Noth
 <div>
 <span class="k">Weather radar</span>
 <ul class="tight">
-<li>No key, no account. The default feed is the Iowa Environmental Mesonet's national composite, served as public map tiles, the same feed RyanWeather reads. Refreshed every five minutes or after 8 km of travel.</li>
+<li>No key, no account. The default feed is the Iowa Environmental Mesonet's national composite, served as public map tiles, the same feed RyanWeather reads. Refreshed every five minutes or after five miles of travel.</li>
 <li>Any XYZ tile template with <code>{z}/{x}/{y}</code> can be pasted into the setting instead, RainViewer included.</li>
 <li>Off by default; it needs a connection.</li>
 </ul>
@@ -266,6 +267,18 @@ Everything below is the app running with the Blue Ridge map pack installed. Noth
 </div>
 
 <div class="row flip">
+<figure><img src="/assets/images/touge/v2/settings-traffic.png" alt="Settings: live traffic switch and TomTom key field"><figcaption>Traffic is one switch and a free TomTom key.</figcaption></figure>
+<div>
+<span class="k">Live traffic</span>
+<ul class="tight">
+<li>Flow is drawn over the roads, green through red, from TomTom's traffic tiles. Incidents are pins with the delay and a description; a closed road is dark red.</li>
+<li>Refreshed every two minutes around the car, not per pan, so a full day is well inside the free tier (2,500 requests a day). The key is yours, from developer.tomtom.com, pasted into settings.</li>
+<li>Off by default; it needs a connection. Routing does not use it, so the twisty way stays the twisty way.</li>
+</ul>
+</div>
+</div>
+
+<div class="row">
 <figure><img src="/assets/images/touge/v2/offroad.png" alt="Off-road mode with the Bronco icon and tracks drawn bold"><figcaption>Off-road: tracks routed on and drawn bold, no reroute when you leave the line.</figcaption></figure>
 <div>
 <span class="k">Off-road mode</span>
@@ -294,16 +307,16 @@ Everything below is the app running with the Blue Ridge map pack installed. Noth
 <div>
 <span class="k">Search</span>
 <ul class="tight">
-<li>Runs over the on-device index, not the tiles on screen. A diner 200 km ahead is as findable as one in view.</li>
+<li>Runs over the on-device index, not the tiles on screen. A diner 120 miles ahead is as findable as one in view.</li>
 <li>Fuel, bathroom, food and coffee are one tap each, ordered by distance ahead. Food hides chains by brand tag and checks opening hours, overnight spans included.</li>
 </ul>
 </div>
 </div>
 
 <div class="grid3">
-<div class="tile"><b>Breadcrumbs</b><p>Every ride is recorded as GPX with no button. Points closer than 15 m are dropped unless the heading moved 12 degrees, so the corners are kept.</p></div>
+<div class="tile"><b>Breadcrumbs</b><p>Every ride is recorded as GPX with no button. Points closer than 50 feet are dropped unless the heading moved 12 degrees, so the corners are kept.</p></div>
 <div class="tile"><b>Police reports</b><p>Over SABRE, an open Android protocol. Every alert carries its age and fades; police expire at 25 minutes, a closed road at six hours.</p></div>
-<div class="tile"><b>Your own Valhalla</b><p>Routing defaults to the public FOSSGIS instance. Settings take your own URL. Hosting on mine is about $3 a month per user and answers in well under a second.</p></div>
+<div class="tile"><b>Routing server</b><p>Routing defaults to the public FOSSGIS instance, which is free, shared and rate limited. A small monthly subscription (about $3) routes on my server, which answers in well under a second and carries the Appalachian extract. Settings also take any Valhalla URL of your own.</p></div>
 <div class="tile"><b>Android Auto</b><p>The head unit shows the next turn, its distance and the ETA from the same guidance the tablet runs.</p></div>
 </div>
 
@@ -318,7 +331,7 @@ Everything below is the app running with the Blue Ridge map pack installed. Noth
 <ul class="tight">
 <li>Display and map view, vehicle, speed readout, recorded and track overlays.</li>
 <li>Layout: tablet or phone; background presence.</li>
-<li>Voice, routing server, group ride, weather radar feed, radar detector, tyres, places, sensors, map packs.</li>
+<li>Voice, routing server, group ride, weather radar feed, radar detector, tires, places, sensors, map packs.</li>
 </ul>
 </div>
 </div>
@@ -346,7 +359,7 @@ Everything below is the app running with the Blue Ridge map pack installed. Noth
 <ul class="tight">
 <li>A 1920x1080 camera plus a third again of margin lands on 2560x1440. The margin is static, so it encodes to almost nothing; the cost is encoder throughput, and 2560x1440 at 29 fps sustained is a measured number on this hardware.</li>
 <li>Every card has a switch. Cards are laid out by weight, so switching one off gives its height to the rest. Cards that need a surveyed circuit stay off on a public road.</li>
-<li>The recorder arms on the road ahead, not the corner you are in. Corner radius comes from <code>v² / a_lat</code>: 70 mph at 0.35 g is a 285 m interstate sweeper, 35 mph at 0.35 g is a 71 m corner worth filming. Ten seconds of pre-roll puts the turn in the clip. Freeways never arm it.</li>
+<li>The recorder arms on the road ahead, not the corner you are in. Corner radius comes from <code>v² / a_lat</code>: 70 mph at 0.35 g is a 935 ft interstate sweeper, 35 mph at 0.35 g is a 230 ft corner worth filming. Ten seconds of pre-roll puts the turn in the clip. Freeways never arm it.</li>
 </ul>
 </div>
 </div>
