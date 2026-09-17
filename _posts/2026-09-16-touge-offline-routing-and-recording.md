@@ -148,6 +148,19 @@ Everything below is the app running with the Blue Ridge map pack installed. Noth
 </div>
 </div>
 
+<div class="row">
+<figure><img src="/assets/images/touge/v2/report.png" alt="Report tray open with six large targets: Police, Hazard, Crash, Traffic, Closed, Animal"><figcaption>One tap opens six targets. The second files it and closes.</figcaption></figure>
+<div>
+<span class="k">Tap to report</span>
+<ul class="tight">
+<li><b>Two taps, not five.</b> Waze asks for a category, then a subtype, then a confirmation, with small targets. Here every target is 96 dp and one word, there is no subtype, and the undo lives in the toast that follows rather than in a dialog before it.</li>
+<li><b>It goes to the group.</b> A report rides the same authenticated exchange as the positions, so it reaches everyone on the ride over cell or LoRa. The report from the car 400 yards ahead is the one that matters on a back road.</li>
+<li><b>Duplicates collapse.</b> The same kind within 150 feet is the same thing seen twice, so the car behind filing the same speed trap is one pin.</li>
+<li>Each expires on its own clock: police at 25 minutes, a closed road at six hours. They survive a restart mid-ride.</li>
+</ul>
+</div>
+</div>
+
 <span class="k">How positions travel</span>
 <div class="wire">
 <svg viewBox="0 0 900 250" role="img" aria-label="Mesh and server paths for group positions">
