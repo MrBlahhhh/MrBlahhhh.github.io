@@ -1,7 +1,7 @@
 ---
 title: "Touge"
 date: 2026-09-16 00:00:00 -0400
-last_modified_at: 2026-09-17 20:00:00 -0400
+last_modified_at: 2026-09-18 09:00:00 -0400
 categories: car tech
 tags: [touge, android, navigation, offline, maplibre, pmtiles, valhalla, meshtastic, lora, gmrs, tpms, radar, valentine-one, android-auto, dashcam, telemetry, kotlin, compose, openstreetmap, motorcycle, bronco, back-roads]
 cover: /assets/images/touge/v2/group.png
@@ -60,25 +60,27 @@ article_header:
 <div class="stat"><b>30 s</b><span>group pings, mesh or cell</span></div>
 <div class="stat"><b>100 mi</b><span>radar disc</span></div>
 <div class="stat"><b>60</b><span>car icons</span></div>
-<div class="stat"><b>317</b><span>unit tests</span></div>
+<div class="stat"><b>4</b><span>states offline</span></div>
+<div class="stat"><b>398</b><span>unit tests</span></div>
 </div>
 </div>
 
-Everything below is the app running with the Blue Ridge map pack installed. Nothing is a mockup.
+Everything below is the app running against the North Carolina map pack, routing on my own Valhalla box. Nothing is a mockup and nothing is a render.
 
 ## Plan the road, not the arrival time
 
 <p class="lead">Every other nav app offers alternatives as minutes saved. Touge offers them as corners.</p>
 
 <div class="row">
-<figure><img src="/assets/images/touge/v2/route-picker.png" alt="Four routes from Sparta NC to Marion VA, each in its own color with time, distance and twist score"><figcaption>Sparta, NC to Marion, VA. Four routes, four colors, one card per route in the same color.</figcaption></figure>
+<figure><img src="/assets/images/touge/v2/route-picker.png" alt="Four routes from Sparta to Boone, North Carolina, each in its own color with time, distance and twist score"><figcaption>Sparta to Boone, 53 miles. Four routes, four colors, one card per route in the same color.</figcaption></figure>
 <div>
 <span class="k">Route picker</span>
 <ul class="tight">
 <li>The TWIST score is measured off the geometry: heading change per mile, share of distance in real corners, median corner radius, junctions per mile. No model guesses which road sounds scenic.</li>
 <li>Four routes come from asking Valhalla four times at different highway tolerances and merging by shape. The fastest is always one of them.</li>
+<li>Old NC 16 scores 28 and costs half an hour. NC 88 scores 24 and costs eight minutes. That is the whole decision, in two numbers.</li>
 <li>Each card sits where its route is furthest from the others and wears the route's color. The selected one is outlined.</li>
-<li>The detour is a number against the fastest option, not a feeling.</li>
+<li><b>Tap the name to change it.</b> Picking the wrong town is a tap to fix, not a reason to plan the ride again.</li>
 </ul>
 </div>
 </div>
@@ -98,7 +100,7 @@ Everything below is the app running with the Blue Ridge map pack installed. Noth
 ## Drive it
 
 <div class="row">
-<figure><img src="/assets/images/touge/v2/driving.png" alt="Driving screen with the turn card, the Mini icon, the group card and the V1 alert"><figcaption>The turn card: maneuver, distance, seconds, the road in title size, lanes when the map has them.</figcaption></figure>
+<figure><img src="/assets/images/touge/v2/driving.png" alt="Driving screen with the turn card, a Ka band radar alert, the group table, a tire pressure warning and the weather radar disc"><figcaption>One screen, everything at once: the next turn, a Ka alert with its bearing, four cars up the road, a rear-left tire going down, and 100 miles of weather.</figcaption></figure>
 <div>
 <span class="k">Turn by turn</span>
 <ul class="tight">
@@ -106,6 +108,8 @@ Everything below is the app running with the Blue Ridge map pack installed. Noth
 <li>Off the route for three seconds, or pointing the wrong way, gets one reroute.</li>
 <li>Lane guidance draws the lanes to be in when the map data carries them.</li>
 <li>Calls land about eight seconds out, so they scale with speed. Music ducks, never pauses.</li>
+<li>The strip counts down. Arrival, time left and distance left come from where you actually are, not from the plan the route was fetched with.</li>
+<li>The voice is a button on the rail, not a trip into settings. Silent is one press from anything.</li>
 </ul>
 </div>
 </div>
@@ -129,6 +133,40 @@ Everything below is the app running with the Blue Ridge map pack installed. Noth
 <div class="tile"><b>Brief</b><p>Direction and road, nothing else.</p></div>
 <div class="tile"><b>Touge</b><p>Japanese, shouted, about the corner. <code>ヘアピン左！落とせ！</code> for a hairpin left. Needs a Japanese voice installed and says so if there is none.</p></div>
 </div>
+
+## Draw the road that has no name
+
+<p class="lead">Search finds towns. It does not find the gap between two ridges that the good road runs through, because that road has no name in any database. So point at it.</p>
+
+<div class="row">
+<figure><img src="/assets/images/touge/v2/editor.png" alt="Route editor with three numbered pins dropped on back roads near Sparta and the routed line running through them"><figcaption>Three pins, dragged onto the roads I meant. The engine joins them up; the line is the answer, not a sketch.</figcaption></figure>
+<div>
+<span class="k">Route editor</span>
+<ul class="tight">
+<li>Long-press to drop a pin. Drag it to move it. Tap it to change or remove it.</li>
+<li>Reverse rides it the other way, and the leg styles travel with the legs — highway out stays highway out, it does not become highway home.</li>
+<li>Close loop brings you back to the first place you chose, not to wherever the car was parked.</li>
+<li>Save GPX, or Start and drive it.</li>
+<li>The map holds still while you work. Each pin handles its own touches, so panning and zooming behave exactly as they do everywhere else.</li>
+</ul>
+</div>
+</div>
+
+<div class="row flip">
+<figure><img src="/assets/images/touge/v2/library.png" alt="Rides and routes library listing recorded rides, each with Follow, Route it, share and delete"><figcaption>Every ride it recorded, and every GPX you brought in. One flat list.</figcaption></figure>
+<div>
+<span class="k">Rides and routes</span>
+<ul class="tight">
+<li><b>Follow</b> pins you to the line exactly as recorded, with no router involved. That is how a forest road the map has never heard of stays the route.</li>
+<li><b>Route it</b> hands the same line to the engine as shaping points and gives back street names, lanes and rerouting.</li>
+<li>A recorded ride defaults to Follow. Something shared out of Maps defaults to Route it. They are different questions.</li>
+<li>Import a GPX, share one out. A plan is written as a route, a recording as a track — this will not pass off a computed line as something the wheels did.</li>
+<li>Recorded rides prune to the newest thirty. Files you imported are never touched.</li>
+</ul>
+</div>
+</div>
+
+<div class="quote">A ride you liked is a file. Ride it again, hand it to somebody, or open it and move three pins.</div>
 
 ## Ride together
 
@@ -322,12 +360,14 @@ Everything below is the app running with the Blue Ridge map pack installed. Noth
 ## Maps, search, and your own server
 
 <div class="row">
-<figure><img src="/assets/images/touge/v2/packs.png" alt="Map packs screen listing six regions with measured sizes"><figcaption>Six regions with measured sizes. Blue Ridge is 120 MB in 273 range requests.</figcaption></figure>
+<figure><img src="/assets/images/touge/v2/packs.png" alt="Map packs screen listing six regions with measured sizes and installed state"><figcaption>Measured, not estimated. North Carolina is 88,675 tiles and 392 MB; the three states I actually ride are 1.14 GB in one tap.</figcaption></figure>
 <div>
 <span class="k">Map packs</span>
 <ul class="tight">
 <li>PMTiles is read in place, so the app walks the planet file's directory and adds up exactly the bytes it needs before fetching any.</li>
-<li>The search index is built on the device from the same tiles: 207,879 places, towns and roads for Blue Ridge in about forty seconds.</li>
+<li><b>Keep as many as you have room for.</b> Every pack is drawn as its own layer, so North Carolina, Virginia and West Virginia are one map with no seam and no switching.</li>
+<li>The search index is built on the device from the same tiles and spans every pack, so a Virginia town is findable from a North Carolina car park.</li>
+<li>A pack you have downloaded never expires and needs no signal. Each row shows how old its roads are, and only suggests a refresh once that actually means something.</li>
 </ul>
 </div>
 </div>
@@ -338,15 +378,16 @@ Everything below is the app running with the Blue Ridge map pack installed. Noth
 <span class="k">Search</span>
 <ul class="tight">
 <li>Runs over the on-device index, not the tiles on screen. A diner 120 miles ahead is as findable as one in view.</li>
-<li>Fuel, bathroom, food and coffee are one tap each, ordered by distance ahead. Food hides chains by brand tag and checks opening hours, overnight spans included.</li>
+<li>Fuel, bathroom, food and coffee are one tap each. On a route they are ordered by how soon you reach them, not by how near they are — the closest pump is often twenty minutes behind you. Food hides chains by brand tag and checks opening hours, overnight spans included.</li>
+<li>The last places you picked, and any you starred, come up on an empty box. Typing a town name in a moving car is the most expensive thing this app asks for.</li>
 </ul>
 </div>
 </div>
 
 <div class="grid3">
-<div class="tile"><b>Breadcrumbs</b><p>Every ride is recorded as GPX with no button. Points closer than 50 feet are dropped unless the heading moved 12 degrees, so the corners are kept.</p></div>
+<div class="tile"><b>Breadcrumbs</b><p>Every ride is recorded as GPX with no button. Points closer than 50 feet are dropped unless the heading moved 12 degrees, so the corners are kept. They land in Rides and routes, ready to Follow.</p></div>
 <div class="tile"><b>Police reports</b><p>Over SABRE, an open Android protocol. Every alert carries its age and fades; police expire at 25 minutes, a closed road at six hours.</p></div>
-<div class="tile"><b>Routing server</b><p>Routing defaults to the public FOSSGIS instance, which is free, shared and rate limited. A small monthly subscription (about $3) routes on my server, which answers in well under a second and carries the Appalachian extract. Settings also take any Valhalla URL of your own.</p></div>
+<div class="tile"><b>Routing server</b><p>Routing goes to my Valhalla box first — well under a second, four states of tiles — with the public FOSSGIS instance behind it as a fallback for anywhere outside them. A list, not one address, because the day the public instance stopped answering it took every device with it. A small monthly subscription (about $3) covers the server. Settings take any Valhalla URL of your own.</p></div>
 <div class="tile"><b>Android Auto</b><p>The tablet's map on the head unit: same style and pack, the route, the group's cars with their icons, the radar disc as an inset, heading up. The turn card with lanes and ETA; Skip, Later and Go on when a stop is ahead; Group, Routes, Search and Tires as car screens; tire and radar alerts as car toasts. The phone app does the work and the head unit shows it.</p></div>
 </div>
 
