@@ -55,7 +55,7 @@ article_header:
 <h1>Touge</h1>
 <p>Keeps the whole group on one map with no signal — over LoRa radio when the bars run out — then plans the twisty way there and calls the corners. A paid app, with an optional small monthly subscription for routing on my server.</p>
 <div class="stats">
-<div class="stat"><b>4</b><span>routes per leg</span></div>
+<div class="stat"><b>5</b><span>ways per leg</span></div>
 <div class="stat"><b>0</b><span>accounts</span></div>
 <div class="stat"><b>30 s</b><span>group pings, mesh or cell</span></div>
 <div class="stat"><b>100 mi</b><span>radar disc</span></div>
@@ -66,24 +66,6 @@ article_header:
 </div>
 
 Everything below is the app running against the North Carolina map pack, routing on my own Valhalla box. Nothing is a mockup and nothing is a render.
-
-## Set it up once
-
-<p class="lead">Three questions on first run, and the middle one is the group. Every one of them was already answerable from Setup, which was the problem: a new rider got a map with a nameless orange car and twenty sections to search through to find out why nobody could see them.</p>
-
-<div class="row">
-<figure><img src="/assets/images/touge/v2/wizard-ride.png" alt="Setup wizard step two: Ride together, with buttons to start a ride or join someone else's"><figcaption>Step two of three. Start one, or join one.</figcaption></figure>
-<div>
-<span class="k">First run</span>
-<ul class="tight">
-<li><b>What are you driving</b> — name, car and colour, which is what everyone else sees on their map.</li>
-<li><b>Ride together</b>, before the map download, on purpose: a group works fine on a streamed map, and making somebody wait for 400 MB before they can join their friends is the wrong order.</li>
-<li><b>If a radio hears a ride already running, it is one tap.</b> The invite travels over the mesh, so three cars in a car park need no key typed and no QR held up to a windscreen.</li>
-<li>The person organising it hits <b>Advertise</b> and the invite goes back out every 45 seconds, so latecomers are offered the ride as they pull in. It stops itself after fifteen minutes — the broadcast carries the key, and a ride advertising all afternoon is one anybody in radio range can walk into.</li>
-<li>Maps last. Every step skips, nothing is modal afterwards, and an existing profile never sees it at all.</li>
-</ul>
-</div>
-</div>
 
 ## Ride together
 
@@ -103,7 +85,7 @@ Everything below is the app running against the North Carolina map pack, routing
 </div>
 </div>
 
-<div class="row">
+<div class="row flip">
 <figure><img src="/assets/images/touge/v2/report.png" alt="Report tray open with six large targets: Police, Hazard, Crash, Traffic, Closed, Animal"><figcaption>One tap opens six targets. The second files it and closes.</figcaption></figure>
 <div>
 <span class="k">Tap to report</span>
@@ -208,19 +190,38 @@ Everything below is the app running against the North Carolina map pack, routing
 <div class="tile"><b>What the app needs</b><p>Bluetooth pairing and nothing else. The app speaks Meshtastic's own BLE service and writes its positions on a private port, so the radios stay ordinary Meshtastic nodes you can still use for text.</p></div>
 </div>
 
-<p class="lead">Both arrive tomorrow. Everything about the mesh path above is written against the protocol and tested against a simulated group; the range numbers are the ones to take with a pinch of salt until three radios have been up a mountain.</p>
+<p class="lead">Neither has been up a mountain yet, so the range numbers above are the protocol's rather than mine.</p>
+
+### Getting everyone in
+
+<p class="lead">Three questions on first run, and the middle one is the group. Every one of them was already answerable from Setup, which was the problem: a new rider got a map with a nameless orange car and twenty sections to search through to find out why nobody could see them.</p>
+
+<div class="row">
+<figure><img src="/assets/images/touge/v2/wizard-ride.png" alt="Setup wizard step two: Ride together, with buttons to start a ride or join someone else's"><figcaption>Step two of three. Start one, or join one.</figcaption></figure>
+<div>
+<span class="k">First run</span>
+<ul class="tight">
+<li><b>What are you driving</b> — name, car and colour, which is what everyone else sees on their map.</li>
+<li><b>Ride together</b>, before the map download, on purpose: a group works fine on a streamed map, and making somebody wait for 400 MB before they can join their friends is the wrong order.</li>
+<li><b>If a radio hears a ride already running, it is one tap.</b> The invite travels over the mesh, so three cars in a car park need no key typed and no QR held up to a windscreen.</li>
+<li>The person organising it hits <b>Advertise</b> and the invite goes back out every 45 seconds, so latecomers are offered the ride as they pull in. It stops itself after fifteen minutes — the broadcast carries the key, and a ride advertising all afternoon is one anybody in radio range can walk into.</li>
+<li>Maps last. Every step skips, nothing is modal afterwards, and an existing profile never sees it at all.</li>
+</ul>
+</div>
+</div>
 
 ## Plan the road, not the arrival time
 
 <p class="lead">Every other nav app offers alternatives as minutes saved. Touge offers them as corners.</p>
 
-<div class="row">
+<div class="row flip">
 <figure><img src="/assets/images/touge/v2/route-picker.png" alt="Four routes from Sparta to Boone, North Carolina, each in its own color with time, distance and twist score"><figcaption>Sparta to Boone, 53 miles. Four routes, four colors, one card per route in the same color.</figcaption></figure>
 <div>
 <span class="k">Route picker</span>
 <ul class="tight">
 <li>The TWIST score is measured off the geometry: heading change per mile, share of distance in real corners, median corner radius, junctions per mile. No model guesses which road sounds scenic.</li>
-<li>Four routes come from asking Valhalla four times at different highway tolerances and merging by shape. The fastest is always one of them.</li>
+<li><b>Five ways, not one.</b> Every leg is asked three times at different highway tolerances and the answers merged by shape, so the set spans refusing the slab, tolerating it, and taking it. The fastest is always one of the five.</li>
+<li>It asks <b>my own Valhalla</b>, four states of tiles, in well under a second — with Touge's preferences baked into the request rather than applied afterwards. Asking for a normal route and re-sorting by curviness gets a worse set to sort: the engine has already decided the interstate is the answer and offered three variations on it.</li>
 <li>Old NC 16 scores 28 and costs half an hour. NC 88 scores 24 and costs eight minutes. That is the whole decision, in two numbers.</li>
 <li>Each card sits where its route is furthest from the others and wears the route's color. The selected one is outlined.</li>
 <li><b>Tap the name to change it.</b> Picking the wrong town is a tap to fix, not a reason to plan the ride again.</li>
@@ -228,7 +229,11 @@ Everything below is the app running against the North Carolina map pack, routing
 </div>
 </div>
 
-<div class="row flip">
+## Highway out, back roads home
+
+<p class="lead">Every other routing app takes one instruction for the whole trip. A real ride is slab until the good roads start, then nothing but corners, then the quick way home — and that is three instructions, not one.</p>
+
+<div class="row">
 <figure><img src="/assets/images/touge/v2/trip.png" alt="Trip screen with two stops, a style per leg, and four timed options for each leg"><figcaption>Every leg gets its own style and its own four options.</figcaption></figure>
 <div>
 <span class="k">Trips</span>
@@ -240,9 +245,47 @@ Everything below is the app running against the North Carolina map pack, routing
 </div>
 </div>
 
-## Drive it
+## Shape the line yourself
+
+<p class="lead">Search finds roads by name — type "bledsoe" and Bledsoe Creek Road comes back, 1.5 miles out. What it cannot do is say <em>which way</em>: up this one, over the gap, down the other side, in that order. That is a shape, not a name, and the place to draw a shape is a map.</p>
+
+<div class="row flip">
+<figure><img src="/assets/images/touge/v2/editor.png" alt="Route editor with three numbered pins dropped on back roads near Sparta and the routed line running through them"><figcaption>Three pins, dragged onto the roads I meant. The engine joins them up; the line is the answer, not a sketch.</figcaption></figure>
+<div>
+<span class="k">Route editor</span>
+<ul class="tight">
+<li>Long-press to drop a pin. Drag it to move it. Tap it to change or remove it.</li>
+<li>Dragging is the point. "Not that road, the one a ridge over" is a decision you make by looking, and you can see immediately whether the line went where you meant.</li>
+<li>A pin does not need to be anywhere named — a pull-off, a gate, the car park everyone meets in.</li>
+<li>Reverse rides it the other way, and the leg styles travel with the legs — highway out stays highway out, it does not become highway home.</li>
+<li>Close loop brings you back to the first place you chose, not to wherever the car was parked.</li>
+<li>Save GPX, or Start and drive it.</li>
+<li>The map holds still while you work. Each pin handles its own touches, so panning and zooming behave exactly as they do everywhere else.</li>
+</ul>
+</div>
+</div>
 
 <div class="row">
+<figure><img src="/assets/images/touge/v2/library.png" alt="Rides and routes library listing recorded rides, each with Follow, Route it, share and delete"><figcaption>Every ride it recorded, and every GPX you brought in. One flat list.</figcaption></figure>
+<div>
+<span class="k">Rides and routes</span>
+<ul class="tight">
+<li><b>Follow</b> pins you to the line exactly as recorded, with no router involved. That is how a forest road the map has never heard of stays the route.</li>
+<li><b>Route it</b> hands the same line to the engine as shaping points and gives back street names, lanes and rerouting.</li>
+<li>A recorded ride defaults to Follow. Something shared out of Maps defaults to Route it. They are different questions.</li>
+<li>Import a GPX, share one out. A plan is written as a route, a recording as a track — this will not pass off a computed line as something the wheels did.</li>
+<li>Recorded rides prune to the newest thirty. Files you imported are never touched.</li>
+</ul>
+</div>
+</div>
+
+<div class="quote">A ride you liked is a file. Ride it again, hand it to somebody, or open it and move three pins.</div>
+
+<p class="lead">And the list screen still beats the map for what it is good at: order, and the style of each leg. The two are for different questions, so both are there.</p>
+
+## Drive it
+
+<div class="row flip">
 <figure><img src="/assets/images/touge/v2/driving.png" alt="Driving screen with the turn card, a Ka band radar alert, the group table, a tire pressure warning and the weather radar disc"><figcaption>One screen, everything at once: the next turn, a Ka alert with its bearing, four cars up the road, a rear-left tire going down, and 100 miles of weather.</figcaption></figure>
 <div>
 <span class="k">Turn by turn</span>
@@ -277,84 +320,14 @@ Everything below is the app running against the North Carolina map pack, routing
 <div class="tile"><b>Touge</b><p>Japanese, shouted, about the corner. <code>ヘアピン左！落とせ！</code> for a hairpin left. Needs a Japanese voice installed and says so if there is none.</p></div>
 </div>
 
-## Shape the line yourself
+## Weather, and where the police are
 
-<p class="lead">Search finds roads by name — type "bledsoe" and Bledsoe Creek Road comes back, 1.5 miles out. What it cannot do is say <em>which way</em>: up this one, over the gap, down the other side, in that order. That is a shape, not a name, and the place to draw a shape is a map.</p>
+<p class="lead">Two things worth knowing before you get to them: what the sky is doing for a hundred miles, and who is sitting on the next straight.</p>
 
-<div class="row">
-<figure><img src="/assets/images/touge/v2/editor.png" alt="Route editor with three numbered pins dropped on back roads near Sparta and the routed line running through them"><figcaption>Three pins, dragged onto the roads I meant. The engine joins them up; the line is the answer, not a sketch.</figcaption></figure>
-<div>
-<span class="k">Route editor</span>
-<ul class="tight">
-<li>Long-press to drop a pin. Drag it to move it. Tap it to change or remove it.</li>
-<li>Dragging is the point. "Not that road, the one a ridge over" is a decision you make by looking, and you can see immediately whether the line went where you meant.</li>
-<li>A pin does not need to be anywhere named — a pull-off, a gate, the car park everyone meets in.</li>
-<li>Reverse rides it the other way, and the leg styles travel with the legs — highway out stays highway out, it does not become highway home.</li>
-<li>Close loop brings you back to the first place you chose, not to wherever the car was parked.</li>
-<li>Save GPX, or Start and drive it.</li>
-<li>The map holds still while you work. Each pin handles its own touches, so panning and zooming behave exactly as they do everywhere else.</li>
-</ul>
-</div>
-</div>
-
-<div class="row flip">
-<figure><img src="/assets/images/touge/v2/library.png" alt="Rides and routes library listing recorded rides, each with Follow, Route it, share and delete"><figcaption>Every ride it recorded, and every GPX you brought in. One flat list.</figcaption></figure>
-<div>
-<span class="k">Rides and routes</span>
-<ul class="tight">
-<li><b>Follow</b> pins you to the line exactly as recorded, with no router involved. That is how a forest road the map has never heard of stays the route.</li>
-<li><b>Route it</b> hands the same line to the engine as shaping points and gives back street names, lanes and rerouting.</li>
-<li>A recorded ride defaults to Follow. Something shared out of Maps defaults to Route it. They are different questions.</li>
-<li>Import a GPX, share one out. A plan is written as a route, a recording as a track — this will not pass off a computed line as something the wheels did.</li>
-<li>Recorded rides prune to the newest thirty. Files you imported are never touched.</li>
-</ul>
-</div>
-</div>
-
-<div class="quote">A ride you liked is a file. Ride it again, hand it to somebody, or open it and move three pins.</div>
-
-<p class="lead">And the list screen still beats the map for what it is good at: order, and the style of each leg. The two are for different questions, so both are there.</p>
-
-## Alerts you control
-
-<div class="row">
-<figure><img src="/assets/images/touge/v2/alerts.png" alt="Alerts screen: one row per kind with a map toggle and a voice toggle"><figcaption>One row per kind, both switches on the row.</figcaption></figure>
-<div>
-<span class="k">Map and voice, separately</span>
-<ul class="tight">
-<li>Waze puts every report type behind its own page with the same two switches on each. Here it is one screen: every kind is a row, and the pin toggle and the speaker toggle sit on it.</li>
-<li>They answer different questions. A pin is <em>what is out there</em>, worth a glance in traffic; a spoken warning is <em>act now</em>, and far fewer things earn one. Traffic drawn and silent is the setting most drivers land on, and one switch cannot say that.</li>
-<li>Defaults: police, crashes, hazards and closed roads speak; traffic and animals draw and stay quiet.</li>
-<li>Warning distance is ½, 1, 1.5 or 2 miles, and a chime can lead the words so the first syllable is not the warning.</li>
-<li>Voice follows the voice mode, so Silent stays silent.</li>
-</ul>
-</div>
-</div>
-
-## The car
-
-<div class="row">
-<figure><img src="/assets/images/touge/v2/tires.png" alt="Tires screen with four wheel tiles; rear left is leaking"><figcaption>Four tiles, one leaking. The rate is a fitted slope, not two samples.</figcaption></figure>
-<div>
-<span class="k">Tire pressure</span>
-<ul class="tight">
-<li>Bluetooth TPMS sensors (Zeepin/TPMSII, DJTPMS, Tesla) bind to a wheel by tapping the wheel, then the sensor.</li>
-<li>Alarms in order: under 20 psi; losing 2 psi a minute (a least-squares slope over two minutes, so a puncture trips it and quantization does not); 10 psi below the tire's peak; over 158°F.</li>
-<li>A red strip on the driving screen and one spoken line naming the corner.</li>
-</ul>
-</div>
-</div>
-
-<div class="row flip">
-<figure><img src="/assets/images/touge/v2/v1.png" alt="V1 alert card: Ka ahead, 34.7 GHz, six bars, Highway mode"><figcaption>Ka, 34.7, ahead, six bars. Highway, loud.</figcaption></figure>
-<div>
-<span class="k">Valentine One</span>
-<ul class="tight">
-<li>A V1 Gen 2 over Bluetooth on the same protocol JBV1 uses. A ring around the car points where the signal comes from; band, frequency and eight bars beside it. Ka and laser are red.</li>
-<li><b>City</b> mutes X and K. <b>Highway</b> and <b>Back road</b> are loud. <b>Under 10 over</b> the limit mutes regardless. The mode is automatic and shown on the card.</li>
-<li>A Gen 2 pairs with one app at a time, so JBV1 is closed while Touge owns the radio.</li>
-</ul>
-</div>
+<div class="grid3">
+<div class="tile"><b>Police, ahead of you</b><p>Reports are pulled out to 25 miles and biased along the way you are actually going, side roads included — not a circle around the car. A dot appears before you get there, which is the only time it is any use.</p></div>
+<div class="tile"><b>Age is the colour</b><p>A fresh report is a big bright red dot. It fades and shrinks toward pale orange as it ages, so a glance tells you whether it is worth believing without reading a timestamp.</p></div>
+<div class="tile"><b>Tap for the detail</b><p>Distance, how old, the band if it is radar, and how many people have confirmed it. The same numbers the report carried, none of them invented.</p></div>
 </div>
 
 <div class="row">
@@ -369,25 +342,50 @@ Everything below is the app running against the North Carolina map pack, routing
 </div>
 </div>
 
+## Alerts you control
+
 <div class="row flip">
-<figure><img src="/assets/images/touge/v2/settings-traffic.png" alt="Settings: live traffic switch and TomTom key field"><figcaption>Traffic is one switch and a free TomTom key.</figcaption></figure>
+<figure><img src="/assets/images/touge/v2/alerts.png" alt="Alerts screen: one row per kind with a map toggle and a voice toggle"><figcaption>One row per kind, both switches on the row.</figcaption></figure>
 <div>
-<span class="k">Live traffic</span>
+<span class="k">Map and voice, separately</span>
 <ul class="tight">
-<li>Flow is drawn over the roads, green through red, from TomTom's traffic tiles. Incidents are pins with the delay and a description; a closed road is dark red.</li>
-<li>Refreshed every two minutes around the car, not per pan, so a full day is well inside the free tier (2,500 requests a day). The key is yours, from developer.tomtom.com, pasted into settings.</li>
-<li>Off by default; it needs a connection. Routing does not use it, so the twisty way stays the twisty way.</li>
+<li>Waze puts every report type behind its own page with the same two switches on each. Here it is one screen: every kind is a row, and the pin toggle and the speaker toggle sit on it.</li>
+<li>They answer different questions. A pin is <em>what is out there</em>, worth a glance in traffic; a spoken warning is <em>act now</em>, and far fewer things earn one. Traffic drawn and silent is the setting most drivers land on, and one switch cannot say that.</li>
+<li>Defaults: police, crashes, hazards and closed roads speak; traffic and animals draw and stay quiet.</li>
+<li>Warning distance is ½, 1, 1.5 or 2 miles, and a chime can lead the words so the first syllable is not the warning.</li>
+<li>Voice follows the voice mode, so Silent stays silent.</li>
 </ul>
 </div>
 </div>
 
+## Valentine One Gen 2
+
+<p class="lead">The detector already beeps. What it cannot do is tell you where, on a screen, while you drive.</p>
+
 <div class="row">
-<figure><img src="/assets/images/touge/v2/offroad.png" alt="Off-road mode with the Bronco icon and tracks drawn bold"><figcaption>Off-road: tracks routed on and drawn bold, no reroute when you leave the line.</figcaption></figure>
+<figure><img src="/assets/images/touge/v2/v1.png" alt="V1 alert card: Ka ahead, 34.7 GHz, six bars, Highway mode"><figcaption>Ka, 34.7, ahead, six bars. Highway, loud.</figcaption></figure>
 <div>
-<span class="k">Off-road mode</span>
+<span class="k">Valentine One</span>
 <ul class="tight">
-<li>A fourth vehicle mode for the Bronco. Forest roads and trails are routed on and drawn orange.</li>
-<li>Leaving the planned line is the plan, so there is no reroute nag. The breadcrumb trail records where the wheels went.</li>
+<li>A V1 Gen 2 over Bluetooth on the same protocol JBV1 uses. A ring around the car points where the signal comes from; band, frequency and eight bars beside it. Ka and laser are red.</li>
+<li><b>City</b> mutes X and K. <b>Highway</b> and <b>Back road</b> are loud. <b>Under 10 over</b> the limit mutes regardless. The mode is automatic and shown on the card.</li>
+<li>A Gen 2 pairs with one app at a time, so JBV1 is closed while Touge owns the radio.</li>
+</ul>
+</div>
+</div>
+
+## Tire pressure
+
+<p class="lead">A slow leak is the failure that ends a mountain day, and it announces itself an hour before it strands you.</p>
+
+<div class="row flip">
+<figure><img src="/assets/images/touge/v2/tires.png" alt="Tires screen with four wheel tiles; rear left is leaking"><figcaption>Four tiles, one leaking. The rate is a fitted slope, not two samples.</figcaption></figure>
+<div>
+<span class="k">Tire pressure</span>
+<ul class="tight">
+<li>Bluetooth TPMS sensors (Zeepin/TPMSII, DJTPMS, Tesla) bind to a wheel by tapping the wheel, then the sensor.</li>
+<li>Alarms in order: under 20 psi; losing 2 psi a minute (a least-squares slope over two minutes, so a puncture trips it and quantization does not); 10 psi below the tire's peak; over 158°F.</li>
+<li>A red strip on the driving screen and one spoken line naming the corner.</li>
 </ul>
 </div>
 </div>
@@ -424,6 +422,29 @@ Everything below is the app running against the North Carolina map pack, routing
 <div class="tile"><b>Police reports</b><p>Over SABRE, an open Android protocol. Every alert carries its age and fades; police expire at 25 minutes, a closed road at six hours.</p></div>
 <div class="tile"><b>Routing server</b><p>Routing goes to my Valhalla box first — well under a second, four states of tiles — with the public FOSSGIS instance behind it as a fallback for anywhere outside them. A list, not one address, because the day the public instance stopped answering it took every device with it. A small monthly subscription (about $3) covers the server. Settings take any Valhalla URL of your own.</p></div>
 <div class="tile"><b>Android Auto</b><p>The tablet's map on the head unit: same style and pack, the route, the group's cars with their icons, the radar disc as an inset, heading up. The turn card with lanes and ETA; Skip, Later and Go on when a stop is ahead; Group, Routes, Search and Tires as car screens; tire and radar alerts as car toasts. The phone app does the work and the head unit shows it.</p></div>
+</div>
+
+<div class="row">
+<figure><img src="/assets/images/touge/v2/settings-traffic.png" alt="Settings: live traffic switch and TomTom key field"><figcaption>Traffic is one switch and a free TomTom key.</figcaption></figure>
+<div>
+<span class="k">Live traffic</span>
+<ul class="tight">
+<li>Flow is drawn over the roads, green through red, from TomTom's traffic tiles. Incidents are pins with the delay and a description; a closed road is dark red.</li>
+<li>Refreshed every two minutes around the car, not per pan, so a full day is well inside the free tier (2,500 requests a day). The key is yours, from developer.tomtom.com, pasted into settings.</li>
+<li>Off by default; it needs a connection. Routing does not use it, so the twisty way stays the twisty way.</li>
+</ul>
+</div>
+</div>
+
+<div class="row flip">
+<figure><img src="/assets/images/touge/v2/offroad.png" alt="Off-road mode with the Bronco icon and tracks drawn bold"><figcaption>Off-road: tracks routed on and drawn bold, no reroute when you leave the line.</figcaption></figure>
+<div>
+<span class="k">Off-road mode</span>
+<ul class="tight">
+<li>A fourth vehicle mode for the Bronco. Forest roads and trails are routed on and drawn orange.</li>
+<li>Leaving the planned line is the plan, so there is no reroute nag. The breadcrumb trail records where the wheels went.</li>
+</ul>
+</div>
 </div>
 
 ## The settings screen
@@ -466,26 +487,5 @@ Everything below is the app running against the North Carolina map pack, routing
 </div>
 
 <div class="last"></div>
-
-## The recorder
-
-<video controls loop muted playsinline preload="metadata"
-       poster="/assets/images/touge/v2/recorder-nccar-poster.jpg"
-       style="width:100%;height:auto;display:block;border-radius:16px;box-shadow:0 2px 14px rgba(0,0,0,.45);">
-  <source src="/assets/images/touge/v2/recorder-nccar.mp4" type="video/mp4">
-</video>
-<p style="color:#9aa3ad;font-size:13px;margin:8px 0 22px">NCCAR, 13 September, recorded with TrackEncoder, the recorder Touge's is lifted from. Same cards, same trigger; Touge draws them in a margin around the picture instead of over it.</p>
-
-<div class="row">
-<figure><img src="/assets/images/touge/frame-composite.png" alt="The recorded frame: camera picture untouched, telemetry cards in the margin"><figcaption>The video is untouched, pixel for pixel. The cards live in the margin.</figcaption></figure>
-<div>
-<span class="k">Overlay around the video, not on it</span>
-<ul class="tight">
-<li>A 1920x1080 camera plus a third again of margin lands on 2560x1440. The margin is static, so it encodes to almost nothing; the cost is encoder throughput, and 2560x1440 at 29 fps sustained is a measured number on this hardware.</li>
-<li>Every card has a switch. Cards are laid out by weight, so switching one off gives its height to the rest. Cards that need a surveyed circuit stay off on a public road.</li>
-<li>The recorder arms on the road ahead, not the corner you are in. Corner radius comes from <code>v² / a_lat</code>: 70 mph at 0.35 g is a 935 ft interstate sweeper, 35 mph at 0.35 g is a 230 ft corner worth filming. Ten seconds of pre-roll puts the turn in the clip. Freeways never arm it.</li>
-</ul>
-</div>
-</div>
 
 </div>
