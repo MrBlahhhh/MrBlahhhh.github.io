@@ -79,6 +79,7 @@ Everything below is the app running against the North Carolina map pack, routing
 <li><b>What are you driving</b> — name, car and colour, which is what everyone else sees on their map.</li>
 <li><b>Ride together</b>, before the map download, on purpose: a group works fine on a streamed map, and making somebody wait for 400 MB before they can join their friends is the wrong order.</li>
 <li><b>If a radio hears a ride already running, it is one tap.</b> The invite travels over the mesh, so three cars in a car park need no key typed and no QR held up to a windscreen.</li>
+<li>The person organising it hits <b>Advertise</b> and the invite goes back out every 45 seconds, so latecomers are offered the ride as they pull in. It stops itself after fifteen minutes — the broadcast carries the key, and a ride advertising all afternoon is one anybody in radio range can walk into.</li>
 <li>Maps last. Every step skips, nothing is modal afterwards, and an existing profile never sees it at all.</li>
 </ul>
 </div>
