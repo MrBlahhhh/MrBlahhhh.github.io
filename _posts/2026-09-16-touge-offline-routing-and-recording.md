@@ -134,9 +134,9 @@ Everything below is the app running against the North Carolina map pack, routing
 <div class="tile"><b>Touge</b><p>Japanese, shouted, about the corner. <code>ヘアピン左！落とせ！</code> for a hairpin left. Needs a Japanese voice installed and says so if there is none.</p></div>
 </div>
 
-## Draw the road that has no name
+## Shape the line yourself
 
-<p class="lead">Search finds towns. It does not find the gap between two ridges that the good road runs through, because that road has no name in any database. So point at it.</p>
+<p class="lead">Search finds roads by name — type "bledsoe" and Bledsoe Creek Road comes back, 1.5 miles out. What it cannot do is say <em>which way</em>: up this one, over the gap, down the other side, in that order. That is a shape, not a name, and the place to draw a shape is a map.</p>
 
 <div class="row">
 <figure><img src="/assets/images/touge/v2/editor.png" alt="Route editor with three numbered pins dropped on back roads near Sparta and the routed line running through them"><figcaption>Three pins, dragged onto the roads I meant. The engine joins them up; the line is the answer, not a sketch.</figcaption></figure>
@@ -144,6 +144,8 @@ Everything below is the app running against the North Carolina map pack, routing
 <span class="k">Route editor</span>
 <ul class="tight">
 <li>Long-press to drop a pin. Drag it to move it. Tap it to change or remove it.</li>
+<li>Dragging is the point. "Not that road, the one a ridge over" is a decision you make by looking, and you can see immediately whether the line went where you meant.</li>
+<li>A pin does not need to be anywhere named — a pull-off, a gate, the car park everyone meets in.</li>
 <li>Reverse rides it the other way, and the leg styles travel with the legs — highway out stays highway out, it does not become highway home.</li>
 <li>Close loop brings you back to the first place you chose, not to wherever the car was parked.</li>
 <li>Save GPX, or Start and drive it.</li>
@@ -167,6 +169,8 @@ Everything below is the app running against the North Carolina map pack, routing
 </div>
 
 <div class="quote">A ride you liked is a file. Ride it again, hand it to somebody, or open it and move three pins.</div>
+
+<p class="lead">And the list screen still beats the map for what it is good at: order, and the style of each leg. The two are for different questions, so both are there.</p>
 
 ## Ride together
 
