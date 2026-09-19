@@ -32,7 +32,10 @@ it is part of.
    bearing on the map.
 9. **TPMS** — BLE only, which means newer in-wheel Tesla sensors or the
    screw-on caps.
-10. **Setup, maps, search, server** — every technical screen, last.
+10. **Setup, maps, search, server** — every technical screen, last. Inside
+    it: map packs, then **routing with no signal** (it is built out of the
+    packs, so it follows them), then search, then the tiles, then traffic and
+    off-road.
 
 ## Layout rules
 

@@ -406,6 +406,19 @@ Everything below is the app running against the North Carolina map pack, routing
 </div>
 
 <div class="row flip">
+<figure><img src="/assets/images/touge/v2/offline-routing.png" alt="Setting: Route without a connection, switched on, with its explanation"><figcaption>Off by default, and the screen says what it costs before you turn it on.</figcaption></figure>
+<div>
+<span class="k">Routing with no signal</span>
+<ul class="tight">
+<li><b>A route worked out on the phone, from the pack you already downloaded.</b> Nothing else to fetch. The roads this app is for are the ones with no bars, and until now losing signal meant it could draw exactly where you were and nothing about how to get anywhere.</li>
+<li>North Carolina takes about a minute to build once, and a route comes back in about a tenth of a second after that.</li>
+<li>Off by default because it is not free: another 300 MB beside the pack, and a minute of the phone's attention.</li>
+<li>There is no offline mode to remember to switch on. The server is asked first whenever there is signal, because it knows things the phone cannot &mdash; turn restrictions, which way a one-way runs at a junction, roads closed today. When the bars come back, a route worked out on the device is quietly replaced by the server's.</li>
+</ul>
+</div>
+</div>
+
+<div class="row">
 <figure><img src="/assets/images/touge/v2/search.png" alt="Search results for Sparta, the town first"><figcaption>Search ranks by name, then kind, then distance. A town beats a road of the same name.</figcaption></figure>
 <div>
 <span class="k">Search</span>
@@ -424,7 +437,7 @@ Everything below is the app running against the North Carolina map pack, routing
 <div class="tile"><b>Android Auto</b><p>The tablet's map on the head unit: same style and pack, the route, the group's cars with their icons, the radar disc as an inset, heading up. The turn card with lanes and ETA; Skip, Later and Go on when a stop is ahead; Group, Routes, Search and Tires as car screens; tire and radar alerts as car toasts. The phone app does the work and the head unit shows it.</p></div>
 </div>
 
-<div class="row">
+<div class="row flip">
 <figure><img src="/assets/images/touge/v2/settings-traffic.png" alt="Settings: live traffic switch and TomTom key field"><figcaption>Traffic is one switch and a free TomTom key.</figcaption></figure>
 <div>
 <span class="k">Live traffic</span>
@@ -436,7 +449,7 @@ Everything below is the app running against the North Carolina map pack, routing
 </div>
 </div>
 
-<div class="row flip">
+<div class="row">
 <figure><img src="/assets/images/touge/v2/offroad.png" alt="Off-road mode with the Bronco icon and tracks drawn bold"><figcaption>Off-road: tracks routed on and drawn bold, no reroute when you leave the line.</figcaption></figure>
 <div>
 <span class="k">Off-road mode</span>
