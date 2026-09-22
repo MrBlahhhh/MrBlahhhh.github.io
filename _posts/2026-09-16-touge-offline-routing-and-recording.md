@@ -1,7 +1,7 @@
 ---
 title: "Touge"
 date: 2026-09-16 00:00:00 -0400
-last_modified_at: 2026-09-18 16:00:00 -0400
+last_modified_at: 2026-09-22 10:00:00 -0400
 categories: car tech
 tags: [touge, android, navigation, offline, maplibre, pmtiles, valhalla, meshtastic, lora, gmrs, tpms, radar, valentine-one, android-auto, dashcam, telemetry, kotlin, compose, openstreetmap, motorcycle, bronco, back-roads]
 cover: /assets/images/touge/v2/group.png
@@ -92,6 +92,7 @@ Everything below is the app running against the North Carolina map pack, routing
 <ul class="tight">
 <li><b>Two taps, not five.</b> Waze asks for a category, then a subtype, then a confirmation, with small targets. Here every target is 96 dp and one word, there is no subtype, and the undo lives in the toast that follows rather than in a dialog before it.</li>
 <li><b>It goes to the group.</b> A report rides the same authenticated exchange as the positions, so it reaches everyone on the ride over cell or LoRa. The report from the car 400 yards ahead is the one that matters on a back road.</li>
+<li><b>And out to the road.</b> With a SABRE proxy installed, the same tap also files it to the shared feed, so it reaches drivers who are not on your ride. Taking from a crowd-sourced feed without ever adding to it is a poor way to use one.</li>
 <li><b>Duplicates collapse.</b> The same kind within 150 feet is the same thing seen twice, so the car behind filing the same speed trap is one pin.</li>
 <li>Each expires on its own clock: police at 25 minutes, a closed road at six hours. They survive a restart mid-ride.</li>
 </ul>
@@ -414,6 +415,7 @@ Everything below is the app running against the North Carolina map pack, routing
 <li>North Carolina takes about a minute to build once, and a route comes back in about a tenth of a second after that.</li>
 <li>Off by default because it is not free: another 300 MB beside the pack, and a minute of the phone's attention.</li>
 <li>There is no offline mode to remember to switch on. The server is asked first whenever there is signal, because it knows things the phone cannot &mdash; turn restrictions, which way a one-way runs at a junction, roads closed today. When the bars come back, a route worked out on the device is quietly replaced by the server's.</li>
+<li><b>It says which one you are looking at.</b> The route screen runs a progress bar while it works the answer out, then names the source: found on the server, or found on this device. Those are different answers and you should not have to guess which one is on the screen.</li>
 </ul>
 </div>
 </div>
@@ -495,6 +497,31 @@ Everything below is the app running against the North Carolina map pack, routing
 <li>Nothing, to drive: the public routing instance, the IEM radar feed and the demo group need no keys.</li>
 <li>A ride needs a key, made on the Ride screen and shared by QR, link or mesh.</li>
 <li>A radio needs pairing once and one tap of configure per ride.</li>
+<li>One switch for a tablet whose Bluetooth cannot hold the fast connection interval: turn high-throughput off and it uses the slower one it can.</li>
+</ul>
+</div>
+</div>
+
+<div class="row flip">
+<figure><img src="/assets/images/touge/v2/settings-mapview.png" alt="Settings: map view, with how much road to show at speed, a zoom in when slowing switch, and 3D tilt in degrees"><figcaption>How much road, whether it closes in when you slow, and the tilt in degrees.</figcaption></figure>
+<div>
+<span class="k">Map view</span>
+<ul class="tight">
+<li><b>How much road to show at speed</b>, a quarter mile to five. A distance, not a zoom number, so half a mile is half a mile on any panel and at any latitude. The range button on the driving screen steps the same setting.</li>
+<li><b>Zoom in when slowing.</b> Coming to a stop closes the map in on the junction, which in 3D is what shows you which way the road actually goes. Off, the range you picked is the range at any speed.</li>
+<li><b>3D tilt in degrees</b>, 30 through 60, held at any speed rather than only once you are moving. Sixty is the map engine's limit.</li>
+<li><b>Where your car sits</b> down the screen. Running tail, everyone is in front and the screen wants road ahead; running lead, what you want to know is whether you have dropped anyone.</li>
+</ul>
+</div>
+</div>
+
+<div class="row">
+<figure><img src="/assets/images/touge/v2/nav-3d.png" alt="The map tilted to sixty degrees, roads running away toward a horizon, weather radar disc top right"><figcaption>Sixty degrees, held at a standstill. The horizon is on screen and the next corner is still in the picture.</figcaption></figure>
+<div>
+<span class="k">What the tilt buys</span>
+<ul class="tight">
+<li>Perspective puts the road you are about to drive in the top half of the screen rather than the field beside you.</li>
+<li>Flat is one tap away and shows the same amount of road, because the zoom compensates either way.</li>
 </ul>
 </div>
 </div>
