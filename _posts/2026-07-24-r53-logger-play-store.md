@@ -5,7 +5,7 @@ categories: car tech
 tags: [mini, r53, android, datalogger, flasher, play-store, boost, tuning, ecu-flash, immobilizer, for-sale]
 cover: /assets/images/r53-logger-play-store/main-screen.jpg
 lightbox: true
-excerpt: "R53 Logger - Flasher on Play — live logging, 3D AFR tuning graph, wideband calibration and ECU flash. BETA. Facelift and pre-facelift-conversion ECUs supported for write. App unlock $25, flash $50, factory software $50; prepared ECUs $275."
+excerpt: "R53 Logger - Flasher on Play — live logging, 3D AFR tuning graph, wideband calibration and ECU flash. BETA. Facelift and pre-facelift-conversion ECUs supported for write. App unlock $25, flash $50, Stage 1 flash (OEM JCW / GP1) $50; prepared ECUs $275. Open sign-up."
 article_header:
   type: overlay
   theme: dark
@@ -34,7 +34,8 @@ is the one option that changes fuelling while you are driving on it rather than
 at wide-open throttle, and it has had the least testing of anything in the
 list. If you are not prepared to watch AFRs and back it out, leave it off.
 
-*Last updated 2026-09-09.*
+*Last updated 2026-09-23.* Sign-up is open now, no approval needed. See
+[Want to try it?](#want-to-try-it-play-closed-testing) at the bottom.
 
 ## What it costs
 
@@ -44,7 +45,7 @@ Everything is a one-off in-app purchase — no subscription.
 | --- | --- |
 | **App unlock** | **$25** — logging, graphs, 3D AFR, wideband, diagnostics, backup |
 | **Flash unlock** | **$50** — write to the ECU, plus the at-write tune options |
-| **Factory software** | **$50** — the built-in US Cooper S / JCW / GP1 base images |
+| **Stage 1 flash** | **$50** — MINI's own JCW and GP1 software, plus the stock US Cooper S image ([details](#stage-1-flash--oem-jcw-and-gp1)) |
 | Prepared facelift ECU | $275 — see below |
 
 Backup is part of the app unlock. You can read and keep a full 512 KB copy of
@@ -54,7 +55,7 @@ your own ECU without buying the flash unlock.
 
 **Mini R53 Logger - Flasher** — the Android app I've been building so I can *log* what the supercharged W11 is doing and *flash* a facelift ECU from the same phone — is feature-complete, and I'm loading it onto the Google Play Store.
 
-If you want to try it when the listing goes live (or before, if I can get you an early install), email me and I'll sort you out.
+Anyone can try it now: the [three sign-up steps](#want-to-try-it-play-closed-testing) are at the bottom of this page.
 
 ![Main screen — live telemetry and Mini chili-red theme](/assets/images/r53-logger-play-store/main-screen.jpg){:.img-md}
 *Plug in, hit connect, and the car streams live: RPM, boost, temps, spark, knock, fuel trims, injection — the works.*
@@ -109,7 +110,26 @@ now knows that. If you flashed a pre-facelift box with a build before 451 and
 it stopped around 96%, write it again with a current build — the calibration
 was complete, it was the finishing step that never ran.
 
-Backup is read-only and safe. Write is dangerous — key on / engine off, keep the car on a battery charger, and keep a desktop OBD recovery path ready. The app checks the tune before writing (and can auto-fix checksum / layout issues). Pick a 512 KB BIN, or load factory **US S / JCW / GP1** as a base, then either a **quick write** (calibration region, ~60 KB) or a **full write** (512 KB).
+### Stage 1 flash — OEM JCW and GP1
+
+MINI was nice enough to basically give us a Stage 1 flash. The John Cooper
+Works and GP1 calibrations are the factory's own tunes for an R53 with a
+smaller supercharger pulley and a freer exhaust, which is how most of these
+cars are built by the time anyone wants a tune. In the app they're the **JCW**
+and **GP1** buttons on the flash screen.
+
+- **It's OEM software** — MINI's calibration, flashed as the factory wrote it.
+  Not my tune, not a third-party map. The flash options below can still be
+  layered on top.
+- **It needs the JCW / GP 380 cc injectors.** The stock Cooper S 330s can't
+  supply the fuel these calibrations ask for. Bigger than 380? Set the injector
+  size option to match.
+- **It's for a car with a pulley and an exhaust or header.** That's what it
+  was calibrated around; on a bone-stock car it's the wrong tune.
+
+The **US S** button is the stock Cooper S software, for putting a car back.
+
+Backup is read-only and safe. Write is dangerous — key on / engine off, keep the car on a battery charger, and keep a desktop OBD recovery path ready. The app checks the tune before writing (and can auto-fix checksum / layout issues). Pick a 512 KB BIN, or load the **Stage 1 flash** (JCW / GP1) or stock **US S** as a base, then either a **quick write** (calibration region, ~60 KB) or a **full write** (512 KB).
 
 ![ECU flash — backup, factory software, flash options](/assets/images/r53-logger-play-store/flash-screen-factory.jpg){:.img-md}
 *Flash screen — Read backup, pick a BIN, load US S / JCW / GP1, then Flash options before Quick or Full write.*
@@ -216,21 +236,27 @@ The app defaults to the AEM curve. If you're running an Innovate or something cu
 
 ## Want to try it? (Play closed testing)
 
-R53 Logger - Flasher uses **Google Play closed testing**, same pattern as R53 Coding.
+R53 Logger - Flasher is in **Google Play closed testing**, so it won't show up
+in a Play Store search. Three steps, all with **the same Google account that's
+on your Android phone**:
 
-### 1. Ask to join the tester group
+1. **Join the tester group.** Open
+   **[groups.google.com/g/r53-logger-testers](https://groups.google.com/g/r53-logger-testers)**
+   and tap **Join group**. It's open — anyone can join, no approval.
+2. **Opt in on Play.** Open
+   **[play.google.com/apps/testing/com.geekopolis.r53logger](https://play.google.com/apps/testing/com.geekopolis.r53logger)**
+   and tap **Become a tester**.
+3. **Install it.** Open
+   **[the app on Google Play](https://play.google.com/store/apps/details?id=com.geekopolis.r53logger)**
+   on your phone and install.
 
-**→ [r53-logger-testers](https://groups.google.com/g/r53-logger-testers)**  
-(`r53-logger-testers@googlegroups.com`)
+If step 3 says the app isn't found, you're either signed in to Play with a
+different Google account than the one that joined the group, or Play hasn't
+caught up yet — give it a few minutes. Install from Play, not a sideloaded
+APK, or purchases and unlocks won't work.
 
-Join is **approval-required**. Include the Google account on your phone and whether you want the app, a facelift ECU, or both.
-
-### 2. Opt in on Play (same Google account)
-
-After you're approved, open the **closed testing join link** I send (also posted for members), tap **Become a tester**, then install from Play — don't sideload if you want purchases / unlock to work.
-
-### 3. Still email / Instagram
-
-Questions, ECU quotes, or stuck on signup: **[matt@geekopolis.com](mailto:matt@geekopolis.com)** or [**@mattryan6729**](https://www.instagram.com/mattryan6729/).
+Questions, ECU quotes, or stuck on sign-up:
+**[matt@geekopolis.com](mailto:matt@geekopolis.com)** or
+[**@mattryan6729**](https://www.instagram.com/mattryan6729/).
 
 If you give it a weekend on the car, tell me what breaks and what's missing.

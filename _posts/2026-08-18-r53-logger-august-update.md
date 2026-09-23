@@ -17,9 +17,11 @@ article_header:
 
 <!--more-->
 
-> **This page is out of date.** The current page for R53 Logger - Flasher —
-> what it costs, which ECUs it can write, and what is still beta — is
-> **[R53 Logger - Flasher on the Play Store](/car/tech/2026/07/24/r53-logger-play-store.html)**.
+> **Updated 2026-09-23.** Sign-up is open now, with no approval step. See
+> **[Get it](#get-it)** at the bottom for the three steps. The factory JCW and
+> GP1 images are now called the **[Stage 1 flash](#stage-1-flash--mini-already-wrote-it)**.
+> Pricing, which ECUs it can write and what is still beta are on the
+> **[current page](/car/tech/2026/07/24/r53-logger-play-store.html)**.
 
 
 When [R53 Logger - Flasher went to the Play Store](/car/tech/2026/07/24/r53-logger-play-store.html) in July it was a logger that could also flash. A month and roughly 370 commits later it's become the whole tuning loop: log a pull, see exactly where fueling missed the target, change one thing, flash it, log again — all from the phone, with every file filed against the car it came from.
@@ -167,7 +169,19 @@ Not everything belongs on a phone. Off the car, a set of Python tools does the h
 
 ## ECU backup and flash — with an option deck
 
-The flash side is where this stops being "a logger app." It reads a **full backup** first — always — then writes either a bin you supply, or one of the built-in **factory images: US Cooper S, JCW, and GP1**. Every write is checksummed, and the app verifies the tune before it touches the car — and can auto-fix what it finds.
+The flash side is where this stops being "a logger app." It reads a **full backup** first — always — then writes either a bin you supply, the **Stage 1 flash** (the factory JCW or GP1 software, below), or the stock **US Cooper S** image to put a car back. Every write is checksummed, and the app verifies the tune before it touches the car — and can auto-fix what it finds.
+
+### Stage 1 flash — MINI already wrote it
+
+MINI was nice enough to basically give us a Stage 1 flash. The John Cooper Works and GP1 calibrations are the factory's own tunes for a supercharged R53 with a smaller pulley and a freer exhaust, and that's the same car most people have built by the time they want a tune. So the JCW and GP1 images in the app are now called what they are: a **Stage 1 flash**.
+
+Be clear on what it is and what it needs:
+
+- **It's OEM software.** This is MINI's calibration, written by the factory and flashed as-is — not a tune I made, and not a third-party map. The option deck (pops, redline, pedal and so on) can be layered on top, same as any bin.
+- **It needs the JCW / GP injectors.** Both calibrations are written for the 380 cc injectors, not the 330 cc ones in a stock Cooper S. On stock injectors a car running this software runs out of fuel where it matters most. If you've gone bigger than 380, set the injector size in the option deck to match.
+- **It's meant for a car with a pulley and an exhaust or header.** That's the hardware it was calibrated around. On a completely stock car it isn't the right tune.
+
+Pick **JCW** or **GP1** on the flash screen. The stock **US S** button stays there to take the car back to factory.
 
 ![ECU flash screen with factory images](/assets/images/r53-logger-play-store/flash-screen-factory.jpg){:.img-md}
 *Backup, factory software, or your own bin. The summary line always says exactly what's armed.*
@@ -212,4 +226,14 @@ The small stuff is covered too: light and dark themes, °C or °F, and a force-q
 
 ## Get it
 
-**Mini R53 Logger - Flasher** is on the [Play Store](https://play.google.com/store/apps/details?id=com.geekopolis.r53logger). Logging works on any R53; flashing supported only the facelift silver-cover ECU when this was written, and now covers pre-facelift `740J10` conversions too — see the [current page](/car/tech/2026/07/24/r53-logger-play-store.html). All you need is the same cheap K+DCAN cable every BMW owner has, and an Android phone or tablet — the ESP32 bridge is optional, for the CAN channels and wideband. Everything else above works with just the cable.
+**Mini R53 Logger - Flasher** is in **Google Play closed testing**, which means it doesn't show up in a Play Store search. You get to it in three steps, all with **the same Google account that's on your Android phone**:
+
+1. **Join the tester group.** Open **[groups.google.com/g/r53-logger-testers](https://groups.google.com/g/r53-logger-testers)** and tap **Join group**. It's open now — no approval, no waiting on me.
+2. **Opt in on Play.** Open **[play.google.com/apps/testing/com.geekopolis.r53logger](https://play.google.com/apps/testing/com.geekopolis.r53logger)** and tap **Become a tester**.
+3. **Install it.** Open **[the app on Google Play](https://play.google.com/store/apps/details?id=com.geekopolis.r53logger)** on your phone and install.
+
+If step 3 says the app isn't found, it's one of two things: you're signed in to Play with a different Google account than the one you joined with, or Play hasn't caught up yet — give it a few minutes and try again. Install from Play rather than sideloading, or the purchases and unlocks won't work.
+
+Logging works on any R53. Flashing covers the facelift silver-cover ECU and pre-facelift `740J10` conversions — see the [current page](/car/tech/2026/07/24/r53-logger-play-store.html) for the full table. All you need is the same cheap K+DCAN cable every BMW owner has, and an Android phone or tablet — the ESP32 bridge is optional, for the CAN channels and wideband. Everything else above works with just the cable.
+
+Stuck? **[matt@geekopolis.com](mailto:matt@geekopolis.com)** or [**@mattryan6729**](https://www.instagram.com/mattryan6729/).
