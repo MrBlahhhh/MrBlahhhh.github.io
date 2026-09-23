@@ -1,7 +1,7 @@
 ---
 title: "Touge"
 date: 2026-09-16 00:00:00 -0400
-last_modified_at: 2026-09-22 10:00:00 -0400
+last_modified_at: 2026-09-23 10:00:00 -0400
 categories: car tech
 tags: [touge, android, navigation, offline, maplibre, pmtiles, valhalla, meshtastic, lora, gmrs, tpms, radar, valentine-one, android-auto, dashcam, telemetry, kotlin, compose, openstreetmap, motorcycle, bronco, back-roads]
 cover: /assets/images/touge/v2/group.png
@@ -57,7 +57,7 @@ article_header:
 <div class="stats">
 <div class="stat"><b>5</b><span>ways per leg</span></div>
 <div class="stat"><b>0</b><span>accounts</span></div>
-<div class="stat"><b>30 s</b><span>group pings, mesh or cell</span></div>
+<div class="stat"><b>1 s</b><span>car to car on 2.4 GHz</span></div>
 <div class="stat"><b>100 mi</b><span>radar disc</span></div>
 <div class="stat"><b>60</b><span>car icons</span></div>
 <div class="stat"><b>4</b><span>states offline</span></div>
@@ -80,7 +80,7 @@ Everything below is the app running against the North Carolina map pack, routing
 <li><b>Age is the age of the fix</b>, not of the packet. A car that stops reporting greys out and stays in the table with its last-seen time. Tom, two minutes stale, is still there.</li>
 <li>More than 400 feet off the shared route falls back to straight line and gets a <code>~</code>.</li>
 <li>The worst gap and any silent car are spoken.</li>
-<li><b>No teleporting.</b> Between pings each car is dead-reckoned along the route at its last speed (a 30 s ping at 45 mph is 660 feet), and when the real fix lands the icon eases onto it over a couple of seconds. Prediction stops after a minute, so a car that has gone quiet stays where it was last seen.</li>
+<li><b>No teleporting.</b> Between fixes each car is carried along the route at its last speed, and when the real fix lands the icon eases onto it in about a third of a second. The guess stops after ten seconds on the route and three off it, which at 50 mph is about 200 m of invention at most. Past that the car sits where it was last heard and its age counts up, because that's the truth.</li>
 </ul>
 </div>
 </div>
@@ -92,7 +92,7 @@ Everything below is the app running against the North Carolina map pack, routing
 <ul class="tight">
 <li><b>Two taps, not five.</b> Waze asks for a category, then a subtype, then a confirmation, with small targets. Here every target is 96 dp and one word, there is no subtype, and the undo lives in the toast that follows rather than in a dialog before it.</li>
 <li><b>It goes to the group.</b> A report rides the same authenticated exchange as the positions, so it reaches everyone on the ride over cell or LoRa. The report from the car 400 yards ahead is the one that matters on a back road.</li>
-<li><b>And out to the road.</b> With a SABRE proxy installed, the same tap also files it to the shared feed, so it reaches drivers who are not on your ride. Taking from a crowd-sourced feed without ever adding to it is a poor way to use one.</li>
+<li><b>And out to the road.</b> With the WzSabre proxy installed, the same tap also files it to Waze, so it reaches drivers who aren't on your ride. Every kind goes, animals included: a deer on the shoulder is filed as Waze's own animal hazard, not kept to the group. Taking from a crowd-sourced feed without ever adding to it is a poor way to use one.</li>
 <li><b>Duplicates collapse.</b> The same kind within 150 feet is the same thing seen twice, so the car behind filing the same speed trap is one pin.</li>
 <li>Each expires on its own clock: police at 25 minutes, a closed road at six hours. They survive a restart mid-ride.</li>
 </ul>
@@ -101,34 +101,78 @@ Everything below is the app running against the North Carolina map pack, routing
 
 <span class="k">How positions travel</span>
 <div class="wire">
-<svg viewBox="0 0 900 250" role="img" aria-label="Mesh and server paths for group positions">
-<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#ff8a00"/></marker></defs>
-<rect x="0" y="0" width="900" height="250" fill="#14181e"/>
+<svg viewBox="0 0 900 330" role="img" aria-label="Group positions travel phone to radio over Bluetooth, radio to radio over a 2.4 GHz lane about once a second and LoRa every five seconds, with the server over cell as the fallback">
+<defs>
+<marker id="pg" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2e9e4f"/></marker>
+<marker id="pb" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1e88e5"/></marker>
+<marker id="po" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#e08a1e"/></marker>
+<marker id="pw" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#9aa3ad"/></marker>
+</defs>
+<rect x="0" y="0" width="900" height="330" fill="#14181e"/>
 <g font-family="system-ui,Segoe UI,Roboto,sans-serif" font-size="14" fill="#e9edf2">
-<rect x="30" y="40" width="150" height="60" rx="12" fill="#0b0d10" stroke="#232a33"/><text x="105" y="66" text-anchor="middle">Tablet</text><text x="105" y="86" text-anchor="middle" fill="#9aa3ad">GPS fix, 30 s</text>
-<rect x="240" y="40" width="150" height="60" rx="12" fill="#0b0d10" stroke="#232a33"/><text x="315" y="66" text-anchor="middle">Meshtastic N30</text><text x="315" y="86" text-anchor="middle" fill="#9aa3ad">BLE in, LoRa out</text>
-<rect x="510" y="40" width="150" height="60" rx="12" fill="#0b0d10" stroke="#232a33"/><text x="585" y="66" text-anchor="middle">Their radio</text><text x="585" y="86" text-anchor="middle" fill="#9aa3ad">915 MHz, miles</text>
-<rect x="720" y="40" width="150" height="60" rx="12" fill="#0b0d10" stroke="#232a33"/><text x="795" y="66" text-anchor="middle">Their tablet</text><text x="795" y="86" text-anchor="middle" fill="#9aa3ad">group card</text>
-<line x1="180" y1="70" x2="238" y2="70" stroke="#ff8a00" stroke-width="3" marker-end="url(#a)"/>
-<line x1="390" y1="70" x2="508" y2="70" stroke="#ff8a00" stroke-width="3" stroke-dasharray="8 6" marker-end="url(#a)"/>
-<line x1="660" y1="70" x2="718" y2="70" stroke="#ff8a00" stroke-width="3" marker-end="url(#a)"/>
-<text x="449" y="55" text-anchor="middle" fill="#ff8a00" font-size="12">no cell needed</text>
-<rect x="360" y="160" width="180" height="60" rx="12" fill="#0b0d10" stroke="#232a33"/><text x="450" y="186" text-anchor="middle">Your server</text><text x="450" y="206" text-anchor="middle" fill="#9aa3ad">signed, no accounts</text>
-<path d="M105,100 C105,190 200,190 358,190" fill="none" stroke="#3da5ff" stroke-width="3" marker-end="url(#a)"/>
-<path d="M542,190 C700,190 795,190 795,100" fill="none" stroke="#3da5ff" stroke-width="3" marker-end="url(#a)"/>
-<text x="230" y="235" fill="#3da5ff" font-size="12">cell, when the radio is not connected</text>
-<text x="620" y="235" fill="#9aa3ad" font-size="12">newest fix per rider wins, by timestamp</text>
+<rect x="15" y="40" width="150" height="70" rx="12" fill="#0b0d10" stroke="#232a33"/><text x="90" y="68" text-anchor="middle">Your phone</text><text x="90" y="90" text-anchor="middle" fill="#9aa3ad" font-size="12">GPS fix to the radio, 1 Hz</text>
+<rect x="215" y="40" width="150" height="70" rx="12" fill="#0b0d10" stroke="#232a33"/><text x="290" y="68" text-anchor="middle">Your radio</text><text x="290" y="90" text-anchor="middle" fill="#9aa3ad" font-size="12">ESP32-S3 + SX1262</text>
+<rect x="535" y="40" width="150" height="70" rx="12" fill="#0b0d10" stroke="#232a33"/><text x="610" y="68" text-anchor="middle">Their radio</text><text x="610" y="90" text-anchor="middle" fill="#9aa3ad" font-size="12">relays both lanes</text>
+<rect x="735" y="40" width="150" height="70" rx="12" fill="#0b0d10" stroke="#232a33"/><text x="810" y="68" text-anchor="middle">Their phone</text><text x="810" y="90" text-anchor="middle" fill="#9aa3ad" font-size="12">map, card, chat</text>
+<line x1="165" y1="75" x2="213" y2="75" stroke="#9aa3ad" stroke-width="3" marker-end="url(#pw)"/><text x="189" y="64" text-anchor="middle" fill="#9aa3ad" font-size="11">BLE</text>
+<line x1="685" y1="75" x2="733" y2="75" stroke="#9aa3ad" stroke-width="3" marker-end="url(#pw)"/><text x="709" y="64" text-anchor="middle" fill="#9aa3ad" font-size="11">BLE</text>
+<line x1="365" y1="58" x2="533" y2="58" stroke="#2e9e4f" stroke-width="4" marker-end="url(#pg)"/>
+<text x="450" y="34" text-anchor="middle" fill="#2e9e4f" font-size="12">2.4 GHz · about 1 Hz</text>
+<text x="450" y="49" text-anchor="middle" fill="#9aa3ad" font-size="11">ESP-NOW, line of sight</text>
+<line x1="365" y1="92" x2="533" y2="92" stroke="#1e88e5" stroke-width="3" stroke-dasharray="8 6" marker-end="url(#pb)"/>
+<text x="450" y="112" text-anchor="middle" fill="#1e88e5" font-size="12">LoRa · every 5 s</text>
+<text x="450" y="127" text-anchor="middle" fill="#9aa3ad" font-size="11">915 MHz, further</text>
+<rect x="360" y="205" width="180" height="62" rx="12" fill="#0b0d10" stroke="#232a33"/><text x="450" y="231" text-anchor="middle">Your server</text><text x="450" y="252" text-anchor="middle" fill="#9aa3ad" font-size="12">signed, no accounts</text>
+<path d="M90,110 C90,236 220,236 358,236" fill="none" stroke="#e08a1e" stroke-width="3" marker-end="url(#po)"/>
+<path d="M542,236 C690,236 810,236 810,112" fill="none" stroke="#e08a1e" stroke-width="3" marker-end="url(#po)"/>
+<text x="450" y="178" text-anchor="middle" fill="#9aa3ad" font-size="12">newest fix per rider wins, the radio beats the server</text>
+<text x="120" y="292" fill="#e08a1e" font-size="12">cell: every 5 s with no radio</text>
+<text x="120" y="310" fill="#e08a1e" font-size="12">every 30 s with one, to find a lost car</text>
+<text x="580" y="292" fill="#9aa3ad" font-size="12">colours match the icons on the group card:</text>
+<text x="580" y="310" font-size="12"><tspan fill="#2e9e4f">green 2.4 GHz</tspan><tspan fill="#9aa3ad"> · </tspan><tspan fill="#1e88e5">blue LoRa</tspan><tspan fill="#9aa3ad"> · </tspan><tspan fill="#e08a1e">amber server</tspan></text>
 </g>
 </svg>
 </div>
 
+<p class="lead">Three ways between cars, fastest first. The app runs all of them at once and keeps whichever fix for each car is newest.</p>
+
 <ul class="tight">
-<li><b>Mesh first.</b> With a radio connected, positions go out over LoRa every 30 seconds. Touge talks to the radio directly over BLE using the Meshtastic protobufs; the N30 has no GPS, so the tablet supplies the fix. The channel runs in the clear.</li>
-<li><b>Cell when there is no radio.</b> The same fix, with its timestamp, signed with HMAC-SHA256 under the ride key, to <code>server/convoy.py</code> beside Valhalla. No database, no accounts, positions pruned after thirty minutes. Plain http is refused.</li>
-<li><b>Timestamps decide.</b> Every fix carries the time it was measured. A late cell packet never overwrites a newer mesh one.</li>
-<li><b>Name, color and car icon travel with the fix</b> on both links, so what you set is what the others see.</li>
-<li><b>The ping interval is a setting:</b> 10 s, 30 s, 1 min or 2 min, for both links. Thirty seconds is a few hundred milliseconds of LoRa airtime per car.</li>
+<li><b>Phone to radio is Bluetooth.</b> Touge talks Meshtastic's own BLE service and protobufs. Once a second it writes the phone's GPS fix to its own radio, addressed to the radio itself, so it costs no airtime. The radio needs no GPS of its own, and whichever lane fires next sends the latest position rather than one from twenty seconds ago.</li>
+<li><b>2.4 GHz, the fast lane.</b> On a Heltec V3 or V4 running the Touge firmware module, the ESP32's own WiFi radio carries positions over ESP-NOW in long-range mode (250 kbit/s) on channel 1, 6 or 11. A 250 ms cycle is split into nine slots so cars take turns instead of colliding. A car transmits after 20 m of travel, or once a second when parked, and each car is handed to the phone at most once a second. Measured on the bench: about 1.0 Hz per car. Range is roughly what you can see, with two hops to reach the back of a strung-out group. Encrypted with a key derived from the ride's channel key, and signed.</li>
+<li><b>LoRa, the long lane.</b> The same position goes out over 915 MHz every 5 seconds, which is as often as the radio will send one. It reaches further and gets over terrain where 2.4 GHz can't, relays up to three hops, and the gap grows with the group so the channel stays under 30% busy (capped at 20 seconds). When a car has been heard on 2.4 GHz in the last 3 seconds, its slower LoRa copy doesn't overwrite it.</li>
+<li><b>Cell, the fallback.</b> With no radio, the fix goes to <code>server/convoy.py</code> beside Valhalla every 5 seconds, signed with HMAC-SHA256 under the ride key. No database, no accounts, positions pruned after thirty minutes, plain http refused. With a radio, the server is still asked every 30 seconds, and every cycle once the radio has heard nobody for 30 seconds, so a car that drove out of radio range is found from either side.</li>
+<li><b>The radio outranks the server.</b> Every fix carries the time it was measured, so a late cell packet never overwrites a newer radio one. A server copy has to be five seconds newer before it takes a car off the radio, which stops a car sitting two lengths ahead from flipping between sources on timestamp noise.</li>
+<li><b>Name, colour and car icon travel with the fix</b> on every link, so what you set is what the others see.</li>
+<li><b>The ping interval is a setting,</b> 1 second to a minute, 5 by default. On cell it's what you get. On LoRa it's a request: the air decides.</li>
 </ul>
+
+<div class="row">
+<figure><img src="/assets/images/touge/v2/chat-lanes.png" alt="Chat screen: the 2.4 GHz lane card reading channel 11, one car on it, slot 3, and one row for mattpixel reading 2.4 0.7 Hz"><figcaption>The chat screen on a bench test. The fast lane's own report on top, then one row per car.</figcaption></figure>
+<div>
+<span class="k">Signal, on the chat screen</span>
+<ul class="tight">
+<li><b>The lane card</b> is the radio's own account of its 2.4 GHz side: which channel it settled on, how many cars it can hear on it, its slot, and what the cycle is timed by. If the report stops for 16 seconds the card turns red and says so, because a silent fast lane otherwise looks exactly like a quiet road.</li>
+<li><b>One row per car, one lane per row.</b> Only the lane carrying that car right now is shown. <code>2.4 1.0 Hz -48 dBm</code> while the fast lane is live (heard in the last 5 seconds); otherwise <code>LoRa 13 dB SNR -62 dBm 2 hops</code> while LoRa is (heard in the last 30). Heard on neither lately, it greys out to <code>last heard 45s ago</code>.</li>
+<li><b>Your own car isn't listed.</b> The radio hands back your own positions too, and a row saying how well you hear yourself is noise.</li>
+<li><b>The colour is the signal strength.</b> Dark green at -55 dBm or better, light green to -68, yellow to -78, orange to -88, red below that. A car's name turns red when its packets arrive having used all three hops: nothing is left in the budget and the next ridge drops it.</li>
+<li><b>What the numbers mean.</b> -90 dBm is a healthy LoRa link and a dead 2.4 GHz one, so they don't read the same. On 2.4 GHz, -67 or better is good, -75 is okay, -85 is weak. LoRa decodes below the noise floor: -100 is still good and -120 is the edge. SNR is LoRa only: 5 dB or more is excellent, zero is fine, under -10 is about to drop. The Range button reads it out in words per lane: Excellent, Good, Okay, Weak, About to drop.</li>
+<li><b>Messages carry their route too.</b> Each one has a dot, blue for the radio and grey for the server, and says "direct", "3 hops" or "server".</li>
+</ul>
+</div>
+</div>
+
+<div class="row flip">
+<figure><img src="/assets/images/touge/v2/group-links.png" alt="Group card with two cars: mattsam with an amber cell icon, 20s old, and mattpixel with a green antenna, now"><figcaption>mattsam over the server, 20 seconds old. mattpixel over 2.4 GHz, now.</figcaption></figure>
+<div>
+<span class="k">Colours on the map and the card</span>
+<ul class="tight">
+<li><b>The icon beside each car says which link it came over.</b> A green antenna is the 2.4 GHz lane, a blue antenna is LoRa, amber bars are the server. Green reads as the good one and amber as the fallback, which is the order they rank in.</li>
+<li><b>The status chip does the same for your own radio:</b> green on 2.4 GHz, blue on LoRa only, red when it isn't connected.</li>
+<li><b>On the map</b> each car is drawn as its own model in its rider's colour, with its name in that colour. Silent for two minutes, the car and its name fade to half.</li>
+<li><b>On the compact card</b> a name chip stays plain while it's fresh. From 20 seconds old it tints light orange and shows its age, heading to light red by two minutes.</li>
+</ul>
+</div>
+</div>
 
 <div class="row">
 <figure><img src="/assets/images/touge/v2/invite.png" alt="Ride screen with a QR code and touge://join link"><figcaption>One key per ride. QR code, link, or a broadcast over the mesh.</figcaption></figure>
@@ -158,13 +202,13 @@ Everything below is the app running against the North Carolina map pack, routing
 <div class="row">
 <figure><img src="/assets/images/touge/v2/mesh-setup.png" alt="Meshtastic radio screen: paired and nearby radios, and the radio setup for this ride"><figcaption>Pair, then one button configures the radio for the ride.</figcaption></figure>
 <div>
-<span class="k">Standard Meshtastic, nothing custom on the air</span>
+<span class="k">Standard Meshtastic on LoRa</span>
 <ul class="tight">
 <li><b>Pairing:</b> bonded radios are listed, a scan finds ones not yet paired, a tap starts the bond. PIN is the Meshtastic default, 123456.</li>
-<li><b>Configure this radio for the ride</b> sends four admin messages over BLE: region US (915 MHz), preset LONG_FAST, hop limit 3, and a primary channel named for the ride (<code>tg-</code> plus six characters of the key's hash) with encryption off. The radio applies it and restarts. Every tablet on the ride derives the same channel name, so nothing is typed.</li>
-<li><b>Speed:</b> LONG_FAST is about 1 kbit/s. A position packet is under 40 bytes, so a ping is a few hundred milliseconds of airtime and range is measured in miles of ridge line.</li>
+<li><b>Configure this radio for the ride</b> writes the radio's settings over BLE in one edit: region from the phone's country (US is 915 MHz), the radio speed, hop limit 3, your name as the radio's owner, and a primary channel named for the ride (<code>tg-</code> plus six characters of the key's hash). The channel is encrypted with a 32-byte key hashed from the ride key a different way, so the public channel name gives nothing away. The radio applies it and restarts. Every phone on the ride derives the same name and key, so nothing is typed.</li>
+<li><b>Radio speed</b> is a setting: Turbo, Short, Medium or Long. Short is the default. A position is about 58 ms of airtime on Short and 760 ms on Long, thirteen times as much, and every car relays every other car's packets, so the air fills as the square of the group. Held to 30% of the channel, Short carries about ten cars on LoRa alone and Long about two. Past that the 2.4 GHz lane is doing the work, which is why it exists.</li>
 <li><b>Discovery</b> is Meshtastic's own: every radio on the channel rebroadcasts up to three hops and keeps a node list. Touge reads that list and the standard Position and NodeInfo packets. Only the car icon and color go on a private port (256) that other apps ignore.</li>
-<li><b>The official Meshtastic app on an iPhone or Android</b>, with its own radio on the same channel name and encryption off, sees every car as a node on its map, and its position shows on ours, as a generic car.</li>
+<li><b>Any stock Meshtastic node</b> set to the same channel name and key sees every car as a node on its map, and its position shows on ours, as a generic car. It just won't get the 2.4 GHz lane.</li>
 </ul>
 </div>
 </div>
@@ -175,7 +219,8 @@ Everything below is the app running against the North Carolina map pack, routing
 <span class="k">Riding along on a phone</span>
 <ul class="tight">
 <li>Under 600 dp of width the app switches to one column: map, next turn, the group, three buttons.</li>
-<li><b>Background presence</b> keeps sending your position every 30 seconds with the app closed, under one notification, for the rider who only wants to be on the map.</li>
+<li><b>Background presence</b> keeps sending your position with the app closed, at the same rate and over the same links as the screen, under one notification, for the rider who only wants to be on the map.</li>
+<li><b>The turn card</b> puts the distance big beside the arrow with the time under it, and the road name on its own line across the full width, so "US 15 / US 501" isn't cut to "US 15 / US 50...".</li>
 </ul>
 </div>
 </div>
@@ -188,7 +233,7 @@ Everything below is the app running against the North Carolina map pack, routing
 <div class="grid3">
 <div class="tile"><b><a href="https://www.seeedstudio.com/SenseCAP-Card-Tracker-T1000-E-for-Meshtastic-p-5913.html">SenseCAP Card Tracker T1000-E</a></b><p>Credit-card sized, sealed, with its own GPS and a battery measured in days. The one to hand a passenger or drop in a door pocket — nothing to mount and nothing to plug in.</p></div>
 <div class="tile"><b><a href="https://meshnology.com/">Meshnology N30</a></b><p>A cased Heltec LoRa V3 — ESP32-S3 and an SX1262. Three of them here for the group test. Bigger than the card, and it takes an external antenna, which is what matters between ridges.</p></div>
-<div class="tile"><b>What the app needs</b><p>Bluetooth pairing and nothing else. The app speaks Meshtastic's own BLE service and writes its positions on a private port, so the radios stay ordinary Meshtastic nodes you can still use for text.</p></div>
+<div class="tile"><b>What the app needs</b><p>Bluetooth pairing and nothing else for LoRa. The app speaks Meshtastic's own BLE service and writes its positions on a private port, so the radios stay ordinary Meshtastic nodes you can still use for text. The 2.4 GHz lane needs an ESP32 board, a Heltec V3 or V4, flashed with the Touge module. The T1000-E has no ESP32, so it stays on LoRa.</p></div>
 </div>
 
 <p class="lead">Neither has been up a mountain yet, so the range numbers above are the protocol's rather than mine.</p>
@@ -292,7 +337,9 @@ Everything below is the app running against the North Carolina map pack, routing
 <span class="k">Turn by turn</span>
 <ul class="tight">
 <li>Position snaps to the route. The heading tolerance widens with the bend, so a hairpin, where the road sits 90 degrees off the car, still matches instead of calling you off route.</li>
-<li>Off the route for three seconds, or pointing the wrong way, gets one reroute.</li>
+<li><b>Off route</b> is more than 40 m (130 feet) from the line for three seconds, or off it and facing more than 60 degrees away for a second and a half. One bad fix under a bridge does neither. What happens next is below.</li>
+<li><b>Heading comes from the road, not the phone, when slow.</b> Above 12 mph the GPS bearing is used as is. Below that it's the direction of the track the car has actually driven, once it has covered 15 m or twice the fix's accuracy. Picking the phone up at a light and putting it back no longer spins the map.</li>
+<li><b>The speed limit sign works without a route.</b> On a route the limits come with it and work with no signal. Without one, every 150 m of travel the server is asked what the road under the car is posted at, with the heading picking the carriageway. The last answer holds through a dead spot and is dropped after a minute without a new one.</li>
 <li>Lane guidance draws the lanes to be in when the map data carries them.</li>
 <li>Calls land about eight seconds out, so they scale with speed. Music ducks, never pauses.</li>
 <li>The strip counts down. Arrival, time left and distance left come from where you actually are, not from the plan the route was fetched with.</li>
@@ -300,6 +347,27 @@ Everything below is the app running against the North Carolina map pack, routing
 </ul>
 </div>
 </div>
+
+## Off the route
+
+<p class="lead">A full reroute answers "the best way from here". After a missed turn on a planned ride that's the wrong question, because the best way from here usually skips the twisty section that was the reason for picking the route.</p>
+
+Nothing pops up for a wobble. The offer only appears once the car is a quarter mile off the line, moving at 10 mph or more, with a destination still ahead. Parked beside yesterday's route, it stays quiet. It sits over whatever screen is up, with big targets for a thumb on a bumpy road.
+
+<div class="grid3">
+<div class="tile"><b>Back to my route</b><p>The default, and what happens on its own after a 30 second countdown. A short connector from the car to a point further along the route you picked, then the rest of that route exactly as it was: same roads, same turns, same stops.</p></div>
+<div class="tile"><b>New route to Boone</b><p>Named for the last stop. A fresh route from here, with stops already behind you dropped. It keeps your taste per leg: if you picked the quickest option, each leg's new answer is the quickest again, and if you picked the twistiest, the twistiest.</p></div>
+<div class="tile"><b>Keep going</b><p>Dismisses it. Still well off the line ten seconds later, it asks again. Taking a different road on purpose is the point of this app, and a nav that keeps dragging you back is one people switch off.</p></div>
+</div>
+
+<ul class="tight">
+<li><b>The rejoin point is never behind the car.</b> It's at least 800 m (half a mile) past where you left the route, or as far past it as you've strayed, whichever is more. Aiming for the nearest bit of line is how a nav tells someone who drove two miles past their turn to make a U-turn.</li>
+<li>Within the next 8 km after that, the point closest to the car wins, with a small pull towards earlier ones so a parallel road doesn't skip ten miles of the ride.</li>
+<li><b>The connector is costed like the leg it rejoins.</b> Getting back onto a back-roads leg doesn't go by the interstate. The router is also told which way the route runs at the join, so you arrive going the right direction rather than facing the way you came.</li>
+<li>The connector's "you have arrived" is dropped. Its last real turn is the one onto the route, and that's what gets said.</li>
+<li>The countdown only stops for three things: getting back on the line, arriving, or Keep going. Driving back towards the route doesn't cancel it halfway.</li>
+<li>No way back onto the route from here, and it says so and works out a new one instead.</li>
+</ul>
 
 ## Skipping a stop without stopping
 
@@ -326,8 +394,10 @@ Everything below is the app running against the North Carolina map pack, routing
 <p class="lead">Two things worth knowing before you get to them: what the sky is doing for a hundred miles, and who is sitting on the next straight.</p>
 
 <div class="grid3">
-<div class="tile"><b>Police, ahead of you</b><p>Reports are pulled out to 25 miles and biased along the way you are actually going, side roads included — not a circle around the car. A dot appears before you get there, which is the only time it is any use.</p></div>
-<div class="tile"><b>Age is the colour</b><p>A fresh report is a big bright red dot. It fades and shrinks toward pale orange as it ages, so a glance tells you whether it is worth believing without reading a timestamp.</p></div>
+<div class="tile"><b>Waze's reports, Waze's colours</b><p>Hazards come in through WzSabre and are drawn as round badges in the map itself, so they move with it. The colours match Waze so a pin reads the same in both apps: police blue, crashes red, hazards amber, closed roads red, traffic orange. Each subtype has its own symbol: stopped vehicle, construction, pothole, ice, fog, flood, animal, speed camera.</p></div>
+<div class="tile"><b>Every badge says how old</b><p>The label under it reads "Police · 21 min ago". The badge fades as it ages and police shrink as well. Each kind has its own lifetime: police 25 minutes, traffic 20, animals 30, crashes 90, hazards two hours, closed roads six.</p></div>
+<div class="tile"><b>Whether the feed is alive</b><p>A chip on the map reads "Waze · just now · 14": when the last update landed and how many reports it held. Asked every two minutes, around the car and every five miles along the route out to 25. Green while that keeps up, amber once an update is overdue, red past six minutes, so a feed the battery optimiser quietly killed doesn't look like a quiet road.</p></div>
+<div class="tile"><b>Police on the radar disc</b><p>Police reports are plotted on the weather disc too, north up, where they are. A fresh one is a big bright red dot that fades and shrinks toward pale orange. Under the disc the nearest three are listed with distance and age: "14 mi · 4 min".</p></div>
 <div class="tile"><b>Tap for the detail</b><p>Distance, how old, the band if it is radar, and how many people have confirmed it. The same numbers the report carried, none of them invented.</p></div>
 </div>
 
@@ -434,7 +504,7 @@ Everything below is the app running against the North Carolina map pack, routing
 
 <div class="grid3">
 <div class="tile"><b>Breadcrumbs</b><p>Every ride is recorded as GPX with no button. Points closer than 50 feet are dropped unless the heading moved 12 degrees, so the corners are kept. They land in Rides and routes, ready to Follow.</p></div>
-<div class="tile"><b>Police reports</b><p>Over SABRE, an open Android protocol. Every alert carries its age and fades; police expire at 25 minutes, a closed road at six hours.</p></div>
+<div class="tile"><b>Waze reports</b><p>Over SABRE, an open Android protocol, through the WzSabre proxy app, the same one JBV1 uses. The proxy owns the Waze side; Touge scrapes nothing. With no proxy installed the feature is simply absent.</p></div>
 <div class="tile"><b>Routing server</b><p>Routing goes to my Valhalla box first — well under a second, four states of tiles — with the public FOSSGIS instance behind it as a fallback for anywhere outside them. A list, not one address, because the day the public instance stopped answering it took every device with it. A small monthly subscription (about $3) covers the server. Settings take any Valhalla URL of your own.</p></div>
 <div class="tile"><b>Android Auto</b><p>The tablet's map on the head unit: same style and pack, the route, the group's cars with their icons, the radar disc as an inset, heading up. The turn card with lanes and ETA; Skip, Later and Go on when a stop is ahead; Group, Routes, Search and Tires as car screens; tire and radar alerts as car toasts. The phone app does the work and the head unit shows it.</p></div>
 </div>
@@ -444,7 +514,8 @@ Everything below is the app running against the North Carolina map pack, routing
 <div>
 <span class="k">Live traffic</span>
 <ul class="tight">
-<li>Flow is drawn over the roads, green through red, from TomTom's traffic tiles. Incidents are pins with the delay and a description; a closed road is dark red.</li>
+<li>Flow is drawn over the roads, green through red, from TomTom's traffic tiles.</li>
+<li><b>Incidents wear the same badges as Waze reports.</b> A TomTom crash is a red crash badge, a jam is an orange traffic badge, and fog, ice, flooding, lane closures, construction and stopped vehicles each get their Waze symbol. A road is only drawn closed when TomTom's category says closed, not whenever the delay is open-ended.</li>
 <li>Refreshed every two minutes around the car, not per pan, so a full day is well inside the free tier (2,500 requests a day). The key is yours, from developer.tomtom.com, pasted into settings.</li>
 <li>Off by default; it needs a connection. Routing does not use it, so the twisty way stays the twisty way.</li>
 </ul>
