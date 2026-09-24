@@ -19,9 +19,9 @@ article_header:
 
 ## Read this first — it's beta, and this page is the current one
 
-**This post is the up-to-date page for R53 Logger - Flasher.** Older writeups
-of the app are still online and are out of date; if you landed on one, come
-back here.
+**The current page for R53 Logger - Flasher is
+[here](/car/tech/2026/08/18/r53-logger-august-update.html)**, with the Stage 1
+flash, new screenshots and the sign-up steps. This post is kept for the record.
 
 **The app is beta.** It reads and writes a twenty-year-old engine controller on
 a car you presumably like. It has been developed against a small number of

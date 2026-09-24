@@ -1,0 +1,318 @@
+<!-- R53 Logger - Flasher feature page. Rendered by two posts:
+     2026-08-18-r53-logger-august-update.md (the page) and
+     2026-07-22-r53-android-datalogger.md (a mirror, so old links land on the same text).
+     Edit here, never in the posts. Section order: _posts/R53-LOGGER-POST-ORDER.md -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+<style>
+.r53{--ink:#e5e7eb;--mute:#9ca3af;--acc:#e8323c;--acc-hi:#ff6b73;--acc-soft:rgba(232,50,60,.16);--line:rgba(255,255,255,.1);--line2:rgba(255,255,255,.2);--card:rgba(39,39,42,.6);--card2:rgba(63,63,70,.45);--ok:#4ade80;--warn:#fbbf24;
+  font-family:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);line-height:1.55;
+  background:radial-gradient(ellipse 80% 40% at 15% 0%,var(--acc-soft),transparent 60%),radial-gradient(ellipse 60% 30% at 100% 0%,rgba(59,130,246,.07),transparent 60%),linear-gradient(180deg,#0b0f1a,#05060b 40%);
+  border-radius:22px;padding:28px clamp(16px,3vw,32px) 36px;margin:0 0 24px}
+.r53 *{box-sizing:border-box}
+.r53 a{color:var(--acc-hi)}
+.r53 a:hover{color:#ff959b}
+.r53 code{font-size:.92em}
+.r53 .hero{padding:4px 0 22px;border-bottom:1px solid var(--line)}
+.r53 .brand{display:flex;align-items:center;gap:16px}
+.r53 .mark{width:56px;height:56px;flex:none}
+.r53 .k{display:inline-block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--acc-hi);margin:0 0 4px}
+.r53 .hero h1{font-size:clamp(30px,6vw,54px);line-height:1.05;margin:0;letter-spacing:-.01em;color:var(--ink)}
+.r53 .hero p.sub{font-size:clamp(17px,2.2vw,20px);color:var(--mute);max-width:60ch;margin:14px 0 0}
+.r53 .news{margin:18px 0 0;padding:12px 16px;border:1px solid rgba(232,50,60,.35);border-radius:12px;background:var(--acc-soft);box-shadow:0 0 24px rgba(232,50,60,.08)}
+.r53 .news b{color:var(--ink)}
+.r53 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(140px,100%),1fr));gap:12px;margin:20px 0 0}
+.r53 .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;backdrop-filter:blur(6px)}
+.r53 .stat b{display:block;font-size:28px;line-height:1.1;font-variant-numeric:tabular-nums;color:var(--ink)}
+.r53 .stat span{color:var(--mute);font-size:13px;letter-spacing:.04em;text-transform:uppercase}
+.r53 h2{font-size:clamp(24px,3.4vw,36px);letter-spacing:-.01em;margin:46px 0 6px;color:var(--ink);border:0}
+.r53 h3{font-size:19px;margin:22px 0 6px;color:var(--ink)}
+.r53 p{margin:0 0 12px}
+.r53 .lead{font-size:18px;color:var(--mute);margin:0 0 18px;max-width:66ch}
+.r53 .row{display:grid;grid-template-columns:340px minmax(0,1fr);gap:28px;align-items:center;margin:18px 0 26px}
+.r53 .row.flip{grid-template-columns:minmax(0,1fr) 340px}
+.r53 .row figure img{max-height:560px;object-fit:cover;object-position:top}
+.r53 .pair figure img{max-height:760px;object-fit:cover;object-position:top}
+.r53 .row.flip figure{order:2}
+.r53 .row.wide{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr)}
+.r53 .row.wide figure img{max-height:none}
+.r53 .row.wide.flip{grid-template-columns:minmax(0,1fr) minmax(0,1.4fr)}
+.r53 .row.full{grid-template-columns:1fr;gap:14px}
+.r53 .row.full figure img{max-height:none}
+.r53 .row.full > div{columns:2 320px;column-gap:28px}
+.r53 .row.full > div p{break-inside:avoid}
+.r53 figure{margin:0;background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:border-color .2s,box-shadow .2s}
+.r53 figure:hover{border-color:rgba(232,50,60,.45);box-shadow:0 15px 30px rgba(0,0,0,.3),0 0 20px rgba(232,50,60,.1)}
+.r53 figure img{display:block;width:100%;height:auto;margin:0}
+.r53 figcaption{padding:10px 14px;font-size:13px;color:var(--mute);border-top:1px solid var(--line)}
+.r53 .pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.r53 ul.tight{margin:0 0 12px;padding-left:20px}
+.r53 ul.tight li{margin:5px 0;color:var(--mute)}
+.r53 ul.tight li b{color:var(--ink)}
+.r53 .grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));gap:14px;margin:14px 0 22px}
+.r53 .tile{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px}
+.r53 .tile b{display:block;font-size:17px;margin-bottom:4px;color:var(--ink)}
+.r53 .tile p{margin:0;color:var(--mute);font-size:15px}
+.r53 .tile .tag{display:inline-block;margin:0 0 8px;padding:2px 10px;border-radius:999px;font-size:12px;font-weight:700;background:var(--acc-soft);color:var(--acc-hi)}
+.r53 .tile .tag.ok{background:rgba(74,222,128,.14);color:var(--ok)}
+.r53 .tile .tag.beta{background:rgba(251,191,36,.14);color:var(--warn)}
+.r53 .price b{font-size:30px}
+.r53 .quote{border-left:4px solid var(--acc);padding:6px 16px;margin:18px 0;font-size:19px;color:var(--ink)}
+.r53 .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:16px 0 20px}
+.r53 .step{display:flex;flex-direction:column;gap:12px;padding:20px;border:1px solid rgba(232,50,60,.35);border-radius:18px;background:var(--card);box-shadow:0 0 24px rgba(232,50,60,.06)}
+.r53 .step-head{display:flex;align-items:center;gap:12px}
+.r53 .step-num{display:grid;place-items:center;width:32px;height:32px;flex:none;border-radius:50%;background:var(--acc);color:#fff;font-weight:700}
+.r53 .step h3{margin:0}
+.r53 .step p{color:var(--mute);font-size:15px;margin:0;flex:1}
+.r53 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 18px;border-radius:12px;background:var(--acc);color:#fff !important;font-weight:700;text-decoration:none}
+.r53 .btn:hover{background:#ff4d57}
+.r53 .note{font-size:14px;color:var(--mute)}
+.r53 .video{margin:14px 0 22px;border-radius:18px;overflow:hidden;border:1px solid var(--line)}
+.r53 .last{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);font-size:14px;color:var(--mute)}
+.r53 .brand > div,.r53 .row > *,.r53 .steps > *,.r53 .grid3 > *{min-width:0}
+.r53{overflow-wrap:anywhere}
+@media (max-width:820px){.r53 .row,.r53 .row.flip,.r53 .row.wide,.r53 .row.wide.flip{grid-template-columns:minmax(0,1fr)}.r53 .row figure{max-width:420px;margin:0 auto;width:100%}.r53 .row.flip figure{order:0}.r53 .steps{grid-template-columns:1fr}}
+@media (max-width:520px){.r53{border-radius:14px}.r53 .mark{width:44px;height:44px}.r53 .pair{grid-template-columns:1fr}}
+</style>
+
+<div class="r53">
+
+<div class="hero">
+  <div class="brand">
+    <svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#a51c24"/><path d="M12 44 L22 30 L30 38 L40 20 L52 34" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <div>
+      <span class="k">Android · MINI R53 Cooper S · EMS2000</span>
+      <h1>R53 Logger - Flasher</h1>
+    </div>
+  </div>
+  <p class="sub">Log the car, see exactly where the tune misses, and flash the fix from the same phone. Or skip all of that and flash MINI's own Stage 1.</p>
+  <div class="news"><b>This week:</b> a big logger and flash update, the JCW and GP1 calibrations are now the <a href="#stage-1-flash">Stage 1 flash</a> on early and late cars, and the test group is open. Anyone can <a href="#get-it">join and install it</a>.</div>
+  <div class="stats">
+    <div class="stat"><b>~8/s</b><span>time-aligned rows</span></div>
+    <div class="stat"><b>512 KB</b><span>full ECU backup</span></div>
+    <div class="stat"><b>12</b><span>flash options</span></div>
+    <div class="stat"><b>3</b><span>ways to connect</span></div>
+    <div class="stat"><b>0</b><span>laptops</span></div>
+  </div>
+</div>
+
+<h2 id="stage-1-flash">Stage 1 flash</h2>
+<p class="lead">Years ago MINI was nice enough to give S owners a Stage 1 flash from the factory. It shipped as the JCW kit. The app puts it on your car.</p>
+
+<div class="row">
+  <figure><img src="/assets/images/r53-logger/v2/flash-stage1.jpg" alt="Flash screen with the Stage 1 flash section: JCW and GP1 buttons, and Back to stock"><figcaption>JCW and GP1 are the Stage 1 flash. US S sits underneath to put the car back to stock.</figcaption></figure>
+  <div>
+    <p>The JCW and GP1 calibrations are MINI's own tunes for an R53 with a smaller pulley, 380 cc injectors and a freer exhaust. That's how most of these cars end up by the time anyone wants a tune.</p>
+    <p><b>If your car has a pulley, 380 cc injectors and an exhaust or header, it'll flow close enough to pair well.</b> You don't really need the JCW head. A header and exhaust, or a mild cam, make up for it.</p>
+    <p>Stage 1 works on early and late cars. The app reads your ECU's software version and loads the calibration made for it: the facelift <code>740P10</code>, the early <code>740J10</code>, and EU S and JCW images for EU cars.</p>
+  </div>
+</div>
+
+<div class="row flip">
+  <figure><img src="/assets/images/r53-logger/v2/flash-jcw-loaded.jpg" alt="JCW calibration loaded, tune check OK, software 740P10"><figcaption>JCW loaded and checked against the ECU's software before anything is written.</figcaption></figure>
+  <div>
+    <p><b>If your ECU version isn't mapped yet</b>, the app says so and offers a Send button. That sends me your backup and the flash log, and I work on porting the JCW and GP1 tables to your ECU version.</p>
+    <p><b>Where it sits.</b> For the vast majority of lightly modded R53s this works well enough. A custom tune makes more power, with raised torque and air tables and more ignition advance. This is factory calibration, and it's well proven.</p>
+    <ul class="tight">
+      <li><b>OEM software.</b> MINI's calibration as the factory wrote it, not a third-party map.</li>
+      <li><b>Needs the 380 cc JCW / GP injectors.</b> Stock 330s can't supply the fuel it asks for. Bigger than 380? Set the injector option to match.</li>
+      <li><b>Flash options still apply on top</b>: pops, redline, pedal map, fans and the rest.</li>
+    </ul>
+  </div>
+</div>
+
+<h2 id="log-it">Log it</h2>
+<p class="lead">Plug in, connect, and the car streams fast enough to catch what happens mid-pull, time-aligned so RPM, load and knock line up.</p>
+
+<div class="row">
+  <figure><img src="/assets/images/r53-logger/v2/channels-fast-mode.jpg" alt="Channels and poll rate, Fast aligned mode"><figcaption>Fast aligned mode: eight channels in one snapshot, and everything else still logs.</figcaption></figure>
+  <div>
+    <p><b>Fast aligned mode</b> is the default. The ECU hands over RPM, air mass, boost, blower inlet, intake temp, throttle, coolant and knock retard in one snapshot, up to about eight rows a second. Every channel in a row comes from the same instant, so a knock reading sits on the RPM and load it happened at.</p>
+    <p>Everything else still logs: spark per cylinder, knock level and energy, trims, injector time and duty. Set each block Fast, Slow or Off and spend the K-line on what you're tuning.</p>
+    <p>A wideband joins over the ESP32 bridge and lands in the same CSV. Logs share as plain CSV or straight to Datazap.</p>
+  </div>
+</div>
+
+<div class="row flip">
+  <figure><img src="/assets/images/r53-logger/v2/autolog.jpg" alt="Autolog settings"><figcaption>Set it once. Every WOT pull saves as its own file.</figcaption></figure>
+  <div>
+    <p><b>Autolog records the pulls for you.</b> It arms when throttle crosses your threshold, and a pre-trigger buffer keeps the seconds before it, so the launch is never clipped.</p>
+    <p>A lift between gears doesn't end the run. It trails a few seconds after the last lift, then saves the pull as its own file. Drive the car, and every pull is waiting when you stop.</p>
+  </div>
+</div>
+
+<div class="row full">
+  <figure><img src="/assets/images/r53-logger/v2/tablet-graph-pull.jpg" alt="Graph replaying a pull on a tablet"><figcaption>A pull replayed on a tablet: 7,097 rpm, 99.6% throttle, 31.1° spark, AFR 11.75 at the point tapped.</figcaption></figure>
+  <div>
+    <p><b>The graph is a playback deck.</b> Replay any log at 1× to 4×, pinch to zoom time, tap to read every value at that instant, drop marks, and toggle channels. It works live too, with a stale-data banner the moment the ECU stops answering.</p>
+    <p>On a tablet in landscape it goes two columns, chart on the left and controls on the right.</p>
+  </div>
+</div>
+
+<div class="video">{%- include extensions/youtube.html id='NA8mJ3ce8yA' -%}</div>
+
+<h2 id="see-the-tune">See the tune</h2>
+<p class="lead">The same log plays back as a 3D surface and as flat maps over RPM and load, so you see where the tune misses, not just when.</p>
+
+<div class="row wide">
+  <figure><img src="/assets/images/r53-logger/v2/afr-3d.jpg" alt="3D AFR surface over RPM and load"><figcaption>Measured AFR against your target curve. Green is on target, red peaks ran lean.</figcaption></figure>
+  <div>
+    <p><b>AFR 3D</b> plots measured AFR against the target curve you set, over every cell the engine visited. Open loop shows AFR error, closed loop shows total trim. DFCO and tip-out leans are ignored, so you're reading combustion, not decel noise.</p>
+    <p>The target is two points with a straight line between them, for example 12.8 at 2,000 rpm down to 11.5 at 7,800. A wideband lag setting shifts the AFR trace so each reading lands on the cell that fuelled it.</p>
+  </div>
+</div>
+
+<div class="pair">
+  <figure><img src="/assets/images/r53-logger/v2/fuel-map.jpg" alt="Fuel map"><figcaption><b>Fuel map.</b> AFR off target in open loop, trim in closed loop, the tune's value dimmed underneath. The white line traces the pull.</figcaption></figure>
+  <figure><img src="/assets/images/r53-logger/v2/trims-map.jpg" alt="Trims map"><figcaption><b>Trims.</b> Long-term left, short-term right. Blue is the ECU pulling fuel, red is adding it.</figcaption></figure>
+</div>
+
+<div class="row flip" style="margin-top:26px">
+  <figure><img src="/assets/images/r53-logger/v2/spark-map.jpg" alt="Spark map with timing pulled"><figcaption>Degrees off the tune's spark map. Red is timing the ECU pulled.</figcaption></figure>
+  <div>
+    <p><b>Knock, pinned to the cell that pinged.</b> The spark map reads each visited cell in degrees off the tune's own table, and turns red where the ECU pulled timing. Every view drops a yellow dot where a knock event fired, and the dots stay all session.</p>
+    <p>A per-cylinder tally sits in the corner, so one cylinder doing all the complaining is obvious. Red cells stacked with knock dots are the corner of the map that needs work.</p>
+  </div>
+</div>
+
+<div class="row">
+  <figure><img src="/assets/images/r53-logger/v2/ign-3d.jpg" alt="Ign 3D: mapped spark advance with delivered spark as colour"><figcaption>Ign 3D: height is the mapped advance, colour is what the ECU actually delivered against it.</figcaption></figure>
+  <div>
+    <p><b>Ign 3D</b> draws the tune's spark map as a surface and colours it by the spark the engine really got. Blue ran behind the map, green on it, red ahead. Drag to orbit.</p>
+    <p>Where the surface goes blue under load, the ECU was pulling timing there. Cross-check it against the knock dots on the flat maps.</p>
+  </div>
+</div>
+
+<h2 id="close-the-loop">Close the loop</h2>
+<p class="lead">Log a pull, let the app turn it into cell changes, check them against the log, flash, log again. All from the phone.</p>
+
+<div class="row full">
+  <figure><img src="/assets/images/r53-logger/v2/tablet-sim-fill.jpg" alt="Fuel table simulator on a tablet after Fill from log"><figcaption>Fill from log on a 7,000 rpm pull: 26 cells changed, and it says plainly that 19 hit the 15% per-flash cap. The white line traces the cells the pull went through, dashed AFR is what the edited table would have delivered.</figcaption></figure>
+  <div>
+    <p><b>Fuel recommendation</b> turns the window you're looking at into a per-cell table of proposed changes. Open loop is judged by the wideband against your target. Closed loop is judged by short plus long trim, because there the ECU has already corrected the mixture and the wideband reads stoich no matter how wrong the table is. The two are never mixed.</p>
+    <p>A cell needs several agreeing samples before it gets a number, and shows its count. Wild corrections are clamped and flagged.</p>
+    <p>On this ECU a percent in the full-load table isn't a percent of fuel. The table is geared down inside the injection maths, so the app converts measured error into the cell change that delivers it, using your own tune.</p>
+  </div>
+</div>
+
+<div class="row full">
+  <div>
+    <p><b>The simulator</b> puts the proposed table under your fingers. Tap or drag cells, nudge them ±1% or ±5%, undo, or fill from the log. It redraws the log's AFR as if the table had carried your edits, and scores the window: samples moved, samples held by the ECU's trims, AFR before and after.</p>
+    <p>Edits cap at ±15% per flash. Bigger moves are repeated flashes with a log in between. Export sends the proposal as CSV to your tuner. The simulator never writes the bin itself.</p>
+  </div>
+</div>
+
+<h2 id="flash-options">Flash options</h2>
+<p class="lead">Common changes applied to whatever tune is loaded, in memory, before the write. No hex editor, no second tool.</p>
+
+<div class="row flip">
+  <figure><img src="/assets/images/r53-logger/v2/options-pedal.jpg" alt="Throttle pedal remap presets"><figcaption>Pedal presets. Each one also rewrites the torque monitor table so it can't set P1689.</figcaption></figure>
+  <div>
+    <p>Every option is <b>BIN</b> (leave the file alone), <b>Stock</b> (factory values back) or <b>Modify</b> (apply the preset). Each card reads the loaded tune first: the injector card says the JCW image looks like 380 cc, the redline card shows the limit it's about to move.</p>
+    <p>If an option can't find its table in your bin, it refuses rather than guess.</p>
+  </div>
+</div>
+
+<div class="grid3">
+  <div class="tile"><b>Pops</b><p>Decel crackle, stock to max.</p></div>
+  <div class="tile"><b>Injector size</b><p>330, 380, 440, 550, 630 cc. Rescales the fuel scalar.</p></div>
+  <div class="tile"><b>Redline</b><p>Raises the per-gear limit. The limiter cuts fuel, not throttle.</p></div>
+  <div class="tile"><b>Pedal map</b><p>Eco, Sport, Sport+, a true 1:1 Straight, or Track.</p></div>
+  <div class="tile"><b>Overboost</b><p>Raised throttle opening.</p></div>
+  <div class="tile"><b>Idle</b><p>Manual cars, cold and warm together.</p></div>
+  <div class="tile"><b>Cooling fan</b><p>Kick on earlier: 216/230 °F or 200/220 °F.</p></div>
+  <div class="tile"><b>Trim learning range</b><p>Learn fuel trims further up the revs.</p></div>
+  <div class="tile"><b>Cruise timing</b><p>About 2° more advance at light-throttle cruise, for economy.</p></div>
+  <div class="tile"><b>Pre-facelift gearbox</b><p>A facelift ECU in front of the early gearbox, so it works out the right gear.</p></div>
+  <div class="tile"><span class="tag beta">experimental</span><b>O2 switch point</b><p>Moves the front O2 switch voltage, so cruise settles slightly lean.</p></div>
+  <div class="tile"><span class="tag beta">very beta</span><b>Lean cruise</b><p>Leans steady cruise. Watch AFRs and back it out if you don't like it.</p></div>
+</div>
+
+<div class="pair">
+  <figure><img src="/assets/images/r53-logger/v2/options-injectors.jpg" alt="Injector size option reading 380 cc"><figcaption>The injector card reads the loaded tune first.</figcaption></figure>
+  <figure><img src="/assets/images/r53-logger/v2/options-redline.jpg" alt="Redline presets"><figcaption>Redline presets, with the tune's current limit shown.</figcaption></figure>
+</div>
+
+<h2 id="flash-safety">Why it's safe to flash</h2>
+<p class="lead">It reads before it writes, it checks everything it can, and when it isn't sure it stops.</p>
+
+<div class="grid3">
+  <div class="tile"><b>Backup first</b><p>A full 512 KB read of your own ECU, kept per car in the Garage.</p></div>
+  <div class="tile"><b>Tune check</b><p>Checksums and layout verified before every write, auto-fixed where it can be.</p></div>
+  <div class="tile"><b>Wrong family refused</b><p>A file for other ECU software is refused outright, with no override.</p></div>
+  <div class="tile"><b>Quick write</b><p>Only the calibration region, about 60 KB, over OBD.</p></div>
+  <div class="tile"><b>Survives the screen</b><p>The write runs in the background and nothing else can take the cable.</p></div>
+  <div class="tile"><b>Send report</b><p>If a write stops, one tap sends me the log that says where and why.</p></div>
+</div>
+<p class="note">It's still beta software writing a twenty-year-old ECU. Keep the car on a battery charger, key on and engine off, and keep a desktop OBD recovery path ready.</p>
+
+<h2 id="garage">Garage</h2>
+<p class="lead">One phone, several Minis. Every backup, flash, fault read and log files under the car it came from.</p>
+
+<div class="row">
+  <figure><img src="/assets/images/r53-logger-august/garage-bins-logs.png" alt="Garage for one car"><figcaption>Backups, flashed and loaded bins tracked separately, logs listed per car.</figcaption></figure>
+  <div>
+    <p>The app reads the VIN from the cluster at connect and files everything under that car. When it can't tell which car a file belongs to, it asks instead of guessing, because a flash on the wrong car writes one car's tune into another car's ECU.</p>
+    <p>Each car shows what's in force on the ECU right now. The whole Garage exports to a zip and imports on another phone without overwriting anything.</p>
+  </div>
+</div>
+
+<h2 id="diagnostics">Diagnostics</h2>
+<p class="lead">Fault codes from every module in plain English, with the likely cause and the fix.</p>
+<p>Engine, body (BC1), immobiliser (EWS), cluster, ABS/DSC and airbag codes, each translated with R53-specific notes. A lean code says check boost and vacuum leaks first, and a P0116 points at the thermostat. Codes clear where the clear command is known, reports share from the phone, and every fault read files into the car's history. Adaptation resets are there too, for after hardware changes.</p>
+
+<h2 id="hardware">What you need</h2>
+<p class="lead">An Android phone or tablet and one of three ways onto the K-line.</p>
+
+<div class="row flip">
+  <figure><img src="/assets/images/r53-logger/v2/settings-link.jpg" alt="Settings, K-line link choice"><figcaption>Pick the wire in Settings.</figcaption></figure>
+  <div>
+    <ul class="tight">
+      <li><b>K+DCAN USB cable.</b> The cheap cable every BMW owner already has. The proven path for flashing.</li>
+      <li><b>OBDLink CX or MX+</b> over Bluetooth. Logging, diagnostics and flashing, no cable. An LX won't work: it has no Bluetooth LE and can't set the parity this ECU needs.</li>
+      <li><b>ESP32 bridge</b> (optional). Adds CAN channels and an AEM wideband over AEMnet, and can carry the K-line for logging.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="grid3">
+  <div class="tile"><span class="tag ok">write + options</span><b>740P10 / 740A0</b><p>Facelift, silver cover. Stage 1 available.</p></div>
+  <div class="tile"><span class="tag ok">write + options</span><b>740J10</b><p>Early ECU and pre-facelift conversions. Stage 1 available.</p></div>
+  <div class="tile"><span class="tag beta">write in beta</span><b>740G00</b><p>Write and most options. Stage 1 not mapped yet: tap Send.</p></div>
+</div>
+<p class="note">Logging, live data, diagnostics and backup work on any R53 EMS2000, silver cover or black.</p>
+
+<h2 id="prices">What it costs</h2>
+<p class="lead">One-off in-app purchases. No subscription.</p>
+
+<div class="grid3">
+  <div class="tile price"><b>$25</b><p><b style="display:inline;font-size:inherit">App unlock.</b> Logging, graphs, 3D and maps, fuel recommendation and simulator, wideband, diagnostics, backup.</p></div>
+  <div class="tile price"><b>$50</b><p><b style="display:inline;font-size:inherit">Flash unlock.</b> Write to the ECU, with the flash options.</p></div>
+  <div class="tile price"><b>$50</b><p><b style="display:inline;font-size:inherit">Stage 1 flash.</b> MINI's JCW and GP1 calibrations, plus stock S to go back.</p></div>
+</div>
+<p><b>Prepared facelift ECU, $275.</b> VIN-swapped to your car with the immobiliser deleted, ready to drop in. Shipping at cost. Email <a href="mailto:matt@geekopolis.com">matt@geekopolis.com</a> with your year, model and VIN.</p>
+
+<h2 id="get-it">Get it</h2>
+<p class="lead">It's in Google Play testing, so it won't show up in a search. Three steps, all with the Google account on your phone.</p>
+
+<div class="steps">
+  <div class="step">
+    <div class="step-head"><span class="step-num">1</span><h3>Join the group</h3></div>
+    <p>Open to anyone, no approval.</p>
+    <a class="btn" href="https://groups.google.com/g/r53-logger-testers">Join group</a>
+  </div>
+  <div class="step">
+    <div class="step-head"><span class="step-num">2</span><h3>Opt in on Play</h3></div>
+    <p>Tap Become a tester.</p>
+    <a class="btn" href="https://play.google.com/apps/testing/com.geekopolis.r53logger">Become a tester</a>
+  </div>
+  <div class="step">
+    <div class="step-head"><span class="step-num">3</span><h3>Install</h3></div>
+    <p>Install from Play on your phone.</p>
+    <a class="btn" href="https://play.google.com/store/apps/details?id=com.geekopolis.r53logger">Open in Play</a>
+  </div>
+</div>
+<p class="note">If Play says the app isn't found, you're signed in with a different Google account than the one that joined, or Play hasn't caught up yet. Give it a few minutes. Install from Play rather than sideloading, or purchases won't work. Module coding (BC1, EWS, airbag and the rest) is a separate app: <a href="/car/tech/2026/07/26/r53-coding.html">R53 Coding</a>.</p>
+
+<div class="last">Questions, ECU quotes, or stuck on sign-up: <a href="mailto:matt@geekopolis.com">matt@geekopolis.com</a> or <a href="https://www.instagram.com/mattryan6729/">@mattryan6729</a>. Give it a weekend on the car and tell me what breaks.</div>
+
+</div>
