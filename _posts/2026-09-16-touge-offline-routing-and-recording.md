@@ -67,7 +67,7 @@ article_header:
 <div class="hero">
 <span class="k">Android · offline · for the pass</span>
 <h1>Touge</h1>
-<p>Keeps the whole group on one map when the bars run out, car to car over its own radios. Then it plans the twisty way there and only warns you about police who are actually on your road. A paid app, with an optional small monthly subscription for routing on my server.</p>
+<p>Keeps the whole group on one map when the bars run out, car to car over its own radios. Then it plans the twisty way there and only warns you about police who are actually on your road.</p>
 <figure class="reel">
 <video controls playsinline preload="metadata" poster="/assets/images/touge/v3/touge-intro-poster.jpg">
 <source src="/assets/images/touge/v3/touge-intro.mp4" type="video/mp4">
