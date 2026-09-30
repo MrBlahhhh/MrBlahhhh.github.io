@@ -1,0 +1,325 @@
+<!-- R53 Coding feature page, in the look of the shift light site
+     (ryansdesigns.geekopolis.com/shiftlight): solder-mask green, copper hairlines,
+     condensed display type, and the red tester-signup cards it shares with the logger.
+     Rendered by _posts/2026-07-26-r53-coding.md. Edit here, not in the post.
+     Screenshots: assets/images/r53-coding/v2/, from a Pixel 10 Pro emulator on
+     coding build 121 with the REDcar (TD91H) backups loaded. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+.rc{--bg:#0B1811;--bg2:#0F2017;--panel:#132A1F;--panel2:#183526;--line:rgba(216,148,89,.26);--line2:rgba(216,148,89,.5);--copper:#D89459;--copper2:#B87A45;--silk:#EEF3EC;--silk2:#C6D3C9;--mute:#8CA497;--red:#e8323c;
+  --disp:'Big Shoulders Display','Arial Narrow',Impact,sans-serif;--body:'Schibsted Grotesk',system-ui,'Segoe UI',sans-serif;--mono:'IBM Plex Mono','SFMono-Regular',Consolas,monospace;
+  background:radial-gradient(70% 40% at 12% 0%,rgba(216,148,89,.10),transparent 60%),var(--bg);color:var(--silk);font-family:var(--body);font-size:17px;line-height:1.55;
+  border:1px solid var(--line);border-radius:6px;padding:clamp(22px,4vw,48px) clamp(16px,3.6vw,44px) 40px;margin:0 0 24px;overflow-wrap:anywhere;-webkit-font-smoothing:antialiased}
+.rc *{box-sizing:border-box}
+.rc p{margin:0 0 12px}
+.rc a{color:var(--copper);text-decoration-color:rgba(216,148,89,.45)}
+.rc a:hover{color:#f0b27a}
+.rc code{font-family:var(--mono);font-size:.86em;color:var(--silk);background:var(--panel2);border:1px solid var(--line);padding:1px 5px;border-radius:3px}
+.rc h1,.rc h2,.rc h3{margin:0;padding:0;border:0;font-family:var(--disp);font-weight:900;line-height:.95;letter-spacing:.005em;text-transform:uppercase;color:var(--silk);text-wrap:balance}
+.rc h1{font-size:clamp(48px,7.4vw,96px)}
+.rc h1 em,.rc h2 em{font-style:normal;color:var(--copper)}
+.rc h2{font-size:clamp(38px,5.2vw,64px);margin:0 0 16px}
+.rc h3{font-size:clamp(22px,2.4vw,30px);font-weight:800;margin:0 0 8px}
+.rc .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--copper);display:flex;align-items:center;gap:12px;margin:0 0 14px}
+.rc .eyebrow::before{content:"";width:22px;height:1px;background:var(--copper2);flex:none}
+.rc .lede{font-size:clamp(17px,1.7vw,20px);line-height:1.5;color:var(--silk2);max-width:36em;margin:0}
+.rc .body{color:var(--silk2);max-width:40em}
+.rc .body b{color:var(--silk);font-weight:600}
+/* hero */
+.rc .hero{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:clamp(20px,4vw,44px);align-items:center;padding-bottom:30px}
+.rc .hero .copy{display:grid;gap:20px}
+.rc .ctas{display:flex;gap:12px;flex-wrap:wrap}
+.rc .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:13px 20px;border-radius:4px;font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border:1px solid transparent;white-space:nowrap;line-height:1.2}
+.rc .btn.red{background:var(--red);color:#fff}
+.rc .btn.red:hover{background:#ff4d57;color:#fff}
+.rc .btn.ghost{border-color:var(--line2);color:var(--silk)}
+.rc .btn.ghost:hover{background:rgba(216,148,89,.1);color:var(--silk)}
+.rc .news{font-family:var(--mono);font-size:13px;line-height:1.7;color:var(--silk2);border:1px solid var(--line);border-left:3px solid var(--copper);background:var(--panel);padding:12px 16px;margin:0}
+.rc .news b{color:var(--copper);font-weight:500;letter-spacing:.06em;text-transform:uppercase;font-size:12px}
+.rc .fit{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.rc .fit div{background:var(--panel);padding:16px 18px}
+.rc .fit .n{font-family:var(--disp);font-weight:900;font-size:clamp(38px,4.4vw,52px);line-height:.9;color:var(--silk)}
+.rc .fit p{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin:8px 0 0;line-height:1.5}
+/* sections */
+.rc section{padding:clamp(40px,6vw,64px) 0 6px;border-top:1px solid var(--line)}
+.rc .split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,300px);gap:clamp(22px,4vw,44px);align-items:start}
+.rc .split.rev{grid-template-columns:minmax(0,300px) minmax(0,1fr)}
+.rc .split.rev > figure{order:-1}
+.rc .phone{margin:0;border:1px solid var(--line);background:#000;border-radius:18px;padding:7px;overflow:hidden}
+.rc .phone img{display:block;width:100%;height:auto;border-radius:12px;margin:0;max-width:none}
+.rc .phone figcaption{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);padding:10px 6px 4px;line-height:1.55}
+.rc .phones{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:24px 0 6px;max-width:800px;align-items:start}
+.rc .phones.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.rc ul.list{list-style:none;padding:0;margin:0 0 16px;display:grid;gap:12px}
+.rc ul.list li{position:relative;padding-left:24px;color:var(--silk2);margin:0}
+.rc ul.list li::before{content:"";position:absolute;left:0;top:10px;width:8px;height:8px;background:var(--copper);border-radius:1px}
+.rc ul.list li b{color:var(--silk);font-weight:600}
+.rc ol.flow{list-style:none;counter-reset:f;padding:0;margin:0 0 16px;display:grid;gap:12px}
+.rc ol.flow li{counter-increment:f;position:relative;padding-left:40px;color:var(--silk2);margin:0}
+.rc ol.flow li::before{content:counter(f,decimal-leading-zero);position:absolute;left:0;top:1px;font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--copper)}
+.rc ol.flow li b{color:var(--silk);font-weight:600}
+.rc .spec{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:12px 22px;font-family:var(--mono);font-size:13px;line-height:1.55;margin:0 0 16px}
+.rc .spec dt{color:var(--copper);letter-spacing:.06em;text-transform:uppercase;font-size:11px;padding-top:3px;margin:0;font-weight:500}
+.rc .spec dd{margin:0;color:var(--silk2)}
+.rc .spec dd b{color:var(--silk);font-weight:500}
+.rc .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin:22px 0 4px}
+.rc .tiles a{background:var(--panel);padding:18px 18px 16px;display:grid;gap:6px;align-content:start;text-decoration:none;color:inherit;font-weight:400;position:relative}
+.rc .tiles a:hover{background:var(--panel2)}
+.rc .tiles .k{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--copper)}
+.rc .tiles .t{font-family:var(--disp);font-weight:800;font-size:25px;text-transform:uppercase;line-height:.95;color:var(--silk)}
+.rc .tiles .p{font-size:14px;color:var(--silk2);line-height:1.5}
+.rc .tiles .bar{position:absolute;left:0;bottom:0;height:3px;width:100%;background:linear-gradient(90deg,#2BF06A,#FFB000,#FF2E2E);opacity:.8}
+.rc .note{font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--mute);line-height:1.75;margin:14px 0 0}
+.rc .note b{color:var(--silk2);font-weight:500}
+.rc .warn{border:1px solid rgba(232,50,60,.4);background:rgba(232,50,60,.07);padding:18px 20px;margin:18px 0 6px}
+.rc .warn h3{color:#ff8a90}
+.rc .warn p,.rc .warn li{color:var(--silk2)}
+/* signup: the same red step cards as the shift light site and the logger post */
+.rc .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:20px 0 6px}
+.rc .step{display:flex;flex-direction:column;gap:12px;padding:20px;border:1px solid rgba(232,50,60,.35);border-radius:4px;background:var(--panel);box-shadow:0 0 24px rgba(232,50,60,.08)}
+.rc .step-head{display:flex;align-items:center;gap:12px}
+.rc .step-num{display:grid;place-items:center;width:32px;height:32px;flex:none;border-radius:50%;background:var(--red);color:#fff;font-family:var(--mono);font-weight:700}
+.rc .step h3{font-size:clamp(22px,2vw,28px);margin:0}
+.rc .step p{font-size:15px;color:var(--silk2);flex:1;margin:0}
+.rc .last{margin-top:36px;padding-top:18px;border-top:1px solid var(--line);font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--mute);line-height:1.8}
+.rc .last a{color:var(--silk2)}
+.rc .hero > *,.rc .split > *,.rc .phones > *,.rc .steps > *{min-width:0}
+@media (max-width:820px){
+  .rc .hero,.rc .split,.rc .split.rev{grid-template-columns:minmax(0,1fr)}
+  /* .split.rev puts its phone first on desktop; on a phone the text leads everywhere */
+  .rc .hero figure,.rc .split > figure,.rc .split.rev > figure{max-width:320px;width:100%;margin:0 auto;order:2}
+  .rc .fit{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .rc .steps{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:560px){
+  .rc .phones,.rc .phones.three{grid-template-columns:minmax(0,1fr);max-width:320px;margin-left:auto;margin-right:auto}
+  .rc .spec{grid-template-columns:minmax(0,1fr);gap:2px 0}
+  .rc .spec dd{margin-bottom:10px}
+  .rc .btn{white-space:normal;text-align:center}
+}
+</style>
+
+<div class="rc">
+
+<div class="hero">
+<div class="copy">
+<p class="eyebrow">Android · MINI Cooper S R53 · module coding</p>
+<h1>NCS Expert,<br><em>minus the laptop.</em></h1>
+<p class="lede">R53 Coding reads and writes the settings inside your MINI's modules, the same ones NCS Expert codes, from an Android phone. Seven modules, every setting in plain English, and a backup before anything changes.</p>
+<div class="ctas"><a class="btn red" href="#get-it">Join the testers</a><a class="btn ghost" href="#whats-new">What's new</a></div>
+<p class="news"><b>Updated Sep 30</b> · seven modules, OBDLink CX and MX+, fault codes in English, presets, race seats, speedometer calibration and settings transfer. Sign-up is open to anyone now.</p>
+</div>
+<figure class="phone"><img src="/assets/images/r53-coding/v2/edit-row.jpg" alt="Edit options on the body computer: brake light warning, country variant and daytime running lights, each with its NCS name, a description and the current value" loading="eager"><figcaption>Body computer · every setting in plain English</figcaption></figure>
+</div>
+
+<div class="fit">
+<div><div class="n">7</div><p>modules it codes</p></div>
+<div><div class="n">269</div><p>settings on one body computer</p></div>
+<div><div class="n">268/268</div><p>match NCS Expert on the same car</p></div>
+<div><div class="n">0</div><p>files to import</p></div>
+</div>
+
+<section id="whats-new">
+<p class="eyebrow">01 · New since July</p>
+<h2>A lot more <em>than BC1.</em></h2>
+<p class="body">The first version coded the body computer and not much else. This is where it is now.</p>
+<div class="tiles">
+<a href="#modules"><span class="k">Modules</span><span class="t">Seven, live</span><span class="p">Body, engine, DSC, airbag, cluster, immobilizer and the column pod.</span><span class="bar"></span></a>
+<a href="#connect"><span class="k">Wireless</span><span class="t">OBDLink CX and MX+</span><span class="p">Code over Bluetooth, no cable. An LX can't do it, and the app says so by name.</span><span class="bar"></span></a>
+<a href="#trouble-codes"><span class="k">Diagnostics</span><span class="t">Faults in English</span><span class="p">Every module reads and clears its codes, with names, not bare hex.</span><span class="bar"></span></a>
+<a href="#presets"><span class="k">One tap</span><span class="t">Presets</span><span class="p">Daily Comfort and Track Day stage the usual set of changes for a module.</span><span class="bar"></span></a>
+<a href="#race-seats"><span class="k">Airbag</span><span class="t">Race seats</span><span class="p">Asks which side the driver sits on and shows every airbag it will turn off.</span><span class="bar"></span></a>
+<a href="#speedo"><span class="k">Cluster</span><span class="t">Speedo calibration</span><span class="p">Enter what the cluster and a GPS say. The app works out the new number.</span><span class="bar"></span></a>
+<a href="#transfer"><span class="k">Module swap</span><span class="t">Settings transfer</span><span class="p">Carry your coding to a replacement module, even one on a different index.</span><span class="bar"></span></a>
+<a href="#get-it"><span class="k">Sign-up</span><span class="t">Open to anyone</span><span class="p">Join the group and install from Play. No approval to wait for.</span><span class="bar"></span></a>
+</div>
+</section>
+
+<section id="how-it-works">
+<div class="split">
+<div>
+<p class="eyebrow">02 · The hub</p>
+<h2>Read. Edit. <em>Write.</em></h2>
+<ol class="flow">
+<li><b>Plug in.</b> A K+DCAN cable on a USB-C OTG adapter, or tick the box and use an OBDLink CX or MX+ over Bluetooth. Key on, engine off.</li>
+<li><b>Pick a module</b> and tap Read. The app reads the VIN off the cluster, then the module's coding, and saves a backup before you can touch anything. The file name carries the VIN, the module and the time.</li>
+<li><b>Edit.</b> The full-screen list opens on its own after a good read. Picking a value only changes the working copy.</li>
+<li><b>Write to car.</b> Only the blocks you changed go out, then the app reads them back to prove they landed.</li>
+</ol>
+<p class="body">The comms log at the bottom shows every telegram. If something goes sideways, Share log gets it to me.</p>
+</div>
+<figure class="phone"><img src="/assets/images/r53-coding/v2/hub.jpg" alt="The coding hub: OBDLink checkbox, module picker, Read from car, Edit options, Write to car, Restore backup, Planning mode and Trouble codes" loading="lazy"><figcaption>The hub, build 121</figcaption></figure>
+</div>
+</section>
+
+<section id="modules">
+<div class="split rev">
+<figure class="phone"><img src="/assets/images/r53-coding/v2/modules.jpg" alt="Select a module: body computer, engine, DSC, airbag, instrument cluster, immobilizer and column instrument pod" loading="lazy"><figcaption>Seven modules on the K-line</figcaption></figure>
+<div>
+<p class="eyebrow">03 · What it codes</p>
+<h2>Seven <em>modules.</em></h2>
+<dl class="spec">
+<dt>BC1</dt><dd><b>Body computer.</b> Lights, locking, windows, wipers, alarm and bulb monitoring. 269 settings on a C05.</dd>
+<dt>EMS2000</dt><dd><b>Engine.</b> Market, emissions, cruise, and the A/C cut at full throttle.</dd>
+<dt>MK60</dt><dd><b>DSC / ABS.</b> Sport+, the brake-based limited slip, brake assist.</dd>
+<dt>Airbag</dt><dd><b>MRS5K, and the MRS4 in early cars.</b> Front, side and curtain bags, belts, occupancy.</dd>
+<dt>KMB</dt><dd><b>Instrument cluster.</b> Display, units, gongs, and the speedometer number.</dd>
+<dt>EWS3</dt><dd><b>Immobilizer.</b> Whether the car needs the clutch down to crank.</dd>
+<dt>RIP</dt><dd><b>Column pod.</b> The gauges behind the wheel, and its own copy of the speedometer number.</dd>
+</dl>
+<p class="body">Each one reads the index the module reports and loads the table made for it. An index I don't ship yet still gets a full backup, and editing waits until I do. Every table was checked against NCS Expert on the same car: 268 of 268 body computer settings, 76 of 76 on the cluster, 24 of 24 on the DSC.</p>
+<p class="note">The convertible top (CVM) and the GT are in planning mode only until I capture a coding session on each.</p>
+</div>
+</div>
+</section>
+
+<section id="plain-english">
+<p class="eyebrow">04 · Edit options</p>
+<h2>Plain <em>English.</em></h2>
+<p class="body">After a read, Edit options shows what the car actually has coded, grouped the way you'd look for it: exterior lights, locking, windows, wipers, comfort. The everyday settings come first and the long tail sits under Advanced. Each row has a plain title, the NCS name, a line on what it does where I've written one, and the current value.</p>
+<div class="phones">
+<figure class="phone"><img src="/assets/images/r53-coding/v2/edit-bc1.jpg" alt="Edit options for the body computer, grouped into exterior lights, interior lights, locking, alarm, windows, wipers, comfort, bulb monitoring and service modes" loading="lazy"><figcaption>REDcar's body computer, C05, 269 options</figcaption></figure>
+<figure class="phone"><img src="/assets/images/r53-coding/v2/ews-clutch-start.jpg" alt="Immobilizer EWS3: Require clutch or neutral to start, with an explanation and the current value Not required" loading="lazy"><figcaption>EWS3 · clutch to start, the one people ask about</figcaption></figure>
+</div>
+<p class="note">Browsing and editing are free. Writing to the car is the one-time unlock.</p>
+</section>
+
+<section id="presets">
+<p class="eyebrow">05 · Presets</p>
+<h2>One tap, <em>then check it.</em></h2>
+<p class="body"><b>Daily Comfort</b> on the body computer finishes the wipe when you switch off, turns on one-touch windows, the lock chirp, 40 seconds of follow-me-home, the soft interior fade and selective unlock, and stops the cold-filament checks that make LED bulbs glow or warn. <b>Track Day</b> on the DSC sets Sport+, the brake-based limited slip, and turns brake assist and the traction differential control off. Every toggle can be switched off before you apply, and Apply only stages the editor. Nothing reaches the car until you write.</p>
+<div class="phones">
+<figure class="phone"><img src="/assets/images/r53-coding/v2/presets-daily.jpg" alt="Coding presets for the body computer: Daily Comfort toggles" loading="lazy"><figcaption>Daily Comfort · body computer</figcaption></figure>
+<figure class="phone"><img src="/assets/images/r53-coding/v2/presets-track.jpg" alt="Coding presets for the DSC: Track Day toggles and the four settings it will stage" loading="lazy"><figcaption>Track Day · DSC, with what it will stage</figcaption></figure>
+</div>
+</section>
+
+<section id="race-seats">
+<p class="eyebrow">06 · Airbag</p>
+<h2>Race <em>seats.</em></h2>
+<p class="body">Pulling the stock seats and belts leaves an airbag light, and fixing it by hand means finding the right bits for each side in a list of ninety. The race seat screen asks it as questions on one page: which side the driver sits on, one seat or two, harnesses or stock belts, the occupancy mat, the front bags and the curtains. The seat sidebags follow the driver-side answer, and if the module's own left or right setting disagrees, you see that before anything is staged.</p>
+<div class="phones">
+<figure class="phone"><img src="/assets/images/r53-coding/v2/race-seats.jpg" alt="Race seats screen: left or right-hand drive, how many race seats, belts and occupancy" loading="lazy"><figcaption>The questions, one page</figcaption></figure>
+<figure class="phone"><img src="/assets/images/r53-coding/v2/race-seats-preview.jpg" alt="Race seats preview listing every airbag setting that will be set to Off" loading="lazy"><figcaption>Everything it will turn off, before you apply</figcaption></figure>
+</div>
+<p class="note">Track cars with harnesses and a cage only. This turns crash protection off in software. The battery safety terminal is left alone on purpose; that aging yellow connector is a common false lead when the light stays on.</p>
+</section>
+
+<section id="speedo">
+<div class="split">
+<div>
+<p class="eyebrow">07 · Cluster and column pod</p>
+<h2>Speedo <em>calibration.</em></h2>
+<p class="body">A smaller tire or a stock cluster reading a few percent high is normal on these cars. Drive a steady speed, note what the cluster shows and what a GPS shows, and type both in. Units don't matter, it's the ratio. The app works out the new impulses-per-kilometer number, stock being 46463.</p>
+<ul class="list">
+<li><b>The number is stored twice,</b> as the value and its complement. The app writes both or neither, and a pair that is already inconsistent gets reported rather than papered over.</li>
+<li><b>More than 25% out is refused.</b> No real speedometer is that far off, and 10 typed for 100 is far more likely.</li>
+<li><b>The odometer is opt-in.</b> It keeps its own number, and changing how an odometer counts is regulated in some places.</li>
+<li><b>The column pod has its own copy</b> on cars with the pod speedo, and it can be set the same way.</li>
+</ul>
+</div>
+<figure class="phone"><img src="/assets/images/r53-coding/v2/speedo.jpg" alt="Speedometer calibration: cluster showed 70, GPS showed 66.5, the cluster reads 5.3% high, 46463 to 48908 impulses per km" loading="lazy"><figcaption>70 on the cluster, 66.5 on the GPS</figcaption></figure>
+</div>
+</section>
+
+<section id="transfer">
+<p class="eyebrow">08 · Backups and module swaps</p>
+<h2>Move your coding <em>to another module.</em></h2>
+<p class="body">Every backup the phone has kept shows up by car, module and date. <b>Restore bytes</b> puts a module's own backup straight back, and only when the index matches. <b>Transfer settings</b> is for a swap: it reads the old unit through its own table and sets the same named settings on the new one through its table, so a used body computer on a different index still ends up coded like yours. Anything the new unit can't take is listed, never approximated.</p>
+<div class="phones">
+<figure class="phone"><img src="/assets/images/r53-coding/v2/backups.jpg" alt="Choose a backup: TL22C body computer C07 and TD91H body computer C05, each with Restore bytes, Transfer settings, Open in editor and Share" loading="lazy"><figcaption>Backups from two cars</figcaption></figure>
+<figure class="phone"><img src="/assets/images/r53-coding/v2/transfer.jpg" alt="Transfer settings from TL22C's C07 body computer to a C05: 33 settings will change, each listed with its current and new value" loading="lazy"><figcaption>My JCW's C07 settings onto REDcar's C05 · 33 changes</figcaption></figure>
+</div>
+<p class="note">Backups record the car's VIN and the module's own VIN separately. Restoring one car's coding into another asks you to confirm that exact pair. Share sends the backup files anywhere the phone can.</p>
+</section>
+
+<section id="trouble-codes">
+<div class="split rev">
+<figure class="phone"><img src="/assets/images/r53-coding/v2/faults.jpg" alt="Trouble codes screen with engine, DSC, steering angle, body, instrument cluster, immobilizer and airbag modules" loading="lazy"><figcaption>Seven fault memories</figcaption></figure>
+<div>
+<p class="eyebrow">09 · Trouble codes</p>
+<h2>Read and <em>clear.</em></h2>
+<p class="body">Same cable, same session. Engine, DSC, steering angle, body, cluster, immobilizer and airbag each read and clear their fault memory, and the codes come with English names. Chassis modules show BMW's own codes, not made-up OBD-II P-codes. Scan modules on bus shows what answered, and Share report sends the whole read with the telegrams behind it.</p>
+<p class="body">Handy after a coding change or a retrofit leaves a light on.</p>
+</div>
+</div>
+</section>
+
+<section id="planning">
+<div class="split">
+<div>
+<p class="eyebrow">10 · No car needed</p>
+<h2>Planning <em>mode.</em></h2>
+<p class="body">Every option list opens offline, with no car and no cable, so you can work out what you want before you're sitting in the car. It's free and it can't write anything. It also covers the modules I haven't captured a coding session on yet. What it can't show is your car's current value; that takes a read.</p>
+</div>
+<figure class="phone"><img src="/assets/images/r53-coding/v2/planning.jpg" alt="Planning mode browsing the body computer C07 options with no car connected" loading="lazy"><figcaption>Body computer C07, offline</figcaption></figure>
+</div>
+</section>
+
+<section id="connect">
+<p class="eyebrow">11 · Hardware</p>
+<h2>How it <em>connects.</em></h2>
+<dl class="spec">
+<dt>K+DCAN cable</dt><dd><b>The proven path.</b> The standard BMW/MINI USB interface, the same one you'd use with INPA or NCS. Every capture behind this app was taken over one.</dd>
+<dt>USB-C OTG</dt><dd><b>USB-A to USB-C host adapter,</b> so the phone can power and drive the cable.</dd>
+<dt>OBDLink CX / MX+</dt><dd><b>Bluetooth, no cable.</b> Tick the box on the hub. Same telegrams, same backups.</dd>
+<dt>OBDLink LX</dt><dd><b>Won't work.</b> Its firmware can't set the parity these modules need. The app tells you that instead of timing out.</dd>
+<dt>Phone</dt><dd><b>Android with USB host,</b> or Bluetooth for the OBDLink.</dd>
+</dl>
+</section>
+
+<section id="before-you-write">
+<p class="eyebrow">12 · Before you write</p>
+<h2>Beta, <em>and backups.</em></h2>
+<div class="warn">
+<h3>Keep an NCS Expert backup of anything you touch</h3>
+<p>R53 Coding is still beta. I've been testing it on my two cars, and the editor tells you when you're about to write to an index nobody has written with it before. Its own backups are good, but while it's beta keep a desktop TRACE of every module you plan to change.</p>
+<ul class="list">
+<li><b>R53 is chassis R50 in NCS Expert.</b> Read with <code>CODIERDATEN_LESEN</code>, then copy <code>FSW_PSW.TRC</code> out of <code>C:\NCSEXPER\WORK\</code> right away. NCS overwrites that file on the next read.</li>
+<li><b>Rename it</b> with the VIN, module and date, like <code>TL22C_BC1_20260726.TRC</code>, and keep it off the PC.</li>
+<li>How-tos on NAM: <a href="https://www.northamericanmotoring.com/forums/electrical/205937-ncsexpert-for-beginners.html">NCS Expert for beginners</a>, <a href="https://www.northamericanmotoring.com/forums/electrical/231785-r53-ncs-expert-guide-add-in.html">the R53 add-in</a> and <a href="https://www.northamericanmotoring.com/forums/electrical/245309-r53-ncs-expert-guide-additional-info.html">more R53 detail</a>. BMW people: the <a href="https://www.bimmerforums.com/forum/showthread.php?1800496-Dummies-Guide-to-Basic-coding-with-NCS-Expert">Dummies Guide</a> flow is the same, pick R50.</li>
+</ul>
+</div>
+<p class="note">If you already know NCS Expert and have an older R53, I especially want to hear how the app's read compares with yours.</p>
+</section>
+
+<section id="get-it">
+<p class="eyebrow">13 · Get it</p>
+<h2>Join the <em>testers.</em></h2>
+<p class="body">It's in Google Play testing, so it won't show up in a Play search. Three steps, all with the Google account on your phone:</p>
+<div class="steps">
+<div class="step">
+<div class="step-head"><span class="step-num">1</span><h3>Join the group</h3></div>
+<p>Open to anyone, no approval. Tap Join group.</p>
+<a class="btn red" href="https://groups.google.com/g/r53-coding-testers" target="_blank" rel="noopener">Join group</a>
+</div>
+<div class="step">
+<div class="step-head"><span class="step-num">2</span><h3>Opt in on Play</h3></div>
+<p>Tap Become a tester.</p>
+<a class="btn red" href="https://play.google.com/apps/testing/com.geekopolis.r53code" target="_blank" rel="noopener">Become a tester</a>
+</div>
+<div class="step">
+<div class="step-head"><span class="step-num">3</span><h3>Install</h3></div>
+<p>Install from Play on your phone. If it says the app is not found, Play is on a different Google account or hasn't caught up yet; give it a few minutes.</p>
+<a class="btn red" href="https://play.google.com/store/apps/details?id=com.geekopolis.r53code" target="_blank" rel="noopener">Open in Play</a>
+</div>
+</div>
+<p class="note">Reading, backups, planning mode and editing are free. <b>Writing to the car is a one-time unlock in Play.</b> Install from Play rather than a sideloaded APK so the unlock works. Stuck? <a href="mailto:matt@geekopolis.com">matt@geekopolis.com</a> or <a href="https://www.instagram.com/mattryan6729/">@mattryan6729</a>.</p>
+</section>
+
+<section id="fine-print">
+<p class="eyebrow">14 · Fine print</p>
+<ul class="list">
+<li><b>Track and DIY use.</b> You're writing module configuration on a twenty-year-old car.</li>
+<li><b>Key on, engine off,</b> for every read and write. Keep a battery charger on for long sessions.</li>
+<li><b>Race seat coding turns airbags off.</b> Not for road use with stock seats and belts.</li>
+<li><b>Backups first:</b> NCS Expert TRACE files, then the app's own.</li>
+<li><b>Coming next:</b> a Kombi retrofit helper for single to dual gauge swaps. It records the old cluster before the swap today; programming the new one from the phone is still to come.</li>
+</ul>
+</section>
+
+<p class="last">R53 Coding is the companion to the <a href="/car/tech/2026/08/18/r53-logger-august-update.html">R53 Logger - Flasher</a>: separate app, separate unlock, same cable. The shift light and the K-line + CAN bridge are at <a href="https://ryansdesigns.geekopolis.com/shiftlight/">ryansdesigns.geekopolis.com/shiftlight</a>. Screenshots from coding build 121 with REDcar's backups loaded.</p>
+
+</div>
