@@ -210,7 +210,7 @@ These are screenshots from a Samsung tablet and a Moto phone. Map screens show a
 </div>
 
 <div class="row">
-<figure><img src="/assets/images/touge/v3/icons.webp" alt="Profile screen: name, seventeen colour swatches, a search box and a grid of bikes: generic motorcycle, adventure bike, Ninja, R 1250 GS, R 1250 RT, Street Glide, Sportster, 690, Tracer 9 GT, Spyder RT, Ryker and Slingshot" loading="lazy"><figcaption>Choose from 96 car and bike icons.</figcaption></figure>
+<figure><img src="/assets/images/touge/v3/icons.webp" alt="Profile screen: name, eighteen colour swatches, a search box and a grid of bikes: generic motorcycle, adventure bike, Ninja, R 1250 GS, R 1250 RT, Street Glide, Sportster, 690, Tracer 9 GT, Spyder RT, Ryker and Slingshot" loading="lazy"><figcaption>Choose from 96 car and bike icons.</figcaption></figure>
 <div>
 <span class="k">Your car</span>
 <ul class="tight">
@@ -309,7 +309,7 @@ These are screenshots from a Samsung tablet and a Moto phone. Map screens show a
 <p class="lead">Pick the roads you want by adding points on the map.</p>
 
 <div class="row">
-<figure><img src="/assets/images/touge/v2/editor.png" alt="Route editor with three numbered pins dropped on back roads near Sparta and the routed line running through them" loading="lazy"><figcaption>Drag points onto the roads you want to take.</figcaption></figure>
+<figure><img src="/assets/images/touge/v3/editor.webp" alt="Route editor with three numbered pins dropped around Asheville and the routed line running through them, with Reverse, Close loop, Save and Start below" loading="lazy"><figcaption>Drag points onto the roads you want to take.</figcaption></figure>
 <div>
 <span class="k">Route editor</span>
 <ul class="tight">
@@ -321,7 +321,7 @@ These are screenshots from a Samsung tablet and a Moto phone. Map screens show a
 </div>
 
 <div class="row flip">
-<figure><img src="/assets/images/touge/v2/library.png" alt="Rides and routes library listing recorded rides, each with Follow, Route it, share and delete" loading="lazy"><figcaption>Recorded rides and imported GPX files.</figcaption></figure>
+<figure><img src="/assets/images/touge/v3/library.webp" alt="Rides and routes library listing recorded rides, each with Follow, Route it, share and delete" loading="lazy"><figcaption>Recorded rides and imported GPX files.</figcaption></figure>
 <div>
 <span class="k">Rides and routes</span>
 <ul class="tight">
@@ -335,7 +335,7 @@ These are screenshots from a Samsung tablet and a Moto phone. Map screens show a
 ## Drive it
 
 <div class="row">
-<figure><img src="/assets/images/touge/v3/drive.webp" alt="Tablet in 3D on Flat Top Road south of Boone: turn card, group card with Dave, Ana and Kev behind, weather radar disc, status chip, Waze chip, the blue route winding through the hills, and the time, distance and twist strip" loading="lazy"><figcaption>The tablet layout during the demo ride near Boone.</figcaption></figure>
+<figure><img src="/assets/images/touge/v3/drive.webp" alt="Tablet in 3D on Flat Top Road south of Boone with the ground raised: turn card, Waze chip, group card with Dave, Ana and Kev behind, weather radar disc, status chip, the green route along the hillside, and the time, distance and twist strip" loading="lazy"><figcaption>The tablet layout during the demo ride near Boone.</figcaption></figure>
 <div>
 <span class="k">Turn by turn</span>
 <ul class="tight">
@@ -369,7 +369,7 @@ The prompt appears when you are at least a quarter mile off route, travelling at
 <p class="lead">A card appears two miles before a stop with three choices.</p>
 
 <div class="row flip">
-<figure><img src="/assets/images/touge/v2/stop-ahead.png" alt="Stop ahead card 1.3 miles out with Skip, Later and Go on" loading="lazy"><figcaption>Skip, postpone or keep the next stop.</figcaption></figure>
+<figure><img src="/assets/images/touge/v3/stop-ahead.webp" alt="Stop ahead card for Carrboro, 0.9 miles out, with Skip, Later and Go on" loading="lazy"><figcaption>Skip, postpone or keep the next stop.</figcaption></figure>
 <div>
 <span class="k">Stop ahead</span>
 <ul class="tight">
@@ -415,7 +415,7 @@ The prompt appears when you are at least a quarter mile off route, travelling at
 ## Alerts you control
 
 <div class="row flip">
-<figure><img src="/assets/images/touge/v2/alerts.png" alt="Alerts screen: one row per kind with a map toggle and a voice toggle" loading="lazy"><figcaption>Separate map and voice switches for each alert type.</figcaption></figure>
+<figure><img src="/assets/images/touge/v3/alerts.webp" alt="Alerts screen: one row per kind with a map toggle and a voice toggle" loading="lazy"><figcaption>Separate map and voice switches for each alert type.</figcaption></figure>
 <div>
 <span class="k">Map and voice, separately</span>
 <ul class="tight">
@@ -462,7 +462,7 @@ The prompt appears when you are at least a quarter mile off route, travelling at
 ## Maps, search, and your own server
 
 <div class="row">
-<figure><img src="/assets/images/touge/v2/packs.png" alt="Map packs screen listing regions with measured sizes and installed state" loading="lazy"><figcaption>This North Carolina pack is 392 MB.</figcaption></figure>
+<figure><img src="/assets/images/touge/v3/packs.webp" alt="Map packs screen listing regions with measured sizes and installed state" loading="lazy"><figcaption>A pack covering 100 miles around you is 401 MB.</figcaption></figure>
 <div>
 <span class="k">Map packs</span>
 <ul class="tight">
@@ -480,7 +480,7 @@ The prompt appears when you are at least a quarter mile off route, travelling at
 </div>
 
 <div class="row flip">
-<figure><img src="/assets/images/touge/v2/search.png" alt="Search results for Sparta, the town first" loading="lazy"><figcaption>Search results for Sparta.</figcaption></figure>
+<figure><img src="/assets/images/touge/v3/search.webp" alt="Search results for Sparta, the town first" loading="lazy"><figcaption>Search results for Sparta.</figcaption></figure>
 <div>
 <span class="k">Search</span>
 <ul class="tight">
@@ -503,7 +503,7 @@ The prompt appears when you are at least a quarter mile off route, travelling at
 <p class="lead">Seven categories, searchable settings and a summary of each category.</p>
 
 <div class="row">
-<figure><img src="/assets/images/touge/v3/settings.webp" alt="Setup on the tablet: the You card, then seven categories with live summaries: Maps and navigation, Group and radio, Sound and alerts, Display and layout, Devices and sensors, Recording, App and data; Maps and navigation open on the right" loading="lazy"><figcaption>Settings grouped into seven categories.</figcaption></figure>
+<figure><img src="/assets/images/touge/v3/settings.webp" alt="Setup on the tablet: the You card, then the categories with live summaries, starting with Maps and navigation, Group and radio, Sound and alerts, Display and layout and Devices and sensors; Maps and navigation open on the right with map packs, Home, vehicle and default route" loading="lazy"><figcaption>Settings grouped into seven categories.</figcaption></figure>
 <div>
 <span class="k">Categories</span>
 <ul class="tight">
@@ -515,7 +515,7 @@ The prompt appears when you are at least a quarter mile off route, travelling at
 </div>
 
 <div class="row flip">
-<figure><img src="/assets/images/touge/v3/settings-search.webp" alt="Setup search for radio, listing Bluetooth to the radio, Server check-in while on the radio, Start or join a ride, Share my position, Keep sharing in the background, 2.4 GHz lane, LoRa relay, Send my position every, and Cellular fallback, each with its category and current value" loading="lazy"><figcaption>Search results for "radio", with current values.</figcaption></figure>
+<figure><img src="/assets/images/touge/v3/settings-search.webp" alt="Setup search for radio, listing Bluetooth to the radio, Server check-in while on the radio, Start or join a ride, Share my position with the group, Share through the server in the background, 2.4 GHz lane, LoRa relay, Send my position every, and Cellular fallback, each with its category and current value" loading="lazy"><figcaption>Search results for "radio", with current values.</figcaption></figure>
 <div>
 <span class="k">Search</span>
 <ul class="tight">
