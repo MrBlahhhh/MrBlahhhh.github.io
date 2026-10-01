@@ -50,6 +50,9 @@
 .rc .phone{margin:0;border:1px solid var(--line);background:#000;border-radius:18px;padding:7px;overflow:hidden}
 .rc .phone img{display:block;width:100%;height:auto;border-radius:12px;margin:0;max-width:none}
 .rc .phone figcaption{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);padding:10px 6px 4px;line-height:1.55}
+.rc .photo{margin:0;border:1px solid var(--line);background:#000;border-radius:6px;overflow:hidden}
+.rc .photo img{display:block;width:100%;height:auto;margin:0;max-width:none;border-radius:0;box-shadow:none}
+.rc .photo figcaption{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);padding:10px 10px 8px;line-height:1.55}
 .rc .phones{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:24px 0 6px;max-width:800px;align-items:start}
 .rc .phones.three{grid-template-columns:repeat(3,minmax(0,1fr))}
 .rc ul.list{list-style:none;padding:0;margin:0 0 16px;display:grid;gap:12px}
@@ -64,6 +67,7 @@
 .rc .spec dt{color:var(--copper);letter-spacing:.06em;text-transform:uppercase;font-size:11px;padding-top:3px;margin:0;font-weight:500}
 .rc .spec dd{margin:0;color:var(--silk2)}
 .rc .spec dd b{color:var(--silk);font-weight:500}
+.rc .spec + h3{margin-top:34px}
 .rc .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin:22px 0 4px}
 .rc .tiles a{background:var(--panel);padding:18px 18px 16px;display:grid;gap:6px;align-content:start;text-decoration:none;color:inherit;font-weight:400;position:relative}
 .rc .tiles a:hover{background:var(--panel2)}
@@ -143,7 +147,7 @@
 <p class="eyebrow">02 · The hub</p>
 <h2>Read. Edit. <em>Write.</em></h2>
 <ol class="flow">
-<li><b>Plug in.</b> A K+DCAN cable on a USB-C OTG adapter, or tick the box and use an OBDLink CX or MX+ over Bluetooth. Key on, engine off.</li>
+<li><b>Plug in.</b> A K+DCAN cable on a USB-C OTG adapter, or tick the box and use an OBDLink CX or MX+ over Bluetooth. Key on, engine off. An OBDLink, or a cable with no 7/8 switch, needs <a href="#pins-7-8">OBD pins 7 and 8 linked</a> first.</li>
 <li><b>Pick a module</b> and tap Read. The app reads the VIN off the cluster, then the module's coding, and saves a backup before you can touch anything. The file name carries the VIN, the module and the time.</li>
 <li><b>Edit.</b> The full-screen list opens on its own after a good read. Picking a value only changes the working copy.</li>
 <li><b>Write to car.</b> Only the blocks you changed go out, then the app reads them back to prove they landed.</li>
@@ -262,12 +266,27 @@
 <p class="eyebrow">11 · Hardware</p>
 <h2>How it <em>connects.</em></h2>
 <dl class="spec">
-<dt>K+DCAN cable</dt><dd><b>The proven path.</b> The standard BMW/MINI USB interface, the same one you'd use with INPA or NCS. Every capture behind this app was taken over one.</dd>
+<dt>K+DCAN cable</dt><dd><b>The proven path.</b> The standard BMW/MINI USB interface, the same one you'd use with INPA or NCS. Every capture behind this app was taken over one. Set its 7/8 switch on. A cable with no switch needs <a href="#pins-7-8">pins 7 and 8 linked</a> at the car.</dd>
 <dt>USB-C OTG</dt><dd><b>USB-A to USB-C host adapter,</b> so the phone can power and drive the cable.</dd>
-<dt>OBDLink CX / MX+</dt><dd><b>Bluetooth, no cable.</b> Tick the box on the hub. Same telegrams, same backups.</dd>
+<dt>OBDLink CX / MX+</dt><dd><b>Bluetooth, no cable.</b> Tick the box on the hub. Same telegrams, same backups. It talks on pin 7 only, so <a href="#pins-7-8">link pins 7 and 8</a> at the car first.</dd>
 <dt>OBDLink LX</dt><dd><b>Won't work.</b> Its firmware can't set the parity these modules need. The app tells you that instead of timing out.</dd>
 <dt>Phone</dt><dd><b>Android with USB host,</b> or Bluetooth for the OBDLink.</dd>
 </dl>
+
+<h3 id="pins-7-8">OBDLink, or a cable with no switch: link pins 7 and 8</h3>
+<p class="body">The R53 brings the engine out on OBD pin 7 and every other module (cluster, body computer, DSC, airbag, immobilizer, the column pod) on pin 8. A K+DCAN cable with its 7/8 switch on links the two inside the plug. An OBDLink CX or MX+ talks on pin 7 only, and so does a K+DCAN cable with no switch, so with either of those only the engine answers. One short wire across the back of the car's OBD socket fixes it for good.</p>
+<ol class="flow">
+<li><b>Get to the back of the socket.</b> Unclip the OBD socket from its mount under the dash and pull it out far enough to see where the wires go in.</li>
+<li><b>Make a jumper.</b> An inch or so of thin wire, both ends stripped and the bare copper bent over into a small hook so it stays put.</li>
+<li><b>Fit it across pins 7 and 8.</b> Push one end into the back of pin 7 and the other into pin 8, alongside the wires already there. Pin 16 is the red wire, permanent battery. Pin 8 is directly across from it in the other row, and pin 7 is next to pin 8. Keep bare wire away from pin 16: it's live all the time and not fused.</li>
+<li><b>Check it.</b> Clip the socket back in, connect, key on, and read a module that isn't the engine. The cluster is a quick one.</li>
+</ol>
+<div class="phones three">
+<figure class="photo"><img src="/assets/images/r53-coding/pin78/socket-mount.jpg" alt="The OBD socket's mount under the dash with the socket unclipped" loading="lazy"><figcaption>1 · Socket unclipped from its mount</figcaption></figure>
+<figure class="photo"><img src="/assets/images/r53-coding/pin78/jumper.jpg" alt="The jumper: a short blue wire with both stripped ends bent into hooks" loading="lazy"><figcaption>2 · The jumper</figcaption></figure>
+<figure class="photo"><img src="/assets/images/r53-coding/pin78/jumper-fitted.jpg" alt="The back of the OBD socket with the blue jumper looped across pins 7 and 8" loading="lazy"><figcaption>3 · Across pins 7 and 8</figcaption></figure>
+</div>
+<p class="note">It's the same link the switch on a K+DCAN cable makes, so it can stay in. To undo it, pull the wire back out.</p>
 </section>
 
 <section id="before-you-write">
@@ -316,7 +335,6 @@
 <li><b>Key on, engine off,</b> for every read and write. Keep a battery charger on for long sessions.</li>
 <li><b>Race seat coding turns airbags off.</b> Not for road use with stock seats and belts.</li>
 <li><b>Backups first:</b> NCS Expert TRACE files, then the app's own.</li>
-<li><b>Coming next:</b> a Kombi retrofit helper for single to dual gauge swaps. It records the old cluster before the swap today; programming the new one from the phone is still to come.</li>
 </ul>
 </section>
 
