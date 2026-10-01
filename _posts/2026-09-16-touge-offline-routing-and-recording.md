@@ -104,7 +104,7 @@ These are screenshots from a Samsung tablet and a Moto phone. Map screens show a
 </div>
 
 <div class="row flip">
-<figure><img src="/assets/images/touge/v3/report.webp" alt="Tablet in 3D near Boone with the report tray open: Police, Hazard, Crash, Heavy traffic, Road closed and Animal, each with a full-colour icon" loading="lazy"><figcaption>Two taps to report a problem.</figcaption></figure>
+<figure><img src="/assets/images/touge/v3/report.webp" alt="Tablet in 3D on the Blue Ridge Parkway with the group close behind and the report tray open: Police, Hazard, Crash, Heavy traffic, Road closed and Animal, each with a full-colour icon" loading="lazy"><figcaption>Two taps to report a problem.</figcaption></figure>
 <div>
 <span class="k">Tap to report</span>
 <ul class="tight">
@@ -186,7 +186,7 @@ These are screenshots from a Samsung tablet and a Moto phone. Map screens show a
 </div>
 
 <div class="row">
-<figure><img src="/assets/images/touge/v3/link-diagnostics.webp" alt="Link diagnostics: phone reads 7.2 a second, positions 1.2 a second in 1.2 batches, 0 batches missed, writes 1.4 a second with 0 lost, per car 12a9 on 2.4 GHz at 1.2 Hz, radio 2.4 counters, radio LoRa counters, phone queue, and radio dropped 0 phone writes" loading="lazy"><figcaption>Live counters in Setup › Group &amp; radio › Advanced.</figcaption></figure>
+<figure><img src="/assets/images/touge/v3/link-diagnostics.webp" alt="Link diagnostics: phone reads 8.2 a second, positions 0.8 a second in 0.8 batches, 0 batches missed, writes 1.0 a second with 0 lost, per car 9a50 on 2.4 GHz at 0.8 Hz and LoRa at 0.2 Hz, radio 2.4 and LoRa counters, phone queue, radio dropped 0 phone writes, then LoRa airtime, queue, reach and relay lines, and three switches for testing the Bluetooth link" loading="lazy"><figcaption>Live counters in Setup › Group &amp; radio › Advanced.</figcaption></figure>
 <div>
 <span class="k">Link diagnostics</span>
 <ul class="tight">
@@ -223,7 +223,7 @@ These are screenshots from a Samsung tablet and a Moto phone. Map screens show a
 ### The radio
 
 <div class="row flip">
-<figure><img src="/assets/images/touge/v3/group-radio.webp" alt="Setup, Group and radio: Bluetooth to the radio reading Radio ready, Meshtastic radio, Group radio chat and SOS, Done with this radio, 2.4 GHz lane seen every 1.0 s from mattmoto, LoRa relay seen every 5.8 s" loading="lazy"><figcaption>This bench test: 2.4 GHz updates every 1.0 s; LoRa every 5.8 s.</figcaption></figure>
+<figure><img src="/assets/images/touge/v3/group-radio.webp" alt="Setup, Group and radio: Meshtastic radio, Group radio chat and SOS, Done with this radio, the 2.4 GHz lane with a 1 s target, seen every 1.4 s from mattpixel, and the LoRa relay, on, seen every 3.8 s" loading="lazy"><figcaption>This bench test: 2.4 GHz updates every 1.4 s; LoRa every 3.8 s.</figcaption></figure>
 <div>
 <span class="k">Standard Meshtastic on LoRa</span>
 <ul class="tight">
@@ -335,7 +335,7 @@ These are screenshots from a Samsung tablet and a Moto phone. Map screens show a
 ## Drive it
 
 <div class="row">
-<figure><img src="/assets/images/touge/v3/drive.webp" alt="Tablet in 3D on Flat Top Road south of Boone with the ground raised: turn card, Waze chip, group card with Dave, Ana and Kev behind, weather radar disc, status chip, the green route along the hillside, and the time, distance and twist strip" loading="lazy"><figcaption>The tablet layout during the demo ride near Boone.</figcaption></figure>
+<figure><img src="/assets/images/touge/v3/drive.webp" alt="Tablet in 3D on Flat Top Road south of Boone with the ground raised: turn card, Waze chip, group card with Dave, Ana and Kev behind, weather radar disc, status chip reading 2.4 GHz, the green route along the hillside, and the time, distance and twist strip" loading="lazy"><figcaption>The tablet layout during the demo ride near Boone.</figcaption></figure>
 <div>
 <span class="k">Turn by turn</span>
 <ul class="tight">
@@ -392,7 +392,7 @@ The prompt appears when you are at least a quarter mile off route, travelling at
 <p class="lead">Weather radar and reports of police and hazards ahead.</p>
 
 <div class="row">
-<figure class="small"><img src="/assets/images/touge/v3/corner.webp" alt="Top right corner of the tablet: status chip reading LoRa, 9:28, wifi and 100 percent, the Waze chip reading just now and 77 reports, and the 100 mile weather radar disc over the hills near Boone" loading="lazy"><figcaption>Connection status, Waze updates and weather radar.</figcaption></figure>
+<figure class="small"><img src="/assets/images/touge/v3/corner.webp" alt="Top right corner of the tablet: status chip reading 2.4 GHz, 8:15, wifi and 100 percent, and the 50 mile weather radar disc over the hills near Boone with two reports marked on it" loading="lazy"><figcaption>Connection status and weather radar.</figcaption></figure>
 <div>
 <span class="k">The top corner</span>
 <ul class="tight">
