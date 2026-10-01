@@ -29,7 +29,8 @@ Sales order: the hook first, setup and prices last.
 4. **See the tune**: AFR 3D, fuel and trims maps, spark map with knock,
    Ign 3D.
 5. **Close the loop**: fuel recommendation and the simulator.
-6. **Flash options**: the twelve options as tiles.
+6. **Flash options**: the three Stage 1 calibrations, the twelve options and
+   a Dashboards tile, as tiles.
 7. **Why it's safe to flash**: backup, tune check, wrong-family refusal.
 8. **Garage**.
 9. **Diagnostics**.
