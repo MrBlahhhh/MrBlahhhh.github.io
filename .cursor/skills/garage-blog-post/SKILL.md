@@ -16,8 +16,8 @@ Create new posts for **https://mrblahhhh.github.io** — a Jekyll site using the
 | Theme | `remote_theme: kitian616/jekyll-TeXt-theme@v2.2.6` |
 | Timezone | `America/New_York` |
 | Post layout | `article` (set via `_config.yml` defaults) |
-| Homepage | cover-image card grid (`index.html`, `articles` layout) — every post **must** have a `cover:` or its card has no photo |
-| Site CSS/helpers | `_includes/head/custom.html` (image classes, card styles) |
+| Homepage | `_layouts/landing.html`, content in `_data/home.yml`: sidebar, a Now Building card, then a card grid with filter chips. Every post **must** have a `cover:` or its card has no photo. Filters pick posts up by tag (`android`, `esp32`, `3d-printing`, `track`…), so tag as usual and the post sorts itself |
+| Site CSS/helpers | Posts: `_includes/head/custom.html` (image classes). Homepage: `assets/css/home.css` |
 | URL pattern | `/{category}/YYYY/MM/DD/{slug}.html` |
 
 **Do not** use `theme: jekyll-text-theme` gem — GitHub Pages build does not include it. Always use `remote_theme` with the **`v` prefix** on the tag (`@v2.2.6`, not `@2.2.6`).

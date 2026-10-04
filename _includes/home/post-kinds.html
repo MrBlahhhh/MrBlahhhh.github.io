@@ -1,0 +1,18 @@
+{%- comment -%}
+  Sorts include.post into the filters in _data/home.yml by tag. Sets two
+  variables for the caller: post_kinds, the matching keys with a space on
+  each side so " car " can't match inside another key, and post_kind_label,
+  the first match's label for the badge on the card.
+{%- endcomment -%}
+{%- assign post_kinds = " " -%}
+{%- assign post_kind_label = "" -%}
+{%- for filter in site.data.home.filters -%}
+  {%- assign filter_hit = false -%}
+  {%- for tag in include.post.tags -%}
+    {%- if filter.tags contains tag -%}{%- assign filter_hit = true -%}{%- break -%}{%- endif -%}
+  {%- endfor -%}
+  {%- if filter_hit -%}
+    {%- assign post_kinds = post_kinds | append: filter.key | append: " " -%}
+    {%- if post_kind_label == "" -%}{%- assign post_kind_label = filter.label -%}{%- endif -%}
+  {%- endif -%}
+{%- endfor -%}

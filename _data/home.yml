@@ -1,0 +1,74 @@
+# Home page content, read by _layouts/landing.html.
+
+profile:
+  name: Matt Ryan
+  tagline: Track cars, hardware and apps
+  # Path or URL to a square photo. Leave blank to show the initials badge.
+  avatar:
+  initials: MR
+
+nav:
+  - title: Home
+    url: /
+    icon: home
+  - title: Archive
+    url: /archive.html
+    icon: archive
+  - title: About
+    url: /about.html
+    icon: about
+  - title: Contact
+    url: mailto:matt@geekopolis.com
+    icon: mail
+
+socials:
+  - title: Facebook
+    url: https://www.facebook.com/matt.ryan.837958
+    icon: facebook
+  - title: Instagram
+    url: https://www.instagram.com/mattryan6729/
+    icon: instagram
+  - title: YouTube
+    url: https://www.youtube.com/@mrblahh
+    icon: youtube
+  - title: GitHub
+    url: https://github.com/MrBlahhhh
+    icon: github
+
+contact_email: matt@geekopolis.com
+
+# The big card at the top. `post` is the post's filename without .md.
+# That post is left out of the grid below so it doesn't show twice.
+now_building:
+  post: 2026-09-16-touge-offline-routing-and-recording
+  # Which part of the cover survives the crop: left, center, right.
+  # The Touge cover has a blank strip down its right edge.
+  image_position: left
+  status: In progress
+  kind: App
+  latest:
+    label: Oct 1
+    title: Radios on the bench
+    text: Retook the group and radio screens on build 158 with both radios up. 2.4 GHz updates every 1.4 s, the LoRa relay every 3.8 s.
+  button: Read the write-up
+  note: This post gets updated as the app does.
+
+# Filter chips over the grid. A post lands in every filter that shares a tag
+# with it, so new posts sort themselves as long as they're tagged as usual.
+filters:
+  - key: apps
+    label: Apps
+    icon: phone
+    tags: [android, app, ios, iphone, web-bluetooth]
+  - key: electronics
+    label: Electronics
+    icon: chip
+    tags: [esp32, esp32-s3, pcb, kicad, can-bus, k-line]
+  - key: printed
+    label: Printed parts
+    icon: cube
+    tags: [3d-printing, 3d-print, fusion-360, stl]
+  - key: car
+    label: Car & track
+    icon: flag
+    tags: [track, track-day, ls-swap, maintenance, tires, brake-cooling]

@@ -1,0 +1,259 @@
+---
+---
+{%- comment -%}
+  Home page: sidebar, the Now Building card and a filterable grid of posts.
+  Stands alone instead of extending the TeXt theme, whose header and footer
+  don't fit a sidebar. Content lives in _data/home.yml.
+{%- endcomment -%}
+{%- assign home = site.data.home -%}
+{%- assign profile = home.profile -%}
+{%- assign now_building = home.now_building -%}
+
+{%- assign featured = nil -%}
+{%- for post in site.posts -%}
+  {%- if post.path contains now_building.post -%}{%- assign featured = post -%}{%- break -%}{%- endif -%}
+{%- endfor -%}
+
+{%- assign grid_posts = "" | split: "" -%}
+{%- assign seen_titles = "" -%}
+{%- for post in site.posts -%}
+  {%- if featured and post.url == featured.url -%}{%- continue -%}{%- endif -%}
+  {%- comment -%} The R53 Logger page is published at two dates so old links still work. List it once. {%- endcomment -%}
+  {%- capture title_key -%}|{{ post.title }}|{%- endcapture -%}
+  {%- if seen_titles contains title_key -%}{%- continue -%}{%- endif -%}
+  {%- assign seen_titles = seen_titles | append: title_key -%}
+  {%- assign grid_posts = grid_posts | push: post -%}
+{%- endfor -%}
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'en' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ site.title | escape }}</title>
+  <meta name="description" content="{{ site.description | strip | escape }}">
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{{ site.title | escape }}">
+  <meta property="og:description" content="{{ site.description | strip | escape }}">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  {%- if featured %}
+  <meta property="og:image" content="{{ featured.cover | absolute_url }}">
+  {%- endif %}
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f1f3f7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0c0f13" media="(prefers-color-scheme: dark)">
+  {% feed_meta %}
+  {%- comment -%} These icons ship with the TeXt theme. {%- endcomment %}
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/apple-touch-icon.png' | relative_url }}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/favicon-32x32.png' | relative_url }}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/favicon-16x16.png' | relative_url }}">
+  <link rel="shortcut icon" href="{{ '/assets/favicon.ico' | relative_url }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,600..900&family=Manrope:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="{{ '/assets/css/home.css' | relative_url }}?v={{ site.time | date: '%s' }}">
+</head>
+<body class="landing">
+<div class="shell">
+
+  <aside class="side">
+    <a class="profile" href="{{ '/' | relative_url }}">
+      {%- if profile.avatar and profile.avatar != "" %}
+      <img class="profile__avatar" src="{{ profile.avatar | relative_url }}" alt="">
+      {%- else %}
+      <span class="profile__avatar profile__avatar--initials" aria-hidden="true">{{ profile.initials }}</span>
+      {%- endif %}
+      <span class="profile__text">
+        <span class="profile__name">{{ profile.name }}</span>
+        <span class="profile__tagline">{{ profile.tagline }}</span>
+      </span>
+    </a>
+
+    <nav class="side-nav" aria-label="Site">
+      {%- for item in home.nav %}
+      {%- assign is_current = false -%}
+      {%- if item.url == page.url -%}{%- assign is_current = true -%}{%- endif -%}
+      {%- comment -%} mailto: and other full URLs skip relative_url, which would prefix a slash on some Jekyll versions. {%- endcomment -%}
+      {%- assign nav_href = item.url -%}
+      {%- unless item.url contains ":" -%}{%- assign nav_href = item.url | relative_url -%}{%- endunless %}
+      <a class="side-nav__link{% if is_current %} is-active{% endif %}" href="{{ nav_href }}"{% if is_current %} aria-current="page"{% endif %}>
+        {% include home/icon.html name=item.icon %}<span>{{ item.title }}</span>
+      </a>
+      {%- endfor %}
+    </nav>
+
+    <div class="side__follow">
+      <p class="label side__label">Follow along</p>
+      <ul class="socials">
+        {%- for social in home.socials %}
+        <li>
+          <a class="socials__link" href="{{ social.url }}" target="_blank" rel="noopener me" aria-label="{{ social.title }}">
+            {% include home/icon.html name=social.icon %}<span class="socials__name">{{ social.title }}</span>{% include home/icon.html name="arrow" %}
+          </a>
+        </li>
+        {%- endfor %}
+      </ul>
+    </div>
+
+    <div class="side__foot">
+      {%- if featured %}
+      <a class="side-card" href="{{ featured.url | relative_url }}">
+        <img class="side-card__thumb" src="{{ featured.cover | relative_url }}" alt="" loading="lazy">
+        <span>
+          <span class="label">Now building</span>
+          <span class="side-card__title">{{ featured.title }}</span>
+        </span>
+      </a>
+      {%- endif %}
+      <a class="side-mail" href="mailto:{{ home.contact_email }}">
+        {% include home/icon.html name="mail" %}<span>{{ home.contact_email }}</span>
+      </a>
+    </div>
+  </aside>
+
+  <main class="main">
+    <svg class="hero-art" viewBox="0 0 720 400" fill="none" aria-hidden="true">
+      <path class="pcb-edge" d="M380 1h296a28 28 0 0 1 28 28v380"/>
+      <circle class="pcb-edge" cx="660" cy="44" r="12"/>
+      <g class="pcb-trace">
+        <path d="M130 300h150l40-40h150l50-50h80l40-40v-46"/>
+        <path d="M150 314h140l40-40h146l50-50h86"/>
+        <path d="M170 328h130l40-40h142l50-50h108"/>
+        <path d="M300 236v-40"/><path d="M318 236v-40"/><path d="M336 236v-40"/>
+        <path d="M402 180h90l30-30h40"/>
+        <path d="M402 196h104l30-30h26"/>
+        <path d="M250 180h-60l-30-30h-60"/>
+        <path d="M250 208h-50l-40 40h-30"/>
+        <path d="M600 210v60l-30 30h-80"/>
+      </g>
+      <g class="pcb-pad">
+        <rect x="250" y="166" width="152" height="70" rx="4"/>
+        <rect x="530" y="114" width="20" height="14" rx="2"/><rect x="558" y="114" width="20" height="14" rx="2"/><rect x="586" y="114" width="20" height="14" rx="2"/>
+        <rect x="530" y="136" width="20" height="14" rx="2"/><rect x="558" y="136" width="20" height="14" rx="2"/><rect x="586" y="136" width="20" height="14" rx="2"/>
+        <circle cx="300" cy="196" r="4"/><circle cx="318" cy="196" r="4"/><circle cx="336" cy="196" r="4"/>
+        <circle cx="100" cy="150" r="5"/><circle cx="130" cy="248" r="5"/><circle cx="490" cy="300" r="5"/>
+        <circle cx="130" cy="300" r="4"/><circle cx="150" cy="314" r="4"/><circle cx="170" cy="328" r="4"/>
+      </g>
+      <g class="pcb-silk">
+        <text x="530" y="104">J4</text>
+        <text x="262" y="226">U1</text>
+        <text x="610" y="232">J1</text>
+      </g>
+      <circle class="pcb-led-glow" cx="640" cy="124" r="14"/>
+      <circle class="pcb-led" cx="640" cy="124" r="4.5"/>
+    </svg>
+
+    <div class="main__inner">
+      <header class="hero">
+        <p class="crumbs label"><span>Home</span><span>Build log</span></p>
+        <h1 class="hero__title">{{ site.title | escape }}</h1>
+        <p class="hero__lede">{{ site.description | strip }}</p>
+      </header>
+
+      {%- if featured %}
+      <section class="section" aria-labelledby="now-building">
+        <h2 class="section__title" id="now-building">Now building</h2>
+        <article class="feature">
+          <a class="feature__media frame" href="{{ featured.url | relative_url }}" tabindex="-1" aria-hidden="true">
+            <img src="{{ featured.cover | relative_url }}" alt=""{% if now_building.image_position %} style="object-position: {{ now_building.image_position }}"{% endif %}>
+            <span class="pill pill--dark pill--top"><span class="dot dot--live"></span>{{ now_building.status }}</span>
+            <span class="pill pill--light pill--bottom">{{ now_building.kind }}</span>
+          </a>
+          <div class="feature__body">
+            <h3 class="feature__title"><a href="{{ featured.url | relative_url }}">{{ featured.title }}</a></h3>
+            <p class="feature__text">{{ featured.excerpt | strip_html | strip }}</p>
+            <p class="feature__meta">Started {{ featured.date | date: "%B %Y" }}</p>
+            {%- if now_building.latest %}
+            <div class="entry">
+              <p class="label"><span class="dot dot--live"></span>Latest entry</p>
+              <p class="entry__head"><span class="entry__when label">{{ now_building.latest.label }}</span><span class="entry__title">{{ now_building.latest.title }}</span></p>
+              <p class="entry__text">{{ now_building.latest.text }}</p>
+            </div>
+            {%- endif %}
+            <a class="button" href="{{ featured.url | relative_url }}">{{ now_building.button }}</a>
+            <p class="feature__note">{{ now_building.note }}</p>
+          </div>
+        </article>
+      </section>
+      {%- endif %}
+
+      <section class="section" aria-labelledby="more-projects">
+        <h2 class="section__title" id="more-projects">More projects</h2>
+
+        <div class="filters" role="group" aria-label="Filter posts">
+          <button type="button" class="chip is-active" data-filter="all" aria-pressed="true">
+            {% include home/icon.html name="grid" %}<span>All</span><span class="chip__count">{{ grid_posts.size }}</span>
+          </button>
+          {%- for filter in home.filters %}
+          {%- assign filter_count = 0 -%}
+          {%- assign kind_token = filter.key | prepend: " " | append: " " -%}
+          {%- for post in grid_posts -%}
+            {%- include home/post-kinds.html post=post -%}
+            {%- if post_kinds contains kind_token -%}{%- assign filter_count = filter_count | plus: 1 -%}{%- endif -%}
+          {%- endfor -%}
+          {%- if filter_count > 0 %}
+          <button type="button" class="chip" data-filter="{{ filter.key }}" aria-pressed="false">
+            {% include home/icon.html name=filter.icon %}<span class="chip__label">{{ filter.label }}</span><span class="chip__count">{{ filter_count }}</span>
+          </button>
+          {%- endif %}
+          {%- endfor %}
+        </div>
+
+        <div class="grid">
+          {%- for post in grid_posts %}
+          {%- include home/post-kinds.html post=post %}
+          <article class="card" data-kinds="{{ post_kinds | strip }}">
+            <div class="card__media frame">
+              <img src="{{ post.cover | relative_url }}" alt="" loading="lazy" decoding="async">
+              {%- if post.last_modified_at %}
+              <span class="pill pill--dark pill--top"><span class="dot dot--fresh"></span>Updated {{ post.last_modified_at | date: "%b %-d" }}</span>
+              {%- endif %}
+              {%- if post_kind_label != "" %}
+              <span class="pill pill--light pill--bottom card__kind" data-default="{{ post_kind_label }}">{{ post_kind_label }}</span>
+              {%- endif %}
+            </div>
+            <div class="card__body">
+              <h3 class="card__title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+              <p class="card__text">{{ post.excerpt | strip_html | strip }}</p>
+              <p class="card__meta"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time></p>
+            </div>
+          </article>
+          {%- endfor %}
+        </div>
+      </section>
+
+      <footer class="foot">
+        <span>&copy; {{ site.time | date: "%Y" }} {{ profile.name }}</span>
+        <a href="{{ '/archive.html' | relative_url }}">Archive</a>
+        <a href="{{ '/feed.xml' | relative_url }}">{% include home/icon.html name="rss" %}RSS</a>
+      </footer>
+    </div>
+  </main>
+</div>
+
+<script>
+  (function () {
+    var chips = document.querySelectorAll('.chip[data-filter]');
+    var cards = document.querySelectorAll('.card[data-kinds]');
+    chips.forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        var key = chip.getAttribute('data-filter');
+        var chipLabel = chip.querySelector('.chip__label');
+        chips.forEach(function (other) {
+          var on = other === chip;
+          other.classList.toggle('is-active', on);
+          other.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+        cards.forEach(function (card) {
+          var kinds = card.getAttribute('data-kinds').split(' ');
+          card.hidden = key !== 'all' && kinds.indexOf(key) === -1;
+          // A post can sit in several filters; badge it with the one being viewed.
+          var badge = card.querySelector('.card__kind');
+          if (badge) badge.textContent = chipLabel ? chipLabel.textContent : badge.getAttribute('data-default');
+        });
+      });
+    });
+  })();
+</script>
+</body>
+</html>
