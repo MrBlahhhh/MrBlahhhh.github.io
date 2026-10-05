@@ -3,7 +3,11 @@
      condensed display type, and the red tester-signup cards it shares with the logger.
      Rendered by _posts/2026-07-26-r53-coding.md. Edit here, not in the post.
      Screenshots: assets/images/r53-coding/v2/, from a Pixel 10 Pro emulator on
-     coding build 121 with the REDcar (TD91H) backups loaded. -->
+     coding build 121 with the REDcar (TD91H) backups loaded. hub.jpg and the four
+     diagnostics shots (bc1-live, bc1-tools, ehps, tpms) are build 145 debug, with the
+     debug-only buttons hidden. bc1-live runs on the app's own demo_bc1_live replies;
+     the other three ran on a throwaway local demo wire answering with unit-test style
+     replies, never committed. None of those screens has run on a car. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -113,7 +117,7 @@
 <h1>NCS Expert,<br><em>minus the laptop.</em></h1>
 <p class="lede">R53 Coding reads and writes the settings inside your MINI's modules, the same ones NCS Expert codes, from an Android phone. Seven modules, every setting in plain English, and a backup before anything changes.</p>
 <div class="ctas"><a class="btn red" href="#get-it">Join the testers</a><a class="btn ghost" href="#whats-new">What's new</a></div>
-<p class="news"><b>Updated Sep 30</b> · seven modules, OBDLink CX and MX+, fault codes in English, presets, race seats, speedometer calibration and settings transfer. Sign-up is open to anyone now.</p>
+<p class="news"><b>Updated Oct 5</b> · <a href="#diagnostics">diagnostics</a> for the body computer, the power steering pump and tire pressure, built from the INPA job files and not run on a car yet. Before that: seven modules, OBDLink CX and MX+, fault codes in English, presets, race seats, speedometer calibration and settings transfer. Sign-up is open to anyone.</p>
 </div>
 <figure class="phone"><img src="/assets/images/r53-coding/v2/edit-row.jpg" alt="Edit options on the body computer: brake light warning, country variant and daytime running lights, each with its NCS name, a description and the current value" loading="eager"><figcaption>Body computer · every setting in plain English</figcaption></figure>
 </div>
@@ -132,7 +136,7 @@
 <div class="tiles">
 <a href="#modules"><span class="k">Modules</span><span class="t">Seven, live</span><span class="p">Body, engine, DSC, airbag, cluster, immobilizer and the column pod.</span><span class="bar"></span></a>
 <a href="#connect"><span class="k">Wireless</span><span class="t">OBDLink CX and MX+</span><span class="p">Code over Bluetooth, no cable. An LX can't do it, and the app says so by name.</span><span class="bar"></span></a>
-<a href="#trouble-codes"><span class="k">Diagnostics</span><span class="t">Faults in English</span><span class="p">Every module reads and clears its codes, with names, not bare hex.</span><span class="bar"></span></a>
+<a href="#trouble-codes"><span class="k">Diagnostics</span><span class="t">Faults, live data, tests</span><span class="p">Every module's codes in English. New: live data and tests from the INPA jobs.</span><span class="bar"></span></a>
 <a href="#presets"><span class="k">One tap</span><span class="t">Presets</span><span class="p">Daily Comfort and Track Day stage the usual set of changes for a module.</span><span class="bar"></span></a>
 <a href="#race-seats"><span class="k">Airbag</span><span class="t">Race seats</span><span class="p">Asks which side the driver sits on and shows every airbag it will turn off.</span><span class="bar"></span></a>
 <a href="#speedo"><span class="k">Cluster</span><span class="t">Speedo calibration</span><span class="p">Enter what the cluster and a GPS say. The app works out the new number.</span><span class="bar"></span></a>
@@ -154,7 +158,7 @@
 </ol>
 <p class="body">The comms log at the bottom shows every telegram. If something goes sideways, Share log gets it to me.</p>
 </div>
-<figure class="phone"><img src="/assets/images/r53-coding/v2/hub.jpg" alt="The coding hub: OBDLink checkbox, module picker, Read from car, Edit options, Write to car, Restore backup, Planning mode and Trouble codes" loading="lazy"><figcaption>The hub, build 121</figcaption></figure>
+<figure class="phone"><img src="/assets/images/r53-coding/v2/hub.jpg" alt="The coding hub: OBDLink and ESP32 bridge checkboxes, module picker, Read from car, Edit options, Write to car, Restore backup, Planning mode, Trouble codes and the body computer live status button" loading="lazy"><figcaption>The hub, build 145</figcaption></figure>
 </div>
 </section>
 
@@ -245,10 +249,31 @@
 </div>
 </section>
 
+<section id="diagnostics">
+<p class="eyebrow">10 · Diagnostics</p>
+<h2>Past the <em>fault codes.</em></h2>
+<p class="body">Four new buttons on the hub run the jobs INPA runs, decoded from BMW's own job files: the body computer's live status, its tests and history, the power steering pump, and tire pressure. Reads are free. Anything that drives an output, resets a module or writes to it needs the coding unlock, and leaving a screen hands back whatever it forced on.</p>
+<div class="phones">
+<figure class="phone"><img src="/assets/images/r53-coding/v2/bc1-live.jpg" alt="Body computer live: the windows summary with the passenger window switch up and motor running at 3.77 A, its anti-trap line flagged open in red, then every switch and sensor with the changed ones highlighted" loading="lazy"><figcaption>Body computer live · passenger window running</figcaption></figure>
+<figure class="phone"><img src="/assets/images/r53-coding/v2/bc1-tools.jpg" alt="Body computer tools on a C07: service interval data, alarm history, central locking history, alarm sensor check, then force an output or input, lamp level, analog value, tilt sensor, ride height sensors and headlight leveling" loading="lazy"><figcaption>Body computer tests and history · C07</figcaption></figure>
+</div>
+<dl class="spec">
+<dt>BC1 live</dt><dd><b>Every switch, sensor, output and analog value the body computer reports,</b> refreshed continuously, with a changed line in bold for two seconds. Each window's anti-trap sensor reads as pinch, no pinch or line open. On a C02 or C03, Record window test runs both windows through a close and a full down and up, then says whether it's the motor sensor or wiring, or just needs teaching. Check remote keys tells you if the last press was the right remote, out of sync, the wrong one or a flat battery, and on C05 to C07 which remote slots hold a code. Never the codes themselves.</dd>
+<dt>BC1 tests</dt><dd><b>The body computer's INPA jobs.</b> Service interval data, alarm and central locking history, the alarm sensor check. Then force any output or input, lamp levels, the tilt and ride height sensors, headlight leveling and energy-saving mode. C02 and C03 run BC1.prg, C05 to C07 run BC1RD.prg, and the screen only offers what that file actually has.</dd>
+<dt>EHPS</dt><dd><b>The electro-hydraulic power steering pump.</b> Ident, its seven fault codes, and a live view of battery and motor voltage, motor current and speed, PWM and temperature. Force the pump PWM and hand it back. Run the engine for the pump to work.</dd>
+<dt>Tire pressure</dt><dd><b>Works out which system the car has:</b> the flat tire monitor inside the DSC, the DWS module, or RDC with a sensor in each wheel. Status, faults, and the reset after setting the pressures or changing a tire. On RDC, a live table per wheel and the sensor IDs.</dd>
+</dl>
+<div class="phones">
+<figure class="phone"><img src="/assets/images/r53-coding/v2/ehps.jpg" alt="Power steering pump live view: battery voltage 13.9 V, temperature 38 C, motor current 10 A, motor speed 3240 rpm, PWM 72.9 percent, ignition on, engine running, no faults stored" loading="lazy"><figcaption>Power steering pump · live view</figcaption></figure>
+<figure class="phone"><img src="/assets/images/r53-coding/v2/tpms.jpg" alt="Tire pressure: DSC flat tire monitor found, no module at 0x70, and the flat tire monitor read with no warning, the last reset odometer and the learned speed bands" loading="lazy"><figcaption>Tire pressure · DSC flat tire monitor</figcaption></figure>
+</div>
+<p class="note"><b>None of this has run on a car yet.</b> It's built from the job files and pinned by unit tests, and each screen says so at the top. These screenshots come from an emulator answering with made-up replies, not from a car. If you try one on yours, Send report gets me the read and the telegrams behind it.</p>
+</section>
+
 <section id="planning">
 <div class="split">
 <div>
-<p class="eyebrow">10 · No car needed</p>
+<p class="eyebrow">11 · No car needed</p>
 <h2>Planning <em>mode.</em></h2>
 <p class="body">Every option list opens offline, with no car and no cable, so you can work out what you want before you're sitting in the car. It's free and it can't write anything. It also covers the modules I haven't captured a coding session on yet. What it can't show is your car's current value; that takes a read.</p>
 </div>
@@ -257,7 +282,7 @@
 </section>
 
 <section id="connect">
-<p class="eyebrow">11 · Hardware</p>
+<p class="eyebrow">12 · Hardware</p>
 <h2>How it <em>connects.</em></h2>
 <dl class="spec">
 <dt>K+DCAN cable</dt><dd><b>The proven path.</b> The standard BMW/MINI USB interface, the same one you'd use with INPA or NCS. Every capture behind this app was taken over one. Set its 7/8 switch on. A cable with no switch needs <a href="#pins-7-8">pins 7 and 8 linked</a> at the car.</dd>
@@ -284,7 +309,7 @@
 </section>
 
 <section id="before-you-write">
-<p class="eyebrow">12 · Before you write</p>
+<p class="eyebrow">13 · Before you write</p>
 <h2>Beta, <em>and backups.</em></h2>
 <div class="warn">
 <h3>Keep an NCS Expert backup of anything you touch</h3>
@@ -299,7 +324,7 @@
 </section>
 
 <section id="get-it">
-<p class="eyebrow">13 · Get it</p>
+<p class="eyebrow">14 · Get it</p>
 <h2>Join the <em>testers.</em></h2>
 <p class="body">It's in Google Play testing, so it won't show up in a Play search. Three steps, all with the Google account on your phone:</p>
 <div class="steps">
@@ -319,11 +344,11 @@
 <a class="btn red" href="https://play.google.com/store/apps/details?id=com.geekopolis.r53code" target="_blank" rel="noopener">Open in Play</a>
 </div>
 </div>
-<p class="note">Reading, backups, planning mode and editing are free. <b>Writing to the car is a one-time unlock in Play.</b> Install from Play rather than a sideloaded APK so the unlock works. Stuck? <a href="mailto:matt@geekopolis.com">matt@geekopolis.com</a> or <a href="https://www.instagram.com/mattryan6729/">@mattryan6729</a>.</p>
+<p class="note">Reading, backups, planning mode, editing and the diagnostic reads are free. <b>Writing to the car, and the tests, resets and writes on the diagnostic screens, are a one-time unlock in Play.</b> Install from Play rather than a sideloaded APK so the unlock works. Stuck? <a href="mailto:matt@geekopolis.com">matt@geekopolis.com</a> or <a href="https://www.instagram.com/mattryan6729/">@mattryan6729</a>.</p>
 </section>
 
 <section id="fine-print">
-<p class="eyebrow">14 · Fine print</p>
+<p class="eyebrow">15 · Fine print</p>
 <ul class="list">
 <li><b>Track and DIY use.</b> You're writing module configuration on a twenty-year-old car.</li>
 <li><b>Key on, engine off,</b> for every read and write. Keep a battery charger on for long sessions.</li>
@@ -332,6 +357,6 @@
 </ul>
 </section>
 
-<p class="last">R53 Coding is the companion to the <a href="/car/tech/2026/08/18/r53-logger-august-update.html">R53 Logger - Flasher</a>: separate app, separate unlock, same cable. The shift light and the K-line + CAN bridge are at <a href="https://ryansdesigns.geekopolis.com/shiftlight/">ryansdesigns.geekopolis.com/shiftlight</a>. Screenshots from coding build 121 with REDcar's backups loaded.</p>
+<p class="last">R53 Coding is the companion to the <a href="/car/tech/2026/08/18/r53-logger-august-update.html">R53 Logger - Flasher</a>: separate app, separate unlock, same cable. The shift light and the K-line + CAN bridge are at <a href="https://ryansdesigns.geekopolis.com/shiftlight/">ryansdesigns.geekopolis.com/shiftlight</a>. Coding screenshots from build 121 with REDcar's backups loaded; the hub and the diagnostics screens from build 145, on made-up replies.</p>
 
 </div>
