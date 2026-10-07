@@ -1,0 +1,399 @@
+<!-- CAN shift light feature page: Toyota 86 / Subaru BRZ / Scion FR-S, MINI R53, and other cars.
+     Rendered by _posts/2026-07-11-r53-esp32-shift-light.md (the feature page). The 2026-09-02
+     iPhone post redirects here. Edit here, not in the post.
+     Look: the R53 Coding page's copy of the shift light site (solder-mask green, copper hairlines,
+     condensed display type), scoped under .slf.
+     86 and R53 screenshots: assets/images/shift-light/, Pixel 10 Pro emulator. Twins Shift Light 1.0
+     debug build with its demo_rpm / demo_livery hooks; R53 Shift Light 1.3 debug build. Every graph and CAN shot, and the R53 main
+     screen, ran on a throwaway local demo feed (a synthetic pull through each app's own decoder; the
+     R53's non-graph IDs replay payloads read off the car), never committed.
+     Board renders are the rev C ones from r53-shiftlight-site. 86-pod.jpg is the Bambu Studio
+     thumbnail of twin-shift-pod.3mf. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+.slf{--bg:#0B1811;--bg2:#0F2017;--panel:#132A1F;--panel2:#183526;--line:rgba(216,148,89,.26);--line2:rgba(216,148,89,.5);--copper:#D89459;--copper2:#B87A45;--silk:#EEF3EC;--silk2:#C6D3C9;--mute:#8CA497;--red:#e8323c;
+  --disp:'Big Shoulders Display','Arial Narrow',Impact,sans-serif;--body:'Schibsted Grotesk',system-ui,'Segoe UI',sans-serif;--mono:'IBM Plex Mono','SFMono-Regular',Consolas,monospace;
+  background:radial-gradient(70% 40% at 12% 0%,rgba(216,148,89,.10),transparent 60%),var(--bg);color:var(--silk);font-family:var(--body);font-size:17px;line-height:1.55;
+  border:1px solid var(--line);border-radius:6px;padding:clamp(22px,4vw,48px) clamp(16px,3.6vw,44px) 40px;margin:0 0 24px;overflow-wrap:anywhere;-webkit-font-smoothing:antialiased}
+.slf *{box-sizing:border-box}
+.slf p{margin:0 0 12px}
+.slf a{color:var(--copper);text-decoration-color:rgba(216,148,89,.45)}
+.slf a:hover{color:#f0b27a}
+.slf code{font-family:var(--mono);font-size:.86em;color:var(--silk);background:var(--panel2);border:1px solid var(--line);padding:1px 5px;border-radius:3px}
+.slf h1,.slf h2,.slf h3{margin:0;padding:0;border:0;font-family:var(--disp);font-weight:900;line-height:.95;letter-spacing:.005em;text-transform:uppercase;color:var(--silk);text-wrap:balance}
+.slf h1{font-size:clamp(48px,7.4vw,96px)}
+.slf h1 em,.slf h2 em{font-style:normal;color:var(--copper)}
+.slf h2{font-size:clamp(38px,5.2vw,64px);margin:0 0 16px}
+.slf h3{font-size:clamp(22px,2.4vw,30px);font-weight:800;margin:0 0 8px}
+.slf .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--copper);display:flex;align-items:center;gap:12px;margin:0 0 14px}
+.slf .eyebrow::before{content:"";width:22px;height:1px;background:var(--copper2);flex:none}
+.slf .lede{font-size:clamp(17px,1.7vw,20px);line-height:1.5;color:var(--silk2);max-width:36em;margin:0}
+.slf .body{color:var(--silk2);max-width:40em}
+.slf .body b{color:var(--silk);font-weight:600}
+/* hero */
+.slf .hero{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:clamp(20px,4vw,44px);align-items:center;padding-bottom:30px}
+.slf .hero .copy{display:grid;gap:20px}
+.slf .ctas{display:flex;gap:12px;flex-wrap:wrap}
+.slf .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:13px 20px;border-radius:4px;font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border:1px solid transparent;white-space:nowrap;line-height:1.2}
+.slf .btn.red{background:var(--red);color:#fff}
+.slf .btn.red:hover{background:#ff4d57;color:#fff}
+.slf .btn.ghost{border-color:var(--line2);color:var(--silk)}
+.slf .btn.ghost:hover{background:rgba(216,148,89,.1);color:var(--silk)}
+.slf .news{font-family:var(--mono);font-size:13px;line-height:1.7;color:var(--silk2);border:1px solid var(--line);border-left:3px solid var(--copper);background:var(--panel);padding:12px 16px;margin:0}
+.slf .news b{color:var(--copper);font-weight:500;letter-spacing:.06em;text-transform:uppercase;font-size:12px}
+.slf .fit{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.slf .fit div{background:var(--panel);padding:16px 18px}
+.slf .fit .n{font-family:var(--disp);font-weight:900;font-size:clamp(38px,4.4vw,52px);line-height:.9;color:var(--silk)}
+.slf .fit p{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin:8px 0 0;line-height:1.5}
+/* sections */
+.slf section{padding:clamp(40px,6vw,64px) 0 6px;border-top:1px solid var(--line)}
+.slf .split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,300px);gap:clamp(22px,4vw,44px);align-items:start}
+.slf .split.rev{grid-template-columns:minmax(0,300px) minmax(0,1fr)}
+.slf .split.rev > figure{order:-1}
+.slf .phone{margin:0;border:1px solid var(--line);background:#000;border-radius:18px;padding:7px;overflow:hidden}
+.slf .phone img{display:block;width:100%;height:auto;border-radius:12px;margin:0;max-width:none}
+.slf .phone figcaption{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);padding:10px 6px 4px;line-height:1.55}
+.slf .photo{margin:0;border:1px solid var(--line);background:#000;border-radius:6px;overflow:hidden}
+.slf .photo img{display:block;width:100%;height:auto;margin:0;max-width:none;border-radius:0;box-shadow:none}
+.slf .photo figcaption{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);padding:10px 10px 8px;line-height:1.55}
+.slf .phones{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:24px 0 6px;max-width:800px;align-items:start}
+.slf .phones.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.slf ul.list{list-style:none;padding:0;margin:0 0 16px;display:grid;gap:12px}
+.slf ul.list li{position:relative;padding-left:24px;color:var(--silk2);margin:0}
+.slf ul.list li::before{content:"";position:absolute;left:0;top:10px;width:8px;height:8px;background:var(--copper);border-radius:1px}
+.slf ul.list li b{color:var(--silk);font-weight:600}
+.slf ol.flow{list-style:none;counter-reset:f;padding:0;margin:0 0 16px;display:grid;gap:12px}
+.slf ol.flow li{counter-increment:f;position:relative;padding-left:40px;color:var(--silk2);margin:0}
+.slf ol.flow li::before{content:counter(f,decimal-leading-zero);position:absolute;left:0;top:1px;font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--copper)}
+.slf ol.flow li b{color:var(--silk);font-weight:600}
+.slf .spec{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:12px 22px;font-family:var(--mono);font-size:13px;line-height:1.55;margin:0 0 16px}
+.slf .spec dt{color:var(--copper);letter-spacing:.06em;text-transform:uppercase;font-size:11px;padding-top:3px;margin:0;font-weight:500}
+.slf .spec dd{margin:0;color:var(--silk2)}
+.slf .spec dd b{color:var(--silk);font-weight:500}
+.slf .spec + h3{margin-top:34px}
+.slf .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin:22px 0 4px}
+.slf .tiles a{background:var(--panel);padding:18px 18px 16px;display:grid;gap:6px;align-content:start;text-decoration:none;color:inherit;font-weight:400;position:relative}
+.slf .tiles a:hover{background:var(--panel2)}
+.slf .tiles .k{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--copper)}
+.slf .tiles .t{font-family:var(--disp);font-weight:800;font-size:25px;text-transform:uppercase;line-height:.95;color:var(--silk)}
+.slf .tiles .p{font-size:14px;color:var(--silk2);line-height:1.5}
+.slf .tiles .bar{position:absolute;left:0;bottom:0;height:3px;width:100%;background:linear-gradient(90deg,#2BF06A,#FFB000,#FF2E2E);opacity:.8}
+.slf .note{font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--mute);line-height:1.75;margin:14px 0 0}
+.slf .note b{color:var(--silk2);font-weight:500}
+.slf .warn{border:1px solid rgba(232,50,60,.4);background:rgba(232,50,60,.07);padding:18px 20px;margin:18px 0 6px}
+.slf .warn h3{color:#ff8a90}
+.slf .warn p,.slf .warn li{color:var(--silk2)}
+/* signup: the same red step cards as the shift light site and the logger post */
+.slf .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:20px 0 6px}
+.slf .step{display:flex;flex-direction:column;gap:12px;padding:20px;border:1px solid rgba(232,50,60,.35);border-radius:4px;background:var(--panel);box-shadow:0 0 24px rgba(232,50,60,.08)}
+.slf .step-head{display:flex;align-items:center;gap:12px}
+.slf .step-num{display:grid;place-items:center;width:32px;height:32px;flex:none;border-radius:50%;background:var(--red);color:#fff;font-family:var(--mono);font-weight:700}
+.slf .step h3{font-size:clamp(22px,2vw,28px);margin:0}
+.slf .step p{font-size:15px;color:var(--silk2);flex:1;margin:0}
+.slf .last{margin-top:36px;padding-top:18px;border-top:1px solid var(--line);font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--mute);line-height:1.8}
+.slf .last a{color:var(--silk2)}
+.slf .hero > *,.slf .split > *,.slf .phones > *,.slf .steps > *{min-width:0}
+@media (max-width:820px){
+  .slf .hero,.slf .split,.slf .split.rev{grid-template-columns:minmax(0,1fr)}
+  /* .split.rev puts its phone first on desktop; on a phone the text leads everywhere */
+  .slf .hero figure,.slf .split > figure,.slf .split.rev > figure{max-width:320px;width:100%;margin:0 auto;order:2}
+  .slf .fit{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .slf .steps{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:560px){
+  .slf .phones,.slf .phones.three{grid-template-columns:minmax(0,1fr);max-width:320px;margin-left:auto;margin-right:auto}
+  .slf .spec{grid-template-columns:minmax(0,1fr);gap:2px 0}
+  .slf .spec dd{margin-bottom:10px}
+  .slf .btn{white-space:normal;text-align:center}
+}
+/* shift light page additions */
+.slf .tiles > div{background:var(--panel);padding:18px 18px 16px;display:grid;gap:6px;align-content:start;position:relative}
+.slf .tiles .price{font-family:var(--disp);font-weight:900;font-size:clamp(40px,4.4vw,54px);line-height:.9;color:var(--silk)}
+.slf .video{max-width:340px;margin:22px auto 6px}
+.slf .video .frame{position:relative;padding-bottom:177.78%;height:0;overflow:hidden;border:1px solid var(--line);border-radius:6px;background:#000}
+.slf .video iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+.slf .video p{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);margin:10px 0 0;text-align:center}
+.slf table.wires{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:13px;margin:10px 0 18px;display:table}
+.slf table.wires th{color:var(--copper);font-weight:500;text-transform:uppercase;letter-spacing:.08em;font-size:11px;text-align:left;border:0;border-bottom:1px solid var(--line2);padding:8px 10px;background:transparent}
+.slf table.wires td{color:var(--silk2);border:0;border-bottom:1px solid var(--line);padding:9px 10px;background:transparent}
+.slf table.wires td b{color:var(--silk);font-weight:500}
+.slf .boards{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:18px;margin:22px 0 8px;align-items:start}
+.slf .boards > *{min-width:0}
+/* the hero strip: eight LEDs filling in pairs from the ends, fading to red, then flashing */
+.slf .bar8{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:8px;max-width:440px;padding:12px;background:#050a07;border:1px solid var(--line);border-radius:6px}
+.slf .bar8 i{display:block;height:22px;border-radius:3px;background:#1b2a21;animation:4.8s linear infinite}
+.slf .bar8 i:nth-child(1),.slf .bar8 i:nth-child(8){animation-name:slf-p1}
+.slf .bar8 i:nth-child(2),.slf .bar8 i:nth-child(7){animation-name:slf-p2}
+.slf .bar8 i:nth-child(3),.slf .bar8 i:nth-child(6){animation-name:slf-p3}
+.slf .bar8 i:nth-child(4),.slf .bar8 i:nth-child(5){animation-name:slf-p4}
+@keyframes slf-p1{0%,11%{background:#1b2a21;box-shadow:none}12%,36%{background:#2BF06A;box-shadow:0 0 14px #2BF06A}48%{background:#FFB000;box-shadow:0 0 14px #FFB000}56%,60%{background:#FF2E2E;box-shadow:0 0 16px #FF2E2E}63%{background:#1b2a21;box-shadow:none}66%{background:#FF2E2E;box-shadow:0 0 16px #FF2E2E}69%{background:#1b2a21;box-shadow:none}72%{background:#FF2E2E;box-shadow:0 0 16px #FF2E2E}75%{background:#1b2a21;box-shadow:none}78%{background:#FF2E2E;box-shadow:0 0 16px #FF2E2E}81%{background:#1b2a21;box-shadow:none}84%{background:#FF2E2E;box-shadow:0 0 16px #FF2E2E}87%,100%{background:#1b2a21;box-shadow:none}}
+@keyframes slf-p2{0%,23%{background:#1b2a21;box-shadow:none}24%,36%{background:#2BF06A;box-shadow:0 0 14px #2BF06A}48%{background:#FFB000;box-shadow:0 0 14px #FFB000}56%,60%{background:#FF2E2E;box-shadow:0 0 16px #FF2E2E}63%{background:#1b2a21;box-shadow:none}66%{background:#FF2E2E;box-shadow:0 0 16px #FF2E2E}69%{background:#1b2a21;box-shadow:none}72%{background:#FF2E2E;box-shadow:0 0 16px #FF2E2E}75%{background:#1b2a21;box-shadow:none}78%{background:#FF2E2E;box-shadow:0 0 16px #FF2E2E}81%{background:#1b2a21;box-shadow:none}84%{background:#FF2E2E;box-shadow:0 0 16px #FF2E2E}87%,100%{background:#1b2a21;box-shadow:none}}
+@keyframes slf-p3{0%,35%{background:#1b2a21;box-shadow:none}36%{background:#2BF06A;box-shadow:0 0 14px #2BF06A}48%{background:#FFB000;box-shadow:0 0 14px #FFB000}56%,60%{background:#FF2E2E;box-shadow:0 0 16px #FF2E2E}63%{background:#1b2a21;box-shadow:none}66%{background:#FF2E2E;box-shadow:0 0 16px #FF2E2E}69%{background:#1b2a21;box-shadow:none}72%{background:#FF2E2E;box-shadow:0 0 16px #FF2E2E}75%{background:#1b2a21;box-shadow:none}78%{background:#FF2E2E;box-shadow:0 0 16px #FF2E2E}81%{background:#1b2a21;box-shadow:none}84%{background:#FF2E2E;box-shadow:0 0 16px #FF2E2E}87%,100%{background:#1b2a21;box-shadow:none}}
+@keyframes slf-p4{0%,47%{background:#1b2a21;box-shadow:none}48%{background:#FFB000;box-shadow:0 0 14px #FFB000}56%,60%{background:#FF2E2E;box-shadow:0 0 16px #FF2E2E}63%{background:#1b2a21;box-shadow:none}66%{background:#FF2E2E;box-shadow:0 0 16px #FF2E2E}69%{background:#1b2a21;box-shadow:none}72%{background:#FF2E2E;box-shadow:0 0 16px #FF2E2E}75%{background:#1b2a21;box-shadow:none}78%{background:#FF2E2E;box-shadow:0 0 16px #FF2E2E}81%{background:#1b2a21;box-shadow:none}84%{background:#FF2E2E;box-shadow:0 0 16px #FF2E2E}87%,100%{background:#1b2a21;box-shadow:none}}
+@media (prefers-reduced-motion:reduce){
+  .slf .bar8 i{animation:none}
+  .slf .bar8 i:nth-child(1),.slf .bar8 i:nth-child(8){background:#2BF06A}
+  .slf .bar8 i:nth-child(2),.slf .bar8 i:nth-child(7){background:#9BE23A}
+  .slf .bar8 i:nth-child(3),.slf .bar8 i:nth-child(6){background:#FFB000}
+}
+.slf p + h3,.slf ol + h3,.slf ul + h3,.slf table + h3{margin-top:30px}
+@media (max-width:820px){.slf .boards{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:560px){.slf table.wires{font-size:12px}.slf table.wires th,.slf table.wires td{padding:7px 6px}}
+</style>
+
+
+<div class="slf">
+
+<div class="hero">
+<div class="copy">
+<p class="eyebrow">ESP32 · CAN bus · Toyota 86 / Subaru BRZ · MINI R53</p>
+<h1>Shift light,<br><em>straight off the CAN bus.</em></h1>
+<p class="lede">Eight LEDs on the steering column, reading RPM off the car's own CAN bus at 100 Hz. They light in pairs from both ends, close in the middle right at your shift point, and then the whole bar flashes. Every threshold and colour is a slider on your phone, live, with the engine running.</p>
+<div class="bar8" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<div class="ctas"><a class="btn red" href="#order">Order one</a><a class="btn ghost" href="#cars">Pick your car</a></div>
+<p class="news"><b>Now shipping</b> · rev C boards for the Toyota 86, Subaru BRZ and Scion FR-S, and for the MINI R53, with the printed LED housing for each car. Four wires to the car, the bar on the column, and the rest is done from your phone.</p>
+</div>
+<figure class="phone"><img src="/assets/images/shift-light/86-tach-trd.jpg" alt="Twins Shift Light app at 6900 rpm: the bar tach filled in orange with the four threshold markers, and the strip mimic lit from both ends" loading="eager"><figcaption>86 app · TRD livery at 6,900</figcaption></figure>
+</div>
+
+<div class="fit">
+<div><div class="n">8</div><p>LEDs on the column</p></div>
+<div><div class="n">100 Hz</div><p>RPM straight off the bus</p></div>
+<div><div class="n">4</div><p>wires to the car</p></div>
+<div><div class="n">0</div><p>factory wires cut</p></div>
+</div>
+
+<section id="see-it">
+<p class="eyebrow">01 · See it run</p>
+<h2>Read it <em>without reading it.</em></h2>
+<p class="body">A shift light you have to interpret is one you'll ignore. This one tells you two things at once, how many LEDs are lit and what colour they are, and both land in peripheral vision while your eyes stay on the track.</p>
+<ul class="list">
+<li><b>Dark below the start point.</b> Cruising the paddock doesn't look like a police chase.</li>
+<li><b>Pairs fill from both ends.</b> The outer pair first, then inward, until the middle pair closes the bar right at the shift point. A bar converging on its own centre reads at a glance in a way a left-to-right progress bar never does.</li>
+<li><b>Colour fades through the warning zone.</b> Green, through amber, to red, smoothly with RPM.</li>
+<li><b>Past the blink point the whole bar flashes.</b> Shift. Now.</li>
+</ul>
+<div class="video"><div class="frame"><iframe src="https://www.youtube.com/embed/FrWZCIEsT3Q" title="CAN shift light sweeping through its range" loading="lazy" allowfullscreen allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe></div><p>Dark, green fill, the fade to red, then the flash</p></div>
+</section>
+
+<section id="cars">
+<p class="eyebrow">02 · Pick your car</p>
+<h2>One board, <em>set up for your car.</em></h2>
+<p class="body">Same rev C board for every car, flashed with the firmware for yours and tested before it ships. It listens to the bus and never transmits, so the car never knows it's there.</p>
+<div class="tiles">
+<a href="#the-86"><span class="k">Toyota · Subaru · Scion</span><span class="t">86 / BRZ / FR-S</span><span class="p">2013 to 2020, FA20. Plugs into the spare CAN port behind the head unit, with the board tucked in the glovebox.</span><span class="bar"></span></a>
+<a href="#the-r53"><span class="k">MINI</span><span class="t">Cooper S R53</span><span class="p">2002 to 2006. Taps the twisted yellow pair behind the dash end panel, which pops off by hand.</span><span class="bar"></span></a>
+<a href="#more-cars"><span class="k">BMW and more</span><span class="t">135i and others</span><span class="p">The RPM frame is a setting on the board, so a new car is five numbers, not new firmware. The 135i E82 profile is ready.</span><span class="bar"></span></a>
+</div>
+</section>
+
+<section id="the-86">
+<p class="eyebrow">03 · 86 / BRZ / FR-S</p>
+<h2>A track cluster <em>for the first-gen car.</em></h2>
+<p class="body">The Twins Shift Light app opens on a tach the way the second-generation car draws its cluster in track mode, and the way every first-gen owner wishes theirs did. A horizontal bar from 0 to 8,000, filled to live RPM in the exact colour the strip is showing at that moment. The four thresholds sit above it as markers, each in the colour it switches the strip to, and the FA20's own red zone is fixed on the right, so you set your shift points against the thing that limits them.</p>
+<p class="body">Under the tach, a big RPM readout and a mimic of the strip in the car, both drawn off the same model as the firmware. What you see on the phone is what the LEDs are doing.</p>
+<div class="phones three">
+<figure class="phone"><img src="/assets/images/shift-light/86-tach-sti.jpg" alt="Twins Shift Light at 6100 rpm in the STI livery: bar tach and strip in World Rally Blue" loading="lazy"><figcaption>STI · 6,100</figcaption></figure>
+<figure class="phone"><img src="/assets/images/shift-light/86-tach-classic.jpg" alt="Twins Shift Light at 6300 rpm in the Classic livery: bar tach and strip in green" loading="lazy"><figcaption>Classic · 6,300</figcaption></figure>
+<figure class="phone"><img src="/assets/images/shift-light/86-tach-blink.jpg" alt="Twins Shift Light at 7350 rpm: every LED red, past the blink point" loading="lazy"><figcaption>Past 7,300 · shift</figcaption></figure>
+</div>
+
+<div class="split" style="margin-top:28px">
+<div>
+<h3>Three liveries</h3>
+<dl class="spec">
+<dt>Classic</dt><dd><b>Green to red.</b> The shift light everyone knows.</dd>
+<dt>TRD</dt><dd><b>Heritage yellow into Toyota red.</b> Halfway between the two lands on TRD orange, so the warning zone comes out in the right colour on its own.</dd>
+<dt>STI</dt><dd><b>World Rally Blue, 555 gold, STI cherry.</b></dd>
+</dl>
+<p class="body">One tap sets all four strip colours, and you can pick your own from the palette after. A livery is colour only. Your shift points stay where you put them.</p>
+<h3>Every setting, live</h3>
+<ul class="list">
+<li><b>Four RPM thresholds.</b> Where the light comes on, where the colour starts shifting, where the bar fills, and where it flashes. Out of the box it stays dark below 5,500 and fills at 7,200.</li>
+<li><b>Blink rate, brightness and LED count.</b> Build a longer bar and tell the board how many LEDs it has.</li>
+<li><b>Fill direction.</b> Pairs from both ends, or a straight left-to-right bar.</li>
+<li><b>Apply and Save.</b> Apply changes the strip instantly while you drag, with the engine running. Save writes it to the board, where it stays.</li>
+</ul>
+</div>
+<figure class="phone"><img src="/assets/images/shift-light/86-livery.jpg" alt="Thresholds, the Classic, TRD and STI livery chips, and the colour palette" loading="lazy"><figcaption>Thresholds, liveries and colours</figcaption></figure>
+</div>
+
+<div class="split rev" style="margin-top:28px">
+<figure class="phone"><img src="/assets/images/shift-light/86-graph.jpg" alt="Graph tab: engine speed, throttle plate, coolant and road speed through a third-gear pull and the shift to fourth" loading="lazy"><figcaption>Third-gear pull, shift, fourth</figcaption></figure>
+<div>
+<h3>Graph the whole bus</h3>
+<p class="body">The board hears everything on the 86's CAN bus, and the Graph tab plots it. Fourteen channels, any of them on one screen, each on its own scale with labelled axes in matching colours:</p>
+<ul class="list">
+<li><b>Engine:</b> RPM, throttle plate, accelerator pedal, clutch, gear.</li>
+<li><b>Temperatures:</b> oil and coolant, in °C or °F.</li>
+<li><b>Motion:</b> road speed, brake pressure, all four wheel speeds, steering angle.</li>
+</ul>
+<p class="body">Watch the FA20's torque dip go by around 4,000, see where the plate opened against where the pedal went, or line the rear wheels up against the fronts coming out of a corner.</p>
+</div>
+</div>
+
+<div class="split" style="margin-top:28px">
+<div>
+<h3>And the raw bus</h3>
+<p class="body">The CAN Bus tab lists every ID the car sends, how fast each one arrives and its latest bytes. It's how you find the next channel worth reading, and it's on a switch, so a phone that isn't looking costs the board nothing.</p>
+</div>
+<figure class="phone"><img src="/assets/images/shift-light/86-canbus.jpg" alt="CAN Bus tab: seven IDs with their rates and latest payloads" loading="lazy"><figcaption>Every ID, its rate, its bytes</figcaption></figure>
+</div>
+<p class="note">App screenshots on demo readings.</p>
+</section>
+
+<section id="lap-timers">
+<p class="eyebrow">04 · 86 / BRZ / FR-S</p>
+<h2>Your lap timer <em>gets the engine.</em></h2>
+<p class="body">Switch on lap timer mode and the board also shows up as a Bluetooth OBD dongle. <b>SoloStorm</b> and <b>Harry's LapTimer</b> connect to it the way they connect to any ELM327, and log the engine next to your laps. Position keeps coming from wherever it already does: the phone's GPS, a RaceBox, a Qstarz.</p>
+<dl class="spec">
+<dt>RPM</dt><dd><b>The same number driving the LEDs,</b> so the lap log and the light always agree.</dd>
+<dt>Throttle</dt><dd><b>Plate and pedal,</b> both.</dd>
+<dt>Temps</dt><dd><b>Coolant and oil.</b></dd>
+</dl>
+<p class="body">It answers from frames it has already heard on the bus, so it's quicker than the dongle it stands in for, and it still never transmits on the car. The shift light app keeps working alongside it. Mention lap timer mode with your order and the board ships with it on.</p>
+</section>
+
+<section id="the-r53">
+<p class="eyebrow">05 · MINI Cooper S R53</p>
+<h2>Where it <em>started.</em></h2>
+<p class="body">The R53's tach is a small pod on the column, and mid-corner with your eyes up it might as well not be there. The light sits on the column shroud, directly under that pod, dead centre in your sightline. It moves with the column, so the rim never blocks it, and the housing shades the LEDs enough to kill windscreen reflections.</p>
+<div class="split" style="margin-top:20px">
+<div>
+<p class="body">The R53 Shift Light app has the same sliders, the same Apply and Save, and a live strip at the top of the screen updating at 10 Hz. Drag the redline down to 6,800 and the bar fills sooner, right there, before you've moved the car.</p>
+<p class="body">Its Graph tab decodes the R53's bus: engine speed, throttle pedal, coolant, road speed, front wheel speeds, steering angle, fuel level and outside temperature. Run an <b>AEM X-Series wideband</b> and its CAN output goes on the same pair, and the app plots air/fuel ratio with no setup at all.</p>
+</div>
+<figure class="phone"><img src="/assets/images/shift-light/r53-main.jpg" alt="R53 Shift Light app at 6400 rpm: CAN up at 1049 frames a second, the strip mimic, and every threshold on a slider" loading="lazy"><figcaption>Live RPM, the bar, every threshold</figcaption></figure>
+</div>
+<div class="phones">
+<figure class="phone"><img src="/assets/images/shift-light/r53-graph.jpg" alt="R53 app graph: engine speed, throttle pedal and AEM air/fuel ratio through a pull and a shift" loading="lazy"><figcaption>RPM, throttle and AFR through a pull</figcaption></figure>
+<figure class="phone"><img src="/assets/images/shift-light/r53-canbus.jpg" alt="R53 app CAN bus tab: sixteen IDs including the AEM wideband, with rates and payloads" loading="lazy"><figcaption>The whole R53 bus, plus the AEM</figcaption></figure>
+</div>
+<p class="note">App screenshots on demo readings.</p>
+<h3 style="margin-top:28px">On an iPhone</h3>
+<p class="body">The R53 board also configures from a browser at <a href="https://logs.geekopolis.com/shiftlight/?v=20261006">logs.geekopolis.com/shiftlight</a>. Same sliders, same graph, same CAN view, nothing to install. On an iPhone, open it in the free <a href="https://apps.apple.com/us/app/bluefy-web-ble-browser/id1492822055">Bluefy</a> browser, which carries Bluetooth to the page. On Android, Windows, Mac or Linux, Chrome or Edge does it directly.</p>
+</section>
+
+<section id="more-cars">
+<p class="eyebrow">06 · BMW 135i and more</p>
+<h2>Your car <em>is five numbers.</em></h2>
+<p class="body">Almost every modern car puts engine speed on its CAN bus. The board doesn't hard-code where: the CAN ID, the byte it starts at, the field width, the byte order and the scale are all settings it stores. A new car means setting those five numbers, not writing new firmware.</p>
+<dl class="spec">
+<dt>BMW 135i</dt><dd><b>E82 N54, ready.</b> RPM from <code>0x0AA</code> on PT-CAN.</dd>
+<dt>86 / BRZ</dt><dd><b><code>0x140</code>,</b> 100 times a second.</dd>
+<dt>MINI R53</dt><dd><b><code>0x316</code>,</b> read straight off the car.</dd>
+</dl>
+<p class="body">Got something else? <a href="mailto:matt@geekopolis.com?subject=Shift%20light%20for%20my%20car">Email me the car</a> and I'll set a board up for it.</p>
+</section>
+
+<section id="hardware">
+<p class="eyebrow">07 · The board</p>
+<h2>Rev C, <em>built for a car.</em></h2>
+<p class="body">A 54 × 58 mm two-layer board with everything soldered down: an ESP32-C3 SuperMini in the middle, a CAN transceiver, an MP1584 buck trimmed to 5.0 V, and screw terminals for everything that leaves the board. No dev-board stack, no jumper wires, nothing to come loose behind a dash.</p>
+<div class="boards">
+<figure class="photo"><img src="/assets/images/shift-light/board-rev-c-iso.webp" alt="Rev C shift light board: ESP32-C3 SuperMini, MP1584 buck module, CAN transceiver and screw terminals" loading="lazy"><figcaption>Rev C · 54 × 58 mm</figcaption></figure>
+<figure class="photo"><img src="/assets/images/shift-light/board-rev-c-top.webp" alt="Rev C board from the top, terminals labelled CANH CANL, +12V GND, +5V DATA GND" loading="lazy"><figcaption>CAN, 12 V and the strip, each on its own terminal</figcaption></figure>
+</div>
+<dl class="spec">
+<dt>Power in</dt><dd><b>12 V switched,</b> fused, TVS clamped and reverse-blocked.</dd>
+<dt>5 V rail</dt><dd><b>MP1584 buck,</b> trimmed to 5.0 V before it ships. The board and a full strip draw well under half an amp.</dd>
+<dt>CAN</dt><dd><b>SN65HVD230, listen-only,</b> 500 kbit/s. The termination jumper ships open, because the car's bus is already terminated.</dd>
+<dt>Strip</dt><dd><b>8 × WS2812B,</b> on three wires: +5 V, data, ground.</dd>
+<dt>Phone</dt><dd><b>Bluetooth LE.</b> No pairing, no PIN, nothing to set up. The app proves itself to the board on its own, so a stranger's phone in the car park can't change your settings.</dd>
+<dt>Mounting</dt><dd><b>M3 holes</b> at the four corners.</dd>
+<dt>Status</dt><dd><b>A blue LED on the SuperMini:</b> steady when it's reading the bus, blinking when it isn't.</dd>
+</dl>
+<p class="body"><b>The phone is optional.</b> The light boots, reads the bus and lights up with no phone in the car. Settings live on the board. The app is a screwdriver, not a component.</p>
+</section>
+
+<section id="housing">
+<span id="mounting"></span>
+<p class="eyebrow">08 · The housing</p>
+<h2>Printed <em>for each car.</em></h2>
+<div class="boards">
+<figure class="photo"><img src="/assets/images/shift-light/86-pod.jpg" alt="The 86 / BRZ shift pod: a curved column-top housing with eight LED windows" loading="lazy"><figcaption>86 / BRZ column pod</figcaption></figure>
+<figure class="photo"><img src="/assets/images/r53-shift-light/shift-light-installed.jpg" alt="R53 housing clipped to the column shroud under the tach" loading="lazy"><figcaption>R53 housing on the shroud</figcaption></figure>
+</div>
+<p class="body">Each housing holds the eight-LED stick behind its own windows, shades it from the sun, and sits on top of the steering column where the bar and the road share one glance. Both are printed and shipped with the light, or sold on their own. Prefer to print the R53 one yourself? It's on <a href="https://cults3d.com/en/3d-model/various/r53-shift-light-housing">Cults3D</a>.</p>
+</section>
+
+<section id="install">
+<span id="wiring-it-in"></span>
+<p class="eyebrow">09 · Fitting it</p>
+<h2>An afternoon, <em>four wires.</em></h2>
+<p class="body">Switched 12 V, ground, CAN high and CAN low. Then three wires from the board to the strip on the column.</p>
+
+<h3>86 / BRZ / FR-S</h3>
+<ol class="flow">
+<li><b>Find the spare CAN port.</b> It's a male connector behind the head unit, right next to the glovebox. The two middle pins of a Toyota radio harness plug straight into it.</li>
+<li><b>Power from the glovebox.</b> There's a second 12 V socket inside it to feed the board, and the board lives in there too.</li>
+<li><b>Run 60 to 90 cm of twisted pair</b> from the port to the board's CAN terminals, then the strip cable up to the column.</li>
+</ol>
+<p class="body">Want to try it before you fit it? OBD pin 6 is CAN high and pin 14 is CAN low, the same bus. Clip on there for a test drive, then move it behind the dash.</p>
+
+<h3>MINI Cooper S R53</h3>
+<p class="body">Everything is behind the access panel on the left end of the dash, which comes off by hand. Posi-Taps ship with the light, so nothing gets cut and the car goes back to standard whenever you like.</p>
+<table class="wires">
+<thead><tr><th>Wire</th><th>Colour</th><th>Where</th></tr></thead>
+<tbody>
+<tr><td><b>Switched 12 V</b></td><td>green / blue</td><td>terminal 15, X11177 pin 16</td></tr>
+<tr><td><b>Ground</b></td><td>brown</td><td>body stud</td></tr>
+<tr><td><b>CAN high</b></td><td>yellow / black</td><td>X11177 pin 11</td></tr>
+<tr><td><b>CAN low</b></td><td>yellow / brown</td><td>X11177 pin 24</td></tr>
+</tbody>
+</table>
+<p class="body">The CAN pair is twisted, which is how you pick it out of the loom. Colours and pins come off the factory WDS sheets for the instrument cluster, and <a href="/car/tech/2026/09/04/r53-can-bus-wire-colours.html">Two yellow wires</a> walks through reading them.</p>
+<div class="phones three">
+<figure class="phone"><img src="/assets/images/r53-shift-light/install-power-tap.jpg" alt="Posi-Taps on the switched feed behind the R53's dash end panel" loading="lazy"><figcaption>Switched feed and ground</figcaption></figure>
+<figure class="phone"><img src="/assets/images/r53-shift-light/install-can-tap.jpg" alt="The twisted yellow CAN pair tapped in the main harness" loading="lazy"><figcaption>The twisted CAN pair</figcaption></figure>
+<figure class="phone"><img src="/assets/images/r53-shift-light/install-wire-run.jpg" alt="The strip wire routed out of sight up the column" loading="lazy"><figcaption>Up the column, out of sight</figcaption></figure>
+</div>
+<p class="body" style="margin-top:18px">Swapped the CAN pair by accident? Nothing happens to the car. The board just hears nothing and blinks; swap them and it's reading.</p>
+</section>
+
+<section id="order">
+<p class="eyebrow">10 · Order</p>
+<h2>Get <em>one.</em></h2>
+<div class="tiles">
+<div><span class="k">86 / BRZ / FR-S or R53</span><span class="price">$125</span><span class="p"><b>Shift light.</b> Rev C board flashed for your car, the 8-LED strip, the printed housing, Posi-Taps for the R53. Assembled and tested.</span><span class="bar"></span></div>
+<div><span class="k">Either car</span><span class="price">$19</span><span class="p"><b>Housing only.</b> The printed column housing for your car.</span><span class="bar"></span></div>
+<div><span class="k">Android · iPhone for R53</span><span class="price">$0</span><span class="p"><b>The apps.</b> Free, no account, no internet permission. They only talk to your board.</span><span class="bar"></span></div>
+</div>
+<div class="steps">
+<div class="step">
+<div class="step-head"><span class="step-num">1</span><h3>Email your car</h3></div>
+<p>Year, model, and the light or the housing. Mention lap timer mode if you want it on an 86.</p>
+<a class="btn red" href="mailto:matt@geekopolis.com?subject=Shift%20light%20order">Email to order</a>
+</div>
+<div class="step">
+<div class="step-head"><span class="step-num">2</span><h3>Fit it</h3></div>
+<p>Four wires and the strip on the column. The light works the moment the key turns.</p>
+<a class="btn ghost" href="#install">How it fits</a>
+</div>
+<div class="step">
+<div class="step-head"><span class="step-num">3</span><h3>Set it up</h3></div>
+<p>Install the app for your car and set your shift points with the engine running.</p>
+<a class="btn ghost" href="#apps">Get the app</a>
+</div>
+</div>
+</section>
+
+<section id="apps">
+<span id="getting-the-app"></span><span id="setting-it-up-from-your-phone"></span>
+<p class="eyebrow">11 · The apps</p>
+<h2>Free, <em>for your car.</em></h2>
+<div class="tiles">
+<a href="/assets/apk/twins-shift-light.apk"><span class="k">Android · 86 / BRZ / FR-S</span><span class="t">Twins Shift Light</span><span class="p">The track-cluster tach, three liveries, the graph and the CAN view. Download the APK.</span><span class="bar"></span></a>
+<a href="/assets/apk/r53-shift-light.apk?v=1.3"><span class="k">Android · MINI R53</span><span class="t">R53 Shift Light</span><span class="p">Version 1.3. Sliders, the live strip, the R53 graph with AEM wideband, the CAN view. Download the APK.</span><span class="bar"></span></a>
+<a href="https://logs.geekopolis.com/shiftlight/?v=20261006"><span class="k">iPhone and desktop · MINI R53</span><span class="t">Web app</span><span class="p">The R53 app in a browser. Bluefy on iPhone, Chrome or Edge everywhere else.</span><span class="bar"></span></a>
+</div>
+<p class="body" style="margin-top:16px">The Android apps install straight from the download, outside the Play Store, so Android asks you to allow installs from your browser the first time. Each asks for one permission, Nearby devices, which is how Android gates Bluetooth. Neither has internet access, so nothing leaves the phone.</p>
+<div style="max-width:170px;margin:18px 0 0"><img src="/assets/images/r53-shift-light/app-qr.png" alt="QR code for the R53 Shift Light APK" style="width:100%;height:auto;display:block;border-radius:4px"></div>
+<p class="note">Scan from the car for the R53 app. Firmware updates for the R53 board flash from Chrome over USB-C with the <a href="https://mrblahhhh.github.io/esp32-shift-light-R53-mini/">web flasher</a>, and keep your saved settings.</p>
+</section>
+
+<div class="last">Questions, a car not listed here, or a bulk order for a club: <a href="mailto:matt@geekopolis.com">matt@geekopolis.com</a> or <a href="https://www.instagram.com/mattryan6729/">@mattryan6729</a>. The R53 firmware source is on <a href="https://github.com/MrBlahhhh/esp32-shift-light-R53-mini">GitHub</a>.</div>
+
+</div>
