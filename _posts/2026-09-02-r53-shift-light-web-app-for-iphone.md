@@ -23,7 +23,7 @@ The [CAN shift light](/car/tech/2026/07/11/r53-esp32-shift-light.html) and the [
 
 So the app is a web page instead. Same board, same Bluetooth, same screens. Nothing to install and nothing to pay.
 
-**[Open the app](https://logs.geekopolis.com/shiftlight/)**
+**[Open the app](https://logs.geekopolis.com/shiftlight/?v=20261006)**
 
 ## Setting it up on an iPhone
 
