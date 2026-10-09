@@ -123,7 +123,7 @@ Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap cont
 <p class="lead">See who is ahead, who is behind and when each car last reported.</p>
 
 <div class="row">
-<figure class="tall"><img src="/assets/images/touge/v3/phone-group.webp" alt="Phone layout leaving Brevard, North Carolina: this car and three others on the blue route line, a turn card, the group card listing Dave, Ana and Kev with distance back, and the status chip reading LoRa and the time" loading="lazy"><figcaption>The phone layout, with the route and group positions.</figcaption></figure>
+<figure class="tall"><img src="/assets/images/touge/v3/phone-group.webp" alt="Phone layout in the dark theme on VA 8 north of Woolwine, Virginia: this car on the blue route with the bends ahead, a turn card for Woolwine Highway, the weather radar disc, and the group card listing Dave, Ana and Kev with distance back" loading="lazy"><figcaption>The phone layout during the demo ride on VA 8.</figcaption></figure>
 <div>
 <span class="k">Group card</span>
 <ul class="tight">
@@ -135,7 +135,7 @@ Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap cont
 </div>
 
 <div class="row flip">
-<figure><img src="/assets/images/touge/v3/report.webp" alt="Tablet in 3D on the Blue Ridge Parkway with the group close behind and the report tray open: Police, Hazard, Crash, Heavy traffic, Road closed and Animal, each with a full-colour icon" loading="lazy"><figcaption>Two taps to report a problem.</figcaption></figure>
+<figure><img src="/assets/images/touge/v3/report.webp" alt="Tablet on VA 16 south of Tazewell, Virginia, with the group close behind on the switchbacks and the report tray open: Police, Hazard, Crash, Heavy traffic, Road closed and Animal, each with a full-colour icon" loading="lazy"><figcaption>Two taps to report a problem.</figcaption></figure>
 <div>
 <span class="k">Tap to report</span>
 <ul class="tight">
@@ -309,7 +309,7 @@ Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap cont
 </div>
 
 <div class="row">
-<figure class="tall"><img src="/assets/images/touge/virginia/tazewell-marion-twistiest-portrait.webp" alt="The Tazewell to Marion route chooser in portrait with eight coloured route cards and Save, Send to group and Start below the map" width="1440" height="2304" loading="lazy"><figcaption>The same Tazewell choices in portrait on the Samsung tablet.</figcaption></figure>
+<figure class="tall"><img src="/assets/images/touge/virginia/tazewell-marion-twistiest-portrait.webp" alt="The Tazewell to Marion route chooser in portrait with eight coloured route cards and Save and Start below the map" width="1440" height="2304" loading="lazy"><figcaption>The same Tazewell choices in portrait on the Samsung tablet.</figcaption></figure>
 <div>
 <span class="k">What's on the road</span>
 <ul class="tight">
@@ -353,7 +353,7 @@ Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap cont
 <p class="lead">Pick the roads you want by adding points on the map.</p>
 
 <div class="row flip">
-<figure><img src="/assets/images/touge/v3/editor.webp" alt="Route editor with three numbered pins dropped around Asheville and the routed line running through them, with Reverse, Close loop, Save and Start below" loading="lazy"><figcaption>Drag points onto the roads you want to take.</figcaption></figure>
+<figure><img src="/assets/images/touge/v3/editor.webp" alt="Route editor with two numbered pins at Woolwine and Floyd, Virginia, and the routed line between them on VA 8, with Reverse, Close loop, Save and Start below" loading="lazy"><figcaption>Drag points onto the roads you want to take.</figcaption></figure>
 <div>
 <span class="k">Route editor</span>
 <ul class="tight">
@@ -385,7 +385,7 @@ Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap cont
 ## Drive it
 
 <div class="row flip">
-<figure><img src="/assets/images/touge/v3/drive.webp" alt="Tablet in 3D on Flat Top Road south of Boone with the ground raised: turn card, Waze chip, group card with Dave, Ana and Kev behind, weather radar disc, status chip reading 2.4 GHz, the green route along the hillside, and the time, distance and twist strip" loading="lazy"><figcaption>The tablet layout during the demo ride near Boone.</figcaption></figure>
+<figure><img src="/assets/images/touge/v3/drive.webp" alt="Tablet on VA 16 climbing the mountain south of Tazewell, Virginia: turn card, Waze chip, group card with Dave, Ana and Kev behind, weather radar disc, the purple route through the switchbacks with the three cars on it, and the time, distance and twist strip" loading="lazy"><figcaption>The tablet layout during the demo ride on VA 16.</figcaption></figure>
 <div>
 <span class="k">Turn by turn</span>
 <ul class="tight">
@@ -405,7 +405,7 @@ The prompt appears when you are at least a quarter mile off route, travelling at
 
 <div class="grid3">
 <div class="tile"><b>Back to my route</b><p>After a 30-second countdown, Touge connects you to the route ahead and keeps your remaining stops.</p></div>
-<div class="tile"><b>New route to Asheville</b><p>Recalculate to the destination, keeping your preferences for each remaining leg.</p></div>
+<div class="tile"><b>New route to Marion</b><p>Recalculate to the destination, keeping your preferences for each remaining leg.</p></div>
 <div class="tile"><b>Keep going</b><p>Dismiss the prompt. It returns after ten seconds if you are still well off route.</p></div>
 </div>
 
@@ -419,7 +419,7 @@ The prompt appears when you are at least a quarter mile off route, travelling at
 <p class="lead">A card appears two miles before a stop with three choices.</p>
 
 <div class="row">
-<figure><img src="/assets/images/touge/v3/stop-ahead.webp" alt="Stop ahead card for Carrboro, 0.9 miles out, with Skip, Later and Go on" loading="lazy"><figcaption>Skip, postpone or keep the next stop.</figcaption></figure>
+<figure><img src="/assets/images/touge/v3/stop-ahead.webp" alt="Stop ahead card for Woolwine, Virginia, 1.9 miles out on VA 8, with Skip, Later and Go on" loading="lazy"><figcaption>Skip, postpone or keep the next stop.</figcaption></figure>
 <div>
 <span class="k">Stop ahead</span>
 <ul class="tight">
@@ -442,7 +442,7 @@ The prompt appears when you are at least a quarter mile off route, travelling at
 <p class="lead">Weather radar and reports of police and hazards ahead.</p>
 
 <div class="row flip">
-<figure class="small"><img src="/assets/images/touge/v3/corner.webp" alt="Top right corner of the tablet: status chip reading 2.4 GHz, 8:15, wifi and 100 percent, and the 50 mile weather radar disc over the hills near Boone with two reports marked on it" loading="lazy"><figcaption>Connection status and weather radar.</figcaption></figure>
+<figure class="small"><img src="/assets/images/touge/v3/corner.webp" alt="Top right corner of the tablet: status chip reading No radio, the time, wifi and 100 percent, and the 50 mile weather radar disc over VA 16 with road reports marked on it" loading="lazy"><figcaption>Connection status and weather radar.</figcaption></figure>
 <div>
 <span class="k">The top corner</span>
 <ul class="tight">
@@ -530,7 +530,7 @@ The prompt appears when you are at least a quarter mile off route, travelling at
 </div>
 
 <div class="row">
-<figure><img src="/assets/images/touge/v3/search.webp" alt="Search results for Sparta, the town first" loading="lazy"><figcaption>Search results for Sparta.</figcaption></figure>
+<figure><img src="/assets/images/touge/v3/search.webp" alt="Search results for Floyd Country: Floyd Country Store first, then its soda fountain, Great Oaks Country Club and Check Country Store, each with its town, county, state and ZIP and its distance" loading="lazy"><figcaption>Search results for Floyd Country.</figcaption></figure>
 <div>
 <span class="k">Search</span>
 <ul class="tight">
@@ -603,7 +603,7 @@ The prompt appears when you are at least a quarter mile off route, travelling at
 </div>
 
 <div class="grid3 four">
-<div class="tile"><b>Map distance</b><p>Choose how much road is visible, from a quarter mile to five miles.</p></div>
+<div class="tile"><b>Map distance</b><p>Choose how much road is visible, from a quarter mile to 15 miles.</p></div>
 <div class="tile"><b>3D tilt</b><p>Set the tilt from 30 to 60 degrees, or switch to a flat map.</p></div>
 <div class="tile"><b>Zoom when slowing</b><p>Automatically zoom closer as you approach a junction or stop.</p></div>
 <div class="tile"><b>Car position</b><p>Move your car on the screen to leave more room ahead or behind.</p></div>

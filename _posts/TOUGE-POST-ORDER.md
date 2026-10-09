@@ -67,3 +67,22 @@ it is part of.
   came out: group rides are being tested before video, so the recorder is not
   a shipping feature to show.
 - Units: miles and feet, tires not tyres.
+
+## Screenshot rules
+
+Matt, 2026-10-09: the shots had drifted out of date and out of area again.
+
+- **2D only.** Set Display & layout › Perspective to 2D, flat and 3D terrain
+  to Off before any map shot, then put them back. Terrain on also streaks the
+  route chooser's hillshade.
+- **Southwest Virginia.** Map shots are around Tazewell, Marion, Floyd and
+  Woolwine: VA 16 for the drive, VA 8 for stops and the phone. No North
+  Carolina towns in map shots, alt text or captions.
+- Shoot group screens with Setup › App & data › Demo ride, following
+  Tazewell-Marion-VA16 or routing Floyd-Woolwine-Loop from Floyd. A search shot
+  is taken while the demo is driving, so distances are measured from the demo
+  car and not from wherever the tablet really is.
+- After a demo session, delete the `ride-*` files it recorded in Rides and
+  routes: the recorder keeps the demo's invented track.
+- Retake a shot when its screen changes. Setup was redrawn in bands in build
+  164 and the route line went purple in 169, and both left stale shots here.
