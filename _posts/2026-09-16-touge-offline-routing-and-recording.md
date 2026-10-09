@@ -1,7 +1,7 @@
 ---
 title: "Touge"
 date: 2026-09-16 00:00:00 -0400
-last_modified_at: 2026-09-25 00:00:00 -0400
+last_modified_at: 2026-10-08 00:00:00 -0400
 categories: car tech
 tags: [touge, android, navigation, offline, maplibre, pmtiles, valhalla, meshtastic, lora, esp-now, heltec, tpms, radar, valentine-one, waze, android-auto, kotlin, compose, openstreetmap, motorcycle, bronco, back-roads]
 cover: /assets/images/touge/v3/drive-cover.jpg
@@ -58,6 +58,15 @@ article_header:
 .tg .appicon p{margin:0;color:var(--mute)}
 .tg .appicon b{color:var(--ink)}
 .tg .last{margin-top:56px;padding-top:24px;border-top:1px solid var(--line)}
+.tg .get{margin:0 0 30px;padding:20px;background:var(--card);border:1px solid var(--line);border-radius:16px}
+.tg .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin:6px 0 14px}
+.tg .step{display:flex;flex-direction:column;gap:8px;padding:16px;border:1px solid var(--line);border-radius:14px;background:var(--bg)}
+.tg .step b{font-size:18px;color:var(--ink)}
+.tg .step p{margin:0;color:var(--mute)}
+.tg .num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:var(--acc);color:#fff;font-weight:700}
+.tg .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;margin-top:auto;padding:10px 18px;border-radius:12px;background:var(--acc);color:#fff !important;font-weight:700;text-decoration:none}
+.tg .btn:hover{background:#ff5c85}
+.tg .note{margin:0;font-size:15px;color:var(--mute)}
 @media (max-width:820px){.tg .row,.tg .row.flip{grid-template-columns:1fr}.tg .row.flip figure{order:0}}
 @media (max-width:480px){.tg .appicon{flex-direction:column;align-items:flex-start}}
 </style>
@@ -83,6 +92,26 @@ article_header:
 <div class="stat"><b>100 mi</b><span>radar disc</span></div>
 <div class="stat"><b>0</b><span>accounts</span></div>
 </div>
+</div>
+
+<div class="get" id="get-it">
+<span class="k">Get Touge</span>
+<p class="lead">Touge is in Google Play testing, so it won't show up in a search. Two steps, both signed in with the Google account on your phone.</p>
+<div class="steps">
+<div class="step">
+<span class="num">1</span>
+<b>Join the test group</b>
+<p>Open to anyone, no approval.</p>
+<a class="btn" href="https://groups.google.com/g/tougenav" target="_blank" rel="noopener">Join the group</a>
+</div>
+<div class="step">
+<span class="num">2</span>
+<b>Get the app</b>
+<p>About 10 minutes after joining, tap Become a tester, then install from Google Play.</p>
+<a class="btn" href="https://play.google.com/apps/testing/com.geekopolis.touge" target="_blank" rel="noopener">Get the app</a>
+</div>
+</div>
+<p class="note">Google takes about 10 minutes to give a new group member access. If Play says the app isn't available, wait a few more minutes and check you're signed in with the same Google account that joined the group.</p>
 </div>
 
 These are screenshots from a Samsung tablet and a Moto phone. Map screens show a demo ride with three simulated cars; radio screens show real radios on the bench.
@@ -537,6 +566,6 @@ The prompt appears when you are at least a quarter mile off route, travelling at
 <p><b>The Touge icon:</b> a car on a mountain switchback at night.</p>
 </div>
 
-<div class="last"></div>
+<div class="last">Want it? <a href="#get-it">Join the test group, then get the app</a>.</div>
 
 </div>

@@ -12,6 +12,12 @@ it is part of.
 
 ## Running order
 
+0. **Get Touge** - directly under the hero, before the first section: join the
+   Google Group (`groups.google.com/g/tougenav`), then the Play testing opt-in
+   (`play.google.com/apps/testing/com.geekopolis.touge`). The store listing
+   404s for anyone not yet in the test, so the button goes to the opt-in. Google
+   takes about 10 minutes to give a new member access; the note says so. The
+   closing line links back to it.
 1. **Ride together** — the showcase, and the reason the app exists. One
    feature set, in this order inside the section:
    1. the group on one map and the table
