@@ -1,7 +1,7 @@
 ---
 title: "Touge"
 date: 2026-09-16 00:00:00 -0400
-last_modified_at: 2026-10-08 00:00:00 -0400
+last_modified_at: 2026-10-09 00:00:00 -0400
 categories: car tech
 tags: [touge, android, navigation, offline, maplibre, pmtiles, valhalla, meshtastic, lora, esp-now, heltec, tpms, radar, valentine-one, waze, android-auto, kotlin, compose, openstreetmap, motorcycle, bronco, back-roads]
 cover: /assets/images/touge/v3/drive-cover.jpg
@@ -114,7 +114,9 @@ article_header:
 <p class="note">Google takes about 10 minutes to give a new group member access. If Play says the app isn't available, wait a few more minutes and check you're signed in with the same Google account that joined the group.</p>
 </div>
 
-These are screenshots from a Samsung tablet and a Moto phone. Map screens show a demo ride with three simulated cars; radio screens show real radios on the bench.
+These are screenshots from a Samsung tablet and a Moto phone. The route examples around Tazewell and Floyd, Virginia, are real plans made on the bench. Group-driving screens show a demo ride with three simulated cars; radio screens show real radios on the bench. Android Auto screenshots come from the desktop head unit, with Touge running on the Moto.
+
+Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>.
 
 ## Ride together
 
@@ -294,20 +296,20 @@ These are screenshots from a Samsung tablet and a Moto phone. Map screens show a
 <p class="lead">Compare travel time with how twisty each route is.</p>
 
 <div class="row flip">
-<figure><img src="/assets/images/touge/v3/routes.webp" alt="Boone to Asheville, North Carolina: nine numbered routes in their own colours, each labelled with time and twist score, route 1 timed on live traffic and route 4 marked surface unknown" loading="lazy"><figcaption>Boone to Asheville: eight alternatives plus a live-traffic option.</figcaption></figure>
+<figure><img src="/assets/images/touge/virginia/tazewell-marion-twistiest-landscape.webp" alt="Eight numbered routes from Tazewell to Marion, Virginia, with Twistiest selected; the highlighted VA 16 route takes 45 minutes and scores 48 twist" width="2304" height="1440" loading="lazy"><figcaption>Tazewell to Marion: eight choices, with the 33-mile VA 16 route selected. Routes found online.</figcaption></figure>
 <div>
 <span class="k">Route choice</span>
 <ul class="tight">
 <li>Compare up to eight routes per leg, from highways to back roads. Each has a colour, number, travel time and TWIST score.</li>
 <li>The TWIST score uses bends, corner radius and junctions along the route.</li>
-<li>For example, Flat Top Road and the Blue Ridge Parkway score 24 at 2 h 09. US 221 scores 9 at 1 h 31.</li>
+<li>In the Tazewell example, VA 16 scores 48 at 45 minutes. Two alternatives score 49 but take 58 or 59 minutes. When scores are within two points, Twistiest puts the quicker route first.</li>
 <li>Routes come from Valhalla using your driving preferences. Tap a destination name to change it.</li>
 </ul>
 </div>
 </div>
 
 <div class="row">
-<figure class="tall"><img src="/assets/images/touge/v3/phone-routes.webp" alt="Phone route choice out of Brevard: eight numbered routes in eight colours around Asheville and Marion, with times and twist scores" loading="lazy"><figcaption>Phone route choices, sorted by TWIST score.</figcaption></figure>
+<figure class="tall"><img src="/assets/images/touge/virginia/tazewell-marion-twistiest-portrait.webp" alt="The Tazewell to Marion route chooser in portrait with eight coloured route cards and Save, Send to group and Start below the map" width="1440" height="2304" loading="lazy"><figcaption>The same Tazewell choices in portrait on the Samsung tablet.</figcaption></figure>
 <div>
 <span class="k">What's on the road</span>
 <ul class="tight">
@@ -318,17 +320,30 @@ These are screenshots from a Samsung tablet and a Moto phone. Map screens show a
 </div>
 </div>
 
-## Highway out, back roads home
+## A different style for each leg
 
 <p class="lead">Use highways to get there, back roads for the ride and the quickest way home.</p>
 
 <div class="row flip">
-<figure><img src="/assets/images/touge/v3/trip.webp" alt="Trip screen starting at Boone with one stop, Asheville, the Back roads style chosen, and nine timed options for the leg with road names and twist scores" loading="lazy"><figcaption>Choose a driving style for each leg.</figcaption></figure>
+<figure><img src="/assets/images/touge/virginia/floyd-woolwine-loop-trip-landscape.webp" alt="Trip starting at Floyd, with Woolwine as the first stop and Floyd as the second; Twistiest is selected outbound and Fastest on the return" width="2304" height="1440" loading="lazy"><figcaption>Floyd–Woolwine–Floyd: Twistiest out, Fastest home.</figcaption></figure>
 <div>
 <span class="k">Trips</span>
 <ul class="tight">
-<li>Choose Highway, Mixed, Back roads or Twistiest for each leg.</li>
+<li>Choose Fastest, Mixed, Back roads or Twistiest for each leg.</li>
 <li>Start from your current location, Home or any place you choose.</li>
+<li>Saved Touge plans keep their stops and leg styles. Reopen one with <b>Route it</b>, pick a new start and plan it again.</li>
+</ul>
+</div>
+</div>
+
+<div class="row">
+<figure><img src="/assets/images/touge/virginia/floyd-woolwine-loop-routes-landscape.webp" alt="The Floyd–Woolwine return trip on VA 8 and Woolwine Highway, showing a blue route with a 25-mile, 27-minute estimate and Save and Start controls" width="2304" height="1440" loading="lazy"><figcaption>The Floyd–Woolwine return trip follows VA 8. The outbound and return roads overlap on the map. Routes found online.</figcaption></figure>
+<div>
+<span class="k">A trip you can keep</span>
+<ul class="tight">
+<li>Build the trip in the regular route screen and compare the ways there.</li>
+<li>Select the roads you want, then tap <b>Save</b> to keep the plan as GPX.</li>
+<li>The Floyd example is a 25-mile return trip with a 27-minute estimate, planned on the bench.</li>
 </ul>
 </div>
 </div>
@@ -337,7 +352,7 @@ These are screenshots from a Samsung tablet and a Moto phone. Map screens show a
 
 <p class="lead">Pick the roads you want by adding points on the map.</p>
 
-<div class="row">
+<div class="row flip">
 <figure><img src="/assets/images/touge/v3/editor.webp" alt="Route editor with three numbered pins dropped around Asheville and the routed line running through them, with Reverse, Close loop, Save and Start below" loading="lazy"><figcaption>Drag points onto the roads you want to take.</figcaption></figure>
 <div>
 <span class="k">Route editor</span>
@@ -349,21 +364,27 @@ These are screenshots from a Samsung tablet and a Moto phone. Map screens show a
 </div>
 </div>
 
-<div class="row flip">
-<figure><img src="/assets/images/touge/v3/library.webp" alt="Rides and routes library listing recorded rides, each with Follow, Route it, share and delete" loading="lazy"><figcaption>Recorded rides and imported GPX files.</figcaption></figure>
+## Save, share and import your routes
+
+<p class="lead">Keep a route you planned, send its GPX file or bring it back into Touge.</p>
+
+<div class="row">
+<figure><img src="/assets/images/touge/virginia/saved-and-imported-routes-landscape.webp" alt="Rides and routes library with Floyd-Woolwine-Loop, its imported copy and Tazewell-Marion-VA16 above recorded rides; each plan has Route it, Follow and share controls" width="2304" height="1440" loading="lazy"><figcaption>Virginia plans alongside recorded rides. The imported Floyd copy keeps its filename and appears at the top.</figcaption></figure>
 <div>
 <span class="k">Rides and routes</span>
 <ul class="tight">
-<li><b>Follow</b> follows the recorded line, including roads missing from the map.</li>
-<li><b>Route it</b> calculates a navigable route with road names, lane guidance and rerouting.</li>
-<li>Import and share GPX files. The app keeps the latest 30 recordings; imported files stay until you delete them.</li>
+<li><b>Save</b> in the route chooser adds your planned route to Rides and routes. The same library holds recorded rides and imported GPX files.</li>
+<li>The share button exports the GPX through Android's share sheet. <b>Import</b> opens the file picker so you can bring it into Touge again.</li>
+<li><b>Follow</b> follows the saved road line, including roads missing from the map.</li>
+<li><b>Route it</b> reopens a Touge plan's editable stops and leg styles, then calculates a route from the start you choose. An ordinary recorded track can also be routed with road names, lane guidance and rerouting.</li>
+<li>The app keeps the latest 30 recordings; imported files stay until you delete them.</li>
 </ul>
 </div>
 </div>
 
 ## Drive it
 
-<div class="row">
+<div class="row flip">
 <figure><img src="/assets/images/touge/v3/drive.webp" alt="Tablet in 3D on Flat Top Road south of Boone with the ground raised: turn card, Waze chip, group card with Dave, Ana and Kev behind, weather radar disc, status chip reading 2.4 GHz, the green route along the hillside, and the time, distance and twist strip" loading="lazy"><figcaption>The tablet layout during the demo ride near Boone.</figcaption></figure>
 <div>
 <span class="k">Turn by turn</span>
@@ -397,7 +418,7 @@ The prompt appears when you are at least a quarter mile off route, travelling at
 
 <p class="lead">A card appears two miles before a stop with three choices.</p>
 
-<div class="row flip">
+<div class="row">
 <figure><img src="/assets/images/touge/v3/stop-ahead.webp" alt="Stop ahead card for Carrboro, 0.9 miles out, with Skip, Later and Go on" loading="lazy"><figcaption>Skip, postpone or keep the next stop.</figcaption></figure>
 <div>
 <span class="k">Stop ahead</span>
@@ -420,7 +441,7 @@ The prompt appears when you are at least a quarter mile off route, travelling at
 
 <p class="lead">Weather radar and reports of police and hazards ahead.</p>
 
-<div class="row">
+<div class="row flip">
 <figure class="small"><img src="/assets/images/touge/v3/corner.webp" alt="Top right corner of the tablet: status chip reading 2.4 GHz, 8:15, wifi and 100 percent, and the 50 mile weather radar disc over the hills near Boone with two reports marked on it" loading="lazy"><figcaption>Connection status and weather radar.</figcaption></figure>
 <div>
 <span class="k">The top corner</span>
@@ -443,7 +464,7 @@ The prompt appears when you are at least a quarter mile off route, travelling at
 
 ## Alerts you control
 
-<div class="row flip">
+<div class="row">
 <figure><img src="/assets/images/touge/v3/alerts.webp" alt="Alerts screen: one row per kind with a map toggle and a voice toggle" loading="lazy"><figcaption>Separate map and voice switches for each alert type.</figcaption></figure>
 <div>
 <span class="k">Map and voice, separately</span>
@@ -459,7 +480,7 @@ The prompt appears when you are at least a quarter mile off route, travelling at
 
 <p class="lead">Show detector alerts on the map and change its logic mode automatically.</p>
 
-<div class="row">
+<div class="row flip">
 <figure><img src="/assets/images/touge/v3/v1-explainer.webp" alt="Setup, Devices and sensors: the Valentine One Gen 2 switch and the How the V1 is driven explainer covering the three modes, when Touge switches, what it mutes on top, and the card" loading="lazy"><figcaption>Valentine One controls and mode explanations.</figcaption></figure>
 <div>
 <span class="k">Valentine One</span>
@@ -476,7 +497,7 @@ The prompt appears when you are at least a quarter mile off route, travelling at
 
 <p class="lead">Watch tire pressure and temperature, with alerts for leaks.</p>
 
-<div class="row flip">
+<div class="row">
 <figure><img src="/assets/images/touge/v2/tires.png" alt="Tires screen with four wheel tiles; rear left is leaking" loading="lazy"><figcaption>Pressure and leak warnings for each tire.</figcaption></figure>
 <div>
 <span class="k">Tire pressure</span>
@@ -490,7 +511,7 @@ The prompt appears when you are at least a quarter mile off route, travelling at
 
 ## Maps, search, and your own server
 
-<div class="row">
+<div class="row flip">
 <figure><img src="/assets/images/touge/v3/packs.webp" alt="Map packs screen listing regions with measured sizes and installed state" loading="lazy"><figcaption>A pack covering 100 miles around you is 401 MB.</figcaption></figure>
 <div>
 <span class="k">Map packs</span>
@@ -508,7 +529,7 @@ The prompt appears when you are at least a quarter mile off route, travelling at
 <div class="tile"><b>Off-road mode</b><p>Routes on forest roads and tracks, including offline. It records your trail and lets you leave the planned route without reroute prompts.</p></div>
 </div>
 
-<div class="row flip">
+<div class="row">
 <figure><img src="/assets/images/touge/v3/search.webp" alt="Search results for Sparta, the town first" loading="lazy"><figcaption>Search results for Sparta.</figcaption></figure>
 <div>
 <span class="k">Search</span>
@@ -527,11 +548,38 @@ The prompt appears when you are at least a quarter mile off route, travelling at
 <div class="tile"><b>Android Auto</b><p>Show navigation, group positions, weather and relevant police reports on the head unit. Group, Routes, Search and Tires are available as car screens.</p></div>
 </div>
 
+## Search on Android Auto
+
+<p class="lead">Find a town or street address from the car's search screen.</p>
+
+<div class="row flip">
+<figure><img src="/assets/images/touge/android-auto/android-auto-tazewell-search.webp" alt="Touge on the Android Auto desktop head unit showing search results for Tazewell, VA above the keyboard" width="1920" height="1080" loading="lazy"><figcaption>Live Tazewell search, projected from the Moto to the desktop head unit.</figcaption></figure>
+<div>
+<span class="k">Town and state</span>
+<ul class="tight">
+<li>Enter <b>Tazewell, VA</b> or <b>Floyd, VA</b> to distinguish the town from local roads with the same name.</li>
+<li>Search uses downloaded places and an online fallback. Online town and address search also works without a local place index.</li>
+<li>While a new lookup runs, the screen shows <b>Searching…</b> and clears the previous rows. Clearing the text or leaving search cancels the pending lookup.</li>
+</ul>
+</div>
+</div>
+
+<div class="row">
+<figure><img src="/assets/images/touge/android-auto/android-auto-floyd-address-search.webp" alt="Android Auto search for 100 East Main Street, Floyd, VA returns Floyd County Courthouse" width="1920" height="1080" loading="lazy"><figcaption>A numbered street address finds Floyd County Courthouse. Desktop head-unit check; in-car drive validation is pending.</figcaption></figure>
+<div>
+<span class="k">Street addresses</span>
+<ul class="tight">
+<li>Include the street number, town and state. The checked Floyd address returns the courthouse.</li>
+<li>If no downloaded place matches, address search needs an internet connection. An unavailable lookup settles to <b>Nothing found.</b></li>
+</ul>
+</div>
+</div>
+
 ## The settings screen
 
 <p class="lead">Seven categories, searchable settings and a summary of each category.</p>
 
-<div class="row">
+<div class="row flip">
 <figure><img src="/assets/images/touge/v3/settings.webp" alt="Setup on the tablet: the You card, then the categories with live summaries, starting with Maps and navigation, Group and radio, Sound and alerts, Display and layout and Devices and sensors; Maps and navigation open on the right with map packs, Home, vehicle and default route" loading="lazy"><figcaption>Settings grouped into seven categories.</figcaption></figure>
 <div>
 <span class="k">Categories</span>
@@ -543,7 +591,7 @@ The prompt appears when you are at least a quarter mile off route, travelling at
 </div>
 </div>
 
-<div class="row flip">
+<div class="row">
 <figure><img src="/assets/images/touge/v3/settings-search.webp" alt="Setup search for radio, listing Bluetooth to the radio, Server check-in while on the radio, Start or join a ride, Share my position with the group, Share through the server in the background, 2.4 GHz lane, LoRa relay, Send my position every, and Cellular fallback, each with its category and current value" loading="lazy"><figcaption>Search results for "radio", with current values.</figcaption></figure>
 <div>
 <span class="k">Search</span>

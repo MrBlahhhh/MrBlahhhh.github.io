@@ -28,6 +28,8 @@ it is part of.
 3. **Trip settings** — highway to the first stop, back roads after. The thing
    no other routing app will do, and it deserves its own section rather than
    a bullet under routing.
+   Route editing and **Save, share and import your routes** follow it. Use
+   the real Tazewell–Marion and Floyd–Woolwine plans for routing examples.
 4. **Drive it** — turn by turn, the strip, the voice.
 5. **Skipping a stop without stopping** — solved here, painful everywhere else.
 6. **Weather and police radar** — the disc, police dots ageing on the map, the
@@ -41,7 +43,9 @@ it is part of.
 10. **Setup, maps, search, server** — every technical screen, last. Inside
     it: map packs, then **routing with no signal** (it is built out of the
     packs, so it follows them), then search, then the tiles, then traffic and
-    off-road.
+    off-road. **Search on Android Auto** follows the search tiles, with the
+    real desktop head-unit town and address screenshots labelled as bench
+    checks. Settings remain last.
 
 ## Layout rules
 
