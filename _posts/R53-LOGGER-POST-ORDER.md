@@ -25,18 +25,24 @@ Sales order: the hook first, setup and prices last.
    needs (pulley, 380 cc injectors, exhaust or header; no head needed), early
    and late ECUs, the Send path for unmapped versions, honest limits against
    a custom tune.
-3. **Log it**: fast aligned mode, autolog, the graph, the video.
-4. **See the tune**: AFR 3D, fuel and trims maps, spark map with knock,
+3. **Stage 0 flash**: BMW's early 200 hp JCW kit software for a 740G00 Cooper
+   S with a pulley on stock injectors, in plain words: what it is, what it
+   changes, what it leaves alone, Stage 0 or Stage 1.
+4. **Log it**: fast aligned mode, autolog, the graph, the video.
+5. **See the tune**: AFR 3D, fuel and trims maps, spark map with knock,
    Ign 3D.
-5. **Close the loop**: fuel recommendation and the simulator.
-6. **Flash options**: JCW and GP1 (Stage 1), Stock S, the twelve options and
-   a Dashboards tile, as tiles.
-7. **Why it's safe to flash**: backup, tune check, wrong-family refusal.
-8. **Garage**.
-9. **Diagnostics**.
-10. **What you need**: the three wires, supported ECUs as tiles.
-11. **What it costs**.
-12. **Get it**: the three steps.
+6. **Close the loop**: fuel recommendation and the simulator.
+7. **Flash options**: JCW and GP1 (Stage 1), Stage 0, Stock S, the twelve
+   options and a Dashboards tile, as tiles.
+8. **Why it's safe to flash**: backup, tune check, wrong-family refusal.
+9. **Garage**.
+10. **Diagnostics**.
+11. **What you need**: the K+DCAN cable and a USB-C OTG adapter as the best
+    setup (tiles with Amazon links), the pin 7/8 switch, the OBDLink and the
+    bridge as the other wires, supported ECUs as tiles.
+12. **What it costs**.
+13. **Get it**: one Google Play button. It's on Play for everyone since
+    2026-10-11; no test group.
 
 ## Layout rules
 

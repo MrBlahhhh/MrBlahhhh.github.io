@@ -85,11 +85,11 @@
     </div>
   </div>
   <p class="sub">Log the car, see exactly where the tune misses, and flash the fix from the same phone. Or skip all of that and flash MINI's own Stage 1.</p>
-  <div class="news"><b>This week:</b> six <a href="#dashboards">tablet dashboards</a> with R53-style lights, a big logger and flash update, the JCW and GP1 calibrations are now the <a href="#stage-1-flash">Stage 1 flash</a> on early and late cars, and the test group is open. Anyone can <a href="#get-it">join and install it</a>.</div>
+  <div class="news"><b>This week:</b> it's on <a href="#get-it">Google Play</a> for everyone, no test group to join. And early 740G00 cars get a <a href="#stage-0-flash">Stage 0 flash</a>: BMW's original 200 hp JCW kit tuning, for a Cooper S with a pulley on its factory injectors.</div>
   <div class="stats">
     <div class="stat"><b>~8/s</b><span>time-aligned rows</span></div>
     <div class="stat"><b>512 KB</b><span>full ECU backup</span></div>
-    <div class="stat"><b>12</b><span>flash options</span></div>
+    <div class="stat"><b>13</b><span>flash options</span></div>
     <div class="stat"><b>3</b><span>ways to connect</span></div>
     <div class="stat"><b>0</b><span>laptops</span></div>
   </div>
@@ -103,12 +103,12 @@
   <div>
     <p>The JCW and GP1 calibrations are MINI's own tunes for an R53 with a smaller pulley, 380 cc injectors and a freer exhaust. That's how most of these cars end up by the time anyone wants a tune.</p>
     <p><b>If your car has a pulley, 380 cc injectors and an exhaust or header, it'll flow close enough to pair well.</b> You don't really need the JCW head. A header and exhaust, or a mild cam, make up for it.</p>
-    <p>Stage 1 works on early and late cars. The app reads your ECU's software version and loads the calibration made for it: the facelift <code>740P10</code>, the early <code>740J10</code>, and EU S and JCW images for EU cars.</p>
+    <p>Stage 1 works on early and late cars. The app reads your ECU's software version and loads the calibration made for it: the facelift <code>740P10</code>, the early <code>740J10</code> and <code>740G00</code>, and EU S and JCW images for EU cars. On <code>740G00</code> the JCW and GP1 are ported from the facelift calibrations.</p>
   </div>
 </div>
 
 <div class="row flip">
-  <figure><img src="/assets/images/r53-logger/v2/flash-jcw-loaded.jpg" alt="JCW calibration loaded, tune check OK, software 740P10"><figcaption>JCW loaded and checked against the ECU's software before anything is written.</figcaption></figure>
+  <figure><img src="/assets/images/r53-logger/v2/flash-jcw-loaded.jpg" alt="JCW calibration loaded, tune check OK, software 740P10"><figcaption>JCW loaded, checked against the ECU's software and matched to MINI's factory image before anything is written.</figcaption></figure>
   <div>
     <p><b>If your ECU version isn't mapped yet</b>, the app says so and offers a Send button. That sends me your backup and the flash log, and I work on porting the JCW and GP1 tables to your ECU version.</p>
     <p><b>Where it sits.</b> For the vast majority of lightly modded R53s this works well enough. A custom tune makes more power, with raised torque and air tables and more ignition advance. This is factory calibration, and it's well proven.</p>
@@ -116,6 +116,25 @@
       <li><b>OEM software.</b> MINI's calibration as the factory wrote it, not a third-party map.</li>
       <li><b>Needs the 380 cc JCW / GP injectors.</b> Stock 330s can't supply the fuel it asks for. Bigger than 380? Set the injector option to match.</li>
       <li><b>Flash options still apply on top</b>: pops, redline, pedal map, fans and the rest.</li>
+    </ul>
+  </div>
+</div>
+
+<h2 id="stage-0-flash">Stage 0 flash</h2>
+<p class="lead">A smaller supercharger pulley spins the blower faster and makes more boost. Stage 0 is the software BMW wrote to go with one, for a Cooper S on its stock injectors.</p>
+
+<div class="row">
+  <figure><img src="/assets/images/r53-logger/v2/options-stage0.jpg" alt="Flash options with the Stage 0 card set to Modify"><figcaption>Stage 0 is the first card in Flash options. Modify adds the kit, Stock takes it back out.</figcaption></figure>
+  <div>
+    <p><b>What it is.</b> BMW's first JCW tuning kit for the Cooper S made 200 hp, up from 163. The main part was a smaller pulley, and it came with new ECU software so the engine knew what to do with the extra air. The later kit, the one Stage 1 comes from, added 380 cc injectors. The first one kept the stock ones. Stage 0 is the first kit's software, read off a car that had it.</p>
+    <p><b>What it changes.</b> More air needs more fuel, and a little less spark to stay safe. So Stage 0 raises the ECU's airflow limit, adds fuel at the top of the rev range and takes some timing out at high load. That's 14 tables, laid over the Cooper S tune you've loaded.</p>
+    <p><b>What it leaves alone.</b> Your injector scaling, rev limiter, idle, fans, cruise and emissions settings. The kit ran the stock 330 cc injectors, so unlike Stage 1 you don't need 380s.</p>
+    <p><b>Stage 0 or Stage 1?</b> A pulley on stock injectors: Stage 0. A pulley, 380 cc injectors and an exhaust or header: Stage 1.</p>
+    <ul class="tight">
+      <li><b>Fit the pulley first.</b></li>
+      <li><b>Early 740G00 ECUs only.</b> On other software the flash summary says it isn't available, and the tune is left alone.</li>
+      <li><b>For a Cooper S tune.</b> A JCW or GP1 calibration already goes further, so it refuses those, and automatics.</li>
+      <li><b>Flash options still apply on top</b>, and Stock puts the Cooper S tables back.</li>
     </ul>
   </div>
 </div>
@@ -242,7 +261,7 @@
 </div>
 
 <h2 id="flash-options">Flash options</h2>
-<p class="lead">MINI's Stage 1, and common changes applied to whatever tune is loaded, in memory, before the write. No hex editor, no second tool.</p>
+<p class="lead">MINI's Stage 1 and Stage 0, and common changes applied to whatever tune is loaded, in memory, before the write. No hex editor, no second tool.</p>
 
 <div class="row flip">
   <figure><img src="/assets/images/r53-logger/v2/options-pedal.jpg" alt="Throttle pedal remap presets"><figcaption>Pedal presets. Each one also rewrites the torque monitor table so it can't set P1689.</figcaption></figure>
@@ -255,6 +274,7 @@
 <div class="grid3">
   <div class="tile"><span class="tag">Stage 1</span><b>JCW</b><p>MINI's calibration for the JCW kit: pulley, 380 cc injectors, freer exhaust. <a href="#stage-1-flash">More</a>.</p></div>
   <div class="tile"><span class="tag">Stage 1</span><b>GP1</b><p>The 2006 GP's calibration for the same parts. Revs higher and runs more aggressive than JCW.</p></div>
+  <div class="tile"><span class="tag">Stage 0</span><b>JCW kit</b><p>BMW's 200 hp kit tuning for a 740G00 Cooper S with a pulley, on factory injectors. <a href="#stage-0-flash">More</a>.</p></div>
   <div class="tile"><span class="tag ok">stock</span><b>Stock S</b><p>The factory Cooper S calibration, to go back to stock.</p></div>
   <div class="tile"><b>Pops</b><p>Decel crackle, stock to max.</p></div>
   <div class="tile"><b>Injector size</b><p>330, 380, 440, 550, 630 cc. Rescales the fuel scalar.</p></div>
@@ -287,7 +307,7 @@
   <div class="tile"><b>Survives the screen</b><p>The write runs in the background and nothing else can take the cable.</p></div>
   <div class="tile"><b>Send report</b><p>If a write stops, one tap sends me the log that says where and why.</p></div>
 </div>
-<p class="note">It's still beta software writing a twenty-year-old ECU. Keep the car on a battery charger, key on and engine off, and keep a desktop OBD recovery path ready.</p>
+<p class="note">It's writing a twenty-year-old ECU. Keep the car on a battery charger, key on and engine off, and keep a desktop OBD recovery path ready.</p>
 
 <h2 id="garage">Garage</h2>
 <p class="lead">One phone, several Minis. Every backup, flash, fault read and log files under the car it came from.</p>
@@ -305,14 +325,22 @@
 <p>Engine, body (BC1), immobiliser (EWS), cluster, ABS/DSC and airbag codes, each translated with R53-specific notes. A lean code says check boost and vacuum leaks first, and a P0116 points at the thermostat. Codes clear where the clear command is known, reports share from the phone, and every fault read files into the car's history. Adaptation resets are there too, for after hardware changes.</p>
 
 <h2 id="hardware">What you need</h2>
-<p class="lead">An Android phone or tablet and one of three ways onto the K-line.</p>
+<p class="lead">An Android phone or tablet, a K+DCAN USB cable and a USB-C OTG adapter. That's the best setup, and the one every flash so far has gone through.</p>
+
+<div class="grid3">
+  <div class="tile"><span class="tag ok">best</span><b>K+DCAN USB cable</b><p>The BMW diagnostic cable, around $25. Get one with the 7/8 switch and an FT232RL (FTDI) chip, which is what every flash so far has used. <a href="https://www.amazon.com/s?k=k%2Bdcan+cable+with+switch">Find one on Amazon</a>.</p></div>
+  <div class="tile"><span class="tag ok">best</span><b>USB-C OTG adapter</b><p>USB-C plug to a full-size USB-A socket. The cable plugs into it, it plugs into the phone, and Android offers to open the app. I use the JSAUX two-pack, under $10. <a href="https://www.amazon.com/s?k=JSAUX+USB+C+to+USB+3.0+adapter">Find it on Amazon</a>.</p></div>
+  <div class="tile"><b>Android phone or tablet</b><p>Android 7 or newer with USB-C. A tablet on the dash also runs the six dashboards.</p></div>
+</div>
 
 <div class="row flip">
   <figure><img src="/assets/images/r53-logger/v2/settings-link.jpg" alt="Settings, K-line link choice"><figcaption>Pick the wire in Settings.</figcaption></figure>
   <div>
+    <p><b>Set the cable's switch to link pins 7 and 8.</b> The engine talks on pin 7. The cluster and the other body modules are on pin 8, and the app reads the VIN from the cluster to file everything under the right car. With pin 8 off, logging still works, but the VIN read and the body module diagnostics don't.</p>
+    <p><b>Flash with the cable</b>, the car on a battery charger, key on and engine off.</p>
+    <p>Two other ways onto the K-line:</p>
     <ul class="tight">
-      <li><b>K+DCAN USB cable.</b> The cheap cable every BMW owner already has. The proven path for flashing.</li>
-      <li><b>OBDLink CX or MX+</b> over Bluetooth. Logging, diagnostics and flashing, no cable. An LX won't work: it has no Bluetooth LE and can't set the parity this ECU needs.</li>
+      <li><b>OBDLink CX or MX+</b> over Bluetooth. Logging, diagnostics and flashing, no cable. It only reaches pin 7, so name the car by hand. An LX won't work: it has no Bluetooth LE and can't set the parity this ECU needs.</li>
       <li><b>ESP32 bridge</b> (optional). Adds CAN channels and an AEM wideband over AEMnet, and can carry the K-line for logging.</li>
     </ul>
   </div>
@@ -321,7 +349,7 @@
 <div class="grid3">
   <div class="tile"><span class="tag ok">write + options</span><b>740P10 / 740A0</b><p>Facelift, silver cover. Stage 1 available.</p></div>
   <div class="tile"><span class="tag ok">write + options</span><b>740J10</b><p>Early ECU and pre-facelift conversions. Stage 1 available.</p></div>
-  <div class="tile"><span class="tag beta">write in beta</span><b>740G00</b><p>Write and most options. Stage 1 not mapped yet: tap Send.</p></div>
+  <div class="tile"><span class="tag beta">write in beta</span><b>740G00</b><p>Early ECU. Write and the options, Stage 0, and Stage 1 ported from the facelift.</p></div>
 </div>
 <p class="note">Logging, live data, diagnostics and backup work on any R53 EMS2000, silver cover or black.</p>
 
@@ -331,32 +359,16 @@
 <div class="grid3">
   <div class="tile price"><b>$25</b><p><b style="display:inline;font-size:inherit">App unlock.</b> Logging, graphs, 3D and maps, fuel recommendation and simulator, wideband, diagnostics, backup.</p></div>
   <div class="tile price"><b>$50</b><p><b style="display:inline;font-size:inherit">Flash unlock.</b> Write to the ECU, with the flash options.</p></div>
-  <div class="tile price"><b>$50</b><p><b style="display:inline;font-size:inherit">Stage 1 flash.</b> MINI's JCW and GP1 calibrations, plus stock S to go back.</p></div>
+  <div class="tile price"><b>$50</b><p><b style="display:inline;font-size:inherit">Stage 1 flash.</b> MINI's JCW and GP1 calibrations, Stage 0 on early ECUs, and stock S to go back.</p></div>
 </div>
 <p><b>Prepared facelift ECU, $275.</b> VIN-swapped to your car with the immobiliser deleted, ready to drop in. Shipping at cost. Email <a href="mailto:matt@geekopolis.com">matt@geekopolis.com</a> with your year, model and VIN.</p>
 
 <h2 id="get-it">Get it</h2>
-<p class="lead">It's in Google Play testing, so it won't show up in a search. Three steps, all with the Google account on your phone.</p>
+<p class="lead">It's on Google Play for any Android phone or tablet. Search for R53 Logger, or tap below on your phone.</p>
 
-<div class="steps">
-  <div class="step">
-    <div class="step-head"><span class="step-num">1</span><h3>Join the group</h3></div>
-    <p>Open to anyone, no approval.</p>
-    <a class="btn" href="https://groups.google.com/g/r53-logger-testers">Join group</a>
-  </div>
-  <div class="step">
-    <div class="step-head"><span class="step-num">2</span><h3>Opt in on Play</h3></div>
-    <p>Tap Become a tester.</p>
-    <a class="btn" href="https://play.google.com/apps/testing/com.geekopolis.r53logger">Become a tester</a>
-  </div>
-  <div class="step">
-    <div class="step-head"><span class="step-num">3</span><h3>Install</h3></div>
-    <p>Install from Play on your phone.</p>
-    <a class="btn" href="https://play.google.com/store/apps/details?id=com.geekopolis.r53logger">Open in Play</a>
-  </div>
-</div>
-<p class="note">If Play says the app isn't found, you're signed in with a different Google account than the one that joined, or Play hasn't caught up yet. Give it a few minutes. Install from Play rather than sideloading, or purchases won't work. Module coding (BC1, EWS, airbag and the rest) is a separate app: <a href="/car/tech/2026/07/26/r53-coding.html">R53 Coding</a>.</p>
+<p><a class="btn" href="https://play.google.com/store/apps/details?id=com.geekopolis.r53logger">Get it on Google Play</a></p>
+<p class="note">Install from Play rather than sideloading, or purchases won't work. Module coding (BC1, EWS, airbag and the rest) is a separate app: <a href="/car/tech/2026/07/26/r53-coding.html">R53 Coding</a>.</p>
 
-<div class="last">Questions, ECU quotes, or stuck on sign-up: <a href="mailto:matt@geekopolis.com">matt@geekopolis.com</a> or <a href="https://www.instagram.com/mattryan6729/">@mattryan6729</a>. Give it a weekend on the car and tell me what breaks.</div>
+<div class="last">Questions or ECU quotes: <a href="mailto:matt@geekopolis.com">matt@geekopolis.com</a> or <a href="https://www.instagram.com/mattryan6729/">@mattryan6729</a>. Give it a weekend on the car and tell me what breaks.</div>
 
 </div>

@@ -34,8 +34,8 @@ is the one option that changes fuelling while you are driving on it rather than
 at wide-open throttle, and it has had the least testing of anything in the
 list. If you are not prepared to watch AFRs and back it out, leave it off.
 
-*Last updated 2026-09-23.* Sign-up is open now, no approval needed. See
-[Want to try it?](#want-to-try-it-play-closed-testing) at the bottom.
+*Last updated 2026-10-11.* It's on Google Play now, no sign-up. See
+[Want to try it?](#want-to-try-it) at the bottom.
 
 ## What it costs
 
@@ -55,7 +55,7 @@ your own ECU without buying the flash unlock.
 
 **Mini R53 Logger - Flasher** — the Android app I've been building so I can *log* what the supercharged W11 is doing and *flash* a facelift ECU from the same phone — is feature-complete, and I'm loading it onto the Google Play Store.
 
-Anyone can try it now: the [three sign-up steps](#want-to-try-it-play-closed-testing) are at the bottom of this page.
+Anyone can install it from [Google Play](#want-to-try-it) now.
 
 ![Main screen — live telemetry and Mini chili-red theme](/assets/images/r53-logger-play-store/main-screen.jpg){:.img-md}
 *Plug in, hit connect, and the car streams live: RPM, boost, temps, spark, knock, fuel trims, injection — the works.*
@@ -234,28 +234,14 @@ The bridge firmware is open source (ESP32, streams sensor volts over BLE). Refla
 
 The app defaults to the AEM curve. If you're running an Innovate or something custom, set it once and it sticks.
 
-## Want to try it? (Play closed testing)
+## Want to try it?
 
-R53 Logger - Flasher is in **Google Play closed testing**, so it won't show up
-in a Play Store search. Three steps, all with **the same Google account that's
-on your Android phone**:
+R53 Logger - Flasher is on
+**[Google Play](https://play.google.com/store/apps/details?id=com.geekopolis.r53logger)**
+for everyone now, so there's no test group to join. Install it from Play,
+not a sideloaded APK, or purchases and unlocks won't work.
 
-1. **Join the tester group.** Open
-   **[groups.google.com/g/r53-logger-testers](https://groups.google.com/g/r53-logger-testers)**
-   and tap **Join group**. It's open — anyone can join, no approval.
-2. **Opt in on Play.** Open
-   **[play.google.com/apps/testing/com.geekopolis.r53logger](https://play.google.com/apps/testing/com.geekopolis.r53logger)**
-   and tap **Become a tester**.
-3. **Install it.** Open
-   **[the app on Google Play](https://play.google.com/store/apps/details?id=com.geekopolis.r53logger)**
-   on your phone and install.
-
-If step 3 says the app isn't found, you're either signed in to Play with a
-different Google account than the one that joined the group, or Play hasn't
-caught up yet — give it a few minutes. Install from Play, not a sideloaded
-APK, or purchases and unlocks won't work.
-
-Questions, ECU quotes, or stuck on sign-up:
+Questions or ECU quotes:
 **[matt@geekopolis.com](mailto:matt@geekopolis.com)** or
 [**@mattryan6729**](https://www.instagram.com/mattryan6729/).
 
