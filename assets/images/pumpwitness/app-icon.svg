@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <!-- PumpWitness icon master. Full-bleed square: Play rounds the corners itself.
+       The launcher's adaptive icon (res/drawable/ic_launcher_*.xml) uses the same shapes. -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#16406B"/>
+      <stop offset="0.55" stop-color="#0C2645"/>
+      <stop offset="1" stop-color="#06303A"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.42" r="0.55">
+      <stop offset="0" stop-color="#2E7FB8" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#2E7FB8" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="amber" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFC24D"/>
+      <stop offset="1" stop-color="#FF8A1F"/>
+    </linearGradient>
+    <linearGradient id="pump" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#DCE7F2"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="512" height="512" fill="url(#bg)"/>
+  <rect width="512" height="512" fill="url(#glow)"/>
+
+  <!-- Viewfinder: the "witness". -->
+  <g fill="none" stroke="url(#amber)" stroke-width="22" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M112 178 V140 a28 28 0 0 1 28 -28 H178"/>
+    <path d="M334 112 H372 a28 28 0 0 1 28 28 V178"/>
+    <path d="M400 334 V372 a28 28 0 0 1 -28 28 H334"/>
+    <path d="M178 400 H140 a28 28 0 0 1 -28 -28 V334"/>
+  </g>
+
+  <!-- The pump. -->
+  <g>
+    <rect x="178" y="168" width="118" height="190" rx="24" fill="url(#pump)"/>
+    <rect x="198" y="190" width="78" height="58" rx="12" fill="#0C2645"/>
+    <rect x="210" y="204" width="54" height="10" rx="5" fill="url(#amber)"/>
+    <rect x="210" y="224" width="34" height="10" rx="5" fill="#FFB238" opacity="0.7"/>
+    <rect x="164" y="344" width="146" height="22" rx="11" fill="url(#pump)"/>
+    <path d="M296 226 H318 a16 16 0 0 1 16 16 V306 a14 14 0 0 0 28 0 V218 L338 192"
+          fill="none" stroke="url(#pump)" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="326" y="176" width="22" height="34" rx="7" transform="rotate(-40 337 193)" fill="url(#pump)"/>
+  </g>
+
+  <!-- Recording. -->
+  <circle cx="348" cy="150" r="22" fill="#FF4D4D" opacity="0.25"/>
+  <circle cx="348" cy="150" r="13" fill="#FF4D4D"/>
+</svg>

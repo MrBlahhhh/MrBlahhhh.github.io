@@ -1,0 +1,193 @@
+<!-- PumpWitness feature page. Rendered by 2026-10-12-pumpwitness.md.
+     Edit here, never in the post. Section order: _posts/PUMPWITNESS-POST-ORDER.md -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+<style>
+.pw{--ink:#eef2f7;--mute:#a3b0bf;--acc:#f29a2e;--acc-hi:#ffb455;--acc-soft:rgba(242,154,46,.15);--line:rgba(255,255,255,.1);--card:rgba(22,40,64,.62);--ok:#4ade80;
+  font-family:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);line-height:1.55;
+  background:radial-gradient(ellipse 80% 40% at 12% 0%,var(--acc-soft),transparent 60%),radial-gradient(ellipse 60% 30% at 100% 0%,rgba(37,99,235,.12),transparent 60%),linear-gradient(180deg,#0e1c2e,#070c14 45%);
+  border-radius:22px;padding:28px clamp(16px,3vw,32px) 36px;margin:0 0 24px}
+.pw *{box-sizing:border-box}
+.pw a{color:var(--acc-hi)}
+.pw a:hover{color:#ffd08a}
+.pw .hero{padding:4px 0 22px;border-bottom:1px solid var(--line)}
+.pw .brand{display:flex;align-items:center;gap:16px}
+.pw .mark{width:64px;height:64px;flex:none;border-radius:16px;box-shadow:0 6px 18px rgba(0,0,0,.45)}
+.pw .k{display:inline-block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--acc-hi);margin:0 0 4px}
+.pw .hero h1{font-size:clamp(30px,6vw,54px);line-height:1.05;margin:0;letter-spacing:-.01em;color:var(--ink)}
+.pw .hero p.sub{font-size:clamp(17px,2.2vw,20px);color:var(--mute);max-width:60ch;margin:14px 0 0}
+.pw .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(140px,100%),1fr));gap:12px;margin:20px 0 0}
+.pw .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.pw .stat b{display:block;font-size:28px;line-height:1.1;font-variant-numeric:tabular-nums;color:var(--ink)}
+.pw .stat span{color:var(--mute);font-size:13px;letter-spacing:.04em;text-transform:uppercase}
+.pw h2{font-size:clamp(24px,3.4vw,36px);letter-spacing:-.01em;margin:46px 0 6px;color:var(--ink);border:0}
+.pw p{margin:0 0 12px}
+.pw .lead{font-size:18px;color:var(--mute);margin:0 0 18px;max-width:66ch}
+.pw .row{display:grid;grid-template-columns:320px minmax(0,1fr);gap:28px;align-items:center;margin:18px 0 26px}
+.pw .row.flip{grid-template-columns:minmax(0,1fr) 320px}
+.pw .row.flip figure{order:2}
+.pw .row figure img{max-height:600px;object-fit:cover;object-position:top}
+.pw figure{margin:0;background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:border-color .2s,box-shadow .2s}
+.pw figure:hover{border-color:rgba(242,154,46,.45);box-shadow:0 15px 30px rgba(0,0,0,.3),0 0 20px rgba(242,154,46,.1)}
+.pw figure img{display:block;width:100%;height:auto;margin:0}
+.pw figcaption{padding:10px 14px;font-size:13px;color:var(--mute);border-top:1px solid var(--line)}
+.pw ul.tight{margin:0 0 12px;padding-left:20px}
+.pw ul.tight li{margin:5px 0;color:var(--mute)}
+.pw ul.tight li b{color:var(--ink)}
+.pw .grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));gap:14px;margin:14px 0 22px}
+.pw .tile{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px}
+.pw .tile b{display:block;font-size:17px;margin-bottom:4px;color:var(--ink)}
+.pw .tile p{margin:0;color:var(--mute);font-size:15px}
+.pw .get{margin:24px 0 8px;padding:20px;border:1px solid rgba(242,154,46,.35);border-radius:18px;background:var(--card);box-shadow:0 0 24px rgba(242,154,46,.06)}
+.pw .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 18px;border-radius:12px;background:#b45c09;color:#fff !important;font-weight:700;text-decoration:none}
+.pw .btn:hover{background:#cf6c10}
+.pw .note{font-size:14px;color:var(--mute);margin:12px 0 0}
+.pw .appicon{display:flex;gap:20px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;margin:30px 0 0}
+.pw .appicon img{width:96px;height:96px;border-radius:22px;flex:none;box-shadow:0 6px 18px rgba(0,0,0,.45)}
+.pw .appicon p{margin:0;color:var(--mute)}
+.pw .appicon b{color:var(--ink)}
+.pw .last{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);font-size:14px;color:var(--mute)}
+.pw .brand > div,.pw .row > *,.pw .grid3 > *{min-width:0}
+.pw{overflow-wrap:anywhere}
+@media (max-width:820px){.pw .row,.pw .row.flip{grid-template-columns:minmax(0,1fr)}.pw .row figure{max-width:380px;margin:0 auto;width:100%}.pw .row.flip figure{order:0}}
+@media (max-width:520px){.pw{border-radius:14px}.pw .mark{width:48px;height:48px;border-radius:12px}.pw .appicon{flex-direction:column;align-items:flex-start}}
+</style>
+
+<div class="pw">
+
+<div class="hero">
+  <div class="brand">
+    <img class="mark" src="/assets/images/pumpwitness/app-icon.svg" alt="">
+    <div>
+      <span class="k">Android · fuel log · Jackie's first app</span>
+      <h1>PumpWitness</h1>
+    </div>
+  </div>
+  <p class="sub">Take three photos at the pump and the fill-up is logged: gallons, price, grade, mileage and the station. It works out the MPG for every car in the garage, and flags a station when its gas keeps running bad.</p>
+  <div class="stats">
+    <div class="stat"><b>3</b><span>photos per fill-up</span></div>
+    <div class="stat"><b>10%</b><span>below usual flags a station</span></div>
+    <div class="stat"><b>0</b><span>accounts</span></div>
+    <div class="stat"><b>0</b><span>ads</span></div>
+  </div>
+</div>
+
+<div class="get" id="get-it">
+  <span class="k">Get PumpWitness</span>
+  <p class="lead">On Google Play, for Android 8.0 and newer.</p>
+  <a class="btn" href="https://play.google.com/store/apps/details?id=com.geekopolis.pumpwitness" target="_blank" rel="noopener">Get it on Google Play</a>
+  <p class="note">The website and the privacy policy are at <a href="https://pumpwitness.geekopolis.com/">pumpwitness.geekopolis.com</a>.</p>
+</div>
+
+<p>PumpWitness is my wife Jackie's app. It was her idea, and it's her first app. The name is what it does: every fill-up keeps its photos of the pump and the odometer, so there's a record of what went in the tank and where it came from.</p>
+
+<p>Every screenshot here is from my phone, with our family's real cars and fill-ups.</p>
+
+<h2>Three photos at the pump</h2>
+<p class="lead">Photograph the pump, the price sign and the odometer. PumpWitness reads them and fills in the fill-up for you to check.</p>
+
+<div class="row">
+  <figure><img src="/assets/images/pumpwitness/fillup.webp" alt="Edit fill-up for the X5, a 2011 BMW X5 xDrive35d, on 7 October 2026: the pump and dashboard photos, with 269426 miles, 14.801 gallons, 6.099 a gallon and 90.27 paid filled in from them" loading="lazy"><figcaption>The X5's fill-up on 7 October, read off its pump and dashboard photos.</figcaption></figure>
+  <div>
+    <ul class="tight">
+      <li><b>The pump</b> gives the sale, the gallons and the price per gallon. <b>The odometer</b> gives the mileage.</li>
+      <li><b>The price sign is optional.</b> When the pump's price matches exactly one of the posted prices, it names the grade.</li>
+      <li><b>Every number is checked</b> before it reaches the form: decimals where a pump puts them, sensible ranges, and gallons times price matching the total. Then it's yours to fix. Nothing is saved until you tap Save.</li>
+      <li><b>It picks the car</b> from the odometer: the one whose last mileage is a sensible amount lower. "Not this car" changes it.</li>
+      <li><b>It names the station</b> from your location: a station you've used before by the name you gave it, otherwise the nearest one on OpenStreetMap, checked against the brand on the price sign.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="row flip">
+  <figure><img src="/assets/images/pumpwitness/pump-photo.webp" alt="The pump photo behind that fill-up: a Shell diesel pump display showing 90.27 and 14.801, with glare across the readout and a cracked, sun-faded face, price 6.099 a gallon" loading="lazy"><figcaption>The pump photo behind it: glare across the digits and a cracked face, read right.</figcaption></figure>
+  <div>
+    <p><b>The photos are the witness.</b> Tap any photo on a fill-up to see it full size, long after the receipt is gone.</p>
+    <p>On Android 10 and newer, saving a fill-up also copies its photos to your phone's gallery, in a PumpWitness album. Each copy has the date, the location and a one-line summary of the sale written into the photo's details: car, station, gallons, grade, price, total and odometer. They're ordinary photos, so they stay even if the app is uninstalled. If a tank of bad fuel ever ends in a repair bill, that's the record.</p>
+  </div>
+</div>
+
+<div class="row">
+  <figure><img src="/assets/images/pumpwitness/settings-ai.webp" alt="Settings, Read photos with AI: on, with your key. Explains that with your own Google Gemini API key the pump, prices and odometer are read by Google's AI, and without one the phone reads them itself, then four steps for getting a free key from Google AI Studio" loading="lazy"><figcaption>Reading the photos, with or without your own key.</figcaption></figure>
+  <div>
+    <p><b>On the phone.</b> Out of the box the photos never leave your phone. Phones with Gemini Nano (the Pixel 9 and 10, and recent Galaxy flagships) read them with it. Everything else uses Google's on-device text reader, plus a decoder written for the segmented digits on pump displays.</p>
+    <p><b>With your own key.</b> Paste a free Gemini API key from Google AI Studio and the pump, prices and odometer go to Google's Gemini to be read. It gets the hard ones right far more often: glare, faded LCDs, dot-matrix odometers. Your location never goes with them. Settings walks you through getting a key in four steps.</p>
+  </div>
+</div>
+
+<h2>Every car in the garage</h2>
+<p class="lead">One garage for the whole household, with every car's MPG beside it.</p>
+
+<div class="row flip">
+  <figure><img src="/assets/images/pumpwitness/dashboard.webp" alt="PumpWitness dashboard: Log a fill-up, then 7 cars, 18.4 average MPG and 1,064 dollars spent, and the garage: X5 at 24.6 MPG, the Bronco at 18.6, Jackie's MINI, the Winnebago at 7.7, the JCW and the Toyota 86 at 28.6" loading="lazy"><figcaption>Our garage. A dash means a car with no measured tanks yet.</figcaption></figure>
+  <div>
+    <p>The dashboard is the garage at a glance: how many cars, the average MPG across all of them, and what the fuel has cost. Below it, every car with its own MPG.</p>
+    <p>"Log a fill-up" is the big button at the top, because that's the thing you open the app for, standing at the pump.</p>
+  </div>
+</div>
+
+<div class="row">
+  <figure><img src="/assets/images/pumpwitness/bronco.webp" alt="The Bronco's page: its photo on a log in the woods, Log a fill-up, takes midgrade, your MPG 18.6, EPA 17.0, 199 dollars spent, and its history" loading="lazy"><figcaption>Each car has its own page.</figcaption></figure>
+  <div>
+    <p>Each car gets a page with its photo, the grade it takes, your MPG next to the EPA's figure, what you've spent and every fill-up. There's an MPG trend chart too, with the EPA rating drawn across it.</p>
+    <p>Moving from another fuel app? <b>Import history from another app (CSV)</b> takes any log with a date, odometer, gallons and a price or total. Column names are matched loosely, rows it can't use are listed with the reason, and importing the same file twice adds nothing.</p>
+  </div>
+</div>
+
+<div class="row flip">
+  <figure><img src="/assets/images/pumpwitness/add-car.webp" alt="Add a car: start typing and the app suggests cars from the EPA's list so it can compare your MPG with the official figure, a car photo from the camera or gallery, then year, make, model, trim, nickname and license plate" loading="lazy"><figcaption>Adding a car.</figcaption></figure>
+  <div>
+    <p>Start typing a year, make and model and it suggests cars from the EPA's own list at fueleconomy.gov, down to the trim and engine. Pick one and the car comes with its official MPG rating.</p>
+    <p>Anything else works too. Our Winnebago isn't on the EPA's list, so it just skips the comparison.</p>
+  </div>
+</div>
+
+<h2>MPG you can trust</h2>
+<p class="lead">A fuel log is only as good as its worst tank. PumpWitness spots the one that can't be right and keeps it out.</p>
+
+<div class="row">
+  <figure><img src="/assets/images/pumpwitness/x5.webp" alt="The X5's page: takes diesel, your MPG 24.6, EPA 22.0, 369 dollars spent, and the MPG over time chart with the EPA rating as a dashed line" loading="lazy"><figcaption>The X5: 24.6 MPG on diesel, against an EPA 22.0.</figcaption></figure>
+  <div>
+    <ul class="tight">
+      <li><b>Measured between full tanks.</b> A partial fill is logged for the price history but never divides anything.</li>
+      <li><b>Averaged by the gallon.</b> Total miles over total gallons, so one odd tank can't pull a car's figure around.</li>
+      <li><b>Against the EPA.</b> Your MPG sits beside the official rating for your exact trim, and the trend chart draws it as a dashed line.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="row flip">
+  <figure><img src="/assets/images/pumpwitness/x5-history.webp" alt="The X5's history: the 7 October fill-up marked Out of MPG, way off this car's usual; 25.0 MPG on 24 September; 24.1 MPG on 17 September" loading="lazy"><figcaption>A fill-up before 7 October wasn't logged. That tank is out, and says why.</figcaption></figure>
+  <div>
+    <p><b>Forget to log one fill-up</b> and the next one covers two tanks' miles on one tank's gallons. The X5's 7 October fill-up came out at 53.8 MPG. Left in, that one number would put the X5 at 33.9 MPG instead of 24.6.</p>
+    <p>PumpWitness leaves a tank out of the average when it covers more miles than a tank can, or lands far from the car's usual. The usual is the middle of all the car's tanks. A car with fewer than three tanks is checked against its EPA rating instead: the Bronco's 529-mile tank worked out at 28 MPG against an EPA 17, and it's out too.</p>
+    <p>The fill-up stays in the history with a note saying why, so you know what happened.</p>
+  </div>
+</div>
+
+<h2>Bad gas</h2>
+<p class="lead">Every tank's mileage is charged to the station the fuel came from. When one station keeps coming up short, you hear about it.</p>
+
+<div class="grid3">
+  <div class="tile"><b>The right station</b><p>A tank's mileage is charged to the station that filled it: the one at the previous full fill-up, whose fuel you were burning.</p></div>
+  <div class="tile"><b>Against your own car</b><p>Each tank is compared with that car's own usual MPG, so a truck and a MINI are each judged against themselves.</p></div>
+  <div class="tile"><b>Flagged at 10%</b><p>When two or more tanks from a station average 10% or more below usual, it's flagged: a card on the dashboard, the Stations list, and a warning when you're standing at that station again.</p></div>
+</div>
+
+<h2>Your log, on your phone</h2>
+<p class="lead">No account to make, nothing to sign in to.</p>
+
+<div class="grid3">
+  <div class="tile"><b>No account, no ads</b><p>No sign-in, no advertising, no analytics. Your cars and fill-ups live in the app on your phone.</p></div>
+  <div class="tile"><b>Location only while it's open</b><p>Used to name the station when you log a fill-up. Turn it off and you type the station in.</p></div>
+  <div class="tile"><b>Backed up by Android</b><p>With Android backup on, your cars and fill-ups come back on a new phone, and the photos are already in your gallery.</p></div>
+</div>
+<p class="note">The full <a href="https://pumpwitness.geekopolis.com/privacy.html">privacy policy</a> lists every service the app talks to and why.</p>
+
+<div class="appicon">
+  <img src="/assets/images/pumpwitness/app-icon.svg" alt="PumpWitness app icon: a white fuel pump inside orange camera-viewfinder corners, with a red recording dot, on a dark blue background">
+  <p><b>The PumpWitness icon:</b> a fuel pump in a camera's viewfinder, recording.</p>
+</div>
+
+<div class="last">Want it? <a href="#get-it">Get PumpWitness on Google Play</a>.</div>
+
+</div>
