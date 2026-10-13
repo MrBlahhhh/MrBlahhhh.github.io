@@ -38,7 +38,12 @@
 .pw .tile b{display:block;font-size:17px;margin-bottom:4px;color:var(--ink)}
 .pw .tile p{margin:0;color:var(--mute);font-size:15px}
 .pw .get{margin:24px 0 8px;padding:20px;border:1px solid rgba(242,154,46,.35);border-radius:18px;background:var(--card);box-shadow:0 0 24px rgba(242,154,46,.06)}
-.pw .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 18px;border-radius:12px;background:#b45c09;color:#fff !important;font-weight:700;text-decoration:none}
+.pw .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:14px;margin:6px 0 14px}
+.pw .step{display:flex;flex-direction:column;gap:8px;padding:16px;border:1px solid var(--line);border-radius:14px;background:rgba(7,12,20,.55)}
+.pw .step b{font-size:18px;color:var(--ink)}
+.pw .step p{margin:0;color:var(--mute)}
+.pw .num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:#b45c09;color:#fff;font-weight:700}
+.pw .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;margin-top:auto;padding:10px 18px;border-radius:12px;background:#b45c09;color:#fff !important;font-weight:700;text-decoration:none}
 .pw .btn:hover{background:#cf6c10}
 .pw .note{font-size:14px;color:var(--mute);margin:12px 0 0}
 .pw .appicon{display:flex;gap:20px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;margin:30px 0 0}
@@ -73,9 +78,22 @@
 
 <div class="get" id="get-it">
   <span class="k">Get PumpWitness</span>
-  <p class="lead">On Google Play, for Android 8.0 and newer.</p>
-  <a class="btn" href="https://play.google.com/store/apps/details?id=com.geekopolis.pumpwitness" target="_blank" rel="noopener">Get it on Google Play</a>
-  <p class="note">The website and the privacy policy are at <a href="https://pumpwitness.geekopolis.com/">pumpwitness.geekopolis.com</a>.</p>
+  <p class="lead">PumpWitness is in Google Play testing, so it won't show up in a search. Two steps, both signed in with the Google account on your phone. Android 8.0 and newer.</p>
+  <div class="steps">
+    <div class="step">
+      <span class="num">1</span>
+      <b>Join the test group</b>
+      <p>Open to anyone, no approval.</p>
+      <a class="btn" href="https://groups.google.com/g/pumpwitness" target="_blank" rel="noopener">Join the group</a>
+    </div>
+    <div class="step">
+      <span class="num">2</span>
+      <b>Get the app</b>
+      <p>About 10 minutes after joining, tap Become a tester, then install from Google Play.</p>
+      <a class="btn" href="https://play.google.com/apps/testing/com.geekopolis.pumpwitness" target="_blank" rel="noopener">Get the app</a>
+    </div>
+  </div>
+  <p class="note">Google takes about 10 minutes to give a new group member access. If Play says the app isn't available, wait a few more minutes and check you're signed in with the same Google account that joined the group. The website and the privacy policy are at <a href="https://pumpwitness.geekopolis.com/">pumpwitness.geekopolis.com</a>.</p>
 </div>
 
 <p>PumpWitness is my wife Jackie's app. It was her idea, and it's her first app. The name is what it does: every fill-up keeps its photos of the pump and the odometer, so there's a record of what went in the tank and where it came from.</p>
@@ -188,6 +206,6 @@
   <p><b>The PumpWitness icon:</b> a fuel pump in a camera's viewfinder, recording.</p>
 </div>
 
-<div class="last">Want it? <a href="#get-it">Get PumpWitness on Google Play</a>.</div>
+<div class="last">Want it? <a href="#get-it">Join the test group, then get the app</a>.</div>
 
 </div>

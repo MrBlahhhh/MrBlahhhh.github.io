@@ -8,8 +8,12 @@ to the end.
 
 ## Running order
 
-0. **Get PumpWitness**, directly under the hero: the Google Play button and the
-   website. Then two lines: it's Jackie's idea and her first app, and the
+0. **Get PumpWitness**, directly under the hero, the same two steps as Touge:
+   join the Google Group (`groups.google.com/g/pumpwitness`), then the Play
+   testing opt-in (`play.google.com/apps/testing/com.geekopolis.pumpwitness`).
+   The store listing 404s for anyone not in the test, so the button goes to the
+   opt-in; switch it to the listing when the app is in production. The note
+   says Google takes about 10 minutes to give a new member access. Then two lines: it's Jackie's idea and her first app, and the
    screenshots are our family's real data.
 1. **Three photos at the pump**: the review screen, the pump photo (the
    evidence copies go with it), then reading with or without a Gemini key.
