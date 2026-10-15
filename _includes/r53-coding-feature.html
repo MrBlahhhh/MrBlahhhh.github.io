@@ -7,7 +7,9 @@
      diagnostics shots (bc1-live, bc1-tools, ehps, tpms) are build 145 debug, with the
      debug-only buttons hidden. bc1-live runs on the app's own demo_bc1_live replies;
      the other three ran on a throwaway local demo wire answering with unit-test style
-     replies, never committed. None of those screens has run on a car. -->
+     replies, never committed. None of those screens has run on a car.
+     Order: what it codes, price ($30, codingunlock), hardware, can/can't, then the
+     feature screens. Keep that front block first. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -93,7 +95,14 @@
 .rc .step p{font-size:15px;color:var(--silk2);flex:1;margin:0}
 .rc .last{margin-top:36px;padding-top:18px;border-top:1px solid var(--line);font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--mute);line-height:1.8}
 .rc .last a{color:var(--silk2)}
-.rc .hero > *,.rc .split > *,.rc .phones > *,.rc .steps > *{min-width:0}
+.rc .fit.two{grid-template-columns:repeat(2,minmax(0,1fr));margin:22px 0 16px}
+.rc h3.more{margin:40px 0 0}
+.rc .cando{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin:22px 0 4px}
+.rc .cando > div{background:var(--panel);padding:20px 20px 6px}
+.rc .cando h3{margin:0 0 14px}
+.rc .cando .cant h3{color:#ff8a90}
+.rc .cando .cant ul.list li::before{background:var(--red)}
+.rc .hero > *,.rc .split > *,.rc .phones > *,.rc .steps > *,.rc .cando > *{min-width:0}
 @media (max-width:820px){
   .rc .hero,.rc .split,.rc .split.rev{grid-template-columns:minmax(0,1fr)}
   /* .split.rev puts its phone first on desktop; on a phone the text leads everywhere */
@@ -116,7 +125,7 @@
 <p class="eyebrow">Android · MINI Cooper S R53 · module coding</p>
 <h1>NCS Expert,<br><em>minus the laptop.</em></h1>
 <p class="lede">R53 Coding reads and writes the settings inside your MINI's modules, the same ones NCS Expert codes, from an Android phone. Seven modules, every setting in plain English, and a backup before anything changes.</p>
-<div class="ctas"><a class="btn red" href="#get-it">Join the testers</a><a class="btn ghost" href="#whats-new">What's new</a></div>
+<div class="ctas"><a class="btn red" href="#get-it">Join the testers</a><a class="btn ghost" href="#price">$30 · what you need</a></div>
 <p class="news"><b>Updated Oct 5</b> · <a href="#diagnostics">diagnostics</a> for the body computer, the power steering pump and tire pressure, built from the INPA job files and not run on a car yet. Before that: seven modules, OBDLink CX and MX+, fault codes in English, presets, race seats, speedometer calibration and settings transfer. Sign-up is open to anyone.</p>
 </div>
 <figure class="phone"><img src="/assets/images/r53-coding/v2/edit-row.jpg" alt="Edit options on the body computer: brake light warning, country variant and daytime running lights, each with its NCS name, a description and the current value" loading="eager"><figcaption>Body computer · every setting in plain English</figcaption></figure>
@@ -129,44 +138,11 @@
 <div><div class="n">0</div><p>files to import</p></div>
 </div>
 
-<section id="whats-new">
-<p class="eyebrow">01 · New since July</p>
-<h2>A lot more <em>than BC1.</em></h2>
-<p class="body">The first version coded the body computer and not much else. This is where it is now.</p>
-<div class="tiles">
-<a href="#modules"><span class="k">Modules</span><span class="t">Seven, live</span><span class="p">Body, engine, DSC, airbag, cluster, immobilizer and the column pod.</span><span class="bar"></span></a>
-<a href="#connect"><span class="k">Wireless</span><span class="t">OBDLink CX and MX+</span><span class="p">Code over Bluetooth, no cable. An LX can't do it, and the app says so by name.</span><span class="bar"></span></a>
-<a href="#trouble-codes"><span class="k">Diagnostics</span><span class="t">Faults, live data, tests</span><span class="p">Every module's codes in English. New: live data and tests from the INPA jobs.</span><span class="bar"></span></a>
-<a href="#presets"><span class="k">One tap</span><span class="t">Presets</span><span class="p">Daily Comfort and Track Day stage the usual set of changes for a module.</span><span class="bar"></span></a>
-<a href="#race-seats"><span class="k">Airbag</span><span class="t">Race seats</span><span class="p">Asks which side the driver sits on and shows every airbag it will turn off.</span><span class="bar"></span></a>
-<a href="#speedo"><span class="k">Cluster</span><span class="t">Speedo calibration</span><span class="p">Enter what the cluster and a GPS say. The app works out the new number.</span><span class="bar"></span></a>
-<a href="#transfer"><span class="k">Module swap</span><span class="t">Settings transfer</span><span class="p">Carry your coding to a replacement module, even one on a different index.</span><span class="bar"></span></a>
-<a href="#get-it"><span class="k">Sign-up</span><span class="t">Open to anyone</span><span class="p">Join the group and install from Play. No approval to wait for.</span><span class="bar"></span></a>
-</div>
-</section>
-
-<section id="how-it-works">
-<div class="split">
-<div>
-<p class="eyebrow">02 · The hub</p>
-<h2>Read. Edit. <em>Write.</em></h2>
-<ol class="flow">
-<li><b>Plug in.</b> A K+DCAN cable on a USB-C OTG adapter, or tick the box and use an OBDLink CX or MX+ over Bluetooth. Key on, engine off. An OBDLink, or a cable with no 7/8 switch, needs <a href="#pins-7-8">OBD pins 7 and 8 linked</a> first.</li>
-<li><b>Pick a module</b> and tap Read. The app reads the VIN off the cluster, then the module's coding, and saves a backup before you can touch anything. The file name carries the VIN, the module and the time.</li>
-<li><b>Edit.</b> The full-screen list opens on its own after a good read. Picking a value only changes the working copy.</li>
-<li><b>Write to car.</b> Only the blocks you changed go out, then the app reads them back to prove they landed.</li>
-</ol>
-<p class="body">The comms log at the bottom shows every telegram. If something goes sideways, Share log gets it to me.</p>
-</div>
-<figure class="phone"><img src="/assets/images/r53-coding/v2/hub.jpg" alt="The coding hub: OBDLink and ESP32 bridge checkboxes, module picker, Read from car, Edit options, Write to car, Restore backup, Planning mode, Trouble codes and the body computer live status button" loading="lazy"><figcaption>The hub, build 145</figcaption></figure>
-</div>
-</section>
-
 <section id="modules">
 <div class="split rev">
 <figure class="phone"><img src="/assets/images/r53-coding/v2/modules.jpg" alt="Select a module: body computer, engine, DSC, airbag, instrument cluster, immobilizer and column instrument pod" loading="lazy"><figcaption>Seven modules on the K-line</figcaption></figure>
 <div>
-<p class="eyebrow">03 · What it codes</p>
+<p class="eyebrow">01 · What it codes</p>
 <h2>Seven <em>modules.</em></h2>
 <dl class="spec">
 <dt>BC1</dt><dd><b>Body computer.</b> Lights, locking, windows, wipers, alarm and bulb monitoring. 269 settings on a C05.</dd>
@@ -181,10 +157,93 @@
 <p class="note">The convertible top (CVM) and the GT are in planning mode only until I capture a coding session on each.</p>
 </div>
 </div>
+<h3 class="more">On top of the coding</h3>
+<div class="tiles">
+<a href="#plain-english"><span class="k">Edit</span><span class="t">Plain English</span><span class="p">Every setting with a plain title, its NCS name and the value the car has now.</span><span class="bar"></span></a>
+<a href="#presets"><span class="k">One tap</span><span class="t">Presets</span><span class="p">Daily Comfort and Track Day stage the usual set of changes for a module.</span><span class="bar"></span></a>
+<a href="#race-seats"><span class="k">Airbag</span><span class="t">Race seats</span><span class="p">Asks which side the driver sits on and shows every airbag it will turn off.</span><span class="bar"></span></a>
+<a href="#speedo"><span class="k">Cluster</span><span class="t">Speedo calibration</span><span class="p">Enter what the cluster and a GPS say. The app works out the new number.</span><span class="bar"></span></a>
+<a href="#transfer"><span class="k">Module swap</span><span class="t">Settings transfer</span><span class="p">Carry your coding to a replacement module, even one on a different index.</span><span class="bar"></span></a>
+<a href="#trouble-codes"><span class="k">Faults</span><span class="t">Read and clear</span><span class="p">Seven modules' fault codes, with English names.</span><span class="bar"></span></a>
+<a href="#diagnostics"><span class="k">Diagnostics</span><span class="t">Live data and tests</span><span class="p">Body computer, power steering pump and tire pressure, from the INPA jobs.</span><span class="bar"></span></a>
+<a href="#planning"><span class="k">No car</span><span class="t">Planning mode</span><span class="p">Every option list offline, free, with no cable plugged in.</span><span class="bar"></span></a>
+</div>
+</section>
+
+<section id="price">
+<p class="eyebrow">02 · What it costs</p>
+<h2>$30, <em>once.</em></h2>
+<p class="body">One in-app purchase in Play, no subscription. Everything that only reads is free, so you can see what your car has coded, and back it up, before you pay anything.</p>
+<div class="fit two">
+<div><div class="n">Free</div><p>Read, back up, planning mode, editing on the phone, the diagnostic reads</p></div>
+<div><div class="n">$30</div><p>Write to the car, restore a backup, and the tests, resets and writes on the diagnostic screens</p></div>
+</div>
+</section>
+
+<section id="connect">
+<p class="eyebrow">03 · What you need</p>
+<h2>What you <em>need.</em></h2>
+<p class="body">An Android phone, a K+DCAN cable with the 7/8 switch, and a USB-C OTG adapter. That's the best setup, and every capture behind this app was taken over one.</p>
+<dl class="spec">
+<dt>K+DCAN cable</dt><dd><b>Best. The proven path.</b> The standard BMW/MINI USB interface, the same one you'd use with INPA or NCS, around $25. Get one with the 7/8 switch and set it on. <a href="https://www.amazon.com/s?k=k%2Bdcan+cable+with+switch">Find one on Amazon</a>.</dd>
+<dt>USB-C OTG</dt><dd><b>Best. USB-C plug to a full-size USB-A socket,</b> so the phone can power and drive the cable. Under $10. <a href="https://www.amazon.com/s?k=JSAUX+USB+C+to+USB+3.0+adapter">Find one on Amazon</a>.</dd>
+<dt>Phone</dt><dd><b>Android 7 or newer</b> with USB-C, or Bluetooth for the OBDLink.</dd>
+<dt>OBDLink CX / MX+</dt><dd><b>Works, no cable.</b> Tick the box on the hub. Same telegrams, same backups. It talks on pin 7 only, so <a href="#pins-7-8">link pins 7 and 8</a> at the car first.</dd>
+<dt>OBDLink LX</dt><dd><b>Won't work.</b> Its firmware can't set the parity these modules need. The app tells you that instead of timing out.</dd>
+</dl>
+<p class="note">A K+DCAN cable with no 7/8 switch only reaches the engine until <a href="#pins-7-8">pins 7 and 8 are linked</a> at the car.</p>
+</section>
+
+<section id="can-and-cant">
+<p class="eyebrow">04 · What it can and can't do</p>
+<h2>Coding, <em>not tuning.</em></h2>
+<p class="body">It changes the settings inside the modules, the job NCS Expert does. It doesn't touch fuel, spark or boost, and it's still beta.</p>
+<div class="cando">
+<div class="can">
+<h3>It can</h3>
+<ul class="list">
+<li><b>Read and write the coding</b> on the body computer, engine, DSC, airbag, cluster, immobilizer and column pod.</li>
+<li><b>Back up every module</b> before you can edit, and restore it.</li>
+<li><b>Move your coding</b> to a replacement module, even one on a different index.</li>
+<li><b>Code race seats, the speedo and presets</b> without hunting through NCS names.</li>
+<li><b>Read and clear fault codes</b> on seven modules.</li>
+<li><b>Run INPA-style live data and tests</b> on the body computer, power steering pump and tire pressure.</li>
+<li><b>Show every option offline</b> in planning mode.</li>
+</ul>
+</div>
+<div class="cant">
+<h3>It can't</h3>
+<ul class="list">
+<li><b>Tune the engine.</b> Engine coding here is market, emissions, cruise and the A/C cut, not fuel or spark.</li>
+<li><b>Code the convertible top or the GT</b> yet. Planning mode only.</li>
+<li><b>Edit a module index it doesn't ship a table for.</b> It still backs that module up.</li>
+<li><b>Vouch for the diagnostics on a real car.</b> None of those screens has run on one yet.</li>
+<li><b>Connect through an OBDLink LX.</b></li>
+<li><b>Replace an NCS Expert backup</b> while it's beta. Keep a TRACE of anything you change.</li>
+</ul>
+</div>
+</div>
+</section>
+
+<section id="how-it-works">
+<div class="split">
+<div>
+<p class="eyebrow">05 · The hub</p>
+<h2>Read. Edit. <em>Write.</em></h2>
+<ol class="flow">
+<li><b>Plug in.</b> A K+DCAN cable on a USB-C OTG adapter, or tick the box and use an OBDLink CX or MX+ over Bluetooth. Key on, engine off. An OBDLink, or a cable with no 7/8 switch, needs <a href="#pins-7-8">OBD pins 7 and 8 linked</a> first.</li>
+<li><b>Pick a module</b> and tap Read. The app reads the VIN off the cluster, then the module's coding, and saves a backup before you can touch anything. The file name carries the VIN, the module and the time.</li>
+<li><b>Edit.</b> The full-screen list opens on its own after a good read. Picking a value only changes the working copy.</li>
+<li><b>Write to car.</b> Only the blocks you changed go out, then the app reads them back to prove they landed.</li>
+</ol>
+<p class="body">The comms log at the bottom shows every telegram. If something goes sideways, Share log gets it to me.</p>
+</div>
+<figure class="phone"><img src="/assets/images/r53-coding/v2/hub.jpg" alt="The coding hub: OBDLink and ESP32 bridge checkboxes, module picker, Read from car, Edit options, Write to car, Restore backup, Planning mode, Trouble codes and the body computer live status button" loading="lazy"><figcaption>The hub, build 145</figcaption></figure>
+</div>
 </section>
 
 <section id="plain-english">
-<p class="eyebrow">04 · Edit options</p>
+<p class="eyebrow">06 · Edit options</p>
 <h2>Plain <em>English.</em></h2>
 <p class="body">After a read, Edit options shows what the car actually has coded, grouped the way you'd look for it: exterior lights, locking, windows, wipers, comfort. The everyday settings come first and the long tail sits under Advanced. Each row has a plain title, the NCS name, a line on what it does where I've written one, and the current value.</p>
 <div class="phones">
@@ -195,7 +254,7 @@
 </section>
 
 <section id="presets">
-<p class="eyebrow">05 · Presets</p>
+<p class="eyebrow">07 · Presets</p>
 <h2>One tap, <em>then check it.</em></h2>
 <p class="body"><b>Daily Comfort</b> on the body computer finishes the wipe when you switch off, turns on one-touch windows, the lock chirp, 40 seconds of follow-me-home, the soft interior fade and selective unlock, and stops the cold-filament checks that make LED bulbs glow or warn. <b>Track Day</b> on the DSC sets Sport+, the brake-based limited slip, and turns brake assist and the traction differential control off. Every toggle can be switched off before you apply, and Apply only stages the editor. Nothing reaches the car until you write.</p>
 <div class="phones">
@@ -205,7 +264,7 @@
 </section>
 
 <section id="race-seats">
-<p class="eyebrow">06 · Airbag</p>
+<p class="eyebrow">08 · Airbag</p>
 <h2>Race <em>seats.</em></h2>
 <p class="body">Pulling the stock seats and belts leaves an airbag light, and fixing it by hand means finding the right bits for each side in a list of ninety. The race seat screen asks it as questions on one page: which side the driver sits on, one seat or two, harnesses or stock belts, the occupancy mat, the front bags and the curtains. The seat sidebags follow the driver-side answer, and if the module's own left or right setting disagrees, you see that before anything is staged.</p>
 <div class="phones">
@@ -218,7 +277,7 @@
 <section id="speedo">
 <div class="split">
 <div>
-<p class="eyebrow">07 · Cluster and column pod</p>
+<p class="eyebrow">09 · Cluster and column pod</p>
 <h2>Speedo <em>calibration.</em></h2>
 <p class="body">Speedo reading high? Type in what the cluster shows and what a GPS shows at a steady speed, and the app corrects it. The odometer stays as it is unless you tick the box, and the column pod can be set the same way.</p>
 </div>
@@ -227,7 +286,7 @@
 </section>
 
 <section id="transfer">
-<p class="eyebrow">08 · Backups and module swaps</p>
+<p class="eyebrow">10 · Backups and module swaps</p>
 <h2>Move your coding <em>to another module.</em></h2>
 <p class="body">Every backup the phone has kept shows up by car, module and date. <b>Restore bytes</b> puts a module's own backup straight back, and only when the index matches. <b>Transfer settings</b> is for a swap: it reads the old unit through its own table and sets the same named settings on the new one through its table, so a used body computer on a different index still ends up coded like yours. Anything the new unit can't take is listed, never approximated.</p>
 <div class="phones">
@@ -241,7 +300,7 @@
 <div class="split rev">
 <figure class="phone"><img src="/assets/images/r53-coding/v2/faults.jpg" alt="Trouble codes screen with engine, DSC, steering angle, body, instrument cluster, immobilizer and airbag modules" loading="lazy"><figcaption>Seven fault memories</figcaption></figure>
 <div>
-<p class="eyebrow">09 · Trouble codes</p>
+<p class="eyebrow">11 · Trouble codes</p>
 <h2>Read and <em>clear.</em></h2>
 <p class="body">Same cable, same session. Engine, DSC, steering angle, body, cluster, immobilizer and airbag each read and clear their fault memory, and the codes come with English names. Chassis modules show BMW's own codes, not made-up OBD-II P-codes. Scan modules on bus shows what answered, and Share report sends the whole read with the telegrams behind it.</p>
 <p class="body">Handy after a coding change or a retrofit leaves a light on.</p>
@@ -250,7 +309,7 @@
 </section>
 
 <section id="diagnostics">
-<p class="eyebrow">10 · Diagnostics</p>
+<p class="eyebrow">12 · Diagnostics</p>
 <h2>Past the <em>fault codes.</em></h2>
 <p class="body">Four new buttons on the hub run the jobs INPA runs, decoded from BMW's own job files: the body computer's live status, its tests and history, the power steering pump, and tire pressure. Reads are free. Anything that drives an output, resets a module or writes to it needs the coding unlock, and leaving a screen hands back whatever it forced on.</p>
 <div class="phones">
@@ -273,7 +332,7 @@
 <section id="planning">
 <div class="split">
 <div>
-<p class="eyebrow">11 · No car needed</p>
+<p class="eyebrow">13 · No car needed</p>
 <h2>Planning <em>mode.</em></h2>
 <p class="body">Every option list opens offline, with no car and no cable, so you can work out what you want before you're sitting in the car. It's free and it can't write anything. It also covers the modules I haven't captured a coding session on yet. What it can't show is your car's current value; that takes a read.</p>
 </div>
@@ -281,18 +340,9 @@
 </div>
 </section>
 
-<section id="connect">
-<p class="eyebrow">12 · Hardware</p>
-<h2>How it <em>connects.</em></h2>
-<dl class="spec">
-<dt>K+DCAN cable</dt><dd><b>The proven path.</b> The standard BMW/MINI USB interface, the same one you'd use with INPA or NCS. Every capture behind this app was taken over one. Set its 7/8 switch on. A cable with no switch needs <a href="#pins-7-8">pins 7 and 8 linked</a> at the car.</dd>
-<dt>USB-C OTG</dt><dd><b>USB-A to USB-C host adapter,</b> so the phone can power and drive the cable.</dd>
-<dt>OBDLink CX / MX+</dt><dd><b>Bluetooth, no cable.</b> Tick the box on the hub. Same telegrams, same backups. It talks on pin 7 only, so <a href="#pins-7-8">link pins 7 and 8</a> at the car first.</dd>
-<dt>OBDLink LX</dt><dd><b>Won't work.</b> Its firmware can't set the parity these modules need. The app tells you that instead of timing out.</dd>
-<dt>Phone</dt><dd><b>Android with USB host,</b> or Bluetooth for the OBDLink.</dd>
-</dl>
-
-<h3 id="pins-7-8">OBDLink, or a cable with no switch: link pins 7 and 8</h3>
+<section id="pins-7-8">
+<p class="eyebrow">14 · OBDLink or a cable with no switch</p>
+<h2>Link pins <em>7 and 8.</em></h2>
 <p class="body">The R53 brings the engine out on OBD pin 7 and every other module (cluster, body computer, DSC, airbag, immobilizer, the column pod) on pin 8. A K+DCAN cable with its 7/8 switch on links the two inside the plug. An OBDLink CX or MX+ talks on pin 7 only, and so does a K+DCAN cable with no switch, so with either of those only the engine answers. One short wire across the back of the car's OBD socket fixes it for good.</p>
 <ol class="flow">
 <li><b>Get to the back of the socket.</b> Unclip the OBD socket from its mount under the dash and pull it out far enough to see where the wires go in.</li>
@@ -309,7 +359,7 @@
 </section>
 
 <section id="before-you-write">
-<p class="eyebrow">13 · Before you write</p>
+<p class="eyebrow">15 · Before you write</p>
 <h2>Beta, <em>and backups.</em></h2>
 <div class="warn">
 <h3>Keep an NCS Expert backup of anything you touch</h3>
@@ -324,7 +374,7 @@
 </section>
 
 <section id="get-it">
-<p class="eyebrow">14 · Get it</p>
+<p class="eyebrow">16 · Get it</p>
 <h2>Join the <em>testers.</em></h2>
 <p class="body">It's in Google Play testing, so it won't show up in a Play search. Three steps, all with the Google account on your phone:</p>
 <div class="steps">
@@ -344,11 +394,11 @@
 <a class="btn red" href="https://play.google.com/store/apps/details?id=com.geekopolis.r53code" target="_blank" rel="noopener">Open in Play</a>
 </div>
 </div>
-<p class="note">Reading, backups, planning mode, editing and the diagnostic reads are free. <b>Writing to the car, and the tests, resets and writes on the diagnostic screens, are a one-time unlock in Play.</b> Install from Play rather than a sideloaded APK so the unlock works. Stuck? <a href="mailto:matt@geekopolis.com">matt@geekopolis.com</a> or <a href="https://www.instagram.com/mattryan6729/">@mattryan6729</a>.</p>
+<p class="note">Reading, backups, planning mode, editing and the diagnostic reads are free. <b>Writing to the car, and the tests, resets and writes on the diagnostic screens, are a one-time $30 unlock in Play.</b> Install from Play rather than a sideloaded APK so the unlock works. Stuck? <a href="mailto:matt@geekopolis.com">matt@geekopolis.com</a> or <a href="https://www.instagram.com/mattryan6729/">@mattryan6729</a>.</p>
 </section>
 
 <section id="fine-print">
-<p class="eyebrow">15 · Fine print</p>
+<p class="eyebrow">17 · Fine print</p>
 <ul class="list">
 <li><b>Track and DIY use.</b> You're writing module configuration on a twenty-year-old car.</li>
 <li><b>Key on, engine off,</b> for every read and write. Keep a battery charger on for long sessions.</li>
@@ -357,6 +407,6 @@
 </ul>
 </section>
 
-<p class="last">R53 Coding is the companion to the <a href="/car/tech/2026/08/18/r53-logger-august-update.html">R53 Logger - Flasher</a>: separate app, separate unlock, same cable. The shift light and the K-line + CAN bridge are at <a href="https://ryansdesigns.geekopolis.com/shiftlight/">ryansdesigns.geekopolis.com/shiftlight</a>. Coding screenshots from build 121 with REDcar's backups loaded; the hub and the diagnostics screens from build 145, on made-up replies.</p>
+<p class="last">R53 Coding is its own app with its own unlock. Logging and ECU flashing are a different app, the <a href="/car/tech/2026/08/18/r53-logger-august-update.html">R53 Logger - Flasher</a>. The shift light and the K-line + CAN bridge are at <a href="https://ryansdesigns.geekopolis.com/shiftlight/">ryansdesigns.geekopolis.com/shiftlight</a>. Coding screenshots from build 121 with REDcar's backups loaded; the hub and the diagnostics screens from build 145, on made-up replies.</p>
 
 </div>

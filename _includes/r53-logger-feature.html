@@ -1,7 +1,10 @@
 <!-- R53 Logger - Flasher feature page. Rendered by two posts:
      2026-08-18-r53-logger-august-update.md (the page) and
      2026-07-22-r53-android-datalogger.md (a mirror, so old links land on the same text).
-     Edit here, never in the posts. Section order: _posts/R53-LOGGER-POST-ORDER.md -->
+     Edit here, never in the posts. Section order: _posts/R53-LOGGER-POST-ORDER.md
+     Prices: appunlock $25 is the base; flashunlock $50 (options) and oemunlock $50
+     (Stage 1/0, stock S) each allow a write on their own (WriteGate.allowsFlashWrite).
+     Backup read and share are free (FlashActivity backupOnly). -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap">
 <style>
 .r53{--ink:#e5e7eb;--mute:#9ca3af;--acc:#e8323c;--acc-hi:#ff6b73;--acc-soft:rgba(232,50,60,.16);--line:rgba(255,255,255,.1);--line2:rgba(255,255,255,.2);--card:rgba(39,39,42,.6);--card2:rgba(63,63,70,.45);--ok:#4ade80;--warn:#fbbf24;
@@ -68,6 +71,12 @@
 .r53 .note{font-size:14px;color:var(--mute)}
 .r53 .video{margin:14px 0 22px;border-radius:18px;overflow:hidden;border:1px solid var(--line)}
 .r53 .last{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);font-size:14px;color:var(--mute)}
+.r53 .ctas{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0 0}
+.r53 .btn.ghost{background:transparent;border:1px solid var(--line2);color:var(--ink) !important}
+.r53 .btn.ghost:hover{background:var(--card2)}
+.r53 h3.part{font-size:clamp(21px,2.6vw,27px);margin:36px 0 8px}
+.r53 .cando{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:14px;margin:14px 0 22px}
+.r53 .cando ul.tight{margin:0}
 .r53 .brand > div,.r53 .row > *,.r53 .steps > *,.r53 .grid3 > *{min-width:0}
 .r53{overflow-wrap:anywhere}
 @media (max-width:820px){.r53 .row,.r53 .row.flip,.r53 .row.wide,.r53 .row.wide.flip{grid-template-columns:minmax(0,1fr)}.r53 .row figure{max-width:420px;margin:0 auto;width:100%}.r53 .row.flip figure{order:0}.r53 .steps{grid-template-columns:1fr}}
@@ -84,8 +93,8 @@
       <h1>R53 Logger - Flasher</h1>
     </div>
   </div>
-  <p class="sub">Log the car, see exactly where the tune misses, and flash the fix from the same phone. Or skip all of that and flash MINI's own Stage 1.</p>
-  <div class="news"><b>This week:</b> it's on <a href="#get-it">Google Play</a> for everyone, no test group to join. And early 740G00 cars get a <a href="#stage-0-flash">Stage 0 flash</a>: BMW's original 200 hp JCW kit tuning, for a Cooper S with a pulley on its factory injectors.</div>
+  <p class="sub">Flash MINI's own Stage 1 from an Android phone, put the options you want on top, then log the car and see exactly where the tune misses.</p>
+  <div class="news"><b>This week:</b> it's on <a href="#get-it">Google Play</a> for everyone, no test group to join. And there's a <a href="#stage-0-flash">Stage 0 flash</a>: BMW's original 200 hp JCW kit tuning, for any manual Cooper S with a pulley on its factory injectors.</div>
   <div class="stats">
     <div class="stat"><b>~8/s</b><span>time-aligned rows</span></div>
     <div class="stat"><b>512 KB</b><span>full ECU backup</span></div>
@@ -93,9 +102,21 @@
     <div class="stat"><b>3</b><span>ways to connect</span></div>
     <div class="stat"><b>0</b><span>laptops</span></div>
   </div>
+  <div class="ctas"><a class="btn" href="https://play.google.com/store/apps/details?id=com.geekopolis.r53logger">Get it on Google Play</a><a class="btn ghost" href="#prices">Prices</a><a class="btn ghost" href="#hardware">What you need</a><a class="btn ghost" href="#can-and-cant">What it can't do</a></div>
 </div>
 
-<h2 id="stage-1-flash">Stage 1 flash</h2>
+<h2 id="flash-options">Flash options</h2>
+<p class="lead">Pick a base tune, put the options you want on top, and write it from the phone. It's all applied in memory and checked before a byte goes to the ECU. No hex editor, no second tool.</p>
+
+<div class="grid3">
+  <div class="tile"><span class="tag">Stage 1</span><b>JCW</b><p>MINI's calibration for the JCW kit: pulley, 380 cc injectors, freer exhaust. <a href="#stage-1-flash">More</a>.</p></div>
+  <div class="tile"><span class="tag">Stage 1</span><b>GP1</b><p>The 2006 GP's calibration for the same parts. Revs higher and runs more aggressive than JCW.</p></div>
+  <div class="tile"><span class="tag">Stage 0</span><b>JCW kit</b><p>BMW's 200 hp kit tuning for a manual Cooper S with a pulley, on factory injectors. <a href="#stage-0-flash">More</a>.</p></div>
+  <div class="tile"><span class="tag ok">stock</span><b>Stock S</b><p>The factory Cooper S calibration, to go back to stock.</p></div>
+  <div class="tile"><span class="tag ok">options</span><b>Twelve options</b><p>Pops, redline, pedal map, injectors, fans and more, on any of the above or your own bin. <a href="#options">See them</a>.</p></div>
+</div>
+
+<h3 class="part" id="stage-1-flash">Stage 1: MINI's JCW and GP1</h3>
 <p class="lead">Years ago MINI was nice enough to give S owners a Stage 1 flash from the factory. It shipped as the JCW kit. The app puts it on your car.</p>
 
 <div class="row">
@@ -103,7 +124,7 @@
   <div>
     <p>The JCW and GP1 calibrations are MINI's own tunes for an R53 with a smaller pulley, 380 cc injectors and a freer exhaust. That's how most of these cars end up by the time anyone wants a tune.</p>
     <p><b>If your car has a pulley, 380 cc injectors and an exhaust or header, it'll flow close enough to pair well.</b> You don't really need the JCW head. A header and exhaust, or a mild cam, make up for it.</p>
-    <p>Stage 1 works on early and late cars. The app reads your ECU's software version and loads the calibration made for it: the facelift <code>740P10</code>, the early <code>740J10</code> and <code>740G00</code>, and EU S and JCW images for EU cars. On <code>740G00</code> the JCW and GP1 are ported from the facelift calibrations.</p>
+    <p>Stage 1 works on early and late cars. The app reads your ECU's software version and loads the calibration made for it: the facelift <code>740P10</code>, the early <code>740J10</code> and <code>740G00</code>, and the EU <code>740L00</code>. EU cars get EU images, and facelift automatics get an automatic set. On <code>740G00</code> and <code>740L00</code> the JCW and GP1 are ported from the factory's own changes.</p>
   </div>
 </div>
 
@@ -120,7 +141,7 @@
   </div>
 </div>
 
-<h2 id="stage-0-flash">Stage 0 flash</h2>
+<h3 class="part" id="stage-0-flash">Stage 0: the first JCW kit</h3>
 <p class="lead">A smaller supercharger pulley spins the blower faster and makes more boost. Stage 0 is the software BMW wrote to go with one, for a Cooper S on its stock injectors.</p>
 
 <div class="row">
@@ -132,12 +153,134 @@
     <p><b>Stage 0 or Stage 1?</b> A pulley on stock injectors: Stage 0. A pulley, 380 cc injectors and an exhaust or header: Stage 1.</p>
     <ul class="tight">
       <li><b>Fit the pulley first.</b></li>
-      <li><b>Early 740G00 ECUs only.</b> On other software the flash summary says it isn't available, and the tune is left alone.</li>
+      <li><b>Every manual Cooper S ECU:</b> <code>740P10</code>, <code>740J10</code>, <code>740G00</code>, <code>740L00</code> and <code>740N20</code>. The kit's tables go to each one's own addresses.</li>
       <li><b>For a Cooper S tune.</b> A JCW or GP1 calibration already goes further, so it refuses those, and automatics.</li>
-      <li><b>Flash options still apply on top</b>, and Stock puts the Cooper S tables back.</li>
+      <li><b>Flash options still apply on top.</b> Stock puts the Cooper S tables back on <code>740P10</code>, <code>740J10</code> and <code>740G00</code>. On the others, go back with your own backup.</li>
     </ul>
   </div>
 </div>
+
+<h3 class="part" id="options">Options on any tune</h3>
+<p class="lead">Twelve common changes, laid over whatever tune is loaded: Stage 1, Stage 0, stock, or your own.</p>
+
+<div class="row flip">
+  <figure><img src="/assets/images/r53-logger/v2/options-pedal.jpg" alt="Throttle pedal remap presets"><figcaption>Pedal presets. Each one also rewrites the torque monitor table so it can't set P1689.</figcaption></figure>
+  <div>
+    <p>Every option is <b>BIN</b> (leave the file alone), <b>Stock</b> (factory values back) or <b>Modify</b> (apply the preset). Each card reads the loaded tune first: the injector card says the JCW image looks like 380 cc, the redline card shows the limit it's about to move.</p>
+    <p>If an option can't find its table in your bin, it refuses rather than guess.</p>
+  </div>
+</div>
+
+<div class="grid3">
+  <div class="tile"><b>Pops</b><p>Decel crackle, stock to max.</p></div>
+  <div class="tile"><b>Injector size</b><p>330, 380, 440, 550, 630 cc. Rescales the fuel scalar.</p></div>
+  <div class="tile"><b>Redline</b><p>Raises the per-gear limit. The limiter cuts fuel, not throttle.</p></div>
+  <div class="tile"><b>Pedal map</b><p>Eco, Sport, Sport+, a true 1:1 Straight, or Track.</p></div>
+  <div class="tile"><b>Overboost</b><p>Raised throttle opening.</p></div>
+  <div class="tile"><b>Idle</b><p>Manual cars, cold and warm together.</p></div>
+  <div class="tile"><b>Cooling fan</b><p>Kick on earlier: 216/230 °F or 200/220 °F.</p></div>
+  <div class="tile"><b>Trim learning range</b><p>Learn fuel trims further up the revs.</p></div>
+  <div class="tile"><b>Cruise timing</b><p>About 2° more advance at light-throttle cruise, for economy.</p></div>
+  <div class="tile"><b>Pre-facelift gearbox</b><p>A facelift ECU in front of the early gearbox, so it works out the right gear.</p></div>
+  <div class="tile"><span class="tag beta">experimental</span><b>O2 switch point</b><p>Moves the front O2 switch voltage, so cruise settles slightly lean.</p></div>
+  <div class="tile"><span class="tag beta">experimental</span><b>Lean cruise</b><p>Leans steady cruise. Watch AFRs and back it out if you don't like it.</p></div>
+</div>
+
+<div class="pair">
+  <figure><img src="/assets/images/r53-logger/v2/options-injectors.jpg" alt="Injector size option reading 380 cc"><figcaption>The injector card reads the loaded tune first.</figcaption></figure>
+  <figure><img src="/assets/images/r53-logger/v2/options-redline.jpg" alt="Redline presets"><figcaption>Redline presets, with the tune's current limit shown.</figcaption></figure>
+</div>
+
+<h2 id="prices">What it costs</h2>
+<p class="lead">One-off in-app purchases, no subscription. The app unlock is the base, and a flash needs one of the two add-ons on top of it.</p>
+
+<div class="grid3">
+  <div class="tile price"><b>$25</b><p><b style="display:inline;font-size:inherit">App unlock.</b> Logging, graphs, 3D and maps, fuel recommendation and simulator, wideband, dashboards, diagnostics and the Garage.</p></div>
+  <div class="tile price"><b>$50</b><p><b style="display:inline;font-size:inherit">Flash unlock.</b> Write to the ECU, with the twelve options on whatever tune is loaded.</p></div>
+  <div class="tile price"><b>$50</b><p><b style="display:inline;font-size:inherit">Stage 1 flash.</b> MINI's JCW and GP1, Stage 0, and stock S to go back. Writes them on its own, no Flash unlock needed.</p></div>
+</div>
+<ul class="tight">
+  <li><b>Log, tune views and diagnostics:</b> $25.</li>
+  <li><b>Flash Stage 1 or Stage 0:</b> $75, the app unlock plus Stage 1.</li>
+  <li><b>Flash the options on your own tune:</b> $75, the app unlock plus Flash unlock.</li>
+  <li><b>Stage 1 with options on top:</b> $125, all three.</li>
+  <li><b>Free:</b> reading your ECU's full backup and sending it to me, so an ECU the app doesn't support yet can be checked before you buy anything.</li>
+</ul>
+<p><b>Prepared facelift ECU, $275.</b> VIN-swapped to your car with the immobiliser deleted, ready to drop in. Shipping at cost. Email <a href="mailto:matt@geekopolis.com">matt@geekopolis.com</a> with your year, model and VIN.</p>
+
+<h2 id="hardware">What you need</h2>
+<p class="lead">An Android phone or tablet, a K+DCAN USB cable and a USB-C OTG adapter. That's the best setup, and the one every flash so far has gone through.</p>
+
+<div class="grid3">
+  <div class="tile"><span class="tag ok">best</span><b>K+DCAN USB cable</b><p>The BMW diagnostic cable, around $25. Get one with the 7/8 switch and an FT232RL (FTDI) chip, which is what every flash so far has used. <a href="https://www.amazon.com/s?k=k%2Bdcan+cable+with+switch">Find one on Amazon</a>.</p></div>
+  <div class="tile"><span class="tag ok">best</span><b>USB-C OTG adapter</b><p>USB-C plug to a full-size USB-A socket. The cable plugs into it, it plugs into the phone, and Android offers to open the app. I use the JSAUX two-pack, under $10. <a href="https://www.amazon.com/s?k=JSAUX+USB+C+to+USB+3.0+adapter">Find it on Amazon</a>.</p></div>
+  <div class="tile"><b>Android phone or tablet</b><p>Android 7 or newer with USB-C. A tablet on the dash also runs the six dashboards.</p></div>
+</div>
+
+<div class="row flip">
+  <figure><img src="/assets/images/r53-logger/v2/settings-link.jpg" alt="Settings, K-line link choice"><figcaption>Pick the wire in Settings.</figcaption></figure>
+  <div>
+    <p><b>Set the cable's switch to link pins 7 and 8.</b> The engine talks on pin 7. The cluster and the other body modules are on pin 8, and the app reads the VIN from the cluster to file everything under the right car. With pin 8 off, logging still works, but the VIN read and the body module diagnostics don't.</p>
+    <p><b>Flash with the cable</b>, the car on a battery charger, key on and engine off.</p>
+    <p>Two other ways onto the K-line:</p>
+    <ul class="tight">
+      <li><b>OBDLink CX or MX+</b> over Bluetooth. Logging, diagnostics and flashing, no cable. It only reaches pin 7, so name the car by hand. An LX won't work: it has no Bluetooth LE and can't set the parity this ECU needs.</li>
+      <li><b>ESP32 bridge</b> (optional). Adds CAN channels and an AEM wideband over AEMnet, and can carry the K-line for logging.</li>
+    </ul>
+  </div>
+</div>
+
+<h2 id="can-and-cant">What it can and can't do</h2>
+<p class="lead">It flashes factory calibrations with options on top, and it logs an R53 well enough to show where a tune misses. It doesn't write a custom tune, and it doesn't code modules.</p>
+
+<div class="cando">
+  <div class="tile"><span class="tag ok">it can</span>
+    <ul class="tight">
+      <li><b>Flash</b> MINI's JCW or GP1 (Stage 1), the first JCW kit's software (Stage 0, any manual Cooper S), or stock S, with the options on top.</li>
+      <li><b>Back up</b> the whole 512 KB ECU before it writes anything.</li>
+      <li><b>Log</b> the ECU at about eight time-aligned rows a second, plus a wideband over the bridge.</li>
+      <li><b>Show where the tune misses:</b> AFR and spark in 3D and on cell maps, with knock pinned to the cell.</li>
+      <li><b>Propose fuel changes</b> from a log, and simulate them against it.</li>
+      <li><b>Read fault codes</b> from the engine, body, EWS, cluster, ABS and airbag in plain English, clear them, and reset adaptations.</li>
+      <li><b>Run six dashboards</b> on a tablet.</li>
+    </ul>
+  </div>
+  <div class="tile"><span class="tag">it can't</span>
+    <ul class="tight">
+      <li><b>Write a custom tune.</b> Stage 1 is MINI's factory calibration. A custom tune, with raised torque and air tables and more advance, makes more power.</li>
+      <li><b>Flash the fuel changes it proposes.</b> They export as CSV for your tuner. Nothing in the simulator touches the bin.</li>
+      <li><b>Run Stage 1 on stock 330 cc injectors.</b> It needs 380s. A pulley on stock injectors is what Stage 0 is for.</li>
+      <li><b>Put Stage 0 on an automatic or a base Cooper,</b> or over JCW or GP1, which already go further.</li>
+      <li><b>Flash ECU software it doesn't support yet.</b> It still reads the backup, and Send gets it to me to port.</li>
+      <li><b>Code modules</b> like the body computer, EWS or airbag. That's <a href="/car/tech/2026/07/26/r53-coding.html">R53 Coding</a>, a separate app.</li>
+      <li><b>Connect through an OBDLink LX.</b></li>
+    </ul>
+  </div>
+</div>
+
+<h3>Which ECUs it flashes</h3>
+<div class="grid3">
+  <div class="tile"><span class="tag ok">write + options</span><b>740P10 / 740A0</b><p>Facelift, silver cover. Stage 1, Stage 0, stock S and every option. Automatics get their own JCW and GP1.</p></div>
+  <div class="tile"><span class="tag ok">write + options</span><b>740J10</b><p>Early ECU and pre-facelift conversions. Stage 1, Stage 0, stock S and every option.</p></div>
+  <div class="tile"><span class="tag ok">write + options</span><b>740G00</b><p>Early ECU. Stage 1 ported from the factory's changes, Stage 0, stock S and every option.</p></div>
+  <div class="tile"><span class="tag ok">write + options</span><b>740L00</b><p>EU Cooper S. JCW and GP1 ported from the factory's changes, Stage 0 and every option. Back to stock from your own backup.</p></div>
+  <div class="tile"><span class="tag ok">write + options</span><b>740N20</b><p>Cooper S. Stage 0 and every option. There's no Stage 1 image for it.</p></div>
+  <div class="tile"><span class="tag ok">write</span><b>740R10</b><p>Automatic. Fan and redline only.</p></div>
+</div>
+<p class="note">Logging, live data, diagnostics and backup work on any R53 EMS2000, silver cover or black.</p>
+
+<h2 id="flash-safety">Why it's safe to flash</h2>
+<p class="lead">It reads before it writes, it checks everything it can, and when it isn't sure it stops.</p>
+
+<div class="grid3">
+  <div class="tile"><b>Backup first</b><p>A full 512 KB read of your own ECU, kept per car in the Garage.</p></div>
+  <div class="tile"><b>Tune check</b><p>Checksums and layout verified before every write, auto-fixed where it can be.</p></div>
+  <div class="tile"><b>Wrong family refused</b><p>A file for other ECU software is refused outright, with no override.</p></div>
+  <div class="tile"><b>Quick write</b><p>Only the calibration region, about 60 KB, over OBD.</p></div>
+  <div class="tile"><b>Survives the screen</b><p>The write runs in the background and nothing else can take the cable.</p></div>
+  <div class="tile"><b>Send report</b><p>If a write stops, one tap sends me the log that says where and why.</p></div>
+</div>
+<p class="note">It's writing a twenty-year-old ECU. Keep the car on a battery charger, key on and engine off, and keep a desktop OBD recovery path ready.</p>
 
 <h2 id="log-it">Log it</h2>
 <p class="lead">Plug in, connect, and the car streams fast enough to catch what happens mid-pull, time-aligned so RPM, load and knock line up.</p>
@@ -168,6 +311,57 @@
 </div>
 
 <div class="video">{%- include extensions/youtube.html id='NA8mJ3ce8yA' -%}</div>
+
+<h2 id="see-the-tune">See the tune</h2>
+<p class="lead">The same log plays back as a 3D surface and as flat maps over RPM and load, so you see where the tune misses, not just when.</p>
+
+<div class="row wide">
+  <figure><img src="/assets/images/r53-logger/v2/afr-3d.jpg" alt="3D AFR surface over RPM and load"><figcaption>Measured AFR against your target curve. Green is on target, red peaks ran lean.</figcaption></figure>
+  <div>
+    <p><b>AFR 3D</b> plots measured AFR against the target curve you set, over every cell the engine visited. Open loop shows AFR error, closed loop shows total trim. DFCO and tip-out leans are ignored, so you're reading combustion, not decel noise.</p>
+    <p>The target is two points with a straight line between them, for example 12.8 at 2,000 rpm down to 11.5 at 7,800. A wideband lag setting shifts the AFR trace so each reading lands on the cell that fuelled it.</p>
+  </div>
+</div>
+
+<div class="pair">
+  <figure><img src="/assets/images/r53-logger/v2/fuel-map.jpg" alt="Fuel map"><figcaption><b>Fuel map.</b> AFR off target in open loop, trim in closed loop, the tune's value dimmed underneath. The white line traces the pull.</figcaption></figure>
+  <figure><img src="/assets/images/r53-logger/v2/trims-map.jpg" alt="Trims map"><figcaption><b>Trims.</b> Long-term left, short-term right. Blue is the ECU pulling fuel, red is adding it.</figcaption></figure>
+</div>
+
+<div class="row flip" style="margin-top:26px">
+  <figure><img src="/assets/images/r53-logger/v2/spark-map.jpg" alt="Spark map with timing pulled"><figcaption>Degrees off the tune's spark map. Red is timing the ECU pulled.</figcaption></figure>
+  <div>
+    <p><b>Knock, pinned to the cell that pinged.</b> The spark map reads each visited cell in degrees off the tune's own table, and turns red where the ECU pulled timing. Every view drops a yellow dot where a knock event fired, and the dots stay all session.</p>
+    <p>A per-cylinder tally sits in the corner, so one cylinder doing all the complaining is obvious. Red cells stacked with knock dots are the corner of the map that needs work.</p>
+  </div>
+</div>
+
+<div class="row">
+  <figure><img src="/assets/images/r53-logger/v2/ign-3d.jpg" alt="Ign 3D: mapped spark advance with delivered spark as colour"><figcaption>Ign 3D: height is the mapped advance, colour is what the ECU actually delivered against it.</figcaption></figure>
+  <div>
+    <p><b>Ign 3D</b> draws the tune's spark map as a surface and colours it by the spark the engine really got. Blue ran behind the map, green on it, red ahead. Drag to orbit.</p>
+    <p>Where the surface goes blue under load, the ECU was pulling timing there. Cross-check it against the knock dots on the flat maps.</p>
+  </div>
+</div>
+
+<h2 id="close-the-loop">Fuel recommendation</h2>
+<p class="lead">Log a pull, let the app turn it into proposed cell changes, and check them against the log before they go to your tuner.</p>
+
+<div class="row full">
+  <figure><img src="/assets/images/r53-logger/v2/tablet-sim-fill.jpg" alt="Fuel table simulator on a tablet after Fill from log"><figcaption>Fill from log on a 7,000 rpm pull: 26 cells changed, and it says plainly that 19 hit the 15% per-flash cap. The white line traces the cells the pull went through, dashed AFR is what the edited table would have delivered.</figcaption></figure>
+  <div>
+    <p><b>Fuel recommendation</b> turns the window you're looking at into a per-cell table of proposed changes. Open loop is judged by the wideband against your target. Closed loop is judged by short plus long trim, because there the ECU has already corrected the mixture and the wideband reads stoich no matter how wrong the table is. The two are never mixed.</p>
+    <p>A cell needs several agreeing samples before it gets a number, and shows its count. Wild corrections are clamped and flagged.</p>
+    <p>On this ECU a percent in the full-load table isn't a percent of fuel. The table is geared down inside the injection maths, so the app converts measured error into the cell change that delivers it, using your own tune.</p>
+  </div>
+</div>
+
+<div class="row full">
+  <div>
+    <p><b>The simulator</b> puts the proposed table under your fingers. Tap or drag cells, nudge them ±1% or ±5%, undo, or fill from the log. It redraws the log's AFR as if the table had carried your edits, and scores the window: samples moved, samples held by the ECU's trims, AFR before and after.</p>
+    <p>Edits cap at ±15% per flash. Bigger moves are repeated flashes with a log in between. Export sends the proposal as CSV to your tuner. The simulator never writes the bin itself.</p>
+  </div>
+</div>
 
 <h2 id="dashboards">Dashboards</h2>
 <p class="lead">Put a tablet on the dash and the same live data drives six full-screen dashboards. Tap to change the face. Hold for the lights.</p>
@@ -209,106 +403,6 @@
 </div>
 <p class="note" style="margin-top:14px">Fuel level comes off the CAN bus, so it needs the bridge. Everything else comes from the K-line or the bridge. Screenshots from a Galaxy Tab S10 FE, with demo readings.</p>
 
-<h2 id="see-the-tune">See the tune</h2>
-<p class="lead">The same log plays back as a 3D surface and as flat maps over RPM and load, so you see where the tune misses, not just when.</p>
-
-<div class="row wide">
-  <figure><img src="/assets/images/r53-logger/v2/afr-3d.jpg" alt="3D AFR surface over RPM and load"><figcaption>Measured AFR against your target curve. Green is on target, red peaks ran lean.</figcaption></figure>
-  <div>
-    <p><b>AFR 3D</b> plots measured AFR against the target curve you set, over every cell the engine visited. Open loop shows AFR error, closed loop shows total trim. DFCO and tip-out leans are ignored, so you're reading combustion, not decel noise.</p>
-    <p>The target is two points with a straight line between them, for example 12.8 at 2,000 rpm down to 11.5 at 7,800. A wideband lag setting shifts the AFR trace so each reading lands on the cell that fuelled it.</p>
-  </div>
-</div>
-
-<div class="pair">
-  <figure><img src="/assets/images/r53-logger/v2/fuel-map.jpg" alt="Fuel map"><figcaption><b>Fuel map.</b> AFR off target in open loop, trim in closed loop, the tune's value dimmed underneath. The white line traces the pull.</figcaption></figure>
-  <figure><img src="/assets/images/r53-logger/v2/trims-map.jpg" alt="Trims map"><figcaption><b>Trims.</b> Long-term left, short-term right. Blue is the ECU pulling fuel, red is adding it.</figcaption></figure>
-</div>
-
-<div class="row flip" style="margin-top:26px">
-  <figure><img src="/assets/images/r53-logger/v2/spark-map.jpg" alt="Spark map with timing pulled"><figcaption>Degrees off the tune's spark map. Red is timing the ECU pulled.</figcaption></figure>
-  <div>
-    <p><b>Knock, pinned to the cell that pinged.</b> The spark map reads each visited cell in degrees off the tune's own table, and turns red where the ECU pulled timing. Every view drops a yellow dot where a knock event fired, and the dots stay all session.</p>
-    <p>A per-cylinder tally sits in the corner, so one cylinder doing all the complaining is obvious. Red cells stacked with knock dots are the corner of the map that needs work.</p>
-  </div>
-</div>
-
-<div class="row">
-  <figure><img src="/assets/images/r53-logger/v2/ign-3d.jpg" alt="Ign 3D: mapped spark advance with delivered spark as colour"><figcaption>Ign 3D: height is the mapped advance, colour is what the ECU actually delivered against it.</figcaption></figure>
-  <div>
-    <p><b>Ign 3D</b> draws the tune's spark map as a surface and colours it by the spark the engine really got. Blue ran behind the map, green on it, red ahead. Drag to orbit.</p>
-    <p>Where the surface goes blue under load, the ECU was pulling timing there. Cross-check it against the knock dots on the flat maps.</p>
-  </div>
-</div>
-
-<h2 id="close-the-loop">Close the loop</h2>
-<p class="lead">Log a pull, let the app turn it into cell changes, check them against the log, flash, log again. All from the phone.</p>
-
-<div class="row full">
-  <figure><img src="/assets/images/r53-logger/v2/tablet-sim-fill.jpg" alt="Fuel table simulator on a tablet after Fill from log"><figcaption>Fill from log on a 7,000 rpm pull: 26 cells changed, and it says plainly that 19 hit the 15% per-flash cap. The white line traces the cells the pull went through, dashed AFR is what the edited table would have delivered.</figcaption></figure>
-  <div>
-    <p><b>Fuel recommendation</b> turns the window you're looking at into a per-cell table of proposed changes. Open loop is judged by the wideband against your target. Closed loop is judged by short plus long trim, because there the ECU has already corrected the mixture and the wideband reads stoich no matter how wrong the table is. The two are never mixed.</p>
-    <p>A cell needs several agreeing samples before it gets a number, and shows its count. Wild corrections are clamped and flagged.</p>
-    <p>On this ECU a percent in the full-load table isn't a percent of fuel. The table is geared down inside the injection maths, so the app converts measured error into the cell change that delivers it, using your own tune.</p>
-  </div>
-</div>
-
-<div class="row full">
-  <div>
-    <p><b>The simulator</b> puts the proposed table under your fingers. Tap or drag cells, nudge them ±1% or ±5%, undo, or fill from the log. It redraws the log's AFR as if the table had carried your edits, and scores the window: samples moved, samples held by the ECU's trims, AFR before and after.</p>
-    <p>Edits cap at ±15% per flash. Bigger moves are repeated flashes with a log in between. Export sends the proposal as CSV to your tuner. The simulator never writes the bin itself.</p>
-  </div>
-</div>
-
-<h2 id="flash-options">Flash options</h2>
-<p class="lead">MINI's Stage 1 and Stage 0, and common changes applied to whatever tune is loaded, in memory, before the write. No hex editor, no second tool.</p>
-
-<div class="row flip">
-  <figure><img src="/assets/images/r53-logger/v2/options-pedal.jpg" alt="Throttle pedal remap presets"><figcaption>Pedal presets. Each one also rewrites the torque monitor table so it can't set P1689.</figcaption></figure>
-  <div>
-    <p>Every option is <b>BIN</b> (leave the file alone), <b>Stock</b> (factory values back) or <b>Modify</b> (apply the preset). Each card reads the loaded tune first: the injector card says the JCW image looks like 380 cc, the redline card shows the limit it's about to move.</p>
-    <p>If an option can't find its table in your bin, it refuses rather than guess.</p>
-  </div>
-</div>
-
-<div class="grid3">
-  <div class="tile"><span class="tag">Stage 1</span><b>JCW</b><p>MINI's calibration for the JCW kit: pulley, 380 cc injectors, freer exhaust. <a href="#stage-1-flash">More</a>.</p></div>
-  <div class="tile"><span class="tag">Stage 1</span><b>GP1</b><p>The 2006 GP's calibration for the same parts. Revs higher and runs more aggressive than JCW.</p></div>
-  <div class="tile"><span class="tag">Stage 0</span><b>JCW kit</b><p>BMW's 200 hp kit tuning for a 740G00 Cooper S with a pulley, on factory injectors. <a href="#stage-0-flash">More</a>.</p></div>
-  <div class="tile"><span class="tag ok">stock</span><b>Stock S</b><p>The factory Cooper S calibration, to go back to stock.</p></div>
-  <div class="tile"><b>Pops</b><p>Decel crackle, stock to max.</p></div>
-  <div class="tile"><b>Injector size</b><p>330, 380, 440, 550, 630 cc. Rescales the fuel scalar.</p></div>
-  <div class="tile"><b>Redline</b><p>Raises the per-gear limit. The limiter cuts fuel, not throttle.</p></div>
-  <div class="tile"><b>Pedal map</b><p>Eco, Sport, Sport+, a true 1:1 Straight, or Track.</p></div>
-  <div class="tile"><b>Overboost</b><p>Raised throttle opening.</p></div>
-  <div class="tile"><b>Idle</b><p>Manual cars, cold and warm together.</p></div>
-  <div class="tile"><b>Cooling fan</b><p>Kick on earlier: 216/230 °F or 200/220 °F.</p></div>
-  <div class="tile"><b>Trim learning range</b><p>Learn fuel trims further up the revs.</p></div>
-  <div class="tile"><b>Cruise timing</b><p>About 2° more advance at light-throttle cruise, for economy.</p></div>
-  <div class="tile"><b>Pre-facelift gearbox</b><p>A facelift ECU in front of the early gearbox, so it works out the right gear.</p></div>
-  <div class="tile"><span class="tag beta">experimental</span><b>O2 switch point</b><p>Moves the front O2 switch voltage, so cruise settles slightly lean.</p></div>
-  <div class="tile"><span class="tag beta">very beta</span><b>Lean cruise</b><p>Leans steady cruise. Watch AFRs and back it out if you don't like it.</p></div>
-  <div class="tile"><span class="tag ok">tablet</span><b>Dashboards</b><p>Six full-screen faces: R53, Chrono Pack, 1971 Cooper S, rally oval, digital and current. <a href="#dashboards">See them</a>.</p></div>
-</div>
-
-<div class="pair">
-  <figure><img src="/assets/images/r53-logger/v2/options-injectors.jpg" alt="Injector size option reading 380 cc"><figcaption>The injector card reads the loaded tune first.</figcaption></figure>
-  <figure><img src="/assets/images/r53-logger/v2/options-redline.jpg" alt="Redline presets"><figcaption>Redline presets, with the tune's current limit shown.</figcaption></figure>
-</div>
-
-<h2 id="flash-safety">Why it's safe to flash</h2>
-<p class="lead">It reads before it writes, it checks everything it can, and when it isn't sure it stops.</p>
-
-<div class="grid3">
-  <div class="tile"><b>Backup first</b><p>A full 512 KB read of your own ECU, kept per car in the Garage.</p></div>
-  <div class="tile"><b>Tune check</b><p>Checksums and layout verified before every write, auto-fixed where it can be.</p></div>
-  <div class="tile"><b>Wrong family refused</b><p>A file for other ECU software is refused outright, with no override.</p></div>
-  <div class="tile"><b>Quick write</b><p>Only the calibration region, about 60 KB, over OBD.</p></div>
-  <div class="tile"><b>Survives the screen</b><p>The write runs in the background and nothing else can take the cable.</p></div>
-  <div class="tile"><b>Send report</b><p>If a write stops, one tap sends me the log that says where and why.</p></div>
-</div>
-<p class="note">It's writing a twenty-year-old ECU. Keep the car on a battery charger, key on and engine off, and keep a desktop OBD recovery path ready.</p>
-
 <h2 id="garage">Garage</h2>
 <p class="lead">One phone, several Minis. Every backup, flash, fault read and log files under the car it came from.</p>
 
@@ -324,50 +418,11 @@
 <p class="lead">Fault codes from every module in plain English, with the likely cause and the fix.</p>
 <p>Engine, body (BC1), immobiliser (EWS), cluster, ABS/DSC and airbag codes, each translated with R53-specific notes. A lean code says check boost and vacuum leaks first, and a P0116 points at the thermostat. Codes clear where the clear command is known, reports share from the phone, and every fault read files into the car's history. Adaptation resets are there too, for after hardware changes.</p>
 
-<h2 id="hardware">What you need</h2>
-<p class="lead">An Android phone or tablet, a K+DCAN USB cable and a USB-C OTG adapter. That's the best setup, and the one every flash so far has gone through.</p>
-
-<div class="grid3">
-  <div class="tile"><span class="tag ok">best</span><b>K+DCAN USB cable</b><p>The BMW diagnostic cable, around $25. Get one with the 7/8 switch and an FT232RL (FTDI) chip, which is what every flash so far has used. <a href="https://www.amazon.com/s?k=k%2Bdcan+cable+with+switch">Find one on Amazon</a>.</p></div>
-  <div class="tile"><span class="tag ok">best</span><b>USB-C OTG adapter</b><p>USB-C plug to a full-size USB-A socket. The cable plugs into it, it plugs into the phone, and Android offers to open the app. I use the JSAUX two-pack, under $10. <a href="https://www.amazon.com/s?k=JSAUX+USB+C+to+USB+3.0+adapter">Find it on Amazon</a>.</p></div>
-  <div class="tile"><b>Android phone or tablet</b><p>Android 7 or newer with USB-C. A tablet on the dash also runs the six dashboards.</p></div>
-</div>
-
-<div class="row flip">
-  <figure><img src="/assets/images/r53-logger/v2/settings-link.jpg" alt="Settings, K-line link choice"><figcaption>Pick the wire in Settings.</figcaption></figure>
-  <div>
-    <p><b>Set the cable's switch to link pins 7 and 8.</b> The engine talks on pin 7. The cluster and the other body modules are on pin 8, and the app reads the VIN from the cluster to file everything under the right car. With pin 8 off, logging still works, but the VIN read and the body module diagnostics don't.</p>
-    <p><b>Flash with the cable</b>, the car on a battery charger, key on and engine off.</p>
-    <p>Two other ways onto the K-line:</p>
-    <ul class="tight">
-      <li><b>OBDLink CX or MX+</b> over Bluetooth. Logging, diagnostics and flashing, no cable. It only reaches pin 7, so name the car by hand. An LX won't work: it has no Bluetooth LE and can't set the parity this ECU needs.</li>
-      <li><b>ESP32 bridge</b> (optional). Adds CAN channels and an AEM wideband over AEMnet, and can carry the K-line for logging.</li>
-    </ul>
-  </div>
-</div>
-
-<div class="grid3">
-  <div class="tile"><span class="tag ok">write + options</span><b>740P10 / 740A0</b><p>Facelift, silver cover. Stage 1 available.</p></div>
-  <div class="tile"><span class="tag ok">write + options</span><b>740J10</b><p>Early ECU and pre-facelift conversions. Stage 1 available.</p></div>
-  <div class="tile"><span class="tag beta">write in beta</span><b>740G00</b><p>Early ECU. Write and the options, Stage 0, and Stage 1 ported from the facelift.</p></div>
-</div>
-<p class="note">Logging, live data, diagnostics and backup work on any R53 EMS2000, silver cover or black.</p>
-
-<h2 id="prices">What it costs</h2>
-<p class="lead">One-off in-app purchases. No subscription.</p>
-
-<div class="grid3">
-  <div class="tile price"><b>$25</b><p><b style="display:inline;font-size:inherit">App unlock.</b> Logging, graphs, 3D and maps, fuel recommendation and simulator, wideband, diagnostics, backup.</p></div>
-  <div class="tile price"><b>$50</b><p><b style="display:inline;font-size:inherit">Flash unlock.</b> Write to the ECU, with the flash options.</p></div>
-  <div class="tile price"><b>$50</b><p><b style="display:inline;font-size:inherit">Stage 1 flash.</b> MINI's JCW and GP1 calibrations, Stage 0 on early ECUs, and stock S to go back.</p></div>
-</div>
-<p><b>Prepared facelift ECU, $275.</b> VIN-swapped to your car with the immobiliser deleted, ready to drop in. Shipping at cost. Email <a href="mailto:matt@geekopolis.com">matt@geekopolis.com</a> with your year, model and VIN.</p>
-
 <h2 id="get-it">Get it</h2>
 <p class="lead">It's on Google Play for any Android phone or tablet. Search for R53 Logger, or tap below on your phone.</p>
 
 <p><a class="btn" href="https://play.google.com/store/apps/details?id=com.geekopolis.r53logger">Get it on Google Play</a></p>
-<p class="note">Install from Play rather than sideloading, or purchases won't work. Module coding (BC1, EWS, airbag and the rest) is a separate app: <a href="/car/tech/2026/07/26/r53-coding.html">R53 Coding</a>.</p>
+<p class="note">Install from Play rather than sideloading, or purchases won't work.</p>
 
 <div class="last">Questions or ECU quotes: <a href="mailto:matt@geekopolis.com">matt@geekopolis.com</a> or <a href="https://www.instagram.com/mattryan6729/">@mattryan6729</a>. Give it a weekend on the car and tell me what breaks.</div>
 
