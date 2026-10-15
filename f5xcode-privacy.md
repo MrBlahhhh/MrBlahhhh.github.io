@@ -1,18 +1,19 @@
 ---
 layout: article
-title: F56 Code Privacy Policy
-permalink: /f56code/privacy/
-key: f56code-privacy
+title: F5X Code Privacy Policy
+permalink: /f5xcode/privacy/
+key: f5xcode-privacy
 aside:
   toc: true
 ---
 
-# F56 Code Privacy Policy
+# F5X Code Privacy Policy
 
 **Last updated: 15 October 2026**
 
-F56 Code is a diagnostics, logging and coding app for the MINI F56, published
-by Geekopolis. This policy says exactly what the app does with your data.
+F5X Code is a diagnostics, logging and coding app for the MINI F54, F55, F56
+and F57, published by Geekopolis. This policy says exactly what the app does
+with your data.
 
 There is no account, no sign-in, no advertising, no analytics and no crash
 reporting. The app has no server and makes no internet requests of its own.
@@ -92,7 +93,7 @@ the app only learns whether the unlock is owned. See
 
 ## Children
 
-F56 Code is not directed at children and does not knowingly collect
+F5X Code is not directed at children and does not knowingly collect
 information from anyone under 13.
 
 ---
