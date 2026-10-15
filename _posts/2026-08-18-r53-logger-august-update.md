@@ -1,7 +1,7 @@
 ---
 title: "R53 Logger - Flasher"
 date: 2026-08-18 00:00:00 -0400
-last_modified_at: 2026-10-14 20:26:00 -0400
+last_modified_at: 2026-10-14 21:51:00 -0400
 categories: car tech
 tags: [mini, r53, android, datalogger, flasher, stage-1, jcw, gp1, wideband, esp32, obdlink, tuning, ecu-flash, afr, knock, dashboard, tablet, stage-0, play-store]
 cover: /assets/images/r53-logger/v2/afr-3d.jpg

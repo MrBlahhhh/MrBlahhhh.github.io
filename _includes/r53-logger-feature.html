@@ -124,7 +124,7 @@
   <div>
     <p>The JCW and GP1 calibrations are MINI's own tunes for an R53 with a smaller pulley, 380 cc injectors and a freer exhaust. That's how most of these cars end up by the time anyone wants a tune.</p>
     <p><b>If your car has a pulley, 380 cc injectors and an exhaust or header, it'll flow close enough to pair well.</b> You don't really need the JCW head. A header and exhaust, or a mild cam, make up for it.</p>
-    <p>Stage 1 works on early and late cars. The app reads your ECU's software version and loads the calibration made for it: the facelift <code>740P10</code>, the early <code>740J10</code> and <code>740G00</code>, and the EU <code>740L00</code>. EU cars get EU images, and facelift automatics get an automatic set. On <code>740G00</code> and <code>740L00</code> the JCW and GP1 are ported from the factory's own changes.</p>
+    <p>Stage 1 works on early and late cars. The app reads your ECU's software version and loads the calibration made for it: the facelift <code>740P10</code>, the early <code>740J10</code> and <code>740G00</code>, and the EU <code>740L00</code>. EU cars get EU images, and automatics on <code>740P10</code> get an automatic set. The <code>740R10</code> automatic isn't supported for Stage 1 yet. On <code>740G00</code> and <code>740L00</code> the JCW and GP1 are ported from the factory's own changes.</p>
   </div>
 </div>
 
@@ -251,6 +251,7 @@
       <li><b>Flash the fuel changes it proposes.</b> They export as CSV for your tuner. Nothing in the simulator touches the bin.</li>
       <li><b>Run Stage 1 on stock 330 cc injectors.</b> It needs 380s. A pulley on stock injectors is what Stage 0 is for.</li>
       <li><b>Put Stage 0 on an automatic or a base Cooper,</b> or over JCW or GP1, which already go further.</li>
+      <li><b>Flash Stage 1 on a <code>740R10</code> automatic</b> yet. The app reads which automatic software you have from the backup.</li>
       <li><b>Flash ECU software it doesn't support yet.</b> It still reads the backup, and Send gets it to me to port.</li>
       <li><b>Code modules</b> like the body computer, EWS or airbag. That's <a href="/car/tech/2026/07/26/r53-coding.html">R53 Coding</a>, a separate app.</li>
       <li><b>Connect through an OBDLink LX.</b></li>
@@ -260,12 +261,12 @@
 
 <h3>Which ECUs it flashes</h3>
 <div class="grid3">
-  <div class="tile"><span class="tag ok">write + options</span><b>740P10 / 740A0</b><p>Facelift, silver cover. Stage 1, Stage 0, stock S and every option. Automatics get their own JCW and GP1.</p></div>
+  <div class="tile"><span class="tag ok">write + options</span><b>740P10 / 740A0</b><p>Facelift, silver cover. Stage 1, Stage 0, stock S and every option. Automatics on this software get their own JCW and GP1.</p></div>
   <div class="tile"><span class="tag ok">write + options</span><b>740J10</b><p>Early ECU and pre-facelift conversions. Stage 1, Stage 0, stock S and every option.</p></div>
   <div class="tile"><span class="tag ok">write + options</span><b>740G00</b><p>Early ECU. Stage 1 ported from the factory's changes, Stage 0, stock S and every option.</p></div>
   <div class="tile"><span class="tag ok">write + options</span><b>740L00</b><p>EU Cooper S. JCW and GP1 ported from the factory's changes, Stage 0 and every option. Back to stock from your own backup.</p></div>
   <div class="tile"><span class="tag ok">write + options</span><b>740N20</b><p>Cooper S. Stage 0 and every option. There's no Stage 1 image for it.</p></div>
-  <div class="tile"><span class="tag ok">write</span><b>740R10</b><p>Automatic. Fan and redline only.</p></div>
+  <div class="tile"><span class="tag beta">not supported yet</span><b>740R10</b><p>Automatic, on different software from the <code>740P10</code> automatics. Stage 1 and Stage 0 aren't supported on it yet. It backs up, logs and reads codes, and fan and redline are the only options it writes.</p></div>
 </div>
 <p class="note">Logging, live data, diagnostics and backup work on any R53 EMS2000, silver cover or black.</p>
 
