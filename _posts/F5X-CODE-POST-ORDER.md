@@ -13,8 +13,9 @@ how to get it.**
    graph features.
 3. **What else it does**: faults, oil level, coding read, change, compare and
    history, body module recovery; then the eleven modules in one line.
-4. **What it costs**: free vs the one-time unlock (`codingunlock`). Add the
-   price once it's set in Play Console.
+4. **What it costs**: only the engine's fault codes are free; everything else
+   is the one-time $35 unlock (`codingunlock`). The app's gates still match
+   the old split (logging and coding saves only) until Matt says to change it.
 5. **What you need**: ENET cable, MHD Wi-Fi, Bluetooth/Wi-Fi OBD.
 6. **What it can and can't do**.
 7. **Get it**: closed testing, three steps (group, opt-in, install). Switch to
