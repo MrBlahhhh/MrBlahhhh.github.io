@@ -1,5 +1,5 @@
 <!-- F5X Code feature page. Rendered by _posts/2026-10-15-f5x-code.md. Edit here, not in the post.
-     Section order: _posts/F5X-CODE-POST-ORDER.md. Palette is the app's JCW one: jet black,
+     Section order: _posts/F5X-CODE-POST-ORDER.md. Screenshots: assets/images/f5xcode/v2. Palette is the app's JCW one: jet black,
      chili red, cream. Presets and modules come from the app's LogPresets.kt and
      ModuleSigningProfiles.kt (F56coding repo); keep the two in step. -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap">
@@ -52,6 +52,20 @@
 .f5x .note{font-size:14px;color:var(--mute)}
 .f5x .last{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);font-size:14px;color:var(--mute)}
 .f5x .brand > div,.f5x .steps > *,.f5x .grid3 > *,.f5x .cando > *{min-width:0}
+.f5x .shots{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:6px 0 22px}
+.f5x .shots.two{grid-template-columns:repeat(2,minmax(0,1fr));max-width:720px}
+.f5x figure{margin:0;min-width:0}
+.f5x figure img{display:block;width:100%;height:auto;border-radius:16px;border:1px solid var(--line2);background:#0B0C0E}
+.f5x figcaption{font-size:13px;color:var(--mute);margin-top:8px;line-height:1.4}
+.f5x .row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,300px);gap:24px;align-items:start;margin:8px 0 22px}
+.f5x .row.flip{grid-template-columns:minmax(0,300px) minmax(0,1fr)}
+.f5x .row > *{min-width:0}
+.f5x .row h3{margin-top:0}
+.f5x ol.flow{list-style:none;counter-reset:f;padding:0;margin:14px 0 20px;display:grid;gap:10px}
+.f5x ol.flow li{counter-increment:f;position:relative;padding:14px 16px 14px 60px;background:var(--card);border:1px solid var(--line);border-radius:14px;color:var(--mute);margin:0}
+.f5x ol.flow li::before{content:counter(f);position:absolute;left:16px;top:13px;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--acc);color:#fff;font-weight:700}
+.f5x ol.flow li b{color:var(--ink)}
+@media (max-width:820px){.f5x .shots,.f5x .shots.two,.f5x .row,.f5x .row.flip{grid-template-columns:1fr}.f5x .shots figure,.f5x .row figure{max-width:420px;width:100%;margin:0 auto}}
 @media (max-width:820px){.f5x .steps{grid-template-columns:1fr}}
 @media (max-width:520px){.f5x{border-radius:14px}.f5x .mark{width:52px;height:52px}}
 </style>
@@ -66,70 +80,74 @@
       <h1>F5X Code</h1>
     </div>
   </div>
-  <p class="sub">Read every module's fault codes in plain English, log the engine and gearbox while you drive, and back up and change module coding. From an Android phone and the adapter you already have.</p>
+  <p class="sub">A diagnostics, logging and coding app for the third-generation MINI: the F54 Clubman, F55 five-door, F56 three-door and F57 convertible. It reads every module's fault codes in plain English, logs the engine and gearbox while you drive, and backs up and changes module coding. It runs on an Android phone, connected to the car with an ENET cable (the one E-Sys uses) or the red MHD Wi-Fi adapter. No laptop.</p>
   <div class="stats">
-    <div class="stat"><b>7</b><span>log presets</span></div>
+    <div class="stat"><b>Free</b><span>engine fault codes</span></div>
+    <div class="stat"><b>$45</b><span>once, for everything else</span></div>
     <div class="stat"><b>11</b><span>modules it codes</span></div>
-    <div class="stat"><b>18,700</b><span>fault titles in English</span></div>
-    <div class="stat"><b>0</b><span>laptops</span></div>
+    <div class="stat"><b>7</b><span>log presets</span></div>
   </div>
-  <div class="ctas"><a class="btn" href="#get-it">Join the testers</a><a class="btn ghost" href="#logging">What it logs</a><a class="btn ghost" href="#price">Price</a></div>
+  <div class="ctas"><a class="btn" href="#get-it">Join the testers</a><a class="btn ghost" href="#price">$45 · what you need</a><a class="btn ghost" href="#connect">Hook up the cable</a></div>
 </div>
 
-<h2 id="logging">What it logs</h2>
-<p class="lead">Pick a preset, tap Start logging and drive. Each preset reads what that job needs as fast as the adapter allows, and opens on graphs drawn for it.</p>
+<h2 id="what-it-does">What it does</h2>
+<p class="lead">Three jobs on one connection to the car.</p>
 
 <div class="grid3">
-  <div class="tile"><span class="tag">Engine</span><b>Tuning: boost and spark</b><p>RPM, boost and target, wastegate duty and position, MAF, load, timing on each cylinder, pedal, throttle and target, intake and charge air temps, lambda and target, trims, and high and low-side fuel pressure. Over ENET it all comes from the DME in one read a row. A cylinder whose timing drops below the others is the one pulling for knock.</p></div>
-  <div class="tile"><span class="tag">Engine</span><b>Rough running and tip-in</b><p>RPM, pedal, throttle, load, MAP, timing, lambda and target and rail pressure every sweep, with trims, MAF, temps and the rear O2 behind them. Misfire counts per cylinder, and RPM falling while the pedal goes down is flagged as a dip.</p></div>
-  <div class="tile"><span class="tag">Engine + gearbox</span><b>Stutter and shudder</b><p>Engine data alongside the six-speed automatic: engine, turbine and output speed, slip, gear and target gear, converter lockup, solenoid duty, current and pressure, ATF temperature and the torque the gearbox is asked for.</p></div>
-  <div class="tile"><span class="tag">Gearbox</span><b>Transmission, fast</b><p>Transmission only, several rows a second: turbine and engine speed, slip and lockup state every row, with gear, solenoid, pedal, output speed and torque in turn. For watching the converter lock, slip and release around a shudder.</p></div>
-  <div class="tile"><span class="tag">Engine</span><b>Cold start lean check</b><p>From a cold start through a few minutes of idle. Stretches where lambda runs 0.10 leaner than the DME's target are shaded, next to the DME's own misfire counters, rough running per cylinder, rail pressure against target and low-side pressure.</p></div>
-  <div class="tile"><span class="tag">Engine</span><b>Fuel trims and vacuum leaks</b><p>Short, long and total trim, MAF, load, lambda and purge flow. A minute at idle and a minute at 2,500 rpm tells a vacuum leak from a fuel delivery problem.</p></div>
-  <div class="tile"><span class="tag">Engine</span><b>Temps and health</b><p>Coolant, oil, intake, ambient and cat temperature, module voltage, run time and fuel level, one row a second, so a long drive stays a small file.</p></div>
+  <div class="tile"><span class="tag">Diagnose</span><b>Fault codes in plain English</b><p>Every module's faults, each with whether it's happening now or stored, whether it lights the dash, what it means and what to check first. Check all fault codes reads every module in one pass. Clear them one module at a time.</p></div>
+  <div class="tile"><span class="tag">Log</span><b>Engine and gearbox logging</b><p>Seven presets for boost and spark, misfires, fuel trims, a cold start and the six-speed automatic. Tap Start logging, drive, and the log opens on graphs made for that job. <a href="#logging">What it logs</a>.</p></div>
+  <div class="tile"><span class="tag">Code</span><b>Module coding</b><p>Back up and change the settings inside eleven modules, every one by name. Each save checks the module, writes, then reads it back to prove it landed. <a href="#coding">Coding and more</a>.</p></div>
 </div>
 
-<h3>The graphs</h3>
-<ul class="tight">
-  <li><b>Replay any log</b> on one time axis, pinch to zoom, and read every channel at the point you tap.</li>
-  <li><b>Lambda as AFR</b> by default, with fuel cut shaded and lean stretches you can jump between.</li>
-  <li><b>Marks.</b> Tap Mark when the car does the thing, and the mark is on every chart.</li>
-  <li><b>Rough running, all cylinders:</b> each cylinder's misfire increases with RPM, load, boost and rail pressure underneath.</li>
-  <li><b>Screen off.</b> Recording carries on with the phone locked, with Mark and Stop on the notification.</li>
-  <li><b>Share</b> any log as CSV to Drive, Files or a message, or send it to me from the app.</li>
-</ul>
-
-<h2 id="what-it-does">What else it does</h2>
-<p class="lead">Fault codes, oil level and module coding, on the same connection as the logger. The engine's fault codes are free; the rest is the $35 unlock.</p>
-
-<div class="grid3">
-  <div class="tile"><b>Fault codes in plain English</b><p>Every module's faults, each with whether it's happening now or stored, whether it lights the dash, what it means, the likely causes and what to check first. Check all fault codes reads every module in one pass, so a check engine light can't hide in a module you didn't pick. Clear them one module at a time.</p></div>
-  <div class="tile"><b>Oil level</b><p>The engine's own oil level sensor as a gauge, from a quart low to half a quart over. Save your own full mark, idling warm on level ground.</p></div>
-  <div class="tile"><b>Read and back up coding</b><p>Every setting in a module by name, in Popular, All and Expert views. A backup is saved before anything changes, and backups export and import between phones.</p></div>
-  <div class="tile"><b>Change coding</b><p>Pick a setting, choose the value, review it and save to the car. Each save checks the module's identity and signature, writes, then reads it back to prove it landed.</p></div>
-  <div class="tile"><b>Compare and history</b><p>Compare any backup with your original, setting by setting, and see every save, restore and check you've made. Restore the original the same way it was saved.</p></div>
-  <div class="tile"><b>Body module recovery</b><p>Back up the body module in any state and put a saved backup back unchanged, for a module left half-written by an interrupted session.</p></div>
+<div class="shots">
+  <figure><img src="/assets/images/f5xcode/v2/faults.jpg" alt="Engine fault P1180-01, mixture too lean: what it means, common causes and what to check first" loading="lazy"><figcaption>A fault in plain English, with causes and what to check first</figcaption></figure>
+  <figure><img src="/assets/images/f5xcode/v2/graph-tuning.jpg" alt="A Tuning log: RPM, boost against target, wastegate duty and position, and timing on each cylinder" loading="lazy"><figcaption>A Tuning log: boost against target, wastegate, timing per cylinder</figcaption></figure>
+  <figure><img src="/assets/images/f5xcode/v2/coding-bdc.jpg" alt="Body control coding in the Popular view: 3,905 named settings, with Sound and Start and stop groups" loading="lazy"><figcaption>Body module coding: 3,905 named settings</figcaption></figure>
 </div>
-
-<p>Coding covers eleven modules: airbag, engine, transmission, stability control, steering, active sound, body, instrument cluster, head unit, controller and climate.</p>
 
 <h2 id="price">What it costs</h2>
-<p class="lead">The engine's fault codes are free. Everything else is one in-app purchase. No subscription.</p>
+<p class="lead">The engine's fault codes are free. Everything else is one $45 purchase in Google Play. No subscription.</p>
 
 <div class="grid3">
   <div class="tile"><span class="tag ok">free</span><b>Engine fault codes</b><p>The engine's fault codes in plain English: happening now or stored, whether it lights the dash, what it means and where to start looking.</p></div>
-  <div class="tile price"><span class="tag">one-time unlock</span><b>$35</b><p>Everything else: every module's fault codes, Check all and clearing codes, oil level, the logger and its graphs, and reading, saving, comparing and restoring coding. Bought in Google Play.</p></div>
+  <div class="tile price"><span class="tag">one-time unlock</span><b>$45</b><p>Everything else: every module's fault codes, Check all and clearing codes, oil level, the logger and its graphs, and reading, saving, comparing and restoring coding. Bought once in Google Play.</p></div>
 </div>
 
 <h2 id="hardware">What you need</h2>
-<p class="lead">An Android phone and one of these adapters. ENET is the fastest, and it's what the Tuning preset needs to read the DME's full channel set.</p>
+<p class="lead">An Android phone and one of two ENET connections: an ENET cable with a USB-C Ethernet adapter, or the red MHD Universal Wi-Fi adapter. ENET is the fastest link and what the Tuning preset needs for the DME's full channel set. An OBDLink MX+ or CX is optional.</p>
 
 <div class="grid3">
-  <div class="tile"><span class="tag ok">fastest</span><b>ENET cable</b><p>Into a USB-C Ethernet adapter on the phone. The app finds the car's gateway on its own.</p></div>
-  <div class="tile"><span class="tag ok">fastest</span><b>MHD Wi-Fi adapter</b><p>The phone joins the adapter's Wi-Fi and talks ENET through it.</p></div>
-  <div class="tile"><b>Bluetooth or Wi-Fi OBD</b><p>OBDLink CX or MX+, Vgate iCar Pro 2S, or a Wi-Fi ELM327. Faults, coding and the gearbox presets work over these; Tuning falls back to standard OBD channels.</p></div>
+  <div class="tile"><span class="tag ok">recommended</span><b>ENET cable</b><p>The OBD-to-Ethernet cable E-Sys uses, usually $15 to $25. Get one that plugs straight into the car's OBD port. A splitter usually leaves out the Ethernet pins, and then the car won't answer. <a href="https://www.amazon.com/s?k=bmw+enet+cable+esys" target="_blank" rel="noopener">Find one on Amazon</a>.</p></div>
+  <div class="tile"><span class="tag ok">recommended</span><b>USB-C Ethernet adapter</b><p>Plugs into the phone, and the ENET cable plugs into it. Any USB-C to Ethernet (RJ45) adapter works; 100 Mbit is plenty. Some ENET kits come with one. <a href="https://www.amazon.com/s?k=usb+c+to+ethernet+adapter" target="_blank" rel="noopener">Find one on Amazon</a>.</p></div>
+  <div class="tile"><span class="tag ok">recommended</span><b>Red MHD Universal adapter</b><p>The wireless choice, or the one to use if you already own it for MHD. It's an ENET bridge over Wi-Fi, so it's as fast as the cable and reads the same DME channels. It plugs into the OBD port and the phone joins its Wi-Fi. No USB adapter or tethering needed.</p></div>
+  <div class="tile"><span class="tag ok">recommended</span><b>Android phone</b><p>Android 7 or newer. For the ENET cable, Android 11 or newer, because the cable needs Ethernet tethering, which arrived in Android 11. Look for it under Hotspot and tethering in your phone's settings.</p></div>
+  <div class="tile"><span class="tag">optional</span><b>OBDLink MX+</b><p>Bluetooth, no cable. Pair it in Android's Bluetooth settings first, then in the app choose Connect, then Paired Bluetooth adapter.</p></div>
+  <div class="tile"><span class="tag">optional</span><b>OBDLink CX</b><p>Bluetooth LE, no pairing needed. In the app choose Connect, then OBDLink CX / Bluetooth LE.</p></div>
 </div>
-<p class="note">Android 7 or newer. Keep the car on a battery charger for coding: a module that restarts partway through a write means low voltage.</p>
+<p class="note">Over an OBDLink, fault codes, coding and the gearbox presets all work. The Tuning preset reads the standard OBD channels instead of the DME's full set, and every read is slower than over ENET. Keep the car on a battery charger for coding: a module that restarts partway through a write means low voltage.</p>
+
+<h2 id="connect">Hook up the ENET cable</h2>
+<p class="lead">Five steps, a couple of minutes the first time. Ethernet tethering is the one people miss.</p>
+
+<ol class="flow">
+  <li><b>Plug it in.</b> The ENET cable into the car's OBD port and into the USB-C Ethernet adapter, and the adapter into the phone. If Android asks which app to open, dismiss it.</li>
+  <li><b>Ignition on.</b> The engine can stay off. The adapter's link light comes on once the car's Ethernet wakes up.</li>
+  <li><b>Turn on Ethernet tethering.</b> On a Pixel it's Settings, Network &amp; internet, Hotspot &amp; tethering, Ethernet tethering. The Ethernet setup button in the app's connection screen opens the same page. The car doesn't hand out network addresses, so the phone has to. The switch stays grey until the cable has a link, so a grey switch means check the cable and the ignition, not the settings.</li>
+  <li><b>Connect in the app.</b> Tap Connect at the top of F5X Code, choose ENET cable / USB-C, and tap Connect. Leave the car IP blank; the app finds the car on its own.</li>
+  <li><b>Check it answers.</b> Run Check all fault codes on the Vehicle tab. If anything fails, tap Send to Matt: the report has every connection step in it.</li>
+</ol>
+
+<div class="shots two">
+  <figure><img src="/assets/images/f5xcode/v2/enet-chooser.jpg" alt="Connection type: MHD Wi-Fi / ENET, ENET cable / USB-C, OBDLink CX / Bluetooth LE, Paired Bluetooth adapter and Wi-Fi OBD2 adapter" loading="lazy"><figcaption>Connect: pick ENET cable / USB-C</figcaption></figure>
+  <figure><img src="/assets/images/f5xcode/v2/enet-dialog.jpg" alt="The ENET cable / USB-C dialog with the tethering instructions, an Ethernet setup button and Connect" loading="lazy"><figcaption>Ethernet setup opens Android's tethering page</figcaption></figure>
+</div>
+
+<h3>The red MHD adapter instead</h3>
+<ol class="flow">
+  <li><b>Plug it into the OBD port</b> and switch the ignition on.</li>
+  <li><b>Join its Wi-Fi</b> in Android's Wi-Fi settings.</li>
+  <li><b>Connect in the app.</b> Tap Connect, choose MHD Wi-Fi / ENET, leave the address at 192.168.4.1, and tap Connect.</li>
+</ol>
 
 <h2 id="can-and-cant">What it can and can't do</h2>
 <p class="lead">It reads, logs and codes. It doesn't flash or tune.</p>
@@ -147,10 +165,62 @@
     <ul class="tight">
       <li><b>Flash or tune engine software.</b></li>
       <li><b>Change coding on module software it hasn't been checked against.</b> Those modules can still be read and backed up. More are added with each update.</li>
+      <li><b>Promise a listed option works on your car.</b> MINI changed these modules many times over the years, and there are far more options than on the older cars. As with NCS Expert, an option showing up doesn't mean your car will accept it.</li>
+      <li><b>Use a K+DCAN USB cable.</b> That's the older BMW cable; on these cars it's ENET or an OBDLink.</li>
       <li><b>Run on iPhone.</b> Android only.</li>
     </ul>
   </div>
 </div>
+
+<h2 id="logging">What it logs</h2>
+<p class="lead">Pick a preset, tap Start logging and drive. Each preset reads what that job needs as fast as the adapter allows, and opens on graphs drawn for it.</p>
+
+<div class="grid3">
+  <div class="tile"><span class="tag">Engine</span><b>Tuning: boost and spark</b><p>RPM, boost and target, wastegate duty and position, MAF, load, timing on each cylinder, pedal, throttle and target, intake and charge air temps, lambda and target, trims, and high and low-side fuel pressure. Over ENET it all comes from the DME in one read a row. A cylinder whose timing drops below the others is the one pulling for knock.</p></div>
+  <div class="tile"><span class="tag">Engine</span><b>Rough running and tip-in</b><p>RPM, pedal, throttle, load, MAP, timing, lambda and target and rail pressure every sweep, with trims, MAF, temps and the rear O2 behind them. Misfire counts per cylinder, and RPM falling while the pedal goes down is flagged as a dip.</p></div>
+  <div class="tile"><span class="tag">Engine + gearbox</span><b>Stutter and shudder</b><p>Engine data alongside the six-speed automatic: engine, turbine and output speed, slip, gear and target gear, converter lockup, solenoid duty, current and pressure, ATF temperature and the torque the gearbox is asked for.</p></div>
+  <div class="tile"><span class="tag">Gearbox</span><b>Transmission, fast</b><p>Transmission only, several rows a second: turbine and engine speed, slip and lockup state every row, with gear, solenoid, pedal, output speed and torque in turn. For watching the converter lock, slip and release around a shudder.</p></div>
+  <div class="tile"><span class="tag">Engine</span><b>Cold start lean check</b><p>From a cold start through a few minutes of idle. Stretches where lambda runs 0.10 leaner than the DME's target are shaded, next to the DME's own misfire counters, rough running per cylinder, rail pressure against target and low-side pressure.</p></div>
+  <div class="tile"><span class="tag">Engine</span><b>Fuel trims and vacuum leaks</b><p>Short, long and total trim, MAF, load, lambda and purge flow. A minute at idle and a minute at 2,500 rpm tells a vacuum leak from a fuel delivery problem.</p></div>
+  <div class="tile"><span class="tag">Engine</span><b>Temps and health</b><p>Coolant, oil, intake, ambient and cat temperature, module voltage, run time and fuel level, one row a second, so a long drive stays a small file.</p></div>
+</div>
+
+<div class="row">
+<div>
+<h3>The graphs</h3>
+<ul class="tight">
+  <li><b>Replay any log</b> on one time axis, pinch to zoom, and read every channel at the point you tap.</li>
+  <li><b>Lambda as AFR</b> by default, with fuel cut shaded and lean stretches you can jump between.</li>
+  <li><b>Marks.</b> Tap Mark when the car does the thing, and the mark is on every chart.</li>
+  <li><b>Rough running, all cylinders:</b> each cylinder's misfire increases with RPM, load, boost and rail pressure underneath.</li>
+  <li><b>Screen off.</b> Recording carries on with the phone locked, with Mark and Stop on the notification.</li>
+  <li><b>Share</b> any log as CSV to Drive, Files or a message, or send it to me from the app.</li>
+</ul>
+</div>
+<figure><img src="/assets/images/f5xcode/v2/logger-presets.jpg" alt="What do you want to log: Tuning, Rough running, Stutter, Transmission, Cold start, Fuel trims and Temps" loading="lazy"><figcaption>The seven presets</figcaption></figure>
+</div>
+
+<h2 id="coding">Coding and more</h2>
+<p class="lead">Fault codes, oil level and module coding, on the same connection as the logger.</p>
+
+<div class="row flip">
+<figure><img src="/assets/images/f5xcode/v2/oil-level.jpg" alt="Oil level: the gauge at Full, raw 72 mm against a 72 mm full mark, and the DME's values with their raw bytes" loading="lazy"><figcaption>Oil level, idling warm after an oil change</figcaption></figure>
+<div>
+<h3>Oil level</h3>
+<p>These cars have no dipstick. The app reads the engine's own oil level sensor: the dash's figure, the raw sensor reading in mm, the short and long-term averages, oil temperature and pressure, each with the byte it came from.</p>
+<p>The gauge runs from a quart low to half a quart over. Set your own full mark once, idling warm on level ground with the oil at full, and every reading after that shows how far off full you are. The dash's figure reads Measuring for a while after an oil change; the raw reading doesn't wait.</p>
+</div>
+</div>
+
+<div class="grid3">
+  <div class="tile"><b>Fault codes in plain English</b><p>Every module's faults, each with whether it's happening now or stored, whether it lights the dash, what it means, the likely causes and what to check first. Check all fault codes reads every module in one pass, so a check engine light can't hide in a module you didn't pick. Clear them one module at a time.</p></div>
+  <div class="tile"><b>Read and back up coding</b><p>Every setting in a module by name, in Popular, All and Expert views. A backup is saved before anything changes, and backups export and import between phones.</p></div>
+  <div class="tile"><b>Change coding</b><p>Pick a setting, choose the value, review it and save to the car. Each save checks the module's identity and signature, writes, then reads it back to prove it landed.</p></div>
+  <div class="tile"><b>Compare and history</b><p>Compare any backup with your original, setting by setting, and see every save, restore and check you've made. Restore the original the same way it was saved.</p></div>
+  <div class="tile"><b>Body module recovery</b><p>Back up the body module in any state and put a saved backup back unchanged, for a module left half-written by an interrupted session.</p></div>
+</div>
+
+<p>Coding covers eleven modules: airbag, engine, transmission, stability control, steering, active sound, body, instrument cluster, head unit, controller and climate. The option lists are big. The body module alone has 3,905 named settings, and MINI changed these modules many times over the years, so an option listed for one software version can be ignored or refused by another. As with NCS Expert, seeing an option doesn't mean your car will take it. Every save is read back, so you know whether it landed.</p>
 
 <h2 id="get-it">Get it</h2>
 <p class="lead">It's in Google Play closed testing, so it won't show up in a Play search yet. Three steps, all with the Google account on your phone.</p>
@@ -172,6 +242,8 @@
     <a class="btn" href="https://play.google.com/store/apps/details?id=com.geekopolis.f5xcode" target="_blank" rel="noopener">Open in Play</a>
   </div>
 </div>
+
+<p class="note">Screenshots are the app on this F56's own data: its fault scan, oil level reads, a drive log and a body module backup, played back from the car's recorded replies with the VIN hidden.</p>
 
 <p class="note">No account, no ads, no analytics. Everything stays on your phone unless you send a report. <a href="/f5xcode/privacy/">Privacy policy</a>.</p>
 
