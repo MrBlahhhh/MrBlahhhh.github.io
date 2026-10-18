@@ -27,8 +27,10 @@ old order put the seven logging presets ahead of the price and hardware.)
    Expert, seeing an option doesn't mean the car takes it.
 7. **What it logs**: the seven presets from `LogPresets.kt` as tiles, the
    graph notes beside the preset picker screenshot.
-8. **Coding and more**: oil level row with its screenshot, the coding tiles,
-   then the eleven modules and the option-size note.
+8. **Coding and more**: oil level row with its screenshot, Quick codings (by
+   module, from `CodingPresets.kt`) with the list and True speed review
+   screenshots side by side, the coding tiles, then the eleven modules and
+   the option-size note.
 9. **Get it**: closed testing, three steps (group, opt-in, install). Switch to
    one Play button when it goes to production.
 10. Screenshot note, privacy line and the independent-app note.
@@ -36,8 +38,9 @@ old order put the seven logging presets ahead of the price and hardware.)
 ## Standing rules
 
 - Present tense, current build only. No "coming soon".
-- Presets and modules must match the app: `LogPresets.kt` (7 presets) and
-  `ModuleSigningProfiles.kt` (11 modules) in the F56coding repo.
+- Presets and modules must match the app: `LogPresets.kt` (7 presets),
+  `ModuleSigningProfiles.kt` (11 modules) and `CodingPresets.kt` (the quick
+  codings: 4 cluster, 4 body, 2 head unit) in the F56coding repo.
 - The price is set in Play Console; the page says $45 (Matt, 2026-10-17).
 - Connection labels match the app's chooser: ENET cable / USB-C, MHD Wi-Fi /
   ENET, OBDLink CX / Bluetooth LE, Paired Bluetooth adapter.
@@ -50,3 +53,12 @@ all fault codes run and the 10-11 oil level reads, played back with the debug
 `ReplayTransport` (`--es cmd connect --es adapter replay --es file <log>`),
 which swaps the VIN for a placeholder; the 10-11 Tuning drive log; and the BDC
 backup with its VIN replaced. Shot on the Pixel_10_Pro AVD. No VIN on screen.
+
+`quick-codings.jpg` is the 10-09 cluster, head unit and BDC reads from
+`F56coding-backups`, VIN swapped for `WMW00000000000000` everywhere in the file
+(not just the VIN line: the Sources line has it too), pushed into the app's
+`files/backups` with `run-as` and dated 10-09, then `--es cmd quick`;
+`true-speed.jpg` is `--es cmd quick --es review true_speed`. Wake the
+AVD first (`input keyevent KEYCODE_WAKEUP`): a sleeping display screencaps as
+solid black. `faults.jpg` is the replayed Check all run, scrolled so the
+Engine card is on top, cropped to 720 x 911 to match the other two.
