@@ -29,8 +29,10 @@ old order put the seven logging presets ahead of the price and hardware.)
    graph notes beside the preset picker screenshot.
 8. **Coding and more**: oil level row with its screenshot, Quick codings (by
    module, from `CodingPresets.kt`) with the list and True speed review
-   screenshots side by side, the coding tiles, then the eleven modules and
-   the option-size note.
+   screenshots side by side, Track settings (`#track`: the e90post nannies
+   guide mapped onto the F56's stability control, two settings-list shots and
+   the Brake standby and EDLC reviews), the coding tiles, then the eleven
+   modules and the option-size note.
 9. **Get it**: closed testing, three steps (group, opt-in, install). Switch to
    one Play button when it goes to production.
 10. Screenshot note, privacy line and the independent-app note.
@@ -62,3 +64,16 @@ backup with its VIN replaced. Shot on the Pixel_10_Pro AVD. No VIN on screen.
 AVD first (`input keyevent KEYCODE_WAKEUP`): a sleeping display screencaps as
 solid black. `faults.jpg` is the replayed Check all run, scrolled so the
 Engine card is on top, cropped to 720 x 911 to match the other two.
+
+The four `track-*.jpg` shots (2026-10-21, build 122) are the stability
+control (29) backup from the 10-10 MHD capture, VIN swapped the same way and
+pushed into `files/backups`. `track-brakes.jpg` is `--es cmd codingview
+--es addr 29 --es scroll 3000/0042` and `track-ediff.jpg` the same with
+`--es scroll 3000/0048`; `track-brake-standby.jpg` and `track-edlc.jpg` are
+`--es review 3000/0046 --es value Off` and `--es review 3000/0065 --es value
+Off`. All cropped from the toolbar down, the reviews at the bottom of the Your
+change card. The AVD has a lock screen: `wm dismiss-keyguard` after waking it.
+The guide's names map onto the F56's DSC as: e-diff 3000/0065, FLR 3000/0045,
+fade compensation 3000/0048, HBA = Dynamic Brake Control 3000/0042, brake
+standby 3000/0046, DPC = Performance Control 3000/0067; Maximum Brake Support
+has no switch.

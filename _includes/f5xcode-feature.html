@@ -226,6 +226,28 @@
   <figure><img src="/assets/images/f5xcode/v2/true-speed.jpg" alt="Review change for the cluster: True speed, Turn on, with the original backup ready and the change explained before Save to car" loading="lazy"><figcaption>True speed, reviewed before anything is written</figcaption></figure>
 </div>
 
+<h3 id="track">Track settings</h3>
+<p>BMWs of the E82 and E90 era keep a set of helpers running in the stability control module even with DSC and DTC switched off. On those cars, track drivers code them out with NCS Expert, and paradoxical3's <a href="https://www.e90post.com/forums/showthread.php?t=1216639">guide on e90post</a> is the usual list. The F56's stability control has the same functions under the same BMW names, and each one is a switch in the app.</p>
+<ul class="tight">
+  <li><b>Electronic diff lock (EDLC):</b> the e-diff. It brakes a spinning front wheel to push drive to the other. With a mechanical limited slip diff it fights the diff, so turn it off. On an open diff it's what stops the inside wheel spinning up, so leave it on.</li>
+  <li><b>Brake standby:</b> moves the pads to the discs when you lift off the throttle fast, then backs them off if you don't brake in time. On track that reads as a pedal that changes from corner to corner. EVB on the E9x.</li>
+  <li><b>Brake fade compensation:</b> adds pressure as its estimate of brake temperature climbs, so the pedal changes through a session. HPS on the E9x.</li>
+  <li><b>Dynamic Brake Control:</b> BMW's brake assist, HBA on the E9x. It treats a hard stop as an emergency and builds pressure up to ABS.</li>
+  <li><b>Engine power cut for hot brakes:</b> FLR. It cuts power when the module's estimate of disc temperature runs high. There's no sensor behind it, and the estimate assumes factory brakes. It's already off on the car in these screenshots.</li>
+  <li><b>Performance Control:</b> brakes the inside wheels to help the car turn in, the F56's version of Dynamic Performance Control (FDB).</li>
+</ul>
+<p>The guide's Maximum Brake Support (HVV) has no switch on the F56. Each of the others is one change: open Stability control's settings, flip the switch, check the review and save to the car. The app backs the module up first and reads it back after, and the original backup puts everything back for the street.</p>
+
+<div class="shots two">
+  <figure><img src="/assets/images/f5xcode/v2/track-brakes.jpg" alt="Stability control settings, Popular view: Dynamic Brake Control on, Cornering Brake Control on, Engine power cut for hot brakes off, Brake standby on" loading="lazy"><figcaption>Brake assist and brake standby on from the factory; the hot-brake power cut already off</figcaption></figure>
+  <figure><img src="/assets/images/f5xcode/v2/track-ediff.jpg" alt="Stability control settings: Brake fade compensation on, Hill-start assist on, Electronic diff lock (EDLC) on, Hill descent control off, Performance Control on" loading="lazy"><figcaption>Fade compensation, the e-diff and Performance Control, all on</figcaption></figure>
+</div>
+
+<div class="shots two">
+  <figure><img src="/assets/images/f5xcode/v2/track-brake-standby.jpg" alt="Review change for stability control: Brake standby, On to Off, with the original backup ready and the signing keys available" loading="lazy"><figcaption>Brake standby off, reviewed before anything is written</figcaption></figure>
+  <figure><img src="/assets/images/f5xcode/v2/track-edlc.jpg" alt="Review change for stability control: Electronic diff lock (EDLC), On to Off" loading="lazy"><figcaption>The e-diff off: EDLC, On to Off</figcaption></figure>
+</div>
+
 <div class="grid3">
   <div class="tile"><b>Fault codes in plain English</b><p>Every module's faults, each with whether it's happening now or stored, whether it lights the dash, what it means, the likely causes and what to check first. Check all fault codes reads every module in one pass, so a check engine light can't hide in a module you didn't pick. Clear them one module at a time.</p></div>
   <div class="tile"><b>Read and back up coding</b><p>Every setting in a module by name, in Popular, All and Expert views. A backup is saved before anything changes, and backups export and import between phones.</p></div>
