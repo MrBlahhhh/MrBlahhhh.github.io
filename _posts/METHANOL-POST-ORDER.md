@@ -1,0 +1,66 @@
+# Methanol controller post: running order
+
+Not a post. The running order for `2026-10-23-methanol-injection-controller.md`,
+whose page is `_includes/methanol-feature.html`. Add to this structure instead
+of appending to the end.
+
+1. **Hero**: what it is (boost-referenced PWM, boost from the DME, pump
+   current as the safety, shift light), stats strip (2 → 8 psi, 25 % floor,
+   300 ms soft start, 11 A trip), three buttons.
+2. **On the bench** (`#bench`): the 2026-10-23 ramp-test short
+   (`s17SzJuKtCg`) beside what's in the frame.
+3. **How it works**: six tiles (DME boost, curve, PWM, pump current, soft
+   start, shift light), then the line about cars without UDS.
+4. **The board**: Rev E parts list beside the photo, then Rev F in one
+   paragraph.
+5. **The screen**: what it is and how it links, Boot (both clips), Pages
+   (nine round captures), link-lost line, capture note.
+6. **The app**: four main screens, then shift light and Advanced beside the
+   shift light shot, then the screenshot note.
+7. **Setting it up** (`#setup`): eight steps, then the bench-build line.
+8. **Safeties** (`#safeties`): fault table, latching, "Before it sprays at
+   all", where you see it, firmware guards.
+9. **Where it's at**: what works on the bench and what's owed before the car.
+
+## Standing rules
+
+- Present tense, current build only. No comparisons with other meth kits:
+  the design is a simple boost-referenced PWM with pump current as the
+  safety, and the page says that on its own terms.
+- Numbers come from the controller firmware (`pwm_controller`, branch
+  `firmware-rev-e`): `defaults()` and `validate()` in
+  `firmware/src/logic/control.cpp`, the fault list in `firmware/src/proto.h`.
+  The 11 A trip is Matt's setting, not a default (the default is 0, which
+  blocks the pump).
+- The repo is private. Don't link it or name its scripts as if readers can
+  run them.
+- Keep the bench-build line in Setting it up and Where it's at until the
+  firmware's Arm gate (`MP_INTAKE_QUALIFIED`) is on and the board has run on
+  the car.
+
+## Images
+
+All in `assets/images/methanol-controller/`.
+
+- `cover.jpg`, `board-rev-e.jpg`: frames from the 2026-10-23
+  short (the 12 s frame, 100 % duty, 0.6 A).
+- `screen-*.png`: 480 x 480 frame-buffer captures off the 2.1" LCD with
+  `tools/screen_shot.py` on the screen's demo loop, 2026-10-17 (after the
+  sweep gauges, before the 25 % floor, so the demo curve starts at 10 %).
+  `screen-fault.png` is the right half of a two-up capture from the same
+  session. Retake them with `screen_shot.py COM5 out.png --demo --all` once
+  the screen is on the PC's USB again, and drop the capture note.
+- `app-dash.jpg`, `app-pump-test.jpg`, `app-settings.jpg`: Matt's phone on
+  the bench board, 2026-10-22 (0.5.0), status and gesture bars cropped, 720
+  wide. The pump-test shot has the cut-off footer line removed above the nav
+  bar.
+- `app-curve.jpg`, `app-shift-light.jpg`: 0.5.1 on the `Pixel_10_Pro` AVD,
+  from a throwaway local build (never committed) that loaded the app's
+  `default-config.bin` into the board slot with an 11 A limit and set the
+  shift-light capability, so the screens render without a board. The
+  shift-light shot is cropped below the Advanced header and its
+  telemetry-unknown banner.
+- `boot-charge-pipe.mp4`, `boot-turbo.mp4`: the repo's
+  `screen/boot/alternates/charge-pipe/charge-pipe.mp4` (built into the
+  screen) and `screen/boot/boot-preview.mp4`, remuxed with `+faststart`.
+  Posters are frames at 4.5 s and 6.5 s.
