@@ -1,6 +1,6 @@
 ---
 title: "Methanol injection controller"
-date: 2026-10-23 08:00:00 -0400
+date: 2026-10-23 00:00:00 -0400
 categories: car tech
 tags: [methanol, water-methanol, mini, f56, b48, esp32, esp32-s3, xiao, pwm, can-bus, uds, obd2, android, app, lvgl, waveshare, shift-light, pcb, kicad, jlcpcb]
 cover: /assets/images/methanol-controller/cover.jpg
