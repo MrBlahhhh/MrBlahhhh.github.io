@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
-    <script type="module" crossorigin src="./assets/brake-DABDhxFh.js"></script>
+    <script type="module" crossorigin src="./assets/brake-BSjS6M9L.js"></script>
     <link rel="stylesheet" crossorigin href="./assets/brake-BNwVE1Ni.css">
   </head>
   <body data-level="car">
@@ -25,7 +25,8 @@
         <!-- one button per section goes here (main.ts) -->
         <button class="hud-btn in-section" id="toggle-explode">Assemble</button>
         <span class="sep in-section"></span>
-        <button class="hud-btn in-section" id="open-procedures">Procedures</button>
+        <!-- Shown only in the private build (main.ts): the blog has no procedures. -->
+        <button class="hud-btn in-section" id="open-procedures" hidden>Procedures</button>
         <button class="hud-btn in-section" id="open-wiring-hud">Wiring</button>
       </nav>
     </header>
@@ -37,6 +38,6 @@
     <div id="wiring" class="overlay panel" hidden></div>
     <div id="procedures" class="overlay panel" hidden></div>
     <div id="walk" class="overlay" hidden></div>
-
+
   </body>
 </html>
