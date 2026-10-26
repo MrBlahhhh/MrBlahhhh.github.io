@@ -3,12 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>F56 Front Brake</title>
+    <title>F56 3D</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
-    <script type="module" crossorigin src="./assets/brake-D6wYnyRS.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/brake-C0Csr-5i.css">
+    <script type="module" crossorigin src="./assets/brake-BzGSDmKA.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/brake-TJzFUyka.css">
   </head>
   <body data-level="car">
     <div id="stage"></div>
@@ -21,12 +21,12 @@
       </div>
       <nav class="levels">
         <button class="hud-btn" id="back" title="Up one level (Esc)">‹ Back</button>
-        <button class="hud-btn" data-goto="car">Car</button>
-        <button class="hud-btn" data-goto="corner">Front left</button>
-        <button class="hud-btn" data-goto="exploded">Exploded</button>
-        <span class="sep"></span>
-        <button class="hud-btn" id="open-procedures">Procedures</button>
-        <button class="hud-btn" id="open-wiring-hud">Wiring</button>
+        <button class="hud-btn" data-goto="">Car</button>
+        <!-- one button per section goes here (main.ts) -->
+        <button class="hud-btn in-section" id="toggle-explode">Assemble</button>
+        <span class="sep in-section"></span>
+        <button class="hud-btn in-section" id="open-procedures">Procedures</button>
+        <button class="hud-btn in-section" id="open-wiring-hud">Wiring</button>
       </nav>
     </header>
 
@@ -36,6 +36,6 @@
     <div id="lightbox" class="overlay" hidden></div>
     <div id="wiring" class="overlay panel" hidden></div>
     <div id="procedures" class="overlay panel" hidden></div>
-
+
   </body>
 </html>

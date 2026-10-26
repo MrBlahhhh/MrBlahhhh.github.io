@@ -4,16 +4,18 @@ Not a post. The running order for `2026-10-26-f56-front-brake-3d.md`, whose
 page is `_includes/f56-3d-feature.html`. Add to this structure instead of
 appending to the end.
 
-1. **Hero**: what it is (the front left brake as a hologram you can pull
-   apart, one corner as the test), stats strip (15 parts, 56 repair photos,
-   7 procedures, 3 wiring diagrams), Open the explorer / How to use it / Jump
-   to a part, then the exploded poster linking to the explorer.
-2. **How to use it** (`#use`): five steps, then four screenshots (caliper,
-   wear sensor, wiring, procedures).
-3. **Jump to a part** (`#parts`): eight tiles, each a deep link into the
-   explorer (`#part:<id>`, `#exploded`, `#wiring`, `#procedures`).
-4. **The 3D** (`#3d`): modelled parts, one hologram look, beside the phone
-   shot.
+1. **Hero**: what it is (the F56 as a hologram you can pull apart, one
+   section at a time: front brake, then the battery), stats strip (totals
+   across sections: 30 parts, 71 repair photos, 12 procedures, 4 wiring
+   diagrams), Open the explorer / How to use it / Jump to a part, then the
+   exploded poster linking to the explorer.
+2. **How to use it** (`#use`): five steps, then six screenshots (caliper,
+   wear sensor, wiring, procedures, battery, phone).
+3. **Jump to a part** (`#parts`): ten tiles, each a deep link into the
+   explorer (`#<section>`, `#<section>/part:<id>`, `#<section>/wiring`,
+   `#<section>/procedures`).
+4. **The 3D** (`#3d`): modelled parts, one hologram look, beside the
+   exploded brake.
 5. **Where it's at** (`#status`): what's open.
 6. Contact line.
 
@@ -35,4 +37,6 @@ Chrome with `?instant`, glow on, then saved as JPEG:
 - `wear-sensor.jpg`: `#part:wear-sensor` at 1400 x 900.
 - `wiring.jpg`: `#wiring:wear-sensor` at 1400 x 900.
 - `procedures.jpg`: `#procedures` at 1400 x 900.
+- `battery.jpg`: `#battery` at 1400 x 900.
 - `phone.jpg`: `#part:caliper` at 390 x 844, 2x, phone emulation.
+- Retaken 2026-10-26 after the sections, phone layout and wire colours went in.

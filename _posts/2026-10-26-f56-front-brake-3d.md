@@ -6,7 +6,7 @@ tags: [mini, f56, b48, brakes, wiring, dsc, 3d, webgl, three-js]
 cover: /assets/images/f56-3d/cover.jpg
 lightbox: true
 license: false
-excerpt: "The driver's front brake on my F56 as a hologram you can pull apart, with repair photos, torques and wiring for every part."
+excerpt: "My F56 as a hologram you can pull apart: the front brake and the battery so far, with repair photos, torques and wiring for every part."
 article_header:
   type: overlay
   theme: dark
