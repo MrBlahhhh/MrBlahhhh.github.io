@@ -1,0 +1,147 @@
+<!-- F56 front brake in 3D. Rendered by _posts/2026-10-26-f56-front-brake-3d.md. Edit here, not in the post.
+     Running order and where every screenshot came from: _posts/F56-3D-POST-ORDER.md. Images in assets/images/f56-3d.
+     The explorer itself (f56-3d/brake/) is a build from the f56-3d repo, copied by its tools/publish-blog.sh. Don't edit it here.
+     Every number on this page comes from that build's front-brake-left.json (ISTA 4.39.20); keep them in step. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Rajdhani:wght@600;700&display=swap">
+<style>
+.f3{--ink:#E6F6FF;--mute:#A2BCCB;--cyan:#3FD4FF;--cyan-hi:#8FE6FF;--cyan-soft:rgba(63,212,255,.14);--amber:#FFA648;--line:rgba(63,212,255,.14);--line2:rgba(63,212,255,.32);--card:rgba(6,22,34,.8);
+  font-family:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);line-height:1.55;
+  background:radial-gradient(ellipse 80% 40% at 85% 0%,var(--cyan-soft),transparent 60%),linear-gradient(180deg,#071119,#02060A 40%,#010305);
+  border-radius:22px;padding:28px clamp(16px,3vw,32px) 36px;margin:0 0 24px;overflow-wrap:anywhere}
+.f3 *{box-sizing:border-box}
+.f3 a{color:var(--cyan-hi)}
+.f3 a:hover{color:#c4f2ff}
+.f3 .hero{padding:4px 0 22px;border-bottom:1px solid var(--line)}
+.f3 .k{display:inline-block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);margin:0 0 4px}
+.f3 h1,.f3 h2,.f3 h3,.f3 .stat b{font-family:"Rajdhani","Atkinson Hyperlegible",sans-serif;letter-spacing:.01em}
+.f3 .hero h1{font-size:clamp(34px,6.4vw,58px);line-height:1;margin:0;color:var(--ink);text-shadow:0 0 24px rgba(63,212,255,.35)}
+.f3 .hero p.sub{font-size:clamp(17px,2.2vw,20px);color:var(--mute);max-width:62ch;margin:14px 0 0}
+.f3 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(130px,100%),1fr));gap:12px;margin:20px 0 0}
+.f3 .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.f3 .stat b{display:block;font-size:34px;line-height:1;color:var(--cyan-hi)}
+.f3 .stat span{color:var(--mute);font-size:13px;letter-spacing:.04em;text-transform:uppercase}
+.f3 .ctas{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0 0}
+.f3 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 18px;border-radius:12px;background:var(--cyan);color:#021018 !important;font-weight:700;text-decoration:none}
+.f3 .btn:hover{background:var(--cyan-hi)}
+.f3 .btn.ghost{background:transparent;border:1px solid var(--line2);color:var(--ink) !important}
+.f3 .poster{position:relative;display:block;margin:22px 0 0;aspect-ratio:14/9;border-radius:18px;border:1px solid var(--line2);overflow:hidden;
+  background:#02060A center/cover no-repeat;text-decoration:none;box-shadow:0 0 50px rgba(63,212,255,.12)}
+.f3 .poster span{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);padding:12px 20px;border-radius:12px;background:var(--cyan);color:#021018;font-weight:700;white-space:nowrap}
+.f3 .poster:hover span{background:var(--cyan-hi)}
+.f3 h2{font-size:clamp(26px,3.6vw,38px);margin:46px 0 6px;color:var(--ink);border:0}
+.f3 h3{font-size:21px;margin:22px 0 6px;color:var(--ink)}
+.f3 p{margin:0 0 12px}
+.f3 .lead{font-size:18px;color:var(--mute);margin:0 0 18px;max-width:66ch}
+.f3 .grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));gap:14px;margin:14px 0 22px}
+.f3 .grid3 > *,.f3 .grid2 > *{min-width:0}
+.f3 .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:14px;margin:14px 0 22px}
+.f3 .tile{display:block;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;text-decoration:none}
+.f3 a.tile{color:var(--ink)}
+.f3 a.tile:hover{border-color:var(--line2);background:rgba(10,34,50,.85)}
+.f3 .tile b{display:block;font-size:17px;margin-bottom:4px;color:var(--ink)}
+.f3 .tile p{margin:0;color:var(--mute);font-size:15px}
+.f3 .tile .go{display:inline-block;margin-top:10px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--cyan)}
+.f3 .num{font-family:"Rajdhani",sans-serif;font-weight:700;font-size:1.15em;color:var(--amber)}
+.f3 ol.flow{list-style:none;counter-reset:f;padding:0;margin:14px 0 20px;display:grid;gap:10px}
+.f3 ol.flow li{counter-increment:f;position:relative;padding:14px 16px 14px 60px;background:var(--card);border:1px solid var(--line);border-radius:14px;color:var(--mute);margin:0}
+.f3 ol.flow li::before{content:counter(f);position:absolute;left:16px;top:13px;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--cyan);color:#021018;font-weight:700}
+.f3 ol.flow li b{color:var(--ink)}
+.f3 ul.tight{margin:0 0 12px;padding-left:20px}
+.f3 ul.tight li{margin:6px 0;color:var(--mute)}
+.f3 ul.tight li b{color:var(--ink)}
+.f3 figure{margin:0;min-width:0}
+.f3 figure img{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);background:#02060A}
+.f3 figcaption{font-size:13px;color:var(--mute);margin-top:8px;line-height:1.4}
+.f3 .shots{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:8px 0 22px}
+.f3 .row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,260px);gap:24px;align-items:start;margin:8px 0 22px}
+.f3 .row > *{min-width:0}
+.f3 .note{font-size:14px;color:var(--mute)}
+.f3 .last{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);font-size:14px;color:var(--mute)}
+@media (max-width:640px){
+  .f3 .shots,.f3 .row{grid-template-columns:1fr}
+  .f3 .row figure{max-width:300px}
+}
+</style>
+
+<div class="f3">
+
+<div class="hero">
+  <span class="k">Test build · MINI F56 · front left brake</span>
+  <h1>F56 front brake in 3D</h1>
+  <p class="sub">The driver's front brake on my F56 as a hologram you can pull apart. Tap a part and you get BMW's own repair photos, torques, technical data and wiring for it, straight out of ISTA and picked for this car. One corner for now, to prove the idea before I do the rest of the car.</p>
+  <div class="stats">
+    <div class="stat"><b>15</b><span>Parts</span></div>
+    <div class="stat"><b>56</b><span>ISTA photos</span></div>
+    <div class="stat"><b>7</b><span>Repair procedures</span></div>
+    <div class="stat"><b>3</b><span>Wiring diagrams</span></div>
+  </div>
+  <div class="ctas">
+    <a class="btn" href="/f56-3d/brake/">Open the explorer</a>
+    <a class="btn ghost" href="#use">How to use it</a>
+    <a class="btn ghost" href="#parts">Jump to a part</a>
+  </div>
+  <a class="poster" href="/f56-3d/brake/" style="background-image:url('/assets/images/f56-3d/exploded.jpg')" aria-label="Open the explorer"><span>Open the explorer</span></a>
+</div>
+
+<h2 id="use">How to use it</h2>
+<p class="lead">It runs in the browser, on a phone too. Drag to orbit, pinch or scroll to zoom.</p>
+
+<ol class="flow">
+  <li><b>Tap the driver's front wheel.</b> The camera flies into the front left corner.</li>
+  <li><b>Tap Exploded.</b> The brake comes apart along the hub, wheel first and knuckle last. Where ISTA gives a torque, the label carries it.</li>
+  <li><b>Tap a part or its label.</b> Its card has the torque, the technical data, the DSC pins for the two sensors and every ISTA repair step that mentions the part, photo included. Tap a photo for full size.</li>
+  <li><b>Wiring</b> opens BMW's DSC diagrams with the part's pins lit up. <b>ISTA procedures</b> has all seven repair documents in full.</li>
+  <li><b>Back</b>, Esc or the browser's back button step out one view at a time. <b>Back to the post</b> at the top left comes back here.</li>
+</ol>
+
+<div class="shots">
+  <figure><img src="/assets/images/f56-3d/caliper.jpg" alt="The caliper selected, with its card of torques and ISTA steps"><figcaption><b>Caliper.</b> ISTA's guide bolt torque, then every step that mentions the caliper, with BMW's photo for each.</figcaption></figure>
+  <figure><img src="/assets/images/f56-3d/wear-sensor.jpg" alt="The pad wear sensor card with its DSC pins"><figcaption><b>Pad wear sensor.</b> Its pins on both DSC connectors, the wear warning thickness and the swap procedure.</figcaption></figure>
+  <figure><img src="/assets/images/f56-3d/wiring.jpg" alt="BMW's DSC wiring diagram with the pin table beside it"><figcaption><b>Wiring.</b> BMW's DSC diagram, recoloured for the dark panel, beside the pin table with the sensor's pins lit.</figcaption></figure>
+  <figure><img src="/assets/images/f56-3d/procedures.jpg" alt="The ISTA procedures panel"><figcaption><b>Procedures.</b> The seven repair documents in ISTA's own order. Fixed caliper sections are marked as not this car.</figcaption></figure>
+</div>
+
+<h2 id="parts">Jump to a part</h2>
+<p class="lead">Each one opens the explorer straight on that view.</p>
+
+<div class="grid3">
+  <a class="tile" href="/f56-3d/brake/#part:caliper"><b>Brake caliper</b><p>Floating, single piston, the Cooper S caliper. Guide bolts <span class="num">35 Nm</span>.</p><span class="go">Open ›</span></a>
+  <a class="tile" href="/f56-3d/brake/#part:pad-outer"><b>Brake pads</b><p>The pad change step by step. Wear warning at <span class="num">3.7 mm</span> of pad left.</p><span class="go">Open ›</span></a>
+  <a class="tile" href="/f56-3d/brake/#part:disc"><b>Brake disc</b><p>Disc to hub <span class="num">16 Nm</span>. Minimum thickness stamped on the disc: <span class="num">20.4 mm</span>.</p><span class="go">Open ›</span></a>
+  <a class="tile" href="/f56-3d/brake/#part:carrier"><b>Caliper carrier</b><p>Caliper to steering knuckle <span class="num">110 Nm</span>, M12x1.5, new bolts every time.</p><span class="go">Open ›</span></a>
+  <a class="tile" href="/f56-3d/brake/#part:wear-sensor"><b>Pad wear sensor</b><p>Its pins on the DSC connector and the swap procedure.</p><span class="go">Open ›</span></a>
+  <a class="tile" href="/f56-3d/brake/#exploded"><b>The whole corner</b><p>All 15 parts pulled apart and labelled.</p><span class="go">Open ›</span></a>
+  <a class="tile" href="/f56-3d/brake/#wiring"><b>DSC wiring</b><p>Three BMW diagrams for the DSC unit and both pin tables.</p><span class="go">Open ›</span></a>
+  <a class="tile" href="/f56-3d/brake/#procedures"><b>ISTA procedures</b><p>All seven front brake repair documents.</p><span class="go">Open ›</span></a>
+</div>
+
+<h2 id="data">Where it comes from</h2>
+<p class="lead">Everything you read in it is BMW's, from ISTA 4.39.20, the dealer workshop system. Nothing is typed in by hand.</p>
+
+<div class="grid2">
+  <div class="tile"><b>Picked for this car</b><p>ISTA tags every step, photo and torque with rules on model, engine, market and equipment. The extractor runs them against my car's type code, XP83: Cooper S, B48, automatic, US. ISTA files the US B48 as a B46.</p></div>
+  <div class="tile"><b>Torques</b><p>The front brake table: disc to hub <span class="num">16 Nm</span>, caliper to knuckle <span class="num">110 Nm</span>, guide bolts <span class="num">35 Nm</span>, protective plate <span class="num">12 Nm</span>.</p></div>
+  <div class="tile"><b>Technical data</b><p>Disc sizes, the <span class="num">0.01 mm</span> thickness variation limit, minimum disc thickness and the pad wear warning.</p></div>
+  <div class="tile"><b>Wiring</b><p>ISTA's own diagrams and pin tables. The F56 has two DSC units: a 46-pin one that also runs an electric parking brake, and a 38-pin one. Mine has the cable handbrake, so it's most likely the 38-pin, and the explorer shows that one first.</p></div>
+</div>
+
+<div class="row">
+  <div>
+    <h3>The 3D</h3>
+    <p>The parts are modelled for now: the disc to ISTA's size, the rest by eye from ISTA's photos. The car body is a placeholder shell.</p>
+    <p>Every part goes through the same hologram look: a see-through fill that glows at its edges, scanlines and bright outlines. Modelled or scanned, they render the same, so 3D scans of the real parts can swap in one at a time without anything looking out of place.</p>
+  </div>
+  <figure><img src="/assets/images/f56-3d/phone.jpg" alt="The explorer on a phone, a part selected and its card at the bottom"><figcaption>On a phone the card sits along the bottom.</figcaption></figure>
+</div>
+
+<h2 id="status">Where it's at</h2>
+<ul class="tight">
+  <li><b>Disc size.</b> ISTA lists 280 x 22 and 294 x 22 mm for the F56 and says to go by the VIN. The model draws 294 until I measure mine.</li>
+  <li><b>DSC unit.</b> A look at the connector settles 38-pin against 46-pin.</li>
+  <li><b>Wheel speed sensor.</b> It's in the model with its DSC pins, but none of the procedures pulled out so far cover it.</li>
+  <li><b>The rest of the car.</b> This corner is the test. If it holds up, the other systems follow the same way.</li>
+</ul>
+
+<div class="last">Repair photos, wiring diagrams and repair text in the explorer are BMW's, from ISTA. Questions: <a href="mailto:matt@geekopolis.com">matt@geekopolis.com</a> or <a href="https://www.instagram.com/mattryan6729/">@mattryan6729</a>.</div>
+
+</div>

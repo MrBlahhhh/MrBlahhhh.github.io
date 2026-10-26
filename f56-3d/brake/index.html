@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>F56 Front Brake</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+    <script type="module" crossorigin src="./assets/brake-CnKy4uDZ.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/brake-C0Csr-5i.css">
+  </head>
+  <body data-level="car">
+    <div id="stage"></div>
+
+    <header id="hud">
+      <div class="title">
+        <a class="post-link" id="post-link" hidden>‹ Back to the post</a>
+        <div class="kicker">MINI F56 · Cooper S · XP83 · 05/2015</div>
+        <div id="crumb">MINI F56 · XP83</div>
+      </div>
+      <nav class="levels">
+        <button class="hud-btn" id="back" title="Up one level (Esc)">‹ Back</button>
+        <button class="hud-btn" data-goto="car">Car</button>
+        <button class="hud-btn" data-goto="corner">Front left</button>
+        <button class="hud-btn" data-goto="exploded">Exploded</button>
+        <span class="sep"></span>
+        <button class="hud-btn" id="open-procedures">ISTA procedures</button>
+        <button class="hud-btn" id="open-wiring-hud">Wiring</button>
+      </nav>
+    </header>
+
+    <div id="hint">Loading ISTA data…</div>
+    <aside id="card" hidden></aside>
+
+    <div id="lightbox" class="overlay" hidden></div>
+    <div id="wiring" class="overlay panel" hidden></div>
+    <div id="procedures" class="overlay panel" hidden></div>
+
+  </body>
+</html>
