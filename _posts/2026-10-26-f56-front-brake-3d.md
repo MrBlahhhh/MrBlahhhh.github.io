@@ -7,13 +7,14 @@ cover: /assets/images/f56-3d/cover.jpg
 lightbox: true
 # The photos, diagrams and repair text in the explorer are BMW's, so no CC-BY footer on this one.
 license: false
-excerpt: "The driver's front brake on my F56 as a hologram you can pull apart in the browser. Tap a part for BMW's own repair photos, torques and wiring, straight out of ISTA and picked for this car. One corner for now."
+excerpt: "The driver's front brake on my F56 as a hologram you can pull apart, with BMW's own repair photos, torques and wiring from ISTA."
 article_header:
   type: overlay
   theme: dark
   background_color: "#02060A"
   background_image:
-    gradient: "linear-gradient(rgba(0, 0, 0, .35), rgba(0, 0, 0, .8))"
+    # Darker than the other posts: the cover is full of labels that fight the excerpt.
+    gradient: "linear-gradient(rgba(2, 6, 10, .72), rgba(2, 6, 10, .92))"
     src: /assets/images/f56-3d/cover.jpg
 ---
 
