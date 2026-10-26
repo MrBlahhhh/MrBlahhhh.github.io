@@ -1,7 +1,66 @@
 {
- "wheel": {
-  "numbers": [],
-  "note": "Depends on which wheel the car has; the vehicle order isn't read yet."
+ "centre-cap": {
+  "numbers": [
+   {
+    "number": "36136857149",
+    "description": "Wheel center cap with chrome ring",
+    "supplement": "MINI",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "4",
+    "diagram": "MINI LA wheel Cosmos Spoke 499",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
  },
  "wheel-bolts": {
   "numbers": [
@@ -183,42 +242,1003 @@
   ],
   "note": ""
  },
- "disc": {
+ "valve": {
   "numbers": [
    {
-    "number": "34116866297",
-    "description": "Brake disc, ventilated",
-    "supplement": "294X22",
-    "condition": "The following additional parts are also essential: - brake pads - brake pad sensor - brake pad paste refer to Repair Manual!",
+    "number": "36121116326",
+    "description": "Rubber valve",
+    "supplement": "L=42,5MM",
+    "condition": "For vehicles with Tire pressure display No S2VBA",
     "info": "",
     "dates": "",
-    "qty": "2",
-    "diagram": "FRONT WHEEL BRAKE | Mini MINI F56 Cooper S B46 USA",
+    "qty": "4",
+    "diagram": "MINI LA wheel Cosmos Spoke 499",
     "usage": {
      "F54": [
       "Cooper B36",
       "Cooper B38",
       "Cooper D B47",
-      "Cooper X B36"
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
      ],
      "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
       "Cooper S B46",
       "Cooper S B48",
-      "Cooper SD B47"
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
      ],
      "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
       "Cooper S B48",
       "Cooper S B46",
-      "Cooper SD B47"
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
      ],
      "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
       "Cooper S B46",
       "Cooper S B48",
-      "Cooper SD B47"
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ],
+     "R50": [
+      "Cooper W10",
+      "One 1.4i W10",
+      "One 1.6i W10",
+      "One D W17"
+     ],
+     "R52": [
+      "Cooper W10",
+      "Cooper S W11",
+      "One W10"
+     ],
+     "R53": [
+      "Coop.S JCW GP W11",
+      "Cooper S W11"
+     ],
+     "R55": [
+      "Coop.S JCW N14",
+      "Cooper N12",
+      "Cooper d W16",
+      "Cooper S N14",
+      "One N12"
+     ],
+     "R55 Facelift": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "One N16",
+      "One D N47N"
+     ],
+     "R56": [
+      "Coop.S BEV I15",
+      "Coop.S JCW N14",
+      "Cooper N12",
+      "Cooper D W16",
+      "Cooper S N14",
+      "One N12",
+      "One D W16"
+     ],
+     "R56 Facelift": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "One N16",
+      "One 55kW N16",
+      "One D N47N"
+     ],
+     "R57": [
+      "Coop.S JCW N14",
+      "Cooper N12",
+      "Cooper S N14"
+     ],
+     "R57 Facelift": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "One N16"
+     ],
+     "R58": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper S N18",
+      "Cooper SD N47N"
+     ],
+     "R59": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper S N18",
+      "Cooper SD N47N"
+     ],
+     "R60": [
+      "Coop.SX JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper DX 1.6 N47N",
+      "Cooper DX 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "Cooper SDX N47N",
+      "Cooper SX N18",
+      "Cooper X N16",
+      "Cooper X N18",
+      "One N16",
+      "One D N47N"
+     ],
+     "R61": [
+      "Coop.SX JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper DX 1.6 N47N",
+      "Cooper DX 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "Cooper SDX N47N",
+      "Cooper SX N18",
+      "Cooper X N16",
+      "Cooper X N18"
      ]
     },
     "note": ""
    },
+   {
+    "number": "36106856209",
+    "description": "Wheel electr. module RDCi w/ screw valve",
+    "supplement": "",
+    "condition": "For vehicles with Tire pressure display Yes S2VBA",
+    "info": "",
+    "dates": "",
+    "qty": "4",
+    "diagram": "MINI LA wheel Cosmos Spoke 499",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   },
+   {
+    "number": "36141095389",
+    "description": "Valve",
+    "supplement": "",
+    "condition": "For vehicles with Tire pressure display No S2VBA",
+    "info": "",
+    "dates": "",
+    "qty": "4",
+    "diagram": "MINI LA wheel Cosmos Spoke 499",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ],
+     "JCW": [
+      "C-Cup W11"
+     ],
+     "R50": [
+      "Cooper W10",
+      "One 1.4i W10",
+      "One 1.6i W10",
+      "One D W17"
+     ],
+     "R52": [
+      "Cooper W10",
+      "Cooper S W11",
+      "One W10"
+     ],
+     "R53": [
+      "Coop.S JCW GP W11",
+      "Cooper S W11"
+     ],
+     "R55": [
+      "Coop.S JCW N14",
+      "Cooper N12",
+      "Cooper d W16",
+      "Cooper S N14",
+      "One N12"
+     ],
+     "R55 Facelift": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "One N16",
+      "One D N47N"
+     ],
+     "R56": [
+      "Coop.S BEV I15",
+      "Coop.S JCW N14",
+      "Cooper N12",
+      "Cooper D W16",
+      "Cooper S N14",
+      "One N12",
+      "One D W16"
+     ],
+     "R56 Facelift": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "One N16",
+      "One 55kW N16",
+      "One D N47N",
+      "One Eco N16",
+      "One Eco 55kW N16"
+     ],
+     "R57": [
+      "Coop.S JCW N14",
+      "Cooper N12",
+      "Cooper S N14"
+     ],
+     "R57 Facelift": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "One N16"
+     ],
+     "R58": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper S N18",
+      "Cooper SD N47N"
+     ],
+     "R59": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper S N18",
+      "Cooper SD N47N"
+     ],
+     "R60": [
+      "Coop.SX JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper DX 1.6 N47N",
+      "Cooper DX 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "Cooper SDX N47N",
+      "Cooper SX N18",
+      "Cooper X N16",
+      "Cooper X N18",
+      "One N16",
+      "One D N47N"
+     ],
+     "R61": [
+      "Coop.SX JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper DX 1.6 N47N",
+      "Cooper DX 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "Cooper SDX N47N",
+      "Cooper SX N18",
+      "Cooper X N16",
+      "Cooper X N18"
+     ]
+    },
+    "note": ""
+   },
+   {
+    "number": "36146867031",
+    "description": "Valve insert for RDCi",
+    "supplement": "",
+    "condition": "For vehicles with Tire pressure display Yes S2VBA",
+    "info": "",
+    "dates": "",
+    "qty": "4",
+    "diagram": "MINI LA wheel Cosmos Spoke 499",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   },
+   {
+    "number": "36121120779",
+    "description": "Valve caps",
+    "supplement": "",
+    "condition": "For vehicles with Tire pressure display No S2VBA",
+    "info": "",
+    "dates": "",
+    "qty": "4",
+    "diagram": "MINI LA wheel Cosmos Spoke 499",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ],
+     "JCW": [
+      "C-Cup W11"
+     ],
+     "R50": [
+      "Cooper W10",
+      "One 1.4i W10",
+      "One 1.6i W10",
+      "One D W17"
+     ],
+     "R52": [
+      "Cooper W10",
+      "Cooper S W11",
+      "One W10"
+     ],
+     "R53": [
+      "Coop.S JCW GP W11",
+      "Cooper S W11"
+     ],
+     "R55": [
+      "Coop.S JCW N14",
+      "Cooper N12",
+      "Cooper d W16",
+      "Cooper S N14",
+      "One N12"
+     ],
+     "R55 Facelift": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "One N16",
+      "One D N47N"
+     ],
+     "R56": [
+      "Coop.S BEV I15",
+      "Coop.S JCW N14",
+      "Cooper N12",
+      "Cooper D W16",
+      "Cooper S N14",
+      "One N12",
+      "One D W16"
+     ],
+     "R56 Facelift": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "One N16",
+      "One 55kW N16",
+      "One D N47N"
+     ],
+     "R57": [
+      "Coop.S JCW N14",
+      "Cooper N12",
+      "Cooper S N14"
+     ],
+     "R57 Facelift": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "One N16"
+     ],
+     "R58": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper S N18",
+      "Cooper SD N47N"
+     ],
+     "R59": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper S N18",
+      "Cooper SD N47N"
+     ],
+     "R60": [
+      "Coop.SX JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper DX 1.6 N47N",
+      "Cooper DX 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "Cooper SDX N47N",
+      "Cooper SX N18",
+      "Cooper X N16",
+      "Cooper X N18",
+      "One N16",
+      "One D N47N"
+     ],
+     "R61": [
+      "Coop.SX JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper DX 1.6 N47N",
+      "Cooper DX 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "Cooper SDX N47N",
+      "Cooper SX N18",
+      "Cooper X N16",
+      "Cooper X N18"
+     ]
+    },
+    "note": ""
+   },
+   {
+    "number": "36146867030",
+    "description": "Valve cap for RDCi",
+    "supplement": "",
+    "condition": "For vehicles with Tire pressure display Yes S2VBA",
+    "info": "",
+    "dates": "",
+    "qty": "4",
+    "diagram": "MINI LA wheel Cosmos Spoke 499",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   },
+   {
+    "number": "36106867147",
+    "description": "Rep. kit, screw valve for RDCi",
+    "supplement": "",
+    "condition": "For vehicles with Tire pressure display Yes S2VBA",
+    "info": "",
+    "dates": "",
+    "qty": "4",
+    "diagram": "MINI LA wheel Cosmos Spoke 499",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "wheel": {
+  "numbers": [
+   {
+    "number": "36116855109",
+    "description": "Light alloy rim, black",
+    "supplement": "7JX17 ET:54",
+    "condition": "For vehicles with MINI LA wheel Cosmos Spoke black Yes S2F2A and JCW Sport brakes, 17\" No SZZDA",
+    "info": "",
+    "dates": "",
+    "qty": "4",
+    "diagram": "MINI LA wheel Cosmos Spoke 499",
+    "usage": {
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38"
+     ]
+    },
+    "note": ""
+   },
+   {
+    "number": "36116855108",
+    "description": "Light alloy rim, silver",
+    "supplement": "7JX17 ET:54",
+    "condition": "For vehicles with MINI LA wheel Cosmos Spoke silver Yes S2F1A and JCW Sport brakes, 17\" No SZZDA",
+    "info": "",
+    "dates": "",
+    "qty": "4",
+    "diagram": "MINI LA wheel Cosmos Spoke 499",
+    "usage": {
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": "One representative wheel: the 17 inch Cosmos Spoke. The rim on a given car depends on its wheel option; the vehicle order isn't read yet."
+ },
+ "hub-cap": {
+  "numbers": [
+   {
+    "number": "31206867393",
+    "description": "Cap",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "from Apr ' 14",
+    "qty": "2",
+    "diagram": "Front Spring strut/Carrier/Wheel bearing | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "axle-bolt": {
+  "numbers": [
+   {
+    "number": "33406858534",
+    "description": "Collar screw with spring",
+    "supplement": "M16X1,5X60-8.8",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "2",
+    "diagram": "Front Spring strut/Carrier/Wheel bearing | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "disc-screw": {
+  "numbers": [
    {
     "number": "34211161806",
     "description": "Inner hex bolt",
@@ -308,6 +1328,153 @@
      ]
     },
     "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "disc": {
+  "numbers": [
+   {
+    "number": "34116866297",
+    "description": "Brake disc, ventilated",
+    "supplement": "294X22",
+    "condition": "The following additional parts are also essential: - brake pads - brake pad sensor - brake pad paste refer to Repair Manual!",
+    "info": "",
+    "dates": "",
+    "qty": "2",
+    "diagram": "FRONT WHEEL BRAKE | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper X B36"
+     ],
+     "F55": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47"
+     ],
+     "F56": [
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47"
+     ],
+     "F57": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "hub": {
+  "numbers": [
+   {
+    "number": "33416867926",
+    "description": "Wheel hub with bearing",
+    "supplement": "M12X1,5",
+    "condition": "",
+    "info": "only in conjunction with ( #6 ) Collar screw 31 20 6 783 065 to Oct ' 15 M12X1,5 Quantity: 8 Collar screw 31 20 6 854 639 to Oct ' 15 M12X1,5 Quantity: 8 ( #7 ) Collar screw with spring 33 40 6 858 534 to Oct ' 15 M12X1,5 Quantity: 2",
+    "dates": "to Oct ' 15",
+    "qty": "2",
+    "diagram": "Front Spring strut/Carrier/Wheel bearing | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36"
+     ]
+    },
+    "note": ""
+   },
+   {
+    "number": "31206874443",
+    "description": "Wheel hub with bearing",
+    "supplement": "M12X1,25",
+    "condition": "",
+    "info": "only in conjunction with Round collar screw 31 20 6 872 920 M12X1,25 Quantity: 8 ( #6 ) Collar screw 31 20 6 783 065 M12X1,25 Quantity: 8 ( #7 ) Collar screw with spring 33 40 6 858 534 M12X1,25 Quantity: 2",
+    "dates": "",
+    "qty": "2",
+    "diagram": "Front Spring strut/Carrier/Wheel bearing | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36"
+     ]
+    },
+    "note": "Later hub with M12x1.25 screws. A May 2015 car has the M12x1.5 one unless it's been changed."
    }
   ],
   "note": ""
@@ -519,7 +1686,7 @@
   ],
   "note": ""
  },
- "pad-inner": {
+ "pad-clips": {
   "numbers": [
    {
     "number": "34106863293",
@@ -547,184 +1714,9 @@
      ]
     },
     "note": ""
-   },
-   {
-    "number": "83192158851",
-    "description": "Brake pad paste",
-    "supplement": "3G",
-    "condition": "",
-    "info": "",
-    "dates": "",
-    "qty": "2",
-    "diagram": "FRONT WHEEL BRAKE | Mini MINI F56 Cooper S B46 USA",
-    "usage": {
-     "F54": [
-      "Cooper B36",
-      "Cooper B38",
-      "Cooper D B47",
-      "Cooper S B46",
-      "Cooper S B48",
-      "Cooper SD B47",
-      "Cooper SDX B47",
-      "Cooper SX B48",
-      "Cooper SX B46",
-      "Cooper X B36",
-      "One B38",
-      "One D B37"
-     ],
-     "F55": [
-      "Cooper B38",
-      "Cooper B36",
-      "Cooper D B37",
-      "Cooper S B46",
-      "Cooper S B48",
-      "Cooper SD B47",
-      "One B38",
-      "One 55kW B38",
-      "One D B37"
-     ],
-     "F56": [
-      "Cooper B38",
-      "Cooper B36",
-      "Cooper D B37",
-      "Cooper S B48",
-      "Cooper S B46",
-      "Cooper SD B47",
-      "JCW B48",
-      "One B38",
-      "One 55kW B38",
-      "One D B37"
-     ],
-     "F57": [
-      "Cooper B36",
-      "Cooper B38",
-      "Cooper D B37",
-      "Cooper S B46",
-      "Cooper S B48",
-      "Cooper SD B47",
-      "JCW B48",
-      "One B38"
-     ],
-     "R50": [
-      "Cooper W10",
-      "One 1.4i W10",
-      "One 1.6i W10",
-      "One D W17"
-     ],
-     "R52": [
-      "Cooper W10",
-      "Cooper S W11",
-      "One W10"
-     ],
-     "R53": [
-      "Coop.S JCW GP W11",
-      "Cooper S W11"
-     ],
-     "R55": [
-      "Coop.S JCW N14",
-      "Cooper N12",
-      "Cooper d W16",
-      "Cooper S N14",
-      "One N12"
-     ],
-     "R55 Facelift": [
-      "Coop.S JCW N14",
-      "Coop.S JCW N18",
-      "Cooper N16",
-      "Cooper D 1.6 N47N",
-      "Cooper D 2.0 N47N",
-      "Cooper S N18",
-      "Cooper SD N47N",
-      "One N16",
-      "One D N47N"
-     ],
-     "R56": [
-      "Coop.S BEV I15",
-      "Coop.S JCW N14",
-      "Cooper N12",
-      "Cooper D W16",
-      "Cooper S N14",
-      "One N12",
-      "One D W16"
-     ],
-     "R56 Facelift": [
-      "Coop.S JCW N14",
-      "Coop.S JCW N18",
-      "Cooper N16",
-      "Cooper D 1.6 N47N",
-      "Cooper D 2.0 N47N",
-      "Cooper S N18",
-      "Cooper SD N47N",
-      "One N16",
-      "One 55kW N16",
-      "One D N47N",
-      "One Eco N16",
-      "One Eco 55kW N16"
-     ],
-     "R57": [
-      "Coop.S JCW N14",
-      "Cooper N12",
-      "Cooper S N14"
-     ],
-     "R57 Facelift": [
-      "Coop.S JCW N14",
-      "Coop.S JCW N18",
-      "Cooper N16",
-      "Cooper D 1.6 N47N",
-      "Cooper D 2.0 N47N",
-      "Cooper S N18",
-      "Cooper SD N47N",
-      "One N16"
-     ],
-     "R58": [
-      "Coop.S JCW N14",
-      "Coop.S JCW N18",
-      "Cooper N16",
-      "Cooper S N18",
-      "Cooper SD N47N"
-     ],
-     "R59": [
-      "Coop.S JCW N14",
-      "Coop.S JCW N18",
-      "Cooper N16",
-      "Cooper S N18",
-      "Cooper SD N47N"
-     ],
-     "R60": [
-      "Coop.SX JCW N18",
-      "Cooper N16",
-      "Cooper D 1.6 N47N",
-      "Cooper D 2.0 N47N",
-      "Cooper DX 1.6 N47N",
-      "Cooper DX 2.0 N47N",
-      "Cooper S N18",
-      "Cooper SD N47N",
-      "Cooper SDX N47N",
-      "Cooper SX N18",
-      "Cooper X N16",
-      "Cooper X N18",
-      "One N16",
-      "One D N47N"
-     ],
-     "R61": [
-      "Coop.SX JCW N18",
-      "Cooper N16",
-      "Cooper D 1.6 N47N",
-      "Cooper D 2.0 N47N",
-      "Cooper DX 1.6 N47N",
-      "Cooper DX 2.0 N47N",
-      "Cooper S N18",
-      "Cooper SD N47N",
-      "Cooper SDX N47N",
-      "Cooper SX N18",
-      "Cooper X N16",
-      "Cooper X N18"
-     ]
-    },
-    "note": ""
    }
   ],
-  "note": ""
+  "note": "The clips come in the pad set; they aren't sold on their own."
  },
  "caliper": {
   "numbers": [
@@ -761,7 +1753,12 @@
      ]
     },
     "note": ""
-   },
+   }
+  ],
+  "note": ""
+ },
+ "bleeder": {
+  "numbers": [
    {
     "number": "34116768188",
     "description": "Repair kit ventilation valve",
@@ -926,143 +1923,12 @@
      ]
     },
     "note": ""
-   },
-   {
-    "number": "34116768189",
-    "description": "Repair kit bellows",
-    "supplement": "",
-    "condition": "",
-    "info": "",
-    "dates": "",
-    "qty": "2",
-    "diagram": "FRONT WHEEL BRAKE | Mini MINI F56 Cooper S B46 USA",
-    "usage": {
-     "F54": [
-      "Cooper B36",
-      "Cooper B38",
-      "Cooper D B47",
-      "Cooper X B36"
-     ],
-     "F55": [
-      "Cooper S B46",
-      "Cooper S B48",
-      "Cooper SD B47"
-     ],
-     "F56": [
-      "Cooper S B48",
-      "Cooper S B46",
-      "Cooper SD B47"
-     ],
-     "F57": [
-      "Cooper S B46",
-      "Cooper S B48",
-      "Cooper SD B47"
-     ],
-     "R50": [
-      "Cooper W10",
-      "One 1.4i W10",
-      "One 1.6i W10",
-      "One D W17"
-     ],
-     "R52": [
-      "Cooper W10",
-      "Cooper S W11",
-      "One W10"
-     ],
-     "R53": [
-      "Coop.S JCW GP W11",
-      "Cooper S W11"
-     ],
-     "R55": [
-      "Cooper N12",
-      "Cooper d W16",
-      "Cooper S N14",
-      "One N12"
-     ],
-     "R55 Facelift": [
-      "Cooper N16",
-      "Cooper D 1.6 N47N",
-      "Cooper D 2.0 N47N",
-      "Cooper S N18",
-      "Cooper SD N47N",
-      "One N16",
-      "One D N47N"
-     ],
-     "R56": [
-      "Coop.S BEV I15",
-      "Cooper N12",
-      "Cooper D W16",
-      "Cooper S N14",
-      "One N12",
-      "One D W16"
-     ],
-     "R56 Facelift": [
-      "Cooper N16",
-      "Cooper D 1.6 N47N",
-      "Cooper D 2.0 N47N",
-      "Cooper S N18",
-      "Cooper SD N47N",
-      "One N16",
-      "One 55kW N16",
-      "One D N47N",
-      "One Eco N16",
-      "One Eco 55kW N16"
-     ],
-     "R57": [
-      "Cooper N12",
-      "Cooper S N14"
-     ],
-     "R57 Facelift": [
-      "Cooper N16",
-      "Cooper D 1.6 N47N",
-      "Cooper D 2.0 N47N",
-      "Cooper S N18",
-      "Cooper SD N47N",
-      "One N16"
-     ],
-     "R58": [
-      "Cooper N16",
-      "Cooper S N18",
-      "Cooper SD N47N"
-     ],
-     "R59": [
-      "Cooper N16",
-      "Cooper S N18",
-      "Cooper SD N47N"
-     ],
-     "R60": [
-      "Coop.SX JCW N18",
-      "Cooper N16",
-      "Cooper D 1.6 N47N",
-      "Cooper D 2.0 N47N",
-      "Cooper DX 1.6 N47N",
-      "Cooper DX 2.0 N47N",
-      "Cooper S N18",
-      "Cooper SD N47N",
-      "Cooper SDX N47N",
-      "Cooper SX N18",
-      "Cooper X N16",
-      "Cooper X N18",
-      "One N16",
-      "One D N47N"
-     ],
-     "R61": [
-      "Coop.SX JCW N18",
-      "Cooper N16",
-      "Cooper D 1.6 N47N",
-      "Cooper D 2.0 N47N",
-      "Cooper DX 1.6 N47N",
-      "Cooper DX 2.0 N47N",
-      "Cooper S N18",
-      "Cooper SD N47N",
-      "Cooper SDX N47N",
-      "Cooper SX N18",
-      "Cooper X N16",
-      "Cooper X N18"
-     ]
-    },
-    "note": ""
-   },
+   }
+  ],
+  "note": ""
+ },
+ "piston-seal": {
+  "numbers": [
    {
     "number": "34116769277",
     "description": "Repair set brake caliper",
@@ -1361,6 +2227,419 @@
   ],
   "note": ""
  },
+ "guide-boots": {
+  "numbers": [
+   {
+    "number": "34116768189",
+    "description": "Repair kit bellows",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "2",
+    "diagram": "FRONT WHEEL BRAKE | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper X B36"
+     ],
+     "F55": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47"
+     ],
+     "F56": [
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47"
+     ],
+     "F57": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47"
+     ],
+     "R50": [
+      "Cooper W10",
+      "One 1.4i W10",
+      "One 1.6i W10",
+      "One D W17"
+     ],
+     "R52": [
+      "Cooper W10",
+      "Cooper S W11",
+      "One W10"
+     ],
+     "R53": [
+      "Coop.S JCW GP W11",
+      "Cooper S W11"
+     ],
+     "R55": [
+      "Cooper N12",
+      "Cooper d W16",
+      "Cooper S N14",
+      "One N12"
+     ],
+     "R55 Facelift": [
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "One N16",
+      "One D N47N"
+     ],
+     "R56": [
+      "Coop.S BEV I15",
+      "Cooper N12",
+      "Cooper D W16",
+      "Cooper S N14",
+      "One N12",
+      "One D W16"
+     ],
+     "R56 Facelift": [
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "One N16",
+      "One 55kW N16",
+      "One D N47N",
+      "One Eco N16",
+      "One Eco 55kW N16"
+     ],
+     "R57": [
+      "Cooper N12",
+      "Cooper S N14"
+     ],
+     "R57 Facelift": [
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "One N16"
+     ],
+     "R58": [
+      "Cooper N16",
+      "Cooper S N18",
+      "Cooper SD N47N"
+     ],
+     "R59": [
+      "Cooper N16",
+      "Cooper S N18",
+      "Cooper SD N47N"
+     ],
+     "R60": [
+      "Coop.SX JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper DX 1.6 N47N",
+      "Cooper DX 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "Cooper SDX N47N",
+      "Cooper SX N18",
+      "Cooper X N16",
+      "Cooper X N18",
+      "One N16",
+      "One D N47N"
+     ],
+     "R61": [
+      "Coop.SX JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper DX 1.6 N47N",
+      "Cooper DX 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "Cooper SDX N47N",
+      "Cooper SX N18",
+      "Cooper X N16",
+      "Cooper X N18"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "pad-inner": {
+  "numbers": [
+   {
+    "number": "34106863293",
+    "description": "Repair kit, brake pads asbestos-free",
+    "supplement": "",
+    "condition": "In addition, the following parts are essential: - brake pad sensor - brake pad paste refer to Repair Manual!",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "FRONT WHEEL BRAKE | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper X B36"
+     ],
+     "F55": [
+      "Cooper S B46"
+     ],
+     "F56": [
+      "Cooper S B48",
+      "Cooper S B46"
+     ],
+     "F57": [
+      "Cooper S B46"
+     ]
+    },
+    "note": ""
+   },
+   {
+    "number": "83192158851",
+    "description": "Brake pad paste",
+    "supplement": "3G",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "2",
+    "diagram": "FRONT WHEEL BRAKE | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ],
+     "R50": [
+      "Cooper W10",
+      "One 1.4i W10",
+      "One 1.6i W10",
+      "One D W17"
+     ],
+     "R52": [
+      "Cooper W10",
+      "Cooper S W11",
+      "One W10"
+     ],
+     "R53": [
+      "Coop.S JCW GP W11",
+      "Cooper S W11"
+     ],
+     "R55": [
+      "Coop.S JCW N14",
+      "Cooper N12",
+      "Cooper d W16",
+      "Cooper S N14",
+      "One N12"
+     ],
+     "R55 Facelift": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "One N16",
+      "One D N47N"
+     ],
+     "R56": [
+      "Coop.S BEV I15",
+      "Coop.S JCW N14",
+      "Cooper N12",
+      "Cooper D W16",
+      "Cooper S N14",
+      "One N12",
+      "One D W16"
+     ],
+     "R56 Facelift": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "One N16",
+      "One 55kW N16",
+      "One D N47N",
+      "One Eco N16",
+      "One Eco 55kW N16"
+     ],
+     "R57": [
+      "Coop.S JCW N14",
+      "Cooper N12",
+      "Cooper S N14"
+     ],
+     "R57 Facelift": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "One N16"
+     ],
+     "R58": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper S N18",
+      "Cooper SD N47N"
+     ],
+     "R59": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper S N18",
+      "Cooper SD N47N"
+     ],
+     "R60": [
+      "Coop.SX JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper DX 1.6 N47N",
+      "Cooper DX 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "Cooper SDX N47N",
+      "Cooper SX N18",
+      "Cooper X N16",
+      "Cooper X N18",
+      "One N16",
+      "One D N47N"
+     ],
+     "R61": [
+      "Coop.SX JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper DX 1.6 N47N",
+      "Cooper DX 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "Cooper SDX N47N",
+      "Cooper SX N18",
+      "Cooper X N16",
+      "Cooper X N18"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "wear-sensor": {
+  "numbers": [
+   {
+    "number": "34356865611",
+    "description": "Brake pad wear sensor, front left",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "FRONT WHEEL BRAKE | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
  "carrier": {
   "numbers": [
    {
@@ -1465,71 +2744,6 @@
   ],
   "note": ""
  },
- "wear-sensor": {
-  "numbers": [
-   {
-    "number": "34356865611",
-    "description": "Brake pad wear sensor, front left",
-    "supplement": "",
-    "condition": "",
-    "info": "",
-    "dates": "",
-    "qty": "1",
-    "diagram": "FRONT WHEEL BRAKE | Mini MINI F56 Cooper S B46 USA",
-    "usage": {
-     "F54": [
-      "Cooper B36",
-      "Cooper B38",
-      "Cooper D B47",
-      "Cooper S B46",
-      "Cooper S B48",
-      "Cooper SD B47",
-      "Cooper SDX B47",
-      "Cooper SX B48",
-      "Cooper SX B46",
-      "Cooper X B36",
-      "One B38",
-      "One D B37"
-     ],
-     "F55": [
-      "Cooper B38",
-      "Cooper B36",
-      "Cooper D B37",
-      "Cooper S B46",
-      "Cooper S B48",
-      "Cooper SD B47",
-      "One B38",
-      "One 55kW B38",
-      "One D B37"
-     ],
-     "F56": [
-      "Cooper B38",
-      "Cooper B36",
-      "Cooper D B37",
-      "Cooper S B48",
-      "Cooper S B46",
-      "Cooper SD B47",
-      "JCW B48",
-      "One B38",
-      "One 55kW B38",
-      "One D B37"
-     ],
-     "F57": [
-      "Cooper B36",
-      "Cooper B38",
-      "Cooper D B37",
-      "Cooper S B46",
-      "Cooper S B48",
-      "Cooper SD B47",
-      "JCW B48",
-      "One B38"
-     ]
-    },
-    "note": ""
-   }
-  ],
-  "note": ""
- },
  "brake-hose": {
   "numbers": [
    {
@@ -1542,62 +2756,6 @@
     "qty": "2",
     "diagram": "Brake pipe, front | Mini MINI F56 Cooper S B46 USA",
     "usage": {
-     "F55": [
-      "Cooper B38",
-      "Cooper B36",
-      "Cooper D B37",
-      "Cooper S B46",
-      "Cooper S B48",
-      "Cooper SD B47",
-      "One B38",
-      "One 55kW B38",
-      "One D B37"
-     ],
-     "F56": [
-      "Cooper B38",
-      "Cooper B36",
-      "Cooper D B37",
-      "Cooper S B48",
-      "Cooper S B46",
-      "Cooper SD B47",
-      "JCW B48",
-      "One B38",
-      "One 55kW B38",
-      "One D B37"
-     ],
-     "F57": [
-      "Cooper B36",
-      "Cooper B38",
-      "Cooper D B37",
-      "Cooper S B46",
-      "Cooper S B48",
-      "Cooper SD B47",
-      "JCW B48",
-      "One B38"
-     ]
-    },
-    "note": ""
-   },
-   {
-    "number": "34306799733",
-    "description": "Bracket for brake hose, front left",
-    "supplement": "",
-    "condition": "",
-    "info": "",
-    "dates": "",
-    "qty": "1",
-    "diagram": "Brake pipe, front | Mini MINI F56 Cooper S B46 USA",
-    "usage": {
-     "F54": [
-      "Cooper B36",
-      "Cooper B38",
-      "Cooper D B47",
-      "Cooper S B46",
-      "Cooper S B48",
-      "Cooper SD B47",
-      "One B38",
-      "One D B37"
-     ],
      "F55": [
       "Cooper B38",
       "Cooper B36",
@@ -1696,7 +2854,12 @@
      ]
     },
     "note": ""
-   },
+   }
+  ],
+  "note": ""
+ },
+ "shield-screws": {
+  "numbers": [
    {
     "number": "34116772886",
     "description": "Hex bolt",
@@ -1880,208 +3043,8 @@
   ],
   "note": ""
  },
- "speed-sensor": {
+ "hub-screws": {
   "numbers": [
-   {
-    "number": "34526858468",
-    "description": "DSC pulse generator, front",
-    "supplement": "",
-    "condition": "",
-    "info": "",
-    "dates": "",
-    "qty": "2",
-    "diagram": "Front Spring strut/Carrier/Wheel bearing | Mini MINI F56 Cooper S B46 USA",
-    "usage": {
-     "F55": [
-      "Cooper B38",
-      "Cooper B36",
-      "Cooper D B37",
-      "Cooper S B46",
-      "Cooper S B48",
-      "Cooper SD B47",
-      "One B38",
-      "One 55kW B38",
-      "One D B37"
-     ],
-     "F56": [
-      "Cooper B38",
-      "Cooper B36",
-      "Cooper D B37",
-      "Cooper S B48",
-      "Cooper S B46",
-      "Cooper SD B47",
-      "JCW B48",
-      "One B38",
-      "One 55kW B38",
-      "One D B37"
-     ],
-     "F57": [
-      "Cooper B36",
-      "Cooper B38",
-      "Cooper D B37",
-      "Cooper S B46",
-      "Cooper S B48",
-      "Cooper SD B47",
-      "JCW B48",
-      "One B38"
-     ]
-    },
-    "note": ""
-   },
-   {
-    "number": "34526858469",
-    "description": "DSC pulse generator, front",
-    "supplement": "",
-    "condition": "For vehicles with Park Assistent Yes S5DPA",
-    "info": "",
-    "dates": "",
-    "qty": "2",
-    "diagram": "Front Spring strut/Carrier/Wheel bearing | Mini MINI F56 Cooper S B46 USA",
-    "usage": {
-     "F55": [
-      "Cooper B38",
-      "Cooper B36",
-      "Cooper D B37",
-      "Cooper S B46",
-      "Cooper S B48",
-      "Cooper SD B47",
-      "One B38",
-      "One 55kW B38",
-      "One D B37"
-     ],
-     "F56": [
-      "Cooper B38",
-      "Cooper B36",
-      "Cooper D B37",
-      "Cooper S B48",
-      "Cooper S B46",
-      "Cooper SD B47",
-      "JCW B48",
-      "One B38",
-      "One 55kW B38",
-      "One D B37"
-     ],
-     "F57": [
-      "Cooper B36",
-      "Cooper B38",
-      "Cooper D B37",
-      "Cooper S B46",
-      "Cooper S B48",
-      "Cooper SD B47",
-      "JCW B48",
-      "One B38"
-     ]
-    },
-    "note": "Only with Park Assist (S5DPA). This car's park assist module didn't answer the module sweep, so it most likely has the other one."
-   }
-  ],
-  "note": ""
- },
- "hub": {
-  "numbers": [
-   {
-    "number": "33416867926",
-    "description": "Wheel hub with bearing",
-    "supplement": "M12X1,5",
-    "condition": "",
-    "info": "only in conjunction with ( #6 ) Collar screw 31 20 6 783 065 to Oct ' 15 M12X1,5 Quantity: 8 Collar screw 31 20 6 854 639 to Oct ' 15 M12X1,5 Quantity: 8 ( #7 ) Collar screw with spring 33 40 6 858 534 to Oct ' 15 M12X1,5 Quantity: 2",
-    "dates": "to Oct ' 15",
-    "qty": "2",
-    "diagram": "Front Spring strut/Carrier/Wheel bearing | Mini MINI F56 Cooper S B46 USA",
-    "usage": {
-     "F54": [
-      "Cooper B36",
-      "Cooper B38",
-      "Cooper D B47",
-      "Cooper S B46",
-      "Cooper S B48",
-      "Cooper SD B47",
-      "Cooper X B36",
-      "One B38",
-      "One D B37"
-     ],
-     "F55": [
-      "Cooper B38",
-      "Cooper B36",
-      "Cooper D B37",
-      "Cooper S B46",
-      "Cooper S B48",
-      "Cooper SD B47",
-      "One B38",
-      "One 55kW B38",
-      "One D B37"
-     ],
-     "F56": [
-      "Cooper B38",
-      "Cooper B36",
-      "Cooper D B37",
-      "Cooper S B48",
-      "Cooper S B46",
-      "Cooper SD B47",
-      "JCW B48",
-      "One B38",
-      "One 55kW B38",
-      "One D B37"
-     ],
-     "F57": [
-      "Cooper B36"
-     ]
-    },
-    "note": ""
-   },
-   {
-    "number": "31206874443",
-    "description": "Wheel hub with bearing",
-    "supplement": "M12X1,25",
-    "condition": "",
-    "info": "only in conjunction with Round collar screw 31 20 6 872 920 M12X1,25 Quantity: 8 ( #6 ) Collar screw 31 20 6 783 065 M12X1,25 Quantity: 8 ( #7 ) Collar screw with spring 33 40 6 858 534 M12X1,25 Quantity: 2",
-    "dates": "",
-    "qty": "2",
-    "diagram": "Front Spring strut/Carrier/Wheel bearing | Mini MINI F56 Cooper S B46 USA",
-    "usage": {
-     "F54": [
-      "Cooper B36",
-      "Cooper B38",
-      "Cooper D B47",
-      "Cooper S B46",
-      "Cooper S B48",
-      "Cooper SD B47",
-      "Cooper SDX B47",
-      "Cooper SX B48",
-      "Cooper SX B46",
-      "Cooper X B36",
-      "One B38",
-      "One D B37"
-     ],
-     "F55": [
-      "Cooper B38",
-      "Cooper B36",
-      "Cooper D B37",
-      "Cooper S B46",
-      "Cooper S B48",
-      "Cooper SD B47",
-      "One B38",
-      "One 55kW B38",
-      "One D B37"
-     ],
-     "F56": [
-      "Cooper B38",
-      "Cooper B36",
-      "Cooper D B37",
-      "Cooper S B48",
-      "Cooper S B46",
-      "Cooper SD B47",
-      "JCW B48",
-      "One B38",
-      "One 55kW B38",
-      "One D B37"
-     ],
-     "F57": [
-      "Cooper B36"
-     ]
-    },
-    "note": "Later hub with M12x1.25 screws. A May 2015 car has the M12x1.5 one unless it's been changed."
-   },
    {
     "number": "31206783065",
     "description": "Collar screw",
@@ -2228,6 +3191,1321 @@
      ]
     },
     "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "ball-joint-bolt": {
+  "numbers": [
+   {
+    "number": "31106876027",
+    "description": "ASA-Bolt",
+    "supplement": "M10X55",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "2",
+    "diagram": "Front Spring strut/Carrier/Wheel bearing | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   },
+   {
+    "number": "31106863105",
+    "description": "ASA-Bolt",
+    "supplement": "M10X55",
+    "condition": "",
+    "info": "",
+    "dates": "to Nov ' 15",
+    "qty": "2",
+    "diagram": "Front Spring strut/Carrier/Wheel bearing | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   },
+   {
+    "number": "33306760587",
+    "description": "Hex nut wiht flange",
+    "supplement": "M10-10 ZNS3",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "2",
+    "diagram": "Front Spring strut/Carrier/Wheel bearing | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ],
+     "JCW": [
+      "C-Cup W11"
+     ],
+     "R50": [
+      "Cooper W10",
+      "One 1.4i W10",
+      "One 1.6i W10",
+      "One D W17"
+     ],
+     "R53": [
+      "Cooper S W11"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "heli-coil": {
+  "numbers": [
+   {
+    "number": "07149901467",
+    "description": "Heli-Coil threaded insert",
+    "supplement": "M6X9",
+    "condition": "",
+    "info": "",
+    "dates": "to Jul ' 15",
+    "qty": "1",
+    "diagram": "Front Spring strut/Carrier/Wheel bearing | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "sensor-screw": {
+  "numbers": [
+   {
+    "number": "07129904588",
+    "description": "ISA screw",
+    "supplement": "M6X16-8.8-ZNS3",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "2",
+    "diagram": "Front Spring strut/Carrier/Wheel bearing | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ],
+     "R55": [
+      "Coop.S JCW N14",
+      "Cooper N12",
+      "Cooper d W16",
+      "Cooper S N14",
+      "One N12"
+     ],
+     "R55 Facelift": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "One N16",
+      "One D N47N"
+     ],
+     "R56": [
+      "Coop.S BEV I15",
+      "Coop.S JCW N14",
+      "Cooper N12",
+      "Cooper D W16",
+      "Cooper S N14",
+      "One N12",
+      "One D W16"
+     ],
+     "R56 Facelift": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "One N16",
+      "One 55kW N16",
+      "One D N47N",
+      "One Eco N16",
+      "One Eco 55kW N16"
+     ],
+     "R57": [
+      "Coop.S JCW N14",
+      "Cooper N12",
+      "Cooper S N14"
+     ],
+     "R57 Facelift": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "One N16"
+     ],
+     "R58": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper S N18",
+      "Cooper SD N47N"
+     ],
+     "R59": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper S N18",
+      "Cooper SD N47N"
+     ],
+     "R60": [
+      "Coop.SX JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper DX 1.6 N47N",
+      "Cooper DX 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "Cooper SDX N47N",
+      "Cooper SX N18",
+      "Cooper X N16",
+      "Cooper X N18",
+      "One N16",
+      "One D N47N"
+     ],
+     "R61": [
+      "Coop.SX JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper DX 1.6 N47N",
+      "Cooper DX 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "Cooper SDX N47N",
+      "Cooper SX N18",
+      "Cooper X N16",
+      "Cooper X N18"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "speed-sensor": {
+  "numbers": [
+   {
+    "number": "34526858468",
+    "description": "DSC pulse generator, front",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "2",
+    "diagram": "Front Spring strut/Carrier/Wheel bearing | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   },
+   {
+    "number": "34526858469",
+    "description": "DSC pulse generator, front",
+    "supplement": "",
+    "condition": "For vehicles with Park Assistent Yes S5DPA",
+    "info": "",
+    "dates": "",
+    "qty": "2",
+    "diagram": "Front Spring strut/Carrier/Wheel bearing | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": "Only with Park Assist (S5DPA). This car's park assist module didn't answer the module sweep, so it most likely has the other one."
+   }
+  ],
+  "note": ""
+ },
+ "cable-clamp": {
+  "numbers": [
+   {
+    "number": "32731465257",
+    "description": "Cable clamp",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "2",
+    "diagram": "Front Spring strut/Carrier/Wheel bearing | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "strut-clamp-bolt": {
+  "numbers": [
+   {
+    "number": "31306798530",
+    "description": "Hexagon screw with flange",
+    "supplement": "M10X85 8.8 ZNS3",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "2",
+    "diagram": "Front Spring strut/Carrier/Wheel bearing | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   },
+   {
+    "number": "07119905032",
+    "description": "Hex nut",
+    "supplement": "M10-10-ZNS3",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "2",
+    "diagram": "Front Spring strut/Carrier/Wheel bearing | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ],
+     "R60": [
+      "Coop.SX JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper DX 1.6 N47N",
+      "Cooper DX 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "Cooper SDX N47N",
+      "Cooper SX N18",
+      "Cooper X N16",
+      "Cooper X N18"
+     ],
+     "R61": [
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper DX 1.6 N47N",
+      "Cooper DX 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "Cooper SDX N47N",
+      "Cooper SX N18",
+      "Cooper X N16",
+      "Cooper X N18"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "hose-clip": {
+  "numbers": [
+   {
+    "number": "34341163565",
+    "description": "Clip",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "2",
+    "diagram": "Brake pipe, front | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ],
+     "JCW": [
+      "C-Cup W11"
+     ],
+     "R50": [
+      "Cooper W10",
+      "One 1.4i W10",
+      "One 1.6i W10",
+      "One D W17"
+     ],
+     "R52": [
+      "Cooper W10",
+      "Cooper S W11",
+      "One W10"
+     ],
+     "R53": [
+      "Coop.S JCW GP W11",
+      "Cooper S W11"
+     ],
+     "R55": [
+      "Coop.S JCW N14",
+      "Cooper N12",
+      "Cooper d W16",
+      "Cooper S N14",
+      "One N12"
+     ],
+     "R55 Facelift": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "One N16",
+      "One D N47N"
+     ],
+     "R56": [
+      "Coop.S BEV I15",
+      "Coop.S JCW N14",
+      "Cooper N12",
+      "Cooper D W16",
+      "Cooper S N14",
+      "One N12",
+      "One D W16"
+     ],
+     "R56 Facelift": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "One N16",
+      "One 55kW N16",
+      "One D N47N",
+      "One Eco N16",
+      "One Eco 55kW N16"
+     ],
+     "R57": [
+      "Coop.S JCW N14",
+      "Cooper N12",
+      "Cooper S N14"
+     ],
+     "R57 Facelift": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "One N16"
+     ],
+     "R58": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper S N18",
+      "Cooper SD N47N"
+     ],
+     "R59": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper S N18",
+      "Cooper SD N47N"
+     ],
+     "R60": [
+      "Coop.SX JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper DX 1.6 N47N",
+      "Cooper DX 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "Cooper SDX N47N",
+      "Cooper SX N18",
+      "Cooper X N16",
+      "Cooper X N18",
+      "One N16",
+      "One D N47N"
+     ],
+     "R61": [
+      "Coop.SX JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper DX 1.6 N47N",
+      "Cooper DX 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "Cooper SDX N47N",
+      "Cooper SX N18",
+      "Cooper X N16",
+      "Cooper X N18"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "hose-bracket": {
+  "numbers": [
+   {
+    "number": "34306799733",
+    "description": "Bracket for brake hose, front left",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Brake pipe, front | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "strut": {
+  "numbers": [
+   {
+    "number": "31316852413",
+    "description": "LEFT FRONT SPRING STRUT",
+    "supplement": "",
+    "condition": "",
+    "info": "Required for repair Self-locking collar nut 33 32 6 760 668 Quantity: 1 ( #3 ) Hexagon screw with flange 31 30 6 798 530 Quantity: 1 ( #4 ) Hex nut 07 11 9 905 032 Quantity: 1",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Front Spring strut/Carrier/Wheel bearing | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F55": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47"
+     ],
+     "F56": [
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48"
+     ]
+    },
+    "note": ""
+   },
+   {
+    "number": "31316852415",
+    "description": "LEFT FRONT SPRING STRUT",
+    "supplement": "",
+    "condition": "For vehicles with Dynamic Damping Control Yes S223A or Sports suspension settings Yes S226A",
+    "info": "Required for repair",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Front Spring strut/Carrier/Wheel bearing | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F55": [
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One D B37"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "brake-pipe": {
+  "numbers": [
+   {
+    "number": "34306869883",
+    "description": "Pipe - DSC - hydraulic unit-",
+    "supplement": "M10-M10",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Brake pipe, front | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "wire-clip": {
+  "numbers": [
+   {
+    "number": "34306858577",
+    "description": "Wire clip, single",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "2",
+    "diagram": "Brake pipe, front | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "pipe-spacer": {
+  "numbers": [
+   {
+    "number": "34306776833",
+    "description": "Spacer",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "2",
+    "diagram": "Brake pipe, front | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "R55": [
+      "Coop.S JCW N14",
+      "Cooper N12",
+      "Cooper d W16",
+      "Cooper S N14",
+      "One N12"
+     ],
+     "R55 Facelift": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "One N16",
+      "One D N47N"
+     ],
+     "R56": [
+      "Coop.S BEV I15",
+      "Coop.S JCW N14",
+      "Cooper N12",
+      "Cooper D W16",
+      "Cooper S N14",
+      "One N12",
+      "One D W16"
+     ],
+     "R56 Facelift": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "One N16",
+      "One 55kW N16",
+      "One D N47N",
+      "One Eco N16",
+      "One Eco 55kW N16"
+     ],
+     "R57": [
+      "Coop.S JCW N14",
+      "Cooper N12",
+      "Cooper S N14"
+     ],
+     "R57 Facelift": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "One N16"
+     ],
+     "R58": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper S N18",
+      "Cooper SD N47N"
+     ],
+     "R59": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper S N18",
+      "Cooper SD N47N"
+     ],
+     "R60": [
+      "Coop.SX JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper DX 1.6 N47N",
+      "Cooper DX 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "Cooper SDX N47N",
+      "Cooper SX N18",
+      "Cooper X N16",
+      "Cooper X N18",
+      "One N16",
+      "One D N47N"
+     ],
+     "R61": [
+      "Coop.SX JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper DX 1.6 N47N",
+      "Cooper DX 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "Cooper SDX N47N",
+      "Cooper SX N18",
+      "Cooper X N16",
+      "Cooper X N18"
+     ]
+    },
+    "note": "Where it sits on the pipe is approximate."
    }
   ],
   "note": ""
