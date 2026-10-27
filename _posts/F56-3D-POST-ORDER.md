@@ -19,7 +19,8 @@ appending to the end.
    **Doors, windows and mirrors** (`#doors`) adds window-regulator, inner trim, exterior mirror and fixed-glass captures.
    **Dashboard, glovebox and console** (`#cabin`) adds carrier, dashboard, glovebox and console captures, with US left-hand-drive placement.
    **Steering and cabin switches** (`#steering`) adds column, wheel, switches and a joint-specific light-control card.
-3. **Jump to a part** (`#parts`): sixty-seven tiles, each a deep link into the
+   **Instruments, media and driver controls** (`#instruments`) adds cluster, central display/audio, automatic selector and pedal captures.
+3. **Jump to a part** (`#parts`): seventy-five tiles, each a deep link into the
    explorer (`#<section>`, `#<section>/part:<id>`, `#<section>/wiring`).
 4. **The 3D** (`#3d`): modelled parts, one hologram look, beside the
    exploded brake.
@@ -35,6 +36,20 @@ appending to the end.
   explorer's data file. Keep them in step when it changes.
 
 ## Screenshots
+
+The instruments and driver-controls milestone has 71 sections, 1,493 selectable groups,
+1,562 distinct replacement numbers and 35 distinct wiring diagrams. Its eight new views
+default off. Instruments and automatic pedals stay on the driver's left. HUD, Chrono,
+screen size, controller and media alternatives remain conditional. Small seats and the
+selector cable route are approximate; unverified joint settings are left blank.
+
+- `instruments.jpg`: public explorer, `#instruments/assembled`, 1400 x 900.
+- `central-display.jpg`: public explorer, `#central-display/assembled`, 1400 x 900.
+- `gear-selector.jpg`: public explorer, `#gear-selector/assembled`, 1400 x 900.
+- `driver-pedals.jpg`: public explorer, `#driver-pedals/assembled`, 1400 x 900.
+These are browser captures of the approximate models with glow on. Existing captures
+remain where assembly content is unchanged. The post is checked at 1100 and 390 pixels,
+and every new assembly is checked assembled and exploded on desktop and phone.
 
 The steering and switches milestone has 63 sections, 1,449 selectable part groups,
 1,493 distinct replacement numbers and 26 distinct wiring diagrams. Driver controls
