@@ -5,12 +5,13 @@ page is `_includes/f56-3d-feature.html`. Add to this structure instead of
 appending to the end.
 
 1. **Hero**: what it is (the F56 as a hologram you can pull apart, one
-   section at a time: front brake, then the battery), stats strip (parts,
+   section at a time: front brake, battery, cooling and subframe), stats strip (part groups,
    part numbers, sections, wiring diagrams), Open the explorer / How to use
    it / Jump to a part, then the exploded poster linking to the explorer.
 2. **How to use it** (`#use`): five steps, then five screenshots (caliper,
    wear sensor, wiring, battery, phone).
-3. **Jump to a part** (`#parts`): ten tiles, each a deep link into the
+   **More of the front** (`#front`) follows with the cooling pack and subframe views.
+3. **Jump to a part** (`#parts`): fourteen tiles, each a deep link into the
    explorer (`#<section>`, `#<section>/part:<id>`, `#<section>/wiring`).
 4. **The 3D** (`#3d`): modelled parts, one hologram look, beside the
    exploded brake.
@@ -37,3 +38,12 @@ Chrome with `?instant`, glow on, then saved as JPEG:
 - `battery.jpg`: `#battery` at 1400 x 900.
 - `phone.jpg`: `#part:caliper` at 390 x 844, 2x, phone emulation.
 - Retaken 2026-10-26 after the sections, phone layout and wire colours went in.
+
+The first front expansion has six sections, 263 part groups and 283 distinct part numbers.
+The assembly selector includes cooling pack, coolant plumbing, air conditioning and
+subframe/steering. Keep the page's counts in step with later additions.
+
+- `front-cooling.jpg`: public explorer at `#cooling`, 1400 x 900, glow on.
+- `front-subframe.jpg`: public explorer at `#subframe`, 1400 x 900, glow on.
+- `front-phone.jpg`: public explorer at `#cooling`, 390 x 844, touch emulation, glow on.
+  These are rendered model views; the new exterior geometry and placement are approximate.

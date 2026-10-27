@@ -1,0 +1,5297 @@
+{
+ "coolant-radiator-mounting-hardware-1": {
+  "numbers": [
+   {
+    "number": "17117617638",
+    "description": "Radiator",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "to Feb ' 16",
+    "qty": "1",
+    "diagram": "Coolant radiator mounting hardware | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper S B46"
+     ],
+     "F55": [
+      "Cooper S B46"
+     ],
+     "F56": [
+      "Cooper S B46"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper S B46"
+     ]
+    },
+    "note": ""
+   },
+   {
+    "number": "17117617635",
+    "description": "Radiator",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Coolant radiator mounting hardware | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F55": [
+      "Cooper S B46",
+      "Cooper S B48"
+     ],
+     "F56": [
+      "Cooper S B48",
+      "Cooper S B46"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "coolant-radiator-mounting-hardware-2": {
+  "numbers": [
+   {
+    "number": "17517617598",
+    "description": "Charge-air cooler",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Coolant radiator mounting hardware | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "coolant-radiator-mounting-hardware-3": {
+  "numbers": [
+   {
+    "number": "07129908601",
+    "description": "Fillister head screw",
+    "supplement": "M6X12-8.8-ZNNIV",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "2",
+    "diagram": "Coolant radiator mounting hardware | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "coolant-radiator-mounting-hardware-4": {
+  "numbers": [
+   {
+    "number": "17118600270",
+    "description": "MOUNTING-KIT",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Coolant radiator mounting hardware | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "coolant-radiator-mounting-hardware-5": {
+  "numbers": [
+   {
+    "number": "17118600126",
+    "description": "Gasket set",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Coolant radiator mounting hardware | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   },
+   {
+    "number": "17118600126",
+    "description": "Gasket set",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Fan housing, mounting parts | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "coolant-radiator-mounting-hardware-6": {
+  "numbers": [
+   {
+    "number": "17117617617",
+    "description": "Cooling module bearing, upper",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "2",
+    "diagram": "Coolant radiator mounting hardware | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "coolant-radiator-mounting-hardware-7": {
+  "numbers": [
+   {
+    "number": "17118605551",
+    "description": "Centering pin",
+    "supplement": "M6X13,6",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "2",
+    "diagram": "Coolant radiator mounting hardware | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "coolant-radiator-mounting-hardware-9": {
+  "numbers": [
+   {
+    "number": "17118617880",
+    "description": "BRACKET LOWER",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "2",
+    "diagram": "Coolant radiator mounting hardware | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper SD B47",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "coolant-radiator-mounting-hardware-10-right": {
+  "numbers": [
+   {
+    "number": "17118630445",
+    "description": "Bracket for module, right",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Coolant radiator mounting hardware | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper SD B47",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "coolant-radiator-mounting-hardware-10-left": {
+  "numbers": [
+   {
+    "number": "17118617884",
+    "description": "Bracket for module, left",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Coolant radiator mounting hardware | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper SD B47",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "coolant-radiator-mounting-hardware-11": {
+  "numbers": [
+   {
+    "number": "17118638445",
+    "description": "Fastening elements",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "2",
+    "diagram": "Coolant radiator mounting hardware | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F56": [
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One 55kW B38"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "fan-housing-mounting-parts-1": {
+  "numbers": [
+   {
+    "number": "17427617610",
+    "description": "Fan housing with fan",
+    "supplement": "600W",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Fan housing, mounting parts | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "One B38"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "JCW B48",
+      "One B38"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   },
+   {
+    "number": "17427637189",
+    "description": "Fan shroud",
+    "supplement": "600W-850W",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Fan housing, mounting parts | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "fan-housing-mounting-parts-4": {
+  "numbers": [
+   {
+    "number": "17118600269",
+    "description": "MOUNTING-KIT",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Fan housing, mounting parts | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "expansion-tank-1": {
+  "numbers": [
+   {
+    "number": "17137617362",
+    "description": "Expansion tank",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Expansion tank | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "expansion-tank-2": {
+  "numbers": [
+   {
+    "number": "17117639024",
+    "description": "Cover lid",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Expansion tank | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ],
+     "R55": [
+      "Coop.S JCW N14",
+      "Cooper N12",
+      "Cooper d W16",
+      "Cooper S N14",
+      "One N12"
+     ],
+     "R55 Facelift": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "One N16",
+      "One D N47N"
+     ],
+     "R56": [
+      "Coop.S JCW N14",
+      "Cooper N12",
+      "Cooper D W16",
+      "Cooper S N14",
+      "One N12",
+      "One D W16"
+     ],
+     "R56 Facelift": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "One N16",
+      "One 55kW N16",
+      "One D N47N",
+      "One Eco N16",
+      "One Eco 55kW N16"
+     ],
+     "R57": [
+      "Coop.S JCW N14",
+      "Cooper N12",
+      "Cooper S N14"
+     ],
+     "R57 Facelift": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "One N16"
+     ],
+     "R58": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper S N18",
+      "Cooper SD N47N"
+     ],
+     "R59": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper S N18",
+      "Cooper SD N47N"
+     ],
+     "R60": [
+      "Coop.SX JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper DX 1.6 N47N",
+      "Cooper DX 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "Cooper SDX N47N",
+      "Cooper SX N18",
+      "Cooper X N16",
+      "Cooper X N18",
+      "One N16",
+      "One D N47N"
+     ],
+     "R61": [
+      "Coop.SX JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper DX 1.6 N47N",
+      "Cooper DX 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "Cooper SDX N47N",
+      "Cooper SX N18",
+      "Cooper X N16",
+      "Cooper X N18"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "expansion-tank-3": {
+  "numbers": [
+   {
+    "number": "07149905728",
+    "description": "Hex bolt",
+    "supplement": "M6X20",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Expansion tank | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "expansion-tank-4": {
+  "numbers": [
+   {
+    "number": "64126910076",
+    "description": "Grommet",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Expansion tank | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "cooling-system-coolant-hoses-1": {
+  "numbers": [
+   {
+    "number": "17127617363",
+    "description": "Hose, radiator-engine",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Cooling system coolant hoses | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   },
+   {
+    "number": "17127617363",
+    "description": "Hose, radiator-engine",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Cooling system coolant hoses | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "cooling-system-coolant-hoses-2": {
+  "numbers": [
+   {
+    "number": "17127617368",
+    "description": "Hose from radiator bottom - thermostat",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Cooling system coolant hoses | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46"
+     ],
+     "F55": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47"
+     ],
+     "F56": [
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48"
+     ],
+     "F57": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48"
+     ]
+    },
+    "note": ""
+   },
+   {
+    "number": "17127617368",
+    "description": "Hose from radiator bottom - thermostat",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Cooling system coolant hoses | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46"
+     ],
+     "F55": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47"
+     ],
+     "F56": [
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48"
+     ],
+     "F57": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "cooling-system-coolant-hoses-3": {
+  "numbers": [
+   {
+    "number": "17127617369",
+    "description": "Line, coolant pump-turbocharger",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Cooling system coolant hoses | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36"
+     ],
+     "F55": [
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48"
+     ],
+     "F56": [
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "cooling-system-coolant-hoses-4": {
+  "numbers": [
+   {
+    "number": "17127646896",
+    "description": "Line, cylinder head-expansion tank",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Cooling system coolant hoses | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46"
+     ],
+     "F55": [
+      "Cooper S B46",
+      "Cooper S B48"
+     ],
+     "F56": [
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48"
+     ],
+     "F57": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48"
+     ]
+    },
+    "note": ""
+   },
+   {
+    "number": "17127646896",
+    "description": "Line, cylinder head-expansion tank",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Cooling system coolant hoses | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46"
+     ],
+     "F55": [
+      "Cooper S B46",
+      "Cooper S B48"
+     ],
+     "F56": [
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48"
+     ],
+     "F57": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "cooling-system-coolant-hoses-5": {
+  "numbers": [
+   {
+    "number": "17127646898",
+    "description": "Pipe, expansion tank-cylinder head",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Cooling system coolant hoses | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   },
+   {
+    "number": "17127646898",
+    "description": "Pipe, expansion tank-cylinder head",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Cooling system coolant hoses | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "cooling-system-coolant-hoses-6": {
+  "numbers": [
+   {
+    "number": "17128604579",
+    "description": "Cover",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Cooling system coolant hoses | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "cooling-system-coolant-hoses-7": {
+  "numbers": [
+   {
+    "number": "11787549563",
+    "description": "Cable clamp",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "2",
+    "diagram": "Cooling system coolant hoses | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ],
+     "R50": [
+      "One D W17"
+     ]
+    },
+    "note": ""
+   },
+   {
+    "number": "11787549563",
+    "description": "Cable clamp",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "2",
+    "diagram": "Cooling system coolant hoses | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ],
+     "R50": [
+      "One D W17"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "cooling-system-coolant-hoses-8": {
+  "numbers": [
+   {
+    "number": "07119908518",
+    "description": "Star-socket screw",
+    "supplement": "BM6X16-U1-8.8-",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Cooling system coolant hoses | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   },
+   {
+    "number": "07119908518",
+    "description": "Star-socket screw",
+    "supplement": "BM6X16-U1-8.8-",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "2",
+    "diagram": "Cooling system coolant hoses | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "cooling-system-coolant-hoses-9": {
+  "numbers": [
+   {
+    "number": "17127617366",
+    "description": "Pipe, radiator-expansion tank",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Cooling system coolant hoses | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   },
+   {
+    "number": "17127617366",
+    "description": "Pipe, radiator-expansion tank",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Cooling system coolant hoses | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "cooling-system-coolant-hoses-10": {
+  "numbers": [
+   {
+    "number": "17127617380",
+    "description": "Pipe, coolant pump-electr. coolant pump",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Cooling system coolant hoses | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46"
+     ],
+     "F55": [
+      "Cooper S B46",
+      "Cooper S B48"
+     ],
+     "F56": [
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48"
+     ],
+     "F57": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48"
+     ]
+    },
+    "note": ""
+   },
+   {
+    "number": "17127617380",
+    "description": "Pipe, coolant pump-electr. coolant pump",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Cooling system coolant hoses | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46"
+     ],
+     "F55": [
+      "Cooper S B46",
+      "Cooper S B48"
+     ],
+     "F56": [
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48"
+     ],
+     "F57": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "cooling-system-coolant-hoses-11": {
+  "numbers": [
+   {
+    "number": "17127615464",
+    "description": "Hose clamp",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Cooling system coolant hoses | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48",
+      "One B38"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   },
+   {
+    "number": "17127615464",
+    "description": "Hose clamp",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Cooling system coolant hoses | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48",
+      "One B38"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "cooling-system-coolant-hoses-13": {
+  "numbers": [
+   {
+    "number": "13621433077",
+    "description": "Temperature sensor, coolant",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Cooling system coolant hoses | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper SX B46",
+      "Cooper X B36"
+     ],
+     "F55": [
+      "Cooper B36",
+      "Cooper S B46"
+     ],
+     "F56": [
+      "Cooper B36",
+      "Cooper S B46"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper S B46"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "cooling-system-coolant-hoses-2-8": {
+  "numbers": [
+   {
+    "number": "17127617373",
+    "description": "Hose, transmission oil cooler-",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Cooling system coolant hoses | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48",
+      "One B38"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48",
+      "One B38"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "cooling-system-coolant-hoses-2-9": {
+  "numbers": [
+   {
+    "number": "17127617377",
+    "description": "Line, pump-turbocharger-heat exchanger-",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Cooling system coolant hoses | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48",
+      "One B38"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "cooling-system-coolant-hoses-2-10": {
+  "numbers": [
+   {
+    "number": "17128606015",
+    "description": "Schlauch Getriebeöl Wärmetauscher",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Cooling system coolant hoses | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48",
+      "One B38"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48",
+      "One B38"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "cooling-system-coolant-hoses-2-11": {
+  "numbers": [
+   {
+    "number": "17128606014",
+    "description": "Hose for cylinder head",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Cooling system coolant hoses | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48",
+      "One B38"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48",
+      "One B38"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "electric-water-pump-mount-1": {
+  "numbers": [
+   {
+    "number": "11518605322",
+    "description": "Coolant pump, electric",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Electric water pump / mount | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "electric-water-pump-mount-2": {
+  "numbers": [
+   {
+    "number": "11518604610",
+    "description": "Bracket for coolant pump, electric",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Electric water pump / mount | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "electric-water-pump-mount-3": {
+  "numbers": [
+   {
+    "number": "11517602124",
+    "description": "ASA-Bolt",
+    "supplement": "M8X22-8.8 ZNS3",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Electric water pump / mount | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "electric-water-pump-mount-4": {
+  "numbers": [
+   {
+    "number": "07129904492",
+    "description": "Circlip",
+    "supplement": "B8",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "2",
+    "diagram": "Electric water pump / mount | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "air-conditioner-compressor-1": {
+  "numbers": [
+   {
+    "number": "64529362491",
+    "description": "A/C compressor without solenoid clutch",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "to Nov ' 15",
+    "qty": "1",
+    "diagram": "Air-conditioner compressor | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ]
+    },
+    "note": ""
+   },
+   {
+    "number": "64526811431",
+    "description": "A/C compressor without solenoid clutch",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "to Feb ' 16",
+    "qty": "1",
+    "diagram": "Air-conditioner compressor | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   },
+   {
+    "number": "64526811433",
+    "description": "A/C compressor without solenoid clutch",
+    "supplement": "R134A/R1234YF",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Air-conditioner compressor | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   },
+   {
+    "number": "64529295050",
+    "description": "A/C compressor with solenoid clutch",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "to Nov ' 15",
+    "qty": "1",
+    "diagram": "Air-conditioner compressor | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ]
+    },
+    "note": ""
+   },
+   {
+    "number": "64526811430",
+    "description": "A/C compressor with solenoid clutch",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "to Feb ' 16",
+    "qty": "1",
+    "diagram": "Air-conditioner compressor | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   },
+   {
+    "number": "64526811432",
+    "description": "A/C compressor with solenoid clutch",
+    "supplement": "R134A/R1234YF",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Air-conditioner compressor | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "air-conditioner-compressor-3": {
+  "numbers": [
+   {
+    "number": "07129904835",
+    "description": "ISA screw",
+    "supplement": "M8X30",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "2",
+    "diagram": "Air-conditioner compressor | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   },
+   {
+    "number": "07129904835",
+    "description": "ISA screw",
+    "supplement": "M8X30",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "2",
+    "diagram": "Coolant lines | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "air-conditioner-compressor-4": {
+  "numbers": [
+   {
+    "number": "12319908092",
+    "description": "Star-socket screw",
+    "supplement": "BM10X125",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "2",
+    "diagram": "Air-conditioner compressor | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ],
+     "R55 Facelift": [
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper SD N47N",
+      "One D N47N"
+     ],
+     "R56 Facelift": [
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper SD N47N",
+      "One D N47N"
+     ],
+     "R57 Facelift": [
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper SD N47N"
+     ],
+     "R58": [
+      "Cooper SD N47N"
+     ],
+     "R59": [
+      "Cooper SD N47N"
+     ],
+     "R60": [
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper DX 1.6 N47N",
+      "Cooper DX 2.0 N47N",
+      "Cooper SD N47N",
+      "Cooper SDX N47N",
+      "One D N47N"
+     ],
+     "R61": [
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper DX 1.6 N47N",
+      "Cooper DX 2.0 N47N",
+      "Cooper SD N47N",
+      "Cooper SDX N47N"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "condenser-air-conditioning-1": {
+  "numbers": [
+   {
+    "number": "64509271204",
+    "description": "Condenser air conditioning with drier",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Condenser air conditioning | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "condenser-air-conditioning-2": {
+  "numbers": [
+   {
+    "number": "07129905003",
+    "description": "ISA screw",
+    "supplement": "M6X25",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "2",
+    "diagram": "Condenser air conditioning | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   },
+   {
+    "number": "07129905003",
+    "description": "ISA screw",
+    "supplement": "M6X25",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "5",
+    "diagram": "Coolant lines | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "coolant-lines-1": {
+  "numbers": [
+   {
+    "number": "64539209721",
+    "description": "Suction pipe",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Coolant lines | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "coolant-lines-2": {
+  "numbers": [
+   {
+    "number": "64539209723",
+    "description": "Suction pipe",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Coolant lines | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46"
+     ],
+     "F55": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47"
+     ],
+     "F56": [
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48"
+     ],
+     "F57": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "coolant-lines-3": {
+  "numbers": [
+   {
+    "number": "64539209724",
+    "description": "Pressure hose,condenser,evaporator",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Coolant lines | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "coolant-lines-4": {
+  "numbers": [
+   {
+    "number": "64539209727",
+    "description": "PRESSURE HOSE ASSY COMPRESSOR-CONDENSER",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Coolant lines | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B46"
+     ],
+     "F55": [
+      "Cooper S B46",
+      "Cooper SD B47"
+     ],
+     "F56": [
+      "Cooper S B46",
+      "Cooper SD B47"
+     ],
+     "F57": [
+      "Cooper S B46",
+      "Cooper SD B47"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "coolant-lines-6": {
+  "numbers": [
+   {
+    "number": "64539209732",
+    "description": "Ball pin",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "2",
+    "diagram": "Coolant lines | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "coolant-lines-7": {
+  "numbers": [
+   {
+    "number": "34509804151",
+    "description": "ASA screw, self-threading",
+    "supplement": "M6X16",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Coolant lines | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ],
+     "R55 Facelift": [
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper SD N47N",
+      "One D N47N"
+     ],
+     "R56 Facelift": [
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper SD N47N",
+      "One D N47N"
+     ],
+     "R57 Facelift": [
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper SD N47N"
+     ],
+     "R58": [
+      "Cooper SD N47N"
+     ],
+     "R59": [
+      "Cooper SD N47N"
+     ],
+     "R60": [
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper DX 1.6 N47N",
+      "Cooper DX 2.0 N47N",
+      "Cooper SD N47N",
+      "Cooper SDX N47N",
+      "One D N47N"
+     ],
+     "R61": [
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper DX 1.6 N47N",
+      "Cooper DX 2.0 N47N",
+      "Cooper SD N47N",
+      "Cooper SDX N47N"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "coolant-lines-8-right": {
+  "numbers": [
+   {
+    "number": "64539312780",
+    "description": "Sealing, engine compartment right",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Coolant lines | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "coolant-lines-9-right": {
+  "numbers": [
+   {
+    "number": "64539312778",
+    "description": "Sealing, engine compartment right",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Coolant lines | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "coolant-lines-10": {
+  "numbers": [
+   {
+    "number": "64538387437",
+    "description": "Sealing cap for suction line",
+    "supplement": "R134A",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Coolant lines | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ],
+     "R50": [
+      "Cooper W10",
+      "One 1.4i W10",
+      "One 1.6i W10",
+      "One D W17"
+     ],
+     "R52": [
+      "Cooper W10",
+      "Cooper S W11",
+      "One W10"
+     ],
+     "R53": [
+      "Coop.S JCW GP W11",
+      "Cooper S W11"
+     ],
+     "R55": [
+      "Coop.S JCW N14",
+      "Cooper N12",
+      "Cooper d W16",
+      "Cooper S N14",
+      "One N12"
+     ],
+     "R55 Facelift": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "One N16",
+      "One D N47N"
+     ],
+     "R56": [
+      "Coop.S BEV I15",
+      "Coop.S JCW N14",
+      "Cooper N12",
+      "Cooper D W16",
+      "Cooper S N14",
+      "One N12",
+      "One D W16"
+     ],
+     "R56 Facelift": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "One N16",
+      "One 55kW N16",
+      "One D N47N",
+      "One Eco N16",
+      "One Eco 55kW N16"
+     ],
+     "R57": [
+      "Coop.S JCW N14",
+      "Cooper N12",
+      "Cooper S N14"
+     ],
+     "R57 Facelift": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "One N16"
+     ],
+     "R58": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper S N18",
+      "Cooper SD N47N"
+     ],
+     "R59": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper S N18",
+      "Cooper SD N47N"
+     ],
+     "R60": [
+      "Coop.SX JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper DX 1.6 N47N",
+      "Cooper DX 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "Cooper SDX N47N",
+      "Cooper SX N18",
+      "Cooper X N16",
+      "Cooper X N18",
+      "One N16",
+      "One D N47N"
+     ],
+     "R61": [
+      "Coop.SX JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper DX 1.6 N47N",
+      "Cooper DX 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "Cooper SDX N47N",
+      "Cooper SX N18",
+      "Cooper X N16",
+      "Cooper X N18"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "coolant-lines-11": {
+  "numbers": [
+   {
+    "number": "64538387438",
+    "description": "Sealing cap for pressure line",
+    "supplement": "R134A",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Coolant lines | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ],
+     "R50": [
+      "Cooper W10",
+      "One 1.4i W10",
+      "One 1.6i W10",
+      "One D W17"
+     ],
+     "R52": [
+      "Cooper W10",
+      "Cooper S W11",
+      "One W10"
+     ],
+     "R53": [
+      "Coop.S JCW GP W11",
+      "Cooper S W11"
+     ],
+     "R55": [
+      "Coop.S JCW N14",
+      "Cooper N12",
+      "Cooper d W16",
+      "Cooper S N14",
+      "One N12"
+     ],
+     "R55 Facelift": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "One N16",
+      "One D N47N"
+     ],
+     "R56": [
+      "Coop.S BEV I15",
+      "Coop.S JCW N14",
+      "Cooper N12",
+      "Cooper D W16",
+      "Cooper S N14",
+      "One N12",
+      "One D W16"
+     ],
+     "R56 Facelift": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "One N16",
+      "One 55kW N16",
+      "One D N47N",
+      "One Eco N16",
+      "One Eco 55kW N16"
+     ],
+     "R57": [
+      "Coop.S JCW N14",
+      "Cooper N12",
+      "Cooper S N14"
+     ],
+     "R57 Facelift": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "One N16"
+     ],
+     "R58": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper S N18",
+      "Cooper SD N47N"
+     ],
+     "R59": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper S N18",
+      "Cooper SD N47N"
+     ],
+     "R60": [
+      "Coop.SX JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper DX 1.6 N47N",
+      "Cooper DX 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "Cooper SDX N47N",
+      "Cooper SX N18",
+      "Cooper X N16",
+      "Cooper X N18",
+      "One N16",
+      "One D N47N"
+     ],
+     "R61": [
+      "Coop.SX JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper DX 1.6 N47N",
+      "Cooper DX 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "Cooper SDX N47N",
+      "Cooper SX N18",
+      "Cooper X N16",
+      "Cooper X N18"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "coolant-lines-12": {
+  "numbers": [
+   {
+    "number": "07149209733",
+    "description": "Pipe clip",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "2",
+    "diagram": "Coolant lines | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "coolant-lines-14": {
+  "numbers": [
+   {
+    "number": "64509331105",
+    "description": "Bracket for air conditioning line",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Coolant lines | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "coolant-lines-15": {
+  "numbers": [
+   {
+    "number": "64539323658",
+    "description": "Pressure sensor",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Coolant lines | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "coolant-lines-16": {
+  "numbers": [
+   {
+    "number": "64536922944",
+    "description": "Valve",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "2",
+    "diagram": "Coolant lines | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ],
+     "R55": [
+      "Coop.S JCW N14",
+      "Cooper N12",
+      "Cooper d W16",
+      "Cooper S N14",
+      "One N12"
+     ],
+     "R55 Facelift": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "One N16",
+      "One D N47N"
+     ],
+     "R56": [
+      "Coop.S JCW N14",
+      "Cooper N12",
+      "Cooper D W16",
+      "Cooper S N14",
+      "One N12",
+      "One D W16"
+     ],
+     "R56 Facelift": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "One N16",
+      "One 55kW N16",
+      "One D N47N",
+      "One Eco N16",
+      "One Eco 55kW N16"
+     ],
+     "R57": [
+      "Coop.S JCW N14",
+      "Cooper N12",
+      "Cooper S N14"
+     ],
+     "R57 Facelift": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "One N16"
+     ],
+     "R58": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper S N18",
+      "Cooper SD N47N"
+     ],
+     "R59": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper S N18",
+      "Cooper SD N47N"
+     ],
+     "R60": [
+      "Coop.SX JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper DX 1.6 N47N",
+      "Cooper DX 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "Cooper SDX N47N",
+      "Cooper SX N18",
+      "Cooper X N16",
+      "Cooper X N18",
+      "One N16",
+      "One D N47N"
+     ],
+     "R61": [
+      "Coop.SX JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper DX 1.6 N47N",
+      "Cooper DX 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "Cooper SDX N47N",
+      "Cooper SX N18",
+      "Cooper X N16",
+      "Cooper X N18"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "coolant-lines-17": {
+  "numbers": [
+   {
+    "number": "64508374959",
+    "description": "Gasket ring",
+    "supplement": "9,5X2,5",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "X",
+    "diagram": "Coolant lines | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ],
+     "R50": [
+      "Cooper W10",
+      "One 1.4i W10",
+      "One 1.6i W10",
+      "One D W17"
+     ],
+     "R52": [
+      "Cooper W10",
+      "Cooper S W11",
+      "One W10"
+     ],
+     "R53": [
+      "Coop.S JCW GP W11",
+      "Cooper S W11"
+     ],
+     "R55": [
+      "Coop.S JCW N14",
+      "Cooper N12",
+      "Cooper d W16",
+      "Cooper S N14",
+      "One N12"
+     ],
+     "R55 Facelift": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "One N16",
+      "One D N47N"
+     ],
+     "R56": [
+      "Coop.S BEV I15",
+      "Coop.S JCW N14",
+      "Cooper N12",
+      "Cooper D W16",
+      "Cooper S N14",
+      "One N12",
+      "One D W16"
+     ],
+     "R56 Facelift": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "One N16",
+      "One 55kW N16",
+      "One D N47N",
+      "One Eco N16",
+      "One Eco 55kW N16"
+     ],
+     "R57": [
+      "Coop.S JCW N14",
+      "Cooper N12",
+      "Cooper S N14"
+     ],
+     "R57 Facelift": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "One N16"
+     ],
+     "R58": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper S N18",
+      "Cooper SD N47N"
+     ],
+     "R59": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper S N18",
+      "Cooper SD N47N"
+     ],
+     "R60": [
+      "Coop.SX JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper DX 1.6 N47N",
+      "Cooper DX 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "Cooper SDX N47N",
+      "Cooper SX N18",
+      "Cooper X N16",
+      "Cooper X N18",
+      "One N16",
+      "One D N47N"
+     ],
+     "R61": [
+      "Coop.SX JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper DX 1.6 N47N",
+      "Cooper DX 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "Cooper SDX N47N",
+      "Cooper SX N18",
+      "Cooper X N16",
+      "Cooper X N18"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "coolant-lines-18": {
+  "numbers": [
+   {
+    "number": "64508375741",
+    "description": "Gasket ring",
+    "supplement": "D=10,8 MM",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "X",
+    "diagram": "Coolant lines | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ],
+     "R50": [
+      "Cooper W10",
+      "One 1.4i W10",
+      "One 1.6i W10",
+      "One D W17"
+     ],
+     "R52": [
+      "Cooper W10",
+      "Cooper S W11",
+      "One W10"
+     ],
+     "R53": [
+      "Coop.S JCW GP W11",
+      "Cooper S W11"
+     ],
+     "R55": [
+      "Coop.S JCW N14",
+      "Cooper N12",
+      "Cooper d W16",
+      "Cooper S N14",
+      "One N12"
+     ],
+     "R55 Facelift": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper S N18",
+      "One N16"
+     ],
+     "R56": [
+      "Coop.S BEV I15",
+      "Coop.S JCW N14",
+      "Cooper N12",
+      "Cooper D W16",
+      "Cooper S N14",
+      "One N12",
+      "One D W16"
+     ],
+     "R56 Facelift": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper S N18",
+      "One N16",
+      "One 55kW N16",
+      "One Eco N16",
+      "One Eco 55kW N16"
+     ],
+     "R57": [
+      "Coop.S JCW N14",
+      "Cooper N12",
+      "Cooper S N14"
+     ],
+     "R57 Facelift": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper S N18",
+      "One N16"
+     ],
+     "R58": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper S N18"
+     ],
+     "R59": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper S N18"
+     ],
+     "R60": [
+      "Coop.SX JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper DX 1.6 N47N",
+      "Cooper DX 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "Cooper SDX N47N",
+      "Cooper SX N18",
+      "Cooper X N16",
+      "Cooper X N18",
+      "One N16",
+      "One D N47N"
+     ],
+     "R61": [
+      "Coop.SX JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper DX 1.6 N47N",
+      "Cooper DX 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "Cooper SDX N47N",
+      "Cooper SX N18",
+      "Cooper X N16",
+      "Cooper X N18"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "coolant-lines-19": {
+  "numbers": [
+   {
+    "number": "64538375742",
+    "description": "Gasket ring",
+    "supplement": "D=13,7 MM",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "X",
+    "diagram": "Coolant lines | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ],
+     "R50": [
+      "Cooper W10",
+      "One 1.4i W10",
+      "One 1.6i W10",
+      "One D W17"
+     ],
+     "R52": [
+      "Cooper W10",
+      "Cooper S W11",
+      "One W10"
+     ],
+     "R53": [
+      "Coop.S JCW GP W11",
+      "Cooper S W11"
+     ],
+     "R55": [
+      "Coop.S JCW N14",
+      "Cooper N12",
+      "Cooper d W16",
+      "Cooper S N14",
+      "One N12"
+     ],
+     "R55 Facelift": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "One N16",
+      "One D N47N"
+     ],
+     "R56": [
+      "Coop.S BEV I15",
+      "Coop.S JCW N14",
+      "Cooper N12",
+      "Cooper D W16",
+      "Cooper S N14",
+      "One N12",
+      "One D W16"
+     ],
+     "R56 Facelift": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "One N16",
+      "One 55kW N16",
+      "One D N47N",
+      "One Eco N16",
+      "One Eco 55kW N16"
+     ],
+     "R57": [
+      "Coop.S JCW N14",
+      "Cooper N12",
+      "Cooper S N14"
+     ],
+     "R57 Facelift": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "One N16"
+     ],
+     "R58": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper S N18",
+      "Cooper SD N47N"
+     ],
+     "R59": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper S N18",
+      "Cooper SD N47N"
+     ],
+     "R60": [
+      "Coop.SX JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper DX 1.6 N47N",
+      "Cooper DX 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "Cooper SDX N47N",
+      "Cooper SX N18",
+      "Cooper X N16",
+      "Cooper X N18",
+      "One N16",
+      "One D N47N"
+     ],
+     "R61": [
+      "Coop.SX JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper DX 1.6 N47N",
+      "Cooper DX 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "Cooper SDX N47N",
+      "Cooper SX N18",
+      "Cooper X N16",
+      "Cooper X N18"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "coolant-lines-20": {
+  "numbers": [
+   {
+    "number": "64539284018",
+    "description": "Gasket ring",
+    "supplement": "D=11MM",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "X",
+    "diagram": "Coolant lines | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "coolant-lines-21": {
+  "numbers": [
+   {
+    "number": "64539284019",
+    "description": "Gasket ring",
+    "supplement": "D=17MM",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "X",
+    "diagram": "Coolant lines | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ }
+}

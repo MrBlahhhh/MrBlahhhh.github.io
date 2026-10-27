@@ -1,0 +1,4993 @@
+{
+ "intake-manifold-system-1": {
+  "numbers": [
+   {
+    "number": "11617617500",
+    "description": "Intake manifold system",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Intake manifold system | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46"
+     ],
+     "F55": [
+      "Cooper S B46",
+      "Cooper S B48"
+     ],
+     "F56": [
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48"
+     ],
+     "F57": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "intake-manifold-system-2": {
+  "numbers": [
+   {
+    "number": "11617633493",
+    "description": "Seal for intake system",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "4",
+    "diagram": "Intake manifold system | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "intake-manifold-system-3": {
+  "numbers": [
+   {
+    "number": "11618571000",
+    "description": "Fastening elements",
+    "supplement": "M6X36,5 MM",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "5",
+    "diagram": "Intake manifold system | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "intake-manifold-system-4": {
+  "numbers": [
+   {
+    "number": "11617633558",
+    "description": "Gasket, throttle body",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Intake manifold system | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46"
+     ],
+     "F55": [
+      "Cooper S B46",
+      "Cooper S B48"
+     ],
+     "F56": [
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48"
+     ],
+     "F57": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "intake-manifold-system-5": {
+  "numbers": [
+   {
+    "number": "07129907489",
+    "description": "Screw",
+    "supplement": "6X20",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Intake manifold system | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   },
+   {
+    "number": "07129907489",
+    "description": "Screw",
+    "supplement": "6X20",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Air duct | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "intake-manifold-system-6": {
+  "numbers": [
+   {
+    "number": "13628637899",
+    "description": "T-MAP SENSOR",
+    "supplement": "2,5BAR",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Intake manifold system | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46"
+     ],
+     "F55": [
+      "Cooper S B46",
+      "Cooper S B48"
+     ],
+     "F56": [
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48"
+     ],
+     "F57": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "intake-manifold-system-7": {
+  "numbers": [
+   {
+    "number": "11787549563",
+    "description": "Cable clamp",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "3",
+    "diagram": "Intake manifold system | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ],
+     "R50": [
+      "One D W17"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "intake-manifold-system-8": {
+  "numbers": [
+   {
+    "number": "11127593207",
+    "description": "Ball pin",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "2",
+    "diagram": "Intake manifold system | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "intake-manifold-system-9": {
+  "numbers": [
+   {
+    "number": "12127669013",
+    "description": "Cable clamp",
+    "supplement": "ZNS3",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Intake manifold system | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46"
+     ],
+     "F55": [
+      "Cooper S B46",
+      "Cooper S B48"
+     ],
+     "F56": [
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48"
+     ],
+     "F57": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "turbo-charger-with-lubrication-1": {
+  "numbers": [
+   {
+    "number": "11658626637",
+    "description": "AT-TURBO CHARGER",
+    "supplement": "",
+    "condition": "Please always observe repair instructions 11 65 020!",
+    "info": "only in conjunction with ( #13 ) Gasket Asbestos Free 11 42 7 577 017 Quantity: 1 ( #12 ) OIL PIPE OUTLET 11 42 7 617 535 Quantity: 1 ( #14 ) O-ring 11 42 8 604 872 Quantity: 1",
+    "dates": "",
+    "qty": "1",
+    "diagram": "TURBO CHARGER WITH LUBRICATION | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper S B46",
+      "Cooper SX B46"
+     ],
+     "F55": [
+      "Cooper S B46"
+     ],
+     "F56": [
+      "Cooper S B46",
+      "JCW B48"
+     ],
+     "F57": [
+      "Cooper S B46",
+      "JCW B48"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "turbo-charger-with-lubrication-2": {
+  "numbers": [
+   {
+    "number": "18307581970",
+    "description": "Gasket ring",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "TURBO CHARGER WITH LUBRICATION | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   },
+   {
+    "number": "18307581970",
+    "description": "Gasket ring",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Engine-side catalytic converter | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "turbo-charger-with-lubrication-3": {
+  "numbers": [
+   {
+    "number": "18307606136",
+    "description": "Screw clamp",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "TURBO CHARGER WITH LUBRICATION | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   },
+   {
+    "number": "18307606136",
+    "description": "Screw clamp",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Engine-side catalytic converter | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "turbo-charger-with-lubrication-4": {
+  "numbers": [
+   {
+    "number": "11627617525",
+    "description": "TERMINAL STRIP",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "TURBO CHARGER WITH LUBRICATION | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46"
+     ],
+     "F55": [
+      "Cooper S B46",
+      "Cooper S B48"
+     ],
+     "F56": [
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48"
+     ],
+     "F57": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "turbo-charger-with-lubrication-5": {
+  "numbers": [
+   {
+    "number": "11627800122",
+    "description": "Flange nut",
+    "supplement": "M7",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "10",
+    "diagram": "TURBO CHARGER WITH LUBRICATION | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ],
+     "R55 Facelift": [
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper SD N47N",
+      "One D N47N"
+     ],
+     "R56 Facelift": [
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper SD N47N",
+      "One D N47N"
+     ],
+     "R57 Facelift": [
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper SD N47N"
+     ],
+     "R58": [
+      "Cooper SD N47N"
+     ],
+     "R59": [
+      "Cooper SD N47N"
+     ],
+     "R60": [
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper DX 1.6 N47N",
+      "Cooper DX 2.0 N47N",
+      "Cooper SD N47N",
+      "Cooper SDX N47N",
+      "One D N47N"
+     ],
+     "R61": [
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper DX 1.6 N47N",
+      "Cooper DX 2.0 N47N",
+      "Cooper SD N47N",
+      "Cooper SDX N47N"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "turbo-charger-with-lubrication-6": {
+  "numbers": [
+   {
+    "number": "11627617524",
+    "description": "Sliding bar",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "TURBO CHARGER WITH LUBRICATION | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46"
+     ],
+     "F55": [
+      "Cooper S B46",
+      "Cooper S B48"
+     ],
+     "F56": [
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48"
+     ],
+     "F57": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "turbo-charger-with-lubrication-7": {
+  "numbers": [
+   {
+    "number": "07119942082",
+    "description": "Dowel pin",
+    "supplement": "4X16MM",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "2",
+    "diagram": "TURBO CHARGER WITH LUBRICATION | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "turbo-charger-with-lubrication-8": {
+  "numbers": [
+   {
+    "number": "11627617523",
+    "description": "Gasket for exhaust manifold",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "TURBO CHARGER WITH LUBRICATION | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46"
+     ],
+     "F55": [
+      "Cooper S B46",
+      "Cooper S B48"
+     ],
+     "F56": [
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48"
+     ],
+     "F57": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "turbo-charger-with-lubrication-9": {
+  "numbers": [
+   {
+    "number": "07129905867",
+    "description": "ISA screw",
+    "supplement": "M6X12-8.8-ZNNIV",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "5",
+    "diagram": "TURBO CHARGER WITH LUBRICATION | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   },
+   {
+    "number": "07129905867",
+    "description": "ISA screw",
+    "supplement": "M6X12-8.8-ZNNIV",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "2",
+    "diagram": "Cooling-system turbocharger | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "turbo-charger-with-lubrication-10": {
+  "numbers": [
+   {
+    "number": "11537610049",
+    "description": "O-ring",
+    "supplement": "9,7X1,5MM",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "2",
+    "diagram": "TURBO CHARGER WITH LUBRICATION | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   },
+   {
+    "number": "11537610049",
+    "description": "O-ring",
+    "supplement": "9,7X1,5MM",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "3",
+    "diagram": "Cooling-system turbocharger | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "turbo-charger-with-lubrication-11": {
+  "numbers": [
+   {
+    "number": "11427617534",
+    "description": "OIL PIPE INLET",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "TURBO CHARGER WITH LUBRICATION | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46"
+     ],
+     "F55": [
+      "Cooper S B46",
+      "Cooper S B48"
+     ],
+     "F56": [
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48"
+     ],
+     "F57": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48"
+     ]
+    },
+    "note": ""
+   },
+   {
+    "number": "11422398509",
+    "description": "OIL PIPE INLET",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "to Feb ' 16",
+    "qty": "1",
+    "diagram": "TURBO CHARGER WITH LUBRICATION | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46"
+     ],
+     "F55": [
+      "Cooper S B46",
+      "Cooper S B48"
+     ],
+     "F56": [
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48"
+     ],
+     "F57": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "turbo-charger-with-lubrication-12": {
+  "numbers": [
+   {
+    "number": "11427617535",
+    "description": "OIL PIPE OUTLET",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "TURBO CHARGER WITH LUBRICATION | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46"
+     ],
+     "F55": [
+      "Cooper S B46",
+      "Cooper S B48"
+     ],
+     "F56": [
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48"
+     ],
+     "F57": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "turbo-charger-with-lubrication-13": {
+  "numbers": [
+   {
+    "number": "11427577017",
+    "description": "Gasket Asbestos Free",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "TURBO CHARGER WITH LUBRICATION | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46"
+     ],
+     "F55": [
+      "Cooper S B46",
+      "Cooper S B48"
+     ],
+     "F56": [
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48"
+     ],
+     "F57": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "turbo-charger-with-lubrication-14": {
+  "numbers": [
+   {
+    "number": "11428604872",
+    "description": "O-ring",
+    "supplement": "16X2MM",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "TURBO CHARGER WITH LUBRICATION | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "turbo-charger-with-lubrication-15": {
+  "numbers": [
+   {
+    "number": "11658638382",
+    "description": "Preformed seal",
+    "supplement": "75X4,5MM",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "TURBO CHARGER WITH LUBRICATION | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46"
+     ],
+     "F55": [
+      "Cooper S B46",
+      "Cooper S B48"
+     ],
+     "F56": [
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48"
+     ],
+     "F57": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "turbo-charger-with-lubrication-16": {
+  "numbers": [
+   {
+    "number": "11657850453",
+    "description": "Set Wastegate valve actuator",
+    "supplement": "",
+    "condition": "",
+    "info": "only in conjunction with ( #17 ) Heat shield 11 65 8 671 960 Quantity: 1",
+    "dates": "",
+    "qty": "1",
+    "diagram": "TURBO CHARGER WITH LUBRICATION | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46"
+     ],
+     "F55": [
+      "Cooper S B46",
+      "Cooper S B48"
+     ],
+     "F56": [
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48"
+     ],
+     "F57": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "turbo-charger-with-lubrication-17": {
+  "numbers": [
+   {
+    "number": "11658671960",
+    "description": "Heat shield",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "TURBO CHARGER WITH LUBRICATION | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46"
+     ],
+     "F55": [
+      "Cooper S B46",
+      "Cooper S B48"
+     ],
+     "F56": [
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48"
+     ],
+     "F57": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "turbocharger-heat-shield-1": {
+  "numbers": [
+   {
+    "number": "11658605502",
+    "description": "Air-discharge duct for turbocharger",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Turbocharger heat shield | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36"
+     ],
+     "F55": [
+      "Cooper S B46",
+      "Cooper S B48"
+     ],
+     "F56": [
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48"
+     ],
+     "F57": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "turbocharger-heat-shield-2": {
+  "numbers": [
+   {
+    "number": "07119908062",
+    "description": "Star-socket screw",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "from Sep ' 14",
+    "qty": "16",
+    "diagram": "Turbocharger heat shield | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48"
+     ]
+    },
+    "note": ""
+   },
+   {
+    "number": "07119908062",
+    "description": "Star-socket screw",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "from Sep ' 14",
+    "qty": "1",
+    "diagram": "Turbocharger heat shield | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "turbocharger-heat-shield-3": {
+  "numbers": [
+   {
+    "number": "07119908442",
+    "description": "Star-socket screw",
+    "supplement": "M8X12",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "3",
+    "diagram": "Turbocharger heat shield | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48",
+      "One B38"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "turbocharger-heat-shield-4": {
+  "numbers": [
+   {
+    "number": "51119907273",
+    "description": "Fillister head screw",
+    "supplement": "M6X16 8.8",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Turbocharger heat shield | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "turbocharger-heat-shield-5": {
+  "numbers": [
+   {
+    "number": "11657618370",
+    "description": "Heat shield, turbocharger, lower",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Turbocharger heat shield | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "turbocharger-heat-shield-6": {
+  "numbers": [
+   {
+    "number": "11658604703",
+    "description": "Heat shield",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Turbocharger heat shield | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "turbocharger-heat-shield-7": {
+  "numbers": [
+   {
+    "number": "11658604704",
+    "description": "Holder",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Turbocharger heat shield | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "turbocharger-heat-shield-8": {
+  "numbers": [
+   {
+    "number": "11657618369",
+    "description": "Heat shield, turbocharger, upper",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Turbocharger heat shield | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46"
+     ],
+     "F55": [
+      "Cooper S B46",
+      "Cooper S B48"
+     ],
+     "F56": [
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48"
+     ],
+     "F57": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "turbocharger-heat-shield-9": {
+  "numbers": [
+   {
+    "number": "11657618371",
+    "description": "Heat shield for exhaust manifold",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Turbocharger heat shield | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46"
+     ],
+     "F55": [
+      "Cooper S B46",
+      "Cooper S B48"
+     ],
+     "F56": [
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48"
+     ],
+     "F57": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "turbocharger-heat-shield-10": {
+  "numbers": [
+   {
+    "number": "11657626141",
+    "description": "Heat shield",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Turbocharger heat shield | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46"
+     ],
+     "F55": [
+      "Cooper S B46",
+      "Cooper S B48"
+     ],
+     "F56": [
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48"
+     ],
+     "F57": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "turbocharger-heat-shield-12": {
+  "numbers": [
+   {
+    "number": "11658604706",
+    "description": "Bracket, air-discharge duct turbocharger",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Turbocharger heat shield | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "cooling-system-turbocharger-1": {
+  "numbers": [
+   {
+    "number": "11537617532",
+    "description": "Line, turbocharger coolant supply line",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Cooling-system turbocharger | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46"
+     ],
+     "F55": [
+      "Cooper S B46",
+      "Cooper S B48"
+     ],
+     "F56": [
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48"
+     ],
+     "F57": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "cooling-system-turbocharger-4": {
+  "numbers": [
+   {
+    "number": "11537617533",
+    "description": "Line, turbocharger coolant return line",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Cooling-system turbocharger | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46"
+     ],
+     "F55": [
+      "Cooper S B46",
+      "Cooper S B48"
+     ],
+     "F56": [
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48"
+     ],
+     "F57": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "cooling-system-turbocharger-5": {
+  "numbers": [
+   {
+    "number": "11537643092",
+    "description": "Line, turbocharger coolant return line",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Cooling-system turbocharger | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "cooling-system-turbocharger-6": {
+  "numbers": [
+   {
+    "number": "12527578321",
+    "description": "Fixing clamp",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Cooling-system turbocharger | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   },
+   {
+    "number": "12527578321",
+    "description": "Fixing clamp",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Fuel tank breather valve | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "high-pressure-pump-tubing-1": {
+  "numbers": [
+   {
+    "number": "13517636881",
+    "description": "High-pressure pump",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "High-pressure pump/Tubing | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "high-pressure-pump-tubing-2": {
+  "numbers": [
+   {
+    "number": "11128618520",
+    "description": "PROFILE-GASKET",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "High-pressure pump/Tubing | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "high-pressure-pump-tubing-4": {
+  "numbers": [
+   {
+    "number": "07129905597",
+    "description": "Isa screw with washer",
+    "supplement": "M6X25-U1",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "2",
+    "diagram": "High-pressure pump/Tubing | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "high-pressure-pump-tubing-5": {
+  "numbers": [
+   {
+    "number": "13537639980",
+    "description": "High pressure pipe",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "High-pressure pump/Tubing | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "high-pressure-pump-tubing-6": {
+  "numbers": [
+   {
+    "number": "13537639981",
+    "description": "Supply line to engine compartment",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "High-pressure pump/Tubing | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "high-pressure-pump-tubing-7": {
+  "numbers": [
+   {
+    "number": "11367609963",
+    "description": "ASA screw, self-threading",
+    "supplement": "M6X18",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "2",
+    "diagram": "High-pressure pump/Tubing | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "high-pressure-pump-tubing-8": {
+  "numbers": [
+   {
+    "number": "13538600440",
+    "description": "Fuel hose",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "High-pressure pump/Tubing | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "high-pressure-rail-injector-1": {
+  "numbers": [
+   {
+    "number": "13537639979",
+    "description": "High-pressure rail",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "High-pressure rail / injector | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46"
+     ],
+     "F55": [
+      "Cooper S B46",
+      "Cooper S B48"
+     ],
+     "F56": [
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48"
+     ],
+     "F57": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "high-pressure-rail-injector-2": {
+  "numbers": [
+   {
+    "number": "13538643665",
+    "description": "Sensor, high-pressure",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "from Dec ' 14",
+    "qty": "1",
+    "diagram": "High-pressure rail / injector | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "high-pressure-rail-injector-3": {
+  "numbers": [
+   {
+    "number": "13532392589",
+    "description": "Star-socket screw",
+    "supplement": "BM6X70-8.8",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "4",
+    "diagram": "High-pressure rail / injector | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F57": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "high-pressure-rail-injector-4": {
+  "numbers": [
+   {
+    "number": "13538642294",
+    "description": "Bracket injector",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "4",
+    "diagram": "High-pressure rail / injector | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "high-pressure-rail-injector-5": {
+  "numbers": [
+   {
+    "number": "13629908054",
+    "description": "Star-socket screw",
+    "supplement": "BM5X30-10.9",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "8",
+    "diagram": "High-pressure rail / injector | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "high-pressure-rail-injector-6": {
+  "numbers": [
+   {
+    "number": "13537639990",
+    "description": "Injector",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "4",
+    "diagram": "High-pressure rail / injector | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   },
+   {
+    "number": "13538625396",
+    "description": "Injector",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "to Aug ' 15",
+    "qty": "4",
+    "diagram": "High-pressure rail / injector | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "high-pressure-rail-injector-7": {
+  "numbers": [
+   {
+    "number": "13537591006",
+    "description": "Gasket ring",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "4",
+    "diagram": "High-pressure rail / injector | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "air-duct-1": {
+  "numbers": [
+   {
+    "number": "13717619268",
+    "description": "Filtered air pipe",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Air duct | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "air-duct-2": {
+  "numbers": [
+   {
+    "number": "17517802664",
+    "description": "Spring clip",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Air duct | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ],
+     "R55 Facelift": [
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper SD N47N",
+      "One D N47N"
+     ],
+     "R56 Facelift": [
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper SD N47N",
+      "One D N47N"
+     ],
+     "R57 Facelift": [
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper SD N47N"
+     ],
+     "R58": [
+      "Cooper SD N47N"
+     ],
+     "R59": [
+      "Cooper SD N47N"
+     ],
+     "R60": [
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper DX 1.6 N47N",
+      "Cooper DX 2.0 N47N",
+      "Cooper SD N47N",
+      "Cooper SDX N47N",
+      "One D N47N"
+     ],
+     "R61": [
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper DX 1.6 N47N",
+      "Cooper DX 2.0 N47N",
+      "Cooper SD N47N",
+      "Cooper SDX N47N"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "air-duct-4": {
+  "numbers": [
+   {
+    "number": "13718616211",
+    "description": "Charge air line",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Air duct | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "air-duct-5": {
+  "numbers": [
+   {
+    "number": "11618506786",
+    "description": "Preformed seal",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Air duct | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   },
+   {
+    "number": "11618506786",
+    "description": "Preformed seal",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "2",
+    "diagram": "Air duct | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "air-duct-6": {
+  "numbers": [
+   {
+    "number": "07119904589",
+    "description": "Hex bolt with washer",
+    "supplement": "M6X35-U1-8.8",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "2",
+    "diagram": "Air duct | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ],
+     "R50": [
+      "One D W17"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "air-duct-7": {
+  "numbers": [
+   {
+    "number": "11618511338",
+    "description": "Charge air line",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Air duct | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "throttle-housing-assy-1": {
+  "numbers": [
+   {
+    "number": "13547619008",
+    "description": "Throttle",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Throttle Housing Assy | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46"
+     ],
+     "F55": [
+      "Cooper S B46",
+      "Cooper S B48"
+     ],
+     "F56": [
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48"
+     ],
+     "F57": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "throttle-housing-assy-2": {
+  "numbers": [
+   {
+    "number": "11617619272",
+    "description": "Charge air tube",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Throttle Housing Assy | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46"
+     ],
+     "F55": [
+      "Cooper S B46",
+      "Cooper S B48"
+     ],
+     "F56": [
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48"
+     ],
+     "F57": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "throttle-housing-assy-3": {
+  "numbers": [
+   {
+    "number": "13628637897",
+    "description": "T-MAP SENSOR",
+    "supplement": "3,5BAR",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Throttle Housing Assy | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "throttle-housing-assy-4": {
+  "numbers": [
+   {
+    "number": "11618576280",
+    "description": "Gasket",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Throttle Housing Assy | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "throttle-housing-assy-6": {
+  "numbers": [
+   {
+    "number": "13547561349",
+    "description": "Hex bolt",
+    "supplement": "6,0X50",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "3",
+    "diagram": "Throttle Housing Assy | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "throttle-housing-assy-7": {
+  "numbers": [
+   {
+    "number": "51137010365",
+    "description": "TORX-BOLT FOR PLASTIC MATERIAL",
+    "supplement": "TS5X20",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Throttle Housing Assy | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ],
+     "JCW": [
+      "C-Cup W11"
+     ],
+     "R50": [
+      "Cooper W10",
+      "One 1.4i W10",
+      "One 1.6i W10",
+      "One D W17"
+     ],
+     "R52": [
+      "Cooper W10",
+      "Cooper S W11",
+      "One W10"
+     ],
+     "R53": [
+      "Coop.S JCW GP W11",
+      "Cooper S W11"
+     ],
+     "R55 Facelift": [
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper SD N47N",
+      "One D N47N"
+     ],
+     "R56 Facelift": [
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper SD N47N",
+      "One D N47N"
+     ],
+     "R57 Facelift": [
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper SD N47N"
+     ],
+     "R58": [
+      "Cooper SD N47N"
+     ],
+     "R59": [
+      "Cooper SD N47N"
+     ],
+     "R60": [
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper DX 1.6 N47N",
+      "Cooper DX 2.0 N47N",
+      "Cooper SD N47N",
+      "Cooper SDX N47N",
+      "One D N47N"
+     ],
+     "R61": [
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper DX 1.6 N47N",
+      "Cooper DX 2.0 N47N",
+      "Cooper SD N47N",
+      "Cooper SDX N47N"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "throttle-housing-assy-8": {
+  "numbers": [
+   {
+    "number": "13907515387",
+    "description": "Lock",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Throttle Housing Assy | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "fuel-tank-breather-valve-1": {
+  "numbers": [
+   {
+    "number": "13907621174",
+    "description": "Fuel tank breather valve",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Fuel tank breather valve | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "fuel-tank-breather-valve-2": {
+  "numbers": [
+   {
+    "number": "13907626118",
+    "description": "fuel tank breather line",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Fuel tank breather valve | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "fuel-tank-breather-valve-3": {
+  "numbers": [
+   {
+    "number": "13907614015",
+    "description": "fuel tank breather line",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Fuel tank breather valve | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper SX B48"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48"
+     ],
+     "F57": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "fuel-tank-breather-valve-5": {
+  "numbers": [
+   {
+    "number": "34327698478",
+    "description": "Tubing support",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Fuel tank breather valve | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "engine-side-catalytic-converter-1": {
+  "numbers": [
+   {
+    "number": "18327634634",
+    "description": "RP-primary catalytic converter",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Engine-side catalytic converter | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper S B46",
+      "Cooper SX B46"
+     ],
+     "F55": [
+      "Cooper S B46"
+     ],
+     "F56": [
+      "Cooper S B46"
+     ],
+     "F57": [
+      "Cooper S B46"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "engine-side-catalytic-converter-4": {
+  "numbers": [
+   {
+    "number": "18308616159",
+    "description": "Muffler clamp",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Engine-side catalytic converter | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B46"
+     ],
+     "F55": [
+      "Cooper S B46",
+      "Cooper S B48"
+     ],
+     "F56": [
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48"
+     ],
+     "F57": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "engine-side-catalytic-converter-5": {
+  "numbers": [
+   {
+    "number": "18327642258",
+    "description": "Holder catalytic converter near engine",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Engine-side catalytic converter | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "engine-side-catalytic-converter-6": {
+  "numbers": [
+   {
+    "number": "18208570671",
+    "description": "Rubber Mounting",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "2",
+    "diagram": "Engine-side catalytic converter | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "engine-side-catalytic-converter-7": {
+  "numbers": [
+   {
+    "number": "18307525607",
+    "description": "Hex nut",
+    "supplement": "M8",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "2",
+    "diagram": "Engine-side catalytic converter | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "engine-side-catalytic-converter-8": {
+  "numbers": [
+   {
+    "number": "07119904992",
+    "description": "Hex bolt with washer",
+    "supplement": "M8X20-U1-8.8",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "2",
+    "diagram": "Engine-side catalytic converter | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "engine-side-catalytic-converter-9": {
+  "numbers": [
+   {
+    "number": "18327555624",
+    "description": "Reinforcement plate",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Engine-side catalytic converter | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "lambda-probe-fixings-1": {
+  "numbers": [
+   {
+    "number": "11788600992",
+    "description": "REGULATING LAMBDA PROBE",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Lambda Probe Fixings | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48",
+      "One B38"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "lambda-probe-fixings-2": {
+  "numbers": [
+   {
+    "number": "11788604889",
+    "description": "Lambda Monitor sensor",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Lambda Probe Fixings | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48",
+      "One B38"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "lambda-probe-fixings-3": {
+  "numbers": [
+   {
+    "number": "11787589137",
+    "description": "Holder",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "2",
+    "diagram": "Lambda Probe Fixings | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48",
+      "One B38"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "lambda-probe-fixings-4": {
+  "numbers": [
+   {
+    "number": "11788604896",
+    "description": "Cable guide",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Lambda Probe Fixings | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46",
+      "Cooper S B48",
+      "One B38"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "lambda-probe-fixings-5": {
+  "numbers": [
+   {
+    "number": "12521437136",
+    "description": "Clip",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Lambda Probe Fixings | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ],
+     "R50": [
+      "One D W17"
+     ],
+     "R53": [
+      "Coop.S JCW GP W11"
+     ],
+     "R55": [
+      "Coop.S JCW N14",
+      "Cooper S N14"
+     ],
+     "R55 Facelift": [
+      "Coop.S JCW N14",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper SD N47N",
+      "One D N47N"
+     ],
+     "R56": [
+      "Coop.S JCW N14",
+      "Cooper S N14"
+     ],
+     "R56 Facelift": [
+      "Coop.S JCW N14",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper SD N47N",
+      "One D N47N"
+     ],
+     "R57": [
+      "Coop.S JCW N14",
+      "Cooper S N14"
+     ],
+     "R57 Facelift": [
+      "Coop.S JCW N14",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper SD N47N"
+     ],
+     "R58": [
+      "Coop.S JCW N14",
+      "Cooper SD N47N"
+     ],
+     "R59": [
+      "Coop.S JCW N14",
+      "Cooper SD N47N"
+     ],
+     "R60": [
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper DX 1.6 N47N",
+      "Cooper DX 2.0 N47N",
+      "Cooper SD N47N",
+      "Cooper SDX N47N",
+      "One D N47N"
+     ],
+     "R61": [
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper DX 1.6 N47N",
+      "Cooper DX 2.0 N47N",
+      "Cooper SD N47N",
+      "Cooper SDX N47N"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "lambda-probe-fixings-7": {
+  "numbers": [
+   {
+    "number": "07119905544",
+    "description": "Hex nut",
+    "supplement": "M6-8-ZNNIV SI",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Lambda Probe Fixings | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ],
+     "JCW": [
+      "C-Cup W11"
+     ],
+     "R50": [
+      "Cooper W10",
+      "One 1.4i W10",
+      "One 1.6i W10",
+      "One D W17"
+     ],
+     "R52": [
+      "Cooper W10",
+      "Cooper S W11",
+      "One W10"
+     ],
+     "R53": [
+      "Coop.S JCW GP W11",
+      "Cooper S W11"
+     ],
+     "R55 Facelift": [
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper SD N47N",
+      "One D N47N"
+     ],
+     "R56 Facelift": [
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper SD N47N",
+      "One D N47N"
+     ],
+     "R57 Facelift": [
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper SD N47N"
+     ],
+     "R58": [
+      "Cooper SD N47N"
+     ],
+     "R59": [
+      "Cooper SD N47N"
+     ],
+     "R60": [
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper DX 1.6 N47N",
+      "Cooper DX 2.0 N47N",
+      "Cooper SD N47N",
+      "Cooper SDX N47N",
+      "One D N47N"
+     ],
+     "R61": [
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper DX 1.6 N47N",
+      "Cooper DX 2.0 N47N",
+      "Cooper SD N47N",
+      "Cooper SDX N47N"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ }
+}
