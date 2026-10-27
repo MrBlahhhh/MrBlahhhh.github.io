@@ -17,7 +17,8 @@ appending to the end.
    mounting seats remain schematic; unconfirmed pins and settings are disclosed.
    **Hatch and rear exterior** (`#rear-body`) follows with hatch, bumper, rear structure and wiper views.
    **Doors, windows and mirrors** (`#doors`) adds window-regulator, inner trim, exterior mirror and fixed-glass captures.
-3. **Jump to a part** (`#parts`): fifty-nine tiles, each a deep link into the
+   **Dashboard, glovebox and console** (`#cabin`) adds carrier, dashboard, glovebox and console captures, with US left-hand-drive placement.
+3. **Jump to a part** (`#parts`): sixty-four tiles, each a deep link into the
    explorer (`#<section>`, `#<section>/part:<id>`, `#<section>/wiring`).
 4. **The 3D** (`#3d`): modelled parts, one hologram look, beside the
    exploded brake.
@@ -33,6 +34,19 @@ appending to the end.
   explorer's data file. Keep them in step when it changes.
 
 ## Screenshots
+
+The dashboard and console milestone has 60 sections, 1,411 selectable part groups,
+1,410 distinct part numbers and 19 distinct wiring diagrams. The five new views
+default off. Driver trim is left and glovebox right. The existing handbrake is
+shared. Optional equipment and detailed mounting seats remain unconfirmed.
+
+- `dash-carrier.jpg`: current public explorer, `#dash-carrier/assembled`, 1400 x 900.
+- `dashboard.jpg`: current public explorer, `#dashboard/assembled`, 1400 x 900.
+- `glovebox.jpg`: current public explorer, `#glovebox`, 1400 x 900, pulled apart.
+- `centre-console.jpg`: current public explorer, `#centre-console/assembled`, 1400 x 900.
+These are browser captures of the approximate models with glow on. Existing captures
+remain where their content is unchanged. The gallery and post are checked at 1100 and
+390 pixels; the app is checked on desktop and phone, including the clean defaults.
 
 All in `assets/images/f56-3d/`, taken from the explorer build in headless
 Chrome with `?instant`, glow on, then saved as JPEG:
