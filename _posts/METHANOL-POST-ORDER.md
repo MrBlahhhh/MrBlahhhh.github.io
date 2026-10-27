@@ -15,14 +15,15 @@ of appending to the end.
    paragraph. Follow with the PCB render gallery and full assembly sheet.
 5. **The screen**: what it is and how it links, Boot (all four clips, current
    water/meth splash first), the F56 HUD storyboard, current navigation,
-   nine explicitly dated older panel captures, and the printed mount.
+   the current housing and screw-on bezel. No old LCD captures.
 6. **The app**: four main screens, then shift light and Advanced beside the
    shift light shot, then the screenshot note and F5X diagnostic link.
 7. **Setting it up** (`#setup`): eight steps, then the qualification note.
 8. **Safeties** (`#safeties`): fault table, latching, "Before it sprays at
    all", where you see it, firmware guards.
 9. **Where it's at**: installed on 26 October, with spray and on-car logging
-   still to qualify. Bench footage and CAD renders remain labeled as such.
+   still to qualify. Bench footage and CAD renders remain labeled as such. Do not republish the
+   rejected nine-panel screenshot gallery or the obsolete ball-arm mount.
 
 ## Standing rules
 
@@ -85,3 +86,18 @@ All in `assets/images/methanol-controller/`.
   them as screenshots of the current Live/Graph/Menu interface. The 13 October
   Android UI-smoke captures on the rev-f checkout are older than the phone
   photos already in the article, and are not replacements.
+
+## Correction after Matt's review, 26 October
+
+- Remove all nine 17 October LCD demo images from the article. Matt rejected
+  that entire gallery as the wrong interface. Dating them is not a substitute
+  for showing the current screen. No current panel captures are available in
+  the project assets; keep the source-verified Live/Graph/Menu description.
+- Remove the obsolete two-ball mount and its description. The current CAD is
+  `screen/mechanical/enclosure/screen-housing.stl` and `screen-bezel.stl`, with
+  the rear quarter-inch 20 TPI RAM mounting thread and screw-on bezel described
+  in that directory's README. Do not use `mechanical/mount/preview.png` again.
+- `housing-front.png`, `housing-rear.png` and `housing-bezel.png` are direct
+  mesh renders of those current STL files. The two meshes use separate print
+  coordinates, so show the parts individually instead of guessing an assembled
+  alignment. These are CAD views, not installation photographs.

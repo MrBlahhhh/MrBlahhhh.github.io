@@ -47,8 +47,6 @@
 .mc .short{position:relative;width:100%;max-width:340px;aspect-ratio:9/16;border-radius:16px;overflow:hidden;border:1px solid var(--line2);background:#000}
 .mc .short iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .mc .shots{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:6px 0 22px}
-.mc .rounds{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px 18px;margin:10px 0 22px}
-.mc .rounds figure img,.mc .rounds figure video{border-radius:50%;border:6px solid #050607;box-shadow:0 0 0 1px var(--line2)}
 .mc .boot figure video{border-radius:16px;border:1px solid var(--line2);background:#000}
 .mc .boot{display:grid;grid-template-columns:repeat(2,minmax(0,300px));gap:22px;margin:10px 0 22px}
 .mc .media-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px 18px;margin:16px 0 22px}
@@ -59,8 +57,8 @@
 .mc .update{margin:16px 0 0;padding:12px 16px;border-left:3px solid var(--acc);background:var(--acc-soft);border-radius:0 10px 10px 0;color:var(--mute);font-size:15px}
 .mc .update b{color:var(--ink)}
 .mc a:focus-visible,.mc video:focus-visible{outline:3px solid var(--acc-hi);outline-offset:4px}
-.mc .rounds figcaption,.mc .boot figcaption{text-align:center}
-.mc .rounds figcaption b,.mc .boot figcaption b,.mc .shots figcaption b{color:var(--ink)}
+.mc .boot figcaption{text-align:center}
+.mc .boot figcaption b,.mc .shots figcaption b{color:var(--ink)}
 .mc ol.flow{list-style:none;counter-reset:f;padding:0;margin:14px 0 20px;display:grid;gap:10px}
 .mc ol.flow li{counter-increment:f;position:relative;padding:14px 16px 14px 60px;background:var(--card);border:1px solid var(--line);border-radius:14px;color:var(--mute);margin:0}
 .mc ol.flow li::before{content:counter(f);position:absolute;left:16px;top:13px;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--acc);color:#06201C;font-weight:700}
@@ -75,7 +73,7 @@
 .mc .dot{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:7px;vertical-align:-1px}
 .mc .dot.blue{background:var(--blue)}
 .mc .dot.amber{background:var(--amber)}
-@media (max-width:820px){.mc .row,.mc .row.flip{grid-template-columns:1fr}.mc .row figure,.mc .short{max-width:420px;width:100%;margin:0 auto}.mc .shots{grid-template-columns:repeat(2,minmax(0,1fr))}.mc .rounds{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:820px){.mc .row,.mc .row.flip{grid-template-columns:1fr}.mc .row figure,.mc .short{max-width:420px;width:100%;margin:0 auto}.mc .shots{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:520px){.mc{border-radius:14px}.mc .stat b{font-size:22px}.mc .sw{display:none}.mc th,.mc td{padding:9px 10px;font-size:14px}.mc th{font-size:12px}.mc .boot{grid-template-columns:1fr;justify-items:center}.mc .boot figure{max-width:300px;width:100%}.mc .media-grid{grid-template-columns:1fr}}
 </style>
 
@@ -85,7 +83,7 @@
   <span class="k">Rev E · MINI F56 · updated 26 October 2026</span>
   <h1>Methanol injection controller</h1>
   <p class="sub">A simple boost-referenced PWM pump controller. It reads boost from the DME over CAN, sprays on a curve, watches the pump's current draw and runs the shift light off the same link. A round touch screen and an Android app set it up.</p>
-  <p class="update"><b>Installed in the F56 on 26 October.</b> The bench footage is below, followed by the PCB drawings, the printed screen mount and all four screen boot clips. Installation is complete; spray performance and the new engine calibration still need their own logs.</p>
+  <p class="update"><b>Installed in the F56 on 26 October.</b> The bench footage is below, followed by the PCB drawings, the screen housing and all four screen boot clips. Installation is complete; spray performance and the new engine calibration still need their own logs.</p>
   <div class="stats">
     <div class="stat"><b>2 → 8 psi</b><span>Default curve</span></div>
     <div class="stat"><b>25 %</b><span>Duty floor</span></div>
@@ -175,25 +173,13 @@
 
 <h3>Pages</h3>
 <p>The current screen uses three large bottom touch zones: <b>Live, Graph and Menu</b>. Live shows boost, meth duty, actual lambda and pump current. Graph puts boost, duty, actual and target lambda, and RPM on one time axis. Menu opens the curve editor, settings, the curve views, G-meter and system information.</p>
-<p class="note">The nine captures below are the earlier 17 October interface, recorded directly from the panel's demo loop. They show the individual views before the new bottom navigation and combined graph. Their demo curve also predates the 25 % duty floor.</p>
-
-<div class="rounds">
-  <figure><img src="/assets/images/methanol-controller/screen-live.png" alt="Live page: boost sweep on the left, duty sweep on the right, 18.5 psi and 100 %" loading="lazy"><figcaption><b>Live</b>: boost up the left with a 5 s peak hold, duty up the right in the state's colour. Pump amps, lambda and target underneath.</figcaption></figure>
-  <figure><img src="/assets/images/methanol-controller/screen-boost-vs-meth.png" alt="Boost vs meth page: the curve with a dot for the current point" loading="lazy"><figcaption><b>Boost vs meth</b>: the curve, a dot where the car is now and a 3 s fading trail.</figcaption></figure>
-  <figure><img src="/assets/images/methanol-controller/screen-last-60s.png" alt="Last 60 seconds page: boost, duty, pump amps and AFR traces" loading="lazy"><figcaption><b>Last 60 s</b>: boost, duty, pump amps and AFR.</figcaption></figure>
-  <figure><img src="/assets/images/methanol-controller/screen-curve-editor.png" alt="Earlier curve editor page with draggable points and Revert, Apply and Save buttons" loading="lazy"><figcaption><b>Earlier curve editor.</b> The current editor selects points with taps and adjusts them with separate buttons; Apply, Revert and Save remain explicit.</figcaption></figure>
-  <figure><img src="/assets/images/methanol-controller/screen-fault.png" alt="Red fault banner reading Current with pump off, check the driver and wiring for a short" loading="lazy"><figcaption><b>Fault</b>: the banner says what happened and what to check.</figcaption></figure>
-  <figure><img src="/assets/images/methanol-controller/screen-g-meter.png" alt="G-meter page: friction circle with lateral and longitudinal readouts" loading="lazy"><figcaption><b>G-meter</b>: friction circle out to 1.5 g from the screen's own IMU, after a park-then-brake calibration.</figcaption></figure>
-  <figure><img src="/assets/images/methanol-controller/screen-rpm-vs-meth.png" alt="RPM vs meth page" loading="lazy"><figcaption><b>RPM vs meth</b>: the same against RPM, and where the curve lives when it runs on RPM.</figcaption></figure>
-  <figure><img src="/assets/images/methanol-controller/screen-settings.png" alt="Settings page with Disarm, brightness sliders, units and shift light switch" loading="lazy"><figcaption><b>Settings</b>: Disarm, day and night brightness, units, shift light, Save.</figcaption></figure>
-  <figure><img src="/assets/images/methanol-controller/screen-info.png" alt="Info page listing builds, link state and DME value ages" loading="lazy"><figcaption><b>Info</b>: both builds, the link, data ages and the DME's read rate.</figcaption></figure>
-</div>
-
 <p>If the link drops, every value blanks after half a second and Live says LINK LOST. A grey screen isn't proof the pump stopped, and the screen says so.</p>
-<h3>The printed mount</h3>
-<div class="row">
-  <div><p>A short printed arm joins the car's existing 1-inch RAM ball to a 17 mm ball on the back of the screen. One M4 knob clamps both ends: loosen it, set the screen angle, then tighten.</p><p>The drawing shows the mount design, rather than a photograph of the installed screen.</p></div>
-  <figure><a href="/assets/images/methanol-controller/screen-mount.png"><img src="/assets/images/methanol-controller/screen-mount.png" alt="Printed screen-mount CAD preview with two ball cups and one central clamping knob" width="900" height="700" loading="lazy" decoding="async"></a><figcaption>The two-ball screen mount and its single clamping knob.</figcaption></figure>
+<h3>The screen housing</h3>
+<p>The current housing design is for the Waveshare 2.1B panel, with a rear <b>¼-20 RAM mounting thread</b> and a separate screw-on bezel. Tightening the bezel clamps the cover glass into the housing. The views below are rendered from the current housing and bezel print files.</p>
+<div class="media-grid">
+  <figure><a href="/assets/images/methanol-controller/housing-front.png"><img src="/assets/images/methanol-controller/housing-front.png" alt="CAD view into the current round screen housing, showing the panel seat and connector openings" width="1440" height="1080" loading="lazy" decoding="async"></a><figcaption><b>Housing, front.</b> The panel seat and openings in the housing.</figcaption></figure>
+  <figure><a href="/assets/images/methanol-controller/housing-rear.png"><img src="/assets/images/methanol-controller/housing-rear.png" alt="CAD view of the current screen housing back with its central threaded mounting hole" width="1440" height="1080" loading="lazy" decoding="async"></a><figcaption><b>Housing, rear.</b> The central ¼-20 mounting thread.</figcaption></figure>
+  <figure><a href="/assets/images/methanol-controller/housing-bezel.png"><img src="/assets/images/methanol-controller/housing-bezel.png" alt="CAD view of the separate threaded screen bezel with grip ridges around its outside" width="1440" height="1080" loading="lazy" decoding="async"></a><figcaption><b>Screw-on bezel.</b> The retaining lip and grip ridges around the outside.</figcaption></figure>
 </div>
 
 <h2 id="app">The app</h2>
@@ -277,7 +263,7 @@
 <p>Under all of that: the pump pins are driven low before anything else starts, a task watchdog and the RTC watchdog both run, and the control loop drops the output if it stalls for more than 20 ms.</p>
 
 <h2 id="status">Where it's at</h2>
-<p>The kit is installed in the F56 as of 26 October 2026. The footage and phone captures here document the bench work; the PCB and mount pictures are design renders. The next step is logging the installed system and checking actual spray operation, pump current and temperatures. Installation alone does not validate the flow, the protection thresholds or a change to the engine tune.</p>
+<p>The kit is installed in the F56 as of 26 October 2026. The footage and phone captures here document the bench work; the PCB and housing pictures are design renders. The next step is logging the installed system and checking actual spray operation, pump current and temperatures. Installation alone does not validate the flow, the protection thresholds or a change to the engine tune.</p>
 
 <div class="last">Questions: <a href="mailto:matt@geekopolis.com">matt@geekopolis.com</a> or <a href="https://www.instagram.com/mattryan6729/">@mattryan6729</a>.</div>
 
