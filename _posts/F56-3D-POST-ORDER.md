@@ -18,7 +18,8 @@ appending to the end.
    **Hatch and rear exterior** (`#rear-body`) follows with hatch, bumper, rear structure and wiper views.
    **Doors, windows and mirrors** (`#doors`) adds window-regulator, inner trim, exterior mirror and fixed-glass captures.
    **Dashboard, glovebox and console** (`#cabin`) adds carrier, dashboard, glovebox and console captures, with US left-hand-drive placement.
-3. **Jump to a part** (`#parts`): sixty-four tiles, each a deep link into the
+   **Steering and cabin switches** (`#steering`) adds column, wheel, switches and a joint-specific light-control card.
+3. **Jump to a part** (`#parts`): sixty-seven tiles, each a deep link into the
    explorer (`#<section>`, `#<section>/part:<id>`, `#<section>/wiring`).
 4. **The 3D** (`#3d`): modelled parts, one hologram look, beside the
    exploded brake.
@@ -34,6 +35,19 @@ appending to the end.
   explorer's data file. Keep them in step when it changes.
 
 ## Screenshots
+
+The steering and switches milestone has 63 sections, 1,449 selectable part groups,
+1,493 distinct replacement numbers and 26 distinct wiring diagrams. Driver controls
+stay left; all three new views default off. Wheel/control equipment and socket
+locations remain unconfirmed, with dimensions and routing approximate.
+
+- `steering-column.jpg`: public explorer, `#steering-column/assembled`, 1400 x 900.
+- `steering-wheel.jpg`: public explorer, `#steering-wheel/assembled`, 1400 x 900.
+- `cabin-switches.jpg`: public explorer, `#cabin-switches/assembled`, 1400 x 900.
+- `light-control.jpg`: public explorer, `#cabin-switches/part:light-operating-unit`, 1400 x 900.
+These are browser captures of the approximate models with glow on. Existing captures
+whose assembly content is unchanged remain. The new gallery and post are checked at
+1100 and 390 pixels, with app navigation and cards checked on desktop and phone.
 
 The dashboard and console milestone has 60 sections, 1,411 selectable part groups,
 1,410 distinct part numbers and 19 distinct wiring diagrams. The five new views
