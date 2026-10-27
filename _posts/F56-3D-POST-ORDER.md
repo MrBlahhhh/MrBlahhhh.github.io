@@ -5,7 +5,7 @@ page is `_includes/f56-3d-feature.html`. Add to this structure instead of
 appending to the end.
 
 1. **Hero**: what it is (the F56 as a hologram you can pull apart, one
-   section at a time: front assemblies, rear corners, axle and mechanical parking brake), stats strip (part groups,
+   section at a time: front and rear assemblies, underbody, doors, windows and mirrors), stats strip (part groups,
    part numbers, sections, wiring diagrams), Open the explorer / How to use
    it / Jump to a part, then the exploded poster linking to the explorer.
 2. **How to use it** (`#use`): six steps, then visibility and part screenshots (caliper,
@@ -16,7 +16,8 @@ appending to the end.
    **Under the car** (`#underbody`) shows tank, exhaust, panels and rear liners. Routes and
    mounting seats remain schematic; unconfirmed pins and settings are disclosed.
    **Hatch and rear exterior** (`#rear-body`) follows with hatch, bumper, rear structure and wiper views.
-3. **Jump to a part** (`#parts`): forty-six tiles, each a deep link into the
+   **Doors, windows and mirrors** (`#doors`) adds window-regulator, inner trim, exterior mirror and fixed-glass captures.
+3. **Jump to a part** (`#parts`): fifty-nine tiles, each a deep link into the
    explorer (`#<section>`, `#<section>/part:<id>`, `#<section>/wiring`).
 4. **The 3D** (`#3d`): modelled parts, one hologram look, beside the
    exploded brake.
@@ -70,6 +71,21 @@ retaken from this version so the selector and controls match the live explorer.
 - `front-right.jpg`: `#front-right`, 1400 x 900.
 - `front-wipers.jpg`: `#wipers/assembled`, 1400 x 900.
 These are browser captures of the approximate models, with glow on.
+
+The door and glazing expansion has 55 sections, 1,331 selectable part groups, 1,263
+distinct part numbers and 19 distinct wiring diagrams. Its 13 views default off. A fresh
+page still starts with only the battery and driver's front wheel. Mirror functions,
+colours, lighting, audio and glass sensor/camera packages remain conditional. Automatic
+climate control is accounted for. New pin assignments and harness-adapter applicability
+are unconfirmed. All earlier captures are refreshed to match the current app.
+
+- `door-window.jpg`: `#door-window-left/assembled`, 1400 x 900.
+- `door-trim.jpg`: `#door-trim-left/assembled`, 1400 x 900, viewed from inside.
+- `mirror.jpg`: `#mirror-left/assembled`, 1400 x 900.
+- `glazing.jpg`: `#glazing/assembled`, 1400 x 900.
+These are browser captures of the approximate models, with glow on. Each capture resets
+Defaults before opening its named assembly so previously visited groups do not accumulate.
+The post is checked at 1100 and 390 pixels wide, including the new gallery and links.
 
 The rear exterior expansion has 42 sections, 1,144 part groups, 1,063 distinct part
 numbers and seven wiring diagrams. Its eight views default off. Rear bumper/spoiler

@@ -6,7 +6,7 @@ tags: [mini, f56, b48, brakes, wiring, dsc, 3d, webgl, three-js]
 cover: /assets/images/f56-3d/cover.jpg
 lightbox: true
 license: false
-excerpt: "My F56 as a hologram you can pull apart: front and rear running gear, fuel system, underbody and rear exterior, with part numbers and available torques, specs and wiring."
+excerpt: "My F56 as a hologram you can pull apart: front and rear running gear, underbody, doors, windows and mirrors, with part numbers and available torques, specs and wiring."
 article_header:
   type: overlay
   theme: dark
