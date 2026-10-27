@@ -13,7 +13,9 @@ appending to the end.
    **More of the front** (`#front`) follows with body, bumper, right corner, wipers, cooling, subframe and powertrain views.
    **Rear brakes and suspension** (`#rear`) shows the separate spring/damper, right wear sensor,
    shared axle and mechanical handbrake. Shapes and cable routes remain approximate.
-3. **Jump to a part** (`#parts`): thirty-one tiles, each a deep link into the
+   **Under the car** (`#underbody`) shows tank, exhaust, panels and rear liners. Routes and
+   mounting seats remain schematic; unconfirmed pins and settings are disclosed.
+3. **Jump to a part** (`#parts`): thirty-eight tiles, each a deep link into the
    explorer (`#<section>`, `#<section>/part:<id>`, `#<section>/wiring`).
 4. **The 3D** (`#3d`): modelled parts, one hologram look, beside the
    exploded brake.
@@ -66,6 +68,16 @@ retaken from this version so the selector and controls match the live explorer.
 - `front-bumper.jpg`: `#front-trim/assembled`, 1400 x 900.
 - `front-right.jpg`: `#front-right`, 1400 x 900.
 - `front-wipers.jpg`: `#wipers/assembled`, 1400 x 900.
+These are browser captures of the approximate models, with glow on.
+
+The underbody expansion has 34 sections, 1,015 part groups, 923 distinct part numbers
+and seven wiring diagrams. New sections default off. All captures are refreshed to
+match the current controls and selector.
+
+- `fuel-tank.jpg`: `#fuel-tank/assembled`, 1400 x 900.
+- `rear-exhaust.jpg`: `#rear-exhaust/assembled`, 1400 x 900.
+- `underfloor.jpg`: `#underfloor/assembled`, 1400 x 900.
+- `rear-liners.jpg`: `#rear-liners/assembled`, 1400 x 900.
 These are browser captures of the approximate models, with glow on.
 
 The bonnet and bumper captures were refreshed after confirming the standard Cooper S
