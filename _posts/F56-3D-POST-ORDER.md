@@ -8,7 +8,7 @@ appending to the end.
    section at a time: front brake, then the battery), stats strip (parts,
    part numbers, sections, wiring diagrams), Open the explorer / How to use
    it / Jump to a part, then the exploded poster linking to the explorer.
-2. **How to use it** (`#use`): four steps, then five screenshots (caliper,
+2. **How to use it** (`#use`): five steps, then five screenshots (caliper,
    wear sensor, wiring, battery, phone).
 3. **Jump to a part** (`#parts`): ten tiles, each a deep link into the
    explorer (`#<section>`, `#<section>/part:<id>`, `#<section>/wiring`).

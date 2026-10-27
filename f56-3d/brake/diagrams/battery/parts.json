@@ -4824,5 +4824,1728 @@
    }
   ],
   "note": ""
+ },
+ "brake-master-cylinder": {
+  "numbers": [
+   {
+    "number": "34336864669",
+    "description": "Brake master cylinder",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "BRAKE MASTER CYLINDER/EXPANSION TANK | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "mc-nuts": {
+  "numbers": [
+   {
+    "number": "07129906196",
+    "description": "SELF-LOCKING HEX NUT",
+    "supplement": "M8-8-ZNNI SI",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "2",
+    "diagram": "BRAKE MASTER CYLINDER/EXPANSION TANK | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ],
+     "JCW": [
+      "C-Cup W11"
+     ],
+     "R50": [
+      "Cooper W10",
+      "One 1.4i W10",
+      "One 1.6i W10",
+      "One D W17"
+     ],
+     "R52": [
+      "Cooper W10",
+      "Cooper S W11",
+      "One W10"
+     ],
+     "R53": [
+      "Coop.S JCW GP W11",
+      "Cooper S W11"
+     ],
+     "R55": [
+      "Coop.S JCW N14",
+      "Cooper N12",
+      "Cooper d W16",
+      "Cooper S N14",
+      "One N12"
+     ],
+     "R55 Facelift": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "One N16",
+      "One D N47N"
+     ],
+     "R56": [
+      "Coop.S BEV I15",
+      "Coop.S JCW N14",
+      "Cooper N12",
+      "Cooper D W16",
+      "Cooper S N14",
+      "One N12",
+      "One D W16"
+     ],
+     "R56 Facelift": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "One N16",
+      "One 55kW N16",
+      "One D N47N",
+      "One Eco N16",
+      "One Eco 55kW N16"
+     ],
+     "R57": [
+      "Coop.S JCW N14",
+      "Cooper N12",
+      "Cooper S N14"
+     ],
+     "R57 Facelift": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "One N16"
+     ],
+     "R58": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper S N18",
+      "Cooper SD N47N"
+     ],
+     "R59": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper S N18",
+      "Cooper SD N47N"
+     ],
+     "R60": [
+      "Coop.SX JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper DX 1.6 N47N",
+      "Cooper DX 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "Cooper SDX N47N",
+      "Cooper SX N18",
+      "Cooper X N16",
+      "Cooper X N18",
+      "One N16",
+      "One D N47N"
+     ],
+     "R61": [
+      "Coop.SX JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper DX 1.6 N47N",
+      "Cooper DX 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "Cooper SDX N47N",
+      "Cooper SX N18",
+      "Cooper X N16",
+      "Cooper X N18"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "mc-o-ring": {
+  "numbers": [
+   {
+    "number": "34336799317",
+    "description": "BRAKE MASTER CYLINDER O-RING",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "BRAKE MASTER CYLINDER/EXPANSION TANK | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "reservoir-plugs": {
+  "numbers": [
+   {
+    "number": "34336799316",
+    "description": "Plug",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "2",
+    "diagram": "BRAKE MASTER CYLINDER/EXPANSION TANK | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "brake-reservoir": {
+  "numbers": [
+   {
+    "number": "34336860686",
+    "description": "EXPANSION TANK with warning switch",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "BRAKE MASTER CYLINDER/EXPANSION TANK | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "reservoir-cap": {
+  "numbers": [
+   {
+    "number": "34336851090",
+    "description": "Lock",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "BRAKE MASTER CYLINDER/EXPANSION TANK | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "fluid-level-switch": {
+  "numbers": [
+   {
+    "number": "34336796853",
+    "description": "Warning switch",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "BRAKE MASTER CYLINDER/EXPANSION TANK | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "reservoir-screw": {
+  "numbers": [
+   {
+    "number": "34336865679",
+    "description": "Mounting screw",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "BRAKE MASTER CYLINDER/EXPANSION TANK | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "brake-pipe-mc-1": {
+  "numbers": [
+   {
+    "number": "34306862634",
+    "description": "Pipe - brake master cylinder-",
+    "supplement": "M12/M12",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Brake pipe, front | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "brake-pipe-mc-2": {
+  "numbers": [
+   {
+    "number": "34306862635",
+    "description": "Pipe - brake master cylinder-",
+    "supplement": "M12/M12",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Brake pipe, front | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "brake-booster": {
+  "numbers": [
+   {
+    "number": "34336864668",
+    "description": "Brake servo unit",
+    "supplement": "",
+    "condition": "",
+    "info": "only in conjunction with ( #3 ) SELF-LOCKING HEX NUT 07 12 9 906 196 to Jul ' 15 Quantity: 1 ( #8 ) Self-locking collar nut 07 11 9 905 374 to Jul ' 15 Quantity: 1",
+    "dates": "to Jul ' 15",
+    "qty": "1",
+    "diagram": "Brake servo unit | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38"
+     ]
+    },
+    "note": ""
+   },
+   {
+    "number": "34336874780",
+    "description": "Brake servo unit",
+    "supplement": "",
+    "condition": "",
+    "info": "only in conjunction with ( #3 ) SELF-LOCKING HEX NUT 07 12 9 906 196 Quantity: 1 ( #8 ) Self-locking collar nut 07 11 9 905 374 Quantity: 1",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Brake servo unit | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B46"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper S B48",
+      "Cooper S B46"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper S B46"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "booster-nuts": {
+  "numbers": [
+   {
+    "number": "07129906196",
+    "description": "SELF-LOCKING HEX NUT",
+    "supplement": "M8-8-ZNNI SI",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "2",
+    "diagram": "Brake servo unit | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ],
+     "JCW": [
+      "C-Cup W11"
+     ],
+     "R50": [
+      "Cooper W10",
+      "One 1.4i W10",
+      "One 1.6i W10",
+      "One D W17"
+     ],
+     "R52": [
+      "Cooper W10",
+      "Cooper S W11",
+      "One W10"
+     ],
+     "R53": [
+      "Coop.S JCW GP W11",
+      "Cooper S W11"
+     ],
+     "R55": [
+      "Coop.S JCW N14",
+      "Cooper N12",
+      "Cooper d W16",
+      "Cooper S N14",
+      "One N12"
+     ],
+     "R55 Facelift": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "One N16",
+      "One D N47N"
+     ],
+     "R56": [
+      "Coop.S BEV I15",
+      "Coop.S JCW N14",
+      "Cooper N12",
+      "Cooper D W16",
+      "Cooper S N14",
+      "One N12",
+      "One D W16"
+     ],
+     "R56 Facelift": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "One N16",
+      "One 55kW N16",
+      "One D N47N",
+      "One Eco N16",
+      "One Eco 55kW N16"
+     ],
+     "R57": [
+      "Coop.S JCW N14",
+      "Cooper N12",
+      "Cooper S N14"
+     ],
+     "R57 Facelift": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "One N16"
+     ],
+     "R58": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper S N18",
+      "Cooper SD N47N"
+     ],
+     "R59": [
+      "Coop.S JCW N14",
+      "Coop.S JCW N18",
+      "Cooper N16",
+      "Cooper S N18",
+      "Cooper SD N47N"
+     ],
+     "R60": [
+      "Coop.SX JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper DX 1.6 N47N",
+      "Cooper DX 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "Cooper SDX N47N",
+      "Cooper SX N18",
+      "Cooper X N16",
+      "Cooper X N18",
+      "One N16",
+      "One D N47N"
+     ],
+     "R61": [
+      "Coop.SX JCW N18",
+      "Cooper N16",
+      "Cooper D 1.6 N47N",
+      "Cooper D 2.0 N47N",
+      "Cooper DX 1.6 N47N",
+      "Cooper DX 2.0 N47N",
+      "Cooper S N18",
+      "Cooper SD N47N",
+      "Cooper SDX N47N",
+      "Cooper SX N18",
+      "Cooper X N16",
+      "Cooper X N18"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "booster-gasket": {
+  "numbers": [
+   {
+    "number": "34336799318",
+    "description": "Gasket",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Brake servo unit | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "booster-seal": {
+  "numbers": [
+   {
+    "number": "34336857618",
+    "description": "Seal, brake booster",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Brake servo unit | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "vacuum-pipe": {
+  "numbers": [
+   {
+    "number": "11667620924",
+    "description": "VACUUM PIPE",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Brake servo unit | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "ebox-lower": {
+  "numbers": [
+   {
+    "number": "12908617355",
+    "description": "Electronics box lower section",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Control unit box | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "ebox-upper": {
+  "numbers": [
+   {
+    "number": "12908617356",
+    "description": "Electronics box upper section",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Control unit box | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "ebox-mount": {
+  "numbers": [
+   {
+    "number": "12907632906",
+    "description": "Equipment mount for E-module",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Control unit box | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "ebox-bolt": {
+  "numbers": [
+   {
+    "number": "07119904124",
+    "description": "Hex bolt",
+    "supplement": "M8X16-8.8-ZNS3",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Control unit box | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "dme": {
+  "numbers": [
+   {
+    "number": "12148642708",
+    "description": "Base control unit DME MEVD 1723",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Basic cotrol unit DME | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F55": [
+      "Cooper S B46"
+     ],
+     "F56": [
+      "Cooper S B46",
+      "Cooper S B48",
+      "JCW B48"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "front-hood-seal": {
+  "numbers": [
+   {
+    "number": "51767300559",
+    "description": "FRONT ENGINE HOOD SEALING",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Hood seals | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "headlight-gasket": {
+  "numbers": [
+   {
+    "number": "41007297245",
+    "description": "HEADLIGHT GASKET",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "2",
+    "diagram": "Hood seals | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "headlight-gasket-left": {
+  "numbers": [
+   {
+    "number": "51767391409",
+    "description": "Gasket, headlight, left",
+    "supplement": "",
+    "condition": "",
+    "info": "",
+    "dates": "",
+    "qty": "1",
+    "diagram": "Hood seals | Mini MINI F56 Cooper S B46 USA",
+    "usage": {
+     "F54": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B47",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "Cooper SDX B47",
+      "Cooper SX B48",
+      "Cooper SX B46",
+      "Cooper X B36",
+      "One B38",
+      "One D B37"
+     ],
+     "F55": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F56": [
+      "Cooper B38",
+      "Cooper B36",
+      "Cooper D B37",
+      "Cooper S B48",
+      "Cooper S B46",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38",
+      "One 55kW B38",
+      "One D B37"
+     ],
+     "F57": [
+      "Cooper B36",
+      "Cooper B38",
+      "Cooper D B37",
+      "Cooper S B46",
+      "Cooper S B48",
+      "Cooper SD B47",
+      "JCW B48",
+      "One B38"
+     ]
+    },
+    "note": ""
+   }
+  ],
+  "note": ""
+ },
+ "pos-clamp-nut": {
+  "numbers": [],
+  "note": "Comes with the positive battery lead; no separate part number."
+ },
+ "neg-clamp-nut": {
+  "numbers": [],
+  "note": "Comes with the earth lead and its IBS; no separate part number."
+ },
+ "positive-stud-nut": {
+  "numbers": [],
+  "note": "No separate part number found in the catalogue."
+ },
+ "holder-screw": {
+  "numbers": [],
+  "note": "No separate part number found in the catalogue."
+ },
+ "strut-screw-outboard": {
+  "numbers": [],
+  "note": "The catalogue lists one M8x40 for the strut; there's a screw at each end."
+ },
+ "earth-body-nut": {
+  "numbers": [],
+  "note": "No separate part number found in the catalogue."
+ },
+ "alternator-nut": {
+  "numbers": [],
+  "note": "No separate part number found in the catalogue."
+ },
+ "cowl-locks": {
+  "numbers": [],
+  "note": "Part of the cowl panel cover; no separate part number."
+ },
+ "pipe-clamp": {
+  "numbers": [],
+  "note": "Part of the filtered air pipe; no separate part number."
+ },
+ "turbo-seal": {
+  "numbers": [],
+  "note": "No part number in the filtered air pipe diagram."
+ },
+ "intake-port-lock": {
+  "numbers": [],
+  "note": "Part of the air-intake duct; no separate part number."
+ },
+ "rubber-retainer": {
+  "numbers": [],
+  "note": "No separate part number found in the catalogue."
+ },
+ "partition-screw": {
+  "numbers": [],
+  "note": "No separate part number found in the catalogue."
+ },
+ "fuel-line-holder": {
+  "numbers": [],
+  "note": "No separate part number found in the catalogue."
+ },
+ "non-return-valve": {
+  "numbers": [],
+  "note": "Not in the brake servo diagram."
  }
 }
