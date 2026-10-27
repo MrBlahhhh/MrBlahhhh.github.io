@@ -75,6 +75,13 @@
 .mc .dot.amber{background:var(--amber)}
 @media (max-width:820px){.mc .row,.mc .row.flip{grid-template-columns:1fr}.mc .row figure,.mc .short{max-width:420px;width:100%;margin:0 auto}.mc .shots{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:520px){.mc{border-radius:14px}.mc .stat b{font-size:22px}.mc .sw{display:none}.mc th,.mc td{padding:9px 10px;font-size:14px}.mc th{font-size:12px}.mc .boot{grid-template-columns:1fr;justify-items:center}.mc .boot figure{max-width:300px;width:100%}.mc .media-grid{grid-template-columns:1fr}}
+.mc .lcd-gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px 18px;margin:16px 0 24px}
+.mc .lcd-gallery img,.mc .lcd-fault img{border-radius:50%;border:1px solid var(--line2);background:#000}
+.mc .lcd-gallery figcaption,.mc .lcd-fault figcaption{text-align:center}
+.mc .lcd-gallery figcaption b,.mc .lcd-fault figcaption b{color:var(--ink)}
+.mc .lcd-fault{max-width:360px;margin:20px auto 24px}
+@media(max-width:820px){.mc .lcd-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.mc .lcd-gallery{grid-template-columns:1fr}.mc .lcd-gallery figure{max-width:400px;margin:0 auto}}
 </style>
 
 <div class="mc">
@@ -173,6 +180,19 @@
 
 <h3>Pages</h3>
 <p>The current screen uses three large bottom touch zones: <b>Live, Graph and Menu</b>. Live shows boost, meth duty, actual lambda and pump current. Graph puts boost, duty, actual and target lambda, and RPM on one time axis. Menu opens the curve editor, settings, the curve views, G-meter and system information.</p>
+<p class="note">Current LCD interface, captured on 26 October from the firmware's actual page code running in a desktop LVGL renderer. The layouts, fonts and colours come from the screen firmware. Telemetry and IMU values are demo inputs, not measurements from the installed car.</p>
+<div class="lcd-gallery">
+  <figure><a href="/assets/images/methanol-controller/lcd-current-live.png"><img src="/assets/images/methanol-controller/lcd-current-live.png" alt="Live: red boost sweep with blue SPRAYING state, meth duty, lambda and pump amps" width="480" height="480" loading="lazy" decoding="async"></a><figcaption><b>Live.</b> One boost sweep, with meth duty, actual lambda and pump current together underneath.</figcaption></figure>
+  <figure><a href="/assets/images/methanol-controller/lcd-current-graph.png"><img src="/assets/images/methanol-controller/lcd-current-graph.png" alt="Current Graph page with boost, duty, RPM, actual lambda and target lambda" width="480" height="480" loading="lazy" decoding="async"></a><figcaption><b>Graph.</b> Boost, duty, RPM and both lambda traces on one time axis. Target lambda is the dashed amber line.</figcaption></figure>
+  <figure><a href="/assets/images/methanol-controller/lcd-current-menu.png"><img src="/assets/images/methanol-controller/lcd-current-menu.png" alt="Current LCD Menu with Disarm, Edit curve, Settings, Boost curve, RPM curve, G-meter and System" width="480" height="480" loading="lazy" decoding="async"></a><figcaption><b>Menu.</b> Disarm at the top; the other pages are one tap away. Live, Graph and Menu stay in the bottom bar.</figcaption></figure>
+  <figure><a href="/assets/images/methanol-controller/lcd-current-boost-curve.png"><img src="/assets/images/methanol-controller/lcd-current-boost-curve.png" alt="Current Boost vs meth curve with live position and the bottom navigation bar" width="480" height="480" loading="lazy" decoding="async"></a><figcaption><b>Boost curve.</b> The configured boost-to-duty curve, the live point and its fading trail.</figcaption></figure>
+  <figure><a href="/assets/images/methanol-controller/lcd-current-rpm-curve.png"><img src="/assets/images/methanol-controller/lcd-current-rpm-curve.png" alt="Current RPM vs meth page with the live RPM and duty point" width="480" height="480" loading="lazy" decoding="async"></a><figcaption><b>RPM curve.</b> The current operating point against RPM; the injection curve is shown here when configured to use RPM.</figcaption></figure>
+  <figure><a href="/assets/images/methanol-controller/lcd-current-curve-editor.png"><img src="/assets/images/methanol-controller/lcd-current-curve-editor.png" alt="Current Injection curve editor with point selection, separate position and duty buttons, Revert Apply and Save" width="480" height="480" loading="lazy" decoding="async"></a><figcaption><b>Curve editor.</b> Tap a point or use the arrows, then adjust its position and duty with the separate buttons. Revert, Apply and Save are explicit.</figcaption></figure>
+  <figure><a href="/assets/images/methanol-controller/lcd-current-settings.png"><img src="/assets/images/methanol-controller/lcd-current-settings.png" alt="Current All settings LCD page showing Display Pump and Controller demo sections with Prev and Next" width="480" height="480" loading="lazy" decoding="async"></a><figcaption><b>Settings.</b> Settings are divided into pages. This first page opens Display, Pump and Controller/demo.</figcaption></figure>
+  <figure><a href="/assets/images/methanol-controller/lcd-current-g-meter.png"><img src="/assets/images/methanol-controller/lcd-current-g-meter.png" alt="Current G-meter page with lateral and longitudinal demo values and the bottom navigation bar" width="480" height="480" loading="lazy" decoding="async"></a><figcaption><b>G-meter.</b> The friction circle, trail and peaks. The values here are simulated IMU readings.</figcaption></figure>
+  <figure><a href="/assets/images/methanol-controller/lcd-current-system.png"><img src="/assets/images/methanol-controller/lcd-current-system.png" alt="Current System screen identifying desktop capture and showing controller and link information" width="480" height="480" loading="lazy" decoding="async"></a><figcaption><b>System.</b> Firmware and link information. This desktop capture correctly reports that no controller is connected.</figcaption></figure>
+</div>
+
 <p>If the link drops, every value blanks after half a second and Live says LINK LOST. A grey screen isn't proof the pump stopped, and the screen says so.</p>
 <h3>The screen housing</h3>
 <p>The current housing design is for the Waveshare 2.1B panel, with a rear <b>¼-20 RAM mounting thread</b> and a separate screw-on bezel. Tightening the bezel clamps the cover glass into the housing. The views below are rendered from the current housing and bezel print files.</p>
@@ -260,10 +280,12 @@
   <div class="tile"><b>App</b><p>Plain words on Dash with a Clear fault button, and a fault history that keeps what the pump was doing when it tripped: RPM, boost, duty, measured and expected current.</p></div>
 </div>
 
+<figure class="lcd-fault"><a href="/assets/images/methanol-controller/lcd-current-fault.png"><img src="/assets/images/methanol-controller/lcd-current-fault.png" alt="Current LCD fault banner: Pump running dry; check the tank level and the pump feed" width="480" height="480" loading="lazy" decoding="async"></a><figcaption><b>Current fault view.</b> The firmware shows the reason and what to check over the Live page. This is a demo dry-pump condition in the desktop renderer.</figcaption></figure>
+
 <p>Under all of that: the pump pins are driven low before anything else starts, a task watchdog and the RTC watchdog both run, and the control loop drops the output if it stalls for more than 20 ms.</p>
 
 <h2 id="status">Where it's at</h2>
-<p>The kit is installed in the F56 as of 26 October 2026. The footage and phone captures here document the bench work; the PCB and housing pictures are design renders. The next step is logging the installed system and checking actual spray operation, pump current and temperatures. Installation alone does not validate the flow, the protection thresholds or a change to the engine tune.</p>
+<p>The kit is installed in the F56 as of 26 October 2026. The footage and phone captures here document the bench work; the LCD gallery shows the current firmware with demo inputs, and the PCB and housing pictures are CAD renders. The next step is logging the installed system and checking actual spray operation, pump current and temperatures. Installation alone does not validate the flow, the protection thresholds or a change to the engine tune.</p>
 
 <div class="last">Questions: <a href="mailto:matt@geekopolis.com">matt@geekopolis.com</a> or <a href="https://www.instagram.com/mattryan6729/">@mattryan6729</a>.</div>
 

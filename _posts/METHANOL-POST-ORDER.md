@@ -15,7 +15,7 @@ of appending to the end.
    paragraph. Follow with the PCB render gallery and full assembly sheet.
 5. **The screen**: what it is and how it links, Boot (all four clips, current
    water/meth splash first), the F56 HUD storyboard, current navigation,
-   the current housing and screw-on bezel. No old LCD captures.
+   the current LCD capture gallery, then the housing and screw-on bezel.
 6. **The app**: four main screens, then shift light and Advanced beside the
    shift light shot, then the screenshot note and F5X diagnostic link.
 7. **Setting it up** (`#setup`): eight steps, then the qualification note.
@@ -101,3 +101,23 @@ All in `assets/images/methanol-controller/`.
   mesh renders of those current STL files. The two meshes use separate print
   coordinates, so show the parts individually instead of guessing an assembled
   alignment. These are CAD views, not installation photographs.
+
+## Restore the LCD gallery with current captures, 26 October
+
+Matt clarified that the gallery should be updated, not removed. The gallery now
+contains nine current page captures, with the current fault view in Safeties.
+They are produced by compiling the actual UI and custom fonts from controller
+commit e5746d0 against its managed LVGL 9.4.0 library on the PC. Hardware-only
+interfaces are inert, the board size is 480 x 480, the dark theme and default
+Montserrat 16 match the LCD settings, and RGB565 pixels are exported directly.
+The circular mask represents the physical panel boundary; no controls or labels
+are recreated in an image editor. Capture names begin `lcd-current-` to avoid
+caching the rejected images under their old names.
+
+The reproducible harness is retained in the task visualization workspace under
+`lcd-host-capture`; raw framebuffers and the build are in the temporary
+`meth-lcd-capture-20261026` directory. No LCD is connected over USB and no board
+or vehicle is flashed. The public caption explicitly identifies a desktop LVGL
+capture with demo telemetry/IMU inputs. System's desktop metadata and missing
+controller are retained honestly. Do not describe these as fresh captures from
+the physical installed LCD. The old 17 October images remain rejected.
