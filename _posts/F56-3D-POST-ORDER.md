@@ -15,7 +15,8 @@ appending to the end.
    shared axle and mechanical handbrake. Shapes and cable routes remain approximate.
    **Under the car** (`#underbody`) shows tank, exhaust, panels and rear liners. Routes and
    mounting seats remain schematic; unconfirmed pins and settings are disclosed.
-3. **Jump to a part** (`#parts`): thirty-eight tiles, each a deep link into the
+   **Hatch and rear exterior** (`#rear-body`) follows with hatch, bumper, rear structure and wiper views.
+3. **Jump to a part** (`#parts`): forty-six tiles, each a deep link into the
    explorer (`#<section>`, `#<section>/part:<id>`, `#<section>/wiring`).
 4. **The 3D** (`#3d`): modelled parts, one hologram look, beside the
    exploded brake.
@@ -41,7 +42,7 @@ Chrome with `?instant`, glow on, then saved as JPEG:
 - `wear-sensor.jpg`: `#part:wear-sensor` at 1400 x 900.
 - `wiring.jpg`: `#wiring:wear-sensor` at 1400 x 900.
 - `battery.jpg`: `#battery` at 1400 x 900.
-- `phone.jpg`: `#part:caliper` at 390 x 844, 2x, phone emulation.
+- `phone.jpg`: `#part:caliper` at 390 x 844, phone emulation.
 - Retaken 2026-10-27 from the current public explorer after the final front assemblies went in.
 
 The first front expansion has six sections, 263 part groups and 283 distinct part numbers.
@@ -68,6 +69,19 @@ retaken from this version so the selector and controls match the live explorer.
 - `front-bumper.jpg`: `#front-trim/assembled`, 1400 x 900.
 - `front-right.jpg`: `#front-right`, 1400 x 900.
 - `front-wipers.jpg`: `#wipers/assembled`, 1400 x 900.
+These are browser captures of the approximate models, with glow on.
+
+The rear exterior expansion has 42 sections, 1,144 part groups, 1,063 distinct part
+numbers and seven wiring diagrams. Its eight views default off. Rear bumper/spoiler
+equipment remains conditional; a standard front bumper does not choose the rear trim.
+New rear connector pins and the number-plate lamp replacement number are unconfirmed.
+The full washer hose is a separate schematic route with a repair-kit number.
+All captures are refreshed to match the current controls and counts.
+
+- `hatch.jpg`: `#hatch/assembled`, 1400 x 900.
+- `rear-bumper.jpg`: `#rear-bumper/assembled`, 1400 x 900.
+- `rear-structure.jpg`: `#rear-structure/assembled`, 1400 x 900.
+- `rear-wiper.jpg`: `#rear-wiper/assembled`, 1400 x 900.
 These are browser captures of the approximate models, with glow on.
 
 The underbody expansion has 34 sections, 1,015 part groups, 923 distinct part numbers
