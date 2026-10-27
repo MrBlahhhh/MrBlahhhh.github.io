@@ -11,7 +11,7 @@ appending to the end.
 2. **How to use it** (`#use`): five steps, then five screenshots (caliper,
    wear sensor, wiring, battery, phone).
    **More of the front** (`#front`) follows with the cooling pack and subframe views.
-3. **Jump to a part** (`#parts`): fourteen tiles, each a deep link into the
+3. **Jump to a part** (`#parts`): eighteen tiles, each a deep link into the
    explorer (`#<section>`, `#<section>/part:<id>`, `#<section>/wiring`).
 4. **The 3D** (`#3d`): modelled parts, one hologram look, beside the
    exploded brake.
@@ -43,7 +43,13 @@ The first front expansion has six sections, 263 part groups and 283 distinct par
 The assembly selector includes cooling pack, coolant plumbing, air conditioning and
 subframe/steering. Keep the page's counts in step with later additions.
 
+The external powertrain expansion brings the total to 14 sections, 486 part groups and
+517 distinct part numbers. It adds engine exterior, covers/ignition, accessories, intake,
+fuel, turbo, catalyst and gearbox/mounts. Neither engine nor gearbox internals are modeled.
+
 - `front-cooling.jpg`: public explorer at `#cooling`, 1400 x 900, glow on.
 - `front-subframe.jpg`: public explorer at `#subframe`, 1400 x 900, glow on.
 - `front-phone.jpg`: public explorer at `#cooling`, 390 x 844, touch emulation, glow on.
   These are rendered model views; the new exterior geometry and placement are approximate.
+- `powertrain-engine.jpg`: public explorer at `#engine-cover`, 1400 x 900, glow on.
+- `powertrain-gearbox.jpg`: public explorer at `#gearbox/assembled`, 1400 x 900, glow on.
