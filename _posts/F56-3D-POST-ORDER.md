@@ -5,13 +5,13 @@ page is `_includes/f56-3d-feature.html`. Add to this structure instead of
 appending to the end.
 
 1. **Hero**: what it is (the F56 as a hologram you can pull apart, one
-   section at a time: front brake, battery, cooling and subframe), stats strip (part groups,
+   section at a time: both front corners, body, lighting, service systems and external powertrain), stats strip (part groups,
    part numbers, sections, wiring diagrams), Open the explorer / How to use
    it / Jump to a part, then the exploded poster linking to the explorer.
 2. **How to use it** (`#use`): five steps, then five screenshots (caliper,
    wear sensor, wiring, battery, phone).
-   **More of the front** (`#front`) follows with the cooling pack and subframe views.
-3. **Jump to a part** (`#parts`): eighteen tiles, each a deep link into the
+   **More of the front** (`#front`) follows with body, bumper, right corner, wipers, cooling, subframe and powertrain views.
+3. **Jump to a part** (`#parts`): twenty-seven tiles, each a deep link into the
    explorer (`#<section>`, `#<section>/part:<id>`, `#<section>/wiring`).
 4. **The 3D** (`#3d`): modelled parts, one hologram look, beside the
    exploded brake.
@@ -37,7 +37,7 @@ Chrome with `?instant`, glow on, then saved as JPEG:
 - `wiring.jpg`: `#wiring:wear-sensor` at 1400 x 900.
 - `battery.jpg`: `#battery` at 1400 x 900.
 - `phone.jpg`: `#part:caliper` at 390 x 844, 2x, phone emulation.
-- Retaken 2026-10-26 after the sections, phone layout and wire colours went in.
+- Retaken 2026-10-27 from the current public explorer after the final front assemblies went in.
 
 The first front expansion has six sections, 263 part groups and 283 distinct part numbers.
 The assembly selector includes cooling pack, coolant plumbing, air conditioning and
@@ -53,3 +53,14 @@ fuel, turbo, catalyst and gearbox/mounts. Neither engine nor gearbox internals a
   These are rendered model views; the new exterior geometry and placement are approximate.
 - `powertrain-engine.jpg`: public explorer at `#engine-cover`, 1400 x 900, glow on.
 - `powertrain-gearbox.jpg`: public explorer at `#gearbox/assembled`, 1400 x 900, glow on.
+
+The full front release has 23 sections, 800 part groups and 783 distinct part numbers.
+The engine and gearbox remain external assemblies. Equipment alternatives are conditional;
+bumper and headlight fitment on the car are still unconfirmed. All earlier screenshots are
+retaken from this version so the selector and controls match the live explorer.
+
+- `front-body.jpg`: `#bonnet/assembled`, 1400 x 900.
+- `front-bumper.jpg`: `#front-trim/assembled`, 1400 x 900.
+- `front-right.jpg`: `#front-right`, 1400 x 900.
+- `front-wipers.jpg`: `#wipers/assembled`, 1400 x 900.
+These are browser captures of the approximate models, with glow on.
