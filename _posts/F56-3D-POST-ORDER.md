@@ -8,7 +8,7 @@ appending to the end.
    section at a time: both front corners, body, lighting, service systems and external powertrain), stats strip (part groups,
    part numbers, sections, wiring diagrams), Open the explorer / How to use
    it / Jump to a part, then the exploded poster linking to the explorer.
-2. **How to use it** (`#use`): five steps, then five screenshots (caliper,
+2. **How to use it** (`#use`): six steps, then visibility and part screenshots (caliper,
    wear sensor, wiring, battery, phone).
    **More of the front** (`#front`) follows with body, bumper, right corner, wipers, cooling, subframe and powertrain views.
 3. **Jump to a part** (`#parts`): twenty-seven tiles, each a deep link into the
@@ -31,7 +31,8 @@ appending to the end.
 All in `assets/images/f56-3d/`, taken from the explorer build in headless
 Chrome with `?instant`, glow on, then saved as JPEG:
 
-- `cover.jpg`, `exploded.jpg`: `#exploded` at 1400 x 900.
+- `cover.jpg`: default car view at 1400 x 900, only the battery and driver's front wheel visible.
+- `exploded.jpg`: `#brake` at 1400 x 900.
 - `caliper.jpg`: `#part:caliper` at 1400 x 900.
 - `wear-sensor.jpg`: `#part:wear-sensor` at 1400 x 900.
 - `wiring.jpg`: `#wiring:wear-sensor` at 1400 x 900.
@@ -68,3 +69,9 @@ These are browser captures of the approximate models, with glow on.
 The bonnet and bumper captures were refreshed after confirming the standard Cooper S
 bumper and halogen headlights. LED-only headlight modules and JCW front ducts are excluded
 from the current fitment; shared hardware stays in place.
+
+Section visibility update: a fresh page starts with battery and driver's front wheel only.
+The Sections panel toggles complete assemblies, with All, None and Defaults. Choosing an
+assembly checks it. Existing captures were refreshed with these controls and the cleaner
+context. `sections.jpg` and `sections-phone.jpg` show that panel open at 1400 x 900 and
+390 x 844 respectively, from the public explorer with glow on.
