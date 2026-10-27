@@ -54,9 +54,9 @@ fuel, turbo, catalyst and gearbox/mounts. Neither engine nor gearbox internals a
 - `powertrain-engine.jpg`: public explorer at `#engine-cover`, 1400 x 900, glow on.
 - `powertrain-gearbox.jpg`: public explorer at `#gearbox/assembled`, 1400 x 900, glow on.
 
-The full front release has 23 sections, 800 part groups and 783 distinct part numbers.
+The confirmed front fitment has 23 sections, 796 part groups and 766 distinct part numbers.
 The engine and gearbox remain external assemblies. Equipment alternatives are conditional;
-bumper and headlight fitment on the car are still unconfirmed. All earlier screenshots are
+the standard Cooper S bumper and halogen headlights are confirmed. Fog/indicator, parking and other independent equipment options remain open. All earlier screenshots are
 retaken from this version so the selector and controls match the live explorer.
 
 - `front-body.jpg`: `#bonnet/assembled`, 1400 x 900.
@@ -64,3 +64,7 @@ retaken from this version so the selector and controls match the live explorer.
 - `front-right.jpg`: `#front-right`, 1400 x 900.
 - `front-wipers.jpg`: `#wipers/assembled`, 1400 x 900.
 These are browser captures of the approximate models, with glow on.
+
+The bonnet and bumper captures were refreshed after confirming the standard Cooper S
+bumper and halogen headlights. LED-only headlight modules and JCW front ducts are excluded
+from the current fitment; shared hardware stays in place.
