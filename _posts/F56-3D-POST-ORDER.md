@@ -10,7 +10,7 @@ appending to the end.
    it / Jump to a part, then the exploded poster linking to the explorer.
 2. **How to use it** (`#use`): six steps, then visibility and part screenshots (caliper,
    wear sensor, wiring, battery, phone).
-   **More of the front** (`#front`) follows with body, bumper, right corner, wipers, cooling, subframe and powertrain views.
+   **More of the front** (`#front`) follows with body, bumper, right corner, wipers, right-front washer assembly, right-cowl hydraulics, cooling, subframe and powertrain views.
    **Rear brakes and suspension** (`#rear`) shows the separate spring/damper, right wear sensor,
    shared axle and mechanical handbrake. Shapes and cable routes remain approximate.
    **Under the car** (`#underbody`) shows tank, exhaust, panels and rear liners. Routes and
@@ -71,6 +71,17 @@ retaken from this version so the selector and controls match the live explorer.
 - `front-right.jpg`: `#front-right`, 1400 x 900.
 - `front-wipers.jpg`: `#wipers/assembled`, 1400 x 900.
 These are browser captures of the approximate models, with glow on.
+
+The physical-side correction keeps the 55-section counts and controls unchanged. The
+washer reservoir, pump, filler and cap are on the right front; the DSC unit is under the
+right cowl. Battery, booster and driver wiper remain on the left. New front and rear
+washer-hose endpoints share the pump position, with the remaining routes schematic.
+
+- `washers.jpg`: `#washers/assembled`, 1400 x 900, from the right.
+- `front-hydraulics.jpg`: `#front-hydraulics/assembled`, 1400 x 900, from the right.
+These are current public browser captures with glow on. Exact mounting seats and pipe
+bends remain approximate. Existing captures whose geometry and controls are unchanged
+are retained. The new gallery pair and the post are checked at 1100 and 390 pixels.
 
 The door and glazing expansion has 55 sections, 1,331 selectable part groups, 1,263
 distinct part numbers and 19 distinct wiring diagrams. Its 13 views default off. A fresh
