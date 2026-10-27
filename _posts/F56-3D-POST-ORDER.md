@@ -5,13 +5,15 @@ page is `_includes/f56-3d-feature.html`. Add to this structure instead of
 appending to the end.
 
 1. **Hero**: what it is (the F56 as a hologram you can pull apart, one
-   section at a time: both front corners, body, lighting, service systems and external powertrain), stats strip (part groups,
+   section at a time: front assemblies, rear corners, axle and mechanical parking brake), stats strip (part groups,
    part numbers, sections, wiring diagrams), Open the explorer / How to use
    it / Jump to a part, then the exploded poster linking to the explorer.
 2. **How to use it** (`#use`): six steps, then visibility and part screenshots (caliper,
    wear sensor, wiring, battery, phone).
    **More of the front** (`#front`) follows with body, bumper, right corner, wipers, cooling, subframe and powertrain views.
-3. **Jump to a part** (`#parts`): twenty-seven tiles, each a deep link into the
+   **Rear brakes and suspension** (`#rear`) shows the separate spring/damper, right wear sensor,
+   shared axle and mechanical handbrake. Shapes and cable routes remain approximate.
+3. **Jump to a part** (`#parts`): thirty-one tiles, each a deep link into the
    explorer (`#<section>`, `#<section>/part:<id>`, `#<section>/wiring`).
 4. **The 3D** (`#3d`): modelled parts, one hologram look, beside the
    exploded brake.
@@ -75,3 +77,14 @@ The Sections panel toggles complete assemblies, with All, None and Defaults. Cho
 assembly checks it. Existing captures were refreshed with these controls and the cleaner
 context. `sections.jpg` and `sections-phone.jpg` show that panel open at 1400 x 900 and
 390 x 844 respectively, from the public explorer with glow on.
+
+The rear expansion has 27 sections, 938 part groups and 861 distinct part numbers.
+All captures are refreshed from that public build. New assemblies default off.
+Standard/sport/adaptive suspension remains conditional, spring numbers require weight
+selection, and the cross-brace setting remains blank pending confirmation.
+
+- `rear-left.jpg`: `#rear-left/assembled`, 1400 x 900.
+- `rear-wear.jpg`: `#rear-right/part:wear-sensor-right`, 1400 x 900.
+- `rear-axle.jpg`: `#rear-axle/assembled`, 1400 x 900.
+- `parking-brake.jpg`: `#parking-brake/assembled`, 1400 x 900.
+These are browser captures of the approximate models, with glow on.

@@ -1,12 +1,12 @@
 ---
-title: "F56 front end in 3D"
+title: "F56 in 3D"
 date: 2026-10-26 00:00:00 -0400
 categories: car tech
 tags: [mini, f56, b48, brakes, wiring, dsc, 3d, webgl, three-js]
 cover: /assets/images/f56-3d/cover.jpg
 lightbox: true
 license: false
-excerpt: "My F56 as a hologram you can pull apart: both front corners, body panels, lighting, front services, cooling and external powertrain, with part numbers and available torques, specs and wiring."
+excerpt: "My F56 as a hologram you can pull apart: front assemblies, rear brakes and suspension, axle and mechanical parking brake, with part numbers and available torques, specs and wiring."
 article_header:
   type: overlay
   theme: dark
