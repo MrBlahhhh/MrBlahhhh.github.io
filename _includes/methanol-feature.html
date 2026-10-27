@@ -48,8 +48,17 @@
 .mc .short iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .mc .shots{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:6px 0 22px}
 .mc .rounds{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px 18px;margin:10px 0 22px}
-.mc .rounds figure img,.mc .rounds figure video,.mc .boot figure video{border-radius:50%;border:6px solid #050607;box-shadow:0 0 0 1px var(--line2)}
+.mc .rounds figure img,.mc .rounds figure video{border-radius:50%;border:6px solid #050607;box-shadow:0 0 0 1px var(--line2)}
+.mc .boot figure video{border-radius:16px;border:1px solid var(--line2);background:#000}
 .mc .boot{display:grid;grid-template-columns:repeat(2,minmax(0,300px));gap:22px;margin:10px 0 22px}
+.mc .media-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px 18px;margin:16px 0 22px}
+.mc .media-grid a{display:block}
+.mc .media-grid img{aspect-ratio:1;object-fit:contain}
+.mc .drawing{margin:18px 0 22px}
+.mc .drawing img{max-height:700px;object-fit:contain}
+.mc .update{margin:16px 0 0;padding:12px 16px;border-left:3px solid var(--acc);background:var(--acc-soft);border-radius:0 10px 10px 0;color:var(--mute);font-size:15px}
+.mc .update b{color:var(--ink)}
+.mc a:focus-visible,.mc video:focus-visible{outline:3px solid var(--acc-hi);outline-offset:4px}
 .mc .rounds figcaption,.mc .boot figcaption{text-align:center}
 .mc .rounds figcaption b,.mc .boot figcaption b,.mc .shots figcaption b{color:var(--ink)}
 .mc ol.flow{list-style:none;counter-reset:f;padding:0;margin:14px 0 20px;display:grid;gap:10px}
@@ -67,15 +76,16 @@
 .mc .dot.blue{background:var(--blue)}
 .mc .dot.amber{background:var(--amber)}
 @media (max-width:820px){.mc .row,.mc .row.flip{grid-template-columns:1fr}.mc .row figure,.mc .short{max-width:420px;width:100%;margin:0 auto}.mc .shots{grid-template-columns:repeat(2,minmax(0,1fr))}.mc .rounds{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:520px){.mc{border-radius:14px}.mc .stat b{font-size:22px}.mc .sw{display:none}.mc th,.mc td{padding:9px 10px;font-size:14px}.mc th{font-size:12px}.mc .boot{grid-template-columns:1fr;justify-items:center}.mc .boot figure{max-width:300px;width:100%}}
+@media (max-width:520px){.mc{border-radius:14px}.mc .stat b{font-size:22px}.mc .sw{display:none}.mc th,.mc td{padding:9px 10px;font-size:14px}.mc th{font-size:12px}.mc .boot{grid-template-columns:1fr;justify-items:center}.mc .boot figure{max-width:300px;width:100%}.mc .media-grid{grid-template-columns:1fr}}
 </style>
 
 <div class="mc">
 
 <div class="hero">
-  <span class="k">Rev E · bench build · MINI F56</span>
+  <span class="k">Rev E · MINI F56 · updated 26 October 2026</span>
   <h1>Methanol injection controller</h1>
-  <p class="sub">A simple boost-referenced PWM pump controller. It reads boost straight from the DME over the OBD port, sprays on a curve, watches the pump's current draw and runs the shift light off the same CAN link. A round touch screen and an Android app set it up.</p>
+  <p class="sub">A simple boost-referenced PWM pump controller. It reads boost from the DME over CAN, sprays on a curve, watches the pump's current draw and runs the shift light off the same link. A round touch screen and an Android app set it up.</p>
+  <p class="update"><b>Installed in the F56 on 26 October.</b> The bench footage is below, followed by the PCB drawings, the printed screen mount and all four screen boot clips. Installation is complete; spray performance and the new engine calibration still need their own logs.</p>
   <div class="stats">
     <div class="stat"><b>2 → 8 psi</b><span>Default curve</span></div>
     <div class="stat"><b>25 %</b><span>Duty floor</span></div>
@@ -90,7 +100,7 @@
 </div>
 
 <h2 id="bench">On the bench</h2>
-<p class="lead">This morning's ramp test. The app tells the board to run the pump from 25 % to 100 % and back down over 25 seconds, and the round screen follows along over its USB cable.</p>
+<p class="lead">The 23 October bench ramp test. The app tells the board to run the pump from 25 % to 100 % and back down over 25 seconds, and the round screen follows along over its USB cable.</p>
 
 <div class="row flip">
   <div class="short"><iframe src="https://www.youtube-nocookie.com/embed/s17SzJuKtCg" title="Methanol controller ramp test on the bench" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
@@ -109,7 +119,7 @@
 <p class="lead">Boost in, duty out. Everything else is there to make sure the pump is doing what the duty says.</p>
 
 <div class="grid3">
-  <div class="tile"><span class="tag">Input</span><b>Boost from the DME</b><p>No sensor to plumb. The board polls the F56's DME over D-CAN on OBD pins 6 and 14, with the same BMW UDS reads E-Sys and F5X Code use. One bundle read brings back RPM, manifold pressure, ambient, load, intake air, lambda and lambda target. Boost is manifold pressure over ambient.</p></div>
+  <div class="tile"><span class="tag">Input</span><b>Boost from the DME</b><p>No sensor to plumb. The F56 controller connects to PT-CAN behind the gateway, using the same BMW UDS reads as F5X Code. It reads manifold pressure and ambient for gauge boost, plus RPM, load, temperatures and lambda. Pressure before the throttle is a separate reading.</p></div>
   <div class="tile"><span class="tag">Curve</span><b>Duty from a curve</b><p>Two to ten points on boost, load or RPM, straight lines between them. The F56 default is 25 % at 2 psi rising to 100 % at 8 psi, and it shuts off again under about 1.5 psi.</p></div>
   <div class="tile"><span class="tag">Output</span><b>PWM to the pump</b><p>1 kHz low-side switching through a UCC27524 gate driver and an Infineon IPD90N06 MOSFET, with a flyback diode across the pump. A solenoid valve rides on the pump's PWM lead.</p></div>
   <div class="tile"><span class="tag">Safety</span><b>Pump current tells the truth</b><p>A 2 mΩ shunt and an INA180 measure the pump every 10 ms. A pump that's dry, unplugged, overloaded or switched on when it shouldn't be all show up in its current. That's the safety system.</p></div>
@@ -138,25 +148,40 @@
   <figure><img src="/assets/images/methanol-controller/board-rev-e.jpg" alt="Red Rev E methanol controller board in a black printed case with the XIAO module, buck module and blue terminals" loading="lazy"><figcaption>Rev E in its case on the bench, a frame from the video.</figcaption></figure>
 </div>
 
+<h3>PCB views</h3>
+<p>These are the Rev E design renders. The photograph above is the assembled board; the renders show the component layout, wiring terminals and rear test pads. Open a drawing to see its labels at full size.</p>
+<div class="media-grid">
+  <figure><a href="/assets/images/methanol-controller/pcb-iso.png"><img src="/assets/images/methanol-controller/pcb-iso.png" alt="Rev E controller PCB render with the XIAO USB-C module, pump stage and screw terminals" width="1768" height="1768" loading="lazy" decoding="async"></a><figcaption><b>Rev E, component side.</b> Pump and power terminals at one end, sensor and CAN at the other, with the shift-light connection on the side.</figcaption></figure>
+  <figure><a href="/assets/images/methanol-controller/pcb-back.png"><img src="/assets/images/methanol-controller/pcb-back.png" alt="Rear render of the Rev E controller with eighteen numbered test pads" width="1768" height="1768" loading="lazy" decoding="async"></a><figcaption><b>Rear and test pads.</b> The numbered pads bring the power, sensor, pump and communications signals out for checking.</figcaption></figure>
+  <figure><a href="/assets/images/methanol-controller/pcb-routed.png"><img src="/assets/images/methanol-controller/pcb-routed.png" alt="Routed Rev E PCB showing copper tracks and component placement" width="1768" height="1768" loading="lazy" decoding="async"></a><figcaption><b>Routed board.</b> Copper routing and component placement before manufacture.</figcaption></figure>
+</div>
+<figure class="drawing"><a href="/assets/images/methanol-controller/pcb-assembly.png"><img src="/assets/images/methanol-controller/pcb-assembly.png" alt="Rev E assembly drawing with component callouts, connector labels and a test-pad legend" width="2800" height="3776" loading="lazy" decoding="async"></a><figcaption><b>Assembly sheet.</b> A design drawing with part references and test-pad names. Its older screen note predates the current 2.1-inch panel.</figcaption></figure>
+
 <h2 id="screen">The screen</h2>
 <p class="lead">Optional, and it has its own ESP32. A Waveshare ESP32-S3-Touch-LCD-2.1: 480 × 480 round touch panel, an IMU, a clock and a TF card slot. It plugs into the board's USB-C with an ordinary cable. The board runs that port as a USB host, powers the screen, checks it with an HMAC handshake and then streams telemetry to it 25 times a second.</p>
 
 <h3>Boot</h3>
-<p>Power up and it plays an 8-second clip of a meth nozzle spraying into a charge pipe, rendered for this panel and decoded straight into its frame buffers at 24 fps. Tap to skip. Put your own <code>boot480.mjpeg</code> on a FAT32 TF card and it plays that instead, up to 10 seconds of it.</p>
+<p>The current built-in clip is the four-second water/meth splash: a nozzle sprays across the airflow and the mist reveals F56 inside a chequered ring. The F56 HUD, charge-pipe and original turbo clips are alternatives. All four previews are below; press play to watch.</p>
+<p>A systems check follows the clip using data from the controller. The animation itself makes no pump, CAN or tank-health claims. Tap to skip, or put your own <code>boot480.mjpeg</code> on a FAT32 TF card to override the built-in clip, up to 10 seconds.</p>
 
 <div class="boot">
-  <figure><video src="/assets/images/methanol-controller/boot-charge-pipe.mp4" poster="/assets/images/methanol-controller/boot-charge-pipe.jpg" autoplay muted loop playsinline preload="metadata"></video><figcaption><b>Charge pipe</b>: the one built into the screen.</figcaption></figure>
-  <figure><video src="/assets/images/methanol-controller/boot-turbo.mp4" poster="/assets/images/methanol-controller/boot-turbo.jpg" autoplay muted loop playsinline preload="metadata"></video><figcaption><b>Turbo</b>: the compressor wheel spins up, the mist becomes the shield, METHANOL slams in.</figcaption></figure>
+  <figure><video src="/assets/images/methanol-controller/boot-jcw-splash.mp4" poster="/assets/images/methanol-controller/boot-jcw-splash.jpg" controls muted loop playsinline preload="none" aria-label="Play the current F56 water and methanol splash animation"><a href="/assets/images/methanol-controller/boot-jcw-splash.mp4">Watch the water/meth splash.</a></video><figcaption><b>Water/meth splash, current built-in clip.</b> Four seconds, with a visible nozzle, downstream mist and the F56 lettering.</figcaption></figure>
+  <figure><video src="/assets/images/methanol-controller/boot-f56-hud.mp4" poster="/assets/images/methanol-controller/boot-f56-hud.jpg" controls muted loop playsinline preload="none" aria-label="Play the F56 HUD boot animation"><a href="/assets/images/methanol-controller/boot-f56-hud.mp4">Watch the F56 HUD clip.</a></video><figcaption><b>F56 HUD.</b> A red ring, carbon background, tach ticks and a burst of water/meth mist.</figcaption></figure>
+  <figure><video src="/assets/images/methanol-controller/boot-charge-pipe.mp4" poster="/assets/images/methanol-controller/boot-charge-pipe.jpg" controls muted loop playsinline preload="none" aria-label="Play the charge-pipe boot animation"><a href="/assets/images/methanol-controller/boot-charge-pipe.mp4">Watch the charge-pipe clip.</a></video><figcaption><b>Charge pipe.</b> The earlier eight-second nozzle and charge-pipe animation.</figcaption></figure>
+  <figure><video src="/assets/images/methanol-controller/boot-turbo.mp4" poster="/assets/images/methanol-controller/boot-turbo.jpg" controls muted loop playsinline preload="none" aria-label="Play the original turbo boot animation"><a href="/assets/images/methanol-controller/boot-turbo.mp4">Watch the turbo clip.</a></video><figcaption><b>Original turbo clip.</b> The compressor spins up, the mist becomes the shield and METHANOL fills the screen.</figcaption></figure>
 </div>
 
+<figure class="drawing"><a href="/assets/images/methanol-controller/boot-f56-hud-storyboard.jpg"><img src="/assets/images/methanol-controller/boot-f56-hud-storyboard.jpg" alt="Storyboard showing the red F56 HUD ring forming, F56 lettering appearing and the mist burst" width="1200" height="900" loading="lazy" decoding="async"></a><figcaption>The F56 HUD sequence, from the first ring to the final mist burst.</figcaption></figure>
+
 <h3>Pages</h3>
-<p>Swipe left and right. A fault takes over every page except Settings, the editor and Info with a red banner: what happened and what to check.</p>
+<p>The current screen uses three large bottom touch zones: <b>Live, Graph and Menu</b>. Live shows boost, meth duty, actual lambda and pump current. Graph puts boost, duty, actual and target lambda, and RPM on one time axis. Menu opens the curve editor, settings, the curve views, G-meter and system information.</p>
+<p class="note">The nine captures below are the earlier 17 October interface, recorded directly from the panel's demo loop. They show the individual views before the new bottom navigation and combined graph. Their demo curve also predates the 25 % duty floor.</p>
 
 <div class="rounds">
   <figure><img src="/assets/images/methanol-controller/screen-live.png" alt="Live page: boost sweep on the left, duty sweep on the right, 18.5 psi and 100 %" loading="lazy"><figcaption><b>Live</b>: boost up the left with a 5 s peak hold, duty up the right in the state's colour. Pump amps, lambda and target underneath.</figcaption></figure>
   <figure><img src="/assets/images/methanol-controller/screen-boost-vs-meth.png" alt="Boost vs meth page: the curve with a dot for the current point" loading="lazy"><figcaption><b>Boost vs meth</b>: the curve, a dot where the car is now and a 3 s fading trail.</figcaption></figure>
   <figure><img src="/assets/images/methanol-controller/screen-last-60s.png" alt="Last 60 seconds page: boost, duty, pump amps and AFR traces" loading="lazy"><figcaption><b>Last 60 s</b>: boost, duty, pump amps and AFR.</figcaption></figure>
-  <figure><img src="/assets/images/methanol-controller/screen-curve-editor.png" alt="Curve editor page with draggable points and Revert, Apply and Save buttons" loading="lazy"><figcaption><b>Curve editor</b>: drag a point, Apply to try it live, Save to keep it.</figcaption></figure>
+  <figure><img src="/assets/images/methanol-controller/screen-curve-editor.png" alt="Earlier curve editor page with draggable points and Revert, Apply and Save buttons" loading="lazy"><figcaption><b>Earlier curve editor.</b> The current editor selects points with taps and adjusts them with separate buttons; Apply, Revert and Save remain explicit.</figcaption></figure>
   <figure><img src="/assets/images/methanol-controller/screen-fault.png" alt="Red fault banner reading Current with pump off, check the driver and wiring for a short" loading="lazy"><figcaption><b>Fault</b>: the banner says what happened and what to check.</figcaption></figure>
   <figure><img src="/assets/images/methanol-controller/screen-g-meter.png" alt="G-meter page: friction circle with lateral and longitudinal readouts" loading="lazy"><figcaption><b>G-meter</b>: friction circle out to 1.5 g from the screen's own IMU, after a park-then-brake calibration.</figcaption></figure>
   <figure><img src="/assets/images/methanol-controller/screen-rpm-vs-meth.png" alt="RPM vs meth page" loading="lazy"><figcaption><b>RPM vs meth</b>: the same against RPM, and where the curve lives when it runs on RPM.</figcaption></figure>
@@ -165,7 +190,11 @@
 </div>
 
 <p>If the link drops, every value blanks after half a second and Live says LINK LOST. A grey screen isn't proof the pump stopped, and the screen says so.</p>
-<p class="note">These are captured straight off the panel's frame buffer, running the screen's built-in demo loop. They're from 10-17, before the duty floor went to 25 %, so the demo curve starts lower than today's default.</p>
+<h3>The printed mount</h3>
+<div class="row">
+  <div><p>A short printed arm joins the car's existing 1-inch RAM ball to a 17 mm ball on the back of the screen. One M4 knob clamps both ends: loosen it, set the screen angle, then tighten.</p><p>The drawing shows the mount design, rather than a photograph of the installed screen.</p></div>
+  <figure><a href="/assets/images/methanol-controller/screen-mount.png"><img src="/assets/images/methanol-controller/screen-mount.png" alt="Printed screen-mount CAD preview with two ball cups and one central clamping knob" width="900" height="700" loading="lazy" decoding="async"></a><figcaption>The two-ball screen mount and its single clamping knob.</figcaption></figure>
+</div>
 
 <h2 id="app">The app</h2>
 <p class="lead">Methanol for Android talks to the board over BLE. It finds the board by itself and opens on four screens with nothing to type: every value comes from the board and changes with + and − or a slider.</p>
@@ -187,13 +216,16 @@
   <figure><img src="/assets/images/methanol-controller/app-shift-light.jpg" alt="Shift light settings with an LED preview, strip switches, LED count and brightness" loading="lazy"><figcaption>The shift light editor.</figcaption></figure>
 </div>
 
-<p class="note">Dash, Pump test and Settings are my phone on the bench board on 10-22. Curve and Shift light are the current build, 0.5.1, on an emulator holding the board's default settings.</p>
+<p class="note">Dash, Pump test and Settings are my phone on the bench board on 22 October. Curve and Shift light were captured from app 0.5.1 on an emulator holding the board's default settings.</p>
+
+<h3>F5X Code through the same controller</h3>
+<p>The meth controller also carries the Bluetooth ENET link used by F5X Code. It can serve as the interface for engine logging and DME fault reads and clears, without a separate CAN shift-light adapter. It shares access with its own DME reader, one request at a time, and pauses its own polling briefly for a fault clear. This link reaches the modules on its PT-CAN connection; other buses still need the normal diagnostic adapter.</p>
 
 <h2 id="setup">Setting it up</h2>
 <p class="lead">In order. The board won't run the pump until the first two are done, and won't spray on boost until all of it is.</p>
 
 <ol class="flow">
-  <li><b>Wire it.</b> A fused, ignition-switched 12 V feed and ground, the pump on PUMP, OBD pins 6 and 14 to CAN high and low, the strip on SHIFT LIGHT and the screen into the USB-C. Leave the CAN termination open: the car's bus already has it.</li>
+  <li><b>Wire it.</b> A fused, ignition-switched 12 V feed and ground, the pump on PUMP, CAN high and low to the car's CAN connection, the strip on SHIFT LIGHT and the screen into the USB-C. The current F56 interface is on PT-CAN behind the gateway. Leave the CAN termination open: the car's bus already has it.</li>
   <li><b>Set the pump current limit.</b> Settings, Pump current limit. The board ships at zero and refuses to run the pump until it's set. Mine is 11 A.</li>
   <li><b>Purge the line.</b> Pump test, Purge, nozzle in a container. Up to 100 % and 10 s there to push the air out.</li>
   <li><b>Check the spray.</b> Ramp test or Hold a duty, and watch the nozzle and the amps.</li>
@@ -203,7 +235,7 @@
   <li><b>Arm it.</b> Every boot starts disarmed. Arm from the app, or turn on "Arm itself each drive" under Advanced, Input. Disarm holds self-arming off until the next Arm.</li>
 </ol>
 
-<p>In this bench build Arm is switched off in the firmware, so none of this sprays on boost yet. The pump runs from Pump test only.</p>
+<p class="note">The bench footage was recorded with automatic spraying gated off. Installing the kit does not establish that boost-triggered spraying has been qualified; the firmware's intake qualification gate and the setup checks still apply.</p>
 
 <h2 id="safeties">Safeties</h2>
 <p class="lead">The pump's current is the safety. Every 10 ms the board compares what the pump draws with what the learned model says it should draw at this duty and battery voltage.</p>
@@ -245,7 +277,7 @@
 <p>Under all of that: the pump pins are driven low before anything else starts, a task watchdog and the RTC watchdog both run, and the control loop drops the output if it stalls for more than 20 ms.</p>
 
 <h2 id="status">Where it's at</h2>
-<p>On the bench. The pump runs from the app and the screen follows the board over USB, and firmware updates go over BLE. Before it goes in the car: wet runs, runs at charging voltage around 14 V, the dry-tank threshold set from those, and then Arm turned on in the firmware. Rev F follows the bench work.</p>
+<p>The kit is installed in the F56 as of 26 October 2026. The footage and phone captures here document the bench work; the PCB and mount pictures are design renders. The next step is logging the installed system and checking actual spray operation, pump current and temperatures. Installation alone does not validate the flow, the protection thresholds or a change to the engine tune.</p>
 
 <div class="last">Questions: <a href="mailto:matt@geekopolis.com">matt@geekopolis.com</a> or <a href="https://www.instagram.com/mattryan6729/">@mattryan6729</a>.</div>
 

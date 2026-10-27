@@ -1,11 +1,12 @@
 ---
 title: "Methanol injection controller"
 date: 2026-10-23 00:00:00 -0400
+last_modified_at: 2026-10-26
 categories: car tech
 tags: [methanol, water-methanol, mini, f56, b48, esp32, esp32-s3, xiao, pwm, can-bus, uds, obd2, android, app, lvgl, waveshare, shift-light, pcb, kicad, jlcpcb]
 cover: /assets/images/methanol-controller/cover.jpg
 lightbox: true
-excerpt: "A simple boost-referenced PWM pump controller for the F56. It reads boost from the DME over the OBD port, sprays on a curve, watches pump current and runs the shift light. A round touch screen and an Android app set it up. On the bench now."
+excerpt: "A boost-referenced PWM pump controller, now installed in the F56. PCB renders, the round screen and its four boot animations, the printed mount, and the Android app that sets it up."
 article_header:
   type: overlay
   theme: dark

@@ -12,15 +12,17 @@ of appending to the end.
 3. **How it works**: six tiles (DME boost, curve, PWM, pump current, soft
    start, shift light), then the line about cars without UDS.
 4. **The board**: Rev E parts list beside the photo, then Rev F in one
-   paragraph.
-5. **The screen**: what it is and how it links, Boot (both clips), Pages
-   (nine round captures), link-lost line, capture note.
+   paragraph. Follow with the PCB render gallery and full assembly sheet.
+5. **The screen**: what it is and how it links, Boot (all four clips, current
+   water/meth splash first), the F56 HUD storyboard, current navigation,
+   nine explicitly dated older panel captures, and the printed mount.
 6. **The app**: four main screens, then shift light and Advanced beside the
-   shift light shot, then the screenshot note.
-7. **Setting it up** (`#setup`): eight steps, then the bench-build line.
+   shift light shot, then the screenshot note and F5X diagnostic link.
+7. **Setting it up** (`#setup`): eight steps, then the qualification note.
 8. **Safeties** (`#safeties`): fault table, latching, "Before it sprays at
    all", where you see it, firmware guards.
-9. **Where it's at**: what works on the bench and what's owed before the car.
+9. **Where it's at**: installed on 26 October, with spray and on-car logging
+   still to qualify. Bench footage and CAD renders remain labeled as such.
 
 ## Standing rules
 
@@ -34,9 +36,10 @@ of appending to the end.
   blocks the pump).
 - The repo is private. Don't link it or name its scripts as if readers can
   run them.
-- Keep the bench-build line in Setting it up and Where it's at until the
-  firmware's Arm gate (`MP_INTAKE_QUALIFIED`) is on and the board has run on
-  the car.
+- Matt confirmed installation on 26 October 2026. That supersedes the old
+  "before it goes in the car" status, but does not prove spraying is enabled
+  or qualified. Keep the qualification note until the firmware's Arm gate
+  (`MP_INTAKE_QUALIFIED`) and installed operation have been verified.
 
 ## Images
 
@@ -64,3 +67,21 @@ All in `assets/images/methanol-controller/`.
   `screen/boot/alternates/charge-pipe/charge-pipe.mp4` (built into the
   screen) and `screen/boot/boot-preview.mp4`, remuxed with `+faststart`.
   Posters are frames at 4.5 s and 6.5 s.
+- Added 26 October: `boot-jcw-splash.mp4` and `boot-f56-hud.mp4` from
+  `pwm_controller-fw-rev-e/screen/boot/alternates/`, remuxed with faststart.
+  The splash poster is its supplied preview; the HUD poster is its 3.1 s
+  frame. `boot-f56-hud-storyboard.jpg` is the supplied HUD preview sheet.
+  The current built-in clip is the water/meth splash, as confirmed by
+  `screen/README.md` and `screen/bootclip.py`; the HUD README's older
+  built-in claim is superseded. All four videos have controls and no autoplay.
+- Added 26 October: `pcb-iso.png`, `pcb-back.png`, `pcb-routed.png` and
+  `pcb-assembly.png` from Rev E's `pcb/plots/`. These are design renders,
+  not photographs or proof of physical testing. The assembly sheet includes
+  an older screen note, called out in its caption.
+- Added 26 October: `screen-mount.png` from
+  `screen/mechanical/mount/preview.png`, labeled as a CAD preview. The mount
+  joins a 1-inch RAM ball and a 17 mm screen ball with one M4 knob.
+- Old app/panel captures remain for their historical detail. Do not present
+  them as screenshots of the current Live/Graph/Menu interface. The 13 October
+  Android UI-smoke captures on the rev-f checkout are older than the phone
+  photos already in the article, and are not replacements.
