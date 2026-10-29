@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>R53 Jarvis · Front wheel demo</title>
+    <link rel="stylesheet" href="./fonts/fonts.css" />
+    <script type="module" crossorigin src="./assets/demo-BE6RXowD.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/demo-9atSs1TO.css">
+  </head>
+  <body data-level="car">
+    <div id="stage"></div>
+
+    <header id="hud">
+      <div class="title">
+        <a class="post-link" id="post-link" hidden>‹ Back to the post</a>
+        <div class="kicker" id="car-kicker">MINI R53 · Cooper S</div>
+        <div id="crumb">MINI R53</div>
+      </div>
+      <nav class="levels">
+
+        <button class="hud-btn" id="back" title="Up one level (Esc)">‹ Back</button>
+        <button class="hud-btn" data-goto="">Corner</button>
+        <button class="hud-btn" id="toggle-sections" aria-expanded="false" aria-controls="section-visibility" disabled>Sections</button>
+        <!-- one button per section goes here (main.ts) -->
+        <button class="hud-btn in-section" id="toggle-explode">Assemble</button>
+        <span class="sep in-section"></span>
+        <button class="hud-btn in-section" id="open-wiring-hud">Wiring</button>
+      </nav>
+    </header>
+
+    <aside id="section-visibility" aria-label="Visible sections" hidden>
+      <div class="visibility-heading"><h2>Visible sections</h2><button id="close-sections" aria-label="Close visible sections">×</button></div>
+      <p>Show only the assemblies you want to see.</p>
+      <div class="visibility-actions">
+        <button class="hud-btn" data-visibility="defaults">Defaults</button>
+        <button class="hud-btn" data-visibility="all">All</button>
+        <button class="hud-btn" data-visibility="none">None</button>
+      </div>
+      <div id="section-checkboxes"></div>
+      <p class="visibility-note">Driver’s front wheel and brake reference. </p>
+    </aside>
+
+    <div id="fitment">R53 reference · 17-inch R85 wheel · Sports-brake example · Shapes are illustrative.</div>
+    <div id="hint">Loading…</div>
+    <aside id="card" hidden></aside>
+
+    <div id="lightbox" class="overlay" hidden></div>
+    <div id="wiring" class="overlay panel" hidden></div>
+    <div id="procedures" class="overlay panel" hidden></div>
+    <div id="walk" class="overlay" hidden></div>
+
+  </body>
+</html>
