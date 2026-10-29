@@ -68,8 +68,7 @@ that is still recording can't be uploaded.
 
 - **Who can see it:** anyone with the log's link can view and download the
   whole file. The link isn't listed or searchable, but treat it like the file
-  itself. A log can carry your VIN or other vehicle identifiers if they were
-  recorded in it.
+  itself. Logs hold engine data only: no VIN and no location.
 - **What the site keeps:** the log file and its title and notes, which app
   and version sent it, when, and a one-way hash of the network address it came
   from, used only to limit abuse. The site doesn't keep your address itself.
