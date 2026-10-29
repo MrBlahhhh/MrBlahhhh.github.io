@@ -1,0 +1,12 @@
+R53 Jarvis demonstration geometry
+
+R53 body outline adapted from Outlines, 2003 Mini Cooper S Hatchback blueprints:
+https://getoutlines.com/blueprints/3836/2003-mini-cooper-s-hatchback-blueprints
+Listed licence: Creative Commons Attribution 4.0 International
+https://creativecommons.org/licenses/by/4.0/
+Changes: three-dimensional shell, revised surface-mounted exterior landmarks and separate wheel-corner model.
+Body landmarks also checked against IFCAR's public-domain R53 photograph:
+https://commons.wikimedia.org/wiki/File:Mini-CooperS.jpg
+No endorsement is implied. The raw reference images are not distributed.
+
+Wheel, brake and suspension shapes are illustrative reference geometry, not measured manufacturing CAD.
