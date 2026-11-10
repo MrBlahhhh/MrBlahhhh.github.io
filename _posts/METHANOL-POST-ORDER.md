@@ -4,120 +4,79 @@ Not a post. The running order for `2026-10-23-methanol-injection-controller.md`,
 whose page is `_includes/methanol-feature.html`. Add to this structure instead
 of appending to the end.
 
-1. **Hero**: what it is (boost-referenced PWM, boost from the DME, pump
-   current as the safety, shift light), stats strip (2 → 8 psi, 25 % floor,
-   300 ms soft start, 11 A trip), three buttons.
-2. **On the bench** (`#bench`): the 2026-10-23 ramp-test short
-   (`s17SzJuKtCg`) beside what's in the frame.
-3. **How it works**: six tiles (DME boost, curve, PWM, pump current, soft
-   start, shift light), then the line about cars without UDS.
-4. **The board**: Rev E parts list beside the photo, then Rev F in one
-   paragraph. Follow with the PCB render gallery and full assembly sheet.
-5. **The screen**: what it is and how it links, Boot (all four clips, current
-   water/meth splash first), the F56 HUD storyboard, current navigation,
-   the current LCD capture gallery, then the housing and screw-on bezel.
-6. **The app**: four main screens, then shift light and Advanced beside the
-   shift light shot, then the screenshot note and F5X diagnostic link.
-7. **Setting it up** (`#setup`): eight steps, then the qualification note.
-8. **Safeties** (`#safeties`): fault table, latching, "Before it sprays at
-   all", where you see it, firmware guards.
-9. **Where it's at**: installed on 26 October, with spray and on-car logging
-   still to qualify. Bench footage and CAD renders remain labeled as such. Do not republish the
-   rejected nine-panel screenshot gallery or the obsolete ball-arm mount.
+Since 9 November 2026 this is a sales page for the F56 kit (controller board,
+round screen in its housing, app). Sales copy only: capability claims, no
+"honest limits" or "where it's at" sections. Ordering is by email or
+Instagram, no price on the page.
+
+1. **Hero**: what it is, the kit line, stats (0 extra sensors, 2 → 8 psi
+   default curve, 10 ms pump current checks, 50 Hz log stream), buttons to
+   `#order`, `#can`, `#app`.
+2. **What you get** (`#kit`): board, screen, app, F56 Code logging.
+3. **How the CAN control works** (`#can`): the bus diagram (inline SVG), the
+   frame table (0x0A5, 0x2C7, 0x0D9), the lift gate, the shift-cut gate and
+   freshness, when it talks and when it doesn't, F56 Code through the board,
+   the CAN capture.
+4. **Spray control** (`#spray`): six tiles, then "Before it sprays".
+5. **Pump monitoring and faults** (`#safeties`): learned curves beside the
+   pump health shot, the warning/fault table, then the warning, fault and
+   Dash examples.
+6. **The screen** (`#screen`): LCD gallery, TF card logs, night brightness,
+   the boot clip and storyboard, the housing renders.
+7. **The app** (`#app`): eight screenshots, "And the rest" beside the boot
+   lettering shot, the screenshot note.
+8. **Setting it up** (`#setup`): the wizard's steps.
+9. **The board** (`#board`): parts list beside the bench photo, three PCB
+   renders.
+10. **See it run** (`#bench`): the 2026-10-23 ramp-test short
+    (`s17SzJuKtCg`).
+11. **Order one** (`#order`).
 
 ## Standing rules
 
 - Present tense, current build only. No comparisons with other meth kits:
   the design is a simple boost-referenced PWM with pump current as the
   safety, and the page says that on its own terms.
-- Numbers come from the controller firmware (`pwm_controller`, branch
-  `firmware-rev-e`): `defaults()` and `validate()` in
-  `firmware/src/logic/control.cpp`, the fault list in `firmware/src/proto.h`.
-  The 11 A trip is Matt's setting, not a default (the default is 0, which
-  blocks the pump).
-- The repo is private. Don't link it or name its scripts as if readers can
-  run them.
-- Matt confirmed installation on 26 October 2026. That supersedes the old
-  "before it goes in the car" status, but does not prove spraying is enabled
-  or qualified. Keep the qualification note until the firmware's Arm gate
-  (`MP_INTAKE_QUALIFIED`) and installed operation have been verified.
+- Numbers come from controller firmware 0.5.34 and screen firmware 0.1.13.
+  Recheck them against the firmware when either changes.
+- Dry tank, open pump, clogged nozzle and tank low are warnings: the pump
+  keeps running. Only overload, driver short, battery, sensor, current
+  reading and settings memory stop it. Don't show a dry-pump fault banner or
+  a blue dry-tank strip; the firmware no longer does either.
+- Don't claim what isn't built: night dimming from the car's dimmer, the
+  washer-fluid level as the tank sender, the fail-safe wire (not on this
+  board), all-module diagnostics.
+- The controller repo is private. Don't link it or name its scripts.
+- No boot clip with a cartoon character on the page.
 
 ## Images
 
 All in `assets/images/methanol-controller/`.
 
-- `cover.jpg`, `board-rev-e.jpg`: frames from the 2026-10-23
-  short (the 12 s frame, 100 % duty, 0.6 A).
-- `screen-*.png`: 480 x 480 frame-buffer captures off the 2.1" LCD with
-  `tools/screen_shot.py` on the screen's demo loop, 2026-10-17 (after the
-  sweep gauges, before the 25 % floor, so the demo curve starts at 10 %).
-  `screen-fault.png` is the right half of a two-up capture from the same
-  session. Retake them with `screen_shot.py COM5 out.png --demo --all` once
-  the screen is on the PC's USB again, and drop the capture note.
-- `app-dash.jpg`, `app-pump-test.jpg`, `app-settings.jpg`: Matt's phone on
-  the bench board, 2026-10-22 (0.5.0), status and gesture bars cropped, 720
-  wide. The pump-test shot has the cut-off footer line removed above the nav
-  bar.
-- `app-curve.jpg`, `app-shift-light.jpg`: 0.5.1 on the `Pixel_10_Pro` AVD,
-  from a throwaway local build (never committed) that loaded the app's
-  `default-config.bin` into the board slot with an 11 A limit and set the
-  shift-light capability, so the screens render without a board. The
-  shift-light shot is cropped below the Advanced header and its
-  telemetry-unknown banner.
-- `boot-charge-pipe.mp4`, `boot-turbo.mp4`: the repo's
-  `screen/boot/alternates/charge-pipe/charge-pipe.mp4` (built into the
-  screen) and `screen/boot/boot-preview.mp4`, remuxed with `+faststart`.
-  Posters are frames at 4.5 s and 6.5 s.
-- Added 26 October: `boot-jcw-splash.mp4` and `boot-f56-hud.mp4` from
-  `pwm_controller-fw-rev-e/screen/boot/alternates/`, remuxed with faststart.
-  The splash poster is its supplied preview; the HUD poster is its 3.1 s
-  frame. `boot-f56-hud-storyboard.jpg` is the supplied HUD preview sheet.
-  The current built-in clip is the water/meth splash, as confirmed by
-  `screen/README.md` and `screen/bootclip.py`; the HUD README's older
-  built-in claim is superseded. All four videos have controls and no autoplay.
-- Added 26 October: `pcb-iso.png`, `pcb-back.png`, `pcb-routed.png` and
-  `pcb-assembly.png` from Rev E's `pcb/plots/`. These are design renders,
-  not photographs or proof of physical testing. The assembly sheet includes
-  an older screen note, called out in its caption.
-- Added 26 October: `screen-mount.png` from
-  `screen/mechanical/mount/preview.png`, labeled as a CAD preview. The mount
-  joins a 1-inch RAM ball and a 17 mm screen ball with one M4 knob.
-- Old app/panel captures remain for their historical detail. Do not present
-  them as screenshots of the current Live/Graph/Menu interface. The 13 October
-  Android UI-smoke captures on the rev-f checkout are older than the phone
-  photos already in the article, and are not replacements.
+- `cover.jpg`, `board-rev-e.jpg`: frames from the 2026-10-23 bench short.
+  Replace with photos of the kit and of it installed when Matt takes them.
+- `app-*-0633.jpg`: app 0.6.33 on the `Pixel_10_Pro` emulator with the
+  debug-only demo board (`--es cmd demo`, `--ei screen N`, 10+N for the
+  engineering tabs), which plays back a third-gear pull: cruise at 2,400 rpm,
+  then 2,400 to 6,500 rpm with boost to 19 psi. Status and gesture bars
+  cropped, 720 wide. Captioned as emulator and demo board. Swap for Matt's
+  phone shots at the car when he takes them, and drop the note.
+- `lcd-0113-*.png`: screen firmware 0.1.13's page code rendered on a PC by
+  the controller repo's LCD preview in gallery mode, fed a simulated drive of
+  seven third-gear pulls. Captioned as rendered. The dry-pump shot shows the
+  amber warning line; the banner shot is an overload.
+- `boot-charge-pipe-tunnel.mp4`: the built-in boot clip's branded preview
+  (F56, WATER / METHANOL), remuxed with faststart. Poster is its 6.5 s
+  frame; the storyboard is the clip's own stills sheet.
+- `housing-*.png`: mesh renders of the current housing and bezel print
+  files. CAD views.
+- `pcb-*.png`: the board's design renders.
 
-## Correction after Matt's review, 26 October
+## Wanted from Matt
 
-- Remove all nine 17 October LCD demo images from the article. Matt rejected
-  that entire gallery as the wrong interface. Dating them is not a substitute
-  for showing the current screen. No current panel captures are available in
-  the project assets; keep the source-verified Live/Graph/Menu description.
-- Remove the obsolete two-ball mount and its description. The current CAD is
-  `screen/mechanical/enclosure/screen-housing.stl` and `screen-bezel.stl`, with
-  the rear quarter-inch 20 TPI RAM mounting thread and screw-on bezel described
-  in that directory's README. Do not use `mechanical/mount/preview.png` again.
-- `housing-front.png`, `housing-rear.png` and `housing-bezel.png` are direct
-  mesh renders of those current STL files. The two meshes use separate print
-  coordinates, so show the parts individually instead of guessing an assembled
-  alignment. These are CAD views, not installation photographs.
-
-## Restore the LCD gallery with current captures, 26 October
-
-Matt clarified that the gallery should be updated, not removed. The gallery now
-contains nine current page captures, with the current fault view in Safeties.
-They are produced by compiling the actual UI and custom fonts from controller
-commit e5746d0 against its managed LVGL 9.4.0 library on the PC. Hardware-only
-interfaces are inert, the board size is 480 x 480, the dark theme and default
-Montserrat 16 match the LCD settings, and RGB565 pixels are exported directly.
-The circular mask represents the physical panel boundary; no controls or labels
-are recreated in an image editor. Capture names begin `lcd-current-` to avoid
-caching the rejected images under their old names.
-
-The reproducible harness is retained in the task visualization workspace under
-`lcd-host-capture`; raw framebuffers and the build are in the temporary
-`meth-lcd-capture-20261026` directory. No LCD is connected over USB and no board
-or vehicle is flashed. The public caption explicitly identifies a desktop LVGL
-capture with demo telemetry/IMU inputs. System's desktop metadata and missing
-controller are retained honestly. Do not describe these as fresh captures from
-the physical installed LCD. The old 17 October images remain rejected.
+- Photos: the kit laid out, the board in the glovebox, the screen mounted
+  in the car with the Live page up.
+- A short of the screen during a pull on the car, to replace or sit beside
+  the bench ramp test.
+- Phone screenshots at the car: Dash spraying, Curve, Pump test, Pump
+  health, Shift light.
