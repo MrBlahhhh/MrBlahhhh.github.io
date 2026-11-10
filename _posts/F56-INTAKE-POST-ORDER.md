@@ -8,7 +8,9 @@ appending to the end.
    before printing), stats (355 CFM logged peak, coupler vacuum, loss change
    against the first design, cells per run).
 2. **What it is** (`#parts`): the three parts and the mounts, two CAD renders
-   side by side, then the top view.
+   side by side, then the top view, then **The filter** (`#filter`): spec table
+   for the KYOSTAR cone the housing is sized to. A product link goes here once
+   Matt confirms which listing is his.
 3. **How it was modelled** (`#model`): one model, real flows, mesh and solver,
    the filter assumption.
 4. **The flow** (`#flow`): final top video, final side video, first design video.
