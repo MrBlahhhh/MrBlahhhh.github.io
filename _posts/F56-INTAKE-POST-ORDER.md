@@ -9,8 +9,8 @@ appending to the end.
    against the first design, cells per run).
 2. **What it is** (`#parts`): the three parts and the mounts, two CAD renders
    side by side, then the top view, then **The filter** (`#filter`): spec table
-   for the KYOSTAR KD2045RD the housing is sized to, with a link to the listing
-   Matt ordered from (11-10).
+   for the KYOSTAR KD2045 the housing is sized to, linked to the Amazon listing
+   Matt ordered (plain /dp/ address, no share tags). KD2045RD is the red one.
 3. **How it was modelled** (`#model`): one model, real flows, mesh and solver,
    the filter assumption.
 4. **The flow** (`#flow`): final top video, final side video, first design video.
