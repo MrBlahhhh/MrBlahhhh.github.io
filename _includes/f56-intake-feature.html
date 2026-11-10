@@ -1,0 +1,131 @@
+<!-- F56 cold air intake CFD. Rendered by _posts/2026-11-10-f56-cold-air-intake-cfd.md. Edit here, not in the post.
+     Running order and how every picture was made: _posts/F56-INTAKE-POST-ORDER.md. Images in assets/images/f56-intake. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Rajdhani:wght@600;700&display=swap">
+<style>
+.fi{--ink:#EAF2F7;--mute:#A9B9C4;--accent:#FF8A3D;--accent-hi:#FFB07A;--line:rgba(255,138,61,.16);--line2:rgba(255,138,61,.36);--card:rgba(20,26,34,.85);
+  font-family:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);line-height:1.55;
+  background:radial-gradient(ellipse 80% 40% at 85% 0%,rgba(255,138,61,.12),transparent 60%),linear-gradient(180deg,#141a22,#0b0f14 40%,#07090c);
+  border-radius:22px;padding:28px clamp(16px,3vw,32px) 36px;margin:0 0 24px;overflow-wrap:anywhere}
+.fi *{box-sizing:border-box}
+.fi a{color:var(--accent-hi)}
+.fi .k{display:inline-block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 4px}
+.fi h1,.fi h2,.fi h3,.fi .stat b{font-family:"Rajdhani","Atkinson Hyperlegible",sans-serif;letter-spacing:.01em}
+.fi .hero{padding:4px 0 22px;border-bottom:1px solid var(--line)}
+.fi .hero h1{font-size:clamp(34px,6.2vw,56px);line-height:1;margin:0;color:var(--ink)}
+.fi .hero p.sub{font-size:clamp(17px,2.2vw,20px);color:var(--mute);max-width:64ch;margin:14px 0 0}
+.fi .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(140px,100%),1fr));gap:12px;margin:20px 0 0}
+.fi .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.fi .stat b{display:block;font-size:32px;line-height:1;color:var(--accent-hi)}
+.fi .stat span{color:var(--mute);font-size:13px;letter-spacing:.04em;text-transform:uppercase}
+.fi h2{font-size:clamp(26px,3.6vw,36px);margin:44px 0 6px;color:var(--ink);border:0}
+.fi h3{font-size:21px;margin:22px 0 6px;color:var(--ink)}
+.fi p{margin:0 0 12px}
+.fi .lead{font-size:18px;color:var(--mute);margin:0 0 16px;max-width:68ch}
+.fi ul.tight{margin:0 0 14px;padding-left:20px}
+.fi ul.tight li{margin:6px 0;color:var(--mute)}
+.fi ul.tight li b{color:var(--ink)}
+.fi figure{margin:0 0 20px;min-width:0}
+.fi figure img,.fi figure video{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);background:#07090c}
+.fi figcaption{font-size:13px;color:var(--mute);margin-top:8px;line-height:1.4}
+.fi .shots{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:8px 0 10px}
+.fi .shots3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:8px 0 10px}
+.fi .tbl{overflow-x:auto;margin:10px 0 18px;border:1px solid var(--line);border-radius:14px}
+.fi table{border-collapse:collapse;width:100%;min-width:520px;font-size:15px;margin:0}
+.fi th,.fi td{padding:9px 12px;border-bottom:1px solid var(--line);text-align:left;color:var(--mute);background:transparent;overflow-wrap:normal;word-break:normal}
+.fi th,.fi td:nth-child(2),.fi td:nth-child(3){white-space:nowrap}
+.fi th{color:var(--ink);font-weight:700}
+.fi td b{color:var(--ink)}
+.fi tr:last-child td{border-bottom:0}
+.fi .note{font-size:14px;color:var(--mute);border-left:3px solid var(--accent);padding:6px 12px;margin:10px 0 18px}
+@media (max-width:640px){.fi .shots,.fi .shots3{grid-template-columns:1fr}}
+</style>
+
+<div class="fi">
+
+<div class="hero">
+  <span class="k">MINI F56 · B48 · printed intake · CFD</span>
+  <h1>Cold air intake: the whole tract in CFD</h1>
+  <p class="sub">A printed front snorkel and round airbox for my F56, modelled as one piece of air from the two grille ports to the factory MAF neck before anything gets printed. Then changed where the flow said it was losing, and run again.</p>
+  <div class="stats">
+    <div class="stat"><b>355</b><span>CFM, my logged peak</span></div>
+    <div class="stat"><b>0.57</b><span>psi at the coupler</span></div>
+    <div class="stat"><b>&minus;16%</b><span>loss vs the first design</span></div>
+    <div class="stat"><b>2.2 M</b><span>cells per run</span></div>
+  </div>
+</div>
+
+<h2 id="parts">What it is</h2>
+<p class="lead">Three printed parts replace the factory snorkel and airbox. Everything is designed against 3D scans of my engine bay, inside the space the factory snorkel used, so the hood still shuts.</p>
+<ul class="tight">
+  <li><b>Snorkel.</b> Two ports that sit in the radiator shroud's openings, lofted into one trunk. The ports are 131 × 34.5 mm, as big as the shroud allows, and the roof runs up to 3 mm over the factory lid line.</li>
+  <li><b>Flange joint.</b> The snorkel bolts to the airbox with six M4 screws into heat-set inserts, with a thin lip across the top where there is no room for a flange.</li>
+  <li><b>Airbox.</b> A 187 mm drum with a domed end cap, an inverted-cone dry filter, a 74 mm radius elbow and a copy of the factory neck, so the factory MAF bolts on and the factory coupler clamps on.</li>
+  <li><b>Mounts.</b> Printed bosses drop over the two M8 studs at the front of the car. At the back, a bolt-on bracket puts two pins into the factory airbox mounts, with new TPU sleeves where the rubber had melted away.</li>
+</ul>
+<div class="shots">
+  <figure><img src="/assets/images/f56-intake/cad-overview.jpg" alt="Snorkel, flange joint and airbox from the front left" loading="lazy"><figcaption>Snorkel, flange joint and drum from the front left. The cap is the domed end.</figcaption></figure>
+  <figure><img src="/assets/images/f56-intake/cad-underside.jpg" alt="Underside showing the two ports and the front stud bosses" loading="lazy"><figcaption>From underneath: the two ports, the flange joint and the two front stud bosses.</figcaption></figure>
+</div>
+<figure><img src="/assets/images/f56-intake/cad-top.jpg" alt="Top view of the intake with the MAF neck in front" loading="lazy"><figcaption>From above, with the MAF neck and elbow nearest the camera.</figcaption></figure>
+
+<h2 id="model">How it was modelled</h2>
+<ul class="tight">
+  <li><b>One model, ports to coupler.</b> Both ports open to still air at ambient pressure, so the split between them is worked out, not assumed. The engine's pull is a fixed flow at the end of the MAF neck.</li>
+  <li><b>Real flow numbers.</b> 355 CFM is the most my car has pulled in any logged pull (694 kg/h at 6,000 rpm). 563 CFM is my estimate for 350 whp.</li>
+  <li><b>Mesh and solver.</b> OpenFOAM, steady, k-omega SST, about 2.2 million cells with 1 mm cells on every wall. The geometry comes straight out of the CAD.</li>
+  <li><b>The filter.</b> A porous layer in the shape of the cone and its inverted front. The filter maker publishes no flow rating, so its resistance is an assumption, the same in every run. Treat the filter's share of the loss as the soft number here.</li>
+</ul>
+
+<h2 id="flow">The flow</h2>
+<p class="lead">Arrows ride the air from both ports, through the trunk and the joint, round the drum, through the filter and out the neck, coloured by speed. They are slowed down so you can follow them.</p>
+<figure><video src="/assets/images/f56-intake/flow-final-355-top.mp4" poster="/assets/images/f56-intake/flow-final-355-top.jpg" controls muted loop playsinline preload="none" aria-label="Play the final design flow video, top view"><a href="/assets/images/f56-intake/flow-final-355-top.mp4">Watch the top view.</a></video><figcaption><b>Final design, 355 CFM, from above.</b> Port 1 (left) takes two thirds of the air.</figcaption></figure>
+<figure><video src="/assets/images/f56-intake/flow-final-355-side.mp4" poster="/assets/images/f56-intake/flow-final-355-side.jpg" controls muted loop playsinline preload="none" aria-label="Play the final design flow video, side view"><a href="/assets/images/f56-intake/flow-final-355-side.mp4">Watch the side view.</a></video><figcaption><b>Final design, 355 CFM, from the left.</b> The drum swirls the air round the filter before it goes through the media.</figcaption></figure>
+<figure><video src="/assets/images/f56-intake/flow-first-design-355.mp4" poster="/assets/images/f56-intake/flow-first-design-355.jpg" controls muted loop playsinline preload="none" aria-label="Play the first design flow video"><a href="/assets/images/f56-intake/flow-first-design-355.mp4">Watch the first design.</a></video><figcaption><b>First design, 355 CFM.</b> Smaller ports, flat cap 9 mm off the filter, filter further forward.</figcaption></figure>
+
+<h2 id="results">First design against final</h2>
+<p class="lead">"Coupler vacuum" is what a gauge on the factory coupler would read: everything the intake costs plus the speed of the air in the factory neck, which the stock box pays too.</p>
+<div class="tbl"><table>
+  <tr><th></th><th>First design</th><th>Final</th></tr>
+  <tr><td><b>Total loss, 355 CFM</b></td><td>3,274 Pa</td><td>2,759 Pa</td></tr>
+  <tr><td><b>Coupler vacuum, 355 CFM</b></td><td>4,416 Pa (0.64 psi)</td><td>3,901 Pa (0.57 psi)</td></tr>
+  <tr><td><b>Total loss, 563 CFM</b></td><td>7,734 Pa</td><td>5,888 Pa</td></tr>
+  <tr><td><b>Coupler vacuum, 563 CFM</b></td><td>10,604 Pa (1.54 psi)</td><td>8,758 Pa (1.27 psi)</td></tr>
+  <tr><td><b>Port 1 / port 2</b></td><td>65 / 35 %</td><td>66 / 34 %</td></tr>
+  <tr><td><b>MAF uniformity</b></td><td>0.831</td><td>0.859</td></tr>
+</table></div>
+
+<h3>Where the loss went</h3>
+<div class="tbl"><table>
+  <tr><th>Stretch (355 CFM)</th><th>First design</th><th>Final</th><th>What changed</th></tr>
+  <tr><td><b>Ports to the joint</b></td><td>868 Pa</td><td>795 Pa</td><td>Bigger ports, roof up 1 mm</td></tr>
+  <tr><td><b>Spout into the drum</b></td><td>469 Pa</td><td>311 Pa</td><td>Spout lofted straight onto the snorkel's outlet</td></tr>
+  <tr><td><b>Into the inverted cone</b></td><td>550 Pa</td><td>255 Pa</td><td>Domed cap and filter 17 mm further back: 38 to 52 mm in front of it instead of 9</td></tr>
+  <tr><td><b>Filter media</b></td><td>390 Pa</td><td>471 Pa</td><td>Base sealed on the housing wall, so the media right at the base sees less air</td></tr>
+  <tr><td><b>Filter to coupler</b></td><td>997 Pa</td><td>927 Pa</td><td>Elbow radius 50 to 74 mm</td></tr>
+</table></div>
+<p class="note">The stretch numbers are averages over planes through the model, so they are rough. The totals are not. The 563 CFM runs settle less well: their numbers move about 5 % between iterations at the end.</p>
+
+<figure><img src="/assets/images/f56-intake/housing-section.jpg" alt="Section through the drum comparing the first and final housings" loading="lazy"><figcaption>The housing in section, first design in grey. The filter's base now seals on the wall, so no air sits dead behind it, and the cap domes out to open the space in front.</figcaption></figure>
+<div class="shots">
+  <figure><img src="/assets/images/f56-intake/first-housing-slice.jpg" alt="Velocity through the first housing" loading="lazy"><figcaption>First design: speed through the drum's midplane.</figcaption></figure>
+  <figure><img src="/assets/images/f56-intake/final-housing-slice.jpg" alt="Velocity through the final housing" loading="lazy"><figcaption>Final: the same plane.</figcaption></figure>
+</div>
+<div class="shots">
+  <figure><img src="/assets/images/f56-intake/final-snorkel-slice.jpg" alt="Velocity on a plane through the snorkel" loading="lazy"><figcaption>Final: a plane through both ports and the joint.</figcaption></figure>
+  <figure><img src="/assets/images/f56-intake/final-maf-plane.jpg" alt="Axial velocity across the MAF plane" loading="lazy"><figcaption>Final: air speed across the MAF plane. The box is where the sensor's probe sits; it sees 106 % of the average.</figcaption></figure>
+</div>
+
+<h2 id="mounts">Mounting it</h2>
+<ul class="tight">
+  <li><b>Front.</b> Two M8 studs come up out of the radiator support, square to it. Each gets a printed boss with an 8.8 mm hole, 13 mm tall, which leaves room on the stud for a washer and nut and a 13 mm socket.</li>
+  <li><b>Back.</b> A bolt-on rail cradles the drum and holds it up from below, with two M5 screws down through the drum floor into heat-set inserts. Its two 12 mm pins drop into the two mounts the factory airbox used. Those were rubber and had melted to nothing on my car, so they get printed TPU sleeves.</li>
+</ul>
+<div class="shots">
+  <figure><img src="/assets/images/f56-intake/stud-bosses.jpg" alt="Section through the two stud bosses on the scanned studs" loading="lazy"><figcaption>The front stud bosses in section on the scanned studs and support.</figcaption></figure>
+  <figure><img src="/assets/images/f56-intake/rear-bracket.jpg" alt="Rear bracket under the drum" loading="lazy"><figcaption>The rear bracket under the cap end of the drum, pins down.</figcaption></figure>
+</div>
+
+<h2 id="next">Next</h2>
+<p>Print it, fit it and log it. The car has no sensor ahead of the turbo, so the coupler vacuum stays a CFD number until I put a gauge on the coupler.</p>
+
+</div>
