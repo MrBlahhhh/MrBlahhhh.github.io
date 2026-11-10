@@ -8,13 +8,13 @@ appending to the end.
    before printing), stats (355 CFM logged peak, coupler vacuum, loss change
    against the first design, cells per run).
 2. **What it is** (`#parts`): the three parts and the mounts, two CAD renders
-   side by side, then the top view, then **The filter** (`#filter`): spec table
+   side by side, then the top view, the wider housing and its inlet cutaway, then **The filter** (`#filter`): spec table
    for the KYOSTAR KD2045 the housing is sized to, linked to the Amazon listing
    Matt ordered (plain /dp/ address, no share tags). KD2045RD is the red one.
 3. **How it was modelled** (`#model`): one model, real flows, mesh and solver,
    the filter assumption.
-4. **The flow** (`#flow`): final top video, final side video, first design video.
-5. **First design against final** (`#results`): totals table, loss by stretch,
+4. **The flow** (`#flow`): top and side videos of the wider spout at 355 and 563 CFM, then the older runs in a disclosure.
+5. **What the wider spout changed** (`#results`): three-design totals, reverse-flow maps, loss by stretch,
    the housing section, the two housing slices, the snorkel slice and the MAF
    plane.
 6. **Mounting it** (`#mounts`): front stud bosses, rear bracket and TPU sleeves.
