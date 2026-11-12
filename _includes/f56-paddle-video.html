@@ -37,7 +37,7 @@
         }
         video.currentTime = Number(button.dataset.start);
         await video.play();
-        status.textContent = button.dataset.start === '0' ? 'Playing the assembly, followed by pull and push.' : 'Playing the transparent view and both switch clicks.';
+        status.textContent = button.dataset.start === '0' ? 'Playing the assembly, followed by pull and push.' : 'Playing the transparent view: each magnet letting go and both switch clicks.';
       } catch {
         status.textContent = 'Use the video Play control to start the animation.';
       }

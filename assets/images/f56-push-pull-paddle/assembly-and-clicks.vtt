@@ -7,16 +7,16 @@ F56 push/pull paddle prototype, shown in an exploded CAD view.
 Two switches and two resistor paths enter the housing.
 
 00:04.000 --> 00:06.000
-Two return springs move into place.
+Two disc magnets load into each turret from underneath, followed by a plug.
 
 00:06.000 --> 00:08.000
-RC bearings and shims slide into the moving blade, away from the box.
+RC bearings, shims and two screws that each carry a steel nut go into the blade, away from the box.
 
 00:08.000 --> 00:09.000
-The blade, bearings and shims move over the box together.
+The blade and its hardware move over the box together.
 
 00:09.000 --> 00:11.000
-The blade assembly lowers onto the springs that are already seated.
+The blade lowers and each steel nut lands on the skin over its magnets.
 
 00:11.000 --> 00:12.000
 Two short pivot screws slide in from the sides to complete the assembly.
@@ -25,19 +25,19 @@ Two short pivot screws slide in from the sides to complete the assembly.
 The middle stays open for access to the original mounting screw.
 
 00:14.000 --> 00:16.000
-The shells become transparent to reveal the switches and springs.
+The shells become transparent to reveal the switches and magnets.
 
 00:16.000 --> 00:19.000
-Pull. [Illustrative click] The pull channel closes, then opens as the blade returns.
+Pull. One magnet lets go. [Illustrative click] The pull channel closes, then opens as the blade returns.
 
 00:19.000 --> 00:20.000
-Neutral. Both channels are open.
+Neutral. The nut is back on its magnets and both channels are open.
 
 00:20.000 --> 00:23.000
-Push. [Illustrative click] The push channel closes, then opens as the blade returns.
+Push. The other magnet lets go. [Illustrative click] The push channel closes, then opens as the blade returns.
 
 00:23.000 --> 00:25.000
 Neutral. Both channels are open again.
 
 00:25.000 --> 00:28.000
-P02 CAD prototype. Wheel fit and physical testing are next.
+P05 CAD prototype. Wheel fit and physical testing are next.
