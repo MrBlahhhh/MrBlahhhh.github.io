@@ -25,7 +25,7 @@ I used my paddle and wheel-area scans as references for a new SolidCraft prototy
 
 ## Watch it assemble and click
 
-The animation uses the actual P02 CAD geometry. It brings the components together, then makes the printed shells transparent so the spring movement and individual switch actions are visible.
+The animation uses the actual P02 CAD geometry. The springs go into the box while the blade stays to the side. Bearings and shims enter the blade first, and that complete stack then lowers onto the seated springs. The two pivot screws go in last. The printed shells become transparent so the spring movement and individual switch actions are visible.
 
 {% include f56-paddle-video.html %}
 
