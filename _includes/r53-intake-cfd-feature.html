@@ -1,4 +1,4 @@
-<!-- R53 intake CFD: printed spout against the factory front piece. Rendered by _posts/2026-11-15-r53-intake-factory-vs-printed-cfd.md.
+<!-- R53 intake CFD: factory front piece against my printed snout, rear port closed and open. Rendered by _posts/2026-11-15-r53-intake-factory-vs-printed-cfd.md.
      Edit here, not in the post. Running order and how every picture was made: _posts/R53-INTAKE-CFD-POST-ORDER.md.
      Images in assets/images/r53-intake-cfd; car photos reused from assets/images/r53-airbox. -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Rajdhani:wght@600;700&display=swap">
@@ -49,26 +49,54 @@
 
 <div class="hero">
   <span class="k">MINI R53 · supercharged · printed intake · CFD</span>
-  <h1>My printed intake spout against the factory piece</h1>
-  <p class="sub">In July I wrote that the factory snorkel shrinks the air tract. This is the number. I scanned the factory front piece, rebuilt its bore, and ran it and my printed spout through the same simulated airbox at the airflow a 240 whp R53 needs.</p>
+  <h1>Factory piece against my snout, rear port closed and open</h1>
+  <p class="sub">Four versions of the same R53 intake at the airflow a 240 whp car needs: the factory front piece, my printed snout, and my snout with two sizes of rear port cut in the airbox. The numbers below are the vacuum ahead of the throttle body. Lower is better.</p>
   <div class="stats">
-    <div class="stat"><b>0.269</b><span>kg/s of air, about 474 CFM</span></div>
-    <div class="stat"><b>9.75</b><span>kPa lost, printed spout</span></div>
-    <div class="stat"><b>15.99</b><span>kPa lost, factory front piece</span></div>
-    <div class="stat"><b>1.94</b><span>kPa with a 3-inch hole in the rear partition</span></div>
+    <div class="stat"><b>20.7</b><span>kPa, factory piece, rear port closed</span></div>
+    <div class="stat"><b>14.4</b><span>kPa, my snout, rear port closed</span></div>
+    <div class="stat"><b>6.6</b><span>kPa, my snout, 3-inch rear port</span></div>
+    <div class="stat"><b>5.9</b><span>kPa, my snout, 6 &times; 4.2 inch rear port</span></div>
   </div>
 </div>
 
-<h2 id="parts">What was compared</h2>
-<p class="lead">Both parts sit in the same slot in the radiator support and slip onto the same printed snorkel tube. Everything behind them is identical: the tube, the factory lower box, my printed housing and the cone filter.</p>
+<h2 id="cases">The four cases</h2>
+<p class="lead">Same tube, same airbox, same filter, same airflow: 0.269 kg/s, about 474 CFM. Only the front piece and the rear port change.</p>
+<div class="tbl"><table>
+  <thead><tr><th></th><th>Factory piece,<br>rear port closed</th><th>My snout,<br>rear port closed</th><th>My snout,<br>3-inch rear port</th><th>My snout,<br>6 &times; 4.2 inch rear port</th></tr></thead>
+  <tbody>
+    <tr><td><b>Vacuum ahead of the throttle body</b></td><td><b>20.7 kPa</b><br>3.00 psi</td><td><b>14.4 kPa</b><br>2.09 psi</td><td><b>6.6 kPa</b><br>0.96 psi</td><td><b>5.9 kPa</b><br>0.85 psi</td></tr>
+    <tr><td>Total pressure lost in the intake</td><td>15.99 kPa</td><td>9.75 kPa</td><td>1.94 kPa</td><td>1.28 kPa</td></tr>
+    <tr><td>Air through the front piece</td><td>100%</td><td>100%</td><td>29%</td><td>13%</td></tr>
+    <tr><td>Air through the rear port</td><td>none</td><td>none</td><td>71%</td><td>87%</td></tr>
+  </tbody>
+</table></div>
 <ul class="tight">
-  <li><b>Printed spout.</b> The front piece from my <a href="https://cults3d.com/en/3d-model/various/r53-cold-air-intake-tube">cold air intake tube</a>: a 131 mm slot mouth that funnels into a 66 mm socket, with a snap-on cap. The opening through the cap is 3,816 mm&sup2;.</li>
-  <li><b>Factory front piece.</b> The part my spout replaces. Its inlet is a shallow tray that fills the same slot; the air turns sideways through an opening about 24 mm tall into a tube whose bore runs from 1,800 to 2,600 mm&sup2;.</li>
-  <li><b>The rest of the tract.</b> The 61 mm printed tube, the factory lower box and the <a href="https://cults3d.com/en/3d-model/various/r53-airbox">printed airbox</a> with a dry cone filter, out to the throttle body.</li>
+  <li><b>Factory piece to my snout, rear port closed:</b> 6.3 kPa less vacuum (0.91 psi).</li>
+  <li><b>Cutting a 3-inch rear port:</b> another 7.8 kPa less (1.13 psi).</li>
+  <li><b>Opening that up to 6 &times; 4.2 inches:</b> 0.7 kPa more (0.10 psi). Most of the gain is in the first cut.</li>
+</ul>
+<p class="note">The 6 &times; 4.2 inch case is from an earlier, coarser run with the air starting at the snout&rsquo;s mouth instead of a box of still air. The other cases from that model landed within 5% of the ones here.</p>
+<p class="lead">Every arrow is traced through the solved velocity field and moves at the local air speed, slowed 250 times. All four use the same colour scale, 0 to 120 m/s.</p>
+<div class="shots">
+  <figure><video src="/assets/images/r53-intake-cfd/case1-factory-closed.mp4" poster="/assets/images/r53-intake-cfd/case1-factory-closed.jpg" width="1280" height="720" controls muted loop playsinline preload="none" aria-label="Factory piece, rear port closed"><a href="/assets/images/r53-intake-cfd/case1-factory-closed.mp4">Watch: Factory piece, rear port closed</a></video><figcaption><b>1. Factory piece, rear port closed.</b> Red from the mouth onward: the small bore runs past 100 m/s.</figcaption></figure>
+  <figure><video src="/assets/images/r53-intake-cfd/case2-snout-closed.mp4" poster="/assets/images/r53-intake-cfd/case2-snout-closed.jpg" width="1280" height="720" controls muted loop playsinline preload="none" aria-label="My snout, rear port closed"><a href="/assets/images/r53-intake-cfd/case2-snout-closed.mp4">Watch: My snout, rear port closed</a></video><figcaption><b>2. My snout, rear port closed.</b> Yellow to orange through the snout and tube, about 60 to 100 m/s.</figcaption></figure>
+</div>
+<div class="shots">
+  <figure><video src="/assets/images/r53-intake-cfd/case3-snout-rear-3in.mp4" poster="/assets/images/r53-intake-cfd/case3-snout-rear-3in.jpg" width="1280" height="720" controls muted loop playsinline preload="none" aria-label="My snout, 3-inch rear port"><a href="/assets/images/r53-intake-cfd/case3-snout-rear-3in.mp4">Watch: My snout, 3-inch rear port</a></video><figcaption><b>3. My snout, 3-inch rear port.</b> Most of the air now comes in at the back and the tube runs far slower.</figcaption></figure>
+  <figure><video src="/assets/images/r53-intake-cfd/case4-snout-rear-6x4.mp4" poster="/assets/images/r53-intake-cfd/case4-snout-rear-6x4.jpg" width="1280" height="720" controls muted loop playsinline preload="none" aria-label="My snout, 6 by 4.2 inch rear port"><a href="/assets/images/r53-intake-cfd/case4-snout-rear-6x4.mp4">Watch: My snout, 6 by 4.2 inch rear port</a></video><figcaption><b>4. My snout, 6 &times; 4.2 inch rear port.</b> Almost everything comes in at the back; the tube is nearly idle.</figcaption></figure>
+</div>
+
+<h2 id="parts">What was compared</h2>
+<p class="lead">Both front pieces sit in the same slot in the radiator support and slip onto the same printed snorkel tube. Everything behind them is identical.</p>
+<ul class="tight">
+  <li><b>My snout.</b> The front piece from my <a href="https://cults3d.com/en/3d-model/various/r53-cold-air-intake-tube">cold air intake tube</a>: a 131 mm slot mouth that funnels into a 66 mm socket, with a snap-on cap. The opening through the cap is 3,816 mm&sup2;.</li>
+  <li><b>Factory front piece.</b> The part my snout replaces. Its inlet is a shallow tray that fills the same slot; the air turns sideways through an opening about 24 mm tall into a tube whose bore runs from 1,800 to 2,600 mm&sup2;.</li>
+  <li><b>Rear port.</b> The <a href="https://cults3d.com/en/3d-model/various/r53-airbox">printed airbox</a> leaves the factory partition for you to cut, so the rear port is as big as you make it. Closed means the partition is intact.</li>
+  <li><b>The rest of the tract.</b> The 61 mm printed tube, the factory lower box and the airbox with a dry cone filter, out to the throttle body.</li>
 </ul>
 <div class="shots">
-  <figure><img src="/assets/images/r53-airbox/snorkel-core-support.jpg" alt="Red printed spout mouth seated in the slot of the radiator support" loading="lazy"><figcaption>The printed spout in the radiator support. The factory piece clips into this same slot.</figcaption></figure>
-  <figure><img src="/assets/images/r53-airbox/installed-engine-bay.jpg" alt="Engine bay from above with the red printed airbox and intake tube" loading="lazy"><figcaption>The whole tract on the car: spout at the bottom, tube, then the airbox at the top.</figcaption></figure>
+  <figure><img src="/assets/images/r53-airbox/snorkel-core-support.jpg" alt="Red printed snout mouth seated in the slot of the radiator support" loading="lazy"><figcaption>My snout in the radiator support. The factory piece clips into this same slot.</figcaption></figure>
+  <figure><img src="/assets/images/r53-airbox/installed-engine-bay.jpg" alt="Engine bay from above with the red printed airbox and intake tube" loading="lazy"><figcaption>The whole tract on the car: snout at the bottom, tube, then the airbox at the top.</figcaption></figure>
 </div>
 
 <h2 id="model">How it was modelled</h2>
@@ -77,26 +105,18 @@
   <li><b>Airflow.</b> 0.269 kg/s, what a supercharged 1.6 needs for about 240 whp. That is a target, not a dyno sheet.</li>
   <li><b>Filter.</b> A porous layer set to 500 Pa at this flow. That figure is assumed, not measured.</li>
   <li><b>Factory piece.</b> Rebuilt from my 3D scan of the part. The scan caught 64% of the inside wall; for the rest I took the outside and subtracted 2.8 mm of wall, the thickness measured where both sides were scanned.</li>
-  <li><b>Rear partition.</b> Intact, so all the air has to come through the front piece. The last section shows what cutting it does.</li>
+  <li><b>Vacuum and loss.</b> Vacuum is the static pressure below atmosphere at the throttle body end. Loss is the total pressure given up on the way there. About 4.6 kPa of the vacuum in every case is not a loss: it is the speed of the air itself, leaving through the 61 mm outlet at around 76 m/s.</li>
 </ul>
 
-<h2 id="flow">The flow</h2>
-<p class="lead">Every arrow is traced through the solved velocity field and moves at the local air speed, slowed 250 times. Both videos use the same colour scale, 0 to 120 m/s.</p>
+<h2 id="front">Factory piece against my snout</h2>
+<p class="lead">With the rear port closed, all the air has to come through the front piece, so this is where the two differ most.</p>
 <div class="shots">
-  <figure><video src="/assets/images/r53-intake-cfd/flow-printed-sealed.mp4" poster="/assets/images/r53-intake-cfd/flow-printed-sealed.jpg" width="1280" height="720" controls muted loop playsinline preload="none" aria-label="Printed spout, whole tract, rear partition intact"><a href="/assets/images/r53-intake-cfd/flow-printed-sealed.mp4">Watch: Printed spout, whole tract, rear partition intact</a></video><figcaption><b>Printed spout.</b> Yellow to orange through the spout and tube, about 60 to 100 m/s.</figcaption></figure>
-  <figure><video src="/assets/images/r53-intake-cfd/flow-factory-sealed.mp4" poster="/assets/images/r53-intake-cfd/flow-factory-sealed.jpg" width="1280" height="720" controls muted loop playsinline preload="none" aria-label="Factory front piece, whole tract, rear partition intact"><a href="/assets/images/r53-intake-cfd/flow-factory-sealed.mp4">Watch: Factory front piece, whole tract, rear partition intact</a></video><figcaption><b>Factory front piece.</b> Red from the mouth onward: the small bore runs past 100 m/s, and the jet it throws carries down the tube.</figcaption></figure>
-</div>
-<div class="shots">
-  <figure><video src="/assets/images/r53-intake-cfd/flow-printed-inlet.mp4" poster="/assets/images/r53-intake-cfd/flow-printed-inlet.jpg" width="1280" height="720" controls muted loop playsinline preload="none" aria-label="Printed spout, close on the inlet"><a href="/assets/images/r53-intake-cfd/flow-printed-inlet.mp4">Watch: Printed spout, close on the inlet</a></video><figcaption>Close on the printed spout&rsquo;s mouth.</figcaption></figure>
+  <figure><video src="/assets/images/r53-intake-cfd/flow-printed-inlet.mp4" poster="/assets/images/r53-intake-cfd/flow-printed-inlet.jpg" width="1280" height="720" controls muted loop playsinline preload="none" aria-label="My snout, close on the inlet"><a href="/assets/images/r53-intake-cfd/flow-printed-inlet.mp4">Watch: My snout, close on the inlet</a></video><figcaption>Close on my snout&rsquo;s mouth.</figcaption></figure>
   <figure><video src="/assets/images/r53-intake-cfd/flow-factory-inlet.mp4" poster="/assets/images/r53-intake-cfd/flow-factory-inlet.jpg" width="1280" height="720" controls muted loop playsinline preload="none" aria-label="Factory front piece, close on the inlet"><a href="/assets/images/r53-intake-cfd/flow-factory-inlet.mp4">Watch: Factory front piece, close on the inlet</a></video><figcaption>Close on the factory piece. The air drops onto the tray and turns sideways into the tube.</figcaption></figure>
 </div>
-
-<h2 id="results">The numbers</h2>
-<p class="lead">Loss here is total pressure lost between still air and the throttle body end, at 0.269 kg/s. Lower is better.</p>
 <div class="tbl"><table>
-  <thead><tr><th></th><th>Factory front piece</th><th>Printed spout</th></tr></thead>
+  <thead><tr><th></th><th>Factory front piece</th><th>My snout</th></tr></thead>
   <tbody>
-    <tr><td><b>Whole tract, rear partition intact</b></td><td><b>15.99 kPa</b> (64 inH2O)</td><td><b>9.75 kPa</b> (39 inH2O)</td></tr>
     <tr><td>Lost by the time the air reaches the lower box</td><td>10.5 kPa</td><td>4.9 kPa</td></tr>
     <tr><td><b>Front piece alone on a bench</b></td><td><b>9.41 kPa</b></td><td><b>3.05 kPa</b></td></tr>
     <tr><td>Bore at the neck</td><td>57.9 mm equivalent</td><td>61.4 mm</td></tr>
@@ -104,24 +124,23 @@
     <tr><td>Peak air speed on the bench</td><td>207 m/s</td><td>149 m/s</td></tr>
   </tbody>
 </table></div>
-<p>The factory piece costs about 6 kPa more than the printed spout, and the two tests agree on that: 6.2 kPa in the whole tract and 6.4 kPa on the bench, where each part breathes still air and blows into a straight pipe. Nearly all of it is lost inside the front piece itself.</p>
+<p>The factory piece costs about 6 kPa more than my snout, and two tests agree on that: 6.2 kPa in the whole tract and 6.4 kPa on a bench, where each part breathes still air and blows into a straight pipe. Nearly all of it is lost inside the front piece itself.</p>
 <p>It is not a bad shape. It is a small one, sized for a stock engine and a quiet cabin. At roughly stock airflow, about 0.15 kg/s, the same bench test would put it near 3 kPa, because loss goes with the square of the flow.</p>
-<figure><img src="/assets/images/r53-intake-cfd/bench-speed-cuts.png" alt="Air speed on cut planes through the factory piece and the printed spout on the bench" loading="lazy"><figcaption>Bench test, air speed on cut planes, same colour scale. Left: factory piece, along the tube and across the mouth. Right: printed spout.</figcaption></figure>
+<figure><img src="/assets/images/r53-intake-cfd/bench-speed-cuts.png" alt="Air speed on cut planes through the factory piece and my snout on the bench" loading="lazy"><figcaption>Bench test, air speed on cut planes, same colour scale. Left: factory piece, along the tube and across the mouth. Right: my snout.</figcaption></figure>
 
-<h2 id="rear">Cutting the rear partition</h2>
-<p class="lead">The airbox leaves the factory partition for you to cut, so the size of the rear opening is your choice. With a 3-inch hole the whole tract loses 1.94 kPa instead of 9.75.</p>
-<figure><video src="/assets/images/r53-intake-cfd/flow-printed-rear-3in.mp4" poster="/assets/images/r53-intake-cfd/flow-printed-rear-3in.jpg" width="1280" height="720" controls muted loop playsinline preload="none" aria-label="Printed spout with a 3-inch hole in the rear partition"><a href="/assets/images/r53-intake-cfd/flow-printed-rear-3in.mp4">Watch: Printed spout with a 3-inch hole in the rear partition</a></video><figcaption><b>Printed spout, 3-inch rear hole.</b> About 71% of the air now comes in at the back and 29% through the spout, so the tube runs far slower.</figcaption></figure>
-<p class="note">Once the partition is cut, the front piece matters much less: it is only carrying about a third of the air.</p>
+<h2 id="rear">What the rear port does</h2>
+<p>With the port closed, every bit of air goes through the snout and the 61 mm tube at 60 to 100 m/s. Cut a 3-inch port and 71% of it comes in at the back instead, so the tube only carries about a third of the flow and its losses nearly vanish. The loss in the intake falls by 80%, from 9.75 to 1.94 kPa.</p>
+<p class="note">Once the port is cut, the front piece matters much less: it is only carrying a third of the air or less.</p>
 
 <h2 id="tried">What I tried that did not beat it</h2>
-<p>I also ran reshaped spouts through the same model: a mouth that fills more of the slot, a rounded inside corner, and a bell-shaped lip on the cap. They came out between 10.2 and 11.4 kPa, against 9.75 for the spout as it is. So the spout stays. What does change is the cap: a new one that reaches down to the radiator support and grips the outside of the mouth, which costs no flow in the model. It is not printed yet.</p>
+<p>I also ran reshaped snouts through the same model: a mouth that fills more of the slot, a rounded inside corner, and a bell-shaped lip on the cap. They came out between 10.2 and 11.4 kPa of loss, against 9.75 for the snout as it is. So the snout stays. What does change is the cap: a new one that reaches down to the radiator support and grips the outside of the mouth, which costs no flow in the model. It is not printed yet.</p>
 
 <h2 id="limits">What this does not show</h2>
 <ul class="tight">
   <li><b>No car around it.</b> The air starts as a still box above the radiator support. There is no bonnet, grille or road speed.</li>
   <li><b>Speed.</b> Above 200 m/s the model is out of its depth, because it treats air as incompressible. The real factory piece would do worse at this flow, not better.</li>
-  <li><b>Run-to-run wander.</b> The printed spout&rsquo;s runs wander 3 to 5%, so differences under about 0.5 kPa mean nothing. The factory gap is twelve times that.</li>
-  <li><b>Not horsepower.</b> These are pressure losses in a simulated intake, not a measurement on the car.</li>
+  <li><b>Run-to-run wander.</b> My snout&rsquo;s runs wander 3 to 5%, so differences under about 0.5 kPa mean nothing. The factory gap is twelve times that.</li>
+  <li><b>Not horsepower.</b> These are pressures in a simulated intake, not a measurement on the car.</li>
 </ul>
 
 </div>
