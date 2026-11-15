@@ -42,7 +42,16 @@
 .ri table.spec td{white-space:normal}
 .ri .note{font-size:14px;color:var(--mute);border-left:3px solid var(--accent);padding:6px 12px;margin:10px 0 18px}
 .ri details{margin:12px 0 20px}.ri summary{cursor:pointer;color:var(--accent-hi);margin-bottom:12px}
-@media (max-width:640px){.ri .shots,.ri .shots3{grid-template-columns:1fr}}
+.ri .buy{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:22px 0 0}
+.ri .buy > div{background:var(--card);border:1px solid var(--line2);border-top:3px solid var(--accent);border-radius:14px;padding:16px 18px 18px;display:grid;gap:10px;align-content:start}
+.ri .buy h2{font-size:24px;margin:0;line-height:1.1}
+.ri .buy p{margin:0;color:var(--mute);font-size:15px}
+.ri .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
+.ri a.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border-radius:10px;font-family:"Rajdhani","Atkinson Hyperlegible",sans-serif;font-weight:700;font-size:18px;letter-spacing:.03em;text-decoration:none;line-height:1.1;text-align:center;background:var(--accent);color:#fff;border:1px solid var(--accent)}
+.ri a.btn:hover{background:#ff6a61;color:#fff}
+.ri a.btn.ghost{background:transparent;color:var(--accent-hi);border-color:var(--line2)}
+.ri a.btn.ghost:hover{background:rgba(255,77,66,.12);color:var(--accent-hi)}
+@media (max-width:640px){.ri .shots,.ri .shots3,.ri .buy{grid-template-columns:1fr}.ri a.btn{flex:1 1 100%}}
 </style>
 
 <div class="ri">
@@ -51,6 +60,18 @@
   <span class="k">MINI R53 · supercharged · printed intake · CFD</span>
   <h1>Factory piece against my snout, rear port closed and open</h1>
   <p class="sub">Four versions of the same R53 intake at the airflow a 240 whp car needs: the factory front piece, my printed snout, and my snout with two sizes of rear port cut in the airbox. The numbers below are the vacuum ahead of the throttle body. Lower is better.</p>
+  <div class="buy" id="buy">
+    <div>
+      <h2>Print it yourself</h2>
+      <p>Both parts are STLs on Cults3D: the cold air intake tube with the snout, and the airbox you cut the rear port in.</p>
+      <div class="btns"><a class="btn" href="https://cults3d.com/en/3d-model/various/r53-cold-air-intake-tube">Intake tube STL</a><a class="btn" href="https://cults3d.com/en/3d-model/various/r53-airbox">Airbox STL</a></div>
+    </div>
+    <div>
+      <h2>Get one printed</h2>
+      <p>No printer? I print the tube and airbox to order in glass- or carbon-filled filament. Tell me the part, material and colour. <a href="/car/tech/2026/07/12/r53-airbox-printed-parts-for-sale.html">Prices and materials</a>.</p>
+      <div class="btns"><a class="btn" href="mailto:matt@geekopolis.com?subject=R53%20intake%20print">Email me</a><a class="btn ghost" href="https://www.instagram.com/mattryan6729/">DM @mattryan6729</a></div>
+    </div>
+  </div>
   <div class="stats">
     <div class="stat"><b>20.7</b><span>kPa, factory piece, rear port closed</span></div>
     <div class="stat"><b>14.4</b><span>kPa, my snout, rear port closed</span></div>

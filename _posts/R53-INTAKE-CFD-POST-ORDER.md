@@ -8,7 +8,10 @@ The post is built around four cases, which Matt asked for by name: factory piece
 rear port closed, my snout with the rear port closed, my snout with a 3-inch rear port, my
 snout with a 6 x 4.2 inch rear port.
 
-1. **Hero**: the four cases, stats = vacuum ahead of the throttle body for each (20.7, 14.4, 6.6, 5.9 kPa).
+1. **Hero**: the four cases, then the buy panel (`#buy`, added 2026-11-15 at Matt's request, keep it
+   at the top): "Print it yourself" with both Cults3D STL buttons, and "Get one printed" with email
+   and Instagram buttons plus a link to the July printed-parts pricing post. Then the stats = vacuum
+   ahead of the throttle body for each (20.7, 14.4, 6.6, 5.9 kPa).
 2. **The four cases** (`#cases`): four-column table (vacuum, total loss, front and rear split), the
    three step-by-step differences, then the four videos in a 2 x 2 grid.
 3. **What was compared** (`#parts`): the two front pieces, the rear port, the shared tract, two car
