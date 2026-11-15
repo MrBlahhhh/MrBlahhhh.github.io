@@ -10,7 +10,7 @@ snout with a 6 x 4.2 inch rear port.
 
 1. **Hero**: the four cases, stats = vacuum ahead of the throttle body for each (20.7, 14.4, 6.6, 5.9 kPa).
 2. **The four cases** (`#cases`): four-column table (vacuum, total loss, front and rear split), the
-   three step-by-step differences, the note on the 6 x 4.2 inch run, then the four videos in a 2 x 2 grid.
+   three step-by-step differences, then the four videos in a 2 x 2 grid.
 3. **What was compared** (`#parts`): the two front pieces, the rear port, the shared tract, two car
    photos reused from the July airbox post, links to both Cults3D listings.
 4. **How it was modelled** (`#model`): one piece of air, airflow, filter assumption, how the factory
@@ -45,15 +45,13 @@ snout with a 6 x 4.2 inch rear port.
   - `case1-factory-closed`, `flow-factory-inlet`: case `oem-rear-closed-medium-500pa-269gs`.
   - `case2-snout-closed`, `flow-printed-inlet`: case `current-rear-closed-medium-500pa-269gs`.
   - `case3-snout-rear-3in`: case `current-rear-3in-medium-500pa-269gs`.
-  - `case4-snout-rear-6x4`: the earlier model's `rear-6x4-coarse-500pa-269gs` (inlet at the snout's
-    mouth, coarse mesh). A like-for-like run with the still-air box (`current-rear-6x4-medium-500pa-269gs`)
-    was started on 2026-11-15 to replace both the video and the numbers in column four.
+  - `case4-snout-rear-6x4`: case `current-rear-6x4-medium-500pa-269gs` (like-for-like with the other
+    three; it replaced an earlier coarse run on 2026-11-15).
 - `bench-speed-cuts.png`: air speed on cut planes from the two bench runs
   (`cfd/bench-inlet-results/` in the f56-airbox repo).
 - Car photos are the July post's, in `assets/images/r53-airbox`.
 
 ## Where the numbers come from
 
-`cad/r53-solidcraft/cfd/plenum-inlet-results/README.md` (the four cases, vacuum and loss),
-`cad/r53-solidcraft/cfd/bench-inlet-results/README.md` (factory piece, bench) and
-`cad/r53-solidcraft/cfd/spout-results/` (the 6 x 4.2 inch run) in the f56-airbox repo.
+`cad/r53-solidcraft/cfd/plenum-inlet-results/README.md` (the four cases, vacuum and loss)
+and `cad/r53-solidcraft/cfd/bench-inlet-results/README.md` (factory piece, bench) in the f56-airbox repo.
