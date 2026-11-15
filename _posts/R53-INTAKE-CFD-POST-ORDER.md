@@ -15,7 +15,6 @@ appending to the end.
 6. **Cutting the rear partition** (`#rear`): 3-inch hole video and the split.
 7. **What I tried that did not beat it** (`#tried`).
 8. **What this does not show** (`#limits`).
-9. **Next** (`#next`).
 
 ## Standing rules
 
@@ -25,7 +24,8 @@ appending to the end.
 - 0.269 kg/s is the airflow for about 240 whp, a target. Don't present it as measured.
 - The filter's resistance (500 Pa at this flow) is assumed. Say so wherever it appears.
 - The factory piece is a reconstruction from a scan: 64% scanned inside wall, the rest
-  outside less 2.8 mm. Keep that and the 10 to 20% overstatement caveat next to its numbers.
+  outside less 2.8 mm. That is stated once, in "How it was modelled". Matt removed the
+  reconstruction bullet from the limits list and the "Next" section on 2026-11-15; do not add them back.
 - These are pressure losses, not horsepower.
 
 ## How the pictures were made
