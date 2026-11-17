@@ -13,12 +13,14 @@ Not a post. The running order for `2026-11-16-pressure-can-node.md`, whose page 
    table (0x520 to 0x523).
 5. **Schematic** (`#schematic`): legend, the overview block diagram (blocks link to their sheets),
    sheet links, sheets 1 to 6 with 4a, the ESP32 pin map.
-6. **Last line**: these are renders and rev C hasn't been built.
+6. **Last line**: these are renders and rev D hasn't been built.
 
 ## Standing rules
 
-- Rev C as of 2026-11-16: buck resistors 47k/150k, KT-0805G status LED, J2 (DEBUG) not
-  fitted, TCAN1042HGVDR. Keep the schematic, the tour and the text in step with the board files.
+- Rev D as of 2026-11-17: 79 × 70 mm, four layers, every part on top, sensors in a 3 × 2 grid.
+  Buck resistors 47k/150k, KT-0805G status LED, TCAN1042HGVDR, no UART header. Keep the
+  schematic, the tour and the text in step with the board files.
+- The page describes the current board only. No revision history or reasons for changes.
 - Nothing has been built or run on a car. Don't claim measured accuracy, rates or results until
   Matt reports a real board; the sensor scale and port sign still need a bench check.
 - The board's repository is private. Don't link it or name its scripts.
@@ -27,16 +29,18 @@ Not a post. The running order for `2026-11-16-pressure-can-node.md`, whose page 
 
 ## Images
 
-All in `assets/images/pressure-node/`, rendered on 2026-11-16 from the rev C board files with
+All in `assets/images/pressure-node/`, rendered on 2026-11-17 from the rev D board files with
 KiCad 10's raytracer: red mask, white silk, HAL finish. KiCad's library has no model for the
 WF200DPZ, the XKB TS-1187A switch or the HRO USB-C, so those are simple stand-ins: a SOIC-16W
 body with two grey barbs at the P1/P2 positions (10.3 mm tall), a 5.1 mm switch, and a plain
-USB-C shell. J2 is left bare because it isn't fitted.
+USB-C shell.
 
 - `hero.jpg`: perspective, rotated −58° about X and 20° about Z.
-- `sensors.jpg`: perspective close-up of the sensor row.
+- `sensors.jpg`: perspective close-up of the 3 × 2 sensor grid from the front edge, rotated −55°
+  about X, cropped above the sensor silk line.
 - `top.jpg`: straight down, orthographic. The labelled tour places its leader lines from part
-  centres in mm, using the board outline measured in this image (13.2 px/mm at 1600 px wide).
+  centres in mm, using the board outline measured in this image (17.8 px/mm at 1600 px wide).
+  Labels on each side are ordered so no two leader lines cross.
 - `cover.jpg`: the hero render cropped to 16:9.
 
 Replace the renders with photos of a built board when Matt has one.
