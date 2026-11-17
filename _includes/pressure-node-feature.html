@@ -84,6 +84,39 @@
 .pcn .sch .note{font-size:11px;fill:var(--mute);font-style:italic}
 .pcn .sch .ovt{font:600 14px var(--display);fill:var(--ink)}
 .pcn .sch .ovlink:hover .ovbox,.pcn .sch .ovlink:focus-visible .ovbox{stroke:var(--wire);stroke-width:2.4}
+
+.pcn .figbox{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px 10px 6px}
+.pcn svg.inst{display:block;width:100%;height:auto}
+.pcn svg.inst.car{min-width:660px}
+.pcn svg.inst .bd{fill:var(--body);stroke:var(--line2);stroke-width:2;stroke-linejoin:round}
+.pcn svg.inst .gl{fill:rgba(79,208,180,.07);stroke:var(--line2);stroke-width:1.5;stroke-linejoin:round}
+.pcn svg.inst .tyre{fill:#0b0f10;stroke:var(--line2);stroke-width:2}
+.pcn svg.inst .rim{fill:none;stroke:var(--line2);stroke-width:2}
+.pcn svg.inst .gnd{stroke:var(--line2);stroke-width:2}
+.pcn svg.inst .part{fill:none;stroke:var(--mute);stroke-width:1.6;stroke-dasharray:5 4;stroke-linejoin:round}
+.pcn svg.inst .hose{fill:none;stroke:var(--wire);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.pcn svg.inst .hose.fat{stroke-width:9;stroke-opacity:.6}
+.pcn svg.inst .ref{fill:none;stroke:var(--rail);stroke-width:2.6;stroke-dasharray:7 5;stroke-linecap:round;stroke-linejoin:round}
+.pcn svg.inst .tap{fill:var(--wire);stroke:#eef4f2;stroke-width:2}
+.pcn svg.inst .node{fill:#a3151d;stroke:#eef4f2;stroke-width:1.5}
+.pcn svg.inst .nodet{font:600 13px var(--mono);fill:#fff}
+.pcn svg.inst .metal{fill:#c9d3d0;stroke:#eef4f2;stroke-width:1}
+.pcn svg.inst .hole{fill:var(--bg)}
+.pcn svg.inst .glue{fill:var(--mute);fill-opacity:.7}
+.pcn svg.inst .tape{fill:rgba(255,123,108,.24);stroke:var(--rail);stroke-width:1;stroke-dasharray:3 3}
+.pcn svg.inst .fin{stroke:var(--line2);stroke-width:1}
+.pcn svg.inst .tie{fill:var(--mute)}
+.pcn svg.inst .air{stroke:var(--mute);stroke-width:2} .pcn svg.inst .airh{fill:var(--mute)}
+.pcn svg.inst .ldr{stroke:var(--mute);stroke-width:1.2;fill:none}
+.pcn svg.inst .lb{font:600 18px var(--display);fill:var(--ink)}
+.pcn svg.inst .sm{font:400 15px var(--text);fill:var(--mute)}
+.pcn svg.inst .num{font:700 15px var(--mono);fill:var(--wire)}
+.pcn ol.steps{margin:10px 0 4px;padding-left:22px;max-width:70ch}
+.pcn ol.steps li{margin:0 0 10px;color:var(--ink)}
+.pcn ol.steps li b{font-weight:600}
+.pcn .note{font-size:14.5px;color:var(--mute);margin-top:12px}
+.pcn h3+p{margin-top:8px}
+.pcn .tablewrap table.plumb{min-width:640px;overflow-wrap:normal}
 </style>
 <div class="pcn">
 
@@ -102,7 +135,7 @@
 </div>
 
 <h2 id="measure">What it measures</h2>
-<p class="lead">Each sensor has two hose barbs and reads the difference between them, from −10 to +10 kPa. Run one hose to a tap and leave the other open to still air, or plumb both to compare two points on the car.</p>
+<p class="lead">Each sensor has two hose barbs and reads the difference between them, from −10 to +10 kPa. Run one hose to a tap and leave the other open to still air, or plumb both to compare two points on the car. <a href="#install">How to fit them.</a></p>
 <div class="grid2">
   <div class="tile"><b>Aero</b><p>Pressure taps on the splitter, underbody, diffuser or wing: how hard the floor sucks at speed and what each surface sees. Dynamic pressure is about 0.5 kPa at 100 km/h and 1.9 kPa at 200 km/h.</p></div>
   <div class="tile"><b>Airbox and filter</b><p>Vacuum before and after the air filter. The difference is the filter's restriction. A restrictive filter can pull 5 to 7 kPa at full flow, still inside the range.</p></div>
@@ -127,6 +160,68 @@
 <h3>On the CAN bus</h3>
 <p>A TCAN1042 transceiver sends four 8-byte frames every 10 ms at 500 kbit/s. The IDs and bitrate are firmware settings. A channel that stops updating is flagged invalid in its frame instead of repeating its last value. The 120 Ω terminator is off unless you bridge TERM on the board at the end of the bus.</p>
 <div class="tablewrap"><table><thead><tr><th>ID</th><th>Contents</th></tr></thead><tbody><tr><td>0x520</td><td>DP1–DP3 in Pa (signed 16-bit), valid bits, frame counter</td></tr><tr><td>0x521</td><td>DP4–DP6 in Pa, valid bits, frame counter</td></tr><tr><td>0x522</td><td>AIN1–AIN4 in mV, 0 to 5,250</td></tr><tr><td>0x523</td><td>Health: protocol version, counter, valid masks, power and zero flags, uptime</td></tr></tbody></table></div>
+
+<h2 id="install">Fitting it to a car</h2>
+<p class="lead">Each channel needs a tap where you want the pressure, a hose back to the node, and something sensible on its other barb. Most of the work is the reference and the hose runs.</p>
+<figure class="figbox"><div class="scroll"><svg class="inst car" viewBox="0 0 1000 432" role="img" aria-label="Side view of a car with the six channels plumbed: a pitot-static probe on a roof mast, a tap under the front floor, one on the diffuser, hose ends in front of and behind the radiator, a tap at the base of the windscreen and taps either side of the air filter, each hosed back to the node in the cabin"><line class="gnd" x1="30" y1="372" x2="970" y2="372"/><path class="bd" d="M96 345 C82 330 80 290 96 268 C104 256 116 248 132 244 C230 228 330 218 402 212 L522 136 C610 126 700 126 772 134 L878 196 C898 208 908 232 908 258 L910 330 C910 342 902 350 888 351 L795.2 351 A58 58 0 1 0 694.8 351 L285.2 351 A58 58 0 1 0 184.8 351 L112 351 C104 351 98 349 96 345 Z"/><path class="gl" d="M414 208 L524 142 C608 133 698 133 766 140 L862 200 Z"/><line class="gl" x1="641" y1="134" x2="641" y2="205"/><circle class="tyre" cx="235" cy="322" r="50"/><circle class="rim" cx="235" cy="322" r="30"/><circle class="tyre" cx="745" cy="322" r="50"/><circle class="rim" cx="745" cy="322" r="30"/><rect class="part" x="116" y="264" width="12" height="60" rx="2"/><rect class="part" x="296" y="272" width="80" height="36" rx="6"/><polyline class="part" points="328,274 336,278 328,282 336,286 328,290 336,294 328,298 336,302 328,306"/><line class="hose" x1="108" y1="293" x2="108" y2="258"/><line class="hose" x1="136" y1="293" x2="136" y2="258"/><line class="hose" x1="150" y1="349" x2="150" y2="258"/><line class="hose" x1="308" y1="290" x2="308" y2="258"/><line class="hose" x1="364" y1="290" x2="364" y2="258"/><line class="hose" x1="396" y1="214" x2="396" y2="258"/><polyline class="hose fat" points="108,258 606,258 606,296"/><polyline class="hose fat" points="884,349 884,254 692,254 692,311 672,311"/><line class="metal" x1="640" y1="127" x2="640" y2="62" style="stroke:#c9d3d0;stroke-width:6"/><path class="metal" d="M570 57 L643 57 L643 67 L570 67 C563 67 560 64 560 62 C560 60 563 57 570 57 Z"/><line class="hose" x1="634" y1="127" x2="634" y2="296"/><line class="ref" x1="648" y1="127" x2="648" y2="296"/><rect class="node" x="598" y="296" width="74" height="30" rx="3"/><text class="nodet" x="635" y="316" text-anchor="middle">node</text><circle class="tap" cx="108" cy="293" r="5.5"/><circle class="tap" cx="136" cy="293" r="5.5"/><circle class="tap" cx="150" cy="349" r="5.5"/><circle class="tap" cx="308" cy="290" r="5.5"/><circle class="tap" cx="364" cy="290" r="5.5"/><circle class="tap" cx="396" cy="214" r="5.5"/><circle class="tap" cx="884" cy="349" r="5.5"/><circle class="tap" cx="561" cy="62" r="5.5"/><line class="air" x1="24" y1="112" x2="91.0" y2="112.0"/><polygon class="airh" points="100,112 91.0,116.5 91.0,107.5"/><line class="air" x1="24" y1="140" x2="91.0" y2="140.0"/><polygon class="airh" points="100,140 91.0,144.5 91.0,135.5"/><text class="sm" x="24" y="98" text-anchor="start">air</text><text class="lb" x="24" y="196" text-anchor="start">4  Radiator</text><text class="sm" x="24" y="216" text-anchor="start">front and back face</text><polyline class="ldr" points="96,222 118,262"/><text class="lb" x="386" y="172" text-anchor="end">5  Cowl</text><text class="sm" x="386" y="192" text-anchor="end">base of the windscreen</text><text class="lb" x="336" y="334" text-anchor="middle">6  Airbox</text><text class="lb" x="150" y="400" text-anchor="middle">2  Front floor</text><text class="sm" x="150" y="420" text-anchor="middle">under the splitter</text><text class="lb" x="880" y="400" text-anchor="middle">3  Diffuser</text><text class="sm" x="880" y="420" text-anchor="middle">rear of the floor</text><text class="lb" x="664" y="50" text-anchor="start">1  Pitot-static</text><text class="sm" x="664" y="70" text-anchor="start">on a mast, in clean air</text><line class="hose" x1="856" y1="96" x2="886" y2="96"/><text class="sm" x="894" y="101" text-anchor="start">hose</text><line class="ref" x1="856" y1="120" x2="886" y2="120"/><text class="sm" x="894" y="125" text-anchor="start">static line</text></svg></div></figure>
+<figure class="shot" style="margin-top:10px"><figcaption>One way to spend the six channels, numbered by sensor. Every tap gets its own hose back to the node in the cabin. The probe's static line is the reference for the aero taps.</figcaption></figure>
+
+<h3 style="margin-top:28px">The taps</h3>
+<div class="grid2">
+  <figure class="tile"><svg class="inst" viewBox="0 0 420 228" role="img" aria-label="Cross-section of a drilled tap: a small hole square to the panel with a metal tube glued in behind it and a hose pushed over the tube"><line class="air" x1="24" y1="40" x2="101.0" y2="40.0"/><polygon class="airh" points="110,40 101.0,44.5 101.0,35.5"/><text class="sm" x="24" y="28" text-anchor="start">air</text><rect class="bd" x="20" y="96" width="187" height="26"/><rect class="bd" x="213" y="96" width="187" height="26"/><rect class="metal" x="203" y="122" width="14" height="36"/><rect class="hole" x="207" y="118" width="6" height="40"/><polygon class="glue" points="194,122 203,122 203,134"/><polygon class="glue" points="226,122 217,122 217,134"/><path class="hose fat" d="M210 150 V176 Q210 196 232 196 H400"/><text class="sm" x="228" y="66" text-anchor="start">0.5–1 mm hole, square to</text><text class="sm" x="228" y="84" text-anchor="start">the surface, clean edge</text><polyline class="ldr" points="226,72 212,94"/><text class="sm" x="24" y="152" text-anchor="start">metal tube glued in</text><polyline class="ldr" points="166,147 200,140"/><text class="sm" x="250" y="184" text-anchor="start">hose to the node</text></svg><figcaption><b>Drilled tap</b> A small hole square to the surface with a short metal tube glued in behind it. The edge has to be clean and flush; a burr or a raised lip changes what it reads. Race cars and wind-tunnel models are tapped this way.</figcaption></figure>
+  <figure class="tile"><svg class="inst" viewBox="0 0 420 228" role="img" aria-label="Cross-section of a tape-on pad: a thin disc on the paint with its port in the middle, the hose leaving downstream along the surface, taped at the front edge and along the hose"><line class="air" x1="24" y1="40" x2="101.0" y2="40.0"/><polygon class="airh" points="110,40 101.0,44.5 101.0,35.5"/><text class="sm" x="24" y="28" text-anchor="start">air</text><rect class="bd" x="20" y="150" width="380" height="26"/><path class="metal" d="M120 150 C120 138 136 132 156 132 L214 132 C234 132 250 138 250 150 Z"/><rect class="hole" x="182" y="130" width="6" height="10"/><polyline points="185,139 185,143 250,143" style="fill:none;stroke:var(--bg);stroke-width:3"/><line class="hose fat" x1="252" y1="145" x2="400" y2="145"/><rect class="tape" x="104" y="128" width="34" height="24" rx="2"/><rect class="tape" x="300" y="136" width="36" height="16" rx="2"/><text class="sm" x="185" y="98" text-anchor="middle">flat disc, port in the middle</text><text class="sm" x="185" y="118" text-anchor="middle">under 20 mm across, about 2 mm tall</text><text class="sm" x="20" y="206" text-anchor="start">tape over the front edge and along the hose</text></svg><figcaption><b>Tape-on pad</b> For paint you don't want to drill. A thin disc with the port in the middle and the hose leaving downstream, taped across the front edge and along the hose. Teams use aluminium ones; a printed one works the same way.</figcaption></figure>
+  <figure class="tile"><svg class="inst" viewBox="0 0 420 228" role="img" aria-label="A pitot-static probe pointing into the air: a hole at the tip feeds the total-pressure hose to P1, a ring of side holes feeds the static line to P2"><line class="air" x1="24" y1="40" x2="101.0" y2="40.0"/><polygon class="airh" points="110,40 101.0,44.5 101.0,35.5"/><text class="sm" x="24" y="28" text-anchor="start">air</text><path class="metal" d="M70 92 L300 92 L300 108 L70 108 C58 108 52 104 52 100 C52 96 58 92 70 92 Z"/><rect class="metal" x="284" y="108" width="16" height="66"/><rect class="hole" x="49" y="98" width="9" height="4"/><rect class="hole" x="150" y="92" width="5" height="3"/><rect class="hole" x="150" y="105" width="5" height="3"/><rect class="hole" x="164" y="92" width="5" height="3"/><rect class="hole" x="164" y="105" width="5" height="3"/><path class="hose" d="M289 174 V200 H404"/><path class="ref" d="M296 174 V184 H404"/><text class="sm" x="320" y="176" text-anchor="start">P2: static</text><text class="sm" x="320" y="218" text-anchor="start">P1: total</text><text class="sm" x="132" y="70" text-anchor="start">ring of side holes: static</text><polyline class="ldr" points="160,76 160,90"/><text class="sm" x="30" y="138" text-anchor="start">hole at the tip: total</text><polyline class="ldr" points="52,124 54,104"/></svg><figcaption><b>Pitot-static probe</b> Mounted level, pointing into clean air: a tall mast on the roof or a boom ahead of the nose. The tip reads total pressure and the side holes read static, so on one channel the difference is dynamic pressure and airspeed. The static side is the reference for the aero taps.</figcaption></figure>
+  <figure class="tile"><svg class="inst" viewBox="0 0 420 228" role="img" aria-label="Hose ends as taps either side of a radiator core, each zip-tied with its opening facing across the airflow"><text class="sm" x="210" y="22" text-anchor="middle">open end faces across the flow</text><line class="air" x1="20" y1="70" x2="83.0" y2="70.0"/><polygon class="airh" points="92,70 83.0,74.5 83.0,65.5"/><line class="air" x1="20" y1="120" x2="83.0" y2="120.0"/><polygon class="airh" points="92,120 83.0,124.5 83.0,115.5"/><line class="air" x1="20" y1="170" x2="83.0" y2="170.0"/><polygon class="airh" points="92,170 83.0,174.5 83.0,165.5"/><line class="air" x1="274" y1="90" x2="321.0" y2="90.0"/><polygon class="airh" points="330,90 321.0,94.5 321.0,85.5"/><line class="air" x1="274" y1="150" x2="321.0" y2="150.0"/><polygon class="airh" points="330,150 321.0,154.5 321.0,145.5"/><rect class="bd" x="170" y="40" width="40" height="160" rx="3"/><line class="fin" x1="170" y1="50" x2="210" y2="50"/><line class="fin" x1="170" y1="60" x2="210" y2="60"/><line class="fin" x1="170" y1="70" x2="210" y2="70"/><line class="fin" x1="170" y1="80" x2="210" y2="80"/><line class="fin" x1="170" y1="90" x2="210" y2="90"/><line class="fin" x1="170" y1="100" x2="210" y2="100"/><line class="fin" x1="170" y1="110" x2="210" y2="110"/><line class="fin" x1="170" y1="120" x2="210" y2="120"/><line class="fin" x1="170" y1="130" x2="210" y2="130"/><line class="fin" x1="170" y1="140" x2="210" y2="140"/><line class="fin" x1="170" y1="150" x2="210" y2="150"/><line class="fin" x1="170" y1="160" x2="210" y2="160"/><line class="fin" x1="170" y1="170" x2="210" y2="170"/><line class="fin" x1="170" y1="180" x2="210" y2="180"/><line class="fin" x1="170" y1="190" x2="210" y2="190"/><line class="hose fat" x1="126" y1="218" x2="126" y2="122"/><ellipse class="hole" cx="126" cy="122" rx="4" ry="2"/><rect class="tie" x="118" y="176" width="16" height="4" rx="1"/><text class="sm" x="126" y="108" text-anchor="middle">front</text><line class="hose fat" x1="250" y1="218" x2="250" y2="122"/><ellipse class="hole" cx="250" cy="122" rx="4" ry="2"/><rect class="tie" x="242" y="176" width="16" height="4" rx="1"/><text class="sm" x="250" y="108" text-anchor="middle">back</text><text class="sm" x="190" y="218" text-anchor="middle">core</text></svg><figcaption><b>Hose end</b> In open spaces, like either side of the radiator, the hose end is the tap. Zip-tie it with the opening across the flow. Pointed into the flow it picks up some dynamic pressure as well.</figcaption></figure>
+</div>
+
+<h3 style="margin-top:28px">Plumbing the six channels</h3>
+<div class="tablewrap"><table class="plumb"><thead><tr><th>Sensor</th><th>P1</th><th>P2</th><th>Reads</th></tr></thead><tbody><tr><td>DP1</td><td>Pitot-static, tip</td><td>Pitot-static, side holes</td><td>Dynamic pressure, so airspeed and headwind</td></tr><tr><td>DP2</td><td>Front floor tap</td><td>Static line</td><td>Suction under the front of the car</td></tr><tr><td>DP3</td><td>Diffuser tap</td><td>Static line</td><td>Suction under the back</td></tr><tr><td>DP4</td><td>In front of the radiator</td><td>Behind the radiator</td><td>Drop across the core</td></tr><tr><td>DP5</td><td>Cowl, base of the windscreen</td><td>Static line</td><td>Whether the cowl really is high pressure</td></tr><tr><td>DP6</td><td>Airbox, before the filter</td><td>Airbox, after the filter</td><td>What the filter costs</td></tr></tbody></table></div>
+<p class="note">Readings are P1 minus P2. The static line is one hose from the probe's side holes, teed to every P2 that needs it. Nothing flows in it, so a tee doesn't change the reading; it only adds volume, which slows the response a little.</p>
+
+<h3 style="margin-top:28px">The reference</h3>
+<div class="how">
+  <div class="tile"><b>Pitot static</b><p>The best reference for aero taps, because it's the pressure of the air the car is driving through. Mount the probe where the bodywork doesn't disturb it, and leave it in the same place so runs compare.</p></div>
+  <div class="tile"><b>Second tap</b><p>For a drop across something, put both barbs on the car: before and after the filter, in front of and behind the radiator. No outside reference needed.</p></div>
+  <div class="tile"><b>Cabin</b><p>Leave P2 open inside the closed cabin. Easy, but the cabin's pressure moves with speed and with the ventilation, so keep the windows shut and the fan the same every run.</p></div>
+  <div class="tile"><b>Bottle in the boot</b><p>A bottle with a pinhole makes a slow-moving reference. It still drifts with temperature and with the cabin, so it's a last resort, zeroed before every run.</p></div>
+</div>
+
+<h3 style="margin-top:28px">Hoses and mounting</h3>
+<div class="how">
+  <div class="tile"><b>Hose</b><p>2 mm ID silicone fits the barbs. Route it with no kinks, no low spots where water can sit, and nothing near the exhaust. Label both ends with the sensor and P1 or P2.</p></div>
+  <div class="tile"><b>Length</b><p>A long, thin hose slows the reading down. Length matters and the bore matters far more. Keep both hoses on a channel about the same length, or a quick change shows up as a false difference.</p></div>
+  <div class="tile"><b>Leaks</b><p>Push gently on each tap with a syringe and hold it. The reading should stay put. If it creeps back toward zero, a joint is leaking.</p></div>
+  <div class="tile"><b>The node</b><p>Somewhere dry and away from heat. The cabin is easiest: hoses come in through grommets, and any barb left open has still air around it.</p></div>
+</div>
+
+<h3 style="margin-top:28px">Running a test</h3>
+<ol class="steps">
+  <li><b>Zero first.</b> Car parked, engine off, every tap open to still air, then press ZERO. It's lost at power-off, so do it each time.</li>
+  <li><b>Same road, both ways.</b> Hold a steady speed over the same stretch in each direction and average the two. That cancels most of the wind.</li>
+  <li><b>Divide by dynamic pressure.</b> An aero reading divided by DP1's dynamic pressure is a pressure coefficient. It stays the same as speed changes, so a run at 110 km/h compares with one at 130.</li>
+  <li><b>One change at a time.</b> Baseline, change, baseline again. If the two baselines disagree, conditions moved and the change can't be judged.</li>
+  <li><b>On track, several laps per setup.</b> Drop the odd laps (traffic, a lift) and average the rest. Aero numbers mean most above about 100 km/h.</li>
+</ol>
+
+<h3 style="margin-top:28px">What the numbers look like</h3>
+<div class="how">
+  <div class="tile"><b>Speed</b><p>Dynamic pressure is about 0.5 kPa at 100 km/h, 1.9 kPa at 200 and 4.2 kPa at 300, rising with the square of speed. Floor and diffuser taps sit below the static line, so they read negative.</p></div>
+  <div class="tile"><b>Intake</b><p>On road-car intakes that have been measured, the filter on its own is often only 250 to 500 Pa at full flow. The airbox outlet and the ducting usually cost more than the filter does.</p></div>
+  <div class="tile"><b>Cooling</b><p>Small. In one road test an undertray moved the difference across an intercooler from about −25 Pa to +75 Pa, and cruise intake temperature fell from 65 to 47 °C. The drop across a core rises with the square of the airflow through it, so it compares setups well but isn't a flow figure on its own.</p></div>
+  <div class="tile"><b>Cowl</b><p>The base of the windscreen is usually called a high-pressure spot. On-road tests have found it often isn't the highest at the front of the car, and sometimes it's low. Measure it before cutting an inlet there.</p></div>
+</div>
+
+<h3 style="margin-top:28px">What race teams do</h3>
+<p>The same ideas at a much bigger scale. Six channels won't map a car the way a team's scanner does, so use them a few points at a time, around the part you're changing.</p>
+<div class="how">
+  <div class="tile"><b>Rakes in F1 testing</b><p>Every team runs aero rakes at some point in testing: rows of Kiel probes, total-pressure heads that tolerate yaw, on a frame behind the front wheels, beside the sidepods or around the diffuser. They range from 50 to 600 mm wide and check the car on track against the wind tunnel and CFD.</p></div>
+  <div class="tile"><b>Taps by the hundred</b><p>The cars carry surface taps about 0.5 mm across, plumbed to scanners that read hundreds of channels at once. The wind-tunnel model has taps in the same places, so the two compare directly.</p></div>
+  <div class="tile"><b>Taped-on patches</b><p>Where drilling isn't allowed, like a historic F1 car, teams tape on aluminium patches under 20 mm wide and about 2 mm tall. One such car ran 256 of them.</p></div>
+  <div class="tile"><b>Pitot-static</b><p>Higher-end race cars carry one in clean air, level and pointing forward, on a ±14 kPa differential sensor. Airspeed minus GPS speed gives the headwind around the lap, and straight-line and coast-down runs give downforce and balance estimates. Air density comes from a weather station in the pits.</p></div>
+  <div class="tile"><b>Brake ducts</b><p>Taps at the inlet, along the duct and near the outlet. Air that goes into the inlet doesn't always reach the brake, and the pressure along the duct shows where it's lost.</p></div>
+  <div class="tile"><b>Formula Student</b><p>Student teams check their CFD with a handful of taps, eight on the low-pressure side of an undertray in one case, and run scanners on the wings, sidepods and floor.</p></div>
+</div>
+
 
 <h2 id="schematic">Schematic</h2>
 <p class="lead">Drawn by function, one sheet per block, with the board's real part references and values. Click a block in the overview to jump to its sheet.</p>
@@ -1137,5 +1232,5 @@
 <section class="sheet" id="pcn-gpio"><div class="tb"><span class="no">7</span><h3>ESP32 pin map</h3><span class="refs">U4</span></div>
 <div class="tablewrap"><table><thead><tr><th>GPIO</th><th>Net</th><th>Goes to</th></tr></thead><tbody><tr><td>IO4</td><td>I2C SDA</td><td>U6 mux, U15 ADC</td></tr><tr><td>IO5</td><td>I2C SCL</td><td>U6 mux, U15 ADC</td></tr><tr><td>IO10</td><td>MUX_RESET_N</td><td>U6 reset</td></tr><tr><td>IO6</td><td>CAN_TX</td><td>U16 TXD</td></tr><tr><td>IO7</td><td>CAN_RX</td><td>U16 RXD</td></tr><tr><td>IO15</td><td>CAN_STANDBY</td><td>U16 STB, high = standby</td></tr><tr><td>IO16</td><td>ANALOG_EN</td><td>U13 switches, high = inputs connected</td></tr><tr><td>IO17</td><td>SENSOR_POWER_EN</td><td>U3, high = 5 V to J4–J7</td></tr><tr><td>IO18</td><td>SENSOR_POWER_FAULT_N</td><td>U3 overcurrent, low = fault</td></tr><tr><td>IO8</td><td>STATUS_LED</td><td>D5 through R12</td></tr><tr><td>IO9</td><td>ZERO_N</td><td>SW3, low = pressed</td></tr><tr><td>IO0</td><td>BOOT_N</td><td>SW2, hold low at reset to flash</td></tr><tr><td>IO19 / IO20</td><td>USB D− / D+</td><td>J3 through R16 / R15</td></tr><tr><td>EN</td><td>ESP_EN</td><td>SW1 reset, R8 + C15 power-on delay</td></tr></tbody></table></div></section>
 
-<p class="last">These are renders from the board files. Rev D hasn't been built yet, so none of it has been on a car.</p>
+<p class="last">These are renders from the board files, and the fitting section is the plan, not a test report. Rev D hasn't been built yet, so none of it has been on a car.</p>
 </div>

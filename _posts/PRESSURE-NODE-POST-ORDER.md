@@ -11,9 +11,14 @@ Not a post. The running order for `2026-11-16-pressure-can-node.md`, whose page 
    section, eight on the left, nine on the right), link to the full-size render, the sensor close-up.
 4. **How it works** (`#how`): power, pressure, analog inputs, sensor supply, then the CAN frame
    table (0x520 to 0x523).
-5. **Schematic** (`#schematic`): legend, the overview block diagram (blocks link to their sheets),
+5. **Fitting it to a car** (`#install`): the car diagram (six channels numbered by sensor, hoses
+   to the node in the cabin, the pitot's static line), four tap close-ups (drilled, tape-on pad,
+   pitot-static, hose end), the plumbing table, then tiles for the reference, hoses and mounting,
+   the five test steps, what the numbers look like, and what race teams do. "What it measures"
+   links here.
+6. **Schematic** (`#schematic`): legend, the overview block diagram (blocks link to their sheets),
    sheet links, sheets 1 to 6 with 4a, the ESP32 pin map.
-6. **Last line**: these are renders and rev D hasn't been built.
+7. **Last line**: these are renders, the fitting section is the plan, and rev D hasn't been built.
 
 ## Standing rules
 
@@ -24,6 +29,10 @@ Not a post. The running order for `2026-11-16-pressure-can-node.md`, whose page 
 - Nothing has been built or run on a car. Don't claim measured accuracy, rates or results until
   Matt reports a real board; the sensor scale and port sign still need a bench check.
 - The board's repository is private. Don't link it or name its scripts.
+- The fitting section is general practice in our own words: how taps, references and test runs
+  are usually done, and what teams run. No names of articles, sites, books, vendors or people it
+  was gathered from, no links to them, and no third-party photos. Its diagrams are drawn in the
+  include. When a board is fitted to a car, swap in photos and real readings.
 - Numbers on the page: ±10 kPa, 4 × 0–5 V with ÷5 dividers (500 kΩ load), four frames every
   10 ms at 500 kbit/s from 0x520, 1 A fuse, 33 V TVS, 500 mA sensor supply.
 
