@@ -5,7 +5,7 @@ categories: car tech
 tags: [3d-printing, mini, r53, r52, airbox, intake, snorkel, asa, petg, petg-gf, abs-gf, asa-gf, asa-cf, paht-cf, cults3d]
 cover: /assets/images/r53-airbox/airbox-with-filter.jpg
 lightbox: true
-excerpt: "Printed R53 airbox and cold-air snorkel — snorkel $125 in ASA or $80 in PETG, airbox from $170, intake kits 10% off, shipping usually $20 or less"
+excerpt: "Printed R53 airbox and cold-air snorkel — snorkel $125 in ASA or $80 in PETG, airbox printed to order, intake kits 10% off, shipping usually $20 or less"
 article_header:
   type: overlay
   theme: dark
@@ -25,21 +25,15 @@ Everything is printed to order on a **Bambu Lab H2S** with an actively heated ch
 
 ## Pricing
 
-The snorkel comes in ASA (any color) or PETG. The airbox is priced by material, since the engineering blends cost more to print and PAHT-CF is the premium option:
+The snorkel comes in ASA (any color) or PETG. Airbox prices are being reworked and coming down; DM me for a current price:
 
 | Part | Material | Price |
 |------|----------|-------|
 | **Cold-air snorkel** (front section, 3-piece + shroud) | ASA, any color | **$125** |
 | **Cold-air snorkel** (front section, 3-piece + shroud) | PETG | **$80** |
-| **Airbox** (v4) | ABS-GF / ASA-GF / ASA-CF | **$170** |
-| **Airbox** (v4) | PAHT-CF | **$180** |
+| **Airbox** (v4) | ABS-GF / ASA-GF / ASA-CF / PAHT-CF | DM for price |
 
-**Full intake kit: 10% off** the two parts combined:
-
-| Kit | ABS-GF / ASA-GF / ASA-CF airbox | PAHT-CF airbox |
-|-----|------|------|
-| **ASA snorkel** | **$265.50** | **$274.50** |
-| **PETG snorkel** | **$225** | **$234** |
+**Full intake kit: 10% off** the two parts combined.
 
 Shipping is billed at actual cost and is generally **$20 or less**. Color choice is free on the ASA snorkel and on any GF airbox.
 
