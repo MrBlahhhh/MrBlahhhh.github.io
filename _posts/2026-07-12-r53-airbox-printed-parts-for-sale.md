@@ -2,10 +2,10 @@
 title: "R53 Airbox & Cold-Air Snorkel — Now Sold Printed"
 date: 2026-07-12 00:00:00 -0400
 categories: car tech
-tags: [3d-printing, mini, r53, r52, airbox, intake, snorkel, petg-gf, abs-gf, asa-gf, asa-cf, paht-cf, cults3d]
+tags: [3d-printing, mini, r53, r52, airbox, intake, snorkel, asa, petg, petg-gf, abs-gf, asa-gf, asa-cf, paht-cf, cults3d]
 cover: /assets/images/r53-airbox/airbox-with-filter.jpg
 lightbox: true
-excerpt: "Printed R53 airbox and cold-air snorkel — snorkel $125 in ASA, airbox from $170, intake kits 10% off"
+excerpt: "Printed R53 airbox and cold-air snorkel — snorkel $125 in ASA or $80 in PETG, airbox from $170, intake kits 10% off, shipping usually $20 or less"
 article_header:
   type: overlay
   theme: dark
@@ -21,28 +21,34 @@ Since the [airbox writeup](/car/tech/2026/07/11/r53-track-airbox.html) went up, 
 
 Everything is printed to order on a **Bambu Lab H2S** with an actively heated chamber — the airbox alone is a 12-hour print, the three-piece snorkel another 13.
 
-> **Updated November 15, 2026:** the cold-air snorkel is now **$125 plus shipping, printed in ASA**. It replaces the earlier per-material snorkel prices.
+> **Updated November 16, 2026:** the cold-air snorkel is **$125 in ASA, any color**, or **$80 in PETG**. Shipping is generally **$20 or less**.
 
 ## Pricing
 
-The snorkel is one price in ASA. The airbox is priced by material, since the engineering blends cost more to print and PAHT-CF is the premium option:
+The snorkel comes in ASA (any color) or PETG. The airbox is priced by material, since the engineering blends cost more to print and PAHT-CF is the premium option:
 
 | Part | Material | Price |
 |------|----------|-------|
-| **Cold-air snorkel** (front section, 3-piece + shroud) | ASA | **$125** |
+| **Cold-air snorkel** (front section, 3-piece + shroud) | ASA, any color | **$125** |
+| **Cold-air snorkel** (front section, 3-piece + shroud) | PETG | **$80** |
 | **Airbox** (v4) | ABS-GF / ASA-GF / ASA-CF | **$170** |
 | **Airbox** (v4) | PAHT-CF | **$180** |
 
-**Full intake kit: 10% off** the two parts combined: **$265.50** with an ABS-GF, ASA-GF or ASA-CF airbox, or **$274.50** with a PAHT-CF airbox.
+**Full intake kit: 10% off** the two parts combined:
 
-Shipping billed at actual cost. Color choice is free on the snorkel and on any GF airbox.
+| Kit | ABS-GF / ASA-GF / ASA-CF airbox | PAHT-CF airbox |
+|-----|------|------|
+| **ASA snorkel** | **$265.50** | **$274.50** |
+| **PETG snorkel** | **$225** | **$234** |
+
+Shipping is billed at actual cost and is generally **$20 or less**. Color choice is free on the ASA snorkel and on any GF airbox.
 
 ![Red airbox with JCW-style filter installed](/assets/images/r53-airbox/airbox-with-filter.jpg){:.img-md}
 *Airbox as shipped — filter not included; it takes any 3.5" ID dry cone.*
 
 ## Choosing a material
 
-The **snorkel is printed in ASA**. It sits in the bumper pulling ambient air ahead of the engine and never heat-soaks, and ASA stands up to sun and weather at the mouth.
+The **snorkel is printed in ASA or PETG**. It sits in the bumper pulling ambient air ahead of the engine and never heat-soaks, so either plastic handles it. ASA comes in any color and stands up best to sun and weather at the mouth; PETG is the budget option.
 
 The **airbox** is where the material choice matters:
 
@@ -78,7 +84,7 @@ Same parts as the [build post](/car/tech/2026/07/11/r53-track-airbox.html):
 
 - **Track / off-road use only.**
 - **No warranty against engine damage** — you are buying a printed plastic part for a supercharged engine bay; inspect it at every event like you would any other intake component.
-- Shipping is billed at actual. These parts are boxes of air — carriers charge by volume, not weight — so continental-US airbox/snorkel shipping is reasonable, but **AK/HI and international are quoted separately**, as is the full kit (it needs a bigger box).
+- Shipping is billed at actual cost and is generally **$20 or less**. **AK/HI and international are quoted separately**, as is the full kit (it needs a bigger box).
 
 ## How to order
 
