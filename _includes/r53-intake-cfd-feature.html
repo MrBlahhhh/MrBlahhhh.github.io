@@ -151,6 +151,28 @@
 <p>With the port closed, every bit of air goes through the snout and the 61 mm tube at 60 to 100 m/s. Cut a 3-inch port and 71% of it comes in at the back instead, so the tube only carries about a third of the flow and its losses nearly vanish. The loss in the intake falls by 80%, from 9.75 to 1.94 kPa.</p>
 <p class="note">Once the port is cut, the front piece matters much less: it is only carrying a third of the air or less.</p>
 
+<h2 id="curved-top">The new curved-top airbox</h2>
+<p class="lead">The airbox now has a curved, egg-shaped roof that takes much less filament to print. I ran it through the same model with my snout and all three rear ports. Only the roof changes.</p>
+<div class="tbl"><table>
+  <thead><tr><th></th><th>Rear port closed</th><th>3-inch rear port</th><th>6 &times; 4.2 inch rear port</th></tr></thead>
+  <tbody>
+    <tr><td>Vacuum ahead of the throttle body, original top</td><td>14.4 kPa</td><td>6.6 kPa</td><td>5.9 kPa</td></tr>
+    <tr><td><b>Vacuum ahead of the throttle body, curved top</b></td><td><b>14.2 kPa</b></td><td><b>6.5 kPa</b></td><td><b>5.9 kPa</b></td></tr>
+    <tr><td>Total pressure lost, original top</td><td>9.75 kPa</td><td>1.94 kPa</td><td>1.27 kPa</td></tr>
+    <tr><td><b>Total pressure lost, curved top</b></td><td><b>9.52 kPa</b></td><td><b>1.89 kPa</b></td><td><b>1.30 kPa</b></td></tr>
+    <tr><td>Air through the rear port, curved top</td><td>none</td><td>70%</td><td>88%</td></tr>
+  </tbody>
+</table></div>
+<p>Every difference is about 2%, inside the 3 to 5% these runs wander, and they don&rsquo;t all go the same way. In this model the curved top flows the same as the original. The curve takes 0.33 litres of air out of the housing, all of it above the sides of the filter, where the air barely moves. The loss across the housing itself, from the lower box to the throttle body end, is 2.93 kPa against 2.95 for the original top. The filter still clears the roof by at least 21 mm, against 27 mm before.</p>
+<div class="shots">
+  <figure><video src="/assets/images/r53-intake-cfd/case5-egg-closed.mp4" poster="/assets/images/r53-intake-cfd/case5-egg-closed.jpg" width="1280" height="720" controls muted loop playsinline preload="none" aria-label="Curved-top airbox, rear port closed"><a href="/assets/images/r53-intake-cfd/case5-egg-closed.mp4">Watch: Curved-top airbox, rear port closed</a></video><figcaption><b>Curved top, rear port closed.</b> Compare with case 2 above: the same flow through the snout and tube.</figcaption></figure>
+  <figure><video src="/assets/images/r53-intake-cfd/case6-egg-rear-3in.mp4" poster="/assets/images/r53-intake-cfd/case6-egg-rear-3in.jpg" width="1280" height="720" controls muted loop playsinline preload="none" aria-label="Curved-top airbox, 3-inch rear port"><a href="/assets/images/r53-intake-cfd/case6-egg-rear-3in.mp4">Watch: Curved-top airbox, 3-inch rear port</a></video><figcaption><b>Curved top, 3-inch rear port.</b> Compare with case 3.</figcaption></figure>
+</div>
+<div class="shots">
+  <figure><video src="/assets/images/r53-intake-cfd/case7-egg-rear-6x4.mp4" poster="/assets/images/r53-intake-cfd/case7-egg-rear-6x4.jpg" width="1280" height="720" controls muted loop playsinline preload="none" aria-label="Curved-top airbox, 6 by 4.2 inch rear port"><a href="/assets/images/r53-intake-cfd/case7-egg-rear-6x4.mp4">Watch: Curved-top airbox, 6 by 4.2 inch rear port</a></video><figcaption><b>Curved top, 6 &times; 4.2 inch rear port.</b> Compare with case 4.</figcaption></figure>
+</div>
+<p class="note">The curved top&rsquo;s shape comes from its Fusion 360 model as a fine surface mesh, fitted into the same model as the original housing to within about 2 mm.</p>
+
 <h2 id="tried">What I tried that did not beat it</h2>
 <p>I also ran reshaped snouts through the same model: a mouth that fills more of the slot, a rounded inside corner, and a bell-shaped lip on the cap. They came out between 10.2 and 11.4 kPa of loss, against 9.75 for the snout as it is. So the snout stays. What does change is the cap: a new one that reaches down to the radiator support and grips the outside of the mouth, which costs no flow in the model. It is not printed yet.</p>
 

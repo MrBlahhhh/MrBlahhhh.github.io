@@ -21,6 +21,11 @@ snout with a 6 x 4.2 inch rear port.
    Instagram buttons plus a link to the July printed-parts pricing post. Then the bench table, the
    6 kPa gap, stock-airflow note, bench cut picture.
 6. **What the rear port does** (`#rear`).
+6a. **The new curved-top airbox** (`#curved-top`, added 2026-11-17, Matt: CFD of the new airbox with
+   the curved top that uses much less filament, compared to the previous runs): table of original
+   against curved top for the three rear ports (snout in all three), the ~2% / within-wander reading,
+   then the three curved-top videos (`case5`–`case7`). Matt's name for it is the curved-top airbox; in
+   Fusion it is the body `r53_airbox_egg`.
 7. **What I tried that did not beat it** (`#tried`).
 8. **What this does not show** (`#limits`).
 
@@ -50,6 +55,12 @@ snout with a 6 x 4.2 inch rear port.
   - `case3-snout-rear-3in`: case `current-rear-3in-medium-500pa-269gs`.
   - `case4-snout-rear-6x4`: case `current-rear-6x4-medium-500pa-269gs` (like-for-like with the other
     three; it replaced an earlier coarse run on 2026-11-15).
+- `case5-egg-closed`, `case6-egg-rear-3in`, `case7-egg-rear-6x4`: cases
+  `egg-rear-closed/-rear-3in/-rear-6x4-medium-500pa-269gs` in
+  `f56-airbox-downloads/r53-egg-cfd/plenum/cfd/`, same flow_video.py options as case1–4 (`--views hero
+  --vmax 120 --min-speed 4 --seconds 10 --seed-density 4000`). Geometry: the `current` builds with
+  `--roof-cut egg-roof-cut-clean-mm.stl` (`build_sealed_variants.py`), made by
+  `r53-egg-cfd/egg_roof_cut.py` from the Fusion mesh of `r53_airbox_egg`.
 - `bench-speed-cuts.png`: air speed on cut planes from the two bench runs
   (`cfd/bench-inlet-results/` in the f56-airbox repo).
 - Car photos are the July post's, in `assets/images/r53-airbox`.
