@@ -6,8 +6,9 @@ of appending to the end.
 
 Since 9 November 2026 this is a sales page for the F56 kit (controller board,
 round screen in its housing, app). Sales copy only: capability claims, no
-"honest limits" or "where it's at" sections. Ordering is by email or
-Instagram, no price on the page.
+"honest limits" or "where it's at" sections. Ordering is by email to
+ryan3ddesigns@gmail.com (Matt's wife handles control board orders, 2026-11-17),
+no price on the page.
 
 1. **Hero**: what it is, the kit line, stats (0 extra sensors, 2 → 8 psi
    default curve, 10 ms pump current checks, 50 Hz log stream), buttons to
