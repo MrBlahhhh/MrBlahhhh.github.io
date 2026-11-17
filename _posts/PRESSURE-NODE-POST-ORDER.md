@@ -14,8 +14,8 @@ Not a post. The running order for `2026-11-16-pressure-can-node.md`, whose page 
 5. **Fitting it to a car** (`#install`): the car diagram (six channels numbered by sensor, hoses
    to the node in the cabin, the pitot's static line), four tap close-ups (drilled, tape-on pad,
    pitot-static, hose end), the plumbing table, then tiles for the reference, hoses and mounting,
-   the five test steps, what the numbers look like, and what race teams do. "What it measures"
-   links here.
+   the five test steps, what the numbers look like, what race teams do, and the Sources list.
+   "What it measures" links here, and so do the F56 and R53 intake CFD posts.
 6. **Schematic** (`#schematic`): legend, the overview block diagram (blocks link to their sheets),
    sheet links, sheets 1 to 6 with 4a, the ESP32 pin map.
 7. **Last line**: these are renders, the fitting section is the plan, and rev D hasn't been built.
@@ -29,10 +29,12 @@ Not a post. The running order for `2026-11-16-pressure-can-node.md`, whose page 
 - Nothing has been built or run on a car. Don't claim measured accuracy, rates or results until
   Matt reports a real board; the sensor scale and port sign still need a bench check.
 - The board's repository is private. Don't link it or name its scripts.
-- The fitting section is general practice in our own words: how taps, references and test runs
-  are usually done, and what teams run. No names of articles, sites, books, vendors or people it
-  was gathered from, no links to them, and no third-party photos. Its diagrams are drawn in the
-  include. When a board is fitted to a car, swap in photos and real readings.
+- The fitting section is published practice in our own words, and it ends with a linked Sources
+  list (`#install-sources`): every article, paper and thread it draws on, what each supports, PDFs
+  marked and linked directly. Matt, 2026-11-17: "If we use sources like that, I want a link to the
+  PDF on the blog." Link text is the real title where we have it, otherwise a plain description.
+  No third-party photos; the diagrams are drawn in the include. When a board is fitted to a car,
+  swap in photos and real readings.
 - Numbers on the page: ±10 kPa, 4 × 0–5 V with ÷5 dividers (500 kΩ load), four frames every
   10 ms at 500 kbit/s from 0x520, 1 A fuse, 33 V TVS, 500 mA sensor supply.
 

@@ -27,7 +27,9 @@ snout with a 6 x 4.2 inch rear port.
    then the three curved-top videos (`case5`–`case7`). Matt's name for it is the curved-top airbox; in
    Fusion it is the body `r53_airbox_egg`.
 7. **What I tried that did not beat it** (`#tried`).
-8. **What this does not show** (`#limits`).
+8. **What this does not show** (`#limits`). The "Not horsepower" item links the pressure CAN node
+   post as the board for measuring these pressures (added 2026-11-17, Matt's request): not built,
+   ±10 kPa covers the rear-port cases, closed-port cases need shorter stretches. No sales wording.
 
 ## Standing rules
 

@@ -18,7 +18,8 @@ appending to the end.
    the housing section, the two housing slices, the snorkel slice and the MAF
    plane.
 6. **Mounting it** (`#mounts`): front stud bosses, rear bracket and TPU sleeves.
-7. **Next** (`#next`).
+7. **Next** (`#next`), ending with a link to the pressure CAN node post as the board for measuring
+   coupler and filter vacuum (added 2026-11-17, Matt's request). Say it isn't built; no sales wording.
 
 ## Standing rules
 
