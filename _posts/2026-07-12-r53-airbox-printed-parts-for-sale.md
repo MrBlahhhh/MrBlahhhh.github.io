@@ -25,13 +25,13 @@ Everything is printed to order on a **Bambu Lab H2S** with an actively heated ch
 
 ## Pricing
 
-The snorkel comes in ASA (any color) or PETG. Airbox prices are being reworked and coming down; DM me for a current price:
+The snorkel comes in ASA (any color) or PETG. Airbox prices are being reworked and coming down; email [ryan3ddesigns@gmail.com](mailto:ryan3ddesigns@gmail.com?subject=R53%20airbox%20price) for a current price:
 
 | Part | Material | Price |
 |------|----------|-------|
 | **Cold-air snorkel** (front section, 3-piece + shroud) | ASA, any color | **$125** |
 | **Cold-air snorkel** (front section, 3-piece + shroud) | PETG | **$80** |
-| **Airbox** (v4) | ABS-GF / ASA-GF / ASA-CF / PAHT-CF | DM for price |
+| **Airbox** (v4) | ABS-GF / ASA-GF / ASA-CF / PAHT-CF | Email for price |
 
 **Full intake kit: 10% off** the two parts combined.
 
@@ -82,7 +82,7 @@ Same parts as the [build post](/car/tech/2026/07/11/r53-track-airbox.html):
 
 ## How to order
 
-DM me on Instagram — [**@mattryan6729**](https://www.instagram.com/mattryan6729/) — with the part, material, and color you want, and I'll quote shipping to your zip.
+Email [**ryan3ddesigns@gmail.com**](mailto:ryan3ddesigns@gmail.com?subject=R53%20printed%20parts%20order) with the part, material, and color you want and your zip code, and you'll get a shipping quote back.
 
 Prefer to print it yourself? The STLs are still for sale:
 

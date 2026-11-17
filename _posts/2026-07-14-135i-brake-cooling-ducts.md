@@ -163,7 +163,7 @@ Printed to order on a **Bambu Lab H2S**, priced per pair (both sides of the axle
 | **Rear pair** (both sides) | **$150** | **$175** |
 | **Full car** (front + rear) | **$250** | **$295** |
 
-**ASA** is the standard UV-stable choice; **PAHT-CF** is the black, maximum-heat-resistance option. Shipping billed at actual cost. DM me on Instagram — [**@mattryan6729**](https://www.instagram.com/mattryan6729/) — with the pair(s) and material you want and I'll quote shipping to your zip.
+**ASA** is the standard UV-stable choice; **PAHT-CF** is the black, maximum-heat-resistance option. Shipping billed at actual cost. Email [**ryan3ddesigns@gmail.com**](mailto:ryan3ddesigns@gmail.com?subject=135i%20brake%20ducts%20order) with the pair(s) and material you want and your zip code, and you'll get a shipping quote back.
 
 ### Print it yourself
 
