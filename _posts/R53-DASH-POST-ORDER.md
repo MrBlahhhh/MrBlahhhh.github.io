@@ -15,12 +15,17 @@ photos"): the dash screen (bridge build 381) and the always-on SD log (build 380
    table (panel, brightness, what it fits) and the AMOLED burn-in note.
 5. **It logs everything** (`#logging`): raw CAN and K-line, the decoded log, delete-oldest.
 6. **Presets** (`#presets`): the four presets and their DME blocks.
-7. **Hooking it up** (`#wiring`): one USB-C, the bridge is host, console moves to D4/D5.
-8. **Where it's at** (`#status`): builds and renders, not yet run on a screen in the car.
+7. **Hooking it up** (`#wiring`): one USB-C, the bridge is host, console moves to D4/D5; then
+   flashing both from the R53 flasher (build 11): the "drives a dash screen" box, BOOT to reflash
+   the bridge, the screen picker and the 2.41 V1/V2 rule.
+8. **Where it's at** (`#status`): builds and renders, on the flasher as build 11, not yet run on a
+   screen in the car; keep build 10 on a bridge you rely on.
 
 ## Standing rules
 
-- The bridge firmware repo is private: no GitHub links.
+- The bridge firmware repo is private: no GitHub links. The flasher
+  (mrblahhhh.github.io/esp32-shift-light-R53-mini) is public and is the way to install it.
+  Its build numbers (11) are the flasher's, not the firmware's (381); say which when quoting.
 - Numbers come from the firmware: presets and channels from `shared/screenlink/r53screen.h`, the
   SD reserve (256 / 512 MB, 64 MB files) from `sdlog.cpp`, RPM arc colours (5,800 amber, 6,800 red)
   from `screen/src/ui/gauges.cpp`. Change them here when they change there.

@@ -116,8 +116,13 @@
 
 <h2 id="wiring">Hooking it up</h2>
 <p>One USB-C cable from the bridge to the screen. The bridge is the USB host and powers the screen, exactly as the methanol controller does with its screen. That means the bridge needs its screen build of the firmware, and in that build its USB-C is the screen's, so the serial console moves to the spare header (D4 and D5). The normal build is unchanged for anyone without a screen.</p>
+<p>Both go on from Chrome or Edge with the <a href="https://mrblahhhh.github.io/esp32-shift-light-R53-mini/">R53 flasher</a>, build 11 on:</p>
+<ul class="tight">
+  <li><b>The bridge.</b> Plug in the XIAO, press Connect, tick <b>This board drives a dash screen</b> and flash. Update keeps your K-line polling and shift light settings. From then on the USB-C is the screen's, so to flash the bridge again, hold BOOT on the XIAO while you plug it into the computer.</li>
+  <li><b>The screen.</b> Flash it on its own, not plugged into the bridge. All four have the same chip, so the first time the flasher asks which one it is; after that it knows from the firmware. Not sure whether a 2.41&Prime; is the V1 or V2 board: flash the V2 build, and if it stays dark, the V1.</li>
+</ul>
 
 <h2 id="status">Where it's at</h2>
-<p>The firmware builds for the bridge and for all four screens, the link between them is checked by tests on a PC, and every page renders as you see above. None of it has run on a screen in the car yet. The 2.1&Prime; goes on first, since its panel and touch code are already proven on the methanol controller; the three new screens follow when they land.</p>
+<p>The firmware builds for the bridge and for all four screens, the link between them is checked by tests on a PC, every page renders as you see above, and it's all on the flasher as build 11 (bridge firmware 381, screen firmware 0.1.0). None of it has run on a screen in the car yet, so keep build 10 on a bridge you rely on until it has. The 2.1&Prime; goes on first, since its panel and touch code are already proven on the methanol controller; the three new screens follow when they land.</p>
 
 </div>
