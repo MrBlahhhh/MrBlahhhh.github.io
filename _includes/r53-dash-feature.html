@@ -1,0 +1,123 @@
+<!-- R53 bridge dash screen feature page. Rendered by _posts/2026-11-17-r53-bridge-dash-screen.md. Edit here, not in the post.
+     Section order and where every image came from: _posts/R53-DASH-POST-ORDER.md. Images in assets/images/r53-dash-screen.
+     Numbers come from the bridge firmware (build 381: sdlog.cpp, screen_link.cpp) and shared/screenlink/r53screen.h; keep them in step. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap">
+<style>
+.rd{--ink:#EEF1F4;--mute:#A3ABB6;--rec:#FF4B4B;--amber:#FFB020;--green:#35D07F;--blue:#3DA5FF;--line:rgba(238,241,244,.1);--line2:rgba(238,241,244,.22);--card:rgba(24,28,34,.78);
+  font-family:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);line-height:1.55;
+  background:radial-gradient(ellipse 70% 38% at 80% 0%,rgba(255,176,32,.13),transparent 60%),linear-gradient(180deg,#14171C,#0D0F13 35%,#08090B);
+  border-radius:22px;padding:28px clamp(16px,3vw,32px) 36px;margin:0 0 24px;overflow-wrap:anywhere}
+.rd *{box-sizing:border-box}
+.rd a{color:var(--amber)}
+.rd a:hover{color:#ffd27a}
+.rd code{font-size:.92em;background:rgba(255,255,255,.06);padding:1px 5px;border-radius:5px;color:var(--ink)}
+.rd .hero{padding:4px 0 22px;border-bottom:1px solid var(--line)}
+.rd .k{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--rec);margin:0 0 6px;font-weight:700}
+.rd .k::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--rec)}
+.rd .hero h1{font-size:clamp(30px,6vw,52px);line-height:1.05;margin:0;color:var(--ink);text-wrap:balance}
+.rd .hero p.sub{font-size:clamp(17px,2.2vw,20px);color:var(--mute);max-width:62ch;margin:14px 0 0}
+.rd .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(140px,100%),1fr));gap:12px;margin:20px 0 0}
+.rd .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.rd .stat b{display:block;font-size:28px;line-height:1.1;font-variant-numeric:tabular-nums;color:var(--ink)}
+.rd .stat span{color:var(--mute);font-size:13px;letter-spacing:.04em;text-transform:uppercase}
+.rd h2{font-size:clamp(24px,3.4vw,34px);margin:46px 0 6px;color:var(--ink);border:0;text-wrap:balance}
+.rd h3{font-size:19px;margin:22px 0 6px;color:var(--ink)}
+.rd p{margin:0 0 12px}
+.rd .lead{font-size:18px;color:var(--mute);margin:0 0 18px;max-width:66ch}
+.rd .note{font-size:14px;color:var(--mute);border-left:3px solid var(--amber);padding:2px 0 2px 12px;margin:10px 0 18px;max-width:70ch}
+.rd .shots{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(250px,100%),1fr));gap:22px 18px;margin:16px 0 8px}
+.rd figure{margin:0;display:grid;gap:8px;align-content:start;min-width:0}
+.rd figure img{display:block;width:100%;height:auto;max-width:100%;margin:0;box-shadow:none;border-radius:0;background:transparent}
+.rd figure.rect img{border-radius:16px;outline:1px solid var(--line)}
+.rd figcaption{font-size:14px;color:var(--mute)}
+.rd figcaption b{color:var(--ink)}
+.rd .three{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));gap:18px;margin:16px 0}
+.rd .three figure{justify-items:center}
+.rd .three figure img{max-width:300px}
+.rd .tbl{overflow-x:auto;margin:14px 0 18px;border:1px solid var(--line);border-radius:14px}
+.rd table{width:100%;border-collapse:collapse;font-size:15px;display:table;margin:0}
+.rd th,.rd td{text-align:left;padding:10px 12px;border:0;border-bottom:1px solid var(--line);vertical-align:top;background:transparent;color:var(--ink)}
+.rd th{color:var(--mute);font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.rd tr:last-child td{border-bottom:0}
+.rd td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+.rd ul.tight{margin:6px 0 16px;padding-left:20px}
+.rd ul.tight li{margin:4px 0}
+.rd .chips{display:flex;flex-wrap:wrap;gap:6px}
+.rd .chip{font-size:12px;font-variant-numeric:tabular-nums;border:1px solid var(--line2);border-radius:999px;padding:2px 9px;color:var(--ink)}
+</style>
+
+<div class="rd">
+
+<div class="hero">
+  <span class="k">Build 381</span>
+  <h1>A dash screen for the R53 bridge</h1>
+  <p class="sub">The K-line and CAN bridge now drives a touchscreen off its own USB-C, the way the methanol controller drives its round screen: live gauges, a 20-second graph, the SD log with a New log and a Mark button, and presets for what it reads off the DME. Under it, the bridge now logs everything it hears to the SD card, all the time.</p>
+  <div class="stats">
+    <div class="stat"><b>5</b><span>pages, swiped</span></div>
+    <div class="stat"><b>20 Hz</b><span>live values</span></div>
+    <div class="stat"><b>4</b><span>screens it runs on</span></div>
+    <div class="stat"><b>Always</b><span>logging to SD</span></div>
+  </div>
+</div>
+
+<p class="note">Every screen image on this page is rendered from the screen firmware's own page code with simulated data, a third-gear pull at 5,940 rpm and 10.8 psi. They are not photos of the hardware: the new screens haven't arrived yet.</p>
+
+<h2 id="pages">The pages</h2>
+<p class="lead">Swipe left and right. The line at the top says whether the bridge is there and whether the card is recording; the dots at the bottom say which page you're on. Shown on the 2.8&Prime; round LCD.</p>
+<div class="shots">
+  <figure><img src="/assets/images/r53-dash-screen/lcd28c-gauges.png" alt="Round dash screen showing 5940 rpm on an amber arc, AFR 12.3, boost 10.8 psi, coolant 92, timing 20.0 in red" width="480" height="480" loading="lazy"><figcaption><b>Gauges.</b> RPM large, with an arc that goes amber at 5,800 and red at 6,800. AFR, boost, coolant and timing under it. Timing turns red while the DME is pulling knock retard.</figcaption></figure>
+  <figure><img src="/assets/images/r53-dash-screen/lcd28c-graph.png" alt="Round dash screen with three traces: RPM, AFR and MAP over twenty seconds through a pull" width="480" height="480" loading="lazy"><figcaption><b>Graph.</b> Three channels over the last 20 seconds, each on its own scale. Tap it for the next set: RPM, AFR and MAP; RPM, timing and knock retard; AFR and both fuel trims; coolant, intake and battery.</figcaption></figure>
+  <figure><img src="/assets/images/r53-dash-screen/lcd28c-log.png" alt="Round dash screen: Logging, file 0042_003.r53raw, 18.3 MB, 14:07, 20.9 GB free, New log and Mark buttons" width="480" height="480" loading="lazy"><figcaption><b>Log.</b> What the bridge's SD card is doing: the file, its size and time, the space left. <b>New log</b> starts fresh files; <b>Mark</b> drops a numbered mark into the log, so "that pull at the third cone" is easy to find later.</figcaption></figure>
+  <figure><img src="/assets/images/r53-dash-screen/lcd28c-presets.png" alt="Round dash screen listing four presets, Fuelling outlined in green as the one running, 5 blocks, 23 reads a second" width="480" height="480" loading="lazy"><figcaption><b>Presets.</b> Which DME blocks the bridge reads over the K-line. The running one is outlined in green, with how many reads a second it's getting.</figcaption></figure>
+  <figure><img src="/assets/images/r53-dash-screen/lcd28c-display.png" alt="Round dash screen with a brightness slider at 80 percent, a boost in psi switch, and the bridge's build number" width="480" height="480" loading="lazy"><figcaption><b>Display.</b> Brightness, boost in psi or MAP in kPa, and the link's health.</figcaption></figure>
+  <figure><img src="/assets/images/r53-dash-screen/lcd28c-no-bridge.png" alt="Round dash screen before the bridge is connected: every gauge reads two grey dashes, No bridge at the top" width="480" height="480" loading="lazy"><figcaption><b>No bridge.</b> Before the cable is in, or if the bridge stops talking: every value goes to grey dashes. Nothing on the screen is ever a frozen number from a second ago.</figcaption></figure>
+</div>
+
+<h2 id="screens">Three screens, one firmware</h2>
+<p class="lead">The same pages run on four Waveshare ESP32-S3 boards. I ordered the three new ones to see which reads best in the car; the 2.1&Prime; is the methanol controller's screen, which I already have.</p>
+<div class="three">
+  <figure><img src="/assets/images/r53-dash-screen/lcd28c-gauges.png" alt="Gauges page on the 2.8 inch round LCD" width="480" height="480" loading="lazy"><figcaption><b>2.8&Prime; round LCD.</b> The biggest face, and the easiest port: the 2.1&Prime;'s wiring with a different panel and touch chip.</figcaption></figure>
+  <figure><img src="/assets/images/r53-dash-screen/amoled175-gauges.png" alt="Gauges page on the 1.75 inch round AMOLED" width="466" height="466" loading="lazy"><figcaption><b>1.75&Prime; round AMOLED.</b> Fits a 52&nbsp;mm gauge pod, and the methanol screen ran on it before, so its code came back out of git.</figcaption></figure>
+  <figure class="rect"><img src="/assets/images/r53-dash-screen/amoled241-gauges.png" alt="Gauges page on the 2.41 inch AMOLED in portrait, RPM bar across the top" width="450" height="600" loading="lazy"><figcaption><b>2.41&Prime; AMOLED.</b> The brightest of the lot. Portrait for now; landscape once I've seen the real panel.</figcaption></figure>
+</div>
+<div class="tbl"><table>
+  <thead><tr><th>Screen</th><th>Panel</th><th>Brightness</th><th>Fits</th></tr></thead>
+  <tbody>
+    <tr><td><b>2.1&Prime; round LCD</b></td><td class="num">480 &times; 480 IPS</td><td>not published</td><td>52&nbsp;mm pod</td></tr>
+    <tr><td><b>2.8&Prime; round LCD</b></td><td class="num">480 &times; 480 IPS</td><td>not published</td><td>60&nbsp;mm pod or a printed bezel</td></tr>
+    <tr><td><b>1.75&Prime; round AMOLED</b></td><td class="num">466 &times; 466</td><td class="num">700 nits</td><td>52&nbsp;mm pod</td></tr>
+    <tr><td><b>2.41&Prime; AMOLED</b></td><td class="num">450 &times; 600</td><td class="num">800 nits</td><td>dash top or centre stack</td></tr>
+  </tbody>
+</table></div>
+<p>The AMOLEDs have real blacks, so a dark gauge face holds its contrast in daylight far better than a backlit LCD at the same rating. They can burn in a fixed layout, so the whole picture drifts a few pixels every three minutes, the same care the methanol screen's AMOLED build had.</p>
+
+<h2 id="logging">It logs everything, all the time</h2>
+<p class="lead">The bridge has had a microSD slot since the rev C board. Until now it only logged when the app switched it on, and only the channels it decodes. Now it logs whenever a card is in, and keeps all of it.</p>
+<ul class="tight">
+  <li><b>Every CAN frame</b> off the bus, before any filter: the DME, the ABS, the AEM wideband, everything.</li>
+  <li><b>Every K-line request and reply</b>, whoever asked: the bridge's own rotation, and anything the R53 Logger app asks for (coding reads, fault reads, the lot).</li>
+  <li><b>The decoded log</b> as before, in TrackEncoder or RaceCapture format, beside the raw file.</li>
+  <li><b>When the card fills, the oldest logs go.</b> Under 256&nbsp;MB free, the oldest of the bridge's own logs are deleted until 512&nbsp;MB is free. It never touches any other file on the card, so a card full of something else stops the logging instead of losing your files.</li>
+</ul>
+<p>The raw files are about 25&nbsp;MB an hour of driving and close every 64&nbsp;MB, so a 32&nbsp;GB card holds weeks of it and trims an hour at a time.</p>
+
+<h2 id="presets">Presets</h2>
+<p class="lead">The K-line is slow: every block the bridge reads costs time on the wire. A preset picks which DME blocks get that time. Fewer blocks, each read more often. The CAN bus and the raw SD log record everything whatever the preset.</p>
+<div class="tbl"><table>
+  <thead><tr><th>Preset</th><th>What you see</th><th>DME blocks</th></tr></thead>
+  <tbody>
+    <tr><td><b>Everything</b></td><td>Every block the bridge decodes. The default.</td><td><span class="chips"><span class="chip">18</span><span class="chip">13</span><span class="chip">14</span><span class="chip">16</span><span class="chip">19</span><span class="chip">17</span><span class="chip">27</span></span></td></tr>
+    <tr><td><b>Fuelling</b></td><td>AFR, fuel trims, injector pulse, MAF, MAP.</td><td><span class="chips"><span class="chip">18</span><span class="chip">13</span><span class="chip">17</span><span class="chip">19</span><span class="chip">16</span></span></td></tr>
+    <tr><td><b>Timing &amp; knock</b></td><td>Ignition and knock, the knock block read twice as often.</td><td><span class="chips"><span class="chip">18</span><span class="chip">14</span><span class="chip">13</span><span class="chip">14</span></span></td></tr>
+    <tr><td><b>Boost</b></td><td>MAP, throttle and RPM, as fast as it goes.</td><td><span class="chips"><span class="chip">18</span><span class="chip">13</span></span></td></tr>
+  </tbody>
+</table></div>
+<p>A preset is the same kind of block list the app already sets, and goes through the same checks: block reads only, nothing that writes to the car. The bridge keeps it across a restart, and the app can set its own at any time.</p>
+
+<h2 id="wiring">Hooking it up</h2>
+<p>One USB-C cable from the bridge to the screen. The bridge is the USB host and powers the screen, exactly as the methanol controller does with its screen. That means the bridge needs its screen build of the firmware, and in that build its USB-C is the screen's, so the serial console moves to the spare header (D4 and D5). The normal build is unchanged for anyone without a screen.</p>
+
+<h2 id="status">Where it's at</h2>
+<p>The firmware builds for the bridge and for all four screens, the link between them is checked by tests on a PC, and every page renders as you see above. None of it has run on a screen in the car yet. The 2.1&Prime; goes on first, since its panel and touch code are already proven on the methanol controller; the three new screens follow when they land.</p>
+
+</div>
