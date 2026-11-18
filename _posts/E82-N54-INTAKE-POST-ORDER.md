@@ -52,10 +52,11 @@ All in `assets/images/e82-n54-intake/`.
 - `grille-snorkels.jpg`, `grille-snorkel-in-hand.jpg`, `snorkels-and-duct.jpg`: the red LS car.
 - `duct-radiator-support-n54.jpg`, `duct-outlet-n54.jpg`: the silver N54, before the airbox.
 - Photos resized to 1600 px, JPEG quality 84, no metadata.
-- `cfd-flow.mp4` / `cfd-flow.jpg`: arrows traced through the solved velocity field from the snorkel
+- `cfd-flow-duct-today.mp4` / `cfd-flow-duct-today.jpg`: arrows traced through the solved velocity field from the snorkel
   mouths, each moving at the local air speed, slowed 250 times, colour 0 to 120 m/s, 1280 x 720,
-  10 s. From the medium-mesh case at 0.48 kg/s.
-- `cfd-flow-final.mp4` / `cfd-flow-final.jpg`: the same video for the final duct (case `v7-coarse-480gs`, coarse mesh),
+  10 s. From the medium-mesh case at 0.48 kg/s. Both videos re-rendered 2026-11-18 with side-labelled snorkel boxes, the duct
+  label clear of them, walls at 13% opacity so the duct shape reads, and zoom 1.5.
+- `cfd-flow-duct-final.mp4` / `cfd-flow-duct-final.jpg`: the same video for the final duct (case `v7-coarse-480gs`, coarse mesh),
   same camera, colour scale and slow-motion, so the two can be compared side by side.
 - `cfd-loss-budget.png`: total pressure lost at stations along the rear-turbo path, same case.
 - `lid-lowered.png`: cuts of the lid exported from Fusion before and after lowering, with the rear filter's scanned top edge.
