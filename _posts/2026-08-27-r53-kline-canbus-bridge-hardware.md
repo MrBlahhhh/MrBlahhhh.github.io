@@ -234,9 +234,9 @@ That regulator is the one part on this board whose heat is a decision rather tha
 
 | sustained | dissipated | rise |
 |---|---|---|
-| 100 mA | 0.17 W | ~13 °C |
-| **200 mA** | **0.35 W** | **~26 °C** — a card in SPI mode |
-| 500 mA | 0.85 W | ~65 °C — too hot in a car |
+| 100 mA | 0.17 W | ~23 °F |
+| **200 mA** | **0.35 W** | **~47 °F** — a card in SPI mode |
+| 500 mA | 0.85 W | ~117 °F — too hot in a car |
 
 Roughly 300 mA of headroom, which is fine for a card and not fine for a card plus something hungry. Anything added later goes on its own regulator, or takes 5 V and makes its own.
 

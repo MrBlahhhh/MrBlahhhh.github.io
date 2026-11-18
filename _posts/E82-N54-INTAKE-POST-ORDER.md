@@ -38,6 +38,7 @@ Not a post. The running order for `2026-11-17-e82-n54-intake-cfd.md`, whose page
 - "Vacuum in the pipe" is static pressure and includes about 4 kPa of air speed; "lost" is total
   pressure and doesn't. Keep the two apart.
 - These are pressures in a simulated intake, not horsepower.
+- Temperatures in °F only, across the whole blog (Matt, 2026-11-18). Rises and differences are x1.8, not +32.
 
 ## Images
 

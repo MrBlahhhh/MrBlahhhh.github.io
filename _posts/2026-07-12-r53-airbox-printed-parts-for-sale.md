@@ -50,14 +50,14 @@ The **airbox** is where the material choice matters:
 |----------|---------------|--------|
 | **PAHT-CF** | black only | Best choice — max thermal headroom |
 | **ASA-CF** | black only | Good — best UV resistance |
-| **ABS-GF** | color choices | Good — ~105 °C, adequate in-bay |
-| **ASA-GF** | color choices | Good — ~100 °C, UV-resistant |
+| **ABS-GF** | color choices | Good — ~221 °F, adequate in-bay |
+| **ASA-GF** | color choices | Good — ~212 °F, UV-resistant |
 | **PETG-GF** | — | **Not offered** — heat-soak risk |
 
 Two things drive the choice:
 
 - **Carbon-fiber blends are black; glass-filled blends take color.** Want a color-matched airbox? That's ABS-GF or ASA-GF. Want maximum heat resistance in black? PAHT-CF.
-- **The airbox lives in the engine bay.** It sees real heat — an R53 bay with the intercooler over the blower will pass 80 °C on a hot lap and beat that on heat-soak after shutdown, which is why I will not print the airbox in PETG: fiber fill stiffens a part, but it does not raise the temperature the base plastic softens at. **Heat-soak note:** on any non-PAHT airbox, expect the part to see its limits on brutally hot days; PAHT-CF is the no-questions material.
+- **The airbox lives in the engine bay.** It sees real heat — an R53 bay with the intercooler over the blower will pass 176 °F on a hot lap and beat that on heat-soak after shutdown, which is why I will not print the airbox in PETG: fiber fill stiffens a part, but it does not raise the temperature the base plastic softens at. **Heat-soak note:** on any non-PAHT airbox, expect the part to see its limits on brutally hot days; PAHT-CF is the no-questions material.
 
 ## Fitment
 
