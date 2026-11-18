@@ -98,7 +98,7 @@
 <div class="mc">
 
 <div class="hero">
-  <span class="k">MINI F56 · water/methanol · updated 9 November 2026</span>
+  <span class="k">MINI F56 · water/methanol · updated 17 November 2026</span>
   <h1>Methanol injection controller</h1>
   <p class="sub">A boost-referenced PWM pump controller that lives on the F56's PT-CAN. It reads boost, RPM, pedal and torque straight off the car's own broadcasts, sprays on your curve, checks the pump's current 100 times a second and drives a shift light. A round touch screen and an Android app run it, and F56 Code logs and diagnoses the car through it over Bluetooth.</p>
   <p class="update"><b>The F56 kit:</b> the controller board, the 2.1-inch round touch screen in its threaded housing, and the Methanol app. Nothing to plumb for boost, and the OBD port stays free.</p>
@@ -223,7 +223,7 @@
     <h3>Warnings keep spraying, faults stop it</h3>
     <p>A dry tank or a clog can come and go with a slosh or a bubble, so they warn: the app, the screen and the status LED say so while the pump keeps running. Things that mean the hardware itself is wrong latch and stop the pump.</p>
   </div>
-  <figure><img src="/assets/images/methanol-controller/app-pump-health-0633.jpg" alt="Pump health: wet, dry and threshold current curves against effective pump voltage" loading="lazy" width="720" height="1503"><figcaption>Pump health: the learned wet (teal) and dry (amber) curves, with the dry threshold between them.</figcaption></figure>
+  <figure><a href="/assets/images/methanol-controller/app-pump-health-0640.jpg"><img src="/assets/images/methanol-controller/app-pump-health-0640.jpg" alt="Pump health: wet, dry and threshold current curves against effective pump voltage" loading="lazy" width="720" height="1443"></a><figcaption>Pump health: the learned wet (teal) and dry (amber) curves, with the dry threshold between them.</figcaption></figure>
 </div>
 
 <div class="tbl">
@@ -246,8 +246,8 @@
 <p>Battery, sensor and current-reading faults clear themselves within 5 seconds once the cause is gone. The others stay until you clear them from the app with the engine off. Under all of it, the pump pins are driven low before anything else starts, both have pull-downs so a reset or a bootloader leaves the pump off, and two watchdogs run.</p>
 
 <div class="lcd-gallery pair">
-  <figure><a href="/assets/images/methanol-controller/lcd-0113-fault-dry.png"><img src="/assets/images/methanol-controller/lcd-0113-fault-dry.png" alt="Round screen spraying at 18.8 psi with an amber WARN: dry pump line" width="480" height="480" loading="lazy" decoding="async"></a><figcaption><b>Warning.</b> A dry pump shows in amber under the gauges while the pump keeps running.</figcaption></figure>
-  <figure><a href="/assets/images/methanol-controller/lcd-0113-fault-overload.png"><img src="/assets/images/methanol-controller/lcd-0113-fault-overload.png" alt="Round screen with a red Pump overload banner" width="480" height="480" loading="lazy" decoding="async"></a><figcaption><b>Fault.</b> A red banner with the reason and what to check, over every page.</figcaption></figure>
+  <figure><a href="/assets/images/methanol-controller/lcd-0117-fault-dry.png"><img src="/assets/images/methanol-controller/lcd-0117-fault-dry.png" alt="Round screen spraying at 18.8 psi with an amber WARN: dry pump line" width="480" height="480" loading="lazy" decoding="async"></a><figcaption><b>Warning.</b> A dry pump shows in amber under the gauges while the pump keeps running.</figcaption></figure>
+  <figure><a href="/assets/images/methanol-controller/lcd-0117-fault-overload.png"><img src="/assets/images/methanol-controller/lcd-0117-fault-overload.png" alt="Round screen with a red Pump overload banner" width="480" height="480" loading="lazy" decoding="async"></a><figcaption><b>Fault.</b> A red banner with the reason and what to check, over every page.</figcaption></figure>
 </div>
 <p>In the app, a fault shows in plain words on Dash with a Clear fault button, and the fault history keeps the RPM, boost, duty and current at the moment it tripped.</p>
 
@@ -255,22 +255,26 @@
 <p class="lead">Its own ESP32-S3 and a 480 × 480 round touch panel on one USB-C cable to the board. The board powers it, checks it with a handshake and streams telemetry to it ten times a second.</p>
 
 <div class="lcd-gallery">
-  <figure><a href="/assets/images/methanol-controller/lcd-0113-live-spraying.png"><img src="/assets/images/methanol-controller/lcd-0113-live-spraying.png" alt="Live page spraying: 11.9 psi, meth 100 %, lambda 0.83, pump 3.0 A, blue spray fill" width="480" height="480" loading="lazy" decoding="async"></a><figcaption><b>Live, spraying.</b> Boost, meth duty, lambda and pump amps. The blue fill is the spray: its area is the duty.</figcaption></figure>
-  <figure><a href="/assets/images/methanol-controller/lcd-0113-live-ready.png"><img src="/assets/images/methanol-controller/lcd-0113-live-ready.png" alt="Live page armed at cruise: meth 0, lambda 1.00, pump 0.0 A" width="480" height="480" loading="lazy" decoding="async"></a><figcaption><b>Live, armed at cruise.</b> Boost blanks under 3 psi so vacuum doesn't clutter the page. Lambda shows when a logger on the bus is reading it.</figcaption></figure>
-  <figure><a href="/assets/images/methanol-controller/lcd-0113-graph.png"><img src="/assets/images/methanol-controller/lcd-0113-graph.png" alt="Graph page: boost, RPM, duty, lambda and target lambda over 60 seconds with two pulls" width="480" height="480" loading="lazy" decoding="async"></a><figcaption><b>Graph.</b> Boost, RPM, duty, lambda and target lambda on one axis, 30 or 60 seconds.</figcaption></figure>
-  <figure><a href="/assets/images/methanol-controller/lcd-0113-boost-curve.png"><img src="/assets/images/methanol-controller/lcd-0113-boost-curve.png" alt="Boost vs meth curve with a trail up the ramp and the live point at 100 %" width="480" height="480" loading="lazy" decoding="async"></a><figcaption><b>Boost curve.</b> Your curve, where you are on it and the trail that got you there.</figcaption></figure>
-  <figure><a href="/assets/images/methanol-controller/lcd-0113-curve-editor.png"><img src="/assets/images/methanol-controller/lcd-0113-curve-editor.png" alt="Injection curve editor with point 1 of 2 at 2.0 psi and 25 %, Revert, Apply and Save" width="480" height="480" loading="lazy" decoding="async"></a><figcaption><b>Curve editor.</b> Tap a point, step its boost and duty, Apply to try it, Save to keep it.</figcaption></figure>
-  <figure><a href="/assets/images/methanol-controller/lcd-0113-gmeter.png"><img src="/assets/images/methanol-controller/lcd-0113-gmeter.png" alt="G-meter mid-corner at 0.87 g lateral with a trail from braking and peak values" width="480" height="480" loading="lazy" decoding="async"></a><figcaption><b>G-meter.</b> The screen's own IMU: a 1.5 g circle, the trail and your peaks.</figcaption></figure>
-  <figure><a href="/assets/images/methanol-controller/lcd-0113-menu.png"><img src="/assets/images/methanol-controller/lcd-0113-menu.png" alt="Menu with Disarm, Edit curve, Settings, Boost curve, RPM curve, G-meter and System" width="480" height="480" loading="lazy" decoding="async"></a><figcaption><b>Menu.</b> Disarm at the top, and a held press to Arm. Every page is one tap away.</figcaption></figure>
-  <figure><a href="/assets/images/methanol-controller/lcd-0113-settings.png"><img src="/assets/images/methanol-controller/lcd-0113-settings.png" alt="All settings, page 1 of 4: Display, Pump, Controller" width="480" height="480" loading="lazy" decoding="async"></a><figcaption><b>Settings.</b> Display, pump and controller settings, on the screen itself.</figcaption></figure>
+  <figure><a href="/assets/images/methanol-controller/lcd-0117-live-spraying.png"><img src="/assets/images/methanol-controller/lcd-0117-live-spraying.png" alt="Live page spraying: 11.9 psi, meth 100 %, lambda 0.83, pump 3.0 A, blue spray fill" width="480" height="480" loading="lazy" decoding="async"></a><figcaption><b>Live, spraying.</b> Boost, meth duty, lambda and pump amps. The blue fill is the spray: its area is the duty.</figcaption></figure>
+  <figure><a href="/assets/images/methanol-controller/lcd-0117-live-ready.png"><img src="/assets/images/methanol-controller/lcd-0117-live-ready.png" alt="Live page armed at cruise: meth 0, lambda 1.00, pump 0.0 A" width="480" height="480" loading="lazy" decoding="async"></a><figcaption><b>Live, armed at cruise.</b> Boost blanks under 3 psi so vacuum doesn't clutter the page. Lambda shows when a logger on the bus is reading it.</figcaption></figure>
+  <figure><a href="/assets/images/methanol-controller/lcd-0117-graph.png"><img src="/assets/images/methanol-controller/lcd-0117-graph.png" alt="Graph page: boost, RPM, duty, lambda and target lambda over 60 seconds with two pulls" width="480" height="480" loading="lazy" decoding="async"></a><figcaption><b>Graph.</b> Boost, RPM, duty, lambda and target lambda on one axis, 30 or 60 seconds.</figcaption></figure>
+  <figure><a href="/assets/images/methanol-controller/lcd-0117-boost-curve.png"><img src="/assets/images/methanol-controller/lcd-0117-boost-curve.png" alt="Boost vs meth curve with a trail up the ramp and the live point at 100 %" width="480" height="480" loading="lazy" decoding="async"></a><figcaption><b>Boost curve.</b> Your curve, where you are on it and the trail that got you there.</figcaption></figure>
+  <figure><a href="/assets/images/methanol-controller/lcd-0117-curve-editor.png"><img src="/assets/images/methanol-controller/lcd-0117-curve-editor.png" alt="Injection curve editor with point 1 of 2 at 2.0 psi and 25 %, Revert, Apply and Save" width="480" height="480" loading="lazy" decoding="async"></a><figcaption><b>Curve editor.</b> Tap a point, step its boost and duty, Apply to try it, Save to keep it.</figcaption></figure>
+  <figure><a href="/assets/images/methanol-controller/lcd-0117-gmeter.png"><img src="/assets/images/methanol-controller/lcd-0117-gmeter.png" alt="G-meter mid-corner at 0.87 g lateral with a trail from braking and peak values" width="480" height="480" loading="lazy" decoding="async"></a><figcaption><b>G-meter.</b> The screen's own IMU: a 1.5 g circle, the trail and your peaks.</figcaption></figure>
+  <figure><a href="/assets/images/methanol-controller/lcd-0117-menu.png"><img src="/assets/images/methanol-controller/lcd-0117-menu.png" alt="Menu with Disarm, Edit curve, Settings, Boost curve, RPM curve, G-meter and System" width="480" height="480" loading="lazy" decoding="async"></a><figcaption><b>Menu.</b> Disarm at the top, and a held press to Arm. Every page is one tap away.</figcaption></figure>
+  <figure><a href="/assets/images/methanol-controller/lcd-0117-settings.png"><img src="/assets/images/methanol-controller/lcd-0117-settings.png" alt="All settings, page 1 of 4: Display, Pump, Controller" width="480" height="480" loading="lazy" decoding="async"></a><figcaption><b>Settings.</b> Display, pump and controller settings, on the screen itself.</figcaption></figure>
 </div>
-<p class="note">Rendered on a PC from screen firmware 0.1.13's own page code and fonts, fed a simulated third-gear pull. The layouts and colours are the screen's; the numbers are the simulation's.</p>
+<p class="note">Rendered on a PC from screen firmware 0.1.17's own page code and fonts, fed a simulated third-gear pull. The layouts and colours are the screen's; the numbers are the simulation's.</p>
 
 <h3>Logs on the TF card</h3>
 <p>The screen records everything the board sends it: telemetry ten times a second, the DME values, every CAN frame received and sent, the diagnostic traffic through the board, the clock and the IMU. Pull the card and the logs export to CSV.</p>
 
-<h3>Night brightness</h3>
-<p>The phone sends the board its local time on connect, on a time-zone change and every hour, and the board passes it to the screen. The screen dims itself between 20:00 and 06:00 by default, and the hours are yours to change.</p>
+<h3>Brightness from the car's dimmer</h3>
+<p>The screen and shift light follow the car's dimmer wheel. The screen's default range is 5 % to 90 %; change <b>Brightness max</b> and <b>Dimmer minimum</b> under Settings → Display. Without fresh dimmer data it uses the saved maximum. It does not need a phone connection or a clock battery.</p>
+<div class="lcd-gallery pair">
+  <figure><a href="/assets/images/methanol-controller/lcd-0117-display-settings.png"><img src="/assets/images/methanol-controller/lcd-0117-display-settings.png" alt="LCD 0.1.17 Display settings: Brightness max 90 percent, Dimmer minimum 5 percent and Graph duration 60 seconds" width="480" height="480" loading="lazy" decoding="async"></a><figcaption><b>Display.</b> Set the upper brightness and the car-dimmer minimum.</figcaption></figure>
+  <figure><a href="/assets/images/methanol-controller/lcd-0117-shift-orientation.png"><img src="/assets/images/methanol-controller/lcd-0117-shift-orientation.png" alt="LCD 0.1.17 Shift light settings showing Mirrored, Reversed and Show faults" width="480" height="480" loading="lazy" decoding="async"></a><figcaption><b>Strip orientation.</b> Reversed turns the output end for end for a strip mounted the other way round.</figcaption></figure>
+</div>
 
 <h3>Boot</h3>
 <p>The built-in clip looks up the charge pipe from the throttle body: the nozzle spits, the mist works down the bore and fills it, then your car's name comes up out of it. The lettering and its accent colour are set from the app, so it says what your car is. A systems check with data from the controller follows. Put your own <code>boot480.mjpeg</code> on the TF card and it plays that instead.</p>
@@ -293,30 +297,30 @@
 <p class="lead">Methanol for Android talks to the board over Bluetooth and finds it by itself. Everyday use is four tabs; the engineering screens sit behind Settings → Advanced.</p>
 
 <div class="appgrid">
-  <figure><img src="/assets/images/methanol-controller/app-dash-0633.jpg" alt="Dash spraying at 19 psi with 100 % duty, pump 3.14 A, battery 13.8 V, charge air 34 °C, -8.6 °C over the spray" loading="lazy" width="720" height="1503"><figcaption><b>Dash.</b> State, boost, duty, pump amps, battery, charge air and how far it fell over this spray, the live curve, Arm and Disarm.</figcaption></figure>
-  <figure><img src="/assets/images/methanol-controller/app-curve-0633.jpg" alt="Spray curve: start at 2.0 psi, full spray at 8.0 psi, 25 % to 100 %" loading="lazy" width="720" height="1503"><figcaption><b>Curve.</b> Start and full-spray boost, starting and top duty. Half a psi or 5 % a tap, never under 25 %.</figcaption></figure>
-  <figure><img src="/assets/images/methanol-controller/app-pump-test-0633.jpg" alt="Pump test: learn dry, wet and clogged curves, then Purge, Ramp test and Draw profile" loading="lazy" width="720" height="1503"><figcaption><b>Pump test.</b> The three learns, then purge, ramp, draw profile and hold a duty. Each soft-starts and stops at 30 s.</figcaption></figure>
-  <figure><img src="/assets/images/methanol-controller/app-settings-0633.jpg" alt="Settings: pump current limit 11.0 A, set-up wizard, optional features, shift light, firmware update, fault history, Advanced" loading="lazy" width="720" height="1503"><figcaption><b>Settings.</b> Pump current limit, the wizard, optional features, shift light, firmware updates, fault history and Advanced.</figcaption></figure>
-  <figure><img src="/assets/images/methanol-controller/app-wizard-0633.jpg" alt="Set up the board: Find the board, Boost reading, Nozzle and curve, Learn dry, Prime the line, Learn wet, Learn clogged, Test spray" loading="lazy" width="720" height="1503"><figcaption><b>Set-up wizard.</b> From finding the board to a test spray into a jar. Every step can be skipped and come back to.</figcaption></figure>
-  <figure><img src="/assets/images/methanol-controller/app-options-0633.jpg" alt="Optional features: line pressure, charge-air drop, trims" loading="lazy" width="720" height="1503"><figcaption><b>Optional features.</b> Line pressure, charge-air drop, trims and tank level. Each is off until you switch it on.</figcaption></figure>
-  <figure><img src="/assets/images/methanol-controller/app-shift-light-0633.jpg" alt="Shift light editor with a live LED preview, strip switches and car threshold presets" loading="lazy" width="720" height="1503"><figcaption><b>Shift light.</b> A live preview running the firmware's own renderer, car presets, thresholds and colours. Send applies it without disarming.</figcaption></figure>
-  <figure><img src="/assets/images/methanol-controller/app-can-capture-0633.jpg" alt="CAN capture: ids box, Start capture and duration" loading="lazy" width="720" height="1503"><figcaption><b>CAN capture.</b> Up to 16 ids, every frame, with marks and a per-byte summary.</figcaption></figure>
+  <figure><a href="/assets/images/methanol-controller/app-dash-0640.jpg"><img src="/assets/images/methanol-controller/app-dash-0640.jpg" alt="Current Methanol 0.6.40 Dash with spraying status, live boost, duty, pump current, charge-air drop and injection curve" loading="lazy" width="720" height="1443"></a><figcaption><b>Dash.</b> State, boost, duty, pump amps, battery, charge air and how far it fell over this spray, the live curve, Arm and Disarm.</figcaption></figure>
+  <figure><a href="/assets/images/methanol-controller/app-curve-0640.jpg"><img src="/assets/images/methanol-controller/app-curve-0640.jpg" alt="Spray curve: start at 2.0 psi, full spray at 8.0 psi, 25 % to 100 %" loading="lazy" width="720" height="1443"></a><figcaption><b>Curve.</b> Start and full-spray boost, starting and top duty. Half a psi or 5 % a tap, never under 25 %.</figcaption></figure>
+  <figure><a href="/assets/images/methanol-controller/app-pump-test-0640.jpg"><img src="/assets/images/methanol-controller/app-pump-test-0640.jpg" alt="Pump test: learn dry, wet and clogged curves, then Purge, Ramp test and Draw profile" loading="lazy" width="720" height="1443"></a><figcaption><b>Pump test.</b> The three learns, then purge, ramp, draw profile and hold a duty. Each soft-starts and stops at 30 s.</figcaption></figure>
+  <figure><a href="/assets/images/methanol-controller/app-settings-0640.jpg"><img src="/assets/images/methanol-controller/app-settings-0640.jpg" alt="Settings: pump current limit 11.0 A, set-up wizard, optional features, shift light, firmware update, fault history, Advanced" loading="lazy" width="720" height="1443"></a><figcaption><b>Settings.</b> Pump current limit, the wizard, optional features, shift light, firmware updates, fault history and Advanced.</figcaption></figure>
+  <figure><a href="/assets/images/methanol-controller/app-wizard-0640.jpg"><img src="/assets/images/methanol-controller/app-wizard-0640.jpg" alt="Set up the board: Find the board, Boost reading, Nozzle and curve, Learn dry, Prime the line, Learn wet, Learn clogged, Test spray" loading="lazy" width="720" height="1443"></a><figcaption><b>Set-up wizard.</b> From finding the board to a test spray into a jar. Every step can be skipped and come back to.</figcaption></figure>
+  <figure><a href="/assets/images/methanol-controller/app-options-0640.jpg"><img src="/assets/images/methanol-controller/app-options-0640.jpg" alt="Optional features: line pressure, charge-air drop, trims" loading="lazy" width="720" height="1443"></a><figcaption><b>Optional features.</b> Line pressure, charge-air drop, trims and tank level. Each is off until you switch it on.</figcaption></figure>
+  <figure><a href="/assets/images/methanol-controller/app-shift-light-0640.jpg"><img src="/assets/images/methanol-controller/app-shift-light-0640.jpg" alt="Current shift light editor with live LED preview, reversed-strip switch and car-dimmer brightness control" loading="lazy" width="720" height="1443"></a><figcaption><b>Shift light.</b> A live preview running the firmware's own renderer, car presets, thresholds, colours and a reversed-strip switch. Send applies it without disarming.</figcaption></figure>
+  <figure><a href="/assets/images/methanol-controller/app-can-capture-0640.jpg"><img src="/assets/images/methanol-controller/app-can-capture-0640.jpg" alt="CAN capture: ids box, Start capture and duration" loading="lazy" width="720" height="1443"></a><figcaption><b>CAN capture.</b> Up to 16 ids, every frame, with marks and a per-byte summary.</figcaption></figure>
 </div>
 
 <div class="row">
   <div>
     <h3>And the rest</h3>
     <ul class="tight">
-      <li><b>Firmware updates</b> for the board over Bluetooth, signed and verified before it boots them, and for the screen straight from the phone over a USB cable.</li>
+      <li><b>Firmware updates</b> for the board over Bluetooth, signed and verified before it boots them, and for the screen through the controller, with the screen left plugged in. Direct phone-to-screen USB updating is also available.</li>
       <li><b>Backups</b> of the settings, all three pump curves, the shift light and the options, taken on every connect and after every learn, with restore and share.</li>
       <li><b>Drive logs</b>: one CSV per engine run with RPM, boost, the DME's manifold pressure, charge air, duty and pump current. Line it up with an F56 Code log by the clock.</li>
       <li><b>Screen boot lettering</b>: the car's name, the line under it and the accent colour.</li>
       <li><b>Crash reports</b> in plain words, kept on the phone and shareable.</li>
     </ul>
   </div>
-  <figure><img src="/assets/images/methanol-controller/app-boot-lettering-0633.jpg" alt="Boot lettering settings: car F56, line WATER / METHANOL, accent colours, show lettering, then backups and drive logs" loading="lazy" width="720" height="1503"><figcaption>Boot lettering, backups and drive logs, further down Settings.</figcaption></figure>
+  <figure><a href="/assets/images/methanol-controller/app-boot-lettering-0640.jpg"><img src="/assets/images/methanol-controller/app-boot-lettering-0640.jpg" alt="Current boot lettering settings with car name, subtitle, accent colours, Show lettering and backup controls" loading="lazy" width="720" height="1443"></a><figcaption>Boot lettering and backups, further down Settings.</figcaption></figure>
 </div>
-<p class="note">App screenshots are app 0.6.33 on an emulator, connected to a demo board that plays back a third-gear pull.</p>
+<p class="note">App screenshots are app 0.6.40 on an emulator, connected to a demo board that plays back a third-gear pull.</p>
 
 <h2 id="setup">Setting it up</h2>
 <p class="lead">The wizard walks through it in this order, with a tick on every step the board already has.</p>
@@ -345,7 +349,7 @@
       <li><b>Default off</b>: the pump needs both the driver enable and the PWM pin high, and both have pull-downs.</li>
     </ul>
   </div>
-  <figure><img src="/assets/images/methanol-controller/board-rev-e.jpg" alt="Red methanol controller board in a black printed case with the XIAO module, buck module and blue terminals" loading="lazy"><figcaption>The board in its case on the bench.</figcaption></figure>
+  <figure><img src="/assets/images/methanol-controller/board-rev-e.jpg" alt="Red methanol controller board in a black printed case with the XIAO module, buck module and blue terminals" loading="lazy"><figcaption>The Rev E board on the bench, photographed 23 October 2026.</figcaption></figure>
 </div>
 <div class="media-grid">
   <figure><a href="/assets/images/methanol-controller/pcb-iso.png"><img src="/assets/images/methanol-controller/pcb-iso.png" alt="Controller PCB render with the XIAO USB-C module, pump stage and screw terminals" width="1768" height="1768" loading="lazy" decoding="async"></a><figcaption><b>Component side.</b> Pump and power at one end, sensor and CAN at the other, shift light on the side.</figcaption></figure>
@@ -355,12 +359,10 @@
 
 <h2 id="bench">See it run</h2>
 <div class="row flip">
-  <div class="short"><iframe src="https://www.youtube-nocookie.com/embed/s17SzJuKtCg" title="Methanol controller ramp test on the bench" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
-  <div>
-    <h3>The ramp test</h3>
-    <p>Pump test, Ramp: the app runs the pump from 25 % to 100 % and back down over 25 seconds, and the board's soft start smooths every step. The round screen follows along over its USB cable, and the app shows the pump's current at each duty. This is the bench, with no car and no fluid, so boost reads two dashes and the pump draws its dry 0.6 A at full duty.</p>
-  </div>
+  <figure><video src="/assets/images/methanol-controller/lcd-0117-drive.mp4" poster="/assets/images/methanol-controller/lcd-0117-drive-poster.jpg" controls muted loop playsinline preload="none" aria-label="Play the current LCD 0.1.17 simulated drive preview"><a href="/assets/images/methanol-controller/lcd-0117-drive.mp4">Watch the current screen preview.</a></video><figcaption><b>Current screen preview · LCD 0.1.17.</b> Fourteen seconds rendered from the firmware's own Live page with simulated telemetry.</figcaption></figure>
+  <div><h3>The current screen in motion</h3><p>A simulated third-gear pull, lift and corner through the current screen firmware. Watch boost, spray duty, lambda and pump current update together, with the blue spray fill following duty. The telemetry is simulated.</p></div>
 </div>
+<p class="note">Earlier physical bench demo: <a href="https://www.youtube.com/watch?v=s17SzJuKtCg" target="_blank" rel="noopener noreferrer">watch the ramp test from 23 October 2026</a>. It shows a dry pump test on an earlier build, with the round screen and app following the ramp.</p>
 
 <div class="order" id="order">
   <h2>Order one</h2>
