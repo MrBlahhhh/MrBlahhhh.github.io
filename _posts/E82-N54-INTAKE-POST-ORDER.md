@@ -14,7 +14,7 @@ Not a post. The running order for `2026-11-17-e82-n54-intake-cfd.md`, whose page
 4. **Where the pressure goes** (`#budget`): the loss chart and table, the duct-end jet.
 5. **The redesigned duct** (`#redesign`, added 2026-11-18): the round end matching the airbox socket (100/94 mm, butt joint,
    slide-over coupler) and the back kept wide out to the passenger side; Fusion renders, the top-view cut, today vs redesign
-   table (coarse mesh for both), the narrowing crossing that made it worse, and that the redesign isn't printed or on Cults3D.
+   table (coarse mesh for both), the redesign flow video, the narrowing crossing that made it worse, and that the redesign isn't printed or on Cults3D.
 6. **The lid and the hood** (`#lid`): the lid dome lowered 2 mm (it touched the hood); `lid-lowered.png`.
 7. **With the lid off** (`#lidoff`): the unrestricted-filter baseline (2.4 kPa; 95% of the air over the open box); the hood gap
    makes the real open-lid case worse.
@@ -52,6 +52,8 @@ All in `assets/images/e82-n54-intake/`.
 - `cfd-flow.mp4` / `cfd-flow.jpg`: arrows traced through the solved velocity field from the snorkel
   mouths, each moving at the local air speed, slowed 250 times, colour 0 to 120 m/s, 1280 x 720,
   10 s. From the medium-mesh case at 0.48 kg/s.
+- `cfd-flow-redesign.mp4` / `cfd-flow-redesign.jpg`: the same video for the redesigned duct (case `v6-coarse-480gs`, coarse
+  mesh), same camera, colour scale and slow-motion, so the two can be compared side by side.
 - `cfd-loss-budget.png`: total pressure lost at stations along the rear-turbo path, same case.
 - `lid-lowered.png`: cuts of the lid exported from Fusion before and after lowering, with the rear filter's scanned top edge.
 - `duct-redesign-overview.jpg`, `duct-redesign-end.jpg`: Fusion 360 viewport captures of the
