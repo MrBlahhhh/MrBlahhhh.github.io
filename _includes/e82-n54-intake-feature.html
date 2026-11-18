@@ -1,0 +1,139 @@
+<!-- E82 135i N54 intake: grille snorkels, relocated inlet duct and sealed airbox, in CFD. Rendered by _posts/2026-11-17-e82-n54-intake-cfd.md.
+     Edit here, not in the post. Running order and how every picture was made: _posts/E82-N54-INTAKE-POST-ORDER.md.
+     Images in assets/images/e82-n54-intake. -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Rajdhani:wght@600;700&display=swap">
+<style>
+.nx{--ink:#EAF2F7;--mute:#A9B9C4;--accent:#FF4D42;--accent-hi:#FF8F86;--line:rgba(255,77,66,.16);--line2:rgba(255,77,66,.36);--card:rgba(20,26,34,.85);
+  font-family:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);line-height:1.55;
+  background:radial-gradient(ellipse 80% 40% at 85% 0%,rgba(255,77,66,.12),transparent 60%),linear-gradient(180deg,#141a22,#0b0f14 40%,#07090c);
+  border-radius:22px;padding:28px clamp(16px,3vw,32px) 36px;margin:0 0 24px;overflow-wrap:anywhere}
+.nx *{box-sizing:border-box}
+.nx a{color:var(--accent-hi)}
+.nx .k{display:inline-block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin:0 0 4px}
+.nx h1,.nx h2,.nx h3,.nx .stat b{font-family:"Rajdhani","Atkinson Hyperlegible",sans-serif;letter-spacing:.01em}
+.nx .hero{padding:4px 0 22px;border-bottom:1px solid var(--line)}
+.nx .hero h1{font-size:clamp(34px,6.2vw,56px);line-height:1;margin:0;color:var(--ink)}
+.nx .hero p.sub{font-size:clamp(17px,2.2vw,20px);color:var(--mute);max-width:64ch;margin:14px 0 0}
+.nx .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(140px,100%),1fr));gap:12px;margin:20px 0 0}
+.nx .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.nx .stat b{display:block;font-size:32px;line-height:1;color:var(--accent-hi)}
+.nx .stat span{color:var(--mute);font-size:13px;letter-spacing:.04em;text-transform:uppercase}
+.nx h2{font-size:clamp(26px,3.6vw,36px);margin:44px 0 6px;color:var(--ink);border:0}
+.nx h3{font-size:21px;margin:22px 0 6px;color:var(--ink)}
+.nx p{margin:0 0 12px}
+.nx .lead{font-size:18px;color:var(--mute);margin:0 0 16px;max-width:68ch}
+.nx ul.tight{margin:0 0 14px;padding-left:20px}
+.nx ul.tight li{margin:6px 0;color:var(--mute)}
+.nx ul.tight li b{color:var(--ink)}
+.nx figure{margin:0 0 20px;min-width:0}
+.nx figure img,.nx figure video{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--line2);background:#07090c}
+.nx figcaption{font-size:13px;color:var(--mute);margin-top:8px;line-height:1.4}
+.nx .shots{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:8px 0 10px}
+.nx .shots3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:8px 0 10px}
+.nx .tbl{overflow-x:auto;margin:10px 0 18px;border:1px solid var(--line);border-radius:14px}
+.nx table{border-collapse:collapse;width:100%;min-width:480px;font-size:15px;margin:0}
+.nx th,.nx td{padding:9px 12px;border-bottom:1px solid var(--line);text-align:left;color:var(--mute);background:transparent;overflow-wrap:normal;word-break:normal}
+.nx th,.nx td:nth-child(2),.nx td:nth-child(3){white-space:nowrap}
+.nx th{color:var(--ink);font-weight:700}
+.nx td b{color:var(--ink)}
+.nx tr:last-child td{border-bottom:0}
+.nx .note{font-size:14px;color:var(--mute);border-left:3px solid var(--accent);padding:6px 12px;margin:10px 0 18px}
+.nx .buy{display:grid;grid-template-columns:1fr;gap:14px;margin:6px 0 24px}
+.nx .buy > div{background:var(--card);border:1px solid var(--line2);border-top:3px solid var(--accent);border-radius:14px;padding:16px 18px 18px;display:grid;gap:10px;align-content:start}
+.nx .buy h2{font-size:24px;margin:0;line-height:1.1}
+.nx .buy p{margin:0;color:var(--mute);font-size:15px}
+.nx .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
+.nx a.btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border-radius:10px;font-family:"Rajdhani","Atkinson Hyperlegible",sans-serif;font-weight:700;font-size:18px;letter-spacing:.03em;text-decoration:none;line-height:1.1;text-align:center;background:var(--accent);color:#fff;border:1px solid var(--accent)}
+.nx a.btn:hover{background:#ff6a61;color:#fff}
+@media (max-width:640px){.nx .shots,.nx .shots3{grid-template-columns:1fr}.nx a.btn{flex:1 1 100%}}
+</style>
+
+<div class="nx">
+
+<div class="hero">
+  <span class="k">BMW E82 135i · N54 twin turbo · printed intake · CFD</span>
+  <h1>Grille snorkels, a duct and a sealed airbox for the N54</h1>
+  <p class="sub">My silver N54 135i breathes through two printed snorkels behind the kidney grille, a duct across the radiator support and a sealed airbox around its two cone filters. I ran the whole intake through CFD at the airflow for about 550 whp to see where the pressure goes before the turbos.</p>
+  <div class="stats">
+    <div class="stat"><b>12.7</b><span>kPa of total pressure lost before the turbos</span></div>
+    <div class="stat"><b>18.8</b><span>kPa of vacuum in the turbo pipes</span></div>
+    <div class="stat"><b>52%</b><span>of the loss where the duct dumps into the box</span></div>
+    <div class="stat"><b>63.5</b><span>lb/min of air, about 550 whp</span></div>
+  </div>
+</div>
+
+<figure><img src="/assets/images/e82-n54-intake/airbox-lid-n54.jpg" alt="Red printed airbox lid over the cone filters beside the N54's engine cover, with the duct running into it" loading="lazy"><figcaption>The sealed airbox on the N54, lid on. The duct comes in from the radiator support at the bottom.</figcaption></figure>
+
+<h2 id="parts">The parts</h2>
+<p class="lead">Three printed pieces take the air from behind the grille to the turbo inlet pipes. Each is an STL on Cults3D.</p>
+<ul class="tight">
+  <li><b>Grille snorkels.</b> Two boxes that bolt behind the kidney grille openings and pick the air up right there, ahead of the radiator. My red LS-swapped 135i runs the same pair into its own intake. Listed as the <a href="https://cults3d.com/en/3d-model/various/e82-air-intake-duct">E82 air intake duct</a>.</li>
+  <li><b>Relocated inlet duct.</b> Runs across the radiator support from the snorkels to the airbox. The <a href="https://cults3d.com/en/3d-model/tool/e82-135i-relocated-inlet-air-duct">E82 135i relocated inlet air duct</a>.</li>
+  <li><b>Sealed airbox.</b> A box and a screw-down lid around the two cone filters on the turbo inlet pipes, so the turbos only see the ducted air. TPU gaskets seal the duct into its socket and the floor ports around the pipes. The <a href="https://cults3d.com/en/3d-model/various/e82-n54-relocated-inlet-airbox">E82 N54 relocated inlet airbox</a>.</li>
+</ul>
+<div class="shots">
+  <figure><img src="/assets/images/e82-n54-intake/grille-snorkels.jpg" alt="Two red printed snorkels behind the kidney grille openings" loading="lazy"><figcaption>The two snorkels behind the kidney grille.</figcaption></figure>
+  <figure><img src="/assets/images/e82-n54-intake/grille-snorkel-in-hand.jpg" alt="One red printed snorkel held in front of the radiator support" loading="lazy"><figcaption>One snorkel off the car; the other is still in place.</figcaption></figure>
+</div>
+<div class="shots">
+  <figure><img src="/assets/images/e82-n54-intake/duct-radiator-support-n54.jpg" alt="Red printed duct along the radiator support beside the N54's engine cover" loading="lazy"><figcaption>The duct along the radiator support on the N54.</figcaption></figure>
+  <figure><img src="/assets/images/e82-n54-intake/duct-outlet-n54.jpg" alt="Round red duct outlet next to a cone filter in the N54 engine bay" loading="lazy"><figcaption>The duct's round end beside one of the cone filters, without the airbox.</figcaption></figure>
+</div>
+<figure><img src="/assets/images/e82-n54-intake/snorkels-and-duct.jpg" alt="Red snorkels and duct across the radiator support feeding the intake of a V8 in a red 135i" loading="lazy"><figcaption>The same snorkels and a duct feeding the V8 in my red 135i.</figcaption></figure>
+
+<div class="buy" id="buy">
+  <div>
+    <h2>Print it yourself</h2>
+    <p>All three are STLs on Cults3D. The airbox needs the duct, and the duct takes its air from the snorkels.</p>
+    <div class="btns"><a class="btn" href="https://cults3d.com/en/3d-model/various/e82-air-intake-duct">Grille snorkels STL</a><a class="btn" href="https://cults3d.com/en/3d-model/tool/e82-135i-relocated-inlet-air-duct">Inlet duct STL</a><a class="btn" href="https://cults3d.com/en/3d-model/various/e82-n54-relocated-inlet-airbox">Airbox STL</a></div>
+  </div>
+</div>
+
+<h2 id="results">What the CFD says</h2>
+<p class="lead">At 0.48 kg/s, half to each turbo, starting from still air behind the grille, with each filter assumed to drop 500 Pa:</p>
+<div class="tbl"><table>
+  <thead><tr><th></th><th>Front turbo pipe</th><th>Rear turbo pipe</th></tr></thead>
+  <tbody>
+    <tr><td><b>Total pressure lost</b></td><td><b>12.96 kPa</b></td><td><b>12.52 kPa</b></td></tr>
+    <tr><td>Vacuum in the pipe</td><td>18.6 kPa</td><td>18.9 kPa</td></tr>
+  </tbody>
+</table></div>
+<p>About 12.7 kPa (1.85 psi) of total pressure is gone before the turbos. The vacuum in the pipes is bigger, about 18.8 kPa, because it also includes the speed of the air itself: 82 m/s in a 55.6 mm pipe is about 4 kPa that isn't lost, just moving. The compressors start from about 89 kPa absolute instead of 101, so for the same boost each turbo works at a pressure ratio about 14% higher.</p>
+<p>The two snorkels don't share the work. The passenger one, next to where the duct turns into the box, takes 71% of the air. The driver one's air has to cross the car through the duct's narrowest stretch, about 2,300 mm² at close to 50 m/s, so it takes 29%.</p>
+<figure><video src="/assets/images/e82-n54-intake/cfd-flow.mp4" poster="/assets/images/e82-n54-intake/cfd-flow.jpg" width="1280" height="720" controls muted loop playsinline preload="none" aria-label="Simulated airflow through the snorkels, duct and airbox"><a href="/assets/images/e82-n54-intake/cfd-flow.mp4">Watch: simulated airflow through the snorkels, duct and airbox</a></video><figcaption>Arrows traced through the solved airflow, each moving at its local speed, slowed 250 times. Red is fast: the jet leaving the duct into the box.</figcaption></figure>
+
+<h2 id="budget">Where the pressure goes</h2>
+<figure><img src="/assets/images/e82-n54-intake/cfd-loss-budget.png" alt="Bar chart of total pressure lost at each step from the still air to the rear turbo pipe" loading="lazy"><figcaption>Total pressure lost at each step on the way to the rear turbo. The red bar is the duct's jet dumping into the box.</figcaption></figure>
+<div class="tbl"><table>
+  <thead><tr><th>Step</th><th>Loss</th><th>Share</th></tr></thead>
+  <tbody>
+    <tr><td>Still air to the duct's end at the box (snorkel, flange, duct)</td><td>3.3 kPa</td><td>26%</td></tr>
+    <tr><td><b>The duct's jet dumping into the box</b></td><td><b>6.5 kPa</b></td><td><b>52%</b></td></tr>
+    <tr><td>Through the filter</td><td>1.2 kPa</td><td>9%</td></tr>
+    <tr><td>Into the turbo pipe and down it</td><td>1.6 kPa</td><td>12%</td></tr>
+  </tbody>
+</table></div>
+<p>The big one is the duct's round end. It is about 74 mm across inside, sitting in a 94 mm socket, and all the air leaves it at about 93 m/s, up to about 170 m/s on the inside of its last bend. Nothing in the box slows that jet down gently, so its speed, 5 to 6.5 kPa worth, is simply lost. The front filter sits in the jet's path and soaks up a lot of it: 4.2 kPa goes in its media against 1.0 kPa in the rear filter. Either way it's gone before the turbos.</p>
+
+<h2 id="next">What I'd change next</h2>
+<p>A duct end that fills the 94 mm socket. At about 90 mm bore the air would leave at about 63 m/s instead of 93, and the speed lost in the box would drop from about 5.2 to 2.4 kPa: roughly 3 kPa back, close to a quarter of the whole loss, more with a gentle taper into the box. That isn't modelled yet. Opening up the duct where it crosses the car comes second.</p>
+
+<h2 id="model">How it was modelled</h2>
+<ul class="tight">
+  <li><b>The parts.</b> The snorkels, duct, airbox and lid come straight from their Fusion 360 models, placed as they sit on the car.</li>
+  <li><b>The engine bay.</b> The cone filters and turbo inlet pipes come from 3D scans of the bay with and without the filters. Each filter is about 157 mm long, 114 mm across the base and 81 mm across the top. The pipes are 60.6 mm outside; I assumed a 2.5 mm wall.</li>
+  <li><b>Gaskets.</b> Assumed to seal perfectly: the duct in its socket, the pipes in the floor ports, the lid seam and each snorkel's flange.</li>
+  <li><b>Airflow.</b> 0.48 kg/s (63.5 lb/min), what an N54 needs for about 550 whp: about 10 crank hp per lb/min and 15% through the drivetrain. That is a target, not a dyno sheet.</li>
+  <li><b>Filters.</b> Each a 12 mm porous layer on the scanned cone, set to 500 Pa at its share of the flow. That figure is assumed, not measured.</li>
+  <li><b>The solve.</b> Steady flow in OpenFOAM, k-omega SST, about 864,000 cells, starting from still air under each snorkel. The answer moved under 1% over the last 1,000 iterations, a coarser mesh of 503,000 cells landed within 0.5% of it, and the air in and out adds up at every step from the snorkels to the box.</li>
+</ul>
+
+<h2 id="limits">What this does not show</h2>
+<ul class="tight">
+  <li><b>No road speed.</b> The air under the snorkels is still. At 100 mph the grille sees up to about 1.2 kPa of ram pressure, which would offset part of the loss.</li>
+  <li><b>Airflow and filters are estimates.</b> Losses go with the square of the flow: 10% more air is about 21% more loss.</li>
+  <li><b>Incompressible model.</b> At 93 m/s the air's density changes a few percent, and more on the inside of the duct's last bend at about 170 m/s, so treat these as estimates. That bend is probably a little worse than shown.</li>
+  <li><b>Not horsepower.</b> These are pressures in a simulated intake, not a measurement on the car. The <a href="/car/tech/2026/11/16/pressure-can-node.html">pressure CAN node</a> is a board I've designed to measure them; it isn't built yet. Its two 40 kPa channels cover the 19 kPa in the turbo pipes, and the 10 kPa ones suit the steps before the box.</li>
+</ul>
+
+</div>
