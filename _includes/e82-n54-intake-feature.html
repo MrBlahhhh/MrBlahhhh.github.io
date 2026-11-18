@@ -53,7 +53,7 @@
 <div class="hero">
   <span class="k">BMW E82 135i · N54 twin turbo · printed intake · CFD</span>
   <h1>Grille snorkels, a duct and a sealed airbox for the N54</h1>
-  <p class="sub">My silver N54 135i breathes through two printed snorkels behind the kidney grille, a duct across the radiator support and a sealed airbox around its two cone filters. I ran the whole intake through CFD at the airflow for about 550 whp to see where the pressure goes before the turbos.</p>
+  <p class="sub">My silver N54 135i breathes through two printed snorkels behind the kidney grille, a duct across the radiator support and a sealed airbox around its two cone filters. I ran the whole intake through CFD at the airflow for about 550 whp to see where the pressure goes before the turbos, then redesigned the duct, lowered the lid for the hood, and checked what an open lid and a hot engine bay would cost.</p>
   <div class="stats">
     <div class="stat"><b>12.7</b><span>kPa of total pressure lost before the turbos</span></div>
     <div class="stat"><b>18.8</b><span>kPa of vacuum in the turbo pipes</span></div>
@@ -115,8 +115,65 @@
 </table></div>
 <p>The big one is the duct's round end. It is about 74 mm across inside, sitting in a 94 mm socket, and all the air leaves it at about 93 m/s, up to about 170 m/s on the inside of its last bend. Nothing in the box slows that jet down gently, so its speed, 5 to 6.5 kPa worth, is simply lost. The front filter sits in the jet's path and soaks up a lot of it: 4.2 kPa goes in its media against 1.0 kPa in the rear filter. Either way it's gone before the turbos.</p>
 
-<h2 id="next">What I'd change next</h2>
-<p>A duct end that fills the 94 mm socket. At about 90 mm bore the air would leave at about 63 m/s instead of 93, and the speed lost in the box would drop from about 5.2 to 2.4 kPa: roughly 3 kPa back, close to a quarter of the whole loss, more with a gentle taper into the box. That isn't modelled yet. Opening up the duct where it crosses the car comes second.</p>
+<h2 id="redesign">The redesigned duct</h2>
+<p class="lead">So I redesigned the duct. The round end now matches the airbox socket, and the duct stays wide from the middle of the car all the way out to the passenger side.</p>
+<ul class="tight">
+  <li><b>The round end.</b> 100 mm outside and 94 mm bore, the same as the airbox socket, so the bore runs straight on into the box. It butts against the socket rim, and a printed coupler slides over the joint: 50 mm long, 25 mm on each side, with a 0.4 mm slip clearance I can change after I rescan the neck.</li>
+  <li><b>The back of the duct.</b> It sits about 20 mm further back from the middle of the car out to the passenger end, then turns into the round end in one smooth bend. Through the middle the passage is 34 to 46% bigger.</li>
+  <li><b>What stays.</b> The front wall and both snorkel sockets are unchanged, so the snorkels bolt on as before.</li>
+</ul>
+<figure><img src="/assets/images/e82-n54-intake/duct-redesign-overview.jpg" alt="Fusion 360 render of the redesigned red duct with a grey coupler on its round end" loading="lazy"><figcaption>The redesigned duct in Fusion 360, from above and behind. The grey sleeve is the coupler.</figcaption></figure>
+<figure><img src="/assets/images/e82-n54-intake/duct-redesign-plan.png" alt="Top-view cut of the duct at mid height: today's duct in grey, the redesigned duct in red, the coupler in blue" loading="lazy"><figcaption>Top view, cut at mid height. Grey is the duct as printed today, red is the redesign, blue is the coupler.</figcaption></figure>
+<figure><img src="/assets/images/e82-n54-intake/duct-redesign-end.jpg" alt="Fusion 360 render of the duct's new round end with the coupler over it" loading="lazy"><figcaption>The new round end with the coupler. The end butts against the airbox socket rim and the sleeve covers the joint.</figcaption></figure>
+<p>Same CFD as above, same 0.48 kg/s, same assumed filters, both on the coarse mesh (on today's duct the coarse mesh came within 0.5% of the finer one):</p>
+<div class="tbl"><table>
+  <thead><tr><th></th><th>Duct today</th><th>Redesigned duct</th></tr></thead>
+  <tbody>
+    <tr><td><b>Total pressure lost before the turbos</b></td><td><b>12.8 kPa</b></td><td><b>9.7 kPa</b></td></tr>
+    <tr><td>Vacuum in the turbo pipes</td><td>18.7 kPa</td><td>16.1 kPa</td></tr>
+    <tr><td>Air leaving the duct into the box</td><td>93 m/s</td><td>57 m/s</td></tr>
+    <tr><td>Share of the air through the driver snorkel</td><td>29%</td><td>30%</td></tr>
+  </tbody>
+</table></div>
+<p>That is 3.1 kPa less lost before the turbos, about a quarter, and 2.6 kPa less vacuum in the pipes. Most of it is the round end: the air leaves the duct at 57 m/s instead of 93, so much less of its speed is thrown away in the box.</p>
+<p>Along the way I tried a wider middle that narrowed back to the old duct before the passenger snorkel. It came out worse than the round end on its own, 9.9 kPa against 9.4: the air slows down in the wide part and then has to speed up again. Keeping it wide all the way to the end is what made the difference.</p>
+<p>I haven't printed the redesign yet. The files on Cults3D are still the duct as it is on the car today.</p>
+
+<h2 id="lid">The lid and the hood</h2>
+<p>The top of the lid touched the hood. Its highest point is the dome over the rear filter, so I lowered that by 2 mm: the lid above 164 mm is the same shell pressed down, by nothing at 164 mm and by 2 mm at the old peak, so the dome just gets flatter. The wall stays 2.4 mm, the front lid screw boss comes down with it, and the rear filter's top edge still clears the underside by about 2 mm. The front filter sits under a lower part of the lid and doesn't change.</p>
+<figure><img src="/assets/images/e82-n54-intake/lid-lowered.png" alt="Two cuts across the airbox lid: today's lid in grey, the lowered lid in red, the rear filter's top edge in orange" loading="lazy"><figcaption>Cuts across the lid at its highest point and over the rear filter. Grey is the lid now, red is lowered.</figcaption></figure>
+
+<h2 id="lidoff">With the lid off</h2>
+<p>Taking the lid off is the baseline: nothing between the filters and the engine bay. I modelled the opening the lid covers as still air at ambient pressure, with the snorkels and duct still connected, so the air can come from either.</p>
+<div class="tbl"><table>
+  <thead><tr><th></th><th>Lid on, duct today</th><th>Lid on, new duct</th><th>Lid off</th></tr></thead>
+  <tbody>
+    <tr><td><b>Total pressure lost before the turbos</b></td><td>12.8 kPa</td><td>9.7 kPa</td><td><b>2.4 kPa</b></td></tr>
+    <tr><td>Vacuum in the turbo pipes</td><td>18.7 kPa</td><td>16.1 kPa</td><td>8.6 kPa</td></tr>
+    <tr><td>Air coming through the snorkels and duct</td><td>100%</td><td>100%</td><td>5%</td></tr>
+  </tbody>
+</table></div>
+<p>With the lid off, 95% of the air comes straight in over the box. What's left is the filters and the entry into the turbo pipes. So the sealed box costs about 10 kPa with today's duct and 7 with the new one. On the car the hood sits on the lid, so with it off the air would have to come in through a 10 to 15 mm gap under the hood. This is the best case for an open box.</p>
+
+<h2 id="heat">Hot air</h2>
+<p>The catch with an open lid is that the filters breathe engine-bay air, and the bay is hot. The sealed box isn't free of heat either: it sits above the turbo and heat soaks.</p>
+<p>For the box I carried the temperature through the solved airflow with the box, lid and filter caps held hot. At full throttle the air picks up about 9% of the difference between the box and the incoming air with today's duct, 8% with the new one: a box soaked 50 °C hotter than the air warms it about 4 to 5 °C before the turbos. That is a high estimate. At part throttle the air sits in the box longer and comes out hotter, but a full-throttle pull replaces it in a few hundredths of a second.</p>
+<p>To turn temperatures and pressure losses into power I used a simple turbo model: the tune holds 23 psi, the compressors run at 70%, the intercooler at 75% against 25 °C air, the meth takes 15 °C off the charge, and power at a held boost follows the air density in the manifold. 550 whp is the car as it is now. Those are assumptions, not measurements, and the answers are differences between setups, not dyno numbers.</p>
+<div class="tbl"><table>
+  <thead><tr><th>On a 25 °C day</th><th>Air into the turbos</th><th>Charge air (logged IAT)</th><th>Estimate</th></tr></thead>
+  <tbody>
+    <tr><td>Sealed box, duct today, box heat soaked</td><td>29 °C</td><td>52 °C</td><td>550 whp</td></tr>
+    <tr><td><b>Sealed box, new duct</b></td><td>29 °C</td><td>50 °C</td><td><b>554 whp</b></td></tr>
+    <tr><td>Lid off, filters in 45 °C air</td><td>45 °C</td><td>53 °C</td><td>550 whp</td></tr>
+    <tr><td>Lid off, filters in 60 °C air</td><td>58 °C</td><td>58 °C</td><td>541 whp</td></tr>
+    <tr><td>Lid off, filters in 75 °C air</td><td>72 °C</td><td>63 °C</td><td>531 whp</td></tr>
+  </tbody>
+</table></div>
+<p>The open lid only matches the sealed box if the air the filters breathe is less than about 20 °C above ambient, 14 °C against the new duct. Near the turbos it is usually hotter than that, so the sealed box wins, by about 9 whp against 60 °C bay air and 19 whp against 75 °C. The intercooler is why the gap isn't bigger: at 75% it takes out about three quarters of any change in inlet temperature before the manifold, where the N54 reads IAT. With a weaker intercooler the gap grows to 14 and 27 whp. The model leaves out timing pulled for a hotter IAT, which would make an open lid look worse still.</p>
+
+<h2 id="duty">Wastegate duty</h2>
+<p>The tune holds boost, so the box's restriction comes back as work the turbos have to do. At the same air temperature the sealed box with today's duct needs a pressure ratio of 3.05 against 2.73 with the lid off: 13% more compressor work, 9% with the new duct. The wastegates find it by sending more exhaust through the turbines, which shows up as a higher wastegate duty cycle at the same rpm and boost. That extra work heats the air again, about 19 °C at the compressor outlet and 5 °C after the intercooler.</p>
+<p>The cold air in the box more than pays it back. Against an open lid in 60 °C bay air, the sealed box needs only 3% more compressor work with today's duct and 1% less with the new one, and its charge comes out 6 °C cooler. I can't put a duty cycle percentage on it without the tune's wastegate tables; a log at the same rpm and boost with the lid on and off will show it. On the 17Ts near the top of their range the restriction also pushes the compressors about 7% further toward their flow limit, 3% with the new duct. If they run out of room, that shows up as boost falling off at high rpm instead.</p>
 
 <h2 id="model">How it was modelled</h2>
 <ul class="tight">
