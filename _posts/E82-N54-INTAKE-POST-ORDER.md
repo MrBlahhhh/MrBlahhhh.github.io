@@ -3,30 +3,35 @@
 Not a post. The running order for `2026-11-17-e82-n54-intake-cfd.md`, whose page is
 `_includes/e82-n54-intake-feature.html`. Add to this structure instead of appending to the end.
 
-1. **Hero**: what the intake is, stats = total loss before the turbos, vacuum in the turbo pipes,
-   the duct-jet share, the airflow. Then the airbox photo.
-2. **The parts** (`#parts`): grille snorkels, relocated inlet duct, sealed airbox, each linked to its
-   Cults3D listing; photos of the snorkels, the duct on the N54 and the snorkels on the red car.
-   Then the buy panel (`#buy`): "Print it yourself" with the three STL buttons. No print-to-order
-   offer: Matt hasn't priced these.
-3. **What the CFD says** (`#results`): per-pipe loss and vacuum, vacuum against loss, the compressor
-   inlet pressure, the snorkel split (71% passenger, 29% driver), the flow video.
-4. **Where the pressure goes** (`#budget`): the loss chart and table, today's duct against the final one (updated 2026-11-18), the duct-end jet.
-5. **The redesigned duct** (`#redesign`, added 2026-11-18): the round end matching the airbox socket (100/94 mm; since 2026-11-19 it
-   stops 12 mm short of the rim with a soft TPU coupler over the gap, because the parts never line up perfectly on the car) and the back kept wide out to the passenger side; Fusion renders, the top-view cut, today vs redesign
-   table (coarse mesh for both), the narrowing crossing that made it worse; then (h3 "Then the driver side", added 2026-11-18) the
-   driver side widened from the socket behind the grille (Fusion capture from behind, top-view cut against the redesign, redesign vs
-   wider-driver-side table), the flow video of the final duct, and that the redesign isn't printed or on Cults3D. "New duct" in
-   the later sections means this final one (`v7-coarse-480gs`).
-6. **The lid and the hood** (`#lid`): the lid dome lowered 2 mm (it touched the hood); `lid-lowered.png`.
-7. **With the lid off** (`#lidoff`): the unrestricted-filter baseline (2.4 kPa; 95% of the air over the open box); the hood gap
+Since 2026-11-19 the newest work comes first and the duct on the car today is at the bottom (Matt: most people don't read
+far enough). Keep it that way: new versions, videos and numbers go near the top, superseded material further down.
+
+1. **Hero**: what the intake is; stats = total loss with the new duct (9.2 kPa, 12.8 today), 28% less, 57 against 93 m/s
+   into the box, the airflow. Then the airbox photo.
+2. **The new duct** (`#redesign`): why (the jet into the box), what changed (round end matching the 100/94 mm socket, stopping
+   12 mm short of the rim with a soft TPU coupler over the gap because the parts never line up perfectly on the car; the back
+   wide out to the passenger side; the driver side widened), the four pictures (`duct-final-*`), today vs new duct table
+   (coarse mesh for both, `v2-coarse-480gs` against `v7-coarse-480gs`), the new duct's flow video. "New duct" everywhere means
+   this one.
+3. **Where the pressure goes** (`#budget`): the loss chart and table, today's duct against the new one, then why today's jet
+   loses so much. Then that the new duct isn't printed or on Cults3D, and the buy panel (`#buy`): "Print it yourself" with
+   the three STL buttons. No print-to-order offer: Matt hasn't priced these.
+4. **The lid and the hood** (`#lid`): the lid dome lowered 2 mm (it touched the hood); `lid-lowered.png`.
+5. **With the lid off** (`#lidoff`): the unrestricted-filter baseline (2.4 kPa; 95% of the air over the open box); the hood gap
    makes the real open-lid case worse.
-8. **Hot air** (`#heat`): heat soak from the CFD, the held-boost turbo model and its assumptions, the power table, the
+6. **Hot air** (`#heat`): heat soak from the CFD, the held-boost turbo model and its assumptions, the power table, the
    break-even bay temperature. Numbers from `cad/n54-airbox/results/iat-power.json`.
-9. **Wastegate duty** (`#duty`): extra compressor work for the restriction, the heat it puts back, no duty-cycle percent without
+7. **Wastegate duty** (`#duty`): extra compressor work for the restriction, the heat it puts back, no duty-cycle percent without
    the tune's tables.
-10. **How it was modelled** (`#model`).
-11. **What this does not show** (`#limits`): links the pressure CAN node post, which isn't built.
+8. **The parts on the car today** (`#parts`): grille snorkels, relocated inlet duct, sealed airbox, each linked to its Cults3D
+   listing; photos of the snorkels, the duct on the N54 and the snorkels on the red car.
+9. **What the CFD says about today's duct** (`#results`): per-pipe loss and vacuum, vacuum against loss, the compressor inlet
+   pressure, the snorkel split (71% passenger, 29% driver), today's flow video.
+10. **How I got to the new duct** (`#steps`): the first step (round end and wide back, `v6-coarse-480gs`) against today, the
+    narrowing crossing that made it worse; h3 "Then the driver side" (Fusion capture from behind, top-view cut against the first
+    step, first step vs wider driver side table).
+11. **How it was modelled** (`#model`).
+12. **What this does not show** (`#limits`): links the pressure CAN node post, which isn't built.
 
 ## Standing rules
 
