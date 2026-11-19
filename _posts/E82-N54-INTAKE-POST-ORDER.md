@@ -47,8 +47,11 @@ Not a post. The running order for `2026-11-17-e82-n54-intake-cfd.md`, whose page
 
 All in `assets/images/e82-n54-intake/`.
 
-- `airbox-lid-n54.jpg`: the lead photo of the airbox listing, cropped from Matt's screenshot of it
-  (773 px). Replace with his original when he sends it.
+- `airbox-n54-installed.jpg`: Matt's photo of the airbox on the N54, lid on, duct and blue ring (1130 x 1500, sent
+  2026-11-19). The lead photo: the header background, the post's cover, and the first figure (uncropped, `figure.portrait`,
+  640 px wide at most). On screens 760 px and wider the header shows the whole photo at the right (scaled to the header's
+  height) with the excerpt on the left, so it isn't cropped; on phones it fills the header. Replaces the 773 px crop of
+  his listing screenshot (`airbox-lid-n54.jpg`, removed).
 - `grille-snorkels.jpg`, `grille-snorkel-in-hand.jpg`, `snorkels-and-duct.jpg`: the red LS car.
 - `duct-radiator-support-n54.jpg`, `duct-outlet-n54.jpg`: the silver N54, before the airbox.
 - Photos resized to 1600 px, JPEG quality 84, no metadata.
