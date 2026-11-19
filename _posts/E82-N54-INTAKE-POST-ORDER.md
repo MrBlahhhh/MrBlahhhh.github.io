@@ -11,7 +11,7 @@ Not a post. The running order for `2026-11-17-e82-n54-intake-cfd.md`, whose page
    offer: Matt hasn't priced these.
 3. **What the CFD says** (`#results`): per-pipe loss and vacuum, vacuum against loss, the compressor
    inlet pressure, the snorkel split (71% passenger, 29% driver), the flow video.
-4. **Where the pressure goes** (`#budget`): the loss chart and table, the duct-end jet.
+4. **Where the pressure goes** (`#budget`): the loss chart and table, today's duct against the final one (updated 2026-11-18), the duct-end jet.
 5. **The redesigned duct** (`#redesign`, added 2026-11-18): the round end matching the airbox socket (100/94 mm, butt joint,
    slide-over coupler) and the back kept wide out to the passenger side; Fusion renders, the top-view cut, today vs redesign
    table (coarse mesh for both), the narrowing crossing that made it worse; then (h3 "Then the driver side", added 2026-11-18) the
@@ -58,7 +58,9 @@ All in `assets/images/e82-n54-intake/`.
   label clear of them, walls at 13% opacity so the duct shape reads, and zoom 1.5.
 - `cfd-flow-duct-final.mp4` / `cfd-flow-duct-final.jpg`: the same video for the final duct (case `v7-coarse-480gs`, coarse mesh),
   same camera, colour scale and slow-motion, so the two can be compared side by side.
-- `cfd-loss-budget.png`: total pressure lost at stations along the rear-turbo path, same case.
+- `cfd-loss-budget-compare.png`: total pressure lost at stations along the rear-turbo path, today's duct (`v2-coarse-480gs`) against the
+  final duct (`v7-coarse-480gs`), same coarse mesh (`cad/n54-airbox/cfd/plot_loss_budget_compare.py`, `results/loss-budget-compare.png`).
+  The budget table uses the same two cases.
 - `lid-lowered.png`: cuts of the lid exported from Fusion before and after lowering, with the rear filter's scanned top edge.
 - `duct-redesign-overview.jpg`, `duct-redesign-end.jpg`: Fusion 360 viewport captures of the
   redesigned duct and coupler (the real model, `135-airduct-finalversion-cults3d`). `duct-redesign-plan.png`: a cut of the

@@ -103,17 +103,20 @@
 <figure><video src="/assets/images/e82-n54-intake/cfd-flow-duct-today.mp4" poster="/assets/images/e82-n54-intake/cfd-flow-duct-today.jpg" width="1280" height="720" controls muted loop playsinline preload="none" aria-label="Simulated airflow through the snorkels, duct and airbox"><a href="/assets/images/e82-n54-intake/cfd-flow-duct-today.mp4">Watch: simulated airflow through the snorkels, duct and airbox</a></video><figcaption>Arrows traced through the solved airflow, each moving at its local speed, slowed 250 times. Red is fast: the jet leaving the duct into the box.</figcaption></figure>
 
 <h2 id="budget">Where the pressure goes</h2>
-<figure><img src="/assets/images/e82-n54-intake/cfd-loss-budget.png" alt="Bar chart of total pressure lost at each step from the still air to the rear turbo pipe" loading="lazy"><figcaption>Total pressure lost at each step on the way to the rear turbo. The red bar is the duct's jet dumping into the box.</figcaption></figure>
+<figure><img src="/assets/images/e82-n54-intake/cfd-loss-budget-compare.png" alt="Bar chart of total pressure lost at each step from the still air to the rear turbo pipe, the duct on the car today against the final duct" loading="lazy"><figcaption>Total pressure lost at each step on the way to the rear turbo, the duct on the car today in blue and the final duct in orange. The big jump is the duct's jet dumping into the box.</figcaption></figure>
+<p>Both on the same coarse mesh, so they compare directly (on the duct today the finer mesh lands within 0.3% of it overall):</p>
 <div class="tbl"><table>
-  <thead><tr><th>Step</th><th>Loss</th><th>Share</th></tr></thead>
+  <thead><tr><th>Step, rear-turbo path</th><th>Duct today</th><th>Final duct</th></tr></thead>
   <tbody>
-    <tr><td>Still air to the duct's end at the box (snorkel, flange, duct)</td><td>3.3 kPa</td><td>26%</td></tr>
-    <tr><td><b>The duct's jet dumping into the box</b></td><td><b>6.5 kPa</b></td><td><b>52%</b></td></tr>
-    <tr><td>Through the filter</td><td>1.2 kPa</td><td>9%</td></tr>
-    <tr><td>Into the turbo pipe and down it</td><td>1.6 kPa</td><td>12%</td></tr>
+    <tr><td>Still air to the duct's end at the box (snorkel, flange, duct)</td><td>3.6 kPa (29%)</td><td>3.0 kPa (33%)</td></tr>
+    <tr><td><b>The duct's jet dumping into the box</b></td><td><b>6.2 kPa (49%)</b></td><td><b>3.4 kPa (38%)</b></td></tr>
+    <tr><td>Through the filter</td><td>1.0 kPa (8%)</td><td>0.8 kPa (9%)</td></tr>
+    <tr><td>Into the turbo pipe and down it</td><td>1.8 kPa (14%)</td><td>1.8 kPa (20%)</td></tr>
+    <tr><td><b>Total</b></td><td><b>12.6 kPa</b></td><td><b>9.0 kPa</b></td></tr>
   </tbody>
 </table></div>
-<p>The big one is the duct's round end. It is about 74 mm across inside, sitting in a 94 mm socket, and all the air leaves it at about 93 m/s, up to about 170 m/s on the inside of its last bend. Nothing in the box slows that jet down gently, so its speed, 5 to 6.5 kPa worth, is simply lost. The front filter sits in the jet's path and soaks up a lot of it: 4.2 kPa goes in its media against 1.0 kPa in the rear filter. Either way it's gone before the turbos.</p>
+<p>The big one is the duct's round end. It is about 74 mm across inside, sitting in a 94 mm socket, and all the air leaves it at about 93 m/s, up to about 170 m/s on the inside of its last bend. Nothing in the box slows that jet down gently, so its speed, 5 to 6.5 kPa worth, is simply lost. The front filter sits in the jet's path and soaks up a lot of it: 3 to 4 kPa goes in its media against about 1 kPa in the rear filter. Either way it's gone before the turbos.</p>
+<p>The final duct, further down, nearly halves that step, from 6.2 to 3.4 kPa: its round end fills the socket, so the air leaves at 57 m/s instead of 93, and the wider driver side feeds the jet more evenly. The duct itself loses a little less on the way (3.0 kPa to its end against 3.6). The filter and the turbo pipe barely change, so they are now a bigger share of a smaller total.</p>
 
 <h2 id="redesign">The redesigned duct</h2>
 <p class="lead">So I redesigned the duct. The round end now matches the airbox socket, and the duct stays wide from the middle of the car all the way out to the passenger side.</p>
