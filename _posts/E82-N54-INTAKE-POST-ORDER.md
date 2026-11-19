@@ -12,8 +12,8 @@ Not a post. The running order for `2026-11-17-e82-n54-intake-cfd.md`, whose page
 3. **What the CFD says** (`#results`): per-pipe loss and vacuum, vacuum against loss, the compressor
    inlet pressure, the snorkel split (71% passenger, 29% driver), the flow video.
 4. **Where the pressure goes** (`#budget`): the loss chart and table, today's duct against the final one (updated 2026-11-18), the duct-end jet.
-5. **The redesigned duct** (`#redesign`, added 2026-11-18): the round end matching the airbox socket (100/94 mm, butt joint,
-   slide-over coupler) and the back kept wide out to the passenger side; Fusion renders, the top-view cut, today vs redesign
+5. **The redesigned duct** (`#redesign`, added 2026-11-18): the round end matching the airbox socket (100/94 mm; since 2026-11-19 it
+   stops 12 mm short of the rim with a soft TPU coupler over the gap, because the parts never line up perfectly on the car) and the back kept wide out to the passenger side; Fusion renders, the top-view cut, today vs redesign
    table (coarse mesh for both), the narrowing crossing that made it worse; then (h3 "Then the driver side", added 2026-11-18) the
    driver side widened from the socket behind the grille (Fusion capture from behind, top-view cut against the redesign, redesign vs
    wider-driver-side table), the flow video of the final duct, and that the redesign isn't printed or on Cults3D. "New duct" in
@@ -65,9 +65,12 @@ All in `assets/images/e82-n54-intake/`.
   final duct (`v7-coarse-480gs`), same coarse mesh (`cad/n54-airbox/cfd/plot_loss_budget_compare.py`, `results/loss-budget-compare.png`).
   The budget table uses the same two cases.
 - `lid-lowered.png`: cuts of the lid exported from Fusion before and after lowering, with the rear filter's scanned top edge.
-- `duct-redesign-overview.jpg`, `duct-redesign-end.jpg`: Fusion 360 viewport captures of the
-  redesigned duct and coupler (the real model, `135-airduct-finalversion-cults3d`). `duct-redesign-plan.png`: a cut of the
-  exported STEP at mid height, today's duct against the redesign (`cad/n54-airbox/views/plan-compare.png`).
+- `duct-final-overview.jpg`, `duct-final-behind.jpg` (2026-11-19): renders of the final duct (v7 with the end cut back,
+  `cad/n54-airbox/source/airduct-intakeduct-v7b-joint-gap.step`) and the TPU coupler (`source/airbox-coupler-tpu.step`),
+  and of today's duct from the same view, made offline from the STEP files (pyvista) because Fusion was busy.
+  `duct-final-plan.png`: an exact cut of the STEP files at mid height (y = 172 mm, duct frame). `duct-final-joint.png`: the
+  joint section from `cad/n54-airbox/coupler/section.py` in the post's colours. These replaced the first redesign's
+  pictures (`duct-redesign-overview.jpg`, `-end.jpg`, `-plan.png`), which showed the old driver side and the rigid sleeve.
 - The redesign numbers are from `cad/n54-airbox/results/v6-coarse-480gs.json`, compared with `v2-coarse-480gs` (same mesh).
 - `duct-driver-wide.jpg`: Fusion 360 viewport capture of the duct's driver side from behind (version 7 of
   `135-airduct-finalversion-cults3d`). `duct-driver-plan.png`: a mid-height cut of the exported STEPs, redesign (v6) against v7
