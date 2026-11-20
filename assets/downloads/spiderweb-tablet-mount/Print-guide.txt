@@ -1,0 +1,41 @@
+# Spiderweb jaws for a 1-inch double-socket arm
+
+## Print the 62 mm pair first
+
+Print two copies of Spiderweb-jaw-62mm.stl and one M6-hand-knob.stl. The short jaw is 42.9 mm wide across the outer web. The original was 35 mm wide, so allow about 4 mm extra clearance per side. The 95, 120 and 150 mm jaws each have two open webs. All four use the same 25.4 mm balls and hardware.
+
+Keep the jaws in the supplied orientation, flat washer land on the bed and cups up. For the comparison slice we used dried PAHT-CF, a hardened 0.4 mm nozzle, 0.45 mm lines, 0.20 mm layers, five walls, five top and bottom layers and 40% gyroid. Use the filament maker’s temperatures for your machine. The comparison excluded supports, skirt and brim. Check the slicer preview for continuous strands around the scallops and inspect the bridge over the hex recess. Print the knob washer-face down.
+
+Each arm takes one fully threaded M6 × 1.0 × 40 mm external hex-head bolt (10 mm across flats), one M6 × 1.0 regular hex nut (10 mm across flats) and one 6.4 × 18 × 1.6 mm washer. Turn one jaw over about its long axis, align the guide post with the opposing hole, seat the bolt head, then fit the washer and the knob with the nut inside. The two cups share the clamping force.
+
+## Sliced material per jaw
+
+| Jaw length | Max width | Original | Earlier smooth | Spiderweb | Saved vs original |
+|---|---|---|---|---|---|
+| 62 mm | 42.9 mm | 15.77 g | 13.02 g | 14.85 g | 5.8% |
+| 95 mm | 30.7 mm | 24.51 g | 21.39 g | 20.45 g | 16.6% |
+| 120 mm | 30.7 mm | 31.11 g | 26.71 g | 23.53 g | 24.4% |
+| 150 mm | 30.7 mm | 39.04 g | 33.17 g | 26.68 g | 31.7% |
+
+The webs reduce filament relative to the original at every length. The 62 mm web uses 1.83 g more per jaw than the earlier smooth lightweight revision. Perimeter toolpaths around the small openings and the wider outline use some of the material removed from the center.
+
+## What carries the tablet
+
+| Jaw | Original normal | Smooth normal | Web normal | Web sideways | Web twist at 1 N·m |
+|---|---|---|---|---|---|
+| 62 mm | 0.188 mm | 0.203 mm | 0.302 mm | 0.120 mm | 0.114° |
+| 95 mm | 0.481 mm | 0.502 mm | 0.838 mm | 0.313 mm | 0.261° |
+| 120 mm | 0.832 mm | 0.789 mm | 1.763 mm | 0.705 mm | 0.473° |
+| 150 mm | 1.439 mm | 1.330 mm | 3.508 mm | 1.604 mm | 0.901° |
+
+Motions are calculated at the tablet center of mass, 50 mm beyond the outer ball. The assumed 1.0 kg assembly sees a total transverse force of 29.42 N at 3 g, shared equally by two jaws. The base cup is fixed. The new jaws used two tetrahedral mesh sizes (2.4 and 1.7 mm). The table reports the finer spiderweb results and the earlier 1.05 mm reference results. The complete web exceeds the earlier target of at most 25% extra bending travel. Start with a dummy load and mark both joints to see whether the jaw flexes or the balls slip. A 29.4 N load applied 50 mm beyond the outer ball of the 62 mm arm gives 2.82 N·m about the base ball. Use a tether during bench testing.
+
+## How the topology was generated
+
+A 3D beam optimizer began with radial members, scalloped ties and alternative diagonal braces. It minimized weighted compliance for bending, sideways loading, torsion and clamping under a fixed length-weighted density budget. Minimum densities keep a recognizable open web and the fixed pads. The solve eliminated eight candidate members at each size and sized the survivors. SolidCraft reconstructed the retained ribs at two depths and restored the full cup shells, washer land, guides and hex seat. The density budget is a search constraint. Sliced grams measure the printable result.
+
+Each native file exposes ArmLength in millimetres. Choose the preset closest to the length you want. Changing ArmLength stretches the spline locations and cup spacing. Re-run optimization and fit and structural checks for a new length. Each supplied length has its own solved network.
+
+## Verification
+
+All four editable files reopened as single closed solids. The print meshes contain one connected material body. The 95 mm model has four enclosed CAD voids below 0.003 mm³ each. The 150 mm print mesh was tessellated again from its native STEP to remove degenerate export facets. Ray checks covered the cup radius, stem relief, guides, clamp bore, hex floor and full washer land. Each spherical contact surface matches the corresponding baseline area and centroid. The bending model approximates printed walls and infill. Rubber contact, hot-cabin creep and road vibration require physical testing.
