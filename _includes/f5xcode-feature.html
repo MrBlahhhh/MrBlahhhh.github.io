@@ -1,7 +1,10 @@
 <!-- F5X Code feature page. Rendered by _posts/2026-10-15-f5x-code.md. Edit here, not in the post.
      Section order: _posts/F5X-CODE-POST-ORDER.md. Screenshots: assets/images/f5xcode/v3 (build 248). Palette is the app's JCW one: jet black,
      chili red, cream. Presets, modules and services come from the app's LogPresets.kt, ModuleSigningProfiles.kt
-     and MaintenancePlan.kt (F56coding repo); keep them in step. Flashing is debug-build only: say so wherever it appears. -->
+     and MaintenancePlan.kt (F56coding repo); keep them in step. Flashing is paid add-ons ($25 each: engine,
+     transmission, steering), gated by purchase in a build made with -PF56_SELL_FLASHING=true. Keep each
+     feature's real maturity honest: the engine flash and GP3 steering ran on Matt's F56; the transmission
+     flash has not run on a car yet. -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap">
 <style>
 .f5x{--ink:#F2EDE4;--mute:#B8B2A8;--acc:#A61E22;--acc-hi:#E0383E;--acc-soft:rgba(166,30,34,.18);--line:rgba(242,237,228,.1);--line2:rgba(242,237,228,.22);--card:rgba(32,34,38,.72);--ok:#4ade80;--warn:#fbbf24;--gp3:#38bdf8;
@@ -102,7 +105,7 @@
       <h1>F5X Code</h1>
     </div>
   </div>
-  <p class="sub">A diagnostics, logging, coding and service app for the third-generation MINI: the F54 Clubman, F55 five-door, F56 three-door, F57 convertible and F60 Countryman. It reads every module's fault codes in plain English, logs the engine, gearbox and steering while you drive, backs up and changes module coding, and runs the workshop jobs like battery registration and brake bleeding. It runs on an Android phone, connected with an ENET cable (the one E-Sys uses) or the red MHD Wi-Fi adapter. No laptop. On my own car it also flashes modules, which is how my 2015 F56 got the JCW GP3's steering.</p>
+  <p class="sub">A diagnostics, logging, coding and service app for the third-generation MINI: the F54 Clubman, F55 five-door, F56 three-door, F57 convertible and F60 Countryman. It reads every module's fault codes in plain English, logs the engine, gearbox and steering while you drive, backs up and changes module coding, and runs the workshop jobs like battery registration and brake bleeding. It runs on an Android phone, connected with an ENET cable (the one E-Sys uses) or the red MHD Wi-Fi adapter. No laptop. It also flashes modules as paid add-ons — the engine, the transmission and the power steering — which is how my 2015 F56 got the JCW GP3's steering.</p>
   <div class="stats">
     <div class="stat"><b>Free</b><span>engine fault codes</span></div>
     <div class="stat"><b>$45</b><span>once, for everything else</span></div>
@@ -114,14 +117,14 @@
 </div>
 
 <h2 id="what-it-does">What it does</h2>
-<p class="lead">Four jobs on one connection to the car, and a fifth on my own build.</p>
+<p class="lead">Four jobs on one connection to the car, and a fifth you can add: flashing.</p>
 
 <div class="grid3">
   <div class="tile"><span class="tag">Diagnose</span><b>Fault codes in plain English</b><p>Every module's faults, each with whether it's happening now or stored, whether it lights the dash, what it means, the usual causes and what to check first. Check all fault codes reads every module in one pass.</p></div>
   <div class="tile"><span class="tag">Log</span><b>Engine, gearbox and steering logging</b><p>Eighteen presets, from boost and knock to converter lockup, downshift timing and steering return. Tap Start logging, drive, and the log opens on graphs made for that job. <a href="#logging">What it logs</a>.</p></div>
   <div class="tile"><span class="tag">Code</span><b>Module coding</b><p>Back up and change the settings inside eleven modules, every one by name, with the usual changes like true speed as one tap and the track settings in stability control. Each save is read back to prove it landed. <a href="#coding">Coding and more</a>.</p></div>
   <div class="tile"><span class="tag">Service</span><b>Workshop jobs</b><p>Battery registration, service resets, guided ABS bleeding, parking brake service mode, steering and window relearns, engine and gearbox adaptation resets and more. <a href="#service">Service tools</a>.</p></div>
-  <div class="tile dev"><span class="tag dev">developer build</span><b>Flashing</b><p>BMW's JCW GP3 steering profile on a standard F56 rack, BMW steering updates, and engine calibration flashes with a full read-back. On my car, from my own build, not the Play version. <a href="#gp3">GP3 steering</a>.</p></div>
+  <div class="tile"><span class="tag">Flash</span><b>Flashing add-ons</b><p>BMW's JCW GP3 steering profile on a standard F56 rack, BMW steering updates, engine calibration flashes with a full read-back, and the transmission. A one-time $25 unlock each, on top of the app. <a href="#gp3">GP3 steering</a>.</p></div>
 </div>
 
 <div class="shots">
@@ -131,11 +134,18 @@
 </div>
 
 <h2 id="price">What it costs</h2>
-<p class="lead">The engine's fault codes are free. Everything else is one $45 purchase in Google Play. No subscription.</p>
+<p class="lead">The engine's fault codes are free. The app is one $45 purchase in Google Play, no subscription. Flashing is separate: a $25 unlock each for the engine, the transmission and the power steering, on top of the app.</p>
 
 <div class="grid3">
   <div class="tile"><span class="tag ok">free</span><b>Engine fault codes</b><p>The engine's fault codes in plain English: happening now or stored, whether it lights the dash, what it means and where to start looking. Clearing them is free too.</p></div>
   <div class="tile price"><span class="tag">one-time unlock</span><b>$45</b><p>Everything else: every module's fault codes and Check all, oil level, live data, the logger and its graphs, reading, saving, comparing and restoring coding, quick codings and the service tools. Bought once in Google Play.</p></div>
+</div>
+
+<p class="lead">Flashing add-ons, each a one-time purchase on top of the $45 unlock:</p>
+<div class="grid3">
+  <div class="tile price"><span class="tag">add-on</span><b>$25 · Engine</b><p>Back up the engine's calibration and flash a calibration for the software your car already runs, with a full byte-for-byte read-back. The tune on my F56 went on this way. It keeps your software; it isn't a version swap.</p></div>
+  <div class="tile price"><span class="tag">add-on</span><b>$25 · Transmission</b><p>Read, back up, patch and write the gearbox (TCU). This is the newest of the three and the one I haven't run on a customer car yet; it checks your exact module, software and file before it writes.</p></div>
+  <div class="tile price"><span class="tag">add-on</span><b>$25 · Steering</b><p>BMW's steering update, the JCW GP3 steering profile and the way back to stock. This is the GP3 flash below, the one that changed my own F56.</p></div>
 </div>
 
 <h2 id="hardware">What you need</h2>
@@ -191,7 +201,7 @@
 </div>
 
 <h2 id="can-and-cant">What it can and can't do</h2>
-<p class="lead">The Play version reads, logs, codes and runs service jobs. Flashing is on my developer build only.</p>
+<p class="lead">It reads, logs, codes and runs service jobs on the $45 unlock, and flashes the engine, transmission and steering as paid add-ons.</p>
 
 <div class="cando">
   <div class="tile"><span class="tag ok">it can</span>
@@ -201,11 +211,12 @@
       <li><b>Read the oil level</b> from the engine's own sensor.</li>
       <li><b>Back up, change and restore coding</b> on eleven modules, with a signature check and read-back on every save.</li>
       <li><b>Run fourteen service jobs,</b> each after checking the module fitted to your car.</li>
+      <li><b>Flash the engine, transmission and power steering</b> as paid add-ons, each checking your module, software and file before it writes.</li>
     </ul>
   </div>
   <div class="tile"><span class="tag">it can't</span>
     <ul class="tight">
-      <li><b>Flash anything in the Play version.</b> The flashing below runs on my car from my own build of the app.</li>
+      <li><b>Change a module's software version.</b> Flashing keeps the software your car runs and writes BMW's data for it, or the tested GP3 steering profile. It isn't a version swap.</li>
       <li><b>Change coding on module software it hasn't been checked against.</b> Those modules can still be read and backed up. More are added with each update.</li>
       <li><b>Promise a listed option works on your car.</b> MINI changed these modules many times over the years, and there are far more options than on the older cars. As with NCS Expert, an option showing up doesn't mean your car will accept it.</li>
       <li><b>Code the newer MINIs</b> (F65, F66, F67, U25, J01, J05).</li>
@@ -218,7 +229,7 @@
 <h2 id="gp3">Flashing: JCW GP3 steering on a standard F56</h2>
 <p class="lead">On 19 November the app flashed BMW's John Cooper Works GP3 power steering profile into the steering rack on my 2015 F56, from the phone, over the ENET cable.</p>
 
-<div class="devband"><span><b>Developer build only.</b> The Flashing section of the Tools tab is only in my own build of the app, run on my car. The Play version testers install doesn't have it and won't flash, and nothing on this page is a promise that it will.</span></div>
+<div class="devband"><span><b>A paid add-on.</b> Steering flashing is a one-time $25 unlock, separate from the $45 app. It changed my own 2015 F56; it checks your exact rack, software and file before it writes and keeps the way back to stock, but nothing on this page is a promise it suits your car.</span></div>
 
 <div class="row wide">
 <div>
@@ -272,11 +283,11 @@ Only EPS was programmed.</pre>
 <p>What isn't known yet: BMW made this version of the GP3 file for the GP3's own rack, and my car has the standard F56 rack. How it feels over time, how hard it works the motor and what it does at the rack's ends are what the steering logger is for. The GP3 launched on the same rack as mine with an earlier file, and BMW retuned both assist and return when it changed the rack in 2020.</p>
 
 <div class="row flip">
-<figure><img src="/assets/images/f5xcode/v3/tools-flashing.jpg" alt="The Flashing section of the Tools tab: Engine ECU information, Back up the engine tune, Flash engine calibration, Transmission TCU, Power steering, and Radio files and status" loading="lazy"><figcaption>Tools → Flashing, on the developer build only</figcaption></figure>
+<figure><img src="/assets/images/f5xcode/v3/tools-flashing.jpg" alt="The Flashing section of the Tools tab: Engine ECU information, Back up the engine tune, Flash engine calibration, Transmission TCU, Power steering, and Radio files and status" loading="lazy"><figcaption>Tools → Flashing: engine, transmission and steering</figcaption></figure>
 <div>
-<h3>Engine calibration</h3>
-<p>Under Tools → Flashing, the same build backs up the engine's calibration and flashes a calibration onto the engine software the car already runs. My V12.10.1 tune went on this way on 19 November. Before it writes, it checks the VIN, the exact software and the file; after, the engine checks the new data itself, the app reads the whole calibration back and compares it byte for byte, and puts the engine's coding back. A full read-back takes about two minutes over the ENET cable.</p>
-<p>It only flashes the exact engine software on my car. It isn't a way to change software versions.</p>
+<h3>Engine calibration — the $25 engine add-on</h3>
+<p>Under Tools → Flashing, F5X Code backs up the engine's calibration and flashes a calibration onto the engine software the car already runs. My V12.10.1 tune went on this way on 19 November. Before it writes, it checks the VIN, the exact software and the file; after, the engine checks the new data itself, the app reads the whole calibration back and compares it byte for byte, and puts the engine's coding back. A full read-back takes about two minutes over the ENET cable.</p>
+<p>It only flashes the engine software your car already runs. It isn't a way to change software versions. The gearbox (TCU) flash is the same idea and the newest of the three; I haven't run it on a car yet.</p>
 </div>
 </div>
 
@@ -426,7 +437,7 @@ Only EPS was programmed.</pre>
   </div>
 </div>
 
-<p class="note">Screenshots are builds 248 and 249 on this F56's own data, played back from the car's recorded replies with the VIN hidden: its fault scan and steering log from 19 November 2026, a boost pull and an oil level read from November, and its module backups. The developer screens are shown as they are on my build.</p>
+<p class="note">Screenshots are builds 248 and 249 on this F56's own data, played back from the car's recorded replies with the VIN hidden: its fault scan and steering log from 19 November 2026, a boost pull and an oil level read from November, and its module backups. The flashing screens are shown as they are on my car.</p>
 
 <p class="note">No account, no ads, no analytics. Everything stays on your phone unless you send a report. <a href="/f5xcode/privacy/">Privacy policy</a>.</p>
 
