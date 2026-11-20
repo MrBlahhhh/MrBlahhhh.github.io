@@ -26,27 +26,30 @@ service tools, eighteen presets and the GP3 steering flash.)
 5. **Hook up the ENET cable** (`#connect`): five steps, tethering called out,
    the chooser and ENET dialog screenshots, then the MHD adapter's three
    steps.
-6. **What it can and can't do**. The Play version doesn't flash: say so here.
+6. **Find your way around** (`#tabs`, added 2026-11-20 for build 249): the
+   five tabs (Coding · Tools · Logger · Backups · Reports, R53 Code's layout)
+   as tiles, then the Tools and Coding tab shots. Every other section says
+   which tab its feature is on; keep that in step with `ui/MainMenu.kt`.
+7. **What it can and can't do**. The Play version doesn't flash: say so here.
    Keep the line that a listed option isn't always accepted.
-7. **Flashing** (`#gp3`): the developer-build band first, then why the GP3
+8. **Flashing** (`#gp3`): the developer-build band first, then why the GP3
    file fits (spec tiles) beside the post-install steering log, what the app
    did (four steps), the app's result block, the return-to-centre bars and
-   what changes, what isn't known, then Engine calibration with the Engine
-   ECU menu shot.
-8. **What it logs** (`#logging`): the eighteen presets from `LogPresets.kt`
+   what changes, what isn't known, then Engine calibration with the Tools →
+   Flashing shot.
+9. **What it logs** (`#logging`): the eighteen presets from `LogPresets.kt`
    in four group tiles, the note that several read inside this car's exact
    software or need the CAN board, then the graph notes beside the preset
    picker screenshot.
-9. **Coding and more** (`#coding`): oil level row, Quick codings (from
-   `CodingPresets.kt`) with the list and Coding tab shots, Track settings
+10. **Coding and more** (`#coding`): oil level row, Quick codings (from
+   `CodingPresets.kt`) beside its shot, Track settings
    (`#track`, three shots), the coding tiles (Factory LED headlights among
    them), then the eleven modules and the option-size note.
-10. **Service tools** (`#service`): the fourteen services from
-    `ServiceActivity.kt` and `MaintenancePlan.kt` in three group tiles beside
-    the screenshot.
-11. **Get it**: closed testing, three steps (group, opt-in, install). Switch
+11. **Service tools** (`#service`): the fourteen services from `MainMenu.kt`
+    (Tools → Service) in three group tiles beside the Tools → Service shot.
+12. **Get it**: closed testing, three steps (group, opt-in, install). Switch
     to one Play button when it goes to production.
-12. Screenshot note, privacy line and the independent-app note.
+13. Screenshot note, privacy line and the independent-app note.
 
 ## Standing rules
 
@@ -95,15 +98,18 @@ copied off by `adb run-as`, read-only:
   EPS return to center log recorded after the GP3 install, Lines view.
 - `logger-presets.jpg`: the preset picker, top and bottom of the list
   stitched.
-- `coding-bdc.jpg`, `quick-codings.jpg`, `coding-modules.jpg` and the
-  `track-*.jpg` shots: the phone's `files/backups` with the VIN replaced in
+- `coding-bdc.jpg`, `quick-codings.jpg` and the `track-*.jpg` shots: the phone's `files/backups` with the VIN replaced in
   every file name and file (`WMW00000000000000`), pushed into the AVD.
   `track-brakes.jpg` is `--es cmd codingview --es addr 29 --es scroll
   3000/0042`, `track-ediff.jpg` the same with `--es scroll 3000/0048`,
   `track-edlc.jpg` `--es review 3000/0065 --es value Off`; `coding-bdc.jpg`
   is `--es cmd codingview --es addr 40`; `quick-codings.jpg` `--es cmd quick`.
-- `service-tools.jpg`, `engine-ecu.jpg`,
-  `enet-chooser.jpg` and `enet-dialog.jpg`: the screens themselves, no car.
+- `enet-chooser.jpg` and `enet-dialog.jpg`: the screens themselves, no car.
+- `tools.jpg`, `coding-modules.jpg`, `tools-service.jpg` and
+  `tools-flashing.jpg` (2026-11-20, build 249 debug, the same AVD and
+  backups): the Tools tab at the top, the Coding tab, and Tools scrolled to
+  the Service and Flashing labels. The debug build shows Flashing and
+  Developer; crop Developer out, and keep Flashing only in `#gp3`.
 - `cover.jpg` (one level up, 1600 x 900): the faults, tuning and steering
   shots as three phone cards on the right, the left kept dark for the
   title overlay.

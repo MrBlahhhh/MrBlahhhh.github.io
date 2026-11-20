@@ -159,7 +159,7 @@
   <li><b>Ignition on.</b> The engine can stay off. The adapter's link light comes on once the car's Ethernet wakes up.</li>
   <li><b>Turn on Ethernet tethering.</b> On a Pixel it's Settings, Network &amp; internet, Hotspot &amp; tethering, Ethernet tethering. The Ethernet setup button in the app's ENET dialog opens the same page. The car doesn't hand out network addresses, so the phone has to. The switch stays grey until the cable has a link, so a grey switch means check the cable and the ignition, not the settings.</li>
   <li><b>Connect in the app.</b> Tap Connect at the top of F5X Code, choose ENET cable / USB-C, and tap Connect. The app finds the car on its own; the car's IP address is under Advanced if you ever need it.</li>
-  <li><b>Check it answers.</b> Run Check all fault codes on the Vehicle tab. If anything fails, tap Send report: it has every connection step in it.</li>
+  <li><b>Check it answers.</b> Open the Tools tab and tap Check all fault codes. If anything fails, tap Send report: it has every connection step in it.</li>
 </ol>
 
 <div class="shots two">
@@ -173,6 +173,22 @@
   <li><b>Join its Wi-Fi</b> in Android's Wi-Fi settings.</li>
   <li><b>Connect in the app.</b> Tap Connect, choose MHD Wi-Fi / ENET, leave the address at 192.168.4.1, and tap Connect.</li>
 </ol>
+
+<h2 id="tabs">Find your way around</h2>
+<p class="lead">Five tabs along the bottom, laid out like my R53 Code app. Connect and Settings stay at the top of every tab. A free install opens on Tools, where the engine's fault codes are; with the unlock it opens on Coding.</p>
+
+<div class="grid3">
+  <div class="tile"><span class="tag">Coding</span><b>Change settings</b><p>Quick codings, then every module by name: read its settings from the car, open a saved backup, change a setting and save it back.</p></div>
+  <div class="tile"><span class="tag">Tools</span><b>Everything else you do with the car</b><p>The selected module, fault codes, live data, module info, oil level and Find all modules under Diagnostics. Every service job under Service. The LED headlight retrofit under Workshop.</p></div>
+  <div class="tile"><span class="tag">Logger</span><b>Record a drive</b><p>Pick a preset, start logging, then open Graphs, share a log or send it to me.</p></div>
+  <div class="tile"><span class="tag">Backups</span><b>Your module backups</b><p>Backups and restore for any module, coding history, body module recovery and importing coding catalogs.</p></div>
+  <div class="tile"><span class="tag">Reports</span><b>What happened</b><p>Every fault check, coding save and service job, with Send report for any of them.</p></div>
+</div>
+
+<div class="shots two">
+  <figure><img src="/assets/images/f5xcode/v3/tools.jpg" alt="The Tools tab: the selected module, then Diagnostics with Check all fault codes, Read faults, Clear faults, Live data, Module info and Oil level, and the tabs Coding, Tools, Logger, Backups and Reports" loading="lazy"><figcaption>Tools: the selected module and Diagnostics first</figcaption></figure>
+  <figure><img src="/assets/images/f5xcode/v3/coding-modules.jpg" alt="The Coding tab: Quick codings and the module list with Body control, Engine, Transmission, Stability control, Power steering and Active sound" loading="lazy"><figcaption>Coding: quick codings, then every module</figcaption></figure>
+</div>
 
 <h2 id="can-and-cant">What it can and can't do</h2>
 <p class="lead">The Play version reads, logs, codes and runs service jobs. Flashing is on my developer build only.</p>
@@ -202,7 +218,7 @@
 <h2 id="gp3">Flashing: JCW GP3 steering on a standard F56</h2>
 <p class="lead">On 19 November the app flashed BMW's John Cooper Works GP3 power steering profile into the steering rack on my 2015 F56, from the phone, over the ENET cable.</p>
 
-<div class="devband"><span><b>Developer build only.</b> The Power steering update and Engine ECU screens are in my own build of the app, run on my car. They aren't in the Play version testers install, and nothing on this page is a promise that they will be.</span></div>
+<div class="devband"><span><b>Developer build only.</b> The Flashing section of the Tools tab is only in my own build of the app, run on my car. The Play version testers install doesn't have it and won't flash, and nothing on this page is a promise that it will.</span></div>
 
 <div class="row wide">
 <div>
@@ -256,10 +272,10 @@ Only EPS was programmed.</pre>
 <p>What isn't known yet: BMW made this version of the GP3 file for the GP3's own rack, and my car has the standard F56 rack. How it feels over time, how hard it works the motor and what it does at the rack's ends are what the steering logger is for. The GP3 launched on the same rack as mine with an earlier file, and BMW retuned both assist and return when it changed the rack in 2020.</p>
 
 <div class="row flip">
-<figure><img src="/assets/images/f5xcode/v3/engine-ecu.jpg" alt="Engine ECU menu: Read ECU information, Back up calibration tables, Prepare or flash a calibration, Test programming access" loading="lazy"><figcaption>The Engine ECU menu on the developer build</figcaption></figure>
+<figure><img src="/assets/images/f5xcode/v3/tools-flashing.jpg" alt="The Flashing section of the Tools tab: Engine ECU information, Back up the engine tune, Flash engine calibration, Transmission TCU, Power steering, and Radio files and status" loading="lazy"><figcaption>Tools → Flashing, on the developer build only</figcaption></figure>
 <div>
 <h3>Engine calibration</h3>
-<p>The same build backs up the engine's calibration and flashes a calibration onto the engine software the car already runs. My V12.10.1 tune went on this way on 19 November. Before it writes, it checks the VIN, the exact software and the file; after, the engine checks the new data itself, the app reads the whole calibration back and compares it byte for byte, and puts the engine's coding back. A full read-back takes about two minutes over the ENET cable.</p>
+<p>Under Tools → Flashing, the same build backs up the engine's calibration and flashes a calibration onto the engine software the car already runs. My V12.10.1 tune went on this way on 19 November. Before it writes, it checks the VIN, the exact software and the file; after, the engine checks the new data itself, the app reads the whole calibration back and compares it byte for byte, and puts the engine's coding back. A full read-back takes about two minutes over the ENET cable.</p>
 <p>It only flashes the exact engine software on my car. It isn't a way to change software versions.</p>
 </div>
 </div>
@@ -317,23 +333,23 @@ Only EPS was programmed.</pre>
 <figure><img src="/assets/images/f5xcode/v3/oil-level.jpg" alt="Oil level: 0.2 qt low, raw 66 mm against a 69 mm full mark, 19 mm per quart, with the dash figure still measuring" loading="lazy"><figcaption>0.2 qt low: 66 mm against this car's 69 mm full mark</figcaption></figure>
 <div>
 <h3>Oil level</h3>
-<p>These cars have no dipstick. The app reads the engine's own oil level sensor: the dash's figure, the raw sensor reading in mm, the short and long-term averages, oil temperature and pressure, each with the byte it came from.</p>
+<p>On the Tools tab. These cars have no dipstick. The app reads the engine's own oil level sensor: the dash's figure, the raw sensor reading in mm, the short and long-term averages, oil temperature and pressure, each with the byte it came from.</p>
 <p>The gauge runs from a quart low to half a quart over. Set your own full mark once, idling warm on level ground with the oil at full, and every reading after that shows how far off full you are. The dash's figure reads Measuring for a while after an oil change; the raw reading doesn't wait.</p>
 </div>
 </div>
 
+<div class="row">
+<div>
 <h3>Quick codings</h3>
-<p>The usual changes as one-tap buttons, each one shown on or off from your latest backup. A tap opens the module's review: it backs the module up, shows what will change, asks before writing, then reads it back. Turn off puts the setting back.</p>
+<p>At the top of the Coding tab: the usual changes as one-tap buttons, each one shown on or off from your latest backup. A tap opens the module's review: it backs the module up, shows what will change, asks before writing, then reads it back. Turn off puts the setting back.</p>
 <ul class="tight">
   <li><b>Instrument cluster:</b> true speed, digital speed readout, chime in reverse, auto start/stop status.</li>
   <li><b>Body module:</b> auto start/stop remembers its setting, or starts every drive off; radio stays on when the door opens; hazards flash under hard braking.</li>
   <li><b>Head unit:</b> skip the legal notices, tyre pressures and temperatures.</li>
 </ul>
 <p>True speed takes the speedometer's built-in over-read out of the digital readout. The needle keeps its lead. Each quick coding is tied to the exact coding file it was built from, so on a module running other software the app says it doesn't apply and leaves it alone. Each one also says whether it's been tried on a car yet.</p>
-
-<div class="shots two">
-  <figure><img src="/assets/images/f5xcode/v3/quick-codings.jpg" alt="Quick codings for the cluster: True speed off with Turn on, Digital speed readout on with Turn off, Chime in reverse off, Auto start/stop status on" loading="lazy"><figcaption>Quick codings, each shown on or off from the last backup</figcaption></figure>
-  <figure><img src="/assets/images/f5xcode/v3/coding-modules.jpg" alt="The Coding tab: Quick codings, Factory LED headlights, and the module list with Body control, Engine, Transmission, Stability control and Power steering" loading="lazy"><figcaption>The Coding tab: quick codings, the LED retrofit and every module</figcaption></figure>
+</div>
+<figure><img src="/assets/images/f5xcode/v3/quick-codings.jpg" alt="Quick codings for the cluster: True speed off with Turn on, Digital speed readout on with Turn off, Chime in reverse off, Auto start/stop status on" loading="lazy"><figcaption>Quick codings, each shown on or off from the last backup</figcaption></figure>
 </div>
 
 <h3 id="track">Track settings</h3>
@@ -346,7 +362,7 @@ Only EPS was programmed.</pre>
   <li><b>Engine power cut for hot brakes:</b> FLR. It cuts power when the module's estimate of disc temperature runs high. There's no sensor behind it, and the estimate assumes factory brakes. It's already off on the car in these screenshots.</li>
   <li><b>Performance Control:</b> brakes the inside wheels to help the car turn in, the F56's version of Dynamic Performance Control (FDB).</li>
 </ul>
-<p>The guide's Maximum Brake Support (HVV) has no switch on the F56. Each of the others is one change: open Stability control's settings, flip the switch, check the review and save to the car. The app backs the module up first and reads it back after, and the original backup puts everything back for the street.</p>
+<p>The guide's Maximum Brake Support (HVV) has no switch on the F56. Each of the others is one change: on the Coding tab, tap Stability control, open its settings, flip the switch, check the review and save to the car. The app backs the module up first and reads it back after, and the original backup puts everything back for the street.</p>
 
 <div class="shots">
   <figure><img src="/assets/images/f5xcode/v3/track-brakes.jpg" alt="Stability control settings, Popular view, 457 named settings: Dynamic Brake Control on, Cornering Brake Control on, Engine power cut for hot brakes off, Brake standby on" loading="lazy"><figcaption>Brake assist and brake standby on from the factory; the hot-brake power cut already off</figcaption></figure>
@@ -357,15 +373,15 @@ Only EPS was programmed.</pre>
 <div class="grid3">
   <div class="tile"><b>Read and back up coding</b><p>Every setting in a module by name, in Popular, All and Expert views. A backup is saved before anything changes, and backups export and import between phones.</p></div>
   <div class="tile"><b>Change coding</b><p>Pick a setting, choose the value, review it and save to the car. Each save checks the module's identity and signature, writes, then reads it back to prove it landed.</p></div>
-  <div class="tile"><b>Compare and history</b><p>Compare any backup with your original, setting by setting, and see every save, restore and check you've made. Restore the original the same way it was saved.</p></div>
-  <div class="tile"><b>Factory LED headlights</b><p>For a 2014–2017 F56 being fitted with the factory LED headlights: it checks the car, backs up the originals, adds the LED option to the vehicle order and codes the body module and both headlights from the exact software fitted. I haven't run it on a car yet.</p></div>
-  <div class="tile"><b>Body module recovery</b><p>Back up the body module in any state and put a saved backup back unchanged, for a module left half-written by an interrupted session.</p></div>
+  <div class="tile"><b>Compare and history</b><p>Compare any backup with your original, setting by setting, and see every save, restore and check you've made on the Backups tab. Restore the original the same way it was saved.</p></div>
+  <div class="tile"><b>Factory LED headlights</b><p>For a 2014–2017 F56 being fitted with the factory LED headlights: it checks the car, backs up the originals, adds the LED option to the vehicle order and codes the body module and both headlights from the exact software fitted. Tools → Workshop. I haven't run it on a car yet.</p></div>
+  <div class="tile"><b>Body module recovery</b><p>Back up the body module in any state and put a saved backup back unchanged, for a module left half-written by an interrupted session. On the Backups tab.</p></div>
 </div>
 
 <p>Coding covers eleven modules: airbag, engine, transmission, stability control, steering, active sound, body, instrument cluster, head unit, controller and climate. The option lists are big. The body module alone has 3,905 named settings and stability control 457, and MINI changed these modules many times over the years, so an option listed for one software version can be ignored or refused by another. As with NCS Expert, seeing an option doesn't mean your car will take it. Every save is read back, so you know whether it landed.</p>
 
 <h2 id="service">Service tools</h2>
-<p class="lead">The jobs a workshop tool does after a battery, brakes or a part swap. Each one checks the module fitted to your car first, walks you through the steps, and refuses a variant it doesn't know.</p>
+<p class="lead">The jobs a workshop tool does after a battery, brakes or a part swap. All fourteen are on the Tools tab under Service. Each one checks the module fitted to your car first, walks you through the steps, and refuses a variant it doesn't know.</p>
 
 <div class="row">
 <div class="grid3" style="margin:0">
@@ -386,7 +402,7 @@ Only EPS was programmed.</pre>
     <li><b>Transmission learning:</b> reset the gearbox's adaptations.</li>
   </ul></div>
 </div>
-<figure><img src="/assets/images/f5xcode/v3/service-tools.jpg" alt="Service tools: Engine learning, Steering relearn, Battery replacement, Service intervals, Window initialization, Sunroof initialization, ABS brake bleeding, Parking brake, Transmission learning, Tyre pressure monitor, Coolant bleed, Rain sensor initialization, DSC sensor calibration, Valvetronic end stops" loading="lazy"><figcaption>The fourteen services</figcaption></figure>
+<figure><img src="/assets/images/f5xcode/v3/tools-service.jpg" alt="The Service section of the Tools tab: Engine learning, Steering relearn, Battery replacement, Service intervals, Window initialization, Sunroof initialization, ABS brake bleeding and Parking-brake service, each with a one-line description" loading="lazy"><figcaption>Tools → Service, one tile per job</figcaption></figure>
 </div>
 
 <h2 id="get-it">Get it</h2>
@@ -410,7 +426,7 @@ Only EPS was programmed.</pre>
   </div>
 </div>
 
-<p class="note">Screenshots are build 248 on this F56's own data, played back from the car's recorded replies with the VIN hidden: its fault scan and steering log from 19 November 2026, a boost pull and an oil level read from November, and its module backups. The developer screens are shown as they are on my build.</p>
+<p class="note">Screenshots are builds 248 and 249 on this F56's own data, played back from the car's recorded replies with the VIN hidden: its fault scan and steering log from 19 November 2026, a boost pull and an oil level read from November, and its module backups. The developer screens are shown as they are on my build.</p>
 
 <p class="note">No account, no ads, no analytics. Everything stays on your phone unless you send a report. <a href="/f5xcode/privacy/">Privacy policy</a>.</p>
 
