@@ -150,23 +150,11 @@ I ran both corners through CFD at 100 mph, built from the same 3D scans the duct
 
 ### Rear: 214 CFM, under the caliper and across the rotor
 
-<video controls loop muted playsinline preload="metadata" width="1280" height="720" style="width:100%;height:auto" poster="/assets/images/135i-brake-ducts/cfd-rear-duct.jpg" aria-label="Simulated airflow through the rear brake duct at 100 mph">
-  <source src="/assets/images/135i-brake-ducts/cfd-rear-duct.mp4" type="video/mp4">
-  <a href="/assets/images/135i-brake-ducts/cfd-rear-duct.mp4">Watch: simulated airflow through the rear duct</a>
-</video>
-*Arrows traced through the solved airflow from the rear duct's louvred mouth, each moving at its local speed, slowed 250 times. Red is fast. Seen from inboard, front of the car to the right.*
-
 214 CFM goes through the rear duct at 100 mph. The jet leaves the nozzle and fans out rearward under the caliper, across the lower half of the dust shield and the rotor. About 40% of the duct's air passes within 15 mm of the rotor, and 10% within 15 mm of the caliper.
 
 ### Front: 187 CFM, bent up past the caliper
 
 The front model is the whole corner of the car: the body, the bumper overlay with its second port plugged, the splitter, a flat floor from the splitter back to the end of the transmission, and sealed wheel wells. The floor stops inboard of the lower arms, so the arms and the duct sit in an open gap, and air only reaches the wheel from under the car, same as on mine. Grille air goes through the engine bay and out underneath.
-
-<video controls loop muted playsinline preload="metadata" width="1280" height="720" style="width:100%;height:auto" poster="/assets/images/135i-brake-ducts/cfd-front-duct.jpg" aria-label="Simulated airflow through the front control-arm brake duct at 100 mph">
-  <source src="/assets/images/135i-brake-ducts/cfd-front-duct.mp4" type="video/mp4">
-  <a href="/assets/images/135i-brake-ducts/cfd-front-duct.mp4">Watch: simulated airflow through the front duct</a>
-</video>
-*The front duct from inboard, front of the car to the right, slowed 250 times. Air comes up from under the car into the scoop, speeds up through the neck and leaves the outlet.*
 
 187 CFM goes through the front duct at 100 mph. The outlet points outboard at the lower half of the caliper, but the jet bends up and back once it leaves, so it sweeps along the inboard side of the caliper instead of hitting it square. About 7% of the duct's air passes within 15 mm of the caliper and 30% within 60 mm. Almost none of it reaches the rotor.
 
