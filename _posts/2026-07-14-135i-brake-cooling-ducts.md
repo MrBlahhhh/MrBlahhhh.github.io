@@ -2,7 +2,7 @@
 title: "E82 135i Brake Cooling Ducts — Front & Rear"
 date: 2026-07-14 00:00:00 -0400
 categories: car tech
-tags: [3d-printing, bmw, 135i, e82, e88, e90, brake-cooling, brake-ducts, track, cults3d]
+tags: [3d-printing, bmw, 135i, e82, e88, e90, brake-cooling, brake-ducts, track, cults3d, cfd]
 cover: /assets/images/135i-brake-ducts/front-duct-installed.jpg
 lightbox: true
 excerpt: "3D-printed front and rear brake cooling ducts for the E82 135i, plus aluminum deflectors and bumper overlays — design, install, results, and where to buy"
@@ -143,6 +143,43 @@ And the failure that started all this: I'd had the **ceramic caliper piston tips
 
 <div>{%- include extensions/youtube.html id='Nnp8NiAkXNw' -%}</div>
 *#78 on track — the ducting earning its keep.*
+
+## What the CFD shows
+
+I ran both corners through CFD at 100 mph, built from the same 3D scans the ducts were designed against. The scans were taken on the lift with the wheels hanging, so the model puts the suspension back at ride height first: the wheel sits about 3 in higher in the body, and the front arm and its duct tilt with it.
+
+### Rear: 214 CFM, under the caliper and across the rotor
+
+<video controls loop muted playsinline preload="metadata" width="1280" height="720" style="width:100%;height:auto" poster="/assets/images/135i-brake-ducts/cfd-rear-duct.jpg" aria-label="Simulated airflow through the rear brake duct at 100 mph">
+  <source src="/assets/images/135i-brake-ducts/cfd-rear-duct.mp4" type="video/mp4">
+  <a href="/assets/images/135i-brake-ducts/cfd-rear-duct.mp4">Watch: simulated airflow through the rear duct</a>
+</video>
+*Arrows traced through the solved airflow from the rear duct's louvred mouth, each moving at its local speed, slowed 250 times. Red is fast. Seen from inboard, front of the car to the right.*
+
+214 CFM goes through the rear duct at 100 mph. The jet leaves the nozzle and fans out rearward under the caliper, across the lower half of the dust shield and the rotor. About 40% of the duct's air passes within 15 mm of the rotor, and 10% within 15 mm of the caliper.
+
+### Front: 187 CFM, bent up past the caliper
+
+The front model is the whole corner of the car: the body, the bumper overlay with its second port plugged, the splitter, a flat floor from the splitter back to the end of the transmission, and sealed wheel wells. The floor stops inboard of the lower arms, so the arms and the duct sit in an open gap, and air only reaches the wheel from under the car, same as on mine. Grille air goes through the engine bay and out underneath.
+
+<video controls loop muted playsinline preload="metadata" width="1280" height="720" style="width:100%;height:auto" poster="/assets/images/135i-brake-ducts/cfd-front-duct.jpg" aria-label="Simulated airflow through the front control-arm brake duct at 100 mph">
+  <source src="/assets/images/135i-brake-ducts/cfd-front-duct.mp4" type="video/mp4">
+  <a href="/assets/images/135i-brake-ducts/cfd-front-duct.mp4">Watch: simulated airflow through the front duct</a>
+</video>
+*The front duct from inboard, front of the car to the right, slowed 250 times. Air comes up from under the car into the scoop, speeds up through the neck and leaves the outlet.*
+
+187 CFM goes through the front duct at 100 mph. The outlet points outboard at the lower half of the caliper, but the jet bends up and back once it leaves, so it sweeps along the inboard side of the caliper instead of hitting it square. About 7% of the duct's air passes within 15 mm of the caliper and 30% within 60 mm. Almost none of it reaches the rotor.
+
+![Front duct airflow seen from behind the wheel](/assets/images/135i-brake-ducts/cfd-front-duct-behind.jpg){:.img-lg}
+*From behind the wheel: the jet runs from the outlet up past the inboard side of the caliper.*
+
+### How it was run
+
+- **The solve.** Steady flow in OpenFOAM, k-omega SST, at 100 mph, with the ground moving and the tire and rotor spinning at road speed. The rear model has 1.7 million cells and the front 5.3 million. The rear duct's flow moved about 2% over the last 400 iterations, the front's about 5% over the last 800.
+- **What's in it.** The scanned hubs, arms and calipers, the ducts as designed, the front aluminum deflectors and the rear factory dust shields.
+- **What isn't.** The front rotor comes from the scan, so it's solid in the model and no air goes through its vanes. There's no radiator or engine up front, so the grille air goes into an empty bay. The splitter's size is estimated from a photo.
+- **The percentages.** Streamlines traced from across the whole duct section, each weighted by the air through its starting point, counted when they pass within that distance of the part.
+- **Not temperatures.** These are airflows in a simulation, not a measurement on the car.
 
 ## The fine print
 
