@@ -11,6 +11,28 @@ I wanted a lighter arm for my Samsung tablet in its RAM case. Could the ribs aro
 
 <!--more-->
 
+## Choose a thumb knob
+
+The original knob has a scalloped rim. For the lighter version, I split the grip into three curved fingers around the same M6 nut pocket. Both fit the arm and use the same plain M6 hex nut and 18 mm washer. If you already printed the jaws, the knob is the only part you need to print.
+
+![The original scalloped knob on the left and the three-finger knob on the right, showing the open ribs around the central hex pocket](/assets/images/spiderweb-tablet-mount/Thumb-knob-comparison.jpg){:.img-lg}
+
+| Knob | PAHT-CF per print | Predicted twist under a single finger at 1 N·m | Print file |
+| --- | ---: | ---: | --- |
+| Original scalloped grip | 4.87 g | 0.06° | <a href="/assets/downloads/spiderweb-tablet-mount/M6-hand-knob.stl" download>Download original knob STL</a> |
+| Open three-finger grip | 2.80 g | 0.22° | <a href="/assets/downloads/spiderweb-tablet-mount/M6-open-fork-knob.stl" download>Download three-finger knob STL</a> |
+
+The open knob saves **2.07 g per print (42.5%)** in the same slice. The original is stiffer in the twist simulation. I also tried wider openings. They saved another 0.24 g, but one finger flexed about 73% more on the same mesh, so I kept the thicker roots. The printed knob still needs a hand-tightening test.
+
+<video controls playsinline preload="metadata" width="1100" height="620" style="width:100%;height:auto" aria-label="Simulated single-finger twist of the wider-window knob followed by the selected three-finger knob">
+  <source src="/assets/images/spiderweb-tablet-mount/Thumb-knob-twist.mp4" type="video/mp4">
+  <a href="/assets/images/spiderweb-tablet-mount/Thumb-knob-twist.mp4">Download the knob twist comparison</a>
+</video>
+
+The video shows the wider-window trial first and the selected knob second, with movement enlarged 28×. Print either knob **washer face down, hex pocket up**. I used a 0.4 mm nozzle, 0.20 mm layers, five walls and 40% gyroid. The open fingers reach 0.61 mm farther from the screw axis, so check clearance through a full turn.
+
+Starting from scratch? The 62 mm open-fork pack includes the reinforced jaw, the three-finger knob, editable SolidCraft files and both print guides. Print the jaw twice and the knob once. [Download the 62 mm open-fork arm and knob ZIP](/assets/downloads/spiderweb-tablet-mount/Open-fork-62mm-with-light-knob.zip)
+
 ## From spiderweb to organic wrap
 
 The spiderweb put most of its openings **between** the two balls. For the next version I wanted the ribs to wrap **around** each 1-inch ball as well. Look at the black ball through the opening on the left. The curved fingers touch it on spherical pads. On the 62 mm jaw those pads retain about 74% of the contact area of the original solid cup. The new jaw is 46.5 mm wide across its broadest point, up from 42.9 mm on the spiderweb.
@@ -82,7 +104,7 @@ Each ZIP contains the jaw STL, its editable SolidCraft model, the shared hand-kn
 
 [Download all four sizes together (105 MB ZIP)](https://github.com/MrBlahhhh/MrBlahhhh.github.io/releases/download/spiderweb-arms-v1/Spiderweb-tablet-arms.zip) · [Read the print and assembly guide](/assets/downloads/spiderweb-tablet-mount/Print-guide.txt)
 
-For one arm, print **two identical jaws and one [M6 thumb knob](/assets/downloads/spiderweb-tablet-mount/M6-hand-knob.stl)**. The same knob fits all four lengths and holds a regular M6 hex nut. Each arm takes one fully threaded M6 × 1.0 × 40 mm external hex-head bolt, one regular M6 × 1.0 hex nut and one 6.4 × 18 × 1.6 mm flat washer. Print the jaws cup-side up, with the flat washer land on the bed. The comparison slice used PAHT-CF, a 0.4 mm nozzle, 0.20 mm layers, five walls and 40% gyroid.
+For one arm, print **two identical jaws and one [M6 thumb knob of your choice](#choose-a-thumb-knob)**. The same knob fits all four lengths and holds a regular M6 hex nut. Each arm takes one fully threaded M6 × 1.0 × 40 mm external hex-head bolt, one regular M6 × 1.0 hex nut and one 6.4 × 18 × 1.6 mm flat washer. Print the jaws cup-side up, with the flat washer land on the bed. The comparison slice used PAHT-CF, a 0.4 mm nozzle, 0.20 mm layers, five walls and 40% gyroid.
 
 In SolidCraft, **ArmLength** sets the tip-to-tip length. Start from the nearest preset. Each of the four downloads has its own optimized web. Editing the dimension stretches that geometry, so a custom length needs its own fit and stiffness checks.
 
