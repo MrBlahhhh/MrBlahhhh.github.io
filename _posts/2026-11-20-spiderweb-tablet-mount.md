@@ -23,7 +23,7 @@ The 1 inch measurement is the ball diameter. RAM’s aluminum diamond base has a
 **For the 90° version, print two identical 150 mm jaws** with the flat washer face on the bed and the cups up. Reuse the spiderweb arm’s M6 × 40 mm hex-head bolt, plain M6 nut, 18 mm washer and knob. The ZIP includes the revised jaw STL, editable SolidCraft model, original knob STL and print instructions. [Download the 150 mm spiderweb 90° print pack](/assets/downloads/spiderweb-tablet-mount/Spiderweb-150mm-pivot90.zip)
 
 ### Did opening the sockets weaken the 150 mm jaw?
-{: #150mm-bend-test}
+{: #bend-test-150mm}
 
 I ran the original and revised jaws through the same simulated bend test. I held the left cup fixed and applied a downward load 50 mm beyond the right ball. Watch the rib beside the fixed cup. It was the first place to show damage in both jaws.
 
