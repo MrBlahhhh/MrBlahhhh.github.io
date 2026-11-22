@@ -11,6 +11,38 @@ I wanted a lighter arm for my Samsung tablet in its RAM case. Could the ribs aro
 
 <!--more-->
 
+## A 150 mm gyroid arm with two ways to reach 90°
+{: #dual-pivot-gyroid}
+
+The exposed gyroid is my favorite shape so far. Its curved sheet runs between the screw boss and the two ball seats. I also opened the broad face of each socket. On both the new gyroid and spiderweb jaws, a 12 mm stem on a 1-inch ball clears the full swing from straight to 90° through either the split or the broad face, at either end in CAD. Ball grip under load still needs a bench test.
+
+![Three assemblies with the left stem pointing through the split and the right stem coming through the broad face. Below them is one lightweight gyroid jaw with its ball seats exposed.](/assets/images/spiderweb-tablet-mount/dual-pivot/Preview.jpg){:.img-lg}
+
+**For the lightweight 150 mm gyroid, print two copies of `Gyroid-light-jaw-print-2.stl`, sockets up.** Use the M6 × 45 mm countersunk screw and open-fork knob. The pack also includes the stiffer gyroid, the dual-pivot spiderweb and a shorter truss with 76.2 mm between ball centers. The short truss is a fit prototype. Its minimum modeled plate clearance is 0.27 mm, and it exceeded its tip-deflection target. [Download the print files and settings (ZIP)](https://github.com/MrBlahhhh/MrBlahhhh.github.io/releases/download/ram-dual-pivot-v1/RAM-dual-90-print-pack.zip) · [Download the SolidCraft files and CAD generators (ZIP)](https://github.com/MrBlahhhh/MrBlahhhh.github.io/releases/download/ram-dual-pivot-v1/RAM-dual-90-source.zip)
+
+### Will the open gyroid bridge cleanly?
+
+One line in the slicer preview looked like a **5.91 mm bridge**. Following the nozzle across the layer underneath showed that the widest stretch of air on that line was only **0.52 mm**. A different line near the center screw boss crossed **5.39 mm** of air. Increasing the internal fill put plastic under that roof while keeping the visible lattice open.
+
+![Previous-layer extrusion footprints under the 5.91 mm toolpath. Short orange segments cross air, with the widest gap labeled 0.52 mm.](/assets/images/spiderweb-tablet-mount/dual-pivot/Bridge-footprint.png){:.img-lg}
+
+| Internal gyroid fill | Widest measured gap under a bridge-infill move | Filament per lightweight jaw, including supports and brim |
+| --- | ---: | ---: |
+| 40% | 5.39 mm | 26.60 g |
+| 60% | 2.30 mm | 27.46 g |
+| 80% | 1.34 mm | 28.30 g |
+
+**I’d print the first jaw at 80%.** That costs 1.70 g over the original slice. I used a hardened 0.4 mm nozzle, 0.20 mm layers, 0.45 mm lines, five perimeters, bed-only snug supports and a 4 mm brim. All 101 model layers passed the isolated-start check. These gap measurements follow the centerline of each slicer-tagged bridge move over the previous layer’s nominal bead widths. Actual sag and support removal still need checking on a PAHT-CF print.
+
+### What the edge reinforcement buys
+
+<video controls playsinline preload="metadata" width="1000" height="550" style="width:100%;height:auto" aria-label="Simulated bending of three 150 mm gyroid jaws up to their first predicted tensile damage">
+  <source src="/assets/images/spiderweb-tablet-mount/dual-pivot/Gyroid-bend-screen.mp4" type="video/mp4">
+  <a href="/assets/images/spiderweb-tablet-mount/dual-pivot/Gyroid-bend-screen.mp4">Download the 150 mm gyroid bend video</a>
+</video>
+
+In the simulation, I held one ball seat fixed and loaded the jaw 50 mm past the other ball. The thin sheet alone reached first predicted tensile damage at **8.0 N per jaw**. Curved edge reinforcement raised that to **34.6 N** on the lightweight jaw. The stiffer gyroid reached **58.6–60.4 N** across two mesh sizes, close to the dual-pivot spiderweb’s **59.0 N**. The video shows true-scale elastic motion up to that threshold. Physical breaking loads remain unmeasured. [Download the 10-second bend video (MP4)](/assets/images/spiderweb-tablet-mount/dual-pivot/Gyroid-bend-screen.mp4)
+
 ## Getting the 150 mm arm to pivot 90°
 {: #pivot-90}
 
