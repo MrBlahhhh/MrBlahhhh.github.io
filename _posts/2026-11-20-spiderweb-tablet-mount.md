@@ -4,12 +4,56 @@ date: 2026-11-20 12:00:00 -0500
 categories: car tech
 tags: [3d-printing, solidcraft, paht-cf, stl, tablet-mount]
 cover: /assets/images/spiderweb-tablet-mount/fracture-cover.jpg
-excerpt: "A simulated bend test pulls a printed 62 mm socket arm apart, rib by rib. Watch the fracture and download the four sizes for 1-inch balls."
+excerpt: "A simulated bend test pulls a printed 62 mm socket arm apart, rib by rib. See where the spiderweb cracks, how the new curved wrap flexes, and download either design in four sizes."
 ---
 
 I wanted a lighter arm for my Samsung tablet in its RAM case. Could the ribs around a single clamp bolt do the job? We opened up a 62 mm double-socket arm, then pulled on its outer cup in a simulated bend test. The first crack and the final break happened at opposite ends.
 
 <!--more-->
+
+## From spiderweb to organic wrap
+
+The spiderweb put most of its openings **between** the two balls. For the next version I wanted the ribs to wrap **around** each 1-inch ball as well. Look at the black ball through the opening on the left. The curved fingers touch it on spherical pads. On the 62 mm jaw those pads retain about 74% of the contact area of the original solid cup. The new jaw is 46.5 mm wide across its broadest point, up from 42.9 mm on the spiderweb.
+
+![Four CAD views showing the exposed ball, the assembled thumb knob, the curved ribs of the 120 mm jaw and the contact pads inside the 62 mm jaw](/assets/images/spiderweb-tablet-mount/organic/Organic-wrap-preview.jpg){:.img-lg}
+
+### Where the extra material went
+
+The first open jaw flexed at the shoulders where the sockets meet the arm. Widening those shoulders helped. Then a thinner version passed both whole-jaw bending tests, yet one finger still spread too far when loaded on its own. The stress map pointed to a small arc at its root. Thickening that arc brought its movement under the limit while using 0.70 g less filament per jaw than thickening the roots all around.
+
+<video controls playsinline preload="metadata" width="1280" height="720" style="width:100%;height:auto" poster="/assets/images/spiderweb-tablet-mount/organic/rim-test.jpg" aria-label="Three simulated load tests of the 62 mm organic jaw, from the first rejected design to the reinforced rim">
+  <source src="/assets/images/spiderweb-tablet-mount/organic/Load-test-highlights.mp4" type="video/mp4">
+  <a href="/assets/images/spiderweb-tablet-mount/organic/Load-test-highlights.mp4">Download the organic load-test film</a>
+</video>
+
+| Time | What to watch in the 62 mm test |
+| --- | --- |
+| 0:00 | The first jaw bends 0.448 mm vertically. The limit was 0.230 mm. |
+| 0:08 | The thinner wrap passes whole-jaw bending, but one socket rib moves 0.061 mm under 20 N. Its limit was 0.043 mm. |
+| 0:20 | The reinforced rib moves 0.039 mm under the same force. The complete jaw passes all three flex checks. |
+
+The film magnifies movement 45×. The readouts give actual predicted displacement. The limits allow each jaw to flex up to 25% more than the solid-cup reference. This film follows elastic movement under load. The [original spiderweb bend-to-fracture film](#original-spiderweb-bend-test) shows what happens as the simulated load keeps rising. [Download the 32-second comparison](/assets/images/spiderweb-tablet-mount/organic/Load-test-highlights.mp4) · [Download all 13 individual load-test videos](/assets/downloads/spiderweb-tablet-mount/organic/Load-test-videos.zip)
+
+### Spiderweb and organic jaws compared
+
+Each row compares one printed jaw at the same tip-to-tip length. Travel is the predicted vertical movement at the tablet under a 3 g load, assuming a 1 kg tablet and case centered 50 mm beyond the outer ball.
+
+| Length | Spiderweb mass | Organic mass | Spiderweb travel | Organic travel |
+| --- | ---: | ---: | ---: | ---: |
+| 62 mm | 14.85 g | 19.44 g | 0.302 mm | 0.184 mm |
+| 95 mm | 20.45 g | 31.11 g | 0.838 mm | 0.440 mm |
+| 120 mm | 23.53 g | 40.81 g | 1.763 mm | 0.746 mm |
+| 150 mm | 26.68 g | 54.10 g | 3.508 mm | 1.221 mm |
+
+At 62 mm, the organic wrap costs an extra 4.59 g per jaw for about 39% less predicted vertical travel. All four organic sizes passed the simulated flex checks. The **95 mm** finger only just passed its local test at 0.09165 mm against a 0.09170 mm limit. The **62 mm** is my first bench prototype. Grip on the rubber balls, warm-cabin creep and physical breaking load still need testing.
+
+### Print the organic wrap
+
+Print two identical jaws and one thumb knob. The organic jaws take an **M6 × 1.0 × 45 mm, 90° countersunk socket screw**, measured including the head. Both versions use the same knob, plain M6 nut and 6.4 × 18 × 1.6 mm washer. The download includes the PAHT-CF print settings and assembly guide.
+
+[62 mm organic starter pack](/assets/downloads/spiderweb-tablet-mount/organic/Organic-wrap-62mm.zip) · [Organic print files for all four lengths](/assets/downloads/spiderweb-tablet-mount/organic/Organic-wrap-print-pack.zip) · [Editable SolidCraft models for all four organic arms](https://github.com/MrBlahhhh/MrBlahhhh.github.io/releases/download/organic-wrap-v1/Organic-wrap-SolidCraft.zip)
+
+## Original spiderweb bend test
 
 <video controls playsinline preload="metadata" width="1344" height="768" style="width:100%;height:auto" poster="/assets/images/spiderweb-tablet-mount/Bend-test-poster.jpg" aria-label="Simulated bending of the 62 mm spiderweb jaw until the fixed cup separates">
   <source src="/assets/images/spiderweb-tablet-mount/Spiderweb-62mm-bend-test.mp4" type="video/mp4">
@@ -24,7 +68,8 @@ The filmed mesh first reached the assumed tensile limit at **136 N on one jaw**,
 
 First damage is especially sensitive to how finely the thin rib is meshed. A finer mesh placed first damage in the same pair of rib-to-cup junctions, on the opposite side, at **77 N**. That gives me a place to watch during a bench test. The breaking force of an actual print and the load at which the rubber balls slip are still unmeasured.
 
-## Download the models
+## Original spiderweb print files
+{: #download-the-models}
 
 Each ZIP contains the jaw STL, its editable SolidCraft model, the shared hand-knob STL and the print guide. Choose a **tip-to-tip jaw length**. All four use nominal 1-inch (25.4 mm) balls.
 
