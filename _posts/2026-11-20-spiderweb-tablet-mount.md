@@ -11,6 +11,17 @@ I wanted a lighter arm for my Samsung tablet in its RAM case. Could the ribs aro
 
 <!--more-->
 
+## Getting the 150 mm arm to pivot 90°
+{: #pivot-90}
+
+The first 150 mm spiderweb arm clamped onto the ball, but when I swung the arm sideways on the mount, the stem hit the socket rim before the tablet reached the angle I wanted. I relieved the rim on both jaws at both ends. The stem can now swing out through the split on either side in the CAD assembly.
+
+![Cross-sections of the original and revised jaws with the stem at 90°. Red shows where the original rim overlaps the stem. The revised rim leaves space above and below it.](/assets/images/spiderweb-tablet-mount/Pivot-90-section.png){:.img-lg}
+
+The 1 inch measurement is the ball diameter. RAM’s aluminum diamond base has a **0.438 inch (11.13 mm) stem**. I swept that diameter and a larger **12 mm** stem from straight out to 90° at both ends. Both cleared through the full swing with the jaws 2 mm apart and again with the split narrowed to 1 mm. Those checks establish geometric clearance. I still need to bench-test how securely the revised sockets hold the tablet under load. The bend-test results below apply to the earlier jaws. [RAM-B-238U dimensioned drawing](https://images.rammount.com/files/pdf/RAM-B-238U.pdf)
+
+**For the 90° version, print two identical 150 mm jaws** with the flat washer face on the bed and the cups up. Reuse the spiderweb arm’s M6 × 40 mm hex-head bolt, plain M6 nut, 18 mm washer and knob. The ZIP includes the revised jaw STL, editable SolidCraft model, original knob STL and print instructions. [Download the 150 mm spiderweb 90° print pack](/assets/downloads/spiderweb-tablet-mount/Spiderweb-150mm-pivot90.zip)
+
 ## Choose a thumb knob
 
 The original knob has a scalloped rim. For the lighter version, I split the grip into three curved fingers around the same M6 nut pocket. Both fit the arm and use the same plain M6 hex nut and 18 mm washer. If you already printed the jaws, the knob is the only part you need to print.
@@ -100,7 +111,7 @@ Each ZIP contains the jaw STL, its editable SolidCraft model, the shared hand-kn
 | 62 mm | 46 mm | [Download the 62 mm arm](/assets/downloads/spiderweb-tablet-mount/Spiderweb-62mm.zip) |
 | 95 mm | 79 mm | [Download the 95 mm arm](/assets/downloads/spiderweb-tablet-mount/Spiderweb-95mm.zip) |
 | 120 mm | 104 mm | [Download the 120 mm arm](/assets/downloads/spiderweb-tablet-mount/Spiderweb-120mm.zip) |
-| 150 mm | 134 mm | [Download the 150 mm arm](/assets/downloads/spiderweb-tablet-mount/Spiderweb-150mm.zip) |
+| 150 mm | 134 mm | [Original 150 mm arm](/assets/downloads/spiderweb-tablet-mount/Spiderweb-150mm.zip) · [90° revision](#pivot-90) |
 
 [Download all four sizes together (105 MB ZIP)](https://github.com/MrBlahhhh/MrBlahhhh.github.io/releases/download/spiderweb-arms-v1/Spiderweb-tablet-arms.zip) · [Read the print and assembly guide](/assets/downloads/spiderweb-tablet-mount/Print-guide.txt)
 
