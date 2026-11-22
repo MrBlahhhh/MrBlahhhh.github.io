@@ -18,9 +18,23 @@ The first 150 mm spiderweb arm clamped onto the ball, but when I swung the arm s
 
 ![Cross-sections of the original and revised jaws with the stem at 90°. Red shows where the original rim overlaps the stem. The revised rim leaves space above and below it.](/assets/images/spiderweb-tablet-mount/Pivot-90-section.png){:.img-lg}
 
-The 1 inch measurement is the ball diameter. RAM’s aluminum diamond base has a **0.438 inch (11.13 mm) stem**. I swept that diameter and a larger **12 mm** stem from straight out to 90° at both ends. Both cleared through the full swing with the jaws 2 mm apart and again with the split narrowed to 1 mm. Those checks establish geometric clearance. I still need to bench-test how securely the revised sockets hold the tablet under load. The bend-test results below apply to the earlier jaws. [RAM-B-238U dimensioned drawing](https://images.rammount.com/files/pdf/RAM-B-238U.pdf)
+The 1 inch measurement is the ball diameter. RAM’s aluminum diamond base has a **0.438 inch (11.13 mm) stem**. I swept that diameter and a larger **12 mm** stem from straight out to 90° at both ends. Both cleared through the full swing with the jaws 2 mm apart and again with the split narrowed to 1 mm. [RAM-B-238U dimensioned drawing](https://images.rammount.com/files/pdf/RAM-B-238U.pdf)
 
 **For the 90° version, print two identical 150 mm jaws** with the flat washer face on the bed and the cups up. Reuse the spiderweb arm’s M6 × 40 mm hex-head bolt, plain M6 nut, 18 mm washer and knob. The ZIP includes the revised jaw STL, editable SolidCraft model, original knob STL and print instructions. [Download the 150 mm spiderweb 90° print pack](/assets/downloads/spiderweb-tablet-mount/Spiderweb-150mm-pivot90.zip)
+
+### Did opening the sockets weaken the 150 mm jaw?
+{: #150mm-bend-test}
+
+I ran the original and revised jaws through the same simulated bend test. I held the left cup fixed and applied a downward load 50 mm beyond the right ball. Watch the rib beside the fixed cup. It was the first place to show damage in both jaws.
+
+<video controls playsinline preload="metadata" width="1280" height="600" style="width:100%;height:auto" poster="/assets/images/spiderweb-tablet-mount/150mm-bend-poster.jpg" aria-label="Side-by-side simulation of the original and 90-degree spiderweb jaws bending through peak load">
+  <source src="/assets/images/spiderweb-tablet-mount/150mm-bend-comparison.mp4" type="video/mp4">
+  <a href="/assets/images/spiderweb-tablet-mount/150mm-bend-comparison.mp4">Download the 150 mm bend-test video</a>
+</video>
+
+On the finer mesh shown in the video, first damage occurred at **60.68 N** on the original jaw and **60.34 N** on the revised jaw, about **0.6% earlier**. The revised jaw carried a higher peak on this mesh (64.42 versus 61.22 N), but the coarser mesh put both peaks within 0.04 N of each other. Across the two runs, opening the sockets showed no consistent loss in peak bending strength. [Download the 12-second comparison (MP4)](/assets/images/spiderweb-tablet-mount/150mm-bend-comparison.mp4)
+
+Grip is the remaining bench test. The relief removed **27% of the spherical seat area** from each cup. The simulation held the base cup fixed, so it leaves open how much torque the printed assembly can hold at 90° before the ball slips.
 
 ## Choose a thumb knob
 
