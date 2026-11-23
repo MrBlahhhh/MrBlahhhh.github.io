@@ -146,27 +146,36 @@ And the failure that started all this: I'd had the **ceramic caliper piston tips
 
 ## What the CFD shows
 
-I ran both corners through CFD at 100 mph, built from the same 3D scans the ducts were designed against. The scans were taken on the lift with the wheels hanging, so the model puts the suspension back at ride height first: the wheel sits about 3 in higher in the body, and the front arm and its duct tilt with it.
+I ran the ducts through CFD at 100 mph, built from the same 3D scans the ducts were designed against. The scans were taken on the lift with the wheels hanging, so the model puts the suspension back at ride height first: the wheel sits about 3 in higher in the body, and the front arm and its duct tilt with it.
 
-### Rear: 214 CFM, under the caliper and across the rotor
+Each duct went through on its own first, in clean air, to check that the air goes through it the way it should. Then the whole front corner of the car, to see what each duct actually gets.
 
-214 CFM goes through the rear duct at 100 mph. The jet leaves the nozzle and fans out rearward under the caliper, across the lower half of the dust shield and the rotor. About 40% of the duct's air passes within 15 mm of the rotor, and 10% within 15 mm of the caliper.
+| Duct | Alone, clean air | On the car |
+|------|------------------|------------|
+| **Rear duct** | flows clean through the nozzle | **140 CFM** |
+| **Front bumper duct** (square port) | 431 CFM | **470 CFM** |
+| **Front control-arm duct** | 209 CFM | **about 65 CFM** |
 
-### Front: 187 CFM, bent up past the caliper
+### Rear: 140 CFM
 
-The front model is the whole corner of the car: the body, the bumper overlay with its second port plugged, the splitter, a flat floor from the splitter back to the end of the transmission, and sealed wheel wells. The floor stops inboard of the lower arms, so the arms and the duct sit in an open gap, and air only reaches the wheel from under the car, same as on mine. Grille air goes through the engine bay and out underneath.
+140 CFM goes through the rear duct at 100 mph, fed by clean air from under the car.
 
-187 CFM goes through the front duct at 100 mph. The outlet points outboard at the lower half of the caliper, but the jet bends up and back once it leaves, so it sweeps along the inboard side of the caliper instead of hitting it square. About 7% of the duct's air passes within 15 mm of the caliper and 30% within 60 mm. Almost none of it reaches the rotor.
+### Front bumper duct: 470 CFM
 
-![Front duct airflow seen from behind the wheel](/assets/images/135i-brake-ducts/cfd-front-duct-behind.jpg){:.img-lg}
-*From behind the wheel: the jet runs from the outlet up past the inboard side of the caliper.*
+The bumper duct's square port takes about 470 CFM at 100 mph and dumps it behind the bumper into the wheel area. The round port is plugged, same as on my car.
+
+### Front control-arm duct: 209 CFM it can take, about 65 it gets
+
+On its own in clean air the arm duct moves 209 CFM. On the car it gets about 65. Its mouth sits in the air that comes up off the splitter ramp, and most of that air stays low and passes under and around the mouth instead of going in. The flow there isn't steady either: it swings between about 50 and 75 CFM, over and over.
+
+So the arm duct isn't short of capacity. It's short of air at its mouth. That's the next thing to change.
 
 ### How it was run
 
-- **The solve.** Steady flow in OpenFOAM, k-omega SST, at 100 mph, with the ground moving and the tire and rotor spinning at road speed. The rear model has 1.7 million cells and the front 5.3 million. The rear duct's flow moved about 2% over the last 400 iterations, the front's about 5% over the last 800.
-- **What's in it.** The scanned hubs, arms and calipers, the ducts as designed, the front aluminum deflectors and the rear factory dust shields.
-- **What isn't.** The front rotor comes from the scan, so it's solid in the model and no air goes through its vanes. There's no radiator or engine up front, so the grille air goes into an empty bay. The splitter's size is estimated from a photo.
-- **The percentages.** Streamlines traced from across the whole duct section, each weighted by the air through its starting point, counted when they pass within that distance of the part.
+- **The solve.** Steady flow in OpenFOAM, k-omega SST, at 100 mph, with the ground moving and the tire and rotor spinning at road speed. The front corner model has 6.9 million cells and runs from ahead of the car to past the end of the floor.
+- **What's in it.** The scanned hubs, arms and calipers, the ducts as designed, the front aluminum deflectors and the rear factory dust shields. Up front: the bumper duct with its round port plugged, the splitter sealed to the undertray and angled down 3 degrees at the front, its end plates and splitter ramps, a flat floor from the splitter back to the end of the transmission, and sealed wheel wells. Grille air goes through the engine bay and out the hood vent and under the car, separate from the wheel area.
+- **What isn't.** The front rotor comes from the scan, so it's solid in the model and no air goes through its vanes. The body is a stock 135i, so my wider add-on fender flares aren't in it yet.
+- **The numbers.** Each CFM figure is the flow through cross-sections along the inside of the duct, and the sections agree within a few percent. The arm duct figure is the average over its swing.
 - **Not temperatures.** These are airflows in a simulation, not a measurement on the car.
 
 ## The fine print
@@ -198,3 +207,4 @@ STLs on Cults3D:
 |------|-----|
 | **Front control-arm brake cooling duct** | [View on Cults3D](https://cults3d.com/en/3d-model/various/e82-bmw-front-control-arm-brake-cooling-duct) |
 | **Rear brake ducts** | [View on Cults3D](https://cults3d.com/en/3d-model/various/e82-rear-brake-ducts) |
+| **Front brake air shields** (the deflectors) | [View on Cults3D](https://cults3d.com/en/3d-model/tool/e82-135i-front-brake-air-shields) |
