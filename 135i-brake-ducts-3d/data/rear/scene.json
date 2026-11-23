@@ -1,0 +1,40 @@
+{
+ "title": "135i rear brake duct on its own, 100 mph",
+ "note": "Rear duct on its own (test case P1): duct, moving road, oncoming air at 100 mph. No wheel, brake or car.",
+ "parts": [
+  {
+   "name": "Brake duct",
+   "color": "#cfe3f5",
+   "opacity": 0.22,
+   "wall": true,
+   "vOff": 0,
+   "nV": 4603,
+   "iOff": 27618,
+   "nI": 28206
+  }
+ ],
+ "lines": 6354,
+ "linesDuct": 3036,
+ "posScale": 0.0005,
+ "tScale": 5e-05,
+ "sScale": 0.25,
+ "arrow": 0.01,
+ "spacing": 0.006,
+ "target": [
+  0.10891272127628326,
+  -0.03828401863574982,
+  -2.568293571472168
+ ],
+ "extent": 0.7471296787261963,
+ "labels": [
+  [
+   "Duct nozzle",
+   [
+    0.1575,
+    -0.0079,
+    -2.5561
+   ]
+  ]
+ ],
+ "vmax": 50
+}

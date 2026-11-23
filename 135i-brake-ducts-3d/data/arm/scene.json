@@ -1,0 +1,40 @@
+{
+ "title": "135i arm duct on its own, 100 mph",
+ "note": "Arm duct alone at 100 mph (test case P3): duct and moving road, clean oncoming air. 209 CFM through the duct.",
+ "parts": [
+  {
+   "name": "Arm duct",
+   "color": "#cfe3f5",
+   "opacity": 0.22,
+   "wall": true,
+   "vOff": 0,
+   "nV": 4861,
+   "iOff": 29166,
+   "nI": 30102
+  }
+ ],
+ "lines": 3628,
+ "linesDuct": 143,
+ "posScale": 0.0005,
+ "tScale": 5e-05,
+ "sScale": 0.25,
+ "arrow": 0.01,
+ "spacing": 0.006,
+ "target": [
+  0.08416617661714554,
+  -0.0004363059997558594,
+  -0.16733567416667938
+ ],
+ "extent": 0.6999046802520752,
+ "labels": [
+  [
+   "Arm duct outlet",
+   [
+    0.165,
+    0.045,
+    -0.125
+   ]
+  ]
+ ],
+ "vmax": 50
+}

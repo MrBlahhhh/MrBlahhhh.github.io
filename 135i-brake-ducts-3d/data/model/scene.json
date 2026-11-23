@@ -1,0 +1,194 @@
+{
+ "title": "135i front corner, as modelled",
+ "note": "The front corner as modelled for the next run, 125 mph: bumper duct placed from the bumper scan, splitter sealed to the undertray and raked 3 degrees, end plates, splitter ramps, fender flares. Parts only, no air yet.",
+ "parts": [
+  {
+   "name": "Tire",
+   "color": "#cfe3f5",
+   "opacity": 0.1,
+   "wall": true,
+   "vOff": 0,
+   "nV": 2594,
+   "iOff": 15564,
+   "nI": 15552
+  },
+  {
+   "name": "Body",
+   "color": "#cfe3f5",
+   "opacity": 0.08,
+   "wall": true,
+   "vOff": 77772,
+   "nV": 24097,
+   "iOff": 222354,
+   "nI": 119997
+  },
+  {
+   "name": "Arms and hub (scanned)",
+   "color": "#8fa3b8",
+   "opacity": 0.55,
+   "wall": false,
+   "vOff": 702342,
+   "nV": 30007,
+   "iOff": 882384,
+   "nI": 180000
+  },
+  {
+   "name": "Caliper (scanned)",
+   "color": "#e0574f",
+   "opacity": 0.85,
+   "wall": false,
+   "vOff": 1602384,
+   "nV": 769,
+   "iOff": 1606998,
+   "nI": 4602
+  },
+  {
+   "name": "Rotor",
+   "color": "#9aa7b4",
+   "opacity": 0.6,
+   "wall": false,
+   "vOff": 1625406,
+   "nV": 642,
+   "iOff": 1629258,
+   "nI": 3840
+  },
+  {
+   "name": "Deflector",
+   "color": "#6fbf73",
+   "opacity": 0.35,
+   "wall": false,
+   "vOff": 1644618,
+   "nV": 720,
+   "iOff": 1648938,
+   "nI": 4356
+  },
+  {
+   "name": "Arm duct",
+   "color": "#cfe3f5",
+   "opacity": 0.22,
+   "wall": true,
+   "vOff": 1666362,
+   "nV": 4861,
+   "iOff": 1695528,
+   "nI": 30102
+  },
+  {
+   "name": "Floor and wheel-well seals",
+   "color": "#cfe3f5",
+   "opacity": 0.06,
+   "wall": true,
+   "vOff": 1815936,
+   "nV": 20253,
+   "iOff": 1937454,
+   "nI": 120000
+  },
+  {
+   "name": "Bumper duct",
+   "color": "#cfe3f5",
+   "opacity": 0.25,
+   "wall": true,
+   "vOff": 2417454,
+   "nV": 9721,
+   "iOff": 2475780,
+   "nI": 58338
+  },
+  {
+   "name": "Bumper duct plug",
+   "color": "#9aa7b4",
+   "opacity": 0.7,
+   "wall": false,
+   "vOff": 2709132,
+   "nV": 1452,
+   "iOff": 2717844,
+   "nI": 8700
+  },
+  {
+   "name": "Splitter",
+   "color": "#3a3f45",
+   "opacity": 0.85,
+   "wall": false,
+   "vOff": 2752644,
+   "nV": 126,
+   "iOff": 2753400,
+   "nI": 744
+  },
+  {
+   "name": "Splitter ramp and end plate",
+   "color": "#e02020",
+   "opacity": 0.9,
+   "wall": false,
+   "vOff": 2756376,
+   "nV": 1245,
+   "iOff": 2763846,
+   "nI": 7470
+  },
+  {
+   "name": "Fender flares",
+   "color": "#2b2f36",
+   "opacity": 0.85,
+   "wall": false,
+   "vOff": 2793726,
+   "nV": 382,
+   "iOff": 2796018,
+   "nI": 2280
+  },
+  {
+   "name": "Bumper corner, filled behind the duct",
+   "color": "#cfe3f5",
+   "opacity": 0.18,
+   "wall": true,
+   "vOff": 2805138,
+   "nV": 14583,
+   "iOff": 2892636,
+   "nI": 89997
+  }
+ ],
+ "lines": 0,
+ "linesDuct": 0,
+ "posScale": 0.0005,
+ "tScale": 5e-05,
+ "sScale": 0.25,
+ "arrow": 0.018,
+ "spacing": 0.008,
+ "target": [
+  0.09999999999999998,
+  0.2899999999999999,
+  0.175
+ ],
+ "extent": 1.8335,
+ "labels": [
+  [
+   "Arm duct outlet",
+   [
+    0.165,
+    0.045,
+    -0.125
+   ]
+  ],
+  [
+   "Caliper",
+   [
+    0.24946,
+    0.20238,
+    -0.17386
+   ]
+  ],
+  [
+   "Splitter end plate",
+   [
+    0.4350000023841858,
+    -0.029732876718044282,
+    0.40536749362945557
+   ]
+  ],
+  [
+   "Bumper duct",
+   [
+    0.05293562263250351,
+    0.14796892292797564,
+    0.4710848480463028
+   ]
+  ]
+ ],
+ "vmax": 50
+}

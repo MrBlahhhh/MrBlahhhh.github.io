@@ -21,7 +21,7 @@ article_header:
 
 These are **front hub backing-plate air deflectors** for the **E82 / E88 135i**. They replace the factory dust shields and keep ducted (or wheel-well) air on the rotor instead of letting it wash out into the wheel.
 
-They're the metal half of the front cooling path I wrote up in the [brake cooling ducts post](/car/tech/2026/07/14/135i-brake-cooling-ducts.html) — same parts, now sold as their own CAD pack.
+They're the metal half of the front cooling path I wrote up in the [brake cooling ducts post](/car/tech/2026/11/23/135i-brake-cooling-ducts.html) — same parts, now sold as their own CAD pack.
 
 ![Bent aluminum brake air deflector](/assets/images/135i-front-brake-air-shields/deflector-raw.jpg){:.img-md}
 *Finished aluminum shield — flat blank from SendCutSend, bent by hand.*

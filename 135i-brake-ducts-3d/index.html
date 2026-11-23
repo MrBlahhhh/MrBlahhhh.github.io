@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+</head>
+<body>
+<title>135i Brake Duct Flow</title>
+<style>
+/* Layout: the 3D corner fills the screen; a slim control panel floats top-right (a bottom drawer on phones).
+   One dark look on purpose, matching the flow videos: navy-black gradient, see-through parts, turbo-coloured arrows. */
+:root {
+  --bg: #06090d; --bg-top: #1a2533; --panel: rgba(16, 24, 34, 0.86); --line: #2b3a4c;
+  --fg: #e6edf4; --muted: #9db0c3; --accent: #e8c66a; --focus: #8fb4d8;
+  --f-ui: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-num: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  color-scheme: dark;
+}
+html, body { height: 100%; }
+body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--f-ui); overflow: hidden; }
+#stage { position: fixed; inset: 0; background: linear-gradient(to bottom, var(--bg-top), var(--bg)); }
+#stage canvas { display: block; touch-action: none; }
+#labels { position: fixed; inset: 0; pointer-events: none; }
+.lbl { position: absolute; transform: translate(-50%, -120%); padding: 3px 7px; border-radius: 4px; font-size: 12px;
+  background: rgba(16, 24, 34, 0.78); color: var(--fg); white-space: nowrap; letter-spacing: .01em; }
+.lbl::after { content: ""; position: absolute; left: 50%; bottom: -5px; width: 5px; height: 5px; margin-left: -2.5px;
+  border-radius: 50%; background: var(--fg); }
+header { position: fixed; top: calc(env(safe-area-inset-top, 0px) + 14px); left: max(16px, env(safe-area-inset-left, 0px));
+  right: 340px; pointer-events: none; }
+header h1 { margin: 0; font-size: 17px; font-weight: 600; text-wrap: balance; }
+header p { margin: 4px 0 0; font-size: 12.5px; color: var(--muted); max-width: 62ch; }
+header #note { color: var(--accent); }
+#panel { position: fixed; top: calc(env(safe-area-inset-top, 0px) + 12px); right: max(12px, env(safe-area-inset-right, 0px));
+  width: 300px; max-height: calc(100% - 24px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+  overflow: auto; background: var(--panel); border: 1px solid var(--line); border-radius: 8px;
+  padding: 12px 14px; display: flex; flex-direction: column; gap: 12px; backdrop-filter: blur(6px); }
+#panel h2 { margin: 0 0 6px; font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.row { display: flex; align-items: center; gap: 8px; font-size: 13px; }
+.row label { flex: 1; cursor: pointer; }
+.parts { display: grid; gap: 5px; }
+.sw { width: 11px; height: 11px; border-radius: 2px; flex: none; border: 1px solid rgba(255,255,255,.25); }
+input[type="checkbox"] { accent-color: var(--accent); width: 15px; height: 15px; margin: 0; }
+input[type="range"] { flex: 1; accent-color: var(--accent); }
+.seg { display: flex; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+.seg button { flex: 1; background: transparent; color: var(--muted); border: 0; padding: 7px 6px; font: inherit; font-size: 12.5px; cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--line); color: var(--fg); }
+.btns { display: flex; gap: 6px; }
+.btns button { flex: 1; background: transparent; color: var(--fg); border: 1px solid var(--line); border-radius: 6px;
+  padding: 7px 6px; font: inherit; font-size: 12.5px; cursor: pointer; }
+button:focus-visible, input:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.num { font-family: var(--f-num); font-variant-numeric: tabular-nums; font-size: 12px; color: var(--muted); min-width: 46px; text-align: right; }
+#legend canvas { width: 100%; height: 10px; border-radius: 2px; display: block; }
+.ticks { display: flex; justify-content: space-between; font-family: var(--f-num); font-size: 11px; color: var(--muted); margin-top: 3px; }
+.note { font-size: 11.5px; color: var(--muted); line-height: 1.45; margin: 0; }
+#status { position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%); font-size: 13px; color: var(--muted); }
+#toggle { display: none; }
+@media (max-width: 720px) {
+  header { right: max(16px, env(safe-area-inset-right, 0px)); }
+  header p { display: none; }
+  #panel { top: auto; bottom: calc(env(safe-area-inset-bottom, 0px) + 10px); left: max(10px, env(safe-area-inset-left, 0px));
+    right: max(10px, env(safe-area-inset-right, 0px)); width: auto; max-height: 52%; }
+  #panel.closed > :not(#toggle) { display: none; }
+  #toggle { display: block; background: transparent; color: var(--fg); border: 0; font: inherit; font-size: 13px; text-align: left; padding: 0; cursor: pointer; }
+}
+@media (prefers-reduced-motion: reduce) { .lbl { transition: none; } }
+</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;600&display=swap">
+
+<div id="stage"></div>
+<div id="labels"></div>
+<header>
+  <h1 id="title">135i brake duct flow</h1>
+  <p id="note" hidden></p>
+  <p>Arrows ride the solved airflow at their own speed, slowed down. Drag to orbit, right-drag or two fingers to pan, scroll or pinch to zoom. The flow keeps moving while you look around.</p>
+</header>
+<div id="status">Loading the corner&hellip;</div>
+<aside id="panel" aria-label="View controls">
+  <button id="toggle" aria-expanded="false">Controls &#9652;</button>
+  <section>
+    <h2>Corner</h2>
+    <div class="seg" id="scenes" role="group" aria-label="Corner"></div>
+  </section>
+  <section>
+    <h2>Air</h2>
+    <div class="row"><input type="checkbox" id="showArrows" checked><label for="showArrows">Moving arrows</label></div>
+    <div class="row"><input type="checkbox" id="ductOnly" checked><label for="ductOnly">Only air through the duct</label></div>
+    <div class="row"><input type="checkbox" id="showPaths"><label for="showPaths">Path lines</label></div>
+    <div class="row"><input type="checkbox" id="showLabels" checked><label for="showLabels">Labels</label></div>
+    <div class="row"><label for="slow">Slow motion</label><span class="num" id="slowVal">250&times;</span></div>
+    <div class="row"><input type="range" id="slow" min="60" max="1500" step="10" value="250" aria-label="Slow motion factor"></div>
+    <div class="btns"><button id="pause">Pause</button><button id="reset">Reset view</button></div>
+  </section>
+  <section id="legend">
+    <h2>Air speed, m/s</h2>
+    <canvas id="bar" width="256" height="10" aria-hidden="true"></canvas>
+    <div class="ticks"><span>0</span><span>10</span><span>20</span><span>30</span><span>40</span><span>50</span></div>
+  </section>
+  <section>
+    <h2>Parts</h2>
+    <div class="parts" id="parts"></div>
+  </section>
+  <p class="note">Steady-state CFD (OpenFOAM, k-omega SST) at 100 mph with the ground moving. The duct tabs are each printed duct on its own in clean air; the front corner tab is the whole corner as modelled. "Only air through the duct" hides every line that doesn't pass through the duct's channel.</p>
+</aside>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
+<script>
+(() => {
+  const SCENES = [{ id: 'model', name: 'Front corner' }, { id: 'rear', name: 'Rear duct' }, { id: 'front', name: 'Bumper duct' }, { id: 'arm', name: 'Arm duct' }];   // one part per test case
+  const stage = document.getElementById('stage'), labelsEl = document.getElementById('labels');
+  const statusEl = document.getElementById('status');
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+  stage.appendChild(renderer.domElement);
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(35, 1, 0.01, 50);
+  const controls = new THREE.OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true; controls.dampingFactor = 0.08;
+  scene.add(new THREE.HemisphereLight(0xdfe9f5, 0x1a2533, 0.9));
+  const sun = new THREE.DirectionalLight(0xffffff, 0.8); sun.position.set(-1, 2, 1.5); scene.add(sun);
+  const fill = new THREE.DirectionalLight(0x9fb6cc, 0.35); fill.position.set(1, -1, -1); scene.add(fill);
+
+  // turbo colour map (Google's polynomial fit), t in 0..1
+  function turbo(t, out) {
+    t = Math.min(1, Math.max(0, t));
+    const r = 0.13572138 + t * (4.6153926 + t * (-42.66032258 + t * (132.13108234 + t * (-152.94239396 + t * 59.28637943))));
+    const g = 0.09140261 + t * (2.19418839 + t * (4.84296658 + t * (-14.18503333 + t * (4.27729857 + t * 2.82956604))));
+    const b = 0.1066733 + t * (12.64194608 + t * (-60.58204836 + t * (110.36276771 + t * (-89.90310912 + t * 27.34824973))));
+    out.setRGB(Math.min(1, Math.max(0, r)), Math.min(1, Math.max(0, g)), Math.min(1, Math.max(0, b)));
+    return out;
+  }
+  (function drawBar() {
+    const c = document.getElementById('bar'), x = c.getContext('2d'), col = new THREE.Color();
+    for (let i = 0; i < c.width; i++) { turbo(i / (c.width - 1), col); x.fillStyle = '#' + col.getHexString(); x.fillRect(i, 0, 1, c.height); }
+  })();
+
+  let current = null;              // the loaded corner: { group, arrows, paths, lines, labels, meta }
+  const cache = {};
+  let simTime = 0, paused = false, slow = 250, last = performance.now();
+
+  function resize() {
+    const w = window.innerWidth, h = window.innerHeight;
+    renderer.setSize(w, h); camera.aspect = w / h; camera.updateProjectionMatrix();
+  }
+  window.addEventListener('resize', resize); resize();
+
+  // the binary data ships as base64 text (artifacts serve text, not .bin)
+  function b64(t) {
+    const s = atob(t.trim()), u = new Uint8Array(s.length);
+    for (let i = 0; i < s.length; i++) u[i] = s.charCodeAt(i);
+    return u.buffer;
+  }
+
+  async function load(id) {
+    if (cache[id]) return cache[id];
+    const base = 'data/' + id + '/';
+    const meta = await fetch(base + 'scene.json').then(r => { if (!r.ok) throw new Error('missing'); return r.json(); });
+    const [parts, lines, ductLines] = await Promise.all([
+      fetch(base + 'parts.txt').then(r => r.text()).then(b64),
+      fetch(base + 'lines.txt').then(r => r.text()).then(b64),
+      meta.linesDuct ? fetch(base + 'lines_duct.txt').then(r => r.text()).then(b64) : null]);
+    const group = new THREE.Group(), partObjs = [];
+    for (const p of meta.parts) {
+      const pos = new Int16Array(parts, p.vOff, p.nV * 3), f = new Float32Array(pos.length);
+      for (let i = 0; i < pos.length; i++) f[i] = pos[i] * meta.posScale;
+      const idx = new Uint32Array(parts.slice(p.iOff, p.iOff + p.nI * 4));
+      const geo = new THREE.BufferGeometry();
+      geo.setAttribute('position', new THREE.BufferAttribute(f, 3)); geo.setIndex(new THREE.BufferAttribute(idx, 1));
+      geo.computeVertexNormals();
+      const mat = new THREE.MeshStandardMaterial({ color: p.color, transparent: true, opacity: p.opacity, roughness: 0.55,
+        metalness: 0.05, side: THREE.DoubleSide, depthWrite: !p.wall && p.opacity > 0.5,
+        flatShading: /plug/i.test(p.name) });   // the plug's flat face is a triangle fan: smooth normals make it look like a cone
+      const obj = new THREE.Group(); obj.add(new THREE.Mesh(geo, mat));
+      if (p.wall) {   // glowing edges, like the silhouettes in the videos
+        const e = new THREE.LineSegments(new THREE.EdgesGeometry(geo, 35),
+          new THREE.LineBasicMaterial({ color: 0x8fb4d8, transparent: true, opacity: 0.35, depthWrite: false }));
+        obj.add(e);
+      }
+      obj.renderOrder = p.wall ? 2 : 1;
+      group.add(obj); partObjs.push({ name: p.name, color: p.color, obj });
+    }
+    const spacing = meta.spacing || (id === 'front' ? 0.008 : 0.006), len = meta.arrow || (id === 'front' ? 0.018 : 0.010);
+    // two sets of air: every traced line, and (when the export has it) only the lines through the duct's channel
+    const airs = { all: makeAir(lines, meta.lines, meta, spacing, len) };
+    if (ductLines) airs.duct = makeAir(ductLines, meta.linesDuct, meta, spacing, len);
+    for (const k in airs) { airs[k].group.visible = false; group.add(airs[k].group); }
+    const labels = (meta.labels || []).map(([text, p]) => {
+      const el = document.createElement('div'); el.className = 'lbl'; el.textContent = text; labelsEl.appendChild(el); el.hidden = true;
+      return { el, v: new THREE.Vector3(p[0], p[1], p[2]) };
+    });
+    const c = { id, meta, group, partObjs, airs, air: null, spacing, labels };
+    cache[id] = c; return c;
+  }
+
+  function makeAir(lines, count, meta, spacing, len) {
+    const group = new THREE.Group();
+    // air paths: uniform 0.5 ms samples per line
+    const dv = new DataView(lines), L = [];
+    let o = 0;
+    for (let k = 0; k < count; k++) {
+      const n = dv.getUint16(o, true); o += 2;
+      const P = new Float32Array(n * 3), S = new Float32Array(n);
+      let t1 = 0;
+      for (let i = 0; i < n; i++) {
+        P[3 * i] = dv.getInt16(o, true) * meta.posScale; P[3 * i + 1] = dv.getInt16(o + 2, true) * meta.posScale;
+        P[3 * i + 2] = dv.getInt16(o + 4, true) * meta.posScale;
+        t1 = dv.getUint16(o + 6, true) * meta.tScale; S[i] = dv.getUint8(o + 8) * meta.sScale; o += 9;
+      }
+      L.push({ P, S, n, dt: n > 1 ? t1 / (n - 1) : 1, tmax: t1 });
+    }
+    // faint path lines, about 300 of them
+    const every = Math.max(1, Math.floor(L.length / 300)), seg = [], segc = [], col = new THREE.Color();
+    for (let k = 0; k < L.length; k += every) {
+      const l = L[k];
+      for (let i = 0; i + 1 < l.n; i++) {
+        seg.push(l.P[3 * i], l.P[3 * i + 1], l.P[3 * i + 2], l.P[3 * i + 3], l.P[3 * i + 4], l.P[3 * i + 5]);
+        turbo(l.S[i] / meta.vmax, col); segc.push(col.r, col.g, col.b, col.r, col.g, col.b);
+      }
+    }
+    const pg = new THREE.BufferGeometry();
+    pg.setAttribute('position', new THREE.Float32BufferAttribute(seg, 3)); pg.setAttribute('color', new THREE.Float32BufferAttribute(segc, 3));
+    const paths = new THREE.LineSegments(pg, new THREE.LineBasicMaterial({ vertexColors: true, transparent: true, opacity: 0.25, depthWrite: false }));
+    paths.visible = document.getElementById('showPaths').checked; group.add(paths);
+    // arrows: shaft + head instanced meshes sharing one transform per arrow
+    let cap = 0; for (const l of L) cap += Math.ceil(l.tmax / spacing) + 1;
+    const shaftG = new THREE.CylinderGeometry(0.07 * len, 0.07 * len, 0.62 * len, 8); shaftG.translate(0, -0.19 * len, 0);
+    const headG = new THREE.ConeGeometry(0.2 * len, 0.38 * len, 12); headG.translate(0, 0.31 * len, 0);
+    const amat = new THREE.MeshStandardMaterial({ roughness: 0.45, metalness: 0.05 });
+    const shaft = new THREE.InstancedMesh(shaftG, amat, cap), head = new THREE.InstancedMesh(headG, amat, cap);
+    shaft.instanceMatrix.setUsage(THREE.DynamicDrawUsage); head.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
+    shaft.setColorAt(0, col); head.setColorAt(0, col);
+    shaft.frustumCulled = head.frustumCulled = false;
+    group.add(shaft, head);
+    const phase = new Float32Array(L.length);
+    let seed = 3; for (let k = 0; k < L.length; k++) { seed = (seed * 16807) % 2147483647; phase[k] = (seed / 2147483647) * spacing; }
+    shaft.visible = head.visible = document.getElementById('showArrows').checked;
+    return { group, L, paths, shaft, head, phase };
+  }
+
+  // show the all-air or duct-only set for this corner
+  function pickAir(c) {
+    const box = document.getElementById('ductOnly');
+    box.disabled = !c.airs.duct;
+    const want = box.checked && c.airs.duct ? 'duct' : 'all';
+    for (const k in c.airs) c.airs[k].group.visible = k === want;
+    c.air = c.airs[want];
+  }
+
+  const m4 = new THREE.Matrix4(), q = new THREE.Quaternion(), up = new THREE.Vector3(0, 1, 0), dir = new THREE.Vector3(),
+    pos = new THREE.Vector3(), one = new THREE.Vector3(1, 1, 1), col = new THREE.Color();
+  function placeArrows(c, t) {
+    let k2 = 0;
+    const { spacing, meta } = c, { L, phase, shaft, head } = c.air;
+    for (let k = 0; k < L.length; k++) {
+      const l = L[k];
+      for (let tt = (t + phase[k]) % spacing; tt < l.tmax; tt += spacing) {
+        const f = tt / l.dt, i = Math.min(l.n - 2, Math.floor(f)), w = f - i, P = l.P;
+        pos.set(P[3 * i] + (P[3 * i + 3] - P[3 * i]) * w, P[3 * i + 1] + (P[3 * i + 4] - P[3 * i + 1]) * w, P[3 * i + 2] + (P[3 * i + 5] - P[3 * i + 2]) * w);
+        dir.set(P[3 * i + 3] - P[3 * i], P[3 * i + 4] - P[3 * i + 1], P[3 * i + 5] - P[3 * i + 2]);
+        if (dir.lengthSq() < 1e-14) continue;
+        q.setFromUnitVectors(up, dir.normalize());
+        m4.compose(pos, q, one);
+        shaft.setMatrixAt(k2, m4); head.setMatrixAt(k2, m4);
+        turbo((l.S[i] + (l.S[i + 1] - l.S[i]) * w) / meta.vmax, col);
+        shaft.setColorAt(k2, col); head.setColorAt(k2, col);
+        k2++;
+      }
+    }
+    shaft.count = head.count = k2;
+    shaft.instanceMatrix.needsUpdate = head.instanceMatrix.needsUpdate = true;
+    shaft.instanceColor.needsUpdate = head.instanceColor.needsUpdate = true;
+  }
+
+  function resetView(c) {
+    const T = new THREE.Vector3().fromArray(c.meta.target), d = new THREE.Vector3(-0.55, 0.45, 1.0).normalize();
+    if (c.id === 'rear') d.set(-1.0, 0.35, 0.35).normalize();
+    controls.target.copy(T); camera.position.copy(T).addScaledVector(d, c.meta.extent * 1.55);
+    camera.near = c.meta.extent / 200; camera.far = c.meta.extent * 20; camera.updateProjectionMatrix(); controls.update();
+  }
+
+  function buildPartsList(c) {
+    const box = document.getElementById('parts'); box.textContent = '';
+    c.partObjs.forEach((p, i) => {
+      const row = document.createElement('div'); row.className = 'row';
+      const cb = document.createElement('input'); cb.type = 'checkbox'; cb.id = 'part-' + c.id + '-' + i; cb.checked = p.obj.visible;
+      cb.addEventListener('change', () => { p.obj.visible = cb.checked; });
+      const sw = document.createElement('span'); sw.className = 'sw'; sw.style.background = p.color;
+      const lab = document.createElement('label'); lab.htmlFor = cb.id; lab.textContent = p.name;
+      row.append(cb, sw, lab); box.appendChild(row);
+    });
+  }
+
+  async function show(id) {
+    statusEl.hidden = false; statusEl.textContent = 'Loading the corner...';
+    let c;
+    try { c = await load(id); } catch (e) { statusEl.textContent = 'That corner is not in this build yet.'; return; }
+    if (current) { scene.remove(current.group); current.labels.forEach(l => l.el.hidden = true); }
+    current = c; scene.add(c.group); statusEl.hidden = true;
+    document.getElementById('title').textContent = c.meta.title;
+    const noteEl = document.getElementById('note'); noteEl.textContent = c.meta.note || ''; noteEl.hidden = !c.meta.note;
+    document.querySelectorAll('#scenes button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.id === id)));
+    pickAir(c); buildPartsList(c); resetView(c);
+  }
+
+  const sceneBox = document.getElementById('scenes');
+  for (const s of SCENES) {
+    const b = document.createElement('button'); b.textContent = s.name; b.dataset.id = s.id; b.setAttribute('aria-pressed', 'false');
+    b.addEventListener('click', () => show(s.id)); sceneBox.appendChild(b);
+  }
+  // arrow and path toggles apply to every loaded set, so switching sets keeps them
+  const eachAir = f => { for (const id in cache) for (const k in cache[id].airs) f(cache[id].airs[k]); };
+  document.getElementById('showArrows').addEventListener('change', e => eachAir(a => { a.shaft.visible = a.head.visible = e.target.checked; }));
+  document.getElementById('showPaths').addEventListener('change', e => eachAir(a => { a.paths.visible = e.target.checked; }));
+  document.getElementById('ductOnly').addEventListener('change', () => current && pickAir(current));
+  document.getElementById('slow').addEventListener('input', e => { slow = +e.target.value; document.getElementById('slowVal').textContent = slow + String.fromCharCode(215); });
+  const pauseBtn = document.getElementById('pause');
+  pauseBtn.addEventListener('click', () => { paused = !paused; pauseBtn.textContent = paused ? 'Play' : 'Pause'; });
+  document.getElementById('reset').addEventListener('click', () => current && resetView(current));
+  const panel = document.getElementById('panel'), tog = document.getElementById('toggle');
+  if (window.matchMedia('(max-width: 720px)').matches) panel.classList.add('closed');
+  tog.addEventListener('click', () => { const open = panel.classList.toggle('closed') === false; tog.setAttribute('aria-expanded', String(open)); tog.textContent = 'Controls ' + String.fromCharCode(open ? 9662 : 9652); });
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { paused = true; pauseBtn.textContent = 'Play'; }
+
+  const v = new THREE.Vector3();
+  function frame(now) {
+    const dt = Math.min(0.1, (now - last) / 1000); last = now;
+    if (!paused) simTime += dt / slow;
+    controls.update();
+    if (current) {
+      if (current.air.shaft.visible) placeArrows(current, simTime);
+      const showL = document.getElementById('showLabels').checked, w = window.innerWidth, h = window.innerHeight;
+      for (const l of current.labels) {
+        v.copy(l.v).project(camera);
+        const vis = showL && v.z < 1 && Math.abs(v.x) < 1.05 && Math.abs(v.y) < 1.05;
+        l.el.hidden = !vis;
+        if (vis) { l.el.style.left = ((v.x + 1) / 2 * w) + 'px'; l.el.style.top = ((1 - v.y) / 2 * h) + 'px'; }
+      }
+    }
+    renderer.render(scene, camera);
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+  show(SCENES.some(s => '#' + s.id === location.hash) ? location.hash.slice(1) : SCENES[0].id);
+})();
+</script>
+
+</body>
+</html>
