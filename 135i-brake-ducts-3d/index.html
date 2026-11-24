@@ -106,7 +106,7 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--focus); out
 <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
 <script>
 (() => {
-  const SCENES = [{ id: 'model', name: 'Front corner' }, { id: 'rear', name: 'Rear duct' }, { id: 'front', name: 'Bumper duct' }, { id: 'arm', name: 'Arm duct' }];   // one part per test case
+  const SCENES = [{ id: 'model', name: 'Front corner' }, { id: 'rear', name: 'Rear duct' }, { id: 'arm', name: 'Arm duct' }];   // one part per test case
   const stage = document.getElementById('stage'), labelsEl = document.getElementById('labels');
   const statusEl = document.getElementById('status');
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
