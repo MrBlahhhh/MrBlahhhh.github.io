@@ -8,7 +8,13 @@
      screen, ran on a throwaway local demo feed (a synthetic pull through each app's own decoder; the
      R53's non-graph IDs replay payloads read off the car), never committed.
      Board renders are the rev C ones from r53-shiftlight-site. 86-pod.jpg is the Bambu Studio
-     thumbnail of twin-shift-pod.3mf. -->
+     thumbnail of twin-shift-pod.3mf.
+     F56 (added 2026-11-24): f56-installed*.jpg are crops of Matt's photo of the housing on his car's
+     tach. f56-pod-face/-three-quarter.jpg are VTK renders of the revision 3 housing STEP and snap
+     cover in esp32-shift-light-twins hardware/f56-tach-left; the grey arc is that folder's bezel
+     reference rebuilt from the scan circles, and the lit LEDs are drawn in. RPM frame and defaults
+     from cars/cars.json mini-f56; PT-CAN location and colours from PWM_Controller_Canbus PLAN.md.
+     Matt's own F56 runs the strip off the methanol controller's shift light output. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -139,7 +145,9 @@
   .slf .bar8 i:nth-child(3),.slf .bar8 i:nth-child(6){background:#FFB000}
 }
 .slf p + h3,.slf ol + h3,.slf ul + h3,.slf table + h3{margin-top:30px}
-@media (max-width:820px){.slf .boards{grid-template-columns:minmax(0,1fr)}}
+.slf .boards.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.slf .tiles.four{grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr))}
+@media (max-width:820px){.slf .boards,.slf .boards.three{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:560px){.slf table.wires{font-size:12px}.slf table.wires th,.slf table.wires td{padding:7px 6px}}
 </style>
 
@@ -148,12 +156,12 @@
 
 <div class="hero">
 <div class="copy">
-<p class="eyebrow">ESP32 · CAN bus · Toyota 86 / Subaru BRZ · MINI R53</p>
+<p class="eyebrow">ESP32 · CAN bus · Toyota 86 / Subaru BRZ · MINI R53 and F56</p>
 <h1>Shift light,<br><em>straight off the CAN bus.</em></h1>
 <p class="lede">Eight LEDs on the steering column, reading RPM off the car's own CAN bus at 100 Hz. They light in pairs from both ends, close in the middle right at your shift point, and then the whole bar flashes. Every threshold and colour is a slider on your phone, live, with the engine running.</p>
 <div class="bar8" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
 <div class="ctas"><a class="btn red" href="#order">Order one</a><a class="btn ghost" href="#cars">Pick your car</a></div>
-<p class="news"><b>Now shipping</b> · rev C boards for the Toyota 86, Subaru BRZ and Scion FR-S, and for the MINI R53, with the printed LED housing for each car. Four wires to the car, the bar on the column, and the rest is done from your phone.</p>
+<p class="news"><b>Now shipping</b> · rev C boards for the Toyota 86, Subaru BRZ and Scion FR-S, the MINI R53 and the MINI F55 / F56 / F57, with the printed LED housing for each car. Four wires to the car, the bar on the column, and the rest is done from your phone.<br><b>New</b> · <a href="#the-f56">the F56 light</a>, in a housing printed to sit right on the edge of the tach.</p>
 </div>
 <figure class="phone"><img src="/assets/images/shift-light/86-tach-trd.jpg" alt="Twins Shift Light app at 6900 rpm: the bar tach filled in orange with the four threshold markers, and the strip mimic lit from both ends" loading="eager"><figcaption>86 app · TRD livery at 6,900</figcaption></figure>
 </div>
@@ -182,9 +190,10 @@
 <p class="eyebrow">02 · Pick your car</p>
 <h2>One board, <em>set up for your car.</em></h2>
 <p class="body">Same rev C board for every car, flashed with the firmware for yours and tested before it ships. It listens to the bus and never transmits, so the car never knows it's there.</p>
-<div class="tiles">
+<div class="tiles four">
 <a href="#the-86"><span class="k">Toyota · Subaru · Scion</span><span class="t">86 / BRZ / FR-S</span><span class="p">2013 to 2020, FA20. Plugs into the spare CAN port behind the head unit, with the board tucked in the glovebox.</span><span class="bar"></span></a>
 <a href="#the-r53"><span class="k">MINI</span><span class="t">Cooper S R53</span><span class="p">2002 to 2006. Taps the twisted yellow pair behind the dash end panel, which pops off by hand.</span><span class="bar"></span></a>
+<a href="#the-f56"><span class="k">MINI</span><span class="t">F55 / F56 / F57</span><span class="p">2014 to 2024. The bar sits on the left edge of the tach and reads RPM off PT-CAN.</span><span class="bar"></span></a>
 <a href="#more-cars"><span class="k">BMW and more</span><span class="t">135i and others</span><span class="p">The RPM frame is a setting on the board, so a new car is five numbers, not new firmware. The 135i E82 profile is ready.</span><span class="bar"></span></a>
 </div>
 </section>
@@ -276,20 +285,52 @@
 <p class="body">The R53 board also configures from a browser at <a href="https://logs.geekopolis.com/shiftlight/?v=20261006">logs.geekopolis.com/shiftlight</a>. Same sliders, same graph, same CAN view, nothing to install. On an iPhone, open it in the free <a href="https://apps.apple.com/us/app/bluefy-web-ble-browser/id1492822055">Bluefy</a> browser, which carries Bluetooth to the page. On Android, Windows, Mac or Linux, Chrome or Edge does it directly.</p>
 </section>
 
+<section id="the-f56">
+<p class="eyebrow">06 · MINI F55 / F56 / F57</p>
+<h2>Right on <em>the tach.</em></h2>
+<p class="body">The third-generation MINI already mounts its cluster on the steering column, so on my F56 the bar goes on the cluster itself. It sits on the left edge of the tach, eight LEDs running up the bezel, with both ends sweeping into the chrome ring as if the factory drew it that way. The needle and the bar land in the same glance, and because the cluster moves with the column, the wheel rim never gets between you and either one.</p>
+<figure class="photo" style="margin-top:22px"><img src="/assets/images/shift-light/f56-installed.jpg" width="1600" height="900" alt="The shift light housing on the left edge of the tach in a MINI F56, eight LED windows running up beside the bezel, with the speedometer to its right" loading="lazy"><figcaption>My F56 · the bar on the tach, the speedo beside it</figcaption></figure>
+
+<div class="split" style="margin-top:28px">
+<div>
+<h3>Printed to the cluster</h3>
+<p class="body">I drew the housing against a 3D scan of my F56's cluster, so it follows the curve of the tach bezel instead of floating next to it. It's straight down the outside and sweeps into the ring over the last 14 mm at each end.</p>
+<dl class="spec">
+<dt>Size</dt><dd><b>76 mm tall,</b> 31 mm across and 14.5 mm deep.</dd>
+<dt>Windows</dt><dd><b>Eight, one for each LED,</b> with a rib between neighbours so each one reads as its own light.</dd>
+<dt>LEDs</dt><dd><b>The same 8-LED stick as every other car.</b> It drops in from the back and the snap-on cover presses it into the windows, so there's no glue.</dd>
+<dt>Mount</dt><dd><b>3M tape</b> to the side of the tach bezel. Nothing drilled, nothing clipped onto the cluster.</dd>
+<dt>Wire</dt><dd><b>Out through a slot in the cover</b> and down behind the cluster.</dd>
+</dl>
+</div>
+<figure class="photo"><img src="/assets/images/shift-light/f56-pod-face.jpg" width="1200" height="1500" alt="Render of the F56 housing seen from the driver's seat: eight LED windows, six lit green, both ends sweeping into the curve of the tach bezel" loading="lazy"><figcaption>From the driver's seat · six lit, filling</figcaption></figure>
+</div>
+
+<div class="boards">
+<figure class="photo"><img src="/assets/images/shift-light/f56-installed-close.jpg" width="900" height="900" alt="Close-up of the printed housing beside the F56 tach, its eight square LED windows flush with the face" loading="lazy"><figcaption>Flush windows, ribs between</figcaption></figure>
+<figure class="photo"><img src="/assets/images/shift-light/f56-pod-three-quarter.jpg" width="1500" height="1200" alt="Three-quarter render of the F56 housing against the tach bezel, showing the rounded outer edge and the sweep into the ring" loading="lazy"><figcaption>The sweep into the bezel</figcaption></figure>
+</div>
+
+<h3 style="margin-top:30px">Reading the F56</h3>
+<p class="body">The F56 puts engine speed on PT-CAN, the bus the engine, gearbox and stability control share: <code>0x0A5</code>, a quarter rpm a bit, at 500 kbit/s. The board ships set up for the F56, and the Shift Light app has the same sliders, Apply and Save as every other car. Out of the box the bar comes on at 4,000, starts its colour shift at 5,500, and fills and flashes at 6,500, right where the B38 and B48 run out. Every one of those is a slider.</p>
+<p class="body">In my own car the bar runs off my <a href="/car/tech/2026/10/23/methanol-injection-controller.html">methanol controller</a>. It already sits on PT-CAN reading the same frame and has a shift light output of its own, so the strip plugs straight into it. Already running one? It drives this housing too.</p>
+</section>
+
 <section id="more-cars">
-<p class="eyebrow">06 · BMW 135i and more</p>
+<p class="eyebrow">07 · BMW 135i and more</p>
 <h2>Your car <em>is five numbers.</em></h2>
 <p class="body">Almost every modern car puts engine speed on its CAN bus. The board doesn't hard-code where: the CAN ID, the byte it starts at, the field width, the byte order and the scale are all settings it stores. A new car means setting those five numbers, not writing new firmware.</p>
 <dl class="spec">
 <dt>BMW 135i</dt><dd><b>E82 N54, ready.</b> RPM from <code>0x0AA</code> on PT-CAN.</dd>
 <dt>86 / BRZ</dt><dd><b><code>0x140</code>,</b> 100 times a second.</dd>
 <dt>MINI R53</dt><dd><b><code>0x316</code>,</b> read straight off the car.</dd>
+<dt>MINI F56</dt><dd><b><code>0x0A5</code> on PT-CAN,</b> a quarter rpm a bit.</dd>
 </dl>
 <p class="body">Got something else? <a href="mailto:matt@geekopolis.com?subject=Shift%20light%20for%20my%20car">Email me the car</a> and I'll set a board up for it.</p>
 </section>
 
 <section id="hardware">
-<p class="eyebrow">07 · The board</p>
+<p class="eyebrow">08 · The board</p>
 <h2>Rev C, <em>built for a car.</em></h2>
 <p class="body">A 54 × 58 mm two-layer board with everything soldered down: an ESP32-C3 SuperMini in the middle, a CAN transceiver, an MP1584 buck trimmed to 5.0 V, and screw terminals for everything that leaves the board. No dev-board stack, no jumper wires, nothing to come loose behind a dash.</p>
 <div class="boards">
@@ -310,18 +351,19 @@
 
 <section id="housing">
 <span id="mounting"></span>
-<p class="eyebrow">08 · The housing</p>
+<p class="eyebrow">09 · The housing</p>
 <h2>Printed <em>for each car.</em></h2>
-<div class="boards">
+<div class="boards three">
 <figure class="photo"><img src="/assets/images/shift-light/86-pod.jpg" alt="The 86 / BRZ shift pod: a curved column-top housing with eight LED windows" loading="lazy"><figcaption>86 / BRZ column pod</figcaption></figure>
 <figure class="photo"><img src="/assets/images/r53-shift-light/shift-light-installed.jpg" alt="R53 housing clipped to the column shroud under the tach" loading="lazy"><figcaption>R53 housing on the shroud</figcaption></figure>
+<figure class="photo"><img src="/assets/images/shift-light/f56-installed-close.jpg" alt="F56 housing taped to the left edge of the tach bezel" loading="lazy"><figcaption>F56 housing on the tach</figcaption></figure>
 </div>
-<p class="body">Each housing holds the eight-LED stick behind its own windows, shades it from the sun, and sits on top of the steering column where the bar and the road share one glance. Both are printed and shipped with the light, or sold on their own. Prefer to print the R53 one yourself? It's on <a href="https://cults3d.com/en/3d-model/various/r53-shift-light-housing">Cults3D</a>.</p>
+<p class="body">Each housing holds the eight-LED stick behind its own windows, shades it from the sun, and sits where the bar and the road share one glance: on top of the steering column in the 86 and the R53, on the edge of the tach in the F56. All three are printed and shipped with the light, or sold on their own. Prefer to print the R53 one yourself? It's on <a href="https://cults3d.com/en/3d-model/various/r53-shift-light-housing">Cults3D</a>.</p>
 </section>
 
 <section id="install">
 <span id="wiring-it-in"></span>
-<p class="eyebrow">09 · Fitting it</p>
+<p class="eyebrow">10 · Fitting it</p>
 <h2>An afternoon, <em>four wires.</em></h2>
 <p class="body">Switched 12 V, ground, CAN high and CAN low. Then three wires from the board to the strip on the column.</p>
 
@@ -350,15 +392,23 @@
 <figure class="phone"><img src="/assets/images/r53-shift-light/install-can-tap.jpg" alt="The twisted yellow CAN pair tapped in the main harness" loading="lazy"><figcaption>The twisted CAN pair</figcaption></figure>
 <figure class="phone"><img src="/assets/images/r53-shift-light/install-wire-run.jpg" alt="The strip wire routed out of sight up the column" loading="lazy"><figcaption>Up the column, out of sight</figcaption></figure>
 </div>
+<h3 style="margin-top:30px">MINI F55 / F56 / F57</h3>
+<ol class="flow">
+<li><b>Skip the OBD port.</b> Its CAN pair runs to the gateway and carries none of the engine's broadcasts. The board goes on PT-CAN instead.</li>
+<li><b>Find PT-CAN.</b> It's a twisted pair that runs under the gear lever, by the steering column and along the right footwell. Blue / red is CAN high and plain red is CAN low; some cars use black and yellow, so check with a meter before you tap. A Posi-Tap on each.</li>
+<li><b>Switched 12 V and ground</b> to the board, and the strip cable up the column to the cluster.</li>
+<li><b>Tape the housing on.</b> Wipe the side of the tach bezel clean, press the housing on with the 3M tape, and tuck the cable down behind the cluster.</li>
+</ol>
+
 <p class="body" style="margin-top:18px">Swapped the CAN pair by accident? Nothing happens to the car. The board just hears nothing and blinks; swap them and it's reading.</p>
 </section>
 
 <section id="order">
-<p class="eyebrow">10 · Order</p>
+<p class="eyebrow">11 · Order</p>
 <h2>Get <em>one.</em></h2>
 <div class="tiles">
-<div><span class="k">86 / BRZ / FR-S or R53</span><span class="price">$125</span><span class="p"><b>Shift light.</b> Rev C board flashed for your car, the 8-LED strip, the printed housing, Posi-Taps for the R53. Assembled and tested.</span><span class="bar"></span></div>
-<div><span class="k">Either car</span><span class="price">$19</span><span class="p"><b>Housing only.</b> The printed column housing for your car.</span><span class="bar"></span></div>
+<div><span class="k">86 / BRZ / FR-S, R53 or F56</span><span class="price">$125</span><span class="p"><b>Shift light.</b> Rev C board flashed for your car, the 8-LED strip, the printed housing, Posi-Taps for the R53. Assembled and tested.</span><span class="bar"></span></div>
+<div><span class="k">Any of the three</span><span class="price">$19</span><span class="p"><b>Housing only.</b> The printed housing for your car.</span><span class="bar"></span></div>
 <div><span class="k">Android · iPhone for R53</span><span class="price">$0</span><span class="p"><b>The apps.</b> Free, no account, no internet permission. They only talk to your board.</span><span class="bar"></span></div>
 </div>
 <div class="steps">
@@ -382,7 +432,7 @@
 
 <section id="apps">
 <span id="getting-the-app"></span><span id="setting-it-up-from-your-phone"></span>
-<p class="eyebrow">11 · The apps</p>
+<p class="eyebrow">12 · The apps</p>
 <h2>Free, <em>for your car.</em></h2>
 <div class="tiles">
 <a href="/assets/apk/shift-light.apk?v=1.12"><span class="k">Android · every car</span><span class="t">Shift Light</span><span class="p">Version 1.12. One app for the R53, the MINI F55 / F56 / F57, the 86 / BRZ / FR-S, the BMW E8x and E9x, Haltech-run cars, and a car you set up yourself. Sliders, the live strip, per-car graphs and a dash, the CAN view, and firmware updates over Bluetooth. Download the APK.</span><span class="bar"></span></a>
