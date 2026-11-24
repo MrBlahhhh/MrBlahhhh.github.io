@@ -13,10 +13,11 @@ Not a post. The running order for `2026-11-16-pressure-can-node.md`, whose page 
    box, the 10 kPa and 40 kPa parts, the barometer reading that air, then six tiles: aero, airbox
    and turbo inlet, cowl and radiator, the eight analog inputs, barometer and box temperature,
    supply and battery.
-4. **The board** (`#board`): the labelled top view (render with leader lines to a label for each
-   section, nine on the left, ten on the right), link to the full-size render, the sensor close-up.
-   The tour is marked `<!-- TOUR: parent redraws after routing -->` until it is redrawn on a rev F
-   render; its labels and leader lines still sit on the old render.
+4. **The board** (`#board`): the labelled top view (top.jpg with leader lines to a label for each
+   section, twelve on the left, ten on the right), link to the full-size render, the sensor
+   close-up. The tour is generated from the board's placement table (part centres in mm) with the
+   top.jpg mapping below; labels on each side are ordered so no two leader lines cross and no line
+   passes over another label's dot.
 5. **How it works** (`#how`): power, sensor supply, supply sense, pressure, barometer, analog
    inputs, thermistors and thermocouples, signal outputs, outputs off by default (with the intended
    control: CAN command, app rule, by hand; firmware not written yet), links.
@@ -84,20 +85,19 @@ Not a post. The running order for `2026-11-16-pressure-can-node.md`, whose page 
 
 ## Images
 
-All in `assets/images/pressure-node/`. They are to be re-rendered from the rev F board files once
-its routing is finished; until then the files in place are the 2026-11-17 renders of the earlier
-79 × 70 mm board (no outputs, no top strip), so their captions and alt text describe rev F in general terms. Rendered with
-KiCad 10's raytracer: red mask, white silk, HAL finish. KiCad's library has no model for the
-WF100DPZ, the XKB TS-1187A switch or the HRO USB-C, so those are simple stand-ins: a 7 × 7 mm black
-body with six leads and one grey barb in the middle (9.5 mm tall), a 5.1 mm switch, and a plain
-USB-C shell.
+All in `assets/images/pressure-node/`, rendered on 2026-11-24 from the rev F board files (routed
+board, 89 × 80 mm) with KiCad 10's raytracer: red mask, white silk, HAL finish. KiCad's library has
+no model for the WF100DPZ, the XKB TS-1187A switch, the HRO USB-C or the BMP388, so those are simple
+stand-ins: a black body with six leads and one tall grey barb in the middle, a dark switch with a
+grey round cap, a plain grey USB-C block, and a small grey square.
 
-- `hero.jpg`: perspective, rotated −58° about X and 20° about Z.
-- `sensors.jpg`: perspective close-up of the 3 × 2 sensor grid from the front edge, rotated −55°
-  about X, cropped above the sensor silk line.
-- `top.jpg`: straight down, orthographic. The labelled tour places its leader lines from part
-  centres in mm, using the board outline measured in this image (17.8 px/mm at 1600 px wide on
-  the old board). Labels on each side are ordered so no two leader lines cross.
-- `cover.jpg`: the hero render cropped to 16:9.
+- `hero.jpg` (1568 × 872): perspective from the front left.
+- `sensors.jpg` (1600 × 477): perspective close-up of the 3 × 2 sensor grid from the front edge,
+  with the output buffer and the PWM/OUT connectors behind it.
+- `top.jpg` (1568 × 1432): straight down, orthographic. Board mm (x right, y down, origin at the
+  board's top-left corner) to image px: px = 89 + 15.596 x, py = 92 + 15.6 y, so 15.6 px/mm at
+  1568 px wide. The labelled tour places its leader lines from part centres with this mapping.
+- `cover.jpg` (1568 × 882): a 16:9 crop of the angled render (the render's black bottom strip
+  cropped off).
 
 Replace the renders with photos of a built board when Matt has one.
