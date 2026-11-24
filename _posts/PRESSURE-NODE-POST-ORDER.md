@@ -3,11 +3,12 @@
 Not a post. The running order for `2026-11-16-pressure-can-node.md`, whose page is
 `_includes/pressure-node-feature.html`. Add to this structure instead of appending to the end.
 
-1. **Hero**: what it is and what it does, four stats (6 pressure channels, 8 analog inputs at
-   1 MΩ, 100 Hz on CAN in a layout set from the phone, 12 V or USB), the angled render.
+1. **Hero**: what it is and what it does (the signal outputs in its last sentence), five stats
+   (6 pressure channels, 8 analog inputs at 1 MΩ, 8 signal outputs, 100 Hz on CAN in a layout set
+   from the phone, 12 V or USB), the angled render.
 2. **Capabilities** (`#capabilities`): one table, a line each for pressure, barometer, analog
-   inputs, sensor supply, conversions, CAN, phone app, screen, power, controls, processor,
-   connectors and size.
+   inputs, sensor supply, conversions, CAN, phone app, outputs, screen, power, controls,
+   processor, connectors and size.
 3. **What it measures** (`#measure`): each sensor's one barb read against the air in the node's
    box, the 10 kPa and 40 kPa parts, the barometer reading that air, then six tiles: aero, airbox
    and turbo inlet, cowl and radiator, the eight analog inputs, barometer and box temperature,
@@ -17,7 +18,8 @@ Not a post. The running order for `2026-11-16-pressure-can-node.md`, whose page 
    The tour is marked `<!-- TOUR: parent redraws after routing -->` until it is redrawn on a rev F
    render; its labels and leader lines still sit on the old render.
 5. **How it works** (`#how`): power, sensor supply, supply sense, pressure, barometer, analog
-   inputs, thermistors and thermocouples, links.
+   inputs, thermistors and thermocouples, signal outputs, outputs off by default (with the intended
+   control: CAN command, app rule, by hand; firmware not written yet), links.
 6. **On the CAN bus** (`#can`): the default frames table (0x520 to 0x526), the ±32.7 kPa note on
    the default pressure fields, then "Your own layout": what the app can set (bus, frames, signals,
    values, conversions, zero command, checks, DBC), the four presets and the terminator.
@@ -34,19 +36,21 @@ Not a post. The running order for `2026-11-16-pressure-can-node.md`, whose page 
 10. **Schematic** (`#schematic`): legend, the overview block diagram (blocks link to their sheets),
     sheet links, then sheets 1 power input and buck, 2 5 V OR and 3.3 V, 3 sensor 5 V supply and
     supply sense, 4 ESP32-S3 with USB and buttons, 5 sensor bus and barometer, 5a one sensor branch,
-    6 one analog input with the AIN1–8 parts table under it, 7 CAN, and 8 the ESP32 pin map with the
-    test pads.
+    6 one analog input with the AIN1–8 parts table under it, 7 CAN, 8 signal outputs with the
+    per-output table under it, and 9 the ESP32 pin map with the test pads.
 11. **Last line**: these are renders, the fitting section is the plan, and the board hasn't been
     built.
 
 ## Standing rules
 
-- Rev F as of 2026-11-24: 89 × 70 mm, four layers, every part on top. Six WF100DPZ single-port
+- Rev F as of 2026-11-24: 89 × 80 mm, four layers, every part on top. Six WF100DPZ single-port
   gauge sensors in a 3 × 2 grid: DP1–4 0.1BG (10 kPa), DP5–6 0.4BG (40 kPa). BMP388 barometer on
   the main I²C bus at 0x76. Eight analog inputs, AIN5–8 on a second ADS1115. Sensor 5 V from a
   TLE4252D tracker on the protected 12 V, following an LM4040 5.000 V reference; GPIO1/GPIO2 read
-  it and the 12 V, GPIO18 is free. LM66100 OR in TI's continuous-output wiring, D6 feeding a screen
-  on USB-C, UART pads, no UART header. Keep the schematic, the tour and the text in step with the
+  it and the 12 V, GPIO18 is free. Eight 0/5 V signal outputs: GPIO38–35 (PWM1–4, J13) and
+  GPIO42–39 (OUT1–4, J14) through an SN74HCT541 (U24) on 5V SYS, 1k series, 10k and 100k
+  pull-downs, a PESD1CAN per pair. LM66100 OR in TI's continuous-output wiring, D6 feeding a screen
+  on USB-C, UART pads (TP19/TP20, now on the left edge), no UART header. Keep the schematic, the tour and the text in step with the
   board files.
 - The page describes the current board only. No revision history or reasons for changes.
 - Nothing has been built or run on a car. Don't claim measured accuracy, rates or results until
@@ -65,7 +69,11 @@ Not a post. The running order for `2026-11-16-pressure-can-node.md`, whose page 
   frames from 0x520 at 500 kbit/s, 0x520–0x524 every 10 ms, 0x525 and 0x526 every 100 ms; up to 16
   frames of the user's own from the app. 1 A fuse, 33 V TVS. Sensor supply 5.000 V, about 120 mA
   continuous shared by all eight connectors (117 mA at 14.4 V in a 140 °F box), survives shorts to
-  ground and to battery. Buck budget 0.49 A, 0.74 A with a screen.
+  ground and to battery. Buck budget 0.49 A, 0.74 A with a screen. Outputs: 0/5 V push-pull
+  signals, not load drivers (Matt: no high-current outputs planned), receiving input above about
+  2 kΩ, about 4.95 V high unloaded, a 12 V short pushes about 6.5 mA back, off by default.
+- The output firmware isn't written. Describe the intended control (CAN command, a rule set in the
+  app, by hand from the app) without claiming it runs, and don't give a CAN ID for it.
 - Temperatures in °F first, °C in brackets where it helps (Matt uses Fahrenheit). CAN and protocol
   units stay as sent (°C, Pa, mV).
 - Schematic sheets are inline SVG in the include, using the legend's classes: red rails, green
@@ -78,7 +86,7 @@ Not a post. The running order for `2026-11-16-pressure-can-node.md`, whose page 
 
 All in `assets/images/pressure-node/`. They are to be re-rendered from the rev F board files once
 its routing is finished; until then the files in place are the 2026-11-17 renders of the earlier
-79 × 70 mm board, so their captions and alt text describe rev F in general terms. Rendered with
+79 × 70 mm board (no outputs, no top strip), so their captions and alt text describe rev F in general terms. Rendered with
 KiCad 10's raytracer: red mask, white silk, HAL finish. KiCad's library has no model for the
 WF100DPZ, the XKB TS-1187A switch or the HRO USB-C, so those are simple stand-ins: a 7 × 7 mm black
 body with six leads and one grey barb in the middle (9.5 mm tall), a 5.1 mm switch, and a plain

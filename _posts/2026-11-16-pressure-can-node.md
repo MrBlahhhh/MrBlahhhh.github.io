@@ -2,10 +2,10 @@
 title: "Pressure CAN node: six pressure sensors and eight inputs on the CAN bus"
 date: 2026-11-16 00:00:00 -0500
 categories: car tech
-tags: [pcb, can-bus, esp32, esp32-s3, pressure, barometer, aero, airbox, data-logging, kicad, sensors, bluetooth, android]
+tags: [pcb, can-bus, esp32, esp32-s3, pressure, barometer, aero, airbox, data-logging, kicad, sensors, bluetooth, android, pwm]
 cover: /assets/images/pressure-node/cover.jpg
 lightbox: true
-excerpt: "A board that reads six pressure sensors (four 10 kPa, two 40 kPa, above and below zero), a barometer and eight 0–5 V inputs and puts them on the car's CAN bus at 100 Hz, in a frame layout you set from your phone. For aero, airbox, turbo-inlet and radiator pressures. Capabilities, renders, how to plumb it into a car and the full schematic."
+excerpt: "A board that reads six pressure sensors (four 10 kPa, two 40 kPa, above and below zero), a barometer and eight 0–5 V inputs and puts them on the car's CAN bus at 100 Hz, in a frame layout you set from your phone. For aero, airbox, turbo-inlet and radiator pressures, with eight 0/5 V signal outputs for other electronics. Capabilities, renders, how to plumb it into a car and the full schematic."
 article_header:
   type: overlay
   theme: dark
