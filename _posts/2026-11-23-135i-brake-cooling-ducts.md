@@ -115,7 +115,7 @@ Each duct went through a wind tunnel simulation at 100 mph, built from the same 
 | **Front control-arm duct** | 209 CFM |
 | **Rear duct** | 225 CFM |
 
-The flow is measured on cross-sections inside each duct, and the sections agree within 1%. The front corner tab shows the whole front of my car as modelled: bumper duct, splitter with its end plates and ramps, fender flares, the arm duct and the brake.
+The flow is measured on cross-sections inside each duct, and the sections agree within 1%. The front corner tab is the whole front corner of my car at 125 mph, with the air running through it: bumper duct, splitter with its end plates and ramps, fender flares, the arm duct, the air shield and the brake.
 
 ## Fitment
 
