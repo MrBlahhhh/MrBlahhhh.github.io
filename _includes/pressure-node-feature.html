@@ -1,5 +1,5 @@
-<!-- Pressure CAN node feature page. Rendered by _posts/2026-11-16-pressure-can-node.md. Edit here, not in the post.
-     Section order and how every image was made: _posts/PRESSURE-NODE-POST-ORDER.md. Images in assets/images/pressure-node. -->
+<!-- Pressure CAN node feature page (rev F). Rendered by _posts/2026-11-16-pressure-can-node.md. Edit here, not in the post.
+     Section order, standing rules and how every image was made: _posts/PRESSURE-NODE-POST-ORDER.md. Images in assets/images/pressure-node. -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600;700&display=swap">
 <style>
 .pcn{--bg:#0f1416;--panel:#141b1d;--card:rgba(24,32,34,.86);--ink:#e6ecea;--mute:#9fb0ab;--line:rgba(230,236,234,.11);
@@ -124,48 +124,79 @@
 <div class="pcn">
 
 <div class="hero">
-  <span class="k">CAN sensor node · rev E</span>
+  <span class="k">CAN sensor node · rev F</span>
   <h1>Pressure CAN node</h1>
-  <p class="sub">Six pressure sensors and eight 0–5 V inputs on one board. It reads all fourteen and puts them on the car's CAN bus a hundred times a second, so the data logger records aero, intake and cooling pressures alongside everything else.</p>
+  <p class="sub">Six pressure sensors, eight 0–5 V inputs and a barometer on one board. It reads them all and puts them on the car's CAN bus a hundred times a second, in whatever frame layout your logger wants, so aero, intake and cooling pressures land in the same log as everything else.</p>
   <div class="stats">
     <div class="stat"><b>6</b><span>pressure channels: four 10 kPa, two 40 kPa</span></div>
-    <div class="stat"><b>8</b><span>0–5 V analog inputs</span></div>
-    <div class="stat"><b>100 Hz</b><span>CAN frames at 500 kbit/s</span></div>
+    <div class="stat"><b>8</b><span>0–5 V analog inputs, 1 MΩ each</span></div>
+    <div class="stat"><b>100 Hz</b><span>on CAN, in a layout you set from your phone</span></div>
     <div class="stat"><b>12 V</b><span>switched supply, or USB on the bench</span></div>
   </div>
-  <figure class="shot"><a href="/assets/images/pressure-node/hero.jpg"><img src="/assets/images/pressure-node/hero.jpg" alt="Render of the red rev E board at an angle: six pressure sensors, each with one hose barb, in two rows at the back left, the ESP32-S3 module on the left edge, the second analog block and its connectors at the back right, the analog, USB-C and CAN connectors along the front" width="1600" height="865" decoding="async"></a>
-  <figcaption>Rev E, rendered from the board files. 79 × 70 mm, four layers.</figcaption></figure>
+  <figure class="shot"><a href="/assets/images/pressure-node/hero.jpg"><img src="/assets/images/pressure-node/hero.jpg" alt="Render of the red board at an angle: six pressure sensors, each with one hose barb, in two rows at the back left, the ESP32-S3 module on the left edge, the second analog block and its connectors toward the back right, the 12 V input and the sensor-supply regulator on the right edge, and the analog, USB-C and CAN connectors along the front" width="1600" height="865" decoding="async"></a>
+  <figcaption>Rendered from the board files. 89 × 70 mm, four layers, every part on top.</figcaption></figure>
 </div>
 
+<h2 id="capabilities">Capabilities</h2>
+<p class="lead">The short version. Each line is explained further down.</p>
+<div class="tablewrap"><table><tbody><tr><td>Pressure</td><td>6 channels, one hose barb each, read against the air in the node&#x27;s box, above and below zero. DP1–DP4 read to 10 kPa, DP5–DP6 to 40 kPa. Each is read every 10 ms.</td></tr><tr><td>Barometer</td><td>Absolute pressure (30–125 kPa) and temperature of the box air, so every channel can also be sent as absolute pressure.</td></tr><tr><td>Analog inputs</td><td>8 × 0–5 V, 1 MΩ each, 16-bit (about 0.31 mV a count at the connector), on two ADCs converting side by side. Each connector has 5 V, ground and signal.</td></tr><tr><td>Sensor supply</td><td>5.000 V for the sensors on those connectors, about 120 mA continuous in all. Survives a short to ground or to 12 V, and the node measures and reports it.</td></tr><tr><td>Conversions</td><td>Per input: two-point linear, a table of up to 16 points, or a thermistor by Beta or by table, so a channel can go out in real units.</td></tr><tr><td>CAN</td><td>Classic CAN at 125k, 250k, 500k or 1 Mbit/s. Out of the box: seven frames from 0x520 at 500 kbit/s, pressures and inputs at 100 Hz. Up to 16 frames of your own design, standard or extended IDs, set from the phone, with a matching DBC file.</td></tr><tr><td>Phone app</td><td>Android, over Bluetooth LE: live values, graphs, zero, CSV recording at 100 samples a second, and the CAN setup.</td></tr><tr><td>Screen</td><td>Optional Waveshare touch screen on the USB-C port, powered by the node.</td></tr><tr><td>Power</td><td>Switched 12 V (9–16 V) through a 1 A fuse, a reverse-battery diode and a 33 V TVS. USB-C runs it on the bench, with the sensor supply off.</td></tr><tr><td>Controls</td><td>ZERO, BOOT and RESET buttons, a status LED, and labelled test pads for every rail and bus.</td></tr><tr><td>Processor</td><td>ESP32-S3 (WROOM-1, 4 MB flash) with native USB.</td></tr><tr><td>Connectors</td><td>JST GH, 1.25 mm pitch: 12 V in, eight analog inputs and CAN. USB-C.</td></tr><tr><td>Size</td><td>89 × 70 mm, four layers, every part on the top side and placed by the board house.</td></tr></tbody></table></div>
+
 <h2 id="measure">What it measures</h2>
-<p class="lead">Each sensor has one hose barb and reads the pressure there against the air inside the node's box, below it as well as above. Four read to 10 kPa for aero and cooling; two read to 40 kPa for the vacuum a turbo pulls at its inlet. A drop across a part is two channels subtracted. <a href="#install">How to fit them.</a></p>
+<p class="lead">Each sensor has one hose barb and reads the pressure there against the air inside the node's box, below it as well as above. Four read to 10 kPa for aero and cooling; two read to 40 kPa for the vacuum a turbo pulls at its inlet. A barometer in the box reads that air, so every channel is also available as absolute pressure. A drop across a part is two channels subtracted. <a href="#install">How to fit them.</a></p>
 <div class="grid2">
   <div class="tile"><b>Aero</b><p>Pressure taps on the splitter, underbody, diffuser or wing: how hard the floor sucks at speed and what each surface sees. Dynamic pressure is about 0.5 kPa at 100 km/h and 1.9 kPa at 200 km/h.</p></div>
   <div class="tile"><b>Airbox and turbo inlet</b><p>Vacuum before and after the air filter, on the two 40 kPa channels. The difference is the filter's restriction, and the second reading is what the turbo sees. A restrictive filter can pull 5 to 7 kPa at full flow, and a turbo inlet more.</p></div>
   <div class="tile"><b>Cowl and radiator</b><p>Pressure at the cowl and on both faces of the radiator. The drop across the core shows how much air actually goes through it.</p></div>
-  <div class="tile"><b>Eight analog inputs</b><p>For sensors you already have: oil or fuel pressure senders, a spare MAP sensor, ride-height pots, or a tap on an ECU sensor's signal. Each connector carries a switched 5 V supply. Remove its link when tapping a sensor the ECU already powers.</p></div>
+  <div class="tile"><b>Eight analog inputs</b><p>For sensors you already have: oil or fuel pressure senders, a spare MAP sensor, ride-height pots, a thermistor, or a tap on an ECU sensor's signal. Each connector carries the board's 5.000 V sensor supply; when tapping a sensor the ECU already powers, remove that connector's 0 Ω link. A thermocouple needs an external K-type amplifier with a 0–5 V output.</p></div>
+  <div class="tile"><b>Barometer and box temperature</b><p>A BMP388 reads the absolute pressure and temperature of the air in the box. That air is the reference every sensor reads against, so you can see whether it moved during a run, and the node can send each channel as absolute pressure as well as gauge.</p></div>
+  <div class="tile"><b>Supply and battery</b><p>The node measures its own sensor supply and the car's 12 V and sends both. A sensor reading that looks wrong can be checked against the supply that fed it, and a short on a sensor's supply wire shows up as a fault instead of a strange number.</p></div>
 </div>
 
 <h2 id="board">The board</h2>
-<p class="lead">Everything is surface mount and placed by the board house, the pressure sensors included.</p>
-<figure class="tourfig"><div class="scroll"><svg class="tour" viewBox="0 0 1840 820" role="img" aria-label="Top view of the rev E board with each section labelled: pressure sensors, I2C switch, both analog front ends and their connectors, ADC, status LED, ESP32-S3, buttons, 5 V OR, sensor 5 V switch, 3.3 V regulator, 5 V buck, input protection, 12 V input, CAN transceiver, CAN connector and USB-C"><image href="/assets/images/pressure-node/top.jpg" x="470" y="30" width="900" height="760.5"/><polyline class="ld-u" points="452.0,60.0 464.0,60.0 678.3,150.1"/><polyline class="ld" points="452.0,60.0 464.0,60.0 678.3,150.1"/><circle class="ld-dot" cx="678.3" cy="150.1" r="7"/><text class="ct" x="444" y="70.0" text-anchor="end">Pressure sensors DP1–6</text><text class="cd" x="444" y="101.0" text-anchor="end">WF100DPZ, 10 and 40 kPa, one barb</text><polyline class="ld-u" points="452.0,148.1 464.0,148.1 912.4,433.3"/><polyline class="ld" points="452.0,148.1 464.0,148.1 912.4,433.3"/><circle class="ld-dot" cx="912.4" cy="433.3" r="7"/><text class="ct" x="444" y="158.1" text-anchor="end">5 V OR</text><text class="cd" x="444" y="189.1" text-anchor="end">LM66100 pair: car or USB</text><polyline class="ld-u" points="452.0,236.1 464.0,236.1 874.4,419.2"/><polyline class="ld" points="452.0,236.1 464.0,236.1 874.4,419.2"/><circle class="ld-dot" cx="874.4" cy="419.2" r="7"/><text class="ct" x="444" y="246.1" text-anchor="end">Status LED</text><text class="cd" x="444" y="277.1" text-anchor="end">On when every fitted channel reads</text><polyline class="ld-u" points="452.0,324.2 464.0,324.2 798.3,492.3"/><polyline class="ld" points="452.0,324.2 464.0,324.2 798.3,492.3"/><circle class="ld-dot" cx="798.3" cy="492.3" r="7"/><text class="ct" x="444" y="334.2" text-anchor="end">RESET, BOOT, ZERO</text><text class="cd" x="444" y="365.2" text-anchor="end">ZERO zeroes the pressures</text><polyline class="ld-u" points="452.0,412.2 464.0,412.2 617.3,502.3"/><polyline class="ld" points="452.0,412.2 464.0,412.2 617.3,502.3"/><circle class="ld-dot" cx="617.3" cy="502.3" r="7"/><text class="ct" x="444" y="422.2" text-anchor="end">ESP32-S3</text><text class="cd" x="444" y="453.2" text-anchor="end">Antenna hangs past the edge</text><polyline class="ld-u" points="452.0,500.3 464.0,500.3 912.4,512.3"/><polyline class="ld" points="452.0,500.3 464.0,500.3 912.4,512.3"/><circle class="ld-dot" cx="912.4" cy="512.3" r="7"/><text class="ct" x="444" y="510.3" text-anchor="end">3.3 V regulator</text><text class="cd" x="444" y="541.3" text-anchor="end">TLV76733 1 A LDO, room for Wi-Fi</text><polyline class="ld-u" points="452.0,588.4 464.0,588.4 710.3,630.3"/><polyline class="ld" points="452.0,588.4 464.0,588.4 710.3,630.3"/><circle class="ld-dot" cx="710.3" cy="630.3" r="7"/><text class="ct" x="444" y="598.4" text-anchor="end">Isolate and buffer</text><text class="cd" x="444" y="629.4" text-anchor="end">TMUX1511 and TLV9004, AIN1–4</text><polyline class="ld-u" points="452.0,676.4 464.0,676.4 884.4,630.3"/><polyline class="ld" points="452.0,676.4 464.0,676.4 884.4,630.3"/><circle class="ld-dot" cx="884.4" cy="630.3" r="7"/><text class="ct" x="444" y="686.4" text-anchor="end">16-bit ADC</text><text class="cd" x="444" y="717.4" text-anchor="end">ADS1115 for AIN1–4</text><polyline class="ld-u" points="452.0,764.5 464.0,764.5 662.3,722.4"/><polyline class="ld" points="452.0,764.5 464.0,764.5 662.3,722.4"/><circle class="ld-dot" cx="662.3" cy="722.4" r="7"/><text class="ct" x="444" y="774.5" text-anchor="end">Analog inputs AIN1–4</text><text class="cd" x="444" y="805.5" text-anchor="end">5 V, ground, 0–5 V signal</text><polyline class="ld-u" points="1388.0,60.0 1376.0,60.0 1033.4,210.2"/><polyline class="ld" points="1388.0,60.0 1376.0,60.0 1033.4,210.2"/><circle class="ld-dot" cx="1033.4" cy="210.2" r="7"/><text class="ct" x="1396" y="70.0" text-anchor="start">I2C switch</text><text class="cd" x="1396" y="101.0" text-anchor="start">TCA9548A, a branch per sensor</text><polyline class="ld-u" points="1388.0,138.3 1376.0,138.3 1127.5,245.2"/><polyline class="ld" points="1388.0,138.3 1376.0,138.3 1127.5,245.2"/><circle class="ld-dot" cx="1127.5" cy="245.2" r="7"/><text class="ct" x="1396" y="148.3" text-anchor="start">AIN5–8 front end</text><text class="cd" x="1396" y="179.3" text-anchor="start">Same parts as AIN1–4</text><polyline class="ld-u" points="1388.0,216.6 1376.0,216.6 1303.4,255.2"/><polyline class="ld" points="1388.0,216.6 1376.0,216.6 1303.4,255.2"/><circle class="ld-dot" cx="1303.4" cy="255.2" r="7"/><text class="ct" x="1396" y="226.6" text-anchor="start">Analog inputs AIN5–8</text><text class="cd" x="1396" y="257.6" text-anchor="start">5 V, ground, 0–5 V signal</text><polyline class="ld-u" points="1388.0,294.8 1376.0,294.8 1041.5,446.3"/><polyline class="ld" points="1388.0,294.8 1376.0,294.8 1041.5,446.3"/><circle class="ld-dot" cx="1041.5" cy="446.3" r="7"/><text class="ct" x="1396" y="304.8" text-anchor="start">5 V buck</text><text class="cd" x="1396" y="335.8" text-anchor="start">LM5164 and its 33 µH inductor</text><polyline class="ld-u" points="1388.0,373.1 1376.0,373.1 1215.5,456.3"/><polyline class="ld" points="1388.0,373.1 1376.0,373.1 1215.5,456.3"/><circle class="ld-dot" cx="1215.5" cy="456.3" r="7"/><text class="ct" x="1396" y="383.1" text-anchor="start">Input protection</text><text class="cd" x="1396" y="414.1" text-anchor="start">Fuse, reverse diode, TVS</text><polyline class="ld-u" points="1388.0,451.4 1376.0,451.4 1304.6,431.3"/><polyline class="ld" points="1388.0,451.4 1376.0,451.4 1304.6,431.3"/><circle class="ld-dot" cx="1304.6" cy="431.3" r="7"/><text class="ct" x="1396" y="461.4" text-anchor="start">12 V in</text><text class="cd" x="1396" y="492.4" text-anchor="start">Switched ignition supply</text><polyline class="ld-u" points="1388.0,529.7 1376.0,529.7 996.4,524.3"/><polyline class="ld" points="1388.0,529.7 1376.0,529.7 996.4,524.3"/><circle class="ld-dot" cx="996.4" cy="524.3" r="7"/><text class="ct" x="1396" y="539.7" text-anchor="start">Sensor 5 V switch</text><text class="cd" x="1396" y="570.7" text-anchor="start">TPS2051B, 500 mA limit</text><polyline class="ld-u" points="1388.0,607.9 1376.0,607.9 1182.5,636.3"/><polyline class="ld" points="1388.0,607.9 1376.0,607.9 1182.5,636.3"/><circle class="ld-dot" cx="1182.5" cy="636.3" r="7"/><text class="ct" x="1396" y="617.9" text-anchor="start">CAN transceiver</text><text class="cd" x="1396" y="648.9" text-anchor="start">TCAN1042 and ESD clamp</text><polyline class="ld-u" points="1388.0,686.2 1376.0,686.2 1180.5,722.4"/><polyline class="ld" points="1388.0,686.2 1376.0,686.2 1180.5,722.4"/><circle class="ld-dot" cx="1180.5" cy="722.4" r="7"/><text class="ct" x="1396" y="696.2" text-anchor="start">CAN bus</text><text class="cd" x="1396" y="727.2" text-anchor="start">Bridge TERM for 120 Ω</text><polyline class="ld-u" points="1388.0,764.5 1376.0,764.5 1054.5,727.4"/><polyline class="ld" points="1388.0,764.5 1376.0,764.5 1054.5,727.4"/><circle class="ld-dot" cx="1054.5" cy="727.4" r="7"/><text class="ct" x="1396" y="774.5" text-anchor="start">USB-C</text><text class="cd" x="1396" y="805.5" text-anchor="start">Programming, logs, bench power</text></svg></div></figure>
+<p class="lead">Everything is surface mount and placed by the board house, the pressure sensors and the barometer included.</p>
+<!-- TOUR: parent redraws after routing -->
+<figure class="tourfig"><div class="scroll"><svg class="tour" viewBox="0 0 1840 820" role="img" aria-label="Top view of the board with each section labelled: pressure sensors, I2C switch, barometer, both analog front ends and their connectors, ADC, status LED, ESP32-S3, buttons, 5 V OR, sensor 5 V supply, 3.3 V regulator, 5 V buck, input protection, 12 V input, CAN transceiver, CAN connector and USB-C"><image href="/assets/images/pressure-node/top.jpg" x="470" y="30" width="900" height="760.5"/><polyline class="ld-u" points="452.0,60.0 464.0,60.0 678.3,150.1"/><polyline class="ld" points="452.0,60.0 464.0,60.0 678.3,150.1"/><circle class="ld-dot" cx="678.3" cy="150.1" r="7"/><text class="ct" x="444" y="70.0" text-anchor="end">Pressure sensors DP1–6</text><text class="cd" x="444" y="101.0" text-anchor="end">WF100DPZ, 10 and 40 kPa, one barb</text><polyline class="ld-u" points="452.0,148.1 464.0,148.1 912.4,433.3"/><polyline class="ld" points="452.0,148.1 464.0,148.1 912.4,433.3"/><circle class="ld-dot" cx="912.4" cy="433.3" r="7"/><text class="ct" x="444" y="158.1" text-anchor="end">5 V OR</text><text class="cd" x="444" y="189.1" text-anchor="end">LM66100 pair: car or USB</text><polyline class="ld-u" points="452.0,236.1 464.0,236.1 874.4,419.2"/><polyline class="ld" points="452.0,236.1 464.0,236.1 874.4,419.2"/><circle class="ld-dot" cx="874.4" cy="419.2" r="7"/><text class="ct" x="444" y="246.1" text-anchor="end">Status LED</text><text class="cd" x="444" y="277.1" text-anchor="end">On when every fitted channel reads</text><polyline class="ld-u" points="452.0,324.2 464.0,324.2 798.3,492.3"/><polyline class="ld" points="452.0,324.2 464.0,324.2 798.3,492.3"/><circle class="ld-dot" cx="798.3" cy="492.3" r="7"/><text class="ct" x="444" y="334.2" text-anchor="end">RESET, BOOT, ZERO</text><text class="cd" x="444" y="365.2" text-anchor="end">ZERO zeroes the pressures</text><polyline class="ld-u" points="452.0,412.2 464.0,412.2 617.3,502.3"/><polyline class="ld" points="452.0,412.2 464.0,412.2 617.3,502.3"/><circle class="ld-dot" cx="617.3" cy="502.3" r="7"/><text class="ct" x="444" y="422.2" text-anchor="end">ESP32-S3</text><text class="cd" x="444" y="453.2" text-anchor="end">Antenna hangs past the edge</text><polyline class="ld-u" points="452.0,500.3 464.0,500.3 912.4,512.3"/><polyline class="ld" points="452.0,500.3 464.0,500.3 912.4,512.3"/><circle class="ld-dot" cx="912.4" cy="512.3" r="7"/><text class="ct" x="444" y="510.3" text-anchor="end">3.3 V regulator</text><text class="cd" x="444" y="541.3" text-anchor="end">TLV76733 1 A LDO, room for Wi-Fi</text><polyline class="ld-u" points="452.0,588.4 464.0,588.4 710.3,630.3"/><polyline class="ld" points="452.0,588.4 464.0,588.4 710.3,630.3"/><circle class="ld-dot" cx="710.3" cy="630.3" r="7"/><text class="ct" x="444" y="598.4" text-anchor="end">Isolate and buffer</text><text class="cd" x="444" y="629.4" text-anchor="end">TMUX1511 and TLV9004, AIN1–4</text><polyline class="ld-u" points="452.0,676.4 464.0,676.4 884.4,630.3"/><polyline class="ld" points="452.0,676.4 464.0,676.4 884.4,630.3"/><circle class="ld-dot" cx="884.4" cy="630.3" r="7"/><text class="ct" x="444" y="686.4" text-anchor="end">16-bit ADC</text><text class="cd" x="444" y="717.4" text-anchor="end">ADS1115 for AIN1–4</text><polyline class="ld-u" points="452.0,764.5 464.0,764.5 662.3,722.4"/><polyline class="ld" points="452.0,764.5 464.0,764.5 662.3,722.4"/><circle class="ld-dot" cx="662.3" cy="722.4" r="7"/><text class="ct" x="444" y="774.5" text-anchor="end">Analog inputs AIN1–4</text><text class="cd" x="444" y="805.5" text-anchor="end">5 V, ground, 0–5 V signal</text><polyline class="ld-u" points="1388.0,60.0 1376.0,60.0 1033.4,210.2"/><polyline class="ld" points="1388.0,60.0 1376.0,60.0 1033.4,210.2"/><circle class="ld-dot" cx="1033.4" cy="210.2" r="7"/><text class="ct" x="1396" y="70.0" text-anchor="start">I2C switch</text><text class="cd" x="1396" y="101.0" text-anchor="start">TCA9548A, a branch per sensor</text><polyline class="ld-u" points="1388.0,138.3 1376.0,138.3 1127.5,245.2"/><polyline class="ld" points="1388.0,138.3 1376.0,138.3 1127.5,245.2"/><circle class="ld-dot" cx="1127.5" cy="245.2" r="7"/><text class="ct" x="1396" y="148.3" text-anchor="start">AIN5–8 front end</text><text class="cd" x="1396" y="179.3" text-anchor="start">Same parts as AIN1–4</text><polyline class="ld-u" points="1388.0,216.6 1376.0,216.6 1303.4,255.2"/><polyline class="ld" points="1388.0,216.6 1376.0,216.6 1303.4,255.2"/><circle class="ld-dot" cx="1303.4" cy="255.2" r="7"/><text class="ct" x="1396" y="226.6" text-anchor="start">Analog inputs AIN5–8</text><text class="cd" x="1396" y="257.6" text-anchor="start">5 V, ground, 0–5 V signal</text><polyline class="ld-u" points="1388.0,294.8 1376.0,294.8 1041.5,446.3"/><polyline class="ld" points="1388.0,294.8 1376.0,294.8 1041.5,446.3"/><circle class="ld-dot" cx="1041.5" cy="446.3" r="7"/><text class="ct" x="1396" y="304.8" text-anchor="start">5 V buck</text><text class="cd" x="1396" y="335.8" text-anchor="start">LM5164 and its 33 µH inductor</text><polyline class="ld-u" points="1388.0,373.1 1376.0,373.1 1215.5,456.3"/><polyline class="ld" points="1388.0,373.1 1376.0,373.1 1215.5,456.3"/><circle class="ld-dot" cx="1215.5" cy="456.3" r="7"/><text class="ct" x="1396" y="383.1" text-anchor="start">Input protection</text><text class="cd" x="1396" y="414.1" text-anchor="start">Fuse, reverse diode, TVS</text><polyline class="ld-u" points="1388.0,451.4 1376.0,451.4 1304.6,431.3"/><polyline class="ld" points="1388.0,451.4 1376.0,451.4 1304.6,431.3"/><circle class="ld-dot" cx="1304.6" cy="431.3" r="7"/><text class="ct" x="1396" y="461.4" text-anchor="start">12 V in</text><text class="cd" x="1396" y="492.4" text-anchor="start">Switched ignition supply</text><polyline class="ld-u" points="1388.0,529.7 1376.0,529.7 996.4,524.3"/><polyline class="ld" points="1388.0,529.7 1376.0,529.7 996.4,524.3"/><circle class="ld-dot" cx="996.4" cy="524.3" r="7"/><text class="ct" x="1396" y="539.7" text-anchor="start">Sensor 5 V supply</text><text class="cd" x="1396" y="570.7" text-anchor="start">TLE4252D, survives a short to 12 V</text><polyline class="ld-u" points="1388.0,607.9 1376.0,607.9 1182.5,636.3"/><polyline class="ld" points="1388.0,607.9 1376.0,607.9 1182.5,636.3"/><circle class="ld-dot" cx="1182.5" cy="636.3" r="7"/><text class="ct" x="1396" y="617.9" text-anchor="start">CAN transceiver</text><text class="cd" x="1396" y="648.9" text-anchor="start">TCAN1042 and ESD clamp</text><polyline class="ld-u" points="1388.0,686.2 1376.0,686.2 1180.5,722.4"/><polyline class="ld" points="1388.0,686.2 1376.0,686.2 1180.5,722.4"/><circle class="ld-dot" cx="1180.5" cy="722.4" r="7"/><text class="ct" x="1396" y="696.2" text-anchor="start">CAN bus</text><text class="cd" x="1396" y="727.2" text-anchor="start">Bridge TERM for 120 Ω</text><polyline class="ld-u" points="1388.0,764.5 1376.0,764.5 1054.5,727.4"/><polyline class="ld" points="1388.0,764.5 1376.0,764.5 1054.5,727.4"/><circle class="ld-dot" cx="1054.5" cy="727.4" r="7"/><text class="ct" x="1396" y="774.5" text-anchor="start">USB-C</text><text class="cd" x="1396" y="805.5" text-anchor="start">Programming, logs, bench power</text></svg></div></figure>
 <figure class="shot"><figcaption>Top view, rendered. <a href="/assets/images/pressure-node/top.jpg">Open the full-size render.</a></figcaption></figure>
 <figure class="shot"><a href="/assets/images/pressure-node/sensors.jpg"><img src="/assets/images/pressure-node/sensors.jpg" alt="Close render of the six pressure sensors in two rows of three, each a small black body with one grey hose barb in the middle, with the I2C switch to their right" width="1600" height="460" loading="lazy" decoding="async"></a>
 <figcaption>The six sensors, DP1–3 at the back and DP4–6 in front. Each has one barb; DP5 and DP6 are the 40 kPa parts.</figcaption></figure>
 
 <h2 id="how">How it works</h2>
 <div class="how">
-  <div class="tile"><b>Power</b><p>Switched 12 V comes in through a 1 A fuse and a reverse-battery diode, with a 33 V TVS for load dump. An LM5164 buck makes 5 V. Two ideal diodes choose between that and USB, with the car's side first, so the board runs on the bench from a laptop, stays up when both are plugged in, and the two supplies never feed each other. A 3.3 V LDO runs the logic.</p></div>
-  <div class="tile"><b>Pressure</b><p>All six sensors have the same I2C address, so a TCA9548A switch puts each on its own branch and the ESP32-S3 reads them in turn. A reading only counts once the sensor says its conversion finished, and a sensor that stops answering drops out without stalling the others. ZERO averages 100 readings from every channel and subtracts them. Press it with every port open to the same air before a run.</p></div>
-  <div class="tile"><b>Analog inputs</b><p>Each input goes through a divide-by-five divider (500 kΩ to ground, so it barely loads an ECU signal), an isolation switch that stays open until the firmware is running, a buffer and a 16-bit ADC; AIN1–4 and AIN5–8 have one ADC each, converting side by side. A 12 V short on an input only puts 2.4 V on the switch.</p></div>
-  <div class="tile"><b>Sensor supply</b><p>The 5 V on the analog connectors comes off the buck through a 500 mA current-limited switch. It's only there with the car's power on, never from USB alone, and a fault turns it off.</p></div>
+  <div class="tile"><b>Power</b><p>Switched 12 V comes in through a 1 A fuse and a reverse-battery diode, with a 33 V TVS for load dump. An LM5164 buck makes 5 V for the board. Two ideal diodes choose between that and USB, with the car's side first, so the board runs on the bench from a laptop, stays up when both are plugged in, and the two supplies never feed each other. A 1 A LDO makes 3.3 V for the logic and the radio. The buck's budget is about 0.49 A of its 1 A rating, 0.74 A with a screen plugged in.</p></div>
+  <div class="tile"><b>Sensor supply</b><p>The 5 V on the analog connectors has its own regulator, a TLE4252D tracker fed from the protected 12 V, not from the board's 5 V. It follows a 5.000 V reference, so sensors that scale with their supply see 5.000 V, ±0.3 % typical. Its output survives a short to ground or to battery: a chafed sensor wire can't reset the node or put 12 V on the board. It limits at 250–500 mA, but heat sets the real budget: about 120 mA continuous shared by all eight connectors (117 mA at 14.4 V in a 140 °F (60 °C) box). That's about 15 mA a connector, enough for typical 0.5–4.5 V sensors and pots. Past it the regulator throttles itself until it cools; nothing is damaged. It stays off on USB alone.</p></div>
+  <div class="tile"><b>Supply sense</b><p>The ESP32 measures the sensor supply and the protected 12 V on its own ADC, through dividers that turn 16 V into 2.6 V. The sensor supply counts as faulty outside 4.75–5.25 V: low means an overload or a short to ground, high means a short to battery. Both readings go out on CAN, and the fault sets a flag.</p></div>
+  <div class="tile"><b>Pressure</b><p>All six sensors have the same I²C address, so a TCA9548A switch puts each on its own branch and the ESP32-S3 reads them in turn. A reading only counts once the sensor says its conversion finished, and a sensor that stops answering drops out without stalling the others. ZERO averages 100 readings from every channel and subtracts them. Press it with every port open to the same air before a run; the app and an optional CAN command do the same.</p></div>
+  <div class="tile"><b>Barometer</b><p>A Bosch BMP388 sits on the same I²C bus, ahead of the switch, away from the regulators. It reads the box air's absolute pressure and temperature 25 times a second. When a frame asks for a channel's absolute pressure, the node adds the barometer to that channel's gauge reading.</p></div>
+  <div class="tile"><b>Analog inputs</b><p>Each input goes through a divide-by-five divider (1 MΩ to ground, so it barely loads an ECU signal: about 0.25 % at most on a typical thermistor circuit), a 210 Hz filter, an isolation switch that stays open until the firmware is running, a buffer and a 16-bit ADC. AIN1–4 and AIN5–8 have one ADC each, converting side by side. A 16 V short on an input only puts 3.2 V on the switch.</p></div>
+  <div class="tile"><b>Thermistors and thermocouples</b><p>There are no pull-ups on the board, so every input stays general-purpose. For a thermistor of your own, put a pull-up from the connector's 5 V pin to its signal pin in the sensor's plug, then set the channel up in the app by Beta or by a table; the node sends °C and the app shows °F. To share an ECU's thermistor, connect signal and ground only. A K-type thermocouple needs an external amplifier with a 0–5 V output.</p></div>
+  <div class="tile"><b>Links</b><p>USB-C for programming, logs and bench power. Bluetooth LE to the phone app. CAN to the car. The ESP32-S3's antenna hangs past the board edge, clear of copper.</p></div>
 </div>
-<h3>On the CAN bus</h3>
-<p>A TCAN1042 transceiver sends five 8-byte frames every 10 ms and a status frame every 100 ms, at 500 kbit/s. The IDs and bitrate are firmware settings. A channel that stops updating, isn't fitted, or reads past its range is flagged invalid in its frame instead of repeating its last value. The 120 Ω terminator is off unless you bridge TERM on the board at the end of the bus.</p>
-<div class="tablewrap"><table><thead><tr><th>ID</th><th>Contents</th></tr></thead><tbody><tr><td>0x520</td><td>DP1–DP3 in Pa (signed 16-bit), valid bits, frame counter</td></tr><tr><td>0x521</td><td>DP4–DP6 in Pa, valid bits, frame counter</td></tr><tr><td>0x522</td><td>AIN1–AIN4 in mV, 0 to 5,250</td></tr><tr><td>0x523</td><td>Health: protocol version, counter, valid masks, power and zero flags, uptime</td></tr><tr><td>0x524</td><td>AIN5–AIN8 in mV</td></tr><tr><td>0x525</td><td>Status, ten times a second: fitted, overrange, zeroed and fault masks, bus recoveries</td></tr></tbody></table></div>
+
+<h2 id="can">On the CAN bus</h2>
+<p class="lead">A TCAN1042 transceiver puts everything on classic CAN. Out of the box the node sends seven frames from 0x520 at 500 kbit/s. What it sends, where each value sits and how often can all be changed from the phone app, without reflashing.</p>
+<h3 style="margin-top:22px">The default frames</h3>
+<p>Standard 11-bit IDs, little-endian. Pressure is signed, 1 Pa a count; the inputs are 1 mV a count at the connector. A channel that stops updating, isn't fitted, or reads past its range is sent as an invalid code with its flag set, never as its last value.</p>
+<div class="tablewrap"><table><thead><tr><th>ID</th><th>Rate</th><th>Contents</th></tr></thead><tbody><tr><td>0x520</td><td>100&nbsp;Hz</td><td>DP1–DP3 in Pa (signed 16-bit), valid bits, counter</td></tr><tr><td>0x521</td><td>100&nbsp;Hz</td><td>DP4–DP6 in Pa, valid bits, counter</td></tr><tr><td>0x522</td><td>100&nbsp;Hz</td><td>AIN1–AIN4 in mV</td></tr><tr><td>0x523</td><td>100&nbsp;Hz</td><td>Health: protocol version, counter, valid masks, flags, uptime</td></tr><tr><td>0x524</td><td>100&nbsp;Hz</td><td>AIN5–AIN8 in mV</td></tr><tr><td>0x525</td><td>10&nbsp;Hz</td><td>Status: fitted, overrange, zeroed and fault masks, bus recoveries</td></tr><tr><td>0x526</td><td>10&nbsp;Hz</td><td>Environment: barometer (2 Pa a count), box temperature (0.01 °C a count), sensor supply and battery in mV</td></tr></tbody></table></div>
+<p class="note">The default pressure fields stop at ±32.7 kPa, so a 40 kPa channel reading past that is sent invalid. A layout with 2 Pa a count, like one of the app's presets, carries their whole range.</p>
+<h3 style="margin-top:28px">Your own layout</h3>
+<p>If your logger expects something else, lay the frames out to suit it in the app's Setup screen. The app checks the layout, the node checks it again, saves it and starts sending it at once; if the node refuses it, the old layout stays.</p>
+<div class="tablewrap"><table><thead><tr><th>Setting</th><th>What you can set</th></tr></thead><tbody><tr><td>Bus</td><td>125k, 250k, 500k or 1 Mbit/s. On, off, or listen-only, where the node never transmits.</td></tr><tr><td>Frames</td><td>Up to 16, each with a standard (11-bit) or extended (29-bit) ID, a period from 10 to 1000 ms and 1 to 8 data bytes.</td></tr><tr><td>Signals</td><td>Up to 8 a frame, each placed by start bit and length (1 to 32 bits), Intel or Motorola byte order, signed or unsigned, with a factor, an offset and an invalid value.</td></tr><tr><td>Values</td><td>Any pressure, gauge or absolute. Any input in mV or converted to units. The barometer, box temperature, sensor supply and battery voltage. The status masks, counters and uptime.</td></tr><tr><td>Conversions</td><td>Per input: two-point linear, a table of up to 16 points, or a thermistor by Beta or by table.</td></tr><tr><td>Zero command</td><td>Optional. A frame with your ID and data byte zeroes the pressures.</td></tr><tr><td>Checks</td><td>Overlapping bits, and bus load: anything over 80 % of the bus is refused.</td></tr><tr><td>DBC</td><td>The app exports a DBC file that matches the layout, ready for the logger.</td></tr></tbody></table></div>
+<p class="note">The app starts you off with four presets: the defaults; the same frames in Motorola byte order; everything in six frames at 1 Mbit/s; and extended IDs at 250 kbit/s. The 120 Ω terminator is off unless you bridge TERM on the board at the end of the bus.</p>
+
+<h2 id="app">The phone app</h2>
+<p class="lead">An Android app talks to the node over Bluetooth LE. It decodes the same frames the node puts on CAN, using the node's own layout, so it works on the bench with no logger attached.</p>
+<div class="grid2">
+  <div class="tile"><b>Live</b><p>Every pressure in kPa or psi, every input in volts or in its own units, then the barometer, box temperature in °F or °C, sensor supply and battery. A channel the node marks invalid says why: over range, sensor fault, not fitted, or no fresh reading. Banners show a sensor-supply fault and a zero in progress.</p></div>
+  <div class="tile"><b>Graph</b><p>Pick channels and watch the last 10, 30 or 60 seconds, with pressures and inputs on separate plots.</p></div>
+  <div class="tile"><b>Zero and record</b><p>Zero the pressures from the phone, after a confirm. Record every sample, 100 a second, to a CSV file in Downloads. Invalid readings are empty cells, never zero.</p></div>
+  <div class="tile"><b>Setup</b><p>The CAN layout, the conversions and the presets, edited as a draft and written to the node in one go. A bit grid shows where each signal sits in its frame. Export the layout as a DBC for the logger, or as a file to load into another node.</p></div>
+</div>
+
+<h2 id="screen">An optional screen</h2>
+<p>A Waveshare ESP32-S3 touch screen plugs into the node's USB-C port. One cable carries power and data: the node is the USB host and powers the screen from its 5 V (about 4.65 V at the screen) whenever it has 12 V. It has five pages: the six pressures with a centre-zero bar against each sensor's range, the eight inputs in volts, a 20-second graph, a zero button, and display settings. The 2.1-inch round LCD is the first choice; there are builds for the 2.8-inch round LCD and two AMOLEDs too. It needs the node's screen firmware, which moves the node's serial console to test pads TP19 and TP20.</p>
 
 <h2 id="install">Fitting it to a car</h2>
-<p class="lead">Each channel is one hose: a tap where you want the pressure, run back to the node. Every sensor reads its hose against the air inside the node's box, so most of the work is deciding what that air is, and the hose runs.</p>
+<p class="lead">Each channel is one hose: a tap where you want the pressure, run back to the node. Every sensor reads its hose against the air inside the node's box, so most of the work is deciding what that air is, and the hose runs. The barometer in the box measures that air, so whichever reference you choose, the log shows what it did.</p>
 <figure class="figbox"><div class="scroll"><svg class="inst car" viewBox="0 0 1000 432" role="img" aria-label="Side view of a car with the six channels plumbed: a pitot-static probe on a roof mast, a tap under the front floor, one on the diffuser, a tap at the base of the windscreen and taps before and after the air filter, each hosed back to the node in the cabin, with the probe's static line on the node's sealed box"><line class="gnd" x1="30" y1="372" x2="970" y2="372"/><path class="bd" d="M96 345 C82 330 80 290 96 268 C104 256 116 248 132 244 C230 228 330 218 402 212 L522 136 C610 126 700 126 772 134 L878 196 C898 208 908 232 908 258 L910 330 C910 342 902 350 888 351 L795.2 351 A58 58 0 1 0 694.8 351 L285.2 351 A58 58 0 1 0 184.8 351 L112 351 C104 351 98 349 96 345 Z"/><path class="gl" d="M414 208 L524 142 C608 133 698 133 766 140 L862 200 Z"/><line class="gl" x1="641" y1="134" x2="641" y2="205"/><circle class="tyre" cx="235" cy="322" r="50"/><circle class="rim" cx="235" cy="322" r="30"/><circle class="tyre" cx="745" cy="322" r="50"/><circle class="rim" cx="745" cy="322" r="30"/><rect class="part" x="116" y="264" width="12" height="60" rx="2"/><rect class="part" x="296" y="272" width="80" height="36" rx="6"/><polyline class="part" points="328,274 336,278 328,282 336,286 328,290 336,294 328,298 336,302 328,306"/><line class="hose" x1="150" y1="349" x2="150" y2="258"/><line class="hose" x1="308" y1="290" x2="308" y2="258"/><line class="hose" x1="364" y1="290" x2="364" y2="258"/><line class="hose" x1="396" y1="214" x2="396" y2="258"/><polyline class="hose fat" points="150,258 606,258 606,296"/><polyline class="hose fat" points="884,349 884,254 692,254 692,311 672,311"/><line class="metal" x1="640" y1="127" x2="640" y2="62" style="stroke:#c9d3d0;stroke-width:6"/><path class="metal" d="M570 57 L643 57 L643 67 L570 67 C563 67 560 64 560 62 C560 60 563 57 570 57 Z"/><line class="hose" x1="634" y1="127" x2="634" y2="296"/><line class="ref" x1="648" y1="127" x2="648" y2="296"/><rect class="node" x="598" y="296" width="74" height="30" rx="3"/><text class="nodet" x="635" y="316" text-anchor="middle">node</text><circle class="tap" cx="150" cy="349" r="5.5"/><circle class="tap" cx="308" cy="290" r="5.5"/><circle class="tap" cx="364" cy="290" r="5.5"/><circle class="tap" cx="396" cy="214" r="5.5"/><circle class="tap" cx="884" cy="349" r="5.5"/><circle class="tap" cx="561" cy="62" r="5.5"/><line class="air" x1="24" y1="112" x2="91.0" y2="112.0"/><polygon class="airh" points="100,112 91.0,116.5 91.0,107.5"/><line class="air" x1="24" y1="140" x2="91.0" y2="140.0"/><polygon class="airh" points="100,140 91.0,144.5 91.0,135.5"/><text class="sm" x="24" y="98" text-anchor="start">air</text><text class="lb" x="386" y="172" text-anchor="end">4  Cowl</text><text class="sm" x="386" y="192" text-anchor="end">base of the windscreen</text><text class="lb" x="336" y="334" text-anchor="middle">5 · 6  Airbox</text><text class="lb" x="150" y="400" text-anchor="middle">2  Front floor</text><text class="sm" x="150" y="420" text-anchor="middle">under the splitter</text><text class="lb" x="880" y="400" text-anchor="middle">3  Diffuser</text><text class="sm" x="880" y="420" text-anchor="middle">rear of the floor</text><text class="lb" x="664" y="50" text-anchor="start">1  Pitot-static</text><text class="sm" x="664" y="70" text-anchor="start">on a mast, in clean air</text><line class="hose" x1="806" y1="96" x2="836" y2="96"/><text class="sm" x="844" y="101" text-anchor="start">hose</text><line class="ref" x1="806" y1="120" x2="836" y2="120"/><text class="sm" x="844" y="125" text-anchor="start">static to the box</text></svg></div></figure>
 <figure class="shot" style="margin-top:10px"><figcaption>One way to spend the six channels, numbered by sensor. Every tap gets its own hose back to the node in the cabin. The node's box is sealed, with the probe's static line on its one reference barb, so every channel reads against static.</figcaption></figure>
 
@@ -179,14 +210,14 @@
 
 <h3 style="margin-top:28px">Plumbing the six channels</h3>
 <div class="tablewrap"><table class="plumb"><thead><tr><th>Sensor</th><th>Range</th><th>Port</th><th>Reads</th></tr></thead><tbody><tr><td>DP1</td><td>10 kPa</td><td>Pitot-static, tip</td><td>Dynamic pressure, so airspeed and headwind</td></tr><tr><td>DP2</td><td>10 kPa</td><td>Front floor tap</td><td>Suction under the front of the car</td></tr><tr><td>DP3</td><td>10 kPa</td><td>Diffuser tap</td><td>Suction under the back</td></tr><tr><td>DP4</td><td>10 kPa</td><td>Cowl, base of the windscreen</td><td>Whether the cowl really is high pressure</td></tr><tr><td>DP5</td><td>40 kPa</td><td>Airbox, before the filter</td><td>Depression ahead of the filter</td></tr><tr><td>DP6</td><td>40 kPa</td><td>Airbox outlet, toward the turbo</td><td>Depression the turbo sees; DP5 minus DP6 is the filter</td></tr></tbody></table></div>
-<p class="note">Each reading is the port's pressure minus the box's. A drop across a part takes two channels and a subtraction in the logger: DP5 minus DP6 is what the filter costs. The two 40 kPa channels go on the intake because the turbo pulls harder than any aero tap.</p>
+<p class="note">Each reading is the port's pressure minus the box's; add the barometer's reading for the port's absolute pressure, which the node can also send directly. A drop across a part takes two channels and a subtraction in the logger: DP5 minus DP6 is what the filter costs. The two 40 kPa channels go on the intake because the turbo pulls harder than any aero tap.</p>
 
 <h3 style="margin-top:28px">The reference</h3>
 <div class="how">
-  <div class="tile"><b>Sealed box on the static line</b><p>The best reference for aero taps, because it's the pressure of the air the car is driving through. Seal the node's box, give it one barb, and run the probe's static line to it; all six sensors then read against static. Mount the probe where the bodywork doesn't disturb it, and leave it in the same place so runs compare.</p></div>
-  <div class="tile"><b>Open box in the cabin</b><p>The easy way: leave the box open in the closed cabin and every channel reads against cabin air. The cabin's pressure moves with speed and with the ventilation, so keep the windows shut and the fan the same every run.</p></div>
+  <div class="tile"><b>Sealed box on the static line</b><p>The best reference for aero taps, because it's the pressure of the air the car is driving through. Seal the node's box, give it one barb, and run the probe's static line to it; all six sensors then read against static. Mount the probe where the bodywork doesn't disturb it, and leave it in the same place so runs compare. The barometer then reads static pressure itself, in absolute terms.</p></div>
+  <div class="tile"><b>Open box in the cabin</b><p>The easy way: leave the box open in the closed cabin and every channel reads against cabin air. The cabin's pressure moves with speed and with the ventilation, so keep the windows shut and the fan the same every run. The barometer logs that air, so you can see how far it moved.</p></div>
   <div class="tile"><b>Two channels for a drop</b><p>For a drop across something, tap both sides and subtract: before and after the filter, in front of and behind the radiator. The reference cancels out. Each sensor is good to about 30 Pa near room temperature, so a small drop needs both zeroed together.</p></div>
-  <div class="tile"><b>Bottle in the boot</b><p>A sealed box onto a bottle with a pinhole makes a slow-moving reference. It still drifts with temperature and with the cabin, so it's a last resort, zeroed before every run.</p></div>
+  <div class="tile"><b>Bottle in the boot</b><p>A sealed box onto a bottle with a pinhole makes a slow-moving reference. It still drifts with temperature and with the cabin, so it's a last resort, zeroed before every run; the barometer shows how much it drifted.</p></div>
 </div>
 
 <h3 style="margin-top:28px">Hoses and mounting</h3>
@@ -194,12 +225,12 @@
   <div class="tile"><b>Hose</b><p>2 mm ID silicone fits the barbs. Route it with no kinks, no low spots where water can sit, and nothing near the exhaust. Label both ends with the sensor number.</p></div>
   <div class="tile"><b>Length</b><p>A long, thin hose slows the reading down. Length matters and the bore matters far more. For a drop measured on two channels, keep their hoses about the same length, or a quick change shows up as a false difference.</p></div>
   <div class="tile"><b>Leaks</b><p>Push gently on each tap with a syringe and hold it. The reading should stay put. If it creeps back toward zero, a joint is leaking.</p></div>
-  <div class="tile"><b>The node</b><p>Somewhere dry and away from heat. The cabin is easiest, with the hoses through grommets. For the static reference the box needs a sealed lid, sealed cable entries and the one reference barb; any leak lets cabin air in.</p></div>
+  <div class="tile"><b>The node</b><p>Somewhere dry and away from heat: the sensor supply's budget assumes the box stays below about 140 °F (60 °C). The cabin is easiest, with the hoses through grommets. For the static reference the box needs a sealed lid, sealed cable entries and the one reference barb; any leak lets cabin air in.</p></div>
 </div>
 
 <h3 style="margin-top:28px">Running a test</h3>
 <ol class="steps">
-  <li><b>Zero first.</b> Car parked, engine off, every tap and the reference at the same still air, then press ZERO. It's lost at power-off, so do it each time.</li>
+  <li><b>Zero first.</b> Car parked, engine off, every tap and the reference at the same still air, then press ZERO, or zero from the app. It's lost at power-off, so do it each time.</li>
   <li><b>Same road, both ways.</b> Hold a steady speed over the same stretch in each direction and average the two. That cancels most of the wind.</li>
   <li><b>Divide by dynamic pressure.</b> An aero reading divided by DP1's dynamic pressure is a pressure coefficient. It stays the same as speed changes, so a run at 110 km/h compares with one at 130.</li>
   <li><b>One change at a time.</b> Baseline, change, baseline again. If the two baselines disagree, conditions moved and the change can't be judged.</li>
@@ -231,73 +262,78 @@
 
 
 <h2 id="schematic">Schematic</h2>
-<p class="lead">Drawn by function, one sheet per block, with the board's real part references and values. Click a block in the overview to jump to its sheet.</p>
+<p class="lead">Drawn by function, one sheet per block, with the board's real part references, values and pin numbers. Every connection on these sheets was checked against the board's netlist. Click a block in the overview to jump to its sheet.</p>
 <div class="legend sch"><span><svg width="34" height="12" aria-hidden="true"><line x1="2" y1="6" x2="32" y2="6" class="w r"/></svg>power rail</span><span><svg width="34" height="12" aria-hidden="true"><line x1="2" y1="6" x2="32" y2="6" class="w"/></svg>signal</span><span><svg width="34" height="14" aria-hidden="true"><line x1="2" y1="7" x2="32" y2="7" class="w"/><line x1="17" y1="7" x2="17" y2="14" class="w"/><circle cx="17" cy="7" r="3" class="dot"/></svg>joined</span><span><svg width="34" height="16" aria-hidden="true"><line x1="2" y1="8" x2="32" y2="8" class="w"/><path class="w" d="M17 0V3A5 5 0 0 1 17 13V16"/></svg>crosses, not joined</span><span><svg width="40" height="18" aria-hidden="true"><polygon class="tag" points="2,9 8,2 38,2 38,16 8,16"/></svg>continues on another sheet</span></div>
 <section class="sheet" id="pcn-overview"><div class="tb"><span class="no">0</span><h3>Overview</h3><span class="refs">click a block</span></div>
-<figure class="sch"><div class="scroll"><svg viewBox="0 0 1160 400" role="img" aria-label="Block diagram: 12 V input through protection and the 5 V buck, OR with USB, 3.3 V LDO to the ESP32-S3; I2C to two ADCs and the switch for six pressure sensors; eight analog inputs through dividers and buffers; CAN transceiver to J8" style="min-width:820px">
+<figure class="sch"><div class="scroll"><svg viewBox="0 0 1160 400" role="img" aria-label="Block diagram: 12 V input through protection to the 5 V buck, OR with USB, 3.3 V LDO to the ESP32-S3; the protected 12 V also feeds the sensor 5 V supply for the eight analog connectors, whose voltage and the battery&#x27;s go back to the ESP32; eight analog inputs through dividers, isolation and buffers to two ADCs; one I2C bus to the ADCs, the barometer and the switch for six pressure sensors; CAN transceiver to J8" style="min-width:820px">
 <defs><marker id="ov-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="mk" d="M0 0L10 5L0 10Z"/></marker><marker id="ov-arrow-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="mk r" d="M0 0L10 5L0 10Z"/></marker></defs>
-<polyline class="w r arrow" points="160,57.0 214,57.0" marker-end="url(#ov-arrow-r)"/>
-<text class="rail" x="188.0" y="51.0" text-anchor="middle">12 V</text>
-<polyline class="w r arrow" points="356,57.0 410,57.0" marker-end="url(#ov-arrow-r)"/>
-<text class="rail" x="384.0" y="51.0" text-anchor="middle">VIN</text>
-<polyline class="w r arrow" points="552,57.0 606,57.0" marker-end="url(#ov-arrow-r)"/>
-<text class="rail" x="580.0" y="51.0" text-anchor="middle">5 V</text>
-<polyline class="w r arrow" points="748,57.0 802,57.0" marker-end="url(#ov-arrow-r)"/>
-<text class="rail" x="776.0" y="51.0" text-anchor="middle">5V SYS</text>
-<polyline class="w r arrow" points="874.0,84 874.0,128" marker-end="url(#ov-arrow-r)"/>
-<text class="rail" x="882.0" y="111.0" text-anchor="start">3.3 V</text>
-<polyline class="w r arrow" points="678.0,130 678.0,86" marker-end="url(#ov-arrow-r)"/>
-<text class="rail" x="686.0" y="111.0" text-anchor="start">VBUS</text>
-<polyline class="w r arrow" points="482.0,84 482.0,128" marker-end="url(#ov-arrow-r)"/>
-<text class="rail" x="490.0" y="111.0" text-anchor="start">5 V</text>
-<polyline class="w arrow" points="748,157.0 802,157.0" marker-end="url(#ov-arrow)"/>
-<text class="net" x="776.0" y="151.0" text-anchor="middle">D+ D−</text>
-<polyline class="w r arrow" points="412,157.0 90.0,157.0 90.0,228" marker-end="url(#ov-arrow-r)"/>
-<text class="rail" x="102.0" y="151.0" text-anchor="start">switched 5 V to the AIN connectors</text>
-<polyline class="w arrow" points="160,257.0 214,257.0" marker-end="url(#ov-arrow)"/>
-<text class="net" x="188.0" y="251.0" text-anchor="middle">0–5 V</text>
-<polyline class="w arrow" points="356,257.0 410,257.0" marker-end="url(#ov-arrow)"/>
-<text class="net" x="384.0" y="251.0" text-anchor="middle">0–1 V</text>
-<polyline class="w arrow" points="552,257.0 606,257.0" marker-end="url(#ov-arrow)"/>
-<polyline class="w" points="874.0,184 874.0,230"/>
-<text class="net" x="882.0" y="211.0">I2C</text>
-<polyline class="w" points="874.0,201 678.0,201 678.0,230"/>
-<circle class="dot" cx="874.0" cy="201" r="3"/>
-<polyline class="w arrow" points="874.0,284 874.0,328" marker-end="url(#ov-arrow)"/>
-<text class="net" x="882.0" y="311.0" text-anchor="start">6 branches, same address</text>
-<polyline class="w arrow" points="944,157.0 998,157.0" marker-end="url(#ov-arrow)"/>
-<text class="net" x="972.0" y="151.0" text-anchor="middle">TX RX</text>
-<polyline class="w arrow" points="1070.0,184 1070.0,228" marker-end="url(#ov-arrow)"/>
-<text class="net" x="1078.0" y="211.0" text-anchor="start">CAN H / L</text>
+<polyline class="w r arrow" points="160,57 214,57" marker-end="url(#ov-arrow-r)"/>
+<text class="rail" x="188.0" y="51" text-anchor="middle">12 V</text>
+<polyline class="w r arrow" points="356,57 410,57" marker-end="url(#ov-arrow-r)"/>
+<text class="rail" x="384.0" y="51" text-anchor="middle">VIN</text>
+<polyline class="w r arrow" points="552,57 606,57" marker-end="url(#ov-arrow-r)"/>
+<text class="rail" x="580.0" y="51" text-anchor="middle">5 V</text>
+<polyline class="w r arrow" points="748,57 802,57" marker-end="url(#ov-arrow-r)"/>
+<text class="rail" x="776.0" y="51" text-anchor="middle">5V SYS</text>
+<polyline class="w r arrow" points="286,84 286,128" marker-end="url(#ov-arrow-r)"/>
+<text class="rail" x="294" y="111" text-anchor="start">VIN</text>
+<polyline class="w r arrow" points="874,84 874,128" marker-end="url(#ov-arrow-r)"/>
+<text class="rail" x="882" y="111" text-anchor="start">3.3 V</text>
+<polyline class="w r arrow" points="678,130 678,86" marker-end="url(#ov-arrow-r)"/>
+<text class="rail" x="686" y="111" text-anchor="start">VBUS</text>
+<polyline class="w r arrow" points="216,157 90,157 90,228" marker-end="url(#ov-arrow-r)"/>
+<text class="rail" x="98" y="200" text-anchor="start">5V SENS</text>
+<text class="note" x="98" y="214" text-anchor="start">to the 8 connectors</text>
+<polyline class="w arrow" points="748,157 802,157" marker-end="url(#ov-arrow)"/>
+<text class="net" x="776" y="151" text-anchor="middle">D+ D−</text>
+<polyline class="w arrow" points="944,157 998,157" marker-end="url(#ov-arrow)"/>
+<text class="net" x="972" y="151" text-anchor="middle">TX RX</text>
+<polyline class="w arrow" points="1070,184 1070,228" marker-end="url(#ov-arrow)"/>
+<text class="net" x="1078" y="211" text-anchor="start">CAN H / L</text>
+<polyline class="w arrow" points="300,184 300,198 830,198 830,186" marker-end="url(#ov-arrow)"/>
+<text class="net" x="420" y="214" text-anchor="start">sense: 5V SENS → IO1, VIN → IO2</text>
+<polyline class="w arrow" points="160,257 214,257" marker-end="url(#ov-arrow)"/>
+<text class="net" x="188" y="251" text-anchor="middle">0–5 V</text>
+<polyline class="w arrow" points="356,257 410,257" marker-end="url(#ov-arrow)"/>
+<text class="net" x="384" y="251" text-anchor="middle">0–1 V</text>
+<polyline class="w arrow" points="552,257 606,257" marker-end="url(#ov-arrow)"/>
+<polyline class="w" points="900,184 900,230"/>
+<text class="net" x="908" y="207" text-anchor="start">I²C</text>
+<polyline class="w" points="900,216 776,216 776,357 750,357"/>
+<polyline class="w" points="776,257 750,257"/>
+<circle class="dot" cx="900" cy="216" r="3"/><circle class="dot" cx="776" cy="257" r="3"/>
+<polyline class="w arrow" points="874,284 874,328" marker-end="url(#ov-arrow)"/>
+<text class="net" x="882" y="311" text-anchor="start">6 branches, same address</text>
 <a href="#pcn-power" class="ovlink"><rect class="b ic ovbox" x="20" y="30" width="140" height="54" rx="4"/><text class="ovt" x="30" y="53">12 V in</text><text class="val" x="30" y="71">J1</text></a>
 <a href="#pcn-power" class="ovlink"><rect class="b ic ovbox" x="216" y="30" width="140" height="54" rx="4"/><text class="ovt" x="226" y="53">Protection</text><text class="val" x="226" y="71">F1 · D1 · D2</text></a>
 <a href="#pcn-power" class="ovlink"><rect class="b ic ovbox" x="412" y="30" width="140" height="54" rx="4"/><text class="ovt" x="422" y="53">5 V buck</text><text class="val" x="422" y="71">U1 LM5164</text></a>
 <a href="#pcn-rails" class="ovlink"><rect class="b ic ovbox" x="608" y="30" width="140" height="54" rx="4"/><text class="ovt" x="618" y="53">5 V OR</text><text class="val" x="618" y="71">U17 · U18</text></a>
 <a href="#pcn-rails" class="ovlink"><rect class="b ic ovbox" x="804" y="30" width="140" height="54" rx="4"/><text class="ovt" x="814" y="53">3.3 V LDO</text><text class="val" x="814" y="71">U2 TLV76733</text></a>
-<a href="#pcn-rails" class="ovlink"><rect class="b ic ovbox" x="412" y="130" width="140" height="54" rx="4"/><text class="ovt" x="422" y="153">Sensor 5 V</text><text class="val" x="422" y="171">U3 TPS2051B</text></a>
+<a href="#pcn-sens" class="ovlink"><rect class="b ic ovbox" x="216" y="130" width="140" height="54" rx="4"/><text class="ovt" x="226" y="153">Sensor 5 V</text><text class="val" x="226" y="171">U3 TLE4252D</text></a>
 <a href="#pcn-mcu" class="ovlink"><rect class="b ic ovbox" x="608" y="130" width="140" height="54" rx="4"/><text class="ovt" x="618" y="153">USB-C</text><text class="val" x="618" y="171">J3 · U5</text></a>
 <a href="#pcn-mcu" class="ovlink"><rect class="b ic ovbox" x="804" y="130" width="140" height="54" rx="4"/><text class="ovt" x="814" y="153">ESP32-S3</text><text class="val" x="814" y="171">U4 WROOM-1</text></a>
 <a href="#pcn-can" class="ovlink"><rect class="b ic ovbox" x="1000" y="130" width="140" height="54" rx="4"/><text class="ovt" x="1010" y="153">CAN transceiver</text><text class="val" x="1010" y="171">U16 TCAN1042</text></a>
 <a href="#pcn-analog" class="ovlink"><rect class="b ic ovbox" x="20" y="230" width="140" height="54" rx="4"/><text class="ovt" x="30" y="253">8 × 0–5 V in</text><text class="val" x="30" y="271">J4–J7 · J9–J12</text></a>
-<a href="#pcn-analog" class="ovlink"><rect class="b ic ovbox" x="216" y="230" width="140" height="54" rx="4"/><text class="ovt" x="226" y="253">Divider ÷5</text><text class="val" x="226" y="271">R32–R75</text></a>
+<a href="#pcn-analog" class="ovlink"><rect class="b ic ovbox" x="216" y="230" width="140" height="54" rx="4"/><text class="ovt" x="226" y="253">Divider ÷5</text><text class="val" x="226" y="271">1 MΩ each</text></a>
 <a href="#pcn-analog" class="ovlink"><rect class="b ic ovbox" x="412" y="230" width="140" height="54" rx="4"/><text class="ovt" x="422" y="253">Isolate, buffer</text><text class="val" x="422" y="271">U13 U14 U19 U20</text></a>
 <a href="#pcn-analog" class="ovlink"><rect class="b ic ovbox" x="608" y="230" width="140" height="54" rx="4"/><text class="ovt" x="618" y="253">2 × 16-bit ADC</text><text class="val" x="618" y="271">U15 · U21</text></a>
-<a href="#pcn-pressure" class="ovlink"><rect class="b ic ovbox" x="804" y="230" width="140" height="54" rx="4"/><text class="ovt" x="814" y="253">I2C switch</text><text class="val" x="814" y="271">U6 TCA9548A</text></a>
+<a href="#pcn-pressure" class="ovlink"><rect class="b ic ovbox" x="804" y="230" width="140" height="54" rx="4"/><text class="ovt" x="814" y="253">I²C switch</text><text class="val" x="814" y="271">U6 TCA9548A</text></a>
 <a href="#pcn-can" class="ovlink"><rect class="b ic ovbox" x="1000" y="230" width="140" height="54" rx="4"/><text class="ovt" x="1010" y="253">CAN bus</text><text class="val" x="1010" y="271">J8</text></a>
+<a href="#pcn-pressure" class="ovlink"><rect class="b ic ovbox" x="608" y="330" width="140" height="54" rx="4"/><text class="ovt" x="618" y="353">Barometer</text><text class="val" x="618" y="371">U23 BMP388</text></a>
 <a href="#pcn-pressure" class="ovlink"><rect class="b ic ovbox" x="804" y="330" width="140" height="54" rx="4"/><text class="ovt" x="814" y="353">6 × pressure</text><text class="val" x="814" y="371">U7–U12 WF100DPZ</text></a>
-</svg></div><figcaption>The car's 12 V becomes 5 V and then 3.3 V; USB can power the logic on the bench. The ESP32 reads the six pressure sensors and both ADCs over one I2C bus and sends everything out on CAN.</figcaption></figure></section>
-<nav class="jump" aria-label="Schematic sheets"><a href="#pcn-power">1 · Power input and 5 V buck</a><a href="#pcn-rails">2 · 5 V OR, 3.3 V and sensor supply</a><a href="#pcn-mcu">3 · ESP32-S3, USB and buttons</a><a href="#pcn-pressure">4 · Pressure sensor bus</a><a href="#pcn-sensor">4a · One sensor branch</a><a href="#pcn-analog">5 · Analog input (one of eight)</a><a href="#pcn-can">6 · CAN</a><a href="#pcn-gpio">ESP32 pins</a></nav>
-<section class="sheet" id="pcn-power"><div class="tb"><span class="no">1</span><h3>Power input and 5 V buck</h3><span class="refs">J1 · F1 · D1 · D2 · C1 · C2 · C37 · U1 · L1 · R1–R5 · C3–C7</span></div><figure class="sch"><div class="scroll"><svg viewBox="0 0 1060 330" role="img" aria-label="Power input: J1, fuse F1, reverse-battery diode D1, TVS D2, input caps, and the LM5164 buck U1 making 5 V" style="min-width:720px">
+</svg></div><figcaption>The car&#x27;s 12 V, once it is past the fuse and the reverse-battery diode, feeds two things: the buck, which makes the board&#x27;s 5 V and then 3.3 V, and the sensor supply for the eight analog connectors. USB can run the logic on the bench but never the sensors. The ESP32 reads the six pressure sensors, the barometer and both ADCs over one I²C bus, measures the sensor supply and the battery, and sends everything out on CAN.</figcaption></figure></section>
+<nav class="jump" aria-label="Schematic sheets"><a href="#pcn-power">1 · Power input and 5 V buck</a><a href="#pcn-rails">2 · 5 V OR and 3.3 V</a><a href="#pcn-sens">3 · Sensor 5 V supply and supply sense</a><a href="#pcn-mcu">4 · ESP32-S3, USB and buttons</a><a href="#pcn-pressure">5 · Sensor bus and barometer</a><a href="#pcn-sensor">5a · One sensor branch</a><a href="#pcn-analog">6 · Analog input (one of eight)</a><a href="#pcn-can">7 · CAN</a><a href="#pcn-gpio">8 · ESP32 pins and test pads</a></nav>
+<section class="sheet" id="pcn-power"><div class="tb"><span class="no">1</span><h3>Power input and 5 V buck</h3><span class="refs">J1 · F1 · D1 · D2 · C37 · C1 · C2 · U1 · L1 · R1–R5 · C3–C7 · C36</span></div><figure class="sch"><div class="scroll"><svg viewBox="0 0 1120 330" role="img" aria-label="Power input: J1, fuse F1, reverse-battery diode D1, TVS D2, input caps, and the LM5164 buck U1 making 5 V" style="min-width:820px">
 <polyline class="w r" points="80,80 110,80"/>
 <polyline class="w r" points="150,80 180,80"/>
 <polyline class="w" points="80,120 95,120 95,132"/>
 <polyline class="w r" points="220,80 510,80"/>
 <polyline class="w r" points="260,80 260,100"/>
-<polyline class="w r" points="320,80 320,100"/>
-<polyline class="w r" points="380,80 380,100"/>
-<polyline class="w r" points="440,80 440,100"/>
-<polyline class="w r" points="495,110 495,80"/>
-<polyline class="w r" points="510,110 495,110"/>
+<polyline class="w r" points="330,80 330,100"/>
+<polyline class="w r" points="390,80 390,100"/>
+<polyline class="w r" points="450,80 450,100"/>
+<polyline class="w r" points="295,80 295,36 330,36"/>
+<polyline class="w r" points="510,110 495,110 495,80"/>
 <polyline class="w" points="510,170 470,170 470,185"/>
 <polyline class="w" points="510,250 500,250 500,262"/>
 <polyline class="w" points="666,80 700,80 700,85"/>
@@ -308,12 +344,13 @@
 <polyline class="w" points="730,227 730,230"/>
 <polyline class="w" points="730,182 760,182"/>
 <polyline class="w" points="800,182 820,182 820,130"/>
-<polyline class="w r" points="800,130 1000,130"/>
+<polyline class="w" points="666,230 850,230"/>
+<polyline class="w r" points="800,130 1050,130"/>
 <polyline class="w" points="850,130 850,145"/>
 <polyline class="w" points="850,185 850,245"/>
-<polyline class="w" points="666,230 850,230"/>
 <polyline class="w r" points="900,130 900,145"/>
 <polyline class="w r" points="950,130 950,145"/>
+<polyline class="w r" points="1000,130 1000,145"/>
 <polyline class="w" points="666,275 680,275"/>
 <polyline class="w" points="720,275 735,275"/>
 <rect class="b ic" x="22" y="58" width="40" height="84" rx="3"/>
@@ -325,15 +362,18 @@
 <circle class="dot r" cx="260" cy="80" r="3"/>
 <g transform="translate(260 120) rotate(90)"><path class="s" d="M-20 0H-12M12 0H20M-3 -9L0 -7V7L3 9"/><polygon class="f" points="-12,-7 -12,7 0,0"/><polygon class="f" points="12,-7 12,7 0,0"/></g>
 <path class="s" d="M260 140V148M252 148H268M255 152H265M258 156H262"/>
-<circle class="dot r" cx="320" cy="80" r="3"/>
-<g transform="translate(320 120) rotate(90)"><path class="s" d="M-20 0H-3M5 0H20M-3 -9V9M6 -9Q1 0 6 9"/><path class="s thin" d="M-12 13h5M-9.5 10.5v5"/></g>
-<path class="s" d="M320 140V148M312 148H328M315 152H325M318 156H322"/>
-<circle class="dot r" cx="380" cy="80" r="3"/>
-<g transform="translate(380 120) rotate(90)"><path class="s" d="M-20 0H-3M3 0H20M-3 -9V9M3 -9V9"/></g>
-<path class="s" d="M380 140V148M372 148H388M375 152H385M378 156H382"/>
-<circle class="dot r" cx="440" cy="80" r="3"/>
-<g transform="translate(440 120) rotate(90)"><path class="s" d="M-20 0H-3M3 0H20M-3 -9V9M3 -9V9"/></g>
-<path class="s" d="M440 140V148M432 148H448M435 152H445M438 156H442"/>
+<circle class="dot r" cx="330" cy="80" r="3"/>
+<g transform="translate(330 120) rotate(90)"><path class="s" d="M-20 0H-3M5 0H20M-3 -9V9M6 -9Q1 0 6 9"/><path class="s thin" d="M-12 13h5M-9.5 10.5v5"/></g>
+<path class="s" d="M330 140V148M322 148H338M325 152H335M328 156H332"/>
+<circle class="dot r" cx="390" cy="80" r="3"/>
+<g transform="translate(390 120) rotate(90)"><path class="s" d="M-20 0H-3M3 0H20M-3 -9V9M3 -9V9"/></g>
+<path class="s" d="M390 140V148M382 148H398M385 152H395M388 156H392"/>
+<circle class="dot r" cx="450" cy="80" r="3"/>
+<g transform="translate(450 120) rotate(90)"><path class="s" d="M-20 0H-3M3 0H20M-3 -9V9M3 -9V9"/></g>
+<path class="s" d="M450 140V148M442 148H458M445 152H455M448 156H452"/>
+<circle class="dot r" cx="295" cy="80" r="3"/>
+<polygon class="tag r" points="330,36 337,28 365.1,28 365.1,44 337,44"/>
+<circle class="dot r" cx="495" cy="80" r="3"/>
 <rect class="b ic" x="528" y="55" width="120" height="245" rx="3"/>
 <path class="s" d="M510 80H528"/>
 <path class="s" d="M510 110H528"/>
@@ -343,7 +383,6 @@
 <path class="s" d="M648 130H666"/>
 <path class="s" d="M648 230H666"/>
 <path class="s" d="M648 275H666"/>
-<circle class="dot r" cx="495" cy="80" r="3"/>
 <g transform="translate(470 205) rotate(90)"><path class="s" d="M-20 0H-12M12 0H20"/><rect class="b" x="-12" y="-5" width="24" height="10"/></g>
 <path class="s" d="M470 225V233M462 233H478M465 237H475M468 241H472"/>
 <path class="s" d="M500 262V270M492 270H508M495 274H505M498 278H502"/>
@@ -356,45 +395,47 @@
 <g transform="translate(730 207) rotate(90)"><path class="s" d="M-20 0H-3M3 0H20M-3 -9V9M3 -9V9"/></g>
 <g transform="translate(780 182) rotate(0)"><path class="s" d="M-20 0H-3M3 0H20M-3 -9V9M3 -9V9"/></g>
 <circle class="dot r" cx="820" cy="130" r="3"/>
-<circle class="dot r" cx="850" cy="130" r="3"/>
-<circle class="dot r" cx="900" cy="130" r="3"/>
-<circle class="dot r" cx="950" cy="130" r="3"/>
-<g transform="translate(850 165) rotate(90)"><path class="s" d="M-20 0H-12M12 0H20"/><rect class="b" x="-12" y="-5" width="24" height="10"/></g>
+<circle class="dot" cx="730" cy="230" r="3"/>
 <circle class="dot" cx="850" cy="230" r="3"/>
+<circle class="dot r" cx="850" cy="130" r="3"/>
+<g transform="translate(850 165) rotate(90)"><path class="s" d="M-20 0H-12M12 0H20"/><rect class="b" x="-12" y="-5" width="24" height="10"/></g>
 <g transform="translate(850 265) rotate(90)"><path class="s" d="M-20 0H-12M12 0H20"/><rect class="b" x="-12" y="-5" width="24" height="10"/></g>
 <path class="s" d="M850 285V293M842 293H858M845 297H855M848 301H852"/>
-<circle class="dot" cx="730" cy="230" r="3"/>
+<circle class="dot r" cx="900" cy="130" r="3"/>
 <g transform="translate(900 165) rotate(90)"><path class="s" d="M-20 0H-3M3 0H20M-3 -9V9M3 -9V9"/></g>
 <path class="s" d="M900 185V193M892 193H908M895 197H905M898 201H902"/>
+<circle class="dot r" cx="950" cy="130" r="3"/>
 <g transform="translate(950 165) rotate(90)"><path class="s" d="M-20 0H-3M3 0H20M-3 -9V9M3 -9V9"/></g>
 <path class="s" d="M950 185V193M942 193H958M945 197H955M948 201H952"/>
-<polygon class="tag r" points="1000.0,130 1007.0,122 1061.9,122 1061.9,138 1007.0,138"/>
+<circle class="dot r" cx="1000" cy="130" r="3"/>
+<g transform="translate(1000 165) rotate(90)"><path class="s" d="M-20 0H-3M3 0H20M-3 -9V9M3 -9V9"/></g>
+<path class="s" d="M1000 185V193M992 193H1008M995 197H1005M998 201H1002"/>
+<polygon class="tag r" points="1050,130 1057,122 1111.9,122 1111.9,138 1057,138"/>
 <g transform="translate(700 275) rotate(0)"><path class="s" d="M-20 0H-12M12 0H20"/><rect class="b" x="-12" y="-5" width="24" height="10"/></g>
-<polygon class="tag r" points="735.0,275 742.0,267 770.1,267 770.1,283 742.0,283"/>
-<text class="icref" x="42.0" y="158" text-anchor="middle">J1 12V IN</text>
+<polygon class="tag r" points="735,275 742,267 770.1,267 770.1,283 742,283"/>
 <text class="pn" x="71" y="76" text-anchor="middle">1</text>
 <text class="pnm" x="57" y="84" text-anchor="end">12V</text>
 <text class="pn" x="71" y="116" text-anchor="middle">2</text>
 <text class="pnm" x="57" y="124" text-anchor="end">GND</text>
+<text class="icref" x="42" y="158" text-anchor="middle">J1 12V IN</text>
 <text class="ref" x="130" y="64" text-anchor="middle">F1</text>
 <text class="val" x="130" y="100" text-anchor="middle">1 A</text>
 <text class="ref" x="200" y="62" text-anchor="middle">D1</text>
 <text class="val" x="200" y="100" text-anchor="middle">SS210</text>
-<text class="rail" x="232" y="72" text-anchor="start">VIN</text>
+<text class="rail" x="228" y="72" text-anchor="start">VIN</text>
 <text class="ref" x="248" y="112" text-anchor="end">D2</text>
 <text class="val" x="248" y="125" text-anchor="end">SMCJ33CA</text>
-<text class="ref" x="332" y="112" text-anchor="start">C37</text>
-<text class="val" x="332" y="125" text-anchor="start">22µF</text>
-<text class="val" x="332" y="138" text-anchor="start">100V</text>
-<text class="ref" x="392" y="112" text-anchor="start">C1</text>
-<text class="val" x="392" y="125" text-anchor="start">2.2µF</text>
-<text class="val" x="392" y="138" text-anchor="start">100V</text>
-<text class="ref" x="452" y="112" text-anchor="start">C2</text>
-<text class="val" x="452" y="125" text-anchor="start">100nF</text>
-<text class="val" x="452" y="138" text-anchor="start">100V</text>
-<text class="icref" x="588.0" y="166.5" text-anchor="middle">U1</text>
-<text class="icname" x="588.0" y="181.5" text-anchor="middle">LM5164</text>
-<text class="val" x="588.0" y="196.5" text-anchor="middle">100 V buck</text>
+<text class="ref" x="342" y="112" text-anchor="start">C37</text>
+<text class="val" x="342" y="125" text-anchor="start">22µF</text>
+<text class="val" x="342" y="138" text-anchor="start">100V</text>
+<text class="ref" x="402" y="112" text-anchor="start">C1</text>
+<text class="val" x="402" y="125" text-anchor="start">2.2µF</text>
+<text class="val" x="402" y="138" text-anchor="start">100V</text>
+<text class="ref" x="462" y="112" text-anchor="start">C2</text>
+<text class="val" x="462" y="125" text-anchor="start">100nF</text>
+<text class="val" x="462" y="138" text-anchor="start">100V</text>
+<text class="tagt r" x="341" y="40" text-anchor="start">VIN</text>
+<text class="note" x="374" y="40" text-anchor="start">to the sensor supply and battery sense, sheet 3</text>
 <text class="pn" x="519" y="76" text-anchor="middle">2</text>
 <text class="pnm" x="533" y="84" text-anchor="start">VIN</text>
 <text class="pn" x="519" y="106" text-anchor="middle">3</text>
@@ -411,6 +452,9 @@
 <text class="pnm" x="643" y="234" text-anchor="end">FB</text>
 <text class="pn" x="657" y="271" text-anchor="middle">6</text>
 <text class="pnm" x="643" y="279" text-anchor="end">PGOOD</text>
+<text class="icref" x="588" y="171" text-anchor="middle">U1</text>
+<text class="icname" x="588" y="186" text-anchor="middle">LM5164</text>
+<text class="val" x="588" y="201" text-anchor="middle">100 V buck</text>
 <text class="ref" x="482" y="201" text-anchor="start">R1</text>
 <text class="val" x="482" y="214" text-anchor="start">47k</text>
 <text class="ref" x="712" y="98" text-anchor="start">C3</text>
@@ -432,176 +476,258 @@
 <text class="val" x="912" y="171" text-anchor="start">22µF</text>
 <text class="ref" x="962" y="158" text-anchor="start">C7</text>
 <text class="val" x="962" y="171" text-anchor="start">22µF</text>
-<text class="tagt r" x="1011" y="134" text-anchor="start">5V BUCK</text>
+<text class="ref" x="1012" y="158" text-anchor="start">C36</text>
+<text class="val" x="1012" y="171" text-anchor="start">100nF</text>
+<text class="tagt r" x="1061" y="134" text-anchor="start">5V BUCK</text>
 <text class="ref" x="700" y="263" text-anchor="middle">R5  10k</text>
 <text class="tagt r" x="746" y="279" text-anchor="start">3V3</text>
-</svg></div><figcaption>12 V comes in on J1 through a 1 A fuse and an SS210 Schottky that blocks a reversed battery. D2 clamps load dump at about 53 V. U1 bucks it to 5 V at about 268 kHz: R1 sets the frequency, R2 and R3 set 5.03 V, and R4, C4 and C5 give the constant-on-time loop the ramp it needs (22 mV at 9 V in, 31 mV at 12 V).</figcaption></figure></section><section class="sheet" id="pcn-rails"><div class="tb"><span class="no">2</span><h3>5 V OR, 3.3 V and sensor supply</h3><span class="refs">U17 · U18 · R55 · U2 · U3 · C9–C12 · R6 · R7</span></div><figure class="sch"><div class="scroll"><svg viewBox="0 0 1000 445" role="img" aria-label="5 V OR with two LM66100 ideal diodes, TLV76733 3.3 V LDO, and the TPS2051B switch for the external sensor supply" style="min-width:720px">
-<polyline class="w r" points="80,80 122,80"/>
-<polyline class="w r" points="80,210 122,210"/>
-<polyline class="w r" points="108,210 108,110 122,110"/>
-<polyline class="w" points="258,115 272,115"/>
-<path class="w" d="M272 115V205A5 5 0 0 1 272 215V240"/>
-<polyline class="w" points="272,240 258,240"/>
-<polyline class="w" points="272,130 330,130 330,120"/>
-<polyline class="w r" points="258,80 290,80"/>
-<path class="w r" d="M290 80V125A5 5 0 0 1 290 135V210"/>
-<polyline class="w r" points="290,210 258,210"/>
-<polyline class="w r" points="290,145 422,145"/>
-<polyline class="w r" points="350,145 350,165"/>
-<polyline class="w r" points="558,180 580,180 580,145"/>
-<polyline class="w r" points="422,180 405,180 405,145"/>
-<polyline class="w r" points="558,145 740,145"/>
-<polyline class="w r" points="610,145 610,165"/>
-<polyline class="w r" points="670,145 670,165"/>
-<polyline class="w r" points="80,330 122,330"/>
-<polyline class="w" points="80,365 122,365"/>
-<polyline class="w" points="100,365 100,375"/>
-<polyline class="w" points="288,365 344,365"/>
-<polyline class="w" points="310,365 310,375"/>
-<polyline class="w r" points="288,330 560,330"/>
-<polyline class="w r" points="500,330 500,345"/>
-<polygon class="tag r" points="80.0,80 73.0,72 18.1,72 18.1,88 73.0,88"/>
-<polygon class="tag r" points="80.0,210 73.0,202 11.4,202 11.4,218 73.0,218"/>
-<circle class="dot r" cx="108" cy="210" r="3"/>
-<rect class="b ic" x="140" y="55" width="100" height="80" rx="3"/>
-<path class="s" d="M122 80H140"/>
-<path class="s" d="M122 110H140"/>
-<path class="s" d="M240 80H258"/>
-<path class="s" d="M240 115H258"/>
-<path class="s" d="M190 135V153"/>
-<rect class="b ic" x="140" y="185" width="100" height="80" rx="3"/>
-<path class="s" d="M122 210H140"/>
-<path class="s" d="M240 240H258"/>
-<path class="s" d="M240 210H258"/>
-<path class="s" d="M190 265V283"/>
-<path class="s" d="M190 153V161M182 161H198M185 165H195M188 169H192"/>
-<path class="s" d="M190 283V291M182 291H198M185 295H195M188 299H192"/>
-<circle class="dot" cx="272" cy="130" r="3"/>
-<g transform="translate(330 100) rotate(90)"><path class="s" d="M-20 0H-12M12 0H20"/><rect class="b" x="-12" y="-5" width="24" height="10"/></g>
-<path class="w r" d="M330 80V70M322 70H338"/>
-<circle class="dot r" cx="290" cy="145" r="3"/>
+</svg></div><figcaption>12 V comes in on J1 through a 1 A fuse and an SS210 Schottky that blocks a reversed battery. D2 clamps load dump at about 53 V. What is left is VIN, the protected 12 V: it feeds the buck here and the sensor supply and battery sense on sheet 3. U1 bucks it to 5 V at about 268 kHz: R1 sets the frequency, R2 and R3 set 5.03 V, and R4, C4 and C5 give the constant-on-time loop the ramp it needs (22 mV at 9 V in, 31 mV at 12 V). C36 is a local bypass on the 5 V.</figcaption></figure></section>
+<section class="sheet" id="pcn-rails"><div class="tb"><span class="no">2</span><h3>5 V OR and 3.3 V</h3><span class="refs">U17 · U18 · R55 · D6 · C9 · U2 · C10 · C11</span></div><figure class="sch"><div class="scroll"><svg viewBox="0 0 1000 320" role="img" aria-label="5 V OR with two LM66100 ideal diodes choosing between the buck and USB, the screen-power diode D6, and the TLV76733 3.3 V LDO" style="min-width:820px">
+<polyline class="w r" points="80,80 182,80"/>
+<polyline class="w r" points="80,210 182,210"/>
+<polyline class="w r" points="160,210 160,110 182,110"/>
+<polyline class="w r" points="110,80 110,125"/>
+<polyline class="w r" points="110,165 110,210"/>
+<polyline class="w" points="318,115 332,115"/>
+<path class="w" d="M332 115V205A5 5 0 0 1 332 215V240"/>
+<polyline class="w" points="332,240 318,240"/>
+<polyline class="w" points="332,130 390,130 390,120"/>
+<polyline class="w r" points="318,80 350,80"/>
+<path class="w r" d="M350 80V125A5 5 0 0 1 350 135V210"/>
+<polyline class="w r" points="350,210 318,210"/>
+<polyline class="w r" points="350,145 482,145"/>
+<polyline class="w r" points="410,145 410,165"/>
+<polyline class="w r" points="440,145 440,262 470,262"/>
+<polyline class="w" points="482,180 465,180 465,145"/>
+<polyline class="w" points="658,180 680,180 680,145"/>
+<polyline class="w r" points="658,145 840,145"/>
+<polyline class="w r" points="710,145 710,165"/>
+<polyline class="w r" points="770,145 770,165"/>
+<polygon class="tag r" points="80,80 73,72 18.1,72 18.1,88 73,88"/>
+<polygon class="tag r" points="80,210 73,202 11.4,202 11.4,218 73,218"/>
+<circle class="dot r" cx="160" cy="210" r="3"/>
+<circle class="dot r" cx="110" cy="80" r="3"/>
+<g transform="translate(110 145) rotate(90)"><path class="s" d="M-20 0H-7M5 0H20"/><polygon class="f" points="-7,-7 -7,7 5,0"/><path class="s" d="M8 -5V-7H5V7H2V5"/></g>
+<circle class="dot r" cx="110" cy="210" r="3"/>
+<rect class="b ic" x="200" y="55" width="100" height="80" rx="3"/>
+<path class="s" d="M182 80H200"/>
+<path class="s" d="M182 110H200"/>
+<path class="s" d="M300 80H318"/>
+<path class="s" d="M300 115H318"/>
+<path class="s" d="M250 135V153"/>
+<path class="s" d="M250 153V161M242 161H258M245 165H255M248 169H252"/>
+<rect class="b ic" x="200" y="185" width="100" height="80" rx="3"/>
+<path class="s" d="M182 210H200"/>
+<path class="s" d="M300 240H318"/>
+<path class="s" d="M300 210H318"/>
+<path class="s" d="M250 265V283"/>
+<path class="s" d="M250 283V291M242 291H258M245 295H255M248 299H252"/>
+<circle class="dot" cx="332" cy="130" r="3"/>
+<g transform="translate(390 100) rotate(90)"><path class="s" d="M-20 0H-12M12 0H20"/><rect class="b" x="-12" y="-5" width="24" height="10"/></g>
+<path class="w r" d="M390 80V70M382 70H398"/>
 <circle class="dot r" cx="350" cy="145" r="3"/>
-<g transform="translate(350 185) rotate(90)"><path class="s" d="M-20 0H-3M3 0H20M-3 -9V9M3 -9V9"/></g>
-<path class="s" d="M350 205V213M342 213H358M345 217H355M348 221H352"/>
-<rect class="b ic" x="440" y="115" width="100" height="100" rx="3"/>
-<path class="s" d="M422 145H440"/>
-<path class="s" d="M422 180H440"/>
-<path class="s" d="M540 145H558"/>
-<path class="s" d="M540 180H558"/>
-<path class="s" d="M490 215V233"/>
-<path class="s" d="M490 233V241M482 241H498M485 245H495M488 249H492"/>
-<circle class="dot r" cx="580" cy="145" r="3"/>
-<circle class="dot r" cx="405" cy="145" r="3"/>
-<circle class="dot r" cx="610" cy="145" r="3"/>
-<g transform="translate(610 185) rotate(90)"><path class="s" d="M-20 0H-3M3 0H20M-3 -9V9M3 -9V9"/></g>
-<path class="s" d="M610 205V213M602 213H618M605 217H615M608 221H612"/>
-<circle class="dot r" cx="670" cy="145" r="3"/>
-<g transform="translate(670 185) rotate(90)"><path class="s" d="M-20 0H-3M3 0H20M-3 -9V9M3 -9V9"/></g>
-<path class="s" d="M670 205V213M662 213H678M665 217H675M668 221H672"/>
-<polygon class="tag r" points="740.0,145 747.0,137 775.1,137 775.1,153 747.0,153"/>
-<polygon class="tag r" points="80.0,330 73.0,322 18.1,322 18.1,338 73.0,338"/>
-<polygon class="tag" points="80.0,365 73.0,357 38.2,357 38.2,373 73.0,373"/>
-<circle class="dot" cx="100" cy="365" r="3"/>
-<g transform="translate(100 395) rotate(90)"><path class="s" d="M-20 0H-12M12 0H20"/><rect class="b" x="-12" y="-5" width="24" height="10"/></g>
-<path class="s" d="M100 415V423M92 423H108M95 427H105M98 431H102"/>
-<rect class="b ic" x="140" y="300" width="130" height="95" rx="3"/>
-<path class="s" d="M122 330H140"/>
-<path class="s" d="M122 365H140"/>
-<path class="s" d="M270 330H288"/>
-<path class="s" d="M270 365H288"/>
-<path class="s" d="M205 395V413"/>
-<path class="s" d="M205 413V421M197 421H213M200 425H210M203 429H207"/>
-<circle class="dot" cx="310" cy="365" r="3"/>
-<g transform="translate(310 395) rotate(90)"><path class="s" d="M-20 0H-12M12 0H20"/><rect class="b" x="-12" y="-5" width="24" height="10"/></g>
-<path class="w r" d="M310 415V425M302 425H318"/>
-<polygon class="tag" points="344.0,365 351.0,357 385.8,357 385.8,373 351.0,373"/>
-<circle class="dot r" cx="500" cy="330" r="3"/>
-<g transform="translate(500 365) rotate(90)"><path class="s" d="M-20 0H-3M3 0H20M-3 -9V9M3 -9V9"/></g>
-<path class="s" d="M500 385V393M492 393H508M495 397H505M498 401H502"/>
-<polygon class="tag r" points="560.0,330 567.0,322 621.9,322 621.9,338 567.0,338"/>
+<circle class="dot r" cx="410" cy="145" r="3"/>
+<g transform="translate(410 185) rotate(90)"><path class="s" d="M-20 0H-3M3 0H20M-3 -9V9M3 -9V9"/></g>
+<path class="s" d="M410 205V213M402 213H418M405 217H415M408 221H412"/>
+<circle class="dot r" cx="440" cy="145" r="3"/>
+<polygon class="tag r" points="470,262 477,254 525.2,254 525.2,270 477,270"/>
+<rect class="b ic" x="500" y="115" width="140" height="100" rx="3"/>
+<path class="s" d="M482 145H500"/>
+<path class="s" d="M482 180H500"/>
+<path class="s" d="M640 145H658"/>
+<path class="s" d="M640 180H658"/>
+<path class="s" d="M570 215V233"/>
+<path class="s" d="M570 233V241M562 241H578M565 245H575M568 249H572"/>
+<circle class="dot r" cx="465" cy="145" r="3"/>
+<circle class="dot r" cx="680" cy="145" r="3"/>
+<circle class="dot r" cx="710" cy="145" r="3"/>
+<g transform="translate(710 185) rotate(90)"><path class="s" d="M-20 0H-3M3 0H20M-3 -9V9M3 -9V9"/></g>
+<path class="s" d="M710 205V213M702 213H718M705 217H715M708 221H712"/>
+<circle class="dot r" cx="770" cy="145" r="3"/>
+<g transform="translate(770 185) rotate(90)"><path class="s" d="M-20 0H-3M3 0H20M-3 -9V9M3 -9V9"/></g>
+<path class="s" d="M770 205V213M762 213H778M765 217H775M768 221H772"/>
+<polygon class="tag r" points="840,145 847,137 875.1,137 875.1,153 847,153"/>
 <text class="tagt r" x="69" y="84" text-anchor="end">5V BUCK</text>
 <text class="tagt r" x="69" y="214" text-anchor="end">USB VBUS</text>
-<text class="icref" x="190.0" y="91.5" text-anchor="middle">U17</text>
-<text class="icname" x="190.0" y="106.5" text-anchor="middle">LM66100</text>
-<text class="pn" x="131" y="76" text-anchor="middle">1</text>
-<text class="pnm" x="145" y="84" text-anchor="start">VIN</text>
-<text class="pn" x="131" y="106" text-anchor="middle">3</text>
-<text class="pnm" x="145" y="114" text-anchor="start">CE</text>
-<text class="pn" x="249" y="76" text-anchor="middle">6</text>
-<text class="pnm" x="235" y="84" text-anchor="end">VOUT</text>
-<text class="pn" x="249" y="111" text-anchor="middle">5</text>
-<text class="pnm" x="235" y="119" text-anchor="end">ST</text>
-<text class="pn" x="194" y="148" text-anchor="start">2</text>
-<text class="pnm" x="190" y="129" text-anchor="middle">GND</text>
-<text class="icref" x="190.0" y="221.5" text-anchor="middle">U18</text>
-<text class="icname" x="190.0" y="236.5" text-anchor="middle">LM66100</text>
-<text class="pn" x="131" y="206" text-anchor="middle">1</text>
-<text class="pnm" x="145" y="214" text-anchor="start">VIN</text>
-<text class="pn" x="249" y="236" text-anchor="middle">3</text>
-<text class="pnm" x="235" y="244" text-anchor="end">CE</text>
-<text class="pn" x="249" y="206" text-anchor="middle">6</text>
-<text class="pnm" x="235" y="214" text-anchor="end">VOUT</text>
-<text class="pn" x="194" y="278" text-anchor="start">2,5</text>
-<text class="pnm" x="190" y="259" text-anchor="middle">GND ST</text>
-<text class="rail" x="330" y="65" text-anchor="middle">5V BUCK</text>
-<text class="ref" x="342" y="96" text-anchor="start">R55</text>
-<text class="val" x="342" y="109" text-anchor="start">10k</text>
-<text class="net" x="276" y="178" text-anchor="start">OR_STATUS</text>
-<text class="rail" x="302" y="137" text-anchor="start">5V SYS</text>
-<text class="ref" x="362" y="178" text-anchor="start">C9</text>
-<text class="val" x="362" y="191" text-anchor="start">10µF</text>
-<text class="icref" x="490.0" y="154.0" text-anchor="middle">U2</text>
-<text class="icname" x="490.0" y="169.0" text-anchor="middle">TLV76733</text>
-<text class="val" x="490.0" y="184.0" text-anchor="middle">1 A LDO</text>
-<text class="pn" x="431" y="141" text-anchor="middle">6</text>
-<text class="pnm" x="445" y="149" text-anchor="start">IN</text>
-<text class="pn" x="431" y="176" text-anchor="middle">4</text>
-<text class="pnm" x="445" y="184" text-anchor="start">EN</text>
-<text class="pn" x="549" y="141" text-anchor="middle">1</text>
-<text class="pnm" x="535" y="149" text-anchor="end">OUT</text>
-<text class="pn" x="549" y="176" text-anchor="middle">2</text>
-<text class="pnm" x="535" y="184" text-anchor="end">SNS</text>
-<text class="pn" x="494" y="228" text-anchor="start">3,5,7</text>
-<text class="pnm" x="490" y="209" text-anchor="middle">GND</text>
-<text class="ref" x="622" y="178" text-anchor="start">C10</text>
-<text class="val" x="622" y="191" text-anchor="start">22µF</text>
-<text class="ref" x="682" y="178" text-anchor="start">C11</text>
-<text class="val" x="682" y="191" text-anchor="start">22µF</text>
-<text class="tagt r" x="751" y="149" text-anchor="start">3V3</text>
-<text class="note" x="745" y="172" text-anchor="start">ESP32, mux, sensors,</text>
-<text class="note" x="745" y="186" text-anchor="start">ADC, CAN logic side</text>
-<text class="note" x="140" y="30" text-anchor="start">U17 (buck) has priority. Its ST drives U18&#x27;s CE,</text>
-<text class="note" x="140" y="44" text-anchor="start">so one of the two is always on.</text>
-<text class="tagt r" x="69" y="334" text-anchor="end">5V BUCK</text>
-<text class="tagt" x="69" y="369" text-anchor="end">IO17</text>
-<text class="note" x="16" y="350" text-anchor="start">SENSOR_POWER_EN</text>
-<text class="ref" x="112" y="391" text-anchor="start">R6</text>
-<text class="val" x="112" y="404" text-anchor="start">100k</text>
-<text class="icref" x="205.0" y="336.5" text-anchor="middle">U3</text>
-<text class="icname" x="205.0" y="351.5" text-anchor="middle">TPS2051B</text>
-<text class="val" x="205.0" y="366.5" text-anchor="middle">500 mA switch</text>
-<text class="pn" x="131" y="326" text-anchor="middle">5</text>
-<text class="pnm" x="145" y="334" text-anchor="start">IN</text>
-<text class="pn" x="131" y="361" text-anchor="middle">4</text>
-<text class="pnm" x="145" y="369" text-anchor="start">EN</text>
-<text class="pn" x="279" y="326" text-anchor="middle">1</text>
-<text class="pnm" x="265" y="334" text-anchor="end">OUT</text>
-<text class="pn" x="279" y="361" text-anchor="middle">3</text>
-<text class="pnm" x="265" y="369" text-anchor="end">OC</text>
-<text class="pn" x="209" y="408" text-anchor="start">2</text>
-<text class="pnm" x="205" y="389" text-anchor="middle">GND</text>
-<text class="rail" x="310" y="439" text-anchor="middle">3V3</text>
-<text class="ref" x="322" y="391" text-anchor="start">R7</text>
-<text class="val" x="322" y="404" text-anchor="start">10k</text>
-<text class="tagt" x="355" y="369" text-anchor="start">IO18</text>
-<text class="note" x="348" y="388" text-anchor="start">SENSOR_POWER_FAULT_N</text>
-<text class="rail" x="420" y="322" text-anchor="start">5V SENS</text>
-<text class="ref" x="512" y="358" text-anchor="start">C12</text>
-<text class="val" x="512" y="371" text-anchor="start">1µF</text>
-<text class="tagt r" x="571" y="334" text-anchor="start">5V SENS</text>
-<text class="note" x="565" y="355" text-anchor="start">to pin 1 of J4–J7 and J9–J12</text>
-<text class="note" x="565" y="369" text-anchor="start">through 0 Ω links (R32, R37 … R71)</text>
-</svg></div><figcaption>U17 and U18 are ideal diodes, and U17, on the buck, has priority. While it conducts, R55 holds U18&#x27;s CE high and USB is cut off; when the buck is missing or lower, U17&#x27;s ST goes low and turns U18 on. One of them is always on, even with both supplies at the same voltage, and USB and the car can&#x27;t push current into each other. U2, a 1 A LDO with room for Wi-Fi, makes 3.3 V for the logic; its SNS pin senses the output. U3 takes the buck&#x27;s 5 V from ahead of the OR and switches it out to the analog-input connectors when the firmware asks, limited to 500 mA, so USB alone never powers external sensors.</figcaption></figure></section><section class="sheet" id="pcn-mcu"><div class="tb"><span class="no">3</span><h3>ESP32-S3, USB and buttons</h3><span class="refs">U4 · J3 · U5 · SW1–SW3 · D5 · R8–R16 · C13–C15</span></div><figure class="sch"><div class="scroll"><svg viewBox="0 0 1000 700" role="img" aria-label="ESP32-S3-WROOM-1 U4 with reset, boot and zero buttons, USB-C J3 with ESD protection, status LED, and the GPIO assignments" style="min-width:720px">
+<text class="ref" x="98" y="141" text-anchor="end">D6</text>
+<text class="val" x="98" y="154" text-anchor="end">1N5819WS</text>
+<text class="note" x="98" y="176" text-anchor="end">screen power</text>
+<text class="pn" x="191" y="76" text-anchor="middle">1</text>
+<text class="pnm" x="205" y="84" text-anchor="start">VIN</text>
+<text class="pn" x="191" y="106" text-anchor="middle">3</text>
+<text class="pnm" x="205" y="114" text-anchor="start">CE</text>
+<text class="pn" x="309" y="76" text-anchor="middle">6</text>
+<text class="pnm" x="295" y="84" text-anchor="end">VOUT</text>
+<text class="pn" x="309" y="111" text-anchor="middle">5</text>
+<text class="pnm" x="295" y="119" text-anchor="end">ST</text>
+<text class="pn" x="254" y="148" text-anchor="start">2</text>
+<text class="pnm" x="250" y="129" text-anchor="middle">GND</text>
+<text class="icref" x="250" y="88.5" text-anchor="middle">U17</text>
+<text class="icname" x="250" y="103.5" text-anchor="middle">LM66100</text>
+<text class="pn" x="191" y="206" text-anchor="middle">1</text>
+<text class="pnm" x="205" y="214" text-anchor="start">VIN</text>
+<text class="pn" x="309" y="236" text-anchor="middle">3</text>
+<text class="pnm" x="295" y="244" text-anchor="end">CE</text>
+<text class="pn" x="309" y="206" text-anchor="middle">6</text>
+<text class="pnm" x="295" y="214" text-anchor="end">VOUT</text>
+<text class="pn" x="254" y="278" text-anchor="start">2,5</text>
+<text class="pnm" x="250" y="259" text-anchor="middle">GND ST</text>
+<text class="icref" x="250" y="218.5" text-anchor="middle">U18</text>
+<text class="icname" x="250" y="233.5" text-anchor="middle">LM66100</text>
+<text class="rail" x="390" y="65" text-anchor="middle">5V BUCK</text>
+<text class="ref" x="402" y="96" text-anchor="start">R55</text>
+<text class="val" x="402" y="109" text-anchor="start">10k</text>
+<text class="net" x="336" y="178" text-anchor="start">OR_STATUS</text>
+<text class="rail" x="414" y="139" text-anchor="start">5V SYS</text>
+<text class="ref" x="422" y="178" text-anchor="start">C9</text>
+<text class="val" x="422" y="191" text-anchor="start">10µF</text>
+<text class="tagt r" x="481" y="266" text-anchor="start">5V SYS</text>
+<text class="note" x="470" y="290" text-anchor="start">to U16 VCC, CAN (sheet 7)</text>
+<text class="pn" x="491" y="141" text-anchor="middle">6</text>
+<text class="pnm" x="505" y="149" text-anchor="start">IN</text>
+<text class="pn" x="491" y="176" text-anchor="middle">4</text>
+<text class="pnm" x="505" y="184" text-anchor="start">EN</text>
+<text class="pn" x="649" y="141" text-anchor="middle">1</text>
+<text class="pnm" x="635" y="149" text-anchor="end">OUT</text>
+<text class="pn" x="649" y="176" text-anchor="middle">2</text>
+<text class="pnm" x="635" y="184" text-anchor="end">SNS</text>
+<text class="pn" x="574" y="228" text-anchor="start">3,5,7</text>
+<text class="pnm" x="570" y="209" text-anchor="middle">GND</text>
+<text class="icref" x="570" y="155" text-anchor="middle">U2</text>
+<text class="icname" x="570" y="170" text-anchor="middle">TLV76733</text>
+<text class="val" x="570" y="185" text-anchor="middle">1 A LDO</text>
+<text class="ref" x="722" y="178" text-anchor="start">C10</text>
+<text class="val" x="722" y="191" text-anchor="start">22µF</text>
+<text class="ref" x="782" y="178" text-anchor="start">C11</text>
+<text class="val" x="782" y="191" text-anchor="start">22µF</text>
+<text class="tagt r" x="851" y="149" text-anchor="start">3V3</text>
+<text class="note" x="845" y="172" text-anchor="start">ESP32, I²C switch,</text>
+<text class="note" x="845" y="186" text-anchor="start">sensors, ADCs,</text>
+<text class="note" x="845" y="200" text-anchor="start">CAN logic side</text>
+<text class="note" x="200" y="30" text-anchor="start">U17 (buck) has priority. Its ST drives U18’s CE,</text>
+<text class="note" x="200" y="44" text-anchor="start">so one of the two is always on.</text>
+</svg></div><figcaption>U17 and U18 are ideal diodes, and U17, on the buck, has priority. While it conducts, R55 holds U18&#x27;s CE high and USB is cut off; when the buck is missing or lower, U17&#x27;s ST goes low and turns U18 on. One of them is always on, even with both supplies at the same voltage, and USB and the car can&#x27;t push current into each other. 5V SYS runs the CAN transceiver and U2, a 1 A LDO with room for Wi-Fi, which makes 3.3 V for the logic; its SNS pin senses the output. D6 runs the buck&#x27;s 5 V out to the USB-C port, so a screen plugged in there is powered whenever the car is; it blocks the other way, so a laptop never feeds the buck or the sensor supply.</figcaption></figure></section>
+<section class="sheet" id="pcn-sens"><div class="tb"><span class="no">3</span><h3>Sensor 5 V supply and supply sense</h3><span class="refs">U3 · U22 · R6 · R7 · C12 · C49 · C50 · R76–R79 · C51 · C52</span></div><figure class="sch"><div class="scroll"><svg viewBox="0 0 1040 530" role="img" aria-label="Sensor supply: the TLE4252D tracker U3 fed from the protected 12 V, following the 5.000 V LM4040 reference U22, enabled from GPIO17, and the two sense dividers for the sensor supply and the 12 V into GPIO1 and GPIO2" style="min-width:820px">
+<polyline class="w r" points="80,90 542,90"/>
+<polyline class="w r" points="150,90 150,110"/>
+<polyline class="w r" points="300,90 300,110"/>
+<polyline class="w" points="300,150 300,190 542,190"/>
+<polyline class="w" points="380,190 380,210"/>
+<polyline class="w" points="470,190 470,210"/>
+<polyline class="w" points="80,300 542,300"/>
+<polyline class="w" points="150,300 150,320"/>
+<polyline class="w r" points="738,90 900,90"/>
+<polyline class="w r" points="800,90 800,110"/>
+<polyline class="w r" points="860,90 860,170"/>
+<polyline class="w" points="860,210 860,250"/>
+<polyline class="w" points="860,230 960,230"/>
+<polyline class="w" points="910,230 910,250"/>
+<polyline class="w" points="860,390 860,430"/>
+<polyline class="w" points="860,410 960,410"/>
+<polyline class="w" points="910,410 910,430"/>
+<polygon class="tag r" points="80,90 73,82 44.9,82 44.9,98 73,98"/>
+<circle class="dot r" cx="150" cy="90" r="3"/>
+<g transform="translate(150 130) rotate(90)"><path class="s" d="M-20 0H-3M3 0H20M-3 -9V9M3 -9V9"/></g>
+<path class="s" d="M150 150V158M142 158H158M145 162H155M148 166H152"/>
+<circle class="dot r" cx="300" cy="90" r="3"/>
+<g transform="translate(300 130) rotate(90)"><path class="s" d="M-20 0H-12M12 0H20"/><rect class="b" x="-12" y="-5" width="24" height="10"/></g>
+<circle class="dot" cx="380" cy="190" r="3"/>
+<g transform="translate(380 230) rotate(270)"><path class="s" d="M-20 0H-7M5 0H20"/><polygon class="f" points="-7,-7 -7,7 5,0"/><path class="s" d="M2 -9L5 -7V7L8 9"/></g>
+<path class="s" d="M380 250V258M372 258H388M375 262H385M378 266H382"/>
+<circle class="dot" cx="470" cy="190" r="3"/>
+<g transform="translate(470 230) rotate(90)"><path class="s" d="M-20 0H-3M3 0H20M-3 -9V9M3 -9V9"/></g>
+<path class="s" d="M470 250V258M462 258H478M465 262H475M468 266H472"/>
+<polygon class="tag" points="80,300 73,292 38.2,292 38.2,308 73,308"/>
+<circle class="dot" cx="150" cy="300" r="3"/>
+<g transform="translate(150 340) rotate(90)"><path class="s" d="M-20 0H-12M12 0H20"/><rect class="b" x="-12" y="-5" width="24" height="10"/></g>
+<path class="s" d="M150 360V368M142 368H158M145 372H155M148 376H152"/>
+<rect class="b ic" x="560" y="60" width="160" height="270" rx="3"/>
+<path class="s" d="M542 90H560"/>
+<path class="s" d="M542 190H560"/>
+<path class="s" d="M542 300H560"/>
+<path class="s" d="M720 90H738"/>
+<path class="s" d="M640 330V348"/>
+<path class="s" d="M640 348V356M632 356H648M635 360H645M638 364H642"/>
+<circle class="dot r" cx="800" cy="90" r="3"/>
+<g transform="translate(800 130) rotate(90)"><path class="s" d="M-20 0H-3M3 0H20M-3 -9V9M3 -9V9"/></g>
+<path class="s" d="M800 150V158M792 158H808M795 162H805M798 166H802"/>
+<polygon class="tag r" points="900,90 907,82 961.9,82 961.9,98 907,98"/>
+<circle class="dot r" cx="860" cy="90" r="3"/>
+<g transform="translate(860 190) rotate(90)"><path class="s" d="M-20 0H-12M12 0H20"/><rect class="b" x="-12" y="-5" width="24" height="10"/></g>
+<circle class="dot" cx="860" cy="230" r="3"/>
+<g transform="translate(860 270) rotate(90)"><path class="s" d="M-20 0H-12M12 0H20"/><rect class="b" x="-12" y="-5" width="24" height="10"/></g>
+<path class="s" d="M860 290V298M852 298H868M855 302H865M858 306H862"/>
+<circle class="dot" cx="910" cy="230" r="3"/>
+<g transform="translate(910 270) rotate(90)"><path class="s" d="M-20 0H-3M3 0H20M-3 -9V9M3 -9V9"/></g>
+<path class="s" d="M910 290V298M902 298H918M905 302H915M908 306H912"/>
+<polygon class="tag" points="960,230 967,222 995.1,222 995.1,238 967,238"/>
+<path class="w r" d="M860 350V340M852 340H868"/>
+<g transform="translate(860 370) rotate(90)"><path class="s" d="M-20 0H-12M12 0H20"/><rect class="b" x="-12" y="-5" width="24" height="10"/></g>
+<circle class="dot" cx="860" cy="410" r="3"/>
+<g transform="translate(860 450) rotate(90)"><path class="s" d="M-20 0H-12M12 0H20"/><rect class="b" x="-12" y="-5" width="24" height="10"/></g>
+<path class="s" d="M860 470V478M852 478H868M855 482H865M858 486H862"/>
+<circle class="dot" cx="910" cy="410" r="3"/>
+<g transform="translate(910 450) rotate(90)"><path class="s" d="M-20 0H-3M3 0H20M-3 -9V9M3 -9V9"/></g>
+<path class="s" d="M910 470V478M902 478H918M905 482H915M908 486H912"/>
+<polygon class="tag" points="960,410 967,402 995.1,402 995.1,418 967,418"/>
+<text class="tagt r" x="69" y="94" text-anchor="end">VIN</text>
+<text class="note" x="16" y="112" text-anchor="start">protected 12 V</text>
+<text class="ref" x="162" y="126" text-anchor="start">C49</text>
+<text class="val" x="162" y="139" text-anchor="start">100nF</text>
+<text class="val" x="162" y="152" text-anchor="start">100V</text>
+<text class="ref" x="312" y="126" text-anchor="start">R7</text>
+<text class="val" x="312" y="139" text-anchor="start">10k</text>
+<text class="net" x="306" y="184" text-anchor="start">SENS_REF</text>
+<text class="ref" x="392" y="226" text-anchor="start">U22</text>
+<text class="val" x="392" y="239" text-anchor="start">LM4040</text>
+<text class="val" x="392" y="252" text-anchor="start">5.000 V</text>
+<text class="ref" x="482" y="226" text-anchor="start">C12</text>
+<text class="val" x="482" y="239" text-anchor="start">100nF</text>
+<text class="tagt" x="69" y="304" text-anchor="end">IO17</text>
+<text class="note" x="16" y="322" text-anchor="start">SENSOR_POWER_EN</text>
+<text class="ref" x="162" y="336" text-anchor="start">R6</text>
+<text class="val" x="162" y="349" text-anchor="start">100k</text>
+<text class="pn" x="551" y="86" text-anchor="middle">1</text>
+<text class="pnm" x="565" y="94" text-anchor="start">IN</text>
+<text class="pn" x="551" y="186" text-anchor="middle">4</text>
+<text class="pnm" x="565" y="194" text-anchor="start">ADJ</text>
+<text class="pn" x="551" y="296" text-anchor="middle">2</text>
+<text class="pnm" x="565" y="304" text-anchor="start">EN</text>
+<text class="pn" x="729" y="86" text-anchor="middle">5</text>
+<text class="pnm" x="715" y="94" text-anchor="end">Q</text>
+<text class="pn" x="644" y="343" text-anchor="start">3</text>
+<text class="pnm" x="640" y="324" text-anchor="middle">GND, tab</text>
+<text class="icref" x="640" y="129" text-anchor="middle">U3</text>
+<text class="icname" x="640" y="144" text-anchor="middle">TLE4252D</text>
+<text class="val" x="640" y="159" text-anchor="middle">5 V tracker</text>
+<text class="note" x="560" y="390" text-anchor="start">Q follows ADJ within ±10 mV.</text>
+<text class="note" x="560" y="404" text-anchor="start">Survives shorts to GND and to 12 V;</text>
+<text class="note" x="560" y="418" text-anchor="start">limits at 250–500 mA.</text>
+<text class="ref" x="812" y="126" text-anchor="start">C50</text>
+<text class="val" x="812" y="139" text-anchor="start">22µF</text>
+<text class="tagt r" x="911" y="94" text-anchor="start">5V SENS</text>
+<text class="note" x="872" y="118" text-anchor="start">pin 1 of J4–J7, J9–J12</text>
+<text class="note" x="872" y="132" text-anchor="start">through 0 Ω links</text>
+<text class="ref" x="848" y="186" text-anchor="end">R76</text>
+<text class="val" x="848" y="199" text-anchor="end">200k</text>
+<text class="ref" x="848" y="266" text-anchor="end">R77</text>
+<text class="val" x="848" y="279" text-anchor="end">39k</text>
+<text class="ref" x="922" y="266" text-anchor="start">C51</text>
+<text class="val" x="922" y="279" text-anchor="start">100nF</text>
+<text class="tagt" x="971" y="234" text-anchor="start">IO1</text>
+<text class="note" x="956" y="252" text-anchor="start">SENS_MON</text>
+<text class="rail" x="860" y="335" text-anchor="middle">VIN</text>
+<text class="ref" x="848" y="366" text-anchor="end">R78</text>
+<text class="val" x="848" y="379" text-anchor="end">200k</text>
+<text class="ref" x="848" y="446" text-anchor="end">R79</text>
+<text class="val" x="848" y="459" text-anchor="end">39k</text>
+<text class="ref" x="922" y="446" text-anchor="start">C52</text>
+<text class="val" x="922" y="459" text-anchor="start">100nF</text>
+<text class="tagt" x="971" y="414" text-anchor="start">IO2</text>
+<text class="note" x="956" y="432" text-anchor="start">VIN_MON</text>
+<text class="note" x="740" y="512" text-anchor="start">÷6.13 into the ESP32’s ADC: 16 V reads 2.6 V</text>
+</svg></div><figcaption>The eight analog connectors get their 5 V from U3, a tracking regulator fed from VIN, the protected 12 V, not from the board&#x27;s own 5 V. R7 feeds U22, a 5.000 V shunt reference (±0.2 %), and U3&#x27;s output Q follows the reference on ADJ within ±10 mV. Q survives a short to ground or to battery and limits at 250–500 mA; heat sets the real budget, about 120 mA continuous shared by all eight connectors. GPIO17 turns it on; R6 holds it off until the firmware runs, and with no 12 V it is simply off, so USB alone never powers a sensor. U22&#x27;s pin 3 is left open. R76–R79 divide the sensor supply and the 12 V by 6.13 for the ESP32&#x27;s ADC (16 V reads 2.6 V), which is how the node sees a supply that&#x27;s low, high or shorted to battery.</figcaption></figure></section>
+<section class="sheet" id="pcn-mcu"><div class="tb"><span class="no">4</span><h3>ESP32-S3, USB and buttons</h3><span class="refs">U4 · J3 · U5 · SW1–SW3 · D5 · R8–R10 · R12–R16 · C13–C15 · TP19 · TP20</span></div><figure class="sch"><div class="scroll"><svg viewBox="0 0 1000 740" role="img" aria-label="ESP32-S3-WROOM-1 U4 with reset, boot and zero buttons, USB-C J3 through the USBLC6 ESD array U5, status LED, the UART test pads and the GPIO assignments" style="min-width:820px">
 <polyline class="w" points="618,70 660,70"/>
 <polyline class="w" points="618,110 660,110"/>
 <polyline class="w" points="618,150 660,150"/>
@@ -610,7 +736,10 @@
 <polyline class="w" points="618,290 660,290"/>
 <polyline class="w" points="618,350 660,350"/>
 <polyline class="w" points="618,390 660,390"/>
-<polyline class="w" points="618,430 660,430"/>
+<polyline class="w" points="618,450 660,450"/>
+<polyline class="w" points="618,490 660,490"/>
+<polyline class="w" points="618,590 660,590"/>
+<polyline class="w" points="618,630 660,630"/>
 <polyline class="w r" points="120,70 412,70"/>
 <polyline class="w r" points="300,70 300,85"/>
 <polyline class="w r" points="360,70 360,85"/>
@@ -622,29 +751,31 @@
 <polyline class="w" points="250,250 250,245"/>
 <polyline class="w" points="412,340 180,340 180,355"/>
 <polyline class="w" points="250,340 250,335"/>
-<polyline class="w r" points="128,410 160,410"/>
-<polyline class="w" points="128,430 350,430"/>
-<polyline class="w" points="390,430 412,430"/>
-<polyline class="w" points="128,470 350,470"/>
-<polyline class="w" points="390,470 412,470"/>
-<path class="w" d="M265 430V465A5 5 0 0 1 265 475V482"/>
-<polyline class="w" points="295,470 295,482"/>
-<polyline class="w" points="128,510 145,510"/>
-<polyline class="w" points="128,545 145,545"/>
-<polyline class="w" points="185,510 205,510 205,562"/>
-<polyline class="w" points="185,545 205,545"/>
-<polyline class="w" points="128,580 140,580 140,592"/>
-<polyline class="w" points="412,620 390,620"/>
-<polyline class="w" points="350,620 330,620"/>
-<polyline class="w" points="290,620 275,620 275,632"/>
-<rect class="b ic" x="430" y="40" width="170" height="600" rx="3"/>
+<polyline class="w r" points="128,450 300,450"/>
+<polyline class="w r" points="265,450 265,462"/>
+<polyline class="w" points="128,500 212,500"/>
+<polyline class="w" points="128,540 212,540"/>
+<polyline class="w" points="318,500 350,500"/>
+<polyline class="w" points="390,500 412,500"/>
+<polyline class="w" points="318,540 350,540"/>
+<polyline class="w" points="390,540 412,540"/>
+<polyline class="w" points="128,585 145,585"/>
+<polyline class="w" points="128,620 145,620"/>
+<polyline class="w" points="185,585 205,585 205,637"/>
+<polyline class="w" points="185,620 205,620"/>
+<polyline class="w" points="128,655 140,655 140,667"/>
+<polyline class="w" points="412,640 390,640"/>
+<polyline class="w" points="350,640 330,640"/>
+<polyline class="w" points="290,640 275,640 275,652"/>
+<rect class="b ic" x="430" y="40" width="170" height="650" rx="3"/>
 <path class="s" d="M412 70H430"/>
 <path class="s" d="M412 160H430"/>
 <path class="s" d="M412 250H430"/>
 <path class="s" d="M412 340H430"/>
-<path class="s" d="M412 430H430"/>
-<path class="s" d="M412 470H430"/>
-<path class="s" d="M412 620H430"/>
+<path class="s" d="M412 500H430"/>
+<path class="s" d="M412 540H430"/>
+<path class="s" d="M412 640H430"/>
+<path class="s" d="M515 690V708"/>
 <path class="s" d="M600 70H618"/>
 <path class="s" d="M600 110H618"/>
 <path class="s" d="M600 150H618"/>
@@ -653,10 +784,16 @@
 <path class="s" d="M600 290H618"/>
 <path class="s" d="M600 350H618"/>
 <path class="s" d="M600 390H618"/>
-<path class="s" d="M600 430H618"/>
-<path class="s" d="M515 640V658"/>
-<path class="s" d="M515 658V666M507 666H523M510 670H520M513 674H517"/>
-<polygon class="tag r" points="120.0,70 113.0,62 84.9,62 84.9,78 113.0,78"/>
+<path class="s" d="M600 450H618"/>
+<path class="s" d="M600 490H618"/>
+<path class="s" d="M600 530H618"/>
+<path class="s" d="M600 590H618"/>
+<path class="s" d="M600 630H618"/>
+<path class="s" d="M515 708V716M507 716H523M510 720H520M513 724H517"/>
+<path class="s" d="M614 526L622 534M614 534L622 526"/>
+<circle class="b" cx="660" cy="590" r="4.5"/>
+<circle class="b" cx="660" cy="630" r="4.5"/>
+<polygon class="tag r" points="120,70 113,62 84.9,62 84.9,78 113,78"/>
 <circle class="dot r" cx="300" cy="70" r="3"/>
 <g transform="translate(300 105) rotate(90)"><path class="s" d="M-20 0H-3M3 0H20M-3 -9V9M3 -9V9"/></g>
 <path class="s" d="M300 125V133M292 133H308M295 137H305M298 141H302"/>
@@ -669,8 +806,6 @@
 <circle class="dot" cx="330" cy="160" r="3"/>
 <g transform="translate(330 195) rotate(90)"><path class="s" d="M-20 0H-3M3 0H20M-3 -9V9M3 -9V9"/></g>
 <path class="s" d="M330 215V223M322 223H338M325 227H335M328 231H332"/>
-<g transform="translate(180 195) rotate(90)"><path class="s" d="M-20 0H-10M10 0H20M-12 -8H12M0 -8V-15"/><circle class="b" cx="-10" cy="0" r="2.4"/><circle class="b" cx="10" cy="0" r="2.4"/></g>
-<path class="s" d="M180 215V223M172 223H188M175 227H185M178 231H182"/>
 <circle class="dot" cx="250" cy="250" r="3"/>
 <g transform="translate(180 285) rotate(90)"><path class="s" d="M-20 0H-10M10 0H20M-12 -8H12M0 -8V-15"/><circle class="b" cx="-10" cy="0" r="2.4"/><circle class="b" cx="10" cy="0" r="2.4"/></g>
 <path class="s" d="M180 305V313M172 313H188M175 317H185M178 321H182"/>
@@ -681,36 +816,35 @@
 <path class="s" d="M180 395V403M172 403H188M175 407H185M178 411H182"/>
 <g transform="translate(250 315) rotate(90)"><path class="s" d="M-20 0H-12M12 0H20"/><rect class="b" x="-12" y="-5" width="24" height="10"/></g>
 <path class="w r" d="M250 295V285M242 285H258"/>
-<rect class="b ic" x="40" y="395" width="70" height="205" rx="3"/>
-<path class="s" d="M110 410H128"/>
-<path class="s" d="M110 430H128"/>
-<path class="s" d="M110 470H128"/>
-<path class="s" d="M110 510H128"/>
-<path class="s" d="M110 545H128"/>
-<path class="s" d="M110 580H128"/>
-<polygon class="tag r" points="160.0,410 167.0,402 228.6,402 228.6,418 167.0,418"/>
-<circle class="dot" cx="265" cy="430" r="3"/>
-<g transform="translate(370 430) rotate(0)"><path class="s" d="M-20 0H-12M12 0H20"/><rect class="b" x="-12" y="-5" width="24" height="10"/></g>
-<circle class="dot" cx="295" cy="470" r="3"/>
-<g transform="translate(370 470) rotate(0)"><path class="s" d="M-20 0H-12M12 0H20"/><rect class="b" x="-12" y="-5" width="24" height="10"/></g>
-<rect class="b ic" x="240" y="500" width="90" height="85" rx="3"/>
-<path class="s" d="M265 482V500"/>
-<path class="s" d="M295 482V500"/>
-<path class="s" d="M330 560H348"/>
-<path class="s" d="M285 585V603"/>
-<polygon class="tag r" points="348.0,560 355.0,552 416.6,552 416.6,568 355.0,568"/>
-<path class="s" d="M285 603V611M277 611H293M280 615H290M283 619H287"/>
-<g transform="translate(165 510) rotate(0)"><path class="s" d="M-20 0H-12M12 0H20"/><rect class="b" x="-12" y="-5" width="24" height="10"/></g>
-<g transform="translate(165 545) rotate(0)"><path class="s" d="M-20 0H-12M12 0H20"/><rect class="b" x="-12" y="-5" width="24" height="10"/></g>
-<circle class="dot" cx="205" cy="545" r="3"/>
-<path class="s" d="M205 562V570M197 570H213M200 574H210M203 578H207"/>
-<path class="s" d="M140 592V600M132 600H148M135 604H145M138 608H142"/>
-<g transform="translate(370 620) rotate(0)"><path class="s" d="M-20 0H-12M12 0H20"/><rect class="b" x="-12" y="-5" width="24" height="10"/></g>
-<g transform="translate(310 620) scale(-1 1)"><path class="s" d="M-20 0H-7M5 0H20"/><polygon class="f" points="-7,-7 -7,7 5,0"/><path class="s" d="M5 -7V7"/><path class="s thin" d="M-1 -10l6 -7M2 -17h3v3M5 -9l6 -7M8 -16h3v3"/></g>
-<path class="s" d="M275 632V640M267 640H283M270 644H280M273 648H277"/>
-<text class="icref" x="515.0" y="329.0" text-anchor="middle">U4</text>
-<text class="icname" x="515.0" y="344.0" text-anchor="middle">ESP32-S3</text>
-<text class="val" x="515.0" y="359.0" text-anchor="middle">WROOM-1-N4</text>
+<g transform="translate(180 195) rotate(90)"><path class="s" d="M-20 0H-10M10 0H20M-12 -8H12M0 -8V-15"/><circle class="b" cx="-10" cy="0" r="2.4"/><circle class="b" cx="10" cy="0" r="2.4"/></g>
+<path class="s" d="M180 215V223M172 223H188M175 227H185M178 231H182"/>
+<rect class="b ic" x="40" y="430" width="70" height="240" rx="3"/>
+<path class="s" d="M110 450H128"/>
+<path class="s" d="M110 500H128"/>
+<path class="s" d="M110 540H128"/>
+<path class="s" d="M110 585H128"/>
+<path class="s" d="M110 620H128"/>
+<path class="s" d="M110 655H128"/>
+<circle class="dot r" cx="265" cy="450" r="3"/>
+<polygon class="tag r" points="300,450 307,442 368.6,442 368.6,458 307,458"/>
+<rect class="b ic" x="230" y="480" width="70" height="80" rx="3"/>
+<path class="s" d="M265 462V480"/>
+<path class="s" d="M212 500H230"/>
+<path class="s" d="M212 540H230"/>
+<path class="s" d="M300 500H318"/>
+<path class="s" d="M300 540H318"/>
+<path class="s" d="M265 560V578"/>
+<path class="s" d="M265 578V586M257 586H273M260 590H270M263 594H267"/>
+<g transform="translate(370 500) rotate(0)"><path class="s" d="M-20 0H-12M12 0H20"/><rect class="b" x="-12" y="-5" width="24" height="10"/></g>
+<g transform="translate(370 540) rotate(0)"><path class="s" d="M-20 0H-12M12 0H20"/><rect class="b" x="-12" y="-5" width="24" height="10"/></g>
+<g transform="translate(165 585) rotate(0)"><path class="s" d="M-20 0H-12M12 0H20"/><rect class="b" x="-12" y="-5" width="24" height="10"/></g>
+<g transform="translate(165 620) rotate(0)"><path class="s" d="M-20 0H-12M12 0H20"/><rect class="b" x="-12" y="-5" width="24" height="10"/></g>
+<circle class="dot" cx="205" cy="620" r="3"/>
+<path class="s" d="M205 637V645M197 645H213M200 649H210M203 653H207"/>
+<path class="s" d="M140 667V675M132 675H148M135 679H145M138 683H142"/>
+<g transform="translate(370 640) rotate(0)"><path class="s" d="M-20 0H-12M12 0H20"/><rect class="b" x="-12" y="-5" width="24" height="10"/></g>
+<g transform="translate(310 640) scale(-1 1)"><path class="s" d="M-20 0H-7M5 0H20"/><polygon class="f" points="-7,-7 -7,7 5,0"/><path class="s" d="M5 -7V7"/><path class="s thin" d="M-1 -10l6 -7M2 -17h3v3M5 -9l6 -7M8 -16h3v3"/></g>
+<path class="s" d="M275 652V660M267 660H283M270 664H280M273 668H277"/>
 <text class="pn" x="421" y="66" text-anchor="middle">2</text>
 <text class="pnm" x="435" y="74" text-anchor="start">3V3</text>
 <text class="pn" x="421" y="156" text-anchor="middle">3</text>
@@ -719,41 +853,56 @@
 <text class="pnm" x="435" y="254" text-anchor="start">IO0</text>
 <text class="pn" x="421" y="336" text-anchor="middle">17</text>
 <text class="pnm" x="435" y="344" text-anchor="start">IO9</text>
-<text class="pn" x="421" y="426" text-anchor="middle">14</text>
-<text class="pnm" x="435" y="434" text-anchor="start">IO20 D+</text>
-<text class="pn" x="421" y="466" text-anchor="middle">13</text>
-<text class="pnm" x="435" y="474" text-anchor="start">IO19 D−</text>
-<text class="pn" x="421" y="616" text-anchor="middle">12</text>
-<text class="pnm" x="435" y="624" text-anchor="start">IO8</text>
-<text class="pn" x="609" y="66" text-anchor="middle"></text>
+<text class="pn" x="421" y="496" text-anchor="middle">14</text>
+<text class="pnm" x="435" y="504" text-anchor="start">IO20 D+</text>
+<text class="pn" x="421" y="536" text-anchor="middle">13</text>
+<text class="pnm" x="435" y="544" text-anchor="start">IO19 D−</text>
+<text class="pn" x="421" y="636" text-anchor="middle">12</text>
+<text class="pnm" x="435" y="644" text-anchor="start">IO8</text>
+<text class="pn" x="519" y="703" text-anchor="start">1,40,41</text>
+<text class="pnm" x="515" y="684" text-anchor="middle">GND</text>
+<text class="pn" x="609" y="66" text-anchor="middle">4</text>
 <text class="pnm" x="595" y="74" text-anchor="end">IO4</text>
-<text class="pn" x="609" y="106" text-anchor="middle"></text>
+<text class="pn" x="609" y="106" text-anchor="middle">5</text>
 <text class="pnm" x="595" y="114" text-anchor="end">IO5</text>
-<text class="pn" x="609" y="146" text-anchor="middle"></text>
+<text class="pn" x="609" y="146" text-anchor="middle">18</text>
 <text class="pnm" x="595" y="154" text-anchor="end">IO10</text>
-<text class="pn" x="609" y="206" text-anchor="middle"></text>
+<text class="pn" x="609" y="206" text-anchor="middle">6</text>
 <text class="pnm" x="595" y="214" text-anchor="end">IO6</text>
-<text class="pn" x="609" y="246" text-anchor="middle"></text>
+<text class="pn" x="609" y="246" text-anchor="middle">7</text>
 <text class="pnm" x="595" y="254" text-anchor="end">IO7</text>
-<text class="pn" x="609" y="286" text-anchor="middle"></text>
+<text class="pn" x="609" y="286" text-anchor="middle">8</text>
 <text class="pnm" x="595" y="294" text-anchor="end">IO15</text>
-<text class="pn" x="609" y="346" text-anchor="middle"></text>
+<text class="pn" x="609" y="346" text-anchor="middle">9</text>
 <text class="pnm" x="595" y="354" text-anchor="end">IO16</text>
-<text class="pn" x="609" y="386" text-anchor="middle"></text>
+<text class="pn" x="609" y="386" text-anchor="middle">10</text>
 <text class="pnm" x="595" y="394" text-anchor="end">IO17</text>
-<text class="pn" x="609" y="426" text-anchor="middle"></text>
-<text class="pnm" x="595" y="434" text-anchor="end">IO18</text>
-<text class="pn" x="519" y="653" text-anchor="start">1,40,41</text>
-<text class="pnm" x="515" y="634" text-anchor="middle">GND</text>
-<text class="net" x="668" y="74" text-anchor="start">I2C SDA → U6 mux, U15/U21 ADCs</text>
-<text class="net" x="668" y="114" text-anchor="start">I2C SCL → U6 mux, U15/U21 ADCs</text>
-<text class="net" x="668" y="154" text-anchor="start">MUX_RESET_N → U6 pin 3</text>
+<text class="pn" x="609" y="446" text-anchor="middle">39</text>
+<text class="pnm" x="595" y="454" text-anchor="end">IO1</text>
+<text class="pn" x="609" y="486" text-anchor="middle">38</text>
+<text class="pnm" x="595" y="494" text-anchor="end">IO2</text>
+<text class="pn" x="609" y="526" text-anchor="middle">11</text>
+<text class="pnm" x="595" y="534" text-anchor="end">IO18</text>
+<text class="pn" x="609" y="586" text-anchor="middle">37</text>
+<text class="pnm" x="595" y="594" text-anchor="end">TXD0</text>
+<text class="pn" x="609" y="626" text-anchor="middle">36</text>
+<text class="pnm" x="595" y="634" text-anchor="end">RXD0</text>
+<text class="icref" x="515" y="349" text-anchor="middle">U4</text>
+<text class="icname" x="515" y="364" text-anchor="middle">ESP32-S3</text>
+<text class="val" x="515" y="379" text-anchor="middle">WROOM-1-N4</text>
+<text class="net" x="668" y="74" text-anchor="start">I2C_SDA → U6, U15, U21, U23</text>
+<text class="net" x="668" y="114" text-anchor="start">I2C_SCL → U6, U15, U21, U23</text>
+<text class="net" x="668" y="154" text-anchor="start">MUX_RESET_N → U6 RESET</text>
 <text class="net" x="668" y="214" text-anchor="start">CAN_TX → U16 TXD</text>
 <text class="net" x="668" y="254" text-anchor="start">CAN_RX ← U16 RXD</text>
 <text class="net" x="668" y="294" text-anchor="start">CAN_STANDBY → U16 STB</text>
-<text class="net" x="668" y="354" text-anchor="start">ANALOG_EN → U13/U19 switches</text>
+<text class="net" x="668" y="354" text-anchor="start">ANALOG_EN → U13, U19 switches</text>
 <text class="net" x="668" y="394" text-anchor="start">SENSOR_POWER_EN → U3 EN</text>
-<text class="net" x="668" y="434" text-anchor="start">SENSOR_POWER_FAULT_N ← U3 OC</text>
+<text class="net" x="668" y="454" text-anchor="start">SENS_MON ← sensor 5 V ÷6.13</text>
+<text class="net" x="668" y="494" text-anchor="start">VIN_MON ← 12 V ÷6.13</text>
+<text class="note" x="632" y="534" text-anchor="start">not connected</text>
+<text class="net" x="672" y="594" text-anchor="start">TP19 (TX0)</text>
+<text class="net" x="672" y="634" text-anchor="start">TP20 (RX0)</text>
 <text class="tagt r" x="109" y="74" text-anchor="end">3V3</text>
 <text class="ref" x="312" y="98" text-anchor="start">C13</text>
 <text class="val" x="312" y="111" text-anchor="start">100nF</text>
@@ -763,8 +912,7 @@
 <text class="val" x="262" y="124" text-anchor="start">10k</text>
 <text class="ref" x="342" y="188" text-anchor="start">C15</text>
 <text class="val" x="342" y="201" text-anchor="start">1µF</text>
-<text class="ref" x="140" y="191" text-anchor="end">SW1</text>
-<text class="val" x="140" y="204" text-anchor="end">RESET</text>
+<text class="net" x="262" y="154" text-anchor="start">ESP_EN</text>
 <text class="ref" x="140" y="281" text-anchor="end">SW2</text>
 <text class="val" x="140" y="294" text-anchor="end">BOOT</text>
 <text class="rail" x="250" y="190" text-anchor="middle">3V3</text>
@@ -775,47 +923,63 @@
 <text class="rail" x="250" y="280" text-anchor="middle">3V3</text>
 <text class="ref" x="262" y="311" text-anchor="start">R10</text>
 <text class="val" x="262" y="324" text-anchor="start">10k</text>
-<text class="icref" x="75.0" y="616" text-anchor="middle">J3 USB-C</text>
-<text class="pn" x="119" y="406" text-anchor="middle">A4</text>
-<text class="pnm" x="105" y="414" text-anchor="end">VBUS</text>
-<text class="pn" x="119" y="426" text-anchor="middle">A6</text>
-<text class="pnm" x="105" y="434" text-anchor="end">D+</text>
-<text class="pn" x="119" y="466" text-anchor="middle">A7</text>
-<text class="pnm" x="105" y="474" text-anchor="end">D−</text>
-<text class="pn" x="119" y="506" text-anchor="middle">A5</text>
-<text class="pnm" x="105" y="514" text-anchor="end">CC1</text>
-<text class="pn" x="119" y="541" text-anchor="middle">B5</text>
-<text class="pnm" x="105" y="549" text-anchor="end">CC2</text>
-<text class="pn" x="119" y="576" text-anchor="middle">A1</text>
-<text class="pnm" x="105" y="584" text-anchor="end">GND</text>
-<text class="tagt r" x="171" y="414" text-anchor="start">USB VBUS</text>
-<text class="note" x="232" y="400" text-anchor="start">→ U18 (5 V OR)</text>
-<text class="ref" x="370" y="418" text-anchor="middle">R15  33Ω</text>
-<text class="ref" x="370" y="458" text-anchor="middle">R16  33Ω</text>
-<text class="icref" x="285.0" y="539.0" text-anchor="middle">U5</text>
-<text class="icname" x="285.0" y="554.0" text-anchor="middle">USBLC6</text>
-<text class="pn" x="269" y="494" text-anchor="start">1,6</text>
-<text class="pnm" x="265" y="514" text-anchor="middle">D+</text>
-<text class="pn" x="299" y="494" text-anchor="start">3,4</text>
-<text class="pnm" x="295" y="514" text-anchor="middle">D−</text>
-<text class="pn" x="339" y="556" text-anchor="middle">5</text>
-<text class="pnm" x="325" y="564" text-anchor="end">VBUS</text>
-<text class="pn" x="289" y="598" text-anchor="start">2</text>
-<text class="pnm" x="285" y="579" text-anchor="middle">GND</text>
-<text class="tagt r" x="359" y="564" text-anchor="start">USB VBUS</text>
-<text class="val" x="165" y="500" text-anchor="middle">R13 5.1k</text>
-<text class="val" x="165" y="535" text-anchor="middle">R14 5.1k</text>
-<text class="ref" x="370" y="608" text-anchor="middle">R12  1k</text>
-<text class="ref" x="310" y="644" text-anchor="middle">D5</text>
-<text class="val" x="310" y="657" text-anchor="middle">green</text>
-</svg></div><figcaption>The WROOM module runs from 3.3 V. RESET and BOOT are the usual pull-up and button pairs; ZERO tells the firmware to zero the pressure channels. USB-C goes straight to the S3&#x27;s native USB through 33 Ω resistors and a USBLC6 ESD array, and the 5.1k CC resistors get 5 V from a USB-C charger. UART0 TX/RX (IO43/IO44) go to test pads TP19/TP20 for flashing if USB won&#x27;t enumerate.</figcaption></figure></section><section class="sheet" id="pcn-pressure"><div class="tb"><span class="no">4</span><h3>Pressure sensor bus</h3><span class="refs">U6 · U7–U12 · R17–R31 · C16–C22</span></div><figure class="sch"><div class="scroll"><svg viewBox="0 0 1000 490" role="img" aria-label="I2C bus from the ESP32 through the TCA9548A switch U6 to six WF100DPZ pressure sensors, one per branch, all at the same address" style="min-width:720px">
-<polyline class="w" points="80,120 312,120"/>
-<polyline class="w" points="80,160 312,160"/>
-<polyline class="w" points="150,120 150,105"/>
-<path class="w" d="M210 160V125A5 5 0 0 0 210 115V105"/>
-<polyline class="w" points="80,280 312,280"/>
-<polyline class="w" points="230,280 230,265"/>
-<polyline class="w" points="312,330 290,330 290,342"/>
+<text class="ref" x="140" y="191" text-anchor="end">SW1</text>
+<text class="val" x="140" y="204" text-anchor="end">RESET</text>
+<text class="pn" x="119" y="446" text-anchor="middle">A4</text>
+<text class="pnm" x="105" y="454" text-anchor="end">VBUS</text>
+<text class="pn" x="119" y="496" text-anchor="middle">A6</text>
+<text class="pnm" x="105" y="504" text-anchor="end">D+</text>
+<text class="pn" x="119" y="536" text-anchor="middle">A7</text>
+<text class="pnm" x="105" y="544" text-anchor="end">D−</text>
+<text class="pn" x="119" y="581" text-anchor="middle">A5</text>
+<text class="pnm" x="105" y="589" text-anchor="end">CC1</text>
+<text class="pn" x="119" y="616" text-anchor="middle">B5</text>
+<text class="pnm" x="105" y="624" text-anchor="end">CC2</text>
+<text class="pn" x="119" y="651" text-anchor="middle">A1</text>
+<text class="pnm" x="105" y="659" text-anchor="end">GND</text>
+<text class="icref" x="75" y="690" text-anchor="middle">J3 USB-C</text>
+<text class="note" x="16" y="712" text-anchor="start">Also VBUS: A9, B4, B9. GND: A12, B1, B12, shell.</text>
+<text class="note" x="16" y="726" text-anchor="start">D+ also B6, D− also B7.</text>
+<text class="tagt r" x="311" y="454" text-anchor="start">USB VBUS</text>
+<text class="note" x="374" y="454" text-anchor="start">sheet 2</text>
+<text class="pn" x="269" y="474" text-anchor="start">5</text>
+<text class="pnm" x="265" y="494" text-anchor="middle">VBUS</text>
+<text class="pn" x="221" y="496" text-anchor="middle">6</text>
+<text class="pnm" x="235" y="504" text-anchor="start"></text>
+<text class="pn" x="221" y="536" text-anchor="middle">3</text>
+<text class="pnm" x="235" y="544" text-anchor="start"></text>
+<text class="pn" x="309" y="496" text-anchor="middle">1</text>
+<text class="pnm" x="295" y="504" text-anchor="end"></text>
+<text class="pn" x="309" y="536" text-anchor="middle">4</text>
+<text class="pnm" x="295" y="544" text-anchor="end"></text>
+<text class="pn" x="269" y="573" text-anchor="start">2</text>
+<text class="pnm" x="265" y="554" text-anchor="middle">GND</text>
+<text class="icref" x="265" y="520.5" text-anchor="middle">U5</text>
+<text class="icname" x="265" y="535.5" text-anchor="middle">USBLC6</text>
+<text class="ref" x="370" y="488" text-anchor="middle">R15  33Ω</text>
+<text class="ref" x="370" y="528" text-anchor="middle">R16  33Ω</text>
+<text class="net" x="140" y="494" text-anchor="start">D+</text>
+<text class="net" x="140" y="534" text-anchor="start">D−</text>
+<text class="val" x="165" y="575" text-anchor="middle">R13 5.1k</text>
+<text class="val" x="165" y="610" text-anchor="middle">R14 5.1k</text>
+<text class="ref" x="370" y="628" text-anchor="middle">R12  1k</text>
+<text class="ref" x="310" y="664" text-anchor="middle">D5</text>
+<text class="val" x="310" y="677" text-anchor="middle">green</text>
+</svg></div><figcaption>The WROOM module runs from 3.3 V. RESET and BOOT are the usual pull-up and button pairs; ZERO tells the firmware to zero the pressure channels. USB-C goes to the S3&#x27;s native USB through U5, an ESD array laid out flow-through (each line goes in one pin and out the other), and 33 Ω resistors. The 5.1k CC resistors get 5 V from a USB-C charger, and USB VBUS goes to the 5 V OR on sheet 2. UART0 TX/RX (GPIO43/44) go to test pads TP19/TP20, for flashing if USB won&#x27;t enumerate and for the console when a screen uses the USB-C port. GPIO1 and GPIO2 read the sensor supply and the 12 V on the ESP32&#x27;s ADC; GPIO18 is not connected.</figcaption></figure></section>
+<section class="sheet" id="pcn-pressure"><div class="tb"><span class="no">5</span><h3>Sensor bus and barometer</h3><span class="refs">U6 · U7–U12 · U23 · R17–R31 · C16–C22 · C53 · C54</span></div><figure class="sch"><div class="scroll"><svg viewBox="0 0 1000 640" role="img" aria-label="I2C bus from the ESP32 to the TCA9548A switch U6, which gives each of the six WF100DPZ pressure sensors its own branch, and the BMP388 barometer U23 on the main bus at 0x76" style="min-width:820px">
+<polyline class="w" points="80,100 312,100"/>
+<polyline class="w" points="230,100 230,85"/>
+<polyline class="w" points="312,150 290,150 290,162"/>
+<polyline class="w" points="80,330 312,330"/>
+<polyline class="w" points="80,370 312,370"/>
+<polyline class="w" points="150,330 150,305"/>
+<path class="w" d="M200 370V335A5 5 0 0 0 200 325V305"/>
+<path class="w" d="M250 330V365A5 5 0 0 1 250 375V432"/>
+<polyline class="w" points="290,370 290,432"/>
+<polyline class="w" points="182,535 160,535 160,455"/>
+<polyline class="w" points="182,475 160,475"/>
+<polyline class="w" points="182,505 160,505"/>
+<polyline class="w" points="358,515 372,515 372,527"/>
 <polyline class="w" points="468,90 682,90"/>
 <polyline class="w" points="468,110 682,110"/>
 <polyline class="w" points="468,150 682,150"/>
@@ -828,24 +992,11 @@
 <polyline class="w" points="468,350 682,350"/>
 <polyline class="w" points="468,390 682,390"/>
 <polyline class="w" points="468,410 682,410"/>
-<polygon class="tag" points="80.0,120 73.0,112 18.1,112 18.1,128 73.0,128"/>
-<polygon class="tag" points="80.0,160 73.0,152 18.1,152 18.1,168 73.0,168"/>
-<circle class="dot" cx="150" cy="120" r="3"/>
-<g transform="translate(150 85) rotate(90)"><path class="s" d="M-20 0H-12M12 0H20"/><rect class="b" x="-12" y="-5" width="24" height="10"/></g>
-<path class="w r" d="M150 65V55M142 55H158"/>
-<circle class="dot" cx="210" cy="160" r="3"/>
-<g transform="translate(210 85) rotate(90)"><path class="s" d="M-20 0H-12M12 0H20"/><rect class="b" x="-12" y="-5" width="24" height="10"/></g>
-<path class="w r" d="M210 65V55M202 55H218"/>
-<polygon class="tag" points="80.0,280 73.0,272 38.2,272 38.2,288 73.0,288"/>
-<circle class="dot" cx="230" cy="280" r="3"/>
-<g transform="translate(230 245) rotate(90)"><path class="s" d="M-20 0H-12M12 0H20"/><rect class="b" x="-12" y="-5" width="24" height="10"/></g>
-<path class="w r" d="M230 225V215M222 215H238"/>
-<path class="s" d="M290 342V350M282 350H298M285 354H295M288 358H292"/>
 <rect class="b ic" x="330" y="60" width="120" height="380" rx="3"/>
-<path class="s" d="M312 120H330"/>
-<path class="s" d="M312 160H330"/>
-<path class="s" d="M312 280H330"/>
+<path class="s" d="M312 100H330"/>
+<path class="s" d="M312 150H330"/>
 <path class="s" d="M312 330H330"/>
+<path class="s" d="M312 370H330"/>
 <path class="s" d="M390 42V60"/>
 <path class="s" d="M390 440V458"/>
 <path class="s" d="M450 90H468"/>
@@ -862,45 +1013,68 @@
 <path class="s" d="M450 410H468"/>
 <path class="w r" d="M390 42V32M382 32H398"/>
 <path class="s" d="M390 458V466M382 466H398M385 470H395M388 474H392"/>
+<polygon class="tag" points="80,100 73,92 38.2,92 38.2,108 73,108"/>
+<circle class="dot" cx="230" cy="100" r="3"/>
+<g transform="translate(230 65) rotate(90)"><path class="s" d="M-20 0H-12M12 0H20"/><rect class="b" x="-12" y="-5" width="24" height="10"/></g>
+<path class="w r" d="M230 45V35M222 35H238"/>
+<path class="s" d="M290 162V170M282 170H298M285 174H295M288 178H292"/>
+<polygon class="tag" points="80,330 73,322 18.1,322 18.1,338 73,338"/>
+<polygon class="tag" points="80,370 73,362 18.1,362 18.1,378 73,378"/>
+<circle class="dot" cx="150" cy="330" r="3"/>
+<g transform="translate(150 285) rotate(90)"><path class="s" d="M-20 0H-12M12 0H20"/><rect class="b" x="-12" y="-5" width="24" height="10"/></g>
+<path class="w r" d="M150 265V255M142 255H158"/>
+<circle class="dot" cx="200" cy="370" r="3"/>
+<g transform="translate(200 285) rotate(90)"><path class="s" d="M-20 0H-12M12 0H20"/><rect class="b" x="-12" y="-5" width="24" height="10"/></g>
+<path class="w r" d="M200 265V255M192 255H208"/>
+<circle class="dot" cx="250" cy="330" r="3"/>
+<circle class="dot" cx="290" cy="370" r="3"/>
+<rect class="b ic" x="200" y="450" width="140" height="110" rx="3"/>
+<path class="s" d="M250 432V450"/>
+<path class="s" d="M290 432V450"/>
+<path class="s" d="M182 475H200"/>
+<path class="s" d="M182 505H200"/>
+<path class="s" d="M182 535H200"/>
+<path class="s" d="M340 475H358"/>
+<path class="s" d="M340 515H358"/>
+<path class="s" d="M270 560V578"/>
+<path class="s" d="M270 578V586M262 586H278M265 590H275M268 594H272"/>
+<path class="w r" d="M160 455V445M152 445H168"/>
+<circle class="dot" cx="160" cy="475" r="3"/>
+<circle class="dot" cx="160" cy="505" r="3"/>
+<path class="s" d="M372 527V535M364 535H380M367 539H377M370 543H374"/>
+<path class="s" d="M354 471L362 479M354 479L362 471"/>
+<path class="w r" d="M105 485V475M97 475H113"/>
+<g transform="translate(105 505) rotate(90)"><path class="s" d="M-20 0H-3M3 0H20M-3 -9V9M3 -9V9"/></g>
+<path class="s" d="M105 525V533M97 533H113M100 537H110M103 541H107"/>
+<path class="w r" d="M40 485V475M32 475H48"/>
+<g transform="translate(40 505) rotate(90)"><path class="s" d="M-20 0H-3M3 0H20M-3 -9V9M3 -9V9"/></g>
+<path class="s" d="M40 525V533M32 533H48M35 537H45M38 541H42"/>
 <rect class="b ic" x="700" y="72" width="170" height="56" rx="3"/>
-<path class="s" d="M682 90H700M682 110H700"/>
+<path class="s" d="M682 90H700"/>
+<path class="s" d="M682 110H700"/>
 <rect class="b ic" x="700" y="132" width="170" height="56" rx="3"/>
-<path class="s" d="M682 150H700M682 170H700"/>
+<path class="s" d="M682 150H700"/>
+<path class="s" d="M682 170H700"/>
 <rect class="b ic" x="700" y="192" width="170" height="56" rx="3"/>
-<path class="s" d="M682 210H700M682 230H700"/>
+<path class="s" d="M682 210H700"/>
+<path class="s" d="M682 230H700"/>
 <rect class="b ic" x="700" y="252" width="170" height="56" rx="3"/>
-<path class="s" d="M682 270H700M682 290H700"/>
+<path class="s" d="M682 270H700"/>
+<path class="s" d="M682 290H700"/>
 <rect class="b ic" x="700" y="312" width="170" height="56" rx="3"/>
-<path class="s" d="M682 330H700M682 350H700"/>
+<path class="s" d="M682 330H700"/>
+<path class="s" d="M682 350H700"/>
 <rect class="b ic" x="700" y="372" width="170" height="56" rx="3"/>
-<path class="s" d="M682 390H700M682 410H700"/>
-<text class="tagt" x="69" y="124" text-anchor="end">IO4 SDA</text>
-<text class="tagt" x="69" y="164" text-anchor="end">IO5 SCL</text>
-<text class="rail" x="150" y="50" text-anchor="middle">3V3</text>
-<text class="ref" x="162" y="81" text-anchor="start">R17</text>
-<text class="val" x="162" y="94" text-anchor="start">4.7k</text>
-<text class="rail" x="210" y="50" text-anchor="middle">3V3</text>
-<text class="ref" x="222" y="81" text-anchor="start">R18</text>
-<text class="val" x="222" y="94" text-anchor="start">4.7k</text>
-<text class="note" x="16" y="420" text-anchor="start">Same bus also reaches the ADS1115s</text>
-<text class="note" x="16" y="434" text-anchor="start">U15 (0x48) and U21 (0x49).</text>
-<text class="tagt" x="69" y="284" text-anchor="end">IO10</text>
-<text class="note" x="16" y="303" text-anchor="start">MUX_RESET_N</text>
-<text class="rail" x="230" y="210" text-anchor="middle">3V3</text>
-<text class="ref" x="242" y="241" text-anchor="start">R19</text>
-<text class="val" x="242" y="254" text-anchor="start">10k</text>
-<text class="note" x="270" y="378" text-anchor="middle">A0–A2 low: switch at 0x70</text>
-<text class="icref" x="390.0" y="239.0" text-anchor="middle">U6</text>
-<text class="icname" x="390.0" y="254.0" text-anchor="middle">TCA9548A</text>
-<text class="val" x="390.0" y="269.0" text-anchor="middle">I2C switch</text>
-<text class="pn" x="321" y="116" text-anchor="middle">23</text>
-<text class="pnm" x="335" y="124" text-anchor="start">SDA</text>
-<text class="pn" x="321" y="156" text-anchor="middle">22</text>
-<text class="pnm" x="335" y="164" text-anchor="start">SCL</text>
-<text class="pn" x="321" y="276" text-anchor="middle">3</text>
-<text class="pnm" x="335" y="284" text-anchor="start">RESET</text>
-<text class="pn" x="321" y="326" text-anchor="middle">1,2,21</text>
-<text class="pnm" x="335" y="334" text-anchor="start">A0–A2</text>
+<path class="s" d="M682 390H700"/>
+<path class="s" d="M682 410H700"/>
+<text class="pn" x="321" y="96" text-anchor="middle">3</text>
+<text class="pnm" x="335" y="104" text-anchor="start">RESET</text>
+<text class="pn" x="321" y="146" text-anchor="middle">1,2,21</text>
+<text class="pnm" x="335" y="154" text-anchor="start">A0–A2</text>
+<text class="pn" x="321" y="326" text-anchor="middle">23</text>
+<text class="pnm" x="335" y="334" text-anchor="start">SDA</text>
+<text class="pn" x="321" y="366" text-anchor="middle">22</text>
+<text class="pnm" x="335" y="374" text-anchor="start">SCL</text>
 <text class="pn" x="394" y="54" text-anchor="start">24</text>
 <text class="pnm" x="390" y="74" text-anchor="middle">VCC</text>
 <text class="pn" x="394" y="453" text-anchor="start">12</text>
@@ -929,45 +1103,107 @@
 <text class="pnm" x="445" y="394" text-anchor="end">SD5</text>
 <text class="pn" x="459" y="406" text-anchor="middle">16</text>
 <text class="pnm" x="445" y="414" text-anchor="end">SC5</text>
+<text class="icref" x="390" y="229" text-anchor="middle">U6</text>
+<text class="icname" x="390" y="244" text-anchor="middle">TCA9548A</text>
+<text class="val" x="390" y="259" text-anchor="middle">I²C switch</text>
 <text class="rail" x="390" y="27" text-anchor="middle">3V3</text>
-<text class="note" x="462" y="462" text-anchor="start">SD6/SC6, SD7/SC7 unused</text>
+<text class="note" x="410" y="36" text-anchor="start">C16 100nF</text>
+<text class="note" x="462" y="470" text-anchor="start">SD6/SC6, SD7/SC7 unused</text>
+<text class="tagt" x="69" y="104" text-anchor="end">IO10</text>
+<text class="note" x="16" y="122" text-anchor="start">MUX_RESET_N</text>
+<text class="rail" x="230" y="30" text-anchor="middle">3V3</text>
+<text class="ref" x="242" y="61" text-anchor="start">R19</text>
+<text class="val" x="242" y="74" text-anchor="start">10k</text>
+<text class="note" x="316" y="200" text-anchor="end">A0–A2 low: switch at 0x70</text>
+<text class="tagt" x="69" y="334" text-anchor="end">IO4 SDA</text>
+<text class="tagt" x="69" y="374" text-anchor="end">IO5 SCL</text>
+<text class="rail" x="150" y="250" text-anchor="middle">3V3</text>
+<text class="ref" x="138" y="281" text-anchor="end">R17</text>
+<text class="val" x="138" y="294" text-anchor="end">4.7k</text>
+<text class="rail" x="200" y="250" text-anchor="middle">3V3</text>
+<text class="ref" x="212" y="281" text-anchor="start">R18</text>
+<text class="val" x="212" y="294" text-anchor="start">4.7k</text>
+<text class="pn" x="254" y="444" text-anchor="start">4</text>
+<text class="pnm" x="250" y="464" text-anchor="middle">SDA</text>
+<text class="pn" x="294" y="444" text-anchor="start">2</text>
+<text class="pnm" x="290" y="464" text-anchor="middle">SCL</text>
+<text class="pn" x="191" y="471" text-anchor="middle">10</text>
+<text class="pnm" x="205" y="479" text-anchor="start">VDD</text>
+<text class="pn" x="191" y="501" text-anchor="middle">1</text>
+<text class="pnm" x="205" y="509" text-anchor="start">VDDIO</text>
+<text class="pn" x="191" y="531" text-anchor="middle">6</text>
+<text class="pnm" x="205" y="539" text-anchor="start">CSB</text>
+<text class="pn" x="349" y="471" text-anchor="middle">7</text>
+<text class="pnm" x="335" y="479" text-anchor="end">INT</text>
+<text class="pn" x="349" y="511" text-anchor="middle">5</text>
+<text class="pnm" x="335" y="519" text-anchor="end">SDO</text>
+<text class="pn" x="274" y="573" text-anchor="start">3,8,9</text>
+<text class="pnm" x="270" y="554" text-anchor="middle">GND</text>
+<text class="icref" x="270" y="501" text-anchor="middle">U23</text>
+<text class="icname" x="270" y="516" text-anchor="middle">BMP388</text>
+<text class="val" x="270" y="531" text-anchor="middle">baro, 0x76</text>
+<text class="rail" x="160" y="440" text-anchor="middle">3V3</text>
+<text class="rail" x="105" y="470" text-anchor="middle">3V3</text>
+<text class="rail" x="40" y="470" text-anchor="middle">3V3</text>
+<text class="ref" x="117" y="501" text-anchor="start">C53</text>
+<text class="val" x="117" y="514" text-anchor="start">100nF</text>
+<text class="ref" x="52" y="501" text-anchor="start">C54</text>
+<text class="val" x="52" y="514" text-anchor="start">100nF</text>
+<text class="note" x="16" y="566" text-anchor="start">C53 at VDD, C54 at VDDIO</text>
+<text class="note" x="400" y="535" text-anchor="start">SDO low: address 0x76</text>
+<text class="note" x="400" y="549" text-anchor="start">CSB high: I²C</text>
+<text class="note" x="400" y="563" text-anchor="start">INT unused</text>
+<text class="note" x="16" y="612" text-anchor="start">The same bus reaches the ADS1115s U15 (0x48) and U21 (0x49), sheet 6.</text>
 <text class="note" x="560" y="84" text-anchor="middle">R20, R21 4.7k to 3V3</text>
+<text class="pn" x="691" y="86" text-anchor="middle">3</text>
 <text class="pnm" x="705" y="94" text-anchor="start">SDA</text>
+<text class="pn" x="691" y="106" text-anchor="middle">2</text>
 <text class="pnm" x="705" y="114" text-anchor="start">SCL</text>
 <text class="icref" x="745" y="94" text-anchor="start">U7  DP1, 10 kPa</text>
 <text class="val" x="745" y="114" text-anchor="start">WF100DPZ 0.1BG</text>
 <text class="note" x="880" y="100" text-anchor="start">C17 1µF</text>
 <text class="note" x="560" y="144" text-anchor="middle">R22, R23 4.7k to 3V3</text>
+<text class="pn" x="691" y="146" text-anchor="middle">3</text>
 <text class="pnm" x="705" y="154" text-anchor="start">SDA</text>
+<text class="pn" x="691" y="166" text-anchor="middle">2</text>
 <text class="pnm" x="705" y="174" text-anchor="start">SCL</text>
 <text class="icref" x="745" y="154" text-anchor="start">U8  DP2, 10 kPa</text>
 <text class="val" x="745" y="174" text-anchor="start">WF100DPZ 0.1BG</text>
 <text class="note" x="880" y="160" text-anchor="start">C18 1µF</text>
 <text class="note" x="560" y="204" text-anchor="middle">R24, R25 4.7k to 3V3</text>
+<text class="pn" x="691" y="206" text-anchor="middle">3</text>
 <text class="pnm" x="705" y="214" text-anchor="start">SDA</text>
+<text class="pn" x="691" y="226" text-anchor="middle">2</text>
 <text class="pnm" x="705" y="234" text-anchor="start">SCL</text>
 <text class="icref" x="745" y="214" text-anchor="start">U9  DP3, 10 kPa</text>
 <text class="val" x="745" y="234" text-anchor="start">WF100DPZ 0.1BG</text>
 <text class="note" x="880" y="220" text-anchor="start">C19 1µF</text>
 <text class="note" x="560" y="264" text-anchor="middle">R26, R27 4.7k to 3V3</text>
+<text class="pn" x="691" y="266" text-anchor="middle">3</text>
 <text class="pnm" x="705" y="274" text-anchor="start">SDA</text>
+<text class="pn" x="691" y="286" text-anchor="middle">2</text>
 <text class="pnm" x="705" y="294" text-anchor="start">SCL</text>
 <text class="icref" x="745" y="274" text-anchor="start">U10  DP4, 10 kPa</text>
 <text class="val" x="745" y="294" text-anchor="start">WF100DPZ 0.1BG</text>
 <text class="note" x="880" y="280" text-anchor="start">C20 1µF</text>
 <text class="note" x="560" y="324" text-anchor="middle">R28, R29 4.7k to 3V3</text>
+<text class="pn" x="691" y="326" text-anchor="middle">3</text>
 <text class="pnm" x="705" y="334" text-anchor="start">SDA</text>
+<text class="pn" x="691" y="346" text-anchor="middle">2</text>
 <text class="pnm" x="705" y="354" text-anchor="start">SCL</text>
 <text class="icref" x="745" y="334" text-anchor="start">U11  DP5, 40 kPa</text>
 <text class="val" x="745" y="354" text-anchor="start">WF100DPZ 0.4BG</text>
 <text class="note" x="880" y="340" text-anchor="start">C21 1µF</text>
 <text class="note" x="560" y="384" text-anchor="middle">R30, R31 4.7k to 3V3</text>
+<text class="pn" x="691" y="386" text-anchor="middle">3</text>
 <text class="pnm" x="705" y="394" text-anchor="start">SDA</text>
+<text class="pn" x="691" y="406" text-anchor="middle">2</text>
 <text class="pnm" x="705" y="414" text-anchor="start">SCL</text>
 <text class="icref" x="745" y="394" text-anchor="start">U12  DP6, 40 kPa</text>
 <text class="val" x="745" y="414" text-anchor="start">WF100DPZ 0.4BG</text>
 <text class="note" x="880" y="400" text-anchor="start">C22 1µF</text>
-</svg></div><figcaption>All six sensors answer at the same address, so each sits on its own branch of the TCA9548A and the firmware selects one branch at a time. Each branch has its own 4.7k pull-ups and a 1 µF supply cap next to the sensor. DP1–DP4 are 10 kPa parts; DP5–DP6 read to 40 kPa for turbo-inlet vacuum.</figcaption></figure></section><section class="sheet" id="pcn-sensor"><div class="tb"><span class="no">4a</span><h3>One sensor branch</h3><span class="refs">U7 (U8–U12 identical)</span></div><figure class="sch"><div class="scroll"><svg viewBox="0 0 1000 290" role="img" aria-label="One pressure sensor branch: WF100DPZ with CSB tied high for I2C, branch pull-ups and supply capacitor" style="min-width:720px">
+</svg></div><figcaption>All six sensors answer at the same address, so each sits on its own branch of the TCA9548A and the firmware selects one branch at a time. Each branch has its own 4.7k pull-ups and a 1 µF supply cap next to the sensor. DP1–DP4 are 10 kPa parts; DP5–DP6 read to 40 kPa for turbo-inlet vacuum. U23, the BMP388 barometer, sits on the main bus ahead of the switch at 0x76 (SDO low, CSB high for I²C). It reads the absolute pressure and temperature of the air in the box, which is the air every sensor reads against.</figcaption></figure></section>
+<section class="sheet" id="pcn-sensor"><div class="tb"><span class="no">5a</span><h3>One sensor branch</h3><span class="refs">U7 · R20 · R21 · C17 (U8–U12 identical)</span></div><figure class="sch"><div class="scroll"><svg viewBox="0 0 1000 290" role="img" aria-label="One pressure sensor branch: WF100DPZ with CSB tied high for I2C, branch pull-ups and supply capacitor" style="min-width:820px">
 <polyline class="w" points="110,120 322,120"/>
 <polyline class="w" points="110,170 322,170"/>
 <polyline class="w" points="200,120 200,105"/>
@@ -975,8 +1211,8 @@
 <polyline class="w r" points="538,100 640,100 640,110"/>
 <polyline class="w r" points="538,140 580,140 580,100"/>
 <polyline class="w" points="538,230 560,230 560,242"/>
-<polygon class="tag" points="110.0,120 103.0,112 54.8,112 54.8,128 103.0,128"/>
-<polygon class="tag" points="110.0,170 103.0,162 54.8,162 54.8,178 103.0,178"/>
+<polygon class="tag" points="110,120 103,112 54.8,112 54.8,128 103,128"/>
+<polygon class="tag" points="110,170 103,162 54.8,162 54.8,178 103,178"/>
 <circle class="dot" cx="200" cy="120" r="3"/>
 <g transform="translate(200 85) rotate(90)"><path class="s" d="M-20 0H-12M12 0H20"/><rect class="b" x="-12" y="-5" width="24" height="10"/></g>
 <path class="w r" d="M200 65V55M192 55H208"/>
@@ -1005,9 +1241,6 @@
 <text class="rail" x="260" y="50" text-anchor="middle">3V3</text>
 <text class="ref" x="272" y="81" text-anchor="start">R21</text>
 <text class="val" x="272" y="94" text-anchor="start">4.7k</text>
-<text class="icref" x="430.0" y="154.0" text-anchor="middle">U7</text>
-<text class="icname" x="430.0" y="169.0" text-anchor="middle">WF100DPZ</text>
-<text class="val" x="430.0" y="184.0" text-anchor="middle">0.1BG S6 DT</text>
 <text class="pn" x="331" y="116" text-anchor="middle">3</text>
 <text class="pnm" x="345" y="124" text-anchor="start">SDA</text>
 <text class="pn" x="331" y="166" text-anchor="middle">2</text>
@@ -1020,31 +1253,36 @@
 <text class="pnm" x="515" y="144" text-anchor="end">CSB</text>
 <text class="pn" x="529" y="226" text-anchor="middle">1</text>
 <text class="pnm" x="515" y="234" text-anchor="end">GND</text>
+<text class="icref" x="430" y="159" text-anchor="middle">U7</text>
+<text class="icname" x="430" y="174" text-anchor="middle">WF100DPZ</text>
+<text class="val" x="430" y="189" text-anchor="middle">0.1BG S6 DT</text>
 <text class="rail" x="610" y="85" text-anchor="middle">3V3</text>
 <text class="ref" x="652" y="123" text-anchor="start">C17</text>
 <text class="val" x="652" y="136" text-anchor="start">1µF</text>
-<text class="note" x="700" y="120" text-anchor="start">CSB high selects I2C</text>
+<text class="note" x="700" y="120" text-anchor="start">CSB high selects I²C</text>
 <text class="note" x="700" y="136" text-anchor="start">No address pin: 0x6D or 0x6C</text>
 <text class="note" x="700" y="152" text-anchor="start">Pin 6 open</text>
 <text class="note" x="700" y="184" text-anchor="start">One barb in the middle of the body;</text>
 <text class="note" x="700" y="200" text-anchor="start">reads against the air behind the die</text>
 <text class="note" x="700" y="216" text-anchor="start">U8–U10 identical; U11–U12 are 0.4BG, 40 kPa</text>
-</svg></div><figcaption>CSB ties to 3.3 V for I2C. The WF100DPZ has no address pin; pin 6 stays open. Pin numbers from WF&#x27;s datasheet V3.6 top view.</figcaption></figure></section><section class="sheet" id="pcn-analog"><div class="tb"><span class="no">5</span><h3>Analog input (one of eight)</h3><span class="refs">J4 · R32–R36 · C23 · C24 · U13 · U14 · U15 · R11</span></div><figure class="sch"><div class="scroll"><svg viewBox="0 0 1080 330" role="img" aria-label="One analog input channel: J4 with switched 5 V supply, divide-by-five divider, TMUX1511 isolation switch, TLV9004 buffer and ADS1115 input" style="min-width:720px">
+</svg></div><figcaption>CSB ties to 3.3 V for I²C. The WF100DPZ has no address pin; pin 6 stays open. Pin numbers from WF&#x27;s datasheet V3.6 top view.</figcaption></figure></section>
+<section class="sheet" id="pcn-analog"><div class="tb"><span class="no">6</span><h3>Analog input (one of eight)</h3><span class="refs">J4 · R32–R36 · C23 · C24 · U13 · U14 · U15 · R11 · C31–C33</span></div><figure class="sch"><div class="scroll"><svg viewBox="0 0 1080 350" role="img" aria-label="One analog input channel: J4 with the 5 V sensor supply through a 0 ohm link, the 1 megohm divide-by-five divider, TMUX1511 isolation switch, TLV9004 buffer and ADS1115 input" style="min-width:820px">
 <polyline class="w r" points="88,100 130,100"/>
 <polyline class="w r" points="170,100 225,100"/>
 <polyline class="w" points="88,140 100,140 100,152"/>
 <polyline class="w" points="88,180 140,180"/>
-<polyline class="w" points="240,180 362,180"/>
-<polyline class="w" points="270,180 270,195"/>
-<polyline class="w" points="320,180 320,195"/>
-<polyline class="w" points="362,215 350,215 350,300"/>
-<polyline class="w" points="350,250 395,250 395,252"/>
-<polyline class="w" points="498,180 555,180"/>
-<polyline class="w" points="625,170 670,170"/>
-<polyline class="w" points="640,170 640,130 545,130 545,160 555,160"/>
-<polyline class="w" points="710,170 782,170"/>
-<polyline class="w" points="740,170 740,185"/>
-<polyline class="w" points="782,230 770,230 770,242"/>
+<polyline class="w" points="180,180 200,180"/>
+<polyline class="w" points="240,180 382,180"/>
+<polyline class="w" points="260,180 260,195"/>
+<polyline class="w" points="310,180 310,195"/>
+<polyline class="w" points="382,215 370,215 370,300"/>
+<polyline class="w" points="370,250 415,250 415,252"/>
+<polyline class="w" points="558,180 575,180"/>
+<polyline class="w" points="645,170 690,170"/>
+<polyline class="w" points="660,170 660,130 565,130 565,160 575,160"/>
+<polyline class="w" points="730,170 802,170"/>
+<polyline class="w" points="760,170 760,185"/>
+<polyline class="w" points="802,230 790,230 790,242"/>
 <rect class="b ic" x="30" y="80" width="40" height="120" rx="3"/>
 <path class="s" d="M70 100H88"/>
 <path class="s" d="M70 140H88"/>
@@ -1054,97 +1292,102 @@
 <path class="s" d="M100 152V160M92 160H108M95 164H105M98 168H102"/>
 <g transform="translate(160 180) rotate(0)"><path class="s" d="M-20 0H-12M12 0H20"/><rect class="b" x="-12" y="-5" width="24" height="10"/></g>
 <g transform="translate(220 180) rotate(0)"><path class="s" d="M-20 0H-12M12 0H20"/><rect class="b" x="-12" y="-5" width="24" height="10"/></g>
-<circle class="dot" cx="270" cy="180" r="3"/>
-<circle class="dot" cx="320" cy="180" r="3"/>
-<g transform="translate(270 215) rotate(90)"><path class="s" d="M-20 0H-12M12 0H20"/><rect class="b" x="-12" y="-5" width="24" height="10"/></g>
-<path class="s" d="M270 235V243M262 243H278M265 247H275M268 251H272"/>
-<g transform="translate(320 215) rotate(90)"><path class="s" d="M-20 0H-3M3 0H20M-3 -9V9M3 -9V9"/></g>
-<path class="s" d="M320 235V243M312 243H328M315 247H325M318 251H322"/>
-<rect class="b ic" x="380" y="140" width="100" height="95" rx="3"/>
-<path class="s" d="M362 180H380"/>
-<path class="s" d="M362 215H380"/>
-<path class="s" d="M480 180H498"/>
-<polygon class="tag" points="350.0,300 343.0,292 241.2,292 241.2,308 343.0,308"/>
-<circle class="dot" cx="350" cy="250" r="3"/>
-<g transform="translate(395 272) rotate(90)"><path class="s" d="M-20 0H-12M12 0H20"/><rect class="b" x="-12" y="-5" width="24" height="10"/></g>
-<path class="s" d="M395 292V300M387 300H403M390 304H400M393 308H397"/>
-<polygon class="b" points="565,145 565,195 615,170"/><path class="s" d="M555 160H565M555 180H565M615 170H625"/>
-<circle class="dot" cx="640" cy="170" r="3"/>
-<g transform="translate(690 170) rotate(0)"><path class="s" d="M-20 0H-12M12 0H20"/><rect class="b" x="-12" y="-5" width="24" height="10"/></g>
-<circle class="dot" cx="740" cy="170" r="3"/>
-<g transform="translate(740 205) rotate(90)"><path class="s" d="M-20 0H-3M3 0H20M-3 -9V9M3 -9V9"/></g>
-<path class="s" d="M740 225V233M732 233H748M735 237H745M738 241H742"/>
-<rect class="b ic" x="800" y="120" width="140" height="140" rx="3"/>
-<path class="s" d="M782 170H800"/>
-<path class="s" d="M782 230H800"/>
-<path class="s" d="M940 150H958"/>
-<path class="s" d="M940 180H958"/>
-<path class="s" d="M870 102V120"/>
-<path class="s" d="M870 260V278"/>
-<path class="w r" d="M870 102V92M862 92H878"/>
-<path class="s" d="M870 278V286M862 286H878M865 290H875M868 294H872"/>
-<path class="s" d="M770 242V250M762 250H778M765 254H775M768 258H772"/>
-<polygon class="tag" points="958.0,150 965.0,142 993.1,142 993.1,158 965.0,158"/>
-<polygon class="tag" points="958.0,180 965.0,172 993.1,172 993.1,188 965.0,188"/>
-<text class="icref" x="50.0" y="216" text-anchor="middle">J4 AIN1</text>
+<circle class="dot" cx="260" cy="180" r="3"/>
+<g transform="translate(260 215) rotate(90)"><path class="s" d="M-20 0H-12M12 0H20"/><rect class="b" x="-12" y="-5" width="24" height="10"/></g>
+<path class="s" d="M260 235V243M252 243H268M255 247H265M258 251H262"/>
+<circle class="dot" cx="310" cy="180" r="3"/>
+<g transform="translate(310 215) rotate(90)"><path class="s" d="M-20 0H-3M3 0H20M-3 -9V9M3 -9V9"/></g>
+<path class="s" d="M310 235V243M302 243H318M305 247H315M308 251H312"/>
+<rect class="b ic" x="400" y="140" width="140" height="95" rx="3"/>
+<path class="s" d="M382 180H400"/>
+<path class="s" d="M382 215H400"/>
+<path class="s" d="M540 180H558"/>
+<circle class="dot" cx="370" cy="250" r="3"/>
+<polygon class="tag" points="370,300 363,292 261.2,292 261.2,308 363,308"/>
+<g transform="translate(415 272) rotate(90)"><path class="s" d="M-20 0H-12M12 0H20"/><rect class="b" x="-12" y="-5" width="24" height="10"/></g>
+<path class="s" d="M415 292V300M407 300H423M410 304H420M413 308H417"/>
+<polygon class="b" points="585,145 585,195 635,170"/><path class="s" d="M575 160H585M575 180H585M635 170H645"/>
+<circle class="dot" cx="660" cy="170" r="3"/>
+<g transform="translate(710 170) rotate(0)"><path class="s" d="M-20 0H-12M12 0H20"/><rect class="b" x="-12" y="-5" width="24" height="10"/></g>
+<circle class="dot" cx="760" cy="170" r="3"/>
+<g transform="translate(760 205) rotate(90)"><path class="s" d="M-20 0H-3M3 0H20M-3 -9V9M3 -9V9"/></g>
+<path class="s" d="M760 225V233M752 233H768M755 237H765M758 241H762"/>
+<rect class="b ic" x="820" y="120" width="140" height="140" rx="3"/>
+<path class="s" d="M802 170H820"/>
+<path class="s" d="M802 230H820"/>
+<path class="s" d="M960 150H978"/>
+<path class="s" d="M960 180H978"/>
+<path class="s" d="M890 102V120"/>
+<path class="s" d="M890 260V278"/>
+<path class="s" d="M790 242V250M782 250H798M785 254H795M788 258H792"/>
+<path class="w r" d="M890 102V92M882 92H898"/>
+<path class="s" d="M890 278V286M882 286H898M885 290H895M888 294H892"/>
+<polygon class="tag" points="978,150 985,142 1039.9,142 1039.9,158 985,158"/>
+<polygon class="tag" points="978,180 985,172 1039.9,172 1039.9,188 985,188"/>
 <text class="pn" x="79" y="96" text-anchor="middle">1</text>
 <text class="pnm" x="65" y="104" text-anchor="end">5V</text>
 <text class="pn" x="79" y="136" text-anchor="middle">2</text>
 <text class="pnm" x="65" y="144" text-anchor="end">GND</text>
 <text class="pn" x="79" y="176" text-anchor="middle">3</text>
 <text class="pnm" x="65" y="184" text-anchor="end">SIG</text>
-<text class="ref" x="150" y="88" text-anchor="middle">R32  0Ω</text>
+<text class="icref" x="50" y="216" text-anchor="middle">J4 AIN1</text>
 <text class="rail" x="225" y="85" text-anchor="middle">5V SENS</text>
+<text class="ref" x="150" y="88" text-anchor="middle">R32  0Ω</text>
 <text class="ref" x="160" y="168" text-anchor="middle">R33</text>
-<text class="val" x="160" y="198" text-anchor="middle">200k</text>
+<text class="val" x="160" y="198" text-anchor="middle">470k</text>
 <text class="ref" x="220" y="168" text-anchor="middle">R34</text>
-<text class="val" x="220" y="198" text-anchor="middle">200k</text>
-<text class="ref" x="282" y="211" text-anchor="start">R35</text>
-<text class="val" x="282" y="224" text-anchor="start">100k</text>
-<text class="ref" x="332" y="208" text-anchor="start">C23</text>
-<text class="val" x="332" y="221" text-anchor="start">10nF</text>
-<text class="note" x="190" y="140" text-anchor="middle">÷5: 0–5 V in → 0–1 V</text>
-<text class="icref" x="430.0" y="176.5" text-anchor="middle">U13</text>
-<text class="icname" x="430.0" y="191.5" text-anchor="middle">TMUX1511</text>
-<text class="val" x="430.0" y="206.5" text-anchor="middle">1 of 4</text>
-<text class="pn" x="371" y="176" text-anchor="middle">2</text>
-<text class="pnm" x="385" y="184" text-anchor="start">S1</text>
-<text class="pn" x="371" y="211" text-anchor="middle">1</text>
-<text class="pnm" x="385" y="219" text-anchor="start">SEL1</text>
-<text class="pn" x="489" y="176" text-anchor="middle">3</text>
-<text class="pnm" x="475" y="184" text-anchor="end">D1</text>
-<text class="tagt" x="339" y="304" text-anchor="end">IO16 ANALOG_EN</text>
-<text class="ref" x="407" y="268" text-anchor="start">R11</text>
-<text class="val" x="407" y="281" text-anchor="start">100k</text>
-<text class="pnm" x="571" y="164" text-anchor="start">−</text>
-<text class="pnm" x="571" y="184" text-anchor="start">+</text>
-<text class="icref" x="590" y="220" text-anchor="middle">U14A TLV9004</text>
-<text class="val" x="590" y="233" text-anchor="middle">buffer, 1 of 4</text>
-<text class="ref" x="690" y="158" text-anchor="middle">R36  1k</text>
-<text class="ref" x="752" y="198" text-anchor="start">C24</text>
-<text class="val" x="752" y="211" text-anchor="start">10nF</text>
-<text class="icref" x="870.0" y="179.0" text-anchor="middle">U15</text>
-<text class="icname" x="870.0" y="194.0" text-anchor="middle">ADS1115</text>
-<text class="val" x="870.0" y="209.0" text-anchor="middle">16-bit, 0x48</text>
-<text class="pn" x="791" y="166" text-anchor="middle">4</text>
-<text class="pnm" x="805" y="174" text-anchor="start">AIN0</text>
-<text class="pn" x="791" y="226" text-anchor="middle">1</text>
-<text class="pnm" x="805" y="234" text-anchor="start">ADDR</text>
-<text class="pn" x="949" y="146" text-anchor="middle">9</text>
-<text class="pnm" x="935" y="154" text-anchor="end">SDA</text>
-<text class="pn" x="949" y="176" text-anchor="middle">10</text>
-<text class="pnm" x="935" y="184" text-anchor="end">SCL</text>
-<text class="pn" x="874" y="114" text-anchor="start">8</text>
-<text class="pnm" x="870" y="134" text-anchor="middle">VDD</text>
-<text class="pn" x="874" y="273" text-anchor="start">3</text>
-<text class="pnm" x="870" y="254" text-anchor="middle">GND</text>
-<text class="rail" x="870" y="87" text-anchor="middle">3V3</text>
-<text class="tagt" x="969" y="154" text-anchor="start">SDA</text>
-<text class="tagt" x="969" y="184" text-anchor="start">SCL</text>
-<text class="note" x="480" y="282" text-anchor="start">J5–J7 repeat this into U13/U14 channels 2–4 and U15;</text>
-<text class="note" x="480" y="296" text-anchor="start">J9–J12 into U19/U20 and U21 (ADDR high: 0x49).</text>
-<text class="note" x="480" y="316" text-anchor="start">Pull the 0 Ω link when tapping an ECU-powered sensor.</text>
-</svg></div><figcaption>Each input divides by five (200k + 200k over 100k), so 0–5 V reaches the switch as 0–1 V and a 12 V fault is only 2.4 V. U13 keeps the dividers disconnected until the firmware sets ANALOG_EN; R11 holds it low at power-up. U14 buffers each channel into the ADS1115 through a 1k/10 nF filter. AIN5–8 are the same circuit on U19, U20 and a second ADS1115, U21.</figcaption></figure></section><section class="sheet" id="pcn-can"><div class="tb"><span class="no">6</span><h3>CAN</h3><span class="refs">U16 · D3 · SJ1 · R52–R54 · J8</span></div><figure class="sch"><div class="scroll"><svg viewBox="0 0 1000 370" role="img" aria-label="CAN transceiver TCAN1042 U16 with standby pull-up, ESD clamp D3, optional 120 ohm termination behind solder jumper SJ1, and connector J8" style="min-width:720px">
+<text class="val" x="220" y="198" text-anchor="middle">330k</text>
+<text class="ref" x="272" y="211" text-anchor="start">R35</text>
+<text class="val" x="272" y="224" text-anchor="start">200k</text>
+<text class="ref" x="322" y="208" text-anchor="start">C23</text>
+<text class="val" x="322" y="221" text-anchor="start">4.7nF</text>
+<text class="note" x="205" y="140" text-anchor="middle">÷5, 1 MΩ: 0–5 V in → 0–1 V</text>
+<text class="pn" x="391" y="176" text-anchor="middle">2</text>
+<text class="pnm" x="405" y="184" text-anchor="start">S1</text>
+<text class="pn" x="391" y="211" text-anchor="middle">1</text>
+<text class="pnm" x="405" y="219" text-anchor="start">SEL1</text>
+<text class="pn" x="549" y="176" text-anchor="middle">3</text>
+<text class="pnm" x="535" y="184" text-anchor="end">D1</text>
+<text class="icref" x="470" y="183" text-anchor="middle">U13</text>
+<text class="icname" x="470" y="198" text-anchor="middle">TMUX1511</text>
+<text class="val" x="470" y="213" text-anchor="middle">1 of 4</text>
+<text class="tagt" x="359" y="304" text-anchor="end">IO16 ANALOG_EN</text>
+<text class="ref" x="427" y="268" text-anchor="start">R11</text>
+<text class="val" x="427" y="281" text-anchor="start">100k</text>
+<text class="pnm" x="591" y="164" text-anchor="start">−</text>
+<text class="pnm" x="591" y="184" text-anchor="start">+</text>
+<text class="pn" x="571" y="176" text-anchor="end">3</text>
+<text class="pn" x="571" y="156" text-anchor="end">2</text>
+<text class="pn" x="641" y="164" text-anchor="start">1</text>
+<text class="icref" x="610" y="220" text-anchor="middle">U14A TLV9004</text>
+<text class="val" x="610" y="233" text-anchor="middle">buffer, 1 of 4</text>
+<text class="ref" x="710" y="158" text-anchor="middle">R36  1k</text>
+<text class="ref" x="772" y="198" text-anchor="start">C24</text>
+<text class="val" x="772" y="211" text-anchor="start">10nF</text>
+<text class="pn" x="811" y="166" text-anchor="middle">4</text>
+<text class="pnm" x="825" y="174" text-anchor="start">AIN0</text>
+<text class="pn" x="811" y="226" text-anchor="middle">1</text>
+<text class="pnm" x="825" y="234" text-anchor="start">ADDR</text>
+<text class="pn" x="969" y="146" text-anchor="middle">9</text>
+<text class="pnm" x="955" y="154" text-anchor="end">SDA</text>
+<text class="pn" x="969" y="176" text-anchor="middle">10</text>
+<text class="pnm" x="955" y="184" text-anchor="end">SCL</text>
+<text class="pn" x="894" y="114" text-anchor="start">8</text>
+<text class="pnm" x="890" y="134" text-anchor="middle">VDD</text>
+<text class="pn" x="894" y="273" text-anchor="start">3</text>
+<text class="pnm" x="890" y="254" text-anchor="middle">GND</text>
+<text class="icref" x="890" y="183" text-anchor="middle">U15</text>
+<text class="icname" x="890" y="198" text-anchor="middle">ADS1115</text>
+<text class="val" x="890" y="213" text-anchor="middle">16-bit, 0x48</text>
+<text class="rail" x="890" y="87" text-anchor="middle">3V3</text>
+<text class="tagt" x="989" y="154" text-anchor="start">IO4 SDA</text>
+<text class="tagt" x="989" y="184" text-anchor="start">IO5 SCL</text>
+<text class="note" x="500" y="282" text-anchor="start">J5–J7 repeat this into U13/U14 channels 2–4 and U15;</text>
+<text class="note" x="500" y="296" text-anchor="start">J9–J12 into U19/U20 and U21 (ADDR high: 0x49).</text>
+<text class="note" x="500" y="316" text-anchor="start">Remove the 0 Ω link when tapping an ECU-powered sensor.</text>
+<text class="note" x="500" y="336" text-anchor="start">C31–C33 100nF on U13–U15; C46–C48 on U19–U21.</text>
+</svg></div><figcaption>Each input divides by five through 470k and 330k over 200k: 1 MΩ to ground, so it barely loads a sensor the ECU also reads. 0–5 V reaches the switch as 0–1 V, and a 16 V fault only as 3.2 V. C23 filters the divided signal at about 210 Hz. U13 keeps the dividers disconnected until the firmware sets ANALOG_EN; R11 holds it low at power-up. U14 buffers each channel into the ADS1115 through a 1k/10 nF filter; all three run from 3.3 V. AIN5–8 are the same circuit on U19, U20 and a second ADS1115, U21. Pin 1 of the connector is the sensor supply from sheet 3, through a 0 Ω link.</figcaption></figure><div class="tablewrap"><table class="plumb" style="white-space:nowrap"><thead><tr><th>Input</th><th>Connector</th><th>0 Ω link</th><th>Divider</th><th>Divider cap</th><th>ADC filter</th><th>Switch · buffer · ADC</th><th>Test pad</th></tr></thead><tbody><tr><td>AIN1</td><td>J4</td><td>R32</td><td>R33 · R34 · R35</td><td>C23</td><td>R36 · C24</td><td>U13 S1 · U14A · U15 AIN0</td><td>TP11 (A1)</td></tr><tr><td>AIN2</td><td>J5</td><td>R37</td><td>R38 · R39 · R40</td><td>C25</td><td>R41 · C26</td><td>U13 S2 · U14B · U15 AIN1</td><td>TP12 (A2)</td></tr><tr><td>AIN3</td><td>J6</td><td>R42</td><td>R43 · R44 · R45</td><td>C27</td><td>R46 · C28</td><td>U13 S3 · U14C · U15 AIN2</td><td>TP13 (A3)</td></tr><tr><td>AIN4</td><td>J7</td><td>R47</td><td>R48 · R49 · R50</td><td>C29</td><td>R51 · C30</td><td>U13 S4 · U14D · U15 AIN3</td><td>TP14 (A4)</td></tr><tr><td>AIN5</td><td>J9</td><td>R56</td><td>R57 · R58 · R59</td><td>C38</td><td>R60 · C39</td><td>U19 S1 · U20A · U21 AIN0</td><td>TP15 (A5)</td></tr><tr><td>AIN6</td><td>J10</td><td>R61</td><td>R62 · R63 · R64</td><td>C40</td><td>R65 · C41</td><td>U19 S2 · U20B · U21 AIN1</td><td>TP16 (A6)</td></tr><tr><td>AIN7</td><td>J11</td><td>R66</td><td>R67 · R68 · R69</td><td>C42</td><td>R70 · C43</td><td>U19 S3 · U20C · U21 AIN2</td><td>TP17 (A7)</td></tr><tr><td>AIN8</td><td>J12</td><td>R71</td><td>R72 · R73 · R74</td><td>C44</td><td>R75 · C45</td><td>U19 S4 · U20D · U21 AIN3</td><td>TP18 (A8)</td></tr></tbody></table></div><p class="note">Every channel has the same values: a 0 Ω link to the sensor supply, a 470k · 330k · 200k divider, 4.7 nF on the divided node, and 1k with 10 nF into the ADC. Each test pad is silk-labelled A1 to A8.</p></section>
+<section class="sheet" id="pcn-can"><div class="tb"><span class="no">7</span><h3>CAN</h3><span class="refs">U16 · D3 · SJ1 · R52–R54 · C34 · C35 · J8</span></div><figure class="sch"><div class="scroll"><svg viewBox="0 0 1000 370" role="img" aria-label="CAN transceiver TCAN1042 U16 with standby pull-up, ESD clamp D3, optional 120 ohm termination behind solder jumper SJ1, and connector J8" style="min-width:820px">
 <polyline class="w" points="110,90 312,90"/>
 <polyline class="w" points="110,130 312,130"/>
 <polyline class="w" points="110,170 312,170"/>
@@ -1158,9 +1401,9 @@
 <polyline class="w" points="720,155 720,170"/>
 <polyline class="w" points="720,210 720,230"/>
 <polyline class="w" points="852,260 835,260 835,272"/>
-<polygon class="tag" points="110.0,90 103.0,82 54.8,82 54.8,98 103.0,98"/>
-<polygon class="tag" points="110.0,130 103.0,122 54.8,122 54.8,138 103.0,138"/>
-<polygon class="tag" points="110.0,170 103.0,162 41.4,162 41.4,178 103.0,178"/>
+<polygon class="tag" points="110,90 103,82 54.8,82 54.8,98 103,98"/>
+<polygon class="tag" points="110,130 103,122 54.8,122 54.8,138 103,138"/>
+<polygon class="tag" points="110,170 103,162 41.4,162 41.4,178 103,178"/>
 <circle class="dot" cx="200" cy="90" r="3"/>
 <g transform="translate(200 55) rotate(90)"><path class="s" d="M-20 0H-12M12 0H20"/><rect class="b" x="-12" y="-5" width="24" height="10"/></g>
 <path class="w r" d="M200 35V25M192 25H208"/>
@@ -1204,9 +1447,6 @@
 <text class="rail" x="250" y="244" text-anchor="middle">3V3</text>
 <text class="ref" x="262" y="196" text-anchor="start">R52</text>
 <text class="val" x="262" y="209" text-anchor="start">10k</text>
-<text class="icref" x="400.0" y="149.0" text-anchor="middle">U16</text>
-<text class="icname" x="400.0" y="164.0" text-anchor="middle">TCAN1042</text>
-<text class="val" x="400.0" y="179.0" text-anchor="middle">HGVDR</text>
 <text class="pn" x="321" y="86" text-anchor="middle">1</text>
 <text class="pnm" x="335" y="94" text-anchor="start">TXD</text>
 <text class="pn" x="321" y="126" text-anchor="middle">4</text>
@@ -1223,19 +1463,22 @@
 <text class="pnm" x="465" y="114" text-anchor="end">CANH</text>
 <text class="pn" x="479" y="226" text-anchor="middle">6</text>
 <text class="pnm" x="465" y="234" text-anchor="end">CANL</text>
+<text class="icref" x="400" y="155" text-anchor="middle">U16</text>
+<text class="icname" x="400" y="170" text-anchor="middle">TCAN1042</text>
+<text class="val" x="400" y="185" text-anchor="middle">HGVDR</text>
 <text class="rail" x="370" y="27" text-anchor="middle">5V SYS</text>
 <text class="rail" x="430" y="27" text-anchor="middle">3V3</text>
 <text class="note" x="300" y="300" text-anchor="start">C34 100nF on VCC, C35 100nF on VIO</text>
 <text class="net" x="500" y="104" text-anchor="start">CAN_H</text>
 <text class="net" x="500" y="224" text-anchor="start">CAN_L</text>
-<text class="icref" x="610.0" y="286.5" text-anchor="middle">D3</text>
-<text class="icname" x="610.0" y="301.5" text-anchor="middle">PESD1CAN</text>
 <text class="pn" x="594" y="264" text-anchor="start">1</text>
 <text class="pnm" x="590" y="284" text-anchor="middle"></text>
 <text class="pn" x="634" y="264" text-anchor="start">2</text>
 <text class="pnm" x="630" y="284" text-anchor="middle"></text>
 <text class="pn" x="614" y="323" text-anchor="start">3</text>
 <text class="pnm" x="610" y="304" text-anchor="middle"></text>
+<text class="icref" x="610" y="286.5" text-anchor="middle">D3</text>
+<text class="icname" x="610" y="301.5" text-anchor="middle">PESD1CAN</text>
 <text class="ref" x="734" y="131" text-anchor="start">SJ1</text>
 <text class="val" x="734" y="144" text-anchor="start">open</text>
 <text class="ref" x="734" y="186" text-anchor="start">R54</text>
@@ -1243,16 +1486,17 @@
 <text class="note" x="700" y="250" text-anchor="start">Bridge SJ1 only</text>
 <text class="note" x="700" y="264" text-anchor="start">on the board at</text>
 <text class="note" x="700" y="278" text-anchor="start">the bus end.</text>
-<text class="icref" x="900.0" y="296" text-anchor="middle">J8 CAN</text>
 <text class="pn" x="861" y="106" text-anchor="middle">1</text>
 <text class="pnm" x="875" y="114" text-anchor="start">H</text>
 <text class="pn" x="861" y="226" text-anchor="middle">2</text>
 <text class="pnm" x="875" y="234" text-anchor="start">L</text>
 <text class="pn" x="861" y="256" text-anchor="middle">3</text>
 <text class="pnm" x="875" y="264" text-anchor="start">G</text>
+<text class="icref" x="900" y="296" text-anchor="middle">J8 CAN</text>
 </svg></div><figcaption>U16 drives the bus from 5V SYS and talks to the ESP32 at 3.3 V through VIO. R52 holds STB high (standby) until the firmware pulls it low, and R53 keeps TX recessive during boot. D3 is the CAN ESD clamp. The 120 Ω terminator only connects if SJ1 is bridged.</figcaption></figure></section>
-<section class="sheet" id="pcn-gpio"><div class="tb"><span class="no">7</span><h3>ESP32 pin map</h3><span class="refs">U4</span></div>
-<div class="tablewrap"><table><thead><tr><th>GPIO</th><th>Net</th><th>Goes to</th></tr></thead><tbody><tr><td>IO4</td><td>I2C SDA</td><td>U6 mux, U15/U21 ADCs</td></tr><tr><td>IO5</td><td>I2C SCL</td><td>U6 mux, U15/U21 ADCs</td></tr><tr><td>IO10</td><td>MUX_RESET_N</td><td>U6 reset</td></tr><tr><td>IO6</td><td>CAN_TX</td><td>U16 TXD</td></tr><tr><td>IO7</td><td>CAN_RX</td><td>U16 RXD</td></tr><tr><td>IO15</td><td>CAN_STANDBY</td><td>U16 STB, high = standby</td></tr><tr><td>IO16</td><td>ANALOG_EN</td><td>U13/U19 switches, high = inputs connected</td></tr><tr><td>IO17</td><td>SENSOR_POWER_EN</td><td>U3, high = 5 V to the AIN connectors</td></tr><tr><td>IO18</td><td>SENSOR_POWER_FAULT_N</td><td>U3 overcurrent, low = fault</td></tr><tr><td>IO8</td><td>STATUS_LED</td><td>D5 through R12</td></tr><tr><td>IO9</td><td>ZERO_N</td><td>SW3, low = pressed</td></tr><tr><td>IO0</td><td>BOOT_N</td><td>SW2, hold low at reset to flash</td></tr><tr><td>IO19 / IO20</td><td>USB D− / D+</td><td>J3 through R16 / R15</td></tr><tr><td>IO43 / IO44</td><td>UART0 TX / RX</td><td>TP19 / TP20 test pads</td></tr><tr><td>EN</td><td>ESP_EN</td><td>SW1 reset, R8 + C15 power-on delay</td></tr></tbody></table></div></section>
+<section class="sheet" id="pcn-gpio"><div class="tb"><span class="no">8</span><h3>ESP32 pin map and test pads</h3><span class="refs">U4 · TP1–TP20</span></div>
+<div class="tablewrap"><table><thead><tr><th>GPIO</th><th>Pin</th><th>Net</th><th>Goes to</th></tr></thead><tbody><tr><td>IO4</td><td>4</td><td>I2C_SDA</td><td>U6 switch, U15/U21 ADCs, U23 barometer</td></tr><tr><td>IO5</td><td>5</td><td>I2C_SCL</td><td>U6 switch, U15/U21 ADCs, U23 barometer</td></tr><tr><td>IO10</td><td>18</td><td>MUX_RESET_N</td><td>U6 reset</td></tr><tr><td>IO6</td><td>6</td><td>CAN_TX</td><td>U16 TXD</td></tr><tr><td>IO7</td><td>7</td><td>CAN_RX</td><td>U16 RXD</td></tr><tr><td>IO15</td><td>8</td><td>CAN_STANDBY</td><td>U16 STB, high = standby</td></tr><tr><td>IO16</td><td>9</td><td>ANALOG_EN</td><td>U13/U19 switches, high = inputs connected</td></tr><tr><td>IO17</td><td>10</td><td>SENSOR_POWER_EN</td><td>U3 EN, high = sensor supply on</td></tr><tr><td>IO1</td><td>39</td><td>SENS_MON</td><td>Sensor supply through R76/R77, ÷6.13 (ADC1)</td></tr><tr><td>IO2</td><td>38</td><td>VIN_MON</td><td>Protected 12 V through R78/R79, ÷6.13 (ADC1)</td></tr><tr><td>IO8</td><td>12</td><td>STATUS_LED</td><td>D5 through R12</td></tr><tr><td>IO9</td><td>17</td><td>ZERO_N</td><td>SW3, low = pressed</td></tr><tr><td>IO0</td><td>27</td><td>BOOT_N</td><td>SW2, hold low at reset to flash</td></tr><tr><td>IO19 / IO20</td><td>13 / 14</td><td>USB D− / D+</td><td>J3 through R16 / R15 and U5</td></tr><tr><td>IO43 / IO44</td><td>37 / 36</td><td>UART0 TX / RX</td><td>TP19 / TP20 test pads</td></tr><tr><td>IO18</td><td>11</td><td>—</td><td>Not connected</td></tr><tr><td>EN</td><td>3</td><td>ESP_EN</td><td>SW1 reset, R8 + C15 power-on delay</td></tr></tbody></table></div>
+<div class="tablewrap"><table><thead><tr><th>Pad</th><th>Silk</th><th>Carries</th></tr></thead><tbody><tr><td>TP1</td><td>GND</td><td>Ground</td></tr><tr><td>TP2</td><td>VIN</td><td>Protected 12 V</td></tr><tr><td>TP3</td><td>5V</td><td>Buck output</td></tr><tr><td>TP4</td><td>5VSYS</td><td>5 V after the OR</td></tr><tr><td>TP5</td><td>3V3</td><td>3.3 V</td></tr><tr><td>TP6</td><td>5VS</td><td>Sensor supply</td></tr><tr><td>TP7 / TP8</td><td>TX / RX</td><td>CAN_TX / CAN_RX</td></tr><tr><td>TP9 / TP10</td><td>SDA / SCL</td><td>Main I²C bus</td></tr><tr><td>TP11–TP18</td><td>A1–A8</td><td>Each analog input at its ADC pin</td></tr><tr><td>TP19 / TP20</td><td>TX0 / RX0</td><td>UART0 TX / RX</td></tr></tbody></table></div></section>
 
-<p class="last">These are renders from the board files, and the fitting section is the plan, not a test report. Rev E hasn't been built yet, so none of it has been on a car.</p>
+<p class="last">These are renders from the board files, and the fitting section is the plan, not a test report. The board hasn&#x27;t been built yet, so none of it has been on a car.</p>
 </div>
