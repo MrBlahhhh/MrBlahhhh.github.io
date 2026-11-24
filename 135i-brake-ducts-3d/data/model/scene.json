@@ -1,6 +1,6 @@
 {
  "title": "135i front corner, 125 mph",
- "note": "Front corner on the car at 125 mph: bumper duct about 430 CFM, arm duct about 104 CFM (mass balance at iteration 800). Bumper duct placed from the bumper scan, stock corner filled solid behind it, splitter sealed and raked 3 degrees, end plates, ramps, fender flares, aluminium air shield.",
+ "note": "Front corner on the car at 125 mph: bumper duct about 540 CFM, arm duct about 117 CFM (mass balance at iteration 800). Bumper duct placed as on the car, stock corner filled solid behind it, splitter sealed and raked 3 degrees, end plates, ramps, fender flares, aluminium air shield.",
  "parts": [
   {
    "name": "Tire",
@@ -18,18 +18,18 @@
    "opacity": 0.08,
    "wall": true,
    "vOff": 77772,
-   "nV": 23791,
-   "iOff": 220518,
-   "nI": 120000
+   "nV": 23438,
+   "iOff": 218400,
+   "nI": 119997
   },
   {
    "name": "Arms and hub (scanned)",
    "color": "#8fa3b8",
    "opacity": 0.55,
    "wall": false,
-   "vOff": 700518,
+   "vOff": 698388,
    "nV": 30007,
-   "iOff": 880560,
+   "iOff": 878430,
    "nI": 180000
   },
   {
@@ -37,9 +37,9 @@
    "color": "#e0574f",
    "opacity": 0.85,
    "wall": false,
-   "vOff": 1600560,
+   "vOff": 1598430,
    "nV": 769,
-   "iOff": 1605174,
+   "iOff": 1603044,
    "nI": 4602
   },
   {
@@ -47,9 +47,9 @@
    "color": "#9aa7b4",
    "opacity": 0.6,
    "wall": false,
-   "vOff": 1623582,
+   "vOff": 1621452,
    "nV": 642,
-   "iOff": 1627434,
+   "iOff": 1625304,
    "nI": 3840
   },
   {
@@ -57,9 +57,9 @@
    "color": "#6fbf73",
    "opacity": 0.35,
    "wall": false,
-   "vOff": 1642794,
+   "vOff": 1640664,
    "nV": 720,
-   "iOff": 1647114,
+   "iOff": 1644984,
    "nI": 4356
   },
   {
@@ -67,9 +67,9 @@
    "color": "#cfe3f5",
    "opacity": 0.22,
    "wall": true,
-   "vOff": 1664538,
+   "vOff": 1662408,
    "nV": 4861,
-   "iOff": 1693704,
+   "iOff": 1691574,
    "nI": 30102
   },
   {
@@ -77,9 +77,9 @@
    "color": "#cfe3f5",
    "opacity": 0.06,
    "wall": true,
-   "vOff": 1814112,
-   "nV": 20323,
-   "iOff": 1936050,
+   "vOff": 1811982,
+   "nV": 20329,
+   "iOff": 1933956,
    "nI": 119997
   },
   {
@@ -87,9 +87,9 @@
    "color": "#cfe3f5",
    "opacity": 0.25,
    "wall": true,
-   "vOff": 2416038,
+   "vOff": 2413944,
    "nV": 9721,
-   "iOff": 2474364,
+   "iOff": 2472270,
    "nI": 58338
   },
   {
@@ -97,9 +97,9 @@
    "color": "#9aa7b4",
    "opacity": 0.7,
    "wall": false,
-   "vOff": 2707716,
+   "vOff": 2705622,
    "nV": 1452,
-   "iOff": 2716428,
+   "iOff": 2714334,
    "nI": 8700
   },
   {
@@ -107,9 +107,9 @@
    "color": "#3a3f45",
    "opacity": 0.85,
    "wall": false,
-   "vOff": 2751228,
+   "vOff": 2749134,
    "nV": 126,
-   "iOff": 2751984,
+   "iOff": 2749890,
    "nI": 744
   },
   {
@@ -117,9 +117,9 @@
    "color": "#e02020",
    "opacity": 0.9,
    "wall": false,
-   "vOff": 2754960,
+   "vOff": 2752866,
    "nV": 1245,
-   "iOff": 2762430,
+   "iOff": 2760336,
    "nI": 7470
   },
   {
@@ -127,9 +127,9 @@
    "color": "#2b2f36",
    "opacity": 0.85,
    "wall": false,
-   "vOff": 2792310,
+   "vOff": 2790216,
    "nV": 382,
-   "iOff": 2794602,
+   "iOff": 2792508,
    "nI": 2280
   },
   {
@@ -137,25 +137,25 @@
    "color": "#cfe3f5",
    "opacity": 0.18,
    "wall": true,
-   "vOff": 2803722,
-   "nV": 14583,
-   "iOff": 2891220,
-   "nI": 89997
+   "vOff": 2801628,
+   "nV": 14699,
+   "iOff": 2889822,
+   "nI": 90000
   }
  ],
- "lines": 4262,
- "linesDuct": 1382,
+ "lines": 4040,
+ "linesDuct": 1218,
  "posScale": 0.0005,
  "tScale": 5e-05,
  "sScale": 0.25,
  "arrow": 0.018,
  "spacing": 0.008,
  "target": [
-  0.238071009516716,
-  0.1910497546195984,
-  0.0687423050403595
+  0.23727697134017944,
+  0.19448032975196838,
+  0.06829819083213806
  ],
- "extent": 1.335188388824463,
+ "extent": 1.3372926712036133,
  "labels": [
   [
    "Arm duct outlet",
@@ -184,9 +184,9 @@
   [
    "Bumper duct",
    [
-    0.05293562263250351,
-    0.14796892292797564,
-    0.4710848480463028
+    0.08003360778093338,
+    0.14829518757760524,
+    0.45097483694553375
    ]
   ]
  ],
