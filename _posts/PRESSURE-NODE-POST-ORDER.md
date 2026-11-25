@@ -44,12 +44,14 @@ Not a post. The running order for `2026-11-16-pressure-can-node.md`, whose page 
 
 ## Latest revision
 
-Rev G keeps the 89 × 80 mm layout and adds four nominal 12 V PWM controller
+Rev H keeps the 89 × 80 mm layout and four nominal 12 V PWM controller
 signals on J13 and four 12 V relay-coil outputs on J14. Both banks use the
 separate fused J15 supply. The planned coil load is 200 mA per output and
 800 mA for the group. Pump power is external. The new schematic image
 shows the two driver banks, and the GPIO table gives their pin mapping.
 J1 now matches the right-edge JSTs; U23 is the BMP384.
+The LM74700-Q1 and Q1 now protect the J15 feed. The bidirectional TVS
+clamps the fused input, and the new output power schematic shows the stage.
 
 The Rev F review notes below describe the previous design.
 
@@ -96,7 +98,7 @@ The Rev F review notes below describe the previous design.
 
 ## Images
 
-The Rev G board renders are in `assets/images/pressure-node/`. KiCad 10
+The Rev H board renders are in `assets/images/pressure-node/`. KiCad 10
 rendered the routed 89 × 80 mm board with red mask, white silkscreen and
 HAL finish. Stand-in models represent the WF100DPZ sensors, switches, HRO
 USB-C, BMP384, LM5164 buck converter and JST PH output power connector.
