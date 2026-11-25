@@ -42,6 +42,17 @@ Not a post. The running order for `2026-11-16-pressure-can-node.md`, whose page 
 11. **Last line**: these are renders, the fitting section is the plan, and the board hasn't been
     built.
 
+## Latest revision
+
+Rev G keeps the 89 × 80 mm layout and adds four nominal 12 V PWM controller
+signals on J13 and four 12 V relay-coil outputs on J14. Both banks use the
+separate fused J15 supply. The planned coil load is 200 mA per output and
+800 mA for the group. Pump power is external. The new schematic image
+shows the two driver banks, and the GPIO table gives their pin mapping.
+J1 now matches the right-edge JSTs; U23 is the BMP384.
+
+The Rev F review notes below describe the previous design.
+
 ## Standing rules
 
 - Rev F as of 2026-11-24: 89 × 80 mm, four layers, every part on top. Six WF100DPZ single-port
@@ -85,19 +96,17 @@ Not a post. The running order for `2026-11-16-pressure-can-node.md`, whose page 
 
 ## Images
 
-All in `assets/images/pressure-node/`, rendered on 2026-11-24 from the rev F board files (routed
-board, 89 × 80 mm) with KiCad 10's raytracer: red mask, white silk, HAL finish. KiCad's library has
-no model for the WF100DPZ, the XKB TS-1187A switch, the HRO USB-C or the BMP388, so those are simple
-stand-ins: a black body with six leads and one tall grey barb in the middle, a dark switch with a
-grey round cap, a plain grey USB-C block, and a small grey square.
+The Rev G board renders are in `assets/images/pressure-node/`. KiCad 10
+rendered the routed 89 × 80 mm board with red mask, white silkscreen and
+HAL finish. Stand-in models represent the WF100DPZ sensors, switches, HRO
+USB-C, BMP384, LM5164 buck converter and JST PH output power connector.
 
 - `hero.jpg` (1568 × 872): perspective from the front left.
-- `sensors.jpg` (1600 × 477): perspective close-up of the 3 × 2 sensor grid from the front edge,
-  with the output buffer and the PWM/OUT connectors behind it.
+- `sensors.jpg` (1600 × 477): close-up of the 3 × 2 sensor grid, with the
+  output drivers and the PWM and relay connectors behind it.
 - `top.jpg` (1568 × 1432): straight down, orthographic. Board mm (x right, y down, origin at the
   board's top-left corner) to image px: px = 89 + 15.596 x, py = 92 + 15.6 y, so 15.6 px/mm at
   1568 px wide. The labelled tour places its leader lines from part centres with this mapping.
-- `cover.jpg` (1568 × 882): a 16:9 crop of the angled render (the render's black bottom strip
-  cropped off).
+- `cover.jpg` (1568 × 882): the angled render fitted to 16:9.
 
 Replace the renders with photos of a built board when Matt has one.
