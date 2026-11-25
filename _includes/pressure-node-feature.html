@@ -1539,7 +1539,195 @@
 <text class="pnm" x="875" y="264" text-anchor="start">G</text>
 <text class="icref" x="900" y="296" text-anchor="middle">J8 CAN</text>
 </svg></div><figcaption>U16 drives the bus from 5V SYS and talks to the ESP32 at 3.3 V through VIO. R52 holds STB high (standby) until the firmware pulls it low, and R53 keeps TX recessive during boot. D3 is the CAN ESD clamp. The 120 Ω terminator only connects if SJ1 is bridged.</figcaption></figure></section>
-<section class="sheet" id="pcn-out"><div class="tb"><span class="no">8</span><h3>12 V outputs</h3><span class="refs">J15 · F2 · U24 · U25 · J13 · J14</span></div><figure class="sch"><a href="/assets/images/pressure-node/rev-h-output-power.svg"><img src="/assets/images/pressure-node/rev-h-output-power.svg" alt="Rev H output power schematic with J15, the fuse, the bidirectional transient clamp, and the ideal-diode controller and MOSFET" loading="lazy"></a><figcaption>J15 feeds both driver banks. Rev H uses an LM74700-Q1 and a MOSFET for reverse-battery protection. At 0.8 A the estimated loss in that stage is about 0.02 W. D12 clamps transients on the fused input.</figcaption></figure><figure class="sch"><a href="/assets/images/pressure-node/rev-h-outputs.svg"><img src="/assets/images/pressure-node/rev-h-outputs.svg" alt="PWM and relay driver schematic with each channel and the relay flyback diodes" loading="lazy"></a><figcaption>U24 sources the PWM commands and U25 sources the relay coils. J13 and J14 pin 5 is ground. J1 is rotated to line up with the other right-edge JSTs and keeps 12 V on pin 1.</figcaption></figure><div class="tablewrap"><table><thead><tr><th>Output</th><th>ESP32 GPIO</th><th>Driver</th><th>Driver out</th><th>Connector pin</th></tr></thead><tbody><tr><td>PWM1</td><td>GPIO38</td><td>U24</td><td>20</td><td>J13.1</td></tr><tr><td>PWM2</td><td>GPIO37</td><td>U24</td><td>19</td><td>J13.2</td></tr><tr><td>PWM3</td><td>GPIO36</td><td>U24</td><td>16</td><td>J13.3</td></tr><tr><td>PWM4</td><td>GPIO35</td><td>U24</td><td>15</td><td>J13.4</td></tr><tr><td>OUT1</td><td>GPIO42</td><td>U25</td><td>20</td><td>J14.1</td></tr><tr><td>OUT2</td><td>GPIO41</td><td>U25</td><td>19</td><td>J14.2</td></tr><tr><td>OUT3</td><td>GPIO40</td><td>U25</td><td>16</td><td>J14.3</td></tr><tr><td>OUT4</td><td>GPIO39</td><td>U25</td><td>15</td><td>J14.4</td></tr></tbody></table></div></section>
+<section class="sheet" id="pcn-out"><div class="tb"><span class="no">8</span><h3>12 V outputs</h3><span class="refs">J15 · F2 · U24 · U25 · J13 · J14</span></div>
+<figure class="sch"><div class="scroll">
+<svg viewBox="0 0 1000 377" role="img" aria-label="Output supply from J15 via F2 and the Q1 ideal diode. U26 senses the fused input and protected output, and drives Q1. D12 and the input and output capacitors go to ground. C58 connects VCAP to the fused input." style="min-width:820px">
+<rect class="b ic" x="38" y="64" width="105" height="68" rx="3"/>
+<text class="icref" x="38" y="48" text-anchor="start">J15 OUTPUT SUPPLY</text>
+<text class="pnm" x="128" y="88" text-anchor="end">+12 V  1</text>
+<text class="pnm" x="128" y="121" text-anchor="end">GND   2</text>
+<path class="w r" d="M143 84H199M251 84H540M710 84H954"/>
+<path class="w" d="M143 117H163V131"/>
+<path class="s" d="M163 131v9m-8 0h16m-13 4h10m-7 4h4"/>
+<text class="ref" x="224" y="55" text-anchor="middle">F2</text>
+<text class="val" x="224" y="70" text-anchor="middle">2 A</text>
+<rect class="b" x="199" y="78" width="52" height="12" rx="3"/>
+<path class="s" d="M199 84H251"/>
+<text class="rail" x="159" y="105" text-anchor="start">VBAT_OUT_IN</text>
+<text class="rail" x="314" y="68" text-anchor="start">VBAT_OUT_FUSED</text>
+<text class="rail" x="940" y="68" text-anchor="end">VOUT_PROTECTED</text>
+<path class="w r" d="M315 84V130M400 84V130M520 84V181M825 84V130"/>
+<circle class="dot r" cx="315" cy="84" r="3"/>
+<circle class="dot r" cx="400" cy="84" r="3"/>
+<circle class="dot r" cx="520" cy="84" r="3"/>
+<circle class="dot r" cx="825" cy="84" r="3"/>
+<path class="s" d="M315 130V136L308 136L315 149L322 136ZM315 170V162L308 162L315 149L322 162ZM306 152L309 149H321L324 146"/>
+<path class="s" d="M315 170v9m-8 0h16m-13 4h10m-7 4h4"/>
+<text class="ref" x="299" y="149" text-anchor="end">D12</text>
+<text class="val" x="299" y="165" text-anchor="end">SMCJ22CA</text>
+<path class="s" d="M400 130v17m-10 0h20m-20 6h20m-10 0v17"/>
+<text class="ref" x="415" y="149" text-anchor="start">C59</text>
+<text class="val" x="415" y="164" text-anchor="start">100 nF, 100 V</text>
+<path class="s" d="M400 170v9m-8 0h16m-13 4h10m-7 4h4"/>
+<path class="s" d="M520 181v17m-10 0h20m-20 6h20m-10 0v17"/>
+<text class="ref" x="505" y="200" text-anchor="end">C58</text>
+<text class="val" x="505" y="215" text-anchor="end">1 µF, 50 V</text>
+<path class="s" d="M825 130v17m-10 0h20m-20 6h20m-10 0v17"/>
+<text class="ref" x="840" y="149" text-anchor="start">C57</text>
+<text class="val" x="840" y="164" text-anchor="start">10 µF, 50 V</text>
+<path class="s" d="M825 170v9m-8 0h16m-13 4h10m-7 4h4"/>
+<rect class="b ic" x="540" y="54" width="170" height="72" rx="3"/>
+<text class="icref" x="625" y="47" text-anchor="middle">Q1  IPD50N08S4-13</text>
+<text class="pnm" x="553" y="106" text-anchor="start">S  3</text>
+<text class="pnm" x="697" y="106" text-anchor="end">2  D</text>
+<text class="pnm" x="635" y="119" text-anchor="start">G  1</text>
+<path class="s" d="M540 84H585M665 84H710M585 84V73H614M627 73H665V84M614 66L627 73L614 80ZM627 66V80M585 84V96H612M619 96H631M638 96H665V84M608 104H642M625 104V126"/>
+<path class="w" d="M625 126V224"/>
+<text class="net" x="638" y="183" text-anchor="start">OUT_IDEAL_GATE</text>
+<path class="w" d="M520 221V249H536"/>
+<text class="net" x="508" y="246" text-anchor="end">OUT_IDEAL_VCAP</text>
+<rect class="b ic" x="536" y="224" width="242" height="128" rx="3"/>
+<text class="icref" x="652" y="256" text-anchor="middle">U26  LM74700-Q1</text>
+<text class="pn" x="636" y="241" text-anchor="start">5 GATE</text>
+<text class="pnm" x="550" y="244" text-anchor="start">1 VCAP</text>
+<text class="pnm" x="550" y="286" text-anchor="start">6 ANODE</text>
+<text class="pnm" x="550" y="321" text-anchor="start">3 EN</text>
+<text class="pnm" x="763" y="286" text-anchor="end">CATHODE 4</text>
+<text class="pnm" x="763" y="321" text-anchor="end">GND 2</text>
+<path class="w r" d="M390 290H536M507 290V325H536"/>
+<circle class="dot r" cx="507" cy="290" r="3"/>
+<text class="rail" x="390" y="275" text-anchor="start">VBAT_OUT_FUSED</text>
+<path class="w r" d="M778 290H967"/>
+<text class="rail" x="967" y="276" text-anchor="end">VOUT_PROTECTED</text>
+<path class="w" d="M778 325H815V333"/>
+<path class="s" d="M815 333v9m-8 0h16m-13 4h10m-7 4h4"/>
+</svg></div>
+<figcaption>J15 feeds both driver banks. Rev H uses an LM74700-Q1 and a MOSFET for reverse-battery protection. At 0.8 A the estimated loss in that stage is about 0.02 W. D12 clamps transients on the fused input. <a href="/assets/images/pressure-node/rev-h-output-power.svg">Open the KiCad schematic.</a></figcaption></figure>
+<figure class="sch"><div class="scroll">
+<svg viewBox="0 0 1000 610" role="img" aria-label="Protected 12 V feeds the U24 PWM driver and U25 relay driver. Four inputs on each chip map to connector pins 1 through 4 in order. Pin 5 on each connector is ground." style="min-width:820px">
+<g transform="translate(0 0)">
+<rect class="b ic" x="336" y="85" width="278" height="175" rx="3"/>
+<rect class="b ic" x="844" y="89" width="108" height="150" rx="3"/>
+<text class="icref" x="475" y="106" text-anchor="middle">U24  TPS4H000-Q1</text>
+<text class="icref" x="898" y="80" text-anchor="middle">J13</text>
+<text class="icref" x="42" y="88" text-anchor="start">ESP32 inputs</text>
+<text class="note" x="952" y="60" text-anchor="end">Pump / controller</text>
+<path class="w r" d="M285 57H497V85"/>
+<circle class="dot r" cx="285" cy="57" r="3"/>
+<text class="rail" x="326" y="43" text-anchor="start">VOUT_PROTECTED</text>
+<text class="pn" x="509" y="76" text-anchor="start">17/18 VS</text>
+<path class="s" d="M285 57V70m-7 0h14m-14 5h14m-7 0v3"/>
+<path class="s" d="M285 78v9m-8 0h16m-13 4h10m-7 4h4"/>
+<text class="val" x="267" y="70" text-anchor="end">C55 · 100 nF</text>
+<path class="w" d="M614 249H638V263"/>
+<path class="s" d="M638 263v9m-8 0h16m-13 4h10m-7 4h4"/>
+<path class="w" d="M844 223H807V237"/>
+<path class="s" d="M807 237v9m-8 0h16m-13 4h10m-7 4h4"/>
+<text class="pnm" x="857" y="227" text-anchor="start">5  GND</text>
+<text class="pnm" x="348" y="245" text-anchor="start">9 CL</text>
+<text class="pnm" x="600" y="245" text-anchor="end">GND  10/11/21</text>
+<path class="w" d="M336 249H314"/>
+<path class="s" d="M314 249H296M272 249H252"/>
+<rect class="b" x="272" y="244" width="24" height="10" rx="3"/>
+<path class="w" d="M252 249V257"/>
+<path class="s" d="M252 257v9m-8 0h16m-13 4h10m-7 4h4"/>
+<text class="val" x="284" y="238" text-anchor="middle">R80 · 1.2kΩ</text>
+<text class="net" x="42" y="271" text-anchor="start">THER 12 → 3.3 V</text>
+<text class="val" x="42" y="290" text-anchor="start">RN1 10 kΩ per input to GND</text>
+<text class="val" x="321" y="290" text-anchor="start">RN5 10 kΩ per output to GND</text>
+<text class="val" x="595" y="290" text-anchor="start">D7/D8 clamp the PWM pairs to GND</text>
+<text class="net" x="42" y="125" text-anchor="start">PWM1_L</text>
+<path class="w" d="M146 121H336"/>
+<text class="pnm" x="349" y="125" text-anchor="start">1  IN1</text>
+<text class="pnm" x="600" y="125" text-anchor="end">OUT1  20</text>
+<path class="w" d="M614 121H844"/>
+<text class="net" x="686" y="115" text-anchor="start">PWM1</text>
+<text class="pnm" x="857" y="125" text-anchor="start">1  PWM1</text>
+<text class="net" x="42" y="152" text-anchor="start">PWM2_L</text>
+<path class="w" d="M146 148H336"/>
+<text class="pnm" x="349" y="152" text-anchor="start">2  IN2</text>
+<text class="pnm" x="600" y="152" text-anchor="end">OUT2  19</text>
+<path class="w" d="M614 148H844"/>
+<text class="net" x="686" y="142" text-anchor="start">PWM2</text>
+<text class="pnm" x="857" y="152" text-anchor="start">2  PWM2</text>
+<text class="net" x="42" y="179" text-anchor="start">PWM3_L</text>
+<path class="w" d="M146 175H336"/>
+<text class="pnm" x="349" y="179" text-anchor="start">3  IN3</text>
+<text class="pnm" x="600" y="179" text-anchor="end">OUT3  16</text>
+<path class="w" d="M614 175H844"/>
+<text class="net" x="686" y="169" text-anchor="start">PWM3</text>
+<text class="pnm" x="857" y="179" text-anchor="start">3  PWM3</text>
+<text class="net" x="42" y="206" text-anchor="start">PWM4_L</text>
+<path class="w" d="M146 202H336"/>
+<text class="pnm" x="349" y="206" text-anchor="start">4  IN4</text>
+<text class="pnm" x="600" y="206" text-anchor="end">OUT4  15</text>
+<path class="w" d="M614 202H844"/>
+<text class="net" x="686" y="196" text-anchor="start">PWM4</text>
+<text class="pnm" x="857" y="206" text-anchor="start">4  PWM4</text>
+</g>
+<g transform="translate(0 307)">
+<rect class="b ic" x="336" y="85" width="278" height="175" rx="3"/>
+<rect class="b ic" x="844" y="89" width="108" height="150" rx="3"/>
+<text class="icref" x="475" y="106" text-anchor="middle">U25  TPS4H000-Q1</text>
+<text class="icref" x="898" y="80" text-anchor="middle">J14</text>
+<text class="icref" x="42" y="88" text-anchor="start">ESP32 inputs</text>
+<text class="note" x="952" y="60" text-anchor="end">Relay coils</text>
+<path class="w r" d="M285 57H497V85"/>
+<circle class="dot r" cx="285" cy="57" r="3"/>
+<text class="rail" x="326" y="43" text-anchor="start">VOUT_PROTECTED</text>
+<text class="pn" x="509" y="76" text-anchor="start">17/18 VS</text>
+<path class="s" d="M285 57V70m-7 0h14m-14 5h14m-7 0v3"/>
+<path class="s" d="M285 78v9m-8 0h16m-13 4h10m-7 4h4"/>
+<text class="val" x="267" y="70" text-anchor="end">C56 · 100 nF</text>
+<path class="w" d="M614 249H638V263"/>
+<path class="s" d="M638 263v9m-8 0h16m-13 4h10m-7 4h4"/>
+<path class="w" d="M844 223H807V237"/>
+<path class="s" d="M807 237v9m-8 0h16m-13 4h10m-7 4h4"/>
+<text class="pnm" x="857" y="227" text-anchor="start">5  GND</text>
+<text class="pnm" x="348" y="245" text-anchor="start">9 CL</text>
+<text class="pnm" x="600" y="245" text-anchor="end">GND  10/11/21</text>
+<path class="w" d="M336 249H314"/>
+<path class="s" d="M314 249H296M272 249H252"/>
+<rect class="b" x="272" y="244" width="24" height="10" rx="3"/>
+<path class="w" d="M252 249V257"/>
+<path class="s" d="M252 257v9m-8 0h16m-13 4h10m-7 4h4"/>
+<text class="val" x="284" y="238" text-anchor="middle">R81 · 680Ω</text>
+<text class="net" x="42" y="271" text-anchor="start">THER 12 → 3.3 V</text>
+<text class="val" x="42" y="290" text-anchor="start">RN2 10 kΩ per input to GND</text>
+<text class="val" x="321" y="290" text-anchor="start">RN6 100 kΩ per output to GND</text>
+<text class="val" x="595" y="290" text-anchor="start">D9/D10/D13/D14 flyback, anodes to GND</text>
+<text class="net" x="42" y="125" text-anchor="start">OUT1_L</text>
+<path class="w" d="M146 121H336"/>
+<text class="pnm" x="349" y="125" text-anchor="start">1  IN1</text>
+<text class="pnm" x="600" y="125" text-anchor="end">OUT1  20</text>
+<path class="w" d="M614 121H844"/>
+<text class="net" x="686" y="115" text-anchor="start">OUT1</text>
+<text class="pnm" x="857" y="125" text-anchor="start">1  OUT1</text>
+<text class="net" x="42" y="152" text-anchor="start">OUT2_L</text>
+<path class="w" d="M146 148H336"/>
+<text class="pnm" x="349" y="152" text-anchor="start">2  IN2</text>
+<text class="pnm" x="600" y="152" text-anchor="end">OUT2  19</text>
+<path class="w" d="M614 148H844"/>
+<text class="net" x="686" y="142" text-anchor="start">OUT2</text>
+<text class="pnm" x="857" y="152" text-anchor="start">2  OUT2</text>
+<text class="net" x="42" y="179" text-anchor="start">OUT3_L</text>
+<path class="w" d="M146 175H336"/>
+<text class="pnm" x="349" y="179" text-anchor="start">3  IN3</text>
+<text class="pnm" x="600" y="179" text-anchor="end">OUT3  16</text>
+<path class="w" d="M614 175H844"/>
+<text class="net" x="686" y="169" text-anchor="start">OUT3</text>
+<text class="pnm" x="857" y="179" text-anchor="start">3  OUT3</text>
+<text class="net" x="42" y="206" text-anchor="start">OUT4_L</text>
+<path class="w" d="M146 202H336"/>
+<text class="pnm" x="349" y="206" text-anchor="start">4  IN4</text>
+<text class="pnm" x="600" y="206" text-anchor="end">OUT4  15</text>
+<path class="w" d="M614 202H844"/>
+<text class="net" x="686" y="196" text-anchor="start">OUT4</text>
+<text class="pnm" x="857" y="206" text-anchor="start">4  OUT4</text>
+</g>
+</svg></div>
+<figcaption>U24 sources the PWM commands and U25 sources the relay coils. J13 and J14 pin 5 is ground. J1 is rotated to line up with the other right-edge JSTs and keeps 12 V on pin 1. <a href="/assets/images/pressure-node/rev-h-outputs.svg">Open the KiCad schematic.</a></figcaption></figure>
+<div class="tablewrap"><table><thead><tr><th>Output</th><th>ESP32 GPIO</th><th>Driver</th><th>Driver out</th><th>Connector pin</th></tr></thead><tbody><tr><td>PWM1</td><td>GPIO38</td><td>U24</td><td>20</td><td>J13.1</td></tr><tr><td>PWM2</td><td>GPIO37</td><td>U24</td><td>19</td><td>J13.2</td></tr><tr><td>PWM3</td><td>GPIO36</td><td>U24</td><td>16</td><td>J13.3</td></tr><tr><td>PWM4</td><td>GPIO35</td><td>U24</td><td>15</td><td>J13.4</td></tr><tr><td>OUT1</td><td>GPIO42</td><td>U25</td><td>20</td><td>J14.1</td></tr><tr><td>OUT2</td><td>GPIO41</td><td>U25</td><td>19</td><td>J14.2</td></tr><tr><td>OUT3</td><td>GPIO40</td><td>U25</td><td>16</td><td>J14.3</td></tr><tr><td>OUT4</td><td>GPIO39</td><td>U25</td><td>15</td><td>J14.4</td></tr></tbody></table></div></section>
 <section class="sheet" id="pcn-gpio"><div class="tb"><span class="no">9</span><h3>ESP32 pin map and test pads</h3><span class="refs">U4 · TP1–TP20</span></div>
 <div class="tablewrap"><table><thead><tr><th>GPIO</th><th>Pin</th><th>Net</th><th>Goes to</th></tr></thead><tbody><tr><td>IO4</td><td>4</td><td>I2C_SDA</td><td>U6 switch, U15/U21 ADCs, U23 barometer</td></tr><tr><td>IO5</td><td>5</td><td>I2C_SCL</td><td>U6 switch, U15/U21 ADCs, U23 barometer</td></tr><tr><td>IO10</td><td>18</td><td>MUX_RESET_N</td><td>U6 reset</td></tr><tr><td>IO6</td><td>6</td><td>CAN_TX</td><td>U16 TXD</td></tr><tr><td>IO7</td><td>7</td><td>CAN_RX</td><td>U16 RXD</td></tr><tr><td>IO15</td><td>8</td><td>CAN_STANDBY</td><td>U16 STB, high = standby</td></tr><tr><td>IO16</td><td>9</td><td>ANALOG_EN</td><td>U13/U19 switches, high = inputs connected</td></tr><tr><td>IO17</td><td>10</td><td>SENSOR_POWER_EN</td><td>U3 EN, high = sensor supply on</td></tr><tr><td>IO1</td><td>39</td><td>SENS_MON</td><td>Sensor supply through R76/R77, ÷6.13 (ADC1)</td></tr><tr><td>IO2</td><td>38</td><td>VIN_MON</td><td>Protected 12 V through R78/R79, ÷6.13 (ADC1)</td></tr><tr><td>IO8</td><td>12</td><td>STATUS_LED</td><td>D5 through R12</td></tr><tr><td>IO9</td><td>17</td><td>ZERO_N</td><td>SW3, low = pressed</td></tr><tr><td>IO0</td><td>27</td><td>BOOT_N</td><td>SW2, hold low at reset to flash</td></tr><tr><td>IO19 / IO20</td><td>13 / 14</td><td>USB D− / D+</td><td>J3 through R16 / R15 and U5</td></tr><tr><td>IO43 / IO44</td><td>37 / 36</td><td>UART0 TX / RX</td><td>TP19 / TP20 test pads</td></tr><tr><td>IO38</td><td>31</td><td>PWM1_L</td><td>U24 IN1 → PWM1, J13 pin 1</td></tr><tr><td>IO37</td><td>30</td><td>PWM2_L</td><td>U24 IN2 → PWM2, J13 pin 2</td></tr><tr><td>IO36</td><td>29</td><td>PWM3_L</td><td>U24 IN3 → PWM3, J13 pin 3</td></tr><tr><td>IO35</td><td>28</td><td>PWM4_L</td><td>U24 IN4 → PWM4, J13 pin 4</td></tr><tr><td>IO42</td><td>35</td><td>OUT1_L</td><td>U25 IN1 → OUT1, J14 pin 1</td></tr><tr><td>IO41</td><td>34</td><td>OUT2_L</td><td>U25 IN2 → OUT2, J14 pin 2</td></tr><tr><td>IO40</td><td>33</td><td>OUT3_L</td><td>U25 IN3 → OUT3, J14 pin 3</td></tr><tr><td>IO39</td><td>32</td><td>OUT4_L</td><td>U25 IN4 → OUT4, J14 pin 4</td></tr><tr><td>IO18</td><td>11</td><td>—</td><td>Not connected</td></tr><tr><td>EN</td><td>3</td><td>ESP_EN</td><td>SW1 reset, R8 + C15 power-on delay</td></tr></tbody></table></div>
 <div class="tablewrap"><table><thead><tr><th>Pad</th><th>Silk</th><th>Carries</th></tr></thead><tbody><tr><td>TP1</td><td>GND</td><td>Ground</td></tr><tr><td>TP2</td><td>VIN</td><td>Protected 12 V</td></tr><tr><td>TP3</td><td>5V</td><td>Buck output</td></tr><tr><td>TP4</td><td>5VSYS</td><td>5 V after the OR</td></tr><tr><td>TP5</td><td>3V3</td><td>3.3 V</td></tr><tr><td>TP6</td><td>5VS</td><td>Sensor supply</td></tr><tr><td>TP7 / TP8</td><td>TX / RX</td><td>CAN_TX / CAN_RX</td></tr><tr><td>TP9 / TP10</td><td>SDA / SCL</td><td>Main I²C bus</td></tr><tr><td>TP11–TP18</td><td>A1–A8</td><td>Each analog input at its ADC pin</td></tr><tr><td>TP19 / TP20</td><td>TX0 / RX0</td><td>UART0 TX / RX</td></tr></tbody></table></div></section>
