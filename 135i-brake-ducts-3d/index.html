@@ -99,14 +99,14 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--focus); out
     <h2>Parts</h2>
     <div class="parts" id="parts"></div>
   </section>
-  <p class="note">Steady-state CFD (OpenFOAM, k-omega SST) with the ground moving. The duct tabs are each printed duct alone at 100 mph; the front corner tab is the whole corner on the car at 125 mph. "Only air through the duct" hides every line that doesn't pass through the duct's channel.</p>
+  <p class="note">Steady-state CFD (OpenFOAM, k-omega SST) with the ground moving. The arm duct tab is the printed duct alone at 100 mph; the front corner tab is the whole corner on the car at 125 mph, and the rear corner tab the whole rear corner at 100 mph. "Only air through the duct" hides every line that doesn't pass through the duct's channel.</p>
 </aside>
 
 <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
 <script>
 (() => {
-  const SCENES = [{ id: 'model', name: 'Front corner' }, { id: 'rear', name: 'Rear duct' }, { id: 'arm', name: 'Arm duct' }];   // one part per test case
+  const SCENES = [{ id: 'model', name: 'Front corner' }, { id: 'rear', name: 'Rear corner' }, { id: 'arm', name: 'Arm duct' }];   // one part per test case
   const stage = document.getElementById('stage'), labelsEl = document.getElementById('labels');
   const statusEl = document.getElementById('status');
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });

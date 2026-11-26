@@ -1,38 +1,156 @@
 {
- "title": "135i rear brake duct on its own, 100 mph",
- "note": "Rear duct on its own (test case P1): duct, moving road, oncoming air at 100 mph. No wheel, brake or car.",
+ "title": "135i rear corner, 100 mph",
+ "note": "Rear corner (test case RC1): scanned brake and hub, duct sealed to the car, wheel carrier, links, spring, damper, subframe and arch liner modelled from parts drawings, moving road and spinning wheel.",
  "parts": [
+  {
+   "name": "Tire",
+   "color": "#cfe3f5",
+   "opacity": 0.1,
+   "wall": true,
+   "vOff": 0,
+   "nV": 2594,
+   "iOff": 15564,
+   "nI": 15552
+  },
+  {
+   "name": "Body",
+   "color": "#cfe3f5",
+   "opacity": 0.08,
+   "wall": true,
+   "vOff": 77772,
+   "nV": 61,
+   "iOff": 78138,
+   "nI": 225
+  },
+  {
+   "name": "Shield, mount, thrust link and hub (scanned)",
+   "color": "#8fa3b8",
+   "opacity": 0.55,
+   "wall": false,
+   "vOff": 79038,
+   "nV": 31730,
+   "iOff": 269418,
+   "nI": 179997
+  },
+  {
+   "name": "Caliper (scanned)",
+   "color": "#e0574f",
+   "opacity": 0.85,
+   "wall": false,
+   "vOff": 989406,
+   "nV": 6904,
+   "iOff": 1030830,
+   "nI": 40356
+  },
+  {
+   "name": "Rotor",
+   "color": "#9aa7b4",
+   "opacity": 0.6,
+   "wall": false,
+   "vOff": 1192254,
+   "nV": 578,
+   "iOff": 1195722,
+   "nI": 3456
+  },
+  {
+   "name": "Dust shield",
+   "color": "#6fbf73",
+   "opacity": 0.35,
+   "wall": false,
+   "vOff": 1209546,
+   "nV": 580,
+   "iOff": 1213026,
+   "nI": 3468
+  },
   {
    "name": "Brake duct",
    "color": "#cfe3f5",
    "opacity": 0.22,
    "wall": true,
-   "vOff": 0,
+   "vOff": 1226898,
    "nV": 4603,
-   "iOff": 27618,
+   "iOff": 1254516,
    "nI": 28206
+  },
+  {
+   "name": "Duct top sealed to the car",
+   "color": "#c9a227",
+   "opacity": 0.6,
+   "wall": false,
+   "vOff": 1367340,
+   "nV": 3950,
+   "iOff": 1391040,
+   "nI": 24000
+  },
+  {
+   "name": "Wheel carrier",
+   "color": "#4f7cff",
+   "opacity": 0.45,
+   "wall": false,
+   "vOff": 1487040,
+   "nV": 1323,
+   "iOff": 1494978,
+   "nI": 7926
+  },
+  {
+   "name": "Links, spring, damper, drive shaft",
+   "color": "#3fbf5f",
+   "opacity": 0.35,
+   "wall": false,
+   "vOff": 1526682,
+   "nV": 3400,
+   "iOff": 1547082,
+   "nI": 19329
+  },
+  {
+   "name": "Subframe and final drive",
+   "color": "#9b59b6",
+   "opacity": 0.25,
+   "wall": false,
+   "vOff": 1624398,
+   "nV": 258,
+   "iOff": 1625946,
+   "nI": 1410
+  },
+  {
+   "name": "Arch liner",
+   "color": "#cfe3f5",
+   "opacity": 0.08,
+   "wall": true,
+   "vOff": 1631586,
+   "nV": 139,
+   "iOff": 1632420,
+   "nI": 618
   }
  ],
- "lines": 6354,
- "linesDuct": 3036,
+ "lines": 5288,
+ "linesDuct": 2846,
  "posScale": 0.0005,
  "tScale": 5e-05,
  "sScale": 0.25,
  "arrow": 0.01,
  "spacing": 0.006,
  "target": [
-  0.10891272127628326,
-  -0.03828401863574982,
-  -2.568293571472168
+  0.18839220702648163,
+  0.08109056949615479,
+  -0.1271069198846817
  ],
- "extent": 0.7471296787261963,
+ "extent": 1.036828875541687,
  "labels": [
   [
    "Duct nozzle",
    [
-    0.1575,
-    -0.0079,
-    -2.5561
+    0.148,
+    0.068,
+    -0.077
+   ]
+  ],
+  [
+   "Caliper",
+   [
+    0.22353,
+    0.26986,
+    -0.15733
    ]
   ]
  ],

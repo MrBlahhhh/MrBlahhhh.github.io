@@ -32,7 +32,7 @@ article_header:
 </style>
 
 <div class="bd-viewer"><iframe src="/135i-brake-ducts-3d/" title="135i brake ducts in 3D" loading="eager" allowfullscreen></iframe></div>
-*Drag to orbit, scroll or pinch to zoom. The tabs switch between the whole front corner and each duct on its own with the air running through it. [Open the 3D view full screen](/135i-brake-ducts-3d/).*
+*Drag to orbit, scroll or pinch to zoom. The tabs switch between the whole front corner, the whole rear corner and the front arm duct on its own, with the air running through them. [Open the 3D view full screen](/135i-brake-ducts-3d/).*
 
 <!--more-->
 
