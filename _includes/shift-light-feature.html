@@ -334,8 +334,8 @@
 <h2>Rev C, <em>built for a car.</em></h2>
 <p class="body">A 54 × 58 mm two-layer board with everything soldered down: an ESP32-C3 SuperMini in the middle, a CAN transceiver, an MP1584 buck trimmed to 5.0 V, and screw terminals for everything that leaves the board. No dev-board stack, no jumper wires, nothing to come loose behind a dash.</p>
 <div class="boards">
-<figure class="photo"><img src="/assets/images/shift-light/board-rev-c-iso.webp" alt="Rev C shift light board: ESP32-C3 SuperMini, MP1584 buck module, CAN transceiver and screw terminals" loading="lazy"><figcaption>Rev C · 54 × 58 mm</figcaption></figure>
-<figure class="photo"><img src="/assets/images/shift-light/board-rev-c-top.webp" alt="Rev C board from the top, terminals labelled CANH CANL, +12V GND, +5V DATA GND" loading="lazy"><figcaption>CAN, 12 V and the strip, each on its own terminal</figcaption></figure>
+<figure class="photo"><img src="/assets/images/shift-light/board-rev-c-photo.webp" width="602" height="585" alt="The assembled red Rev C CAN shift light board with its ESP32-C3 SuperMini, MP1584 buck module and screw terminals" loading="lazy"><figcaption>Rev C, assembled · 54 × 58 mm</figcaption></figure>
+<figure class="photo"><img src="/assets/images/shift-light/board-rev-c-cad-top.webp" width="1030" height="1130" alt="CAD top view of the Rev C board, terminals labelled CANH CANL, +12V GND, +5V DATA GND" loading="lazy"><figcaption>CAN, 12 V and the strip, each on its own terminal</figcaption></figure>
 </div>
 <dl class="spec">
 <dt>Power in</dt><dd><b>12 V switched,</b> fused, TVS clamped and reverse-blocked.</dd>
@@ -388,8 +388,10 @@
 </table>
 <p class="body">The CAN pair is twisted, which is how you pick it out of the loom. Colours and pins come off the factory WDS sheets for the instrument cluster, and <a href="/car/tech/2026/09/04/r53-can-bus-wire-colours.html">Two yellow wires</a> walks through reading them.</p>
 <div class="phones three">
-<figure class="phone"><img src="/assets/images/r53-shift-light/install-power-tap.jpg" alt="Posi-Taps on the switched feed behind the R53's dash end panel" loading="lazy"><figcaption>Switched feed and ground</figcaption></figure>
-<figure class="phone"><img src="/assets/images/r53-shift-light/install-can-tap.jpg" alt="The twisted yellow CAN pair tapped in the main harness" loading="lazy"><figcaption>The twisted CAN pair</figcaption></figure>
+<!-- The file names are the wrong way round: install-can-tap.jpg is the switched-feed tap on the
+     green wire, install-power-tap.jpg is the CAN pair and the body stud (Matt, 2026-11-15). -->
+<figure class="phone"><img src="/assets/images/r53-shift-light/install-can-tap.jpg" alt="A Posi-Tap on the green switched-feed wire behind the R53's left dash end panel, with the CAN pair's two taps below it" loading="lazy"><figcaption>Switched feed, the green wire</figcaption></figure>
+<figure class="phone"><img src="/assets/images/r53-shift-light/install-power-tap.jpg" alt="A Posi-Tap on each wire of the twisted yellow CAN pair, with ring terminals on the body stud beside them" loading="lazy"><figcaption>The CAN pair, ground on the body stud</figcaption></figure>
 <figure class="phone"><img src="/assets/images/r53-shift-light/install-wire-run.jpg" alt="The strip wire routed out of sight up the column" loading="lazy"><figcaption>Up the column, out of sight</figcaption></figure>
 </div>
 <h3 style="margin-top:30px">MINI F55 / F56 / F57</h3>
