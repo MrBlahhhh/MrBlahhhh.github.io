@@ -55,12 +55,12 @@
   <div class="stats">
     <div class="stat"><b>5</b><span>pages, swiped</span></div>
     <div class="stat"><b>20 Hz</b><span>live values</span></div>
-    <div class="stat"><b>4</b><span>screens it runs on</span></div>
+    <div class="stat"><b>2</b><span>Waveshare screens</span></div>
     <div class="stat"><b>Always</b><span>logging to SD</span></div>
   </div>
 </div>
 
-<p class="note">Every screen image on this page is rendered from the screen firmware's own page code with simulated data, a third-gear pull at 5,940 rpm and 10.8 psi. They are not photos of the hardware: the new screens haven't arrived yet.</p>
+<p class="note">Every screen image on this page is rendered from the screen firmware's own page code with simulated data, a third-gear pull at 5,940 rpm and 10.8 psi. They are not photos of the hardware.</p>
 
 <h2 id="pages">The pages</h2>
 <p class="lead">Swipe left and right. The line at the top says whether the bridge is there and whether the card is recording; the dots at the bottom say which page you're on. Shown on the 2.8&Prime; round LCD.</p>
@@ -73,23 +73,20 @@
   <figure><img src="/assets/images/r53-dash-screen/lcd28c-no-bridge.png" alt="Round dash screen before the bridge is connected: every gauge reads two grey dashes, No bridge at the top" width="480" height="480" loading="lazy"><figcaption><b>No bridge.</b> Before the cable is in, or if the bridge stops talking: every value goes to grey dashes. Nothing on the screen is ever a frozen number from a second ago.</figcaption></figure>
 </div>
 
-<h2 id="screens">Three screens, one firmware</h2>
-<p class="lead">The same pages run on four Waveshare ESP32-S3 boards. I ordered the three new ones to see which reads best in the car; the 2.1&Prime; is the methanol controller's screen, which I already have.</p>
+<h2 id="screens">Two screens, one firmware</h2>
+<p class="lead">The screen firmware supports two Waveshare round touch boards, and only these two. Both are an ESP32-S3 behind a 480 &times; 480 IPS panel, so every page looks the same on either; the 2.8&Prime; is just bigger. The 2.1&Prime; is the methanol controller's screen.</p>
 <div class="three">
-  <figure><img src="/assets/images/r53-dash-screen/lcd28c-gauges.png" alt="Gauges page on the 2.8 inch round LCD" width="480" height="480" loading="lazy"><figcaption><b>2.8&Prime; round LCD.</b> The biggest face, and the easiest port: the 2.1&Prime;'s wiring with a different panel and touch chip.</figcaption></figure>
-  <figure><img src="/assets/images/r53-dash-screen/amoled175-gauges.png" alt="Gauges page on the 1.75 inch round AMOLED" width="466" height="466" loading="lazy"><figcaption><b>1.75&Prime; round AMOLED.</b> Fits a 52&nbsp;mm gauge pod, and the methanol screen ran on it before, so its code came back out of git.</figcaption></figure>
-  <figure class="rect"><img src="/assets/images/r53-dash-screen/amoled241-gauges.png" alt="Gauges page on the 2.41 inch AMOLED in portrait, RPM bar across the top" width="450" height="600" loading="lazy"><figcaption><b>2.41&Prime; AMOLED.</b> The brightest of the lot. Portrait for now; landscape once I've seen the real panel.</figcaption></figure>
+  <figure><img src="/assets/images/r53-dash-screen/lcd28c-gauges.png" alt="Gauges page on the 2.1 inch round LCD" width="480" height="480" loading="lazy" style="max-width:225px"><figcaption><b>2.1&Prime; round LCD.</b> Waveshare ESP32-S3-Touch-LCD-2.1. Its panel and touch code are already proven on the methanol controller.</figcaption></figure>
+  <figure><img src="/assets/images/r53-dash-screen/lcd28c-gauges.png" alt="Gauges page on the 2.8 inch round LCD" width="480" height="480" loading="lazy"><figcaption><b>2.8&Prime; round LCD.</b> Waveshare ESP32-S3-Touch-LCD-2.8C. The bigger face: the 2.1&Prime;'s wiring with a different panel and touch chip.</figcaption></figure>
 </div>
 <div class="tbl"><table>
-  <thead><tr><th>Screen</th><th>Panel</th><th>Brightness</th><th>Fits</th></tr></thead>
+  <thead><tr><th>Screen</th><th>Waveshare part</th><th>Panel</th><th>Fits</th><th>Buy</th></tr></thead>
   <tbody>
-    <tr><td><b>2.1&Prime; round LCD</b></td><td class="num">480 &times; 480 IPS</td><td>not published</td><td>52&nbsp;mm pod</td></tr>
-    <tr><td><b>2.8&Prime; round LCD</b></td><td class="num">480 &times; 480 IPS</td><td>not published</td><td>60&nbsp;mm pod or a printed bezel</td></tr>
-    <tr><td><b>1.75&Prime; round AMOLED</b></td><td class="num">466 &times; 466</td><td class="num">700 nits</td><td>52&nbsp;mm pod</td></tr>
-    <tr><td><b>2.41&Prime; AMOLED</b></td><td class="num">450 &times; 600</td><td class="num">800 nits</td><td>dash top or centre stack</td></tr>
+    <tr><td><b>2.1&Prime; round LCD</b></td><td><code>ESP32-S3-Touch-LCD-2.1</code></td><td class="num">480 &times; 480 IPS</td><td>52&nbsp;mm pod</td><td><a href="https://www.amazon.com/dp/B0DDPQSKJD">Amazon</a></td></tr>
+    <tr><td><b>2.8&Prime; round LCD</b></td><td><code>ESP32-S3-Touch-LCD-2.8C</code></td><td class="num">480 &times; 480 IPS</td><td>60&nbsp;mm pod or a printed bezel</td><td><a href="https://www.amazon.com/dp/B0DMJZPH2R">Amazon</a></td></tr>
   </tbody>
 </table></div>
-<p>The AMOLEDs have real blacks, so a dark gauge face holds its contrast in daylight far better than a backlit LCD at the same rating. They can burn in a fixed layout, so the whole picture drifts a few pixels every three minutes, the same care the methanol screen's AMOLED build had.</p>
+<p>Buy the exact part number. Waveshare sells other round and AMOLED boards with the same ESP32-S3 that look close, but they use different panels and touch chips and aren't supported.</p>
 
 <h2 id="logging">It logs everything, all the time</h2>
 <p class="lead">The bridge has had a microSD slot since the rev C board. Until now it only logged when the app switched it on, and only the channels it decodes. Now it logs whenever a card is in, and keeps all of it.</p>
@@ -119,10 +116,10 @@
 <p>Both go on from Chrome or Edge with the <a href="https://mrblahhhh.github.io/esp32-shift-light-R53-mini/">R53 flasher</a>, build 11 on:</p>
 <ul class="tight">
   <li><b>The bridge.</b> Plug in the XIAO, press Connect, tick <b>This board drives a dash screen</b> and flash. Update keeps your K-line polling and shift light settings. From then on the USB-C is the screen's, so to flash the bridge again, hold BOOT on the XIAO while you plug it into the computer.</li>
-  <li><b>The screen.</b> Flash it on its own, not plugged into the bridge. All four have the same chip, so the first time the flasher asks which one it is; after that it knows from the firmware. Not sure whether a 2.41&Prime; is the V1 or V2 board: flash the V2 build, and if it stays dark, the V1.</li>
+  <li><b>The screen.</b> Flash it on its own, not plugged into the bridge. Both have the same chip, so the first time the flasher asks which one it is, the 2.1&Prime; or the 2.8&Prime;; after that it knows from the firmware.</li>
 </ul>
 
 <h2 id="status">Where it's at</h2>
-<p>The firmware builds for the bridge and for all four screens, the link between them is checked by tests on a PC, every page renders as you see above, and it's all on the flasher as build 11 (bridge firmware 381, screen firmware 0.1.0). None of it has run on a screen in the car yet, so keep build 10 on a bridge you rely on until it has. The 2.1&Prime; goes on first, since its panel and touch code are already proven on the methanol controller; the three new screens follow when they land.</p>
+<p>The firmware builds for the bridge and for both screens, the link between them is checked by tests on a PC, every page renders as you see above, and it's all on the flasher as build 11 (bridge firmware 381, screen firmware 0.1.0). None of it has run on a screen in the car yet, so keep build 10 on a bridge you rely on until it has. The 2.1&Prime; goes on first, since its panel and touch code are already proven on the methanol controller; the 2.8&Prime; follows.</p>
 
 </div>
