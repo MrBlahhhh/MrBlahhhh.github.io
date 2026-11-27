@@ -43,7 +43,7 @@ One line in the slicer preview looked like a **5.91 mm bridge**. Following the n
 
 In the simulation, I held one ball seat fixed and loaded the jaw 50 mm past the other ball. The thin sheet alone reached first predicted tensile damage at **8.0 N per jaw**. Curved edge reinforcement raised that to **34.6 N** on the lightweight jaw. The stiffer gyroid reached **58.6–60.4 N** across two mesh sizes, close to the dual-pivot spiderweb’s **59.0 N**. The video shows true-scale elastic motion up to that threshold. Physical breaking loads remain unmeasured. [Download the 10-second bend video (MP4)](/assets/images/spiderweb-tablet-mount/dual-pivot/Gyroid-bend-screen.mp4)
 
-## Getting the 150 mm arm to pivot 90°
+## Getting the spiderweb arms to pivot 90°
 {: #pivot-90}
 
 The first 150 mm spiderweb arm clamped onto the ball, but when I swung the arm sideways on the mount, the stem hit the socket rim before the tablet reached the angle I wanted. I relieved the rim on both jaws at both ends. The stem can now swing out through the split on either side in the CAD assembly.
@@ -52,9 +52,13 @@ The first 150 mm spiderweb arm clamped onto the ball, but when I swung the arm s
 
 The 1 inch measurement is the ball diameter. RAM’s aluminum diamond base has a **0.438 inch (11.13 mm) stem**. I swept that diameter and a larger **12 mm** stem from straight out to 90° at both ends. Both cleared through the full swing with the jaws 2 mm apart and again with the split narrowed to 1 mm. [RAM-B-238U dimensioned drawing](https://images.rammount.com/files/pdf/RAM-B-238U.pdf)
 
-**For the 90° version, print two identical 150 mm jaws** with the flat washer face on the bed and the cups up. Reuse the spiderweb arm’s M6 × 40 mm hex-head bolt, plain M6 nut, 18 mm washer and knob. The ZIP includes the revised jaw STL, editable SolidCraft model, original knob STL and print instructions. [Download the 150 mm spiderweb 90° print pack](/assets/downloads/spiderweb-tablet-mount/Spiderweb-150mm-pivot90.zip)
+**All four lengths now have the 90° relief.** The original 62, 95 and 120 mm jaws bind the same way the 150 mm did, so I cut the same rim relief into them. Each passed the same sweep: both stem sizes, both jaw gaps, out through the split on either side at both ends. On every length the relief removes 27% of each cup’s spherical seat.
 
-### Did opening the sockets weaken the 150 mm jaw?
+I also checked each jaw against the RAM diamond plate, a 48.6 × 33.4 mm diamond 19.6 mm below the ball center. The 95, 120 and 150 mm jaws clear it by at least 4.4 mm at any angle, however the diamond is turned. The 62 mm jaw is 42.9 mm wide, so its outer web sets the limit before the stem does. If the diamond’s long point runs along the arm, the web touches the plate at about 87°. If it runs across the arm, the jaw reaches 90° with 0.9 mm to spare.
+
+**For the 90° version, print two identical jaws of the length you need** with the flat washer face on the bed and the cups up. Reuse the spiderweb arm’s M6 × 40 mm hex-head bolt, plain M6 nut, 18 mm washer and knob. Each ZIP includes the revised jaw STL, editable SolidCraft model, original knob STL and print instructions. [62 mm 90° pack](/assets/downloads/spiderweb-tablet-mount/Spiderweb-62mm-pivot90.zip) · [95 mm 90° pack](/assets/downloads/spiderweb-tablet-mount/Spiderweb-95mm-pivot90.zip) · [120 mm 90° pack](/assets/downloads/spiderweb-tablet-mount/Spiderweb-120mm-pivot90.zip) · [150 mm 90° pack](/assets/downloads/spiderweb-tablet-mount/Spiderweb-150mm-pivot90.zip)
+
+### Did opening the sockets weaken the jaws?
 {: #bend-test-150mm}
 
 I ran the original and revised jaws through the same simulated bend test. I held the left cup fixed and applied a downward load 50 mm beyond the right ball. Watch the rib beside the fixed cup. It was the first place to show damage in both jaws.
@@ -65,6 +69,17 @@ I ran the original and revised jaws through the same simulated bend test. I held
 </video>
 
 On the finer mesh shown in the video, first damage occurred at **60.68 N** on the original jaw and **60.34 N** on the revised jaw, about **0.6% earlier**. The revised jaw carried a higher peak on this mesh (64.42 versus 61.22 N), but the coarser mesh put both peaks within 0.04 N of each other. Across the two runs, opening the sockets showed no consistent loss in peak bending strength. [Download the 12-second comparison (MP4)](/assets/images/spiderweb-tablet-mount/150mm-bend-comparison.mp4)
+
+I put the three shorter jaws through the same test. On every length, first damage started in a web rib, not at the opened rim.
+
+| Length | Original peak | 90° peak | Change, finer mesh | Change, coarser mesh | Tablet travel at 3 g |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| 62 mm | 143.1 N | 145.3 N | +1.6% | −1.6% | 0.302 → 0.296 mm |
+| 95 mm | 96.1 N | 99.0 N | +3.1% | −5.6% | 0.838 → 0.839 mm |
+| 120 mm | 86.0 N | 86.2 N | +0.1% | −0.8% | 1.763 → 1.769 mm |
+| 150 mm | 61.2 N | 64.4 N | +5.2% | 0.0% | 3.508 → 3.523 mm |
+
+Peaks are per jaw on the finer mesh. Travel runs from the original to the 90° jaw. The two mesh sizes disagree on the direction of the change, so I read the table as no consistent loss of strength at any length. Predicted travel at the tablet moved by 2% or less.
 
 Grip is the remaining bench test. The relief removed **27% of the spherical seat area** from each cup. The simulation held the base cup fixed, so it leaves open how much torque the printed assembly can hold at 90° before the ball slips.
 
@@ -147,23 +162,23 @@ The filmed mesh first reached the assumed tensile limit at **136 N on one jaw**,
 
 First damage is especially sensitive to how finely the thin rib is meshed. A finer mesh placed first damage in the same pair of rib-to-cup junctions, on the opposite side, at **77 N**. That gives me a place to watch during a bench test. The breaking force of an actual print and the load at which the rubber balls slip are still unmeasured.
 
-## Original spiderweb print files
+## Spiderweb print files
 {: #download-the-models}
 
-Each ZIP contains the jaw STL, its editable SolidCraft model, the shared hand-knob STL and the print guide. Choose a **tip-to-tip jaw length**. All four use nominal 1-inch (25.4 mm) balls.
+Each ZIP contains the jaw STL, its editable SolidCraft model, the shared hand-knob STL and the print guide. Choose a **tip-to-tip jaw length**. All four use nominal 1-inch (25.4 mm) balls. Print the [90° versions](#pivot-90). The originals stay here in case you need to match a jaw you already printed.
 
-| Length | Ball-center spacing | Files |
-| --- | --- | --- |
-| 62 mm | 46 mm | [Download the 62 mm arm](/assets/downloads/spiderweb-tablet-mount/Spiderweb-62mm.zip) |
-| 95 mm | 79 mm | [Download the 95 mm arm](/assets/downloads/spiderweb-tablet-mount/Spiderweb-95mm.zip) |
-| 120 mm | 104 mm | [Download the 120 mm arm](/assets/downloads/spiderweb-tablet-mount/Spiderweb-120mm.zip) |
-| 150 mm | 134 mm | [Original 150 mm arm](/assets/downloads/spiderweb-tablet-mount/Spiderweb-150mm.zip) · [90° revision](#pivot-90) |
+| Length | Ball-center spacing | 90° pivot (print this) | Original |
+| --- | --- | --- | --- |
+| 62 mm | 46 mm | [Download the 62 mm 90° arm](/assets/downloads/spiderweb-tablet-mount/Spiderweb-62mm-pivot90.zip) | [Original](/assets/downloads/spiderweb-tablet-mount/Spiderweb-62mm.zip) |
+| 95 mm | 79 mm | [Download the 95 mm 90° arm](/assets/downloads/spiderweb-tablet-mount/Spiderweb-95mm-pivot90.zip) | [Original](/assets/downloads/spiderweb-tablet-mount/Spiderweb-95mm.zip) |
+| 120 mm | 104 mm | [Download the 120 mm 90° arm](/assets/downloads/spiderweb-tablet-mount/Spiderweb-120mm-pivot90.zip) | [Original](/assets/downloads/spiderweb-tablet-mount/Spiderweb-120mm.zip) |
+| 150 mm | 134 mm | [Download the 150 mm 90° arm](/assets/downloads/spiderweb-tablet-mount/Spiderweb-150mm-pivot90.zip) | [Original](/assets/downloads/spiderweb-tablet-mount/Spiderweb-150mm.zip) |
 
-[Download all four sizes together (105 MB ZIP)](https://github.com/MrBlahhhh/MrBlahhhh.github.io/releases/download/spiderweb-arms-v1/Spiderweb-tablet-arms.zip) · [Read the print and assembly guide](/assets/downloads/spiderweb-tablet-mount/Print-guide.txt)
+[All four original sizes in one ZIP (105 MB)](https://github.com/MrBlahhhh/MrBlahhhh.github.io/releases/download/spiderweb-arms-v1/Spiderweb-tablet-arms.zip) · [Read the print and assembly guide](/assets/downloads/spiderweb-tablet-mount/Print-guide.txt)
 
 For one arm, print **two identical jaws and one [M6 thumb knob of your choice](#choose-a-thumb-knob)**. The same knob fits all four lengths and holds a regular M6 hex nut. Each arm takes one fully threaded M6 × 1.0 × 40 mm external hex-head bolt, one regular M6 × 1.0 hex nut and one 6.4 × 18 × 1.6 mm flat washer. Print the jaws cup-side up, with the flat washer land on the bed. The comparison slice used PAHT-CF, a 0.4 mm nozzle, 0.20 mm layers, five walls and 40% gyroid.
 
-In SolidCraft, **ArmLength** sets the tip-to-tip length. Start from the nearest preset. Each of the four downloads has its own optimized web. Editing the dimension stretches that geometry, so a custom length needs its own fit and stiffness checks.
+In SolidCraft, **ArmLength** sets the tip-to-tip length. Start from the nearest preset. Each of the four downloads has its own optimized web. Editing the dimension stretches that geometry, so a custom length needs its own fit and stiffness checks. In the 90° models the rim relief follows **ArmLength**, and **PivotStemDiameter** sets the stem size it clears.
 
 ## Where the web came from
 
